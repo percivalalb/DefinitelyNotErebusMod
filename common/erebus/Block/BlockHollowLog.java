@@ -44,7 +44,7 @@ public class BlockHollowLog extends BlockContainer {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister) {
         this.tree_top = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "log_acacia_top");
-        this.tree_side = par1IconRegister.registerIcon("log_acacia");
+        this.tree_side = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "log_acacia");
     }
     
     

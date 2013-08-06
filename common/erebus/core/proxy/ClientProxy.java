@@ -2,6 +2,8 @@ package erebus.core.proxy;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -10,6 +12,7 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import erebus.ClientErebusTickHandler;
 import erebus.PortalOverlayRenderer;
+import erebus.mod_Erebus;
 import erebus.Block.RenderBlockHollowLog;
 import erebus.Block.TileEntityHollowLog;
 import erebus.Block.TileEntityRenderHollowLog;
@@ -39,6 +42,7 @@ import erebus.Entity.RenderMosquito;
 import erebus.Entity.RenderTarantula;
 import erebus.Entity.RenderVelvetWorm;
 import erebus.Entity.RenderWasp;
+import erebus.client.render.item.HollowLogItemRenderer;
 
 public class ClientProxy extends CommonProxy
 {
@@ -53,7 +57,7 @@ public class ClientProxy extends CommonProxy
 		  RenderingRegistry.registerEntityRenderingHandler(EntityBeetleLarva.class, new RenderBeetleLarva(new ModelBeetleLarva(), 0.5F));
 		  RenderingRegistry.registerEntityRenderingHandler(EntityBeetle.class, new RenderBeetle(new ModelBeetle(), 0.5F));
 		  RenderingRegistry.registerEntityRenderingHandler(EntityFly.class, new RenderFly());
-		  RenderingRegistry.registerEntityRenderingHandler(EntityGreenfly.class, new RenderGreenfly(new ModelGreenfly(), 0.5F));
+		  //RenderingRegistry.registerEntityRenderingHandler(EntityGreenfly.class, new RenderGreenfly(new ModelGreenfly(), 0.5F));
 		  RenderingRegistry.registerEntityRenderingHandler(EntityTarantula.class, new RenderTarantula(new ModelTarantula(), 0.5F));
 		  RenderingRegistry.registerEntityRenderingHandler(EntityMosquito.class, new RenderMosquito(new ModelMosquito(), 0.5F));
 		  RenderingRegistry.registerEntityRenderingHandler(EntityVelvetWorm.class, new RenderVelvetWorm(new ModelVelvetWorm(), 0.6F, 1.0F));
@@ -65,6 +69,7 @@ public class ClientProxy extends CommonProxy
 		  
 		  //Block Renderer
 		  RenderingRegistry.registerBlockHandler(new RenderBlockHollowLog()); 
+		  MinecraftForgeClient.registerItemRenderer(mod_Erebus.hollowLogAcacia.blockID, new HollowLogItemRenderer(TileEntityRenderHollowLog.hollowLogResource));
 	  }
 
 	  // Override any other methods that need to be handled differently client side.

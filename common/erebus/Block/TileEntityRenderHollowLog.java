@@ -26,7 +26,7 @@ public class TileEntityRenderHollowLog extends TileEntitySpecialRenderer
 {
     /** The hollow log chest model. */
     private ModelHollowLog hollowLogModel = new ModelHollowLog();
-    private ResourceLocation hollowLogResource = new ResourceLocation("erebus:textures/item/hollowLog.png");
+    public static ResourceLocation hollowLogResource = new ResourceLocation("erebus:textures/item/hollowLog.png");
     
     /**
      * Renders the TileEntity for the chest at a position.

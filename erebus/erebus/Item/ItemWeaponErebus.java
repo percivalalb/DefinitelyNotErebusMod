@@ -1,6 +1,6 @@
 package erebus.Item;
 
-import erebus.CommonErebusProxy;
+import erebus.core.proxy.CommonProxy;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

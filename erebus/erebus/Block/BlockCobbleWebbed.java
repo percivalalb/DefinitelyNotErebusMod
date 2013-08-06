@@ -2,8 +2,6 @@ package erebus.Block;
 
 import java.util.Random;
 
-import erebus.CommonErebusProxy;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;

@@ -1,6 +1,6 @@
 package erebus.Block;
 
-import erebus.CommonErebusProxy;
+import erebus.core.proxy.CommonProxy;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;

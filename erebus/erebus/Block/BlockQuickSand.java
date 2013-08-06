@@ -1,6 +1,6 @@
 package erebus.Block;
 
-import erebus.CommonErebusProxy;
+import erebus.core.proxy.CommonProxy;
 import erebus.api.Properties;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

@@ -9,7 +9,7 @@ import java.util.*;
 
 import org.lwjgl.opengl.GL11;
 
-import erebus.CommonErebusProxy;
+import erebus.core.proxy.CommonProxy;
 import erebus.mod_Erebus;
 
 import cpw.mods.fml.client.FMLClientHandler;

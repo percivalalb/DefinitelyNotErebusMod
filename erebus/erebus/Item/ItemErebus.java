@@ -1,6 +1,6 @@
 package erebus.Item;
 
-import erebus.CommonErebusProxy;
+import erebus.core.proxy.CommonProxy;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 

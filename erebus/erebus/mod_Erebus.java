@@ -95,14 +95,16 @@ import erebus.World.Biomes.BiomeGenUndergroundJungle;
 import erebus.World.Biomes.BiomeGenUndergroundSavannah;
 import erebus.api.Properties;
 import erebus.core.handler.LocalizationHandler;
+import erebus.core.proxy.CommonProxy;
+import erebus.lib.Reference;
 
-@Mod( modid = "Erebus", name="Erebus", version="0.1 for MC 1.6.2")
-@NetworkMod(channels = {"erebus"}, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketErebusHandler.class)
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION)
+@NetworkMod(channels = {Reference.CHANNEL}, clientSideRequired = true, serverSideRequired = true, packetHandler = PacketErebusHandler.class)
 public class mod_Erebus
 {	
-	@SidedProxy(clientSide = "erebus.ClientErebusProxy", serverSide = "erebus.CommonErebusProxy")
-	public static CommonErebusProxy proxy; //This object will be populated with the class that you choose for the environment
-	@Instance("Erebus")
+	@SidedProxy(clientSide = Reference.SP_CLIENT, serverSide = Reference.SP_SERVER)
+	public static CommonProxy proxy; //This object will be populated with the class that you choose for the environment
+	@Instance(Reference.MOD_ID)
 	public static mod_Erebus instance; //The instance of the mod that will be defined, populated, and callable
 
 	static EnumArmorMaterial armorEXOSKELETON = EnumHelper.addArmorMaterial("EXOSKELETON", 11, new int[] {2, 4, 3, 2}, 15);

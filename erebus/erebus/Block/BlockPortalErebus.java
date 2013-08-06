@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import erebus.CommonErebusProxy;
 import erebus.TeleportErebusClient;
 import erebus.mod_Erebus;
 import erebus.api.Properties;

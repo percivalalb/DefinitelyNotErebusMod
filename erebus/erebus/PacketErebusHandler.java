@@ -16,6 +16,7 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.src.*;
 import cpw.mods.fml.common.network.*;
+import erebus.lib.Reference;
 
 public class PacketErebusHandler implements IConnectionHandler, IPacketHandler
 {
@@ -29,7 +30,7 @@ public class PacketErebusHandler implements IConnectionHandler, IPacketHandler
 	        DataOutputStream data = new DataOutputStream(bytes);
 	        data.writeInt(0);
 			Packet250CustomPayload packet = new Packet250CustomPayload();
-			packet.channel = "erebus";
+			packet.channel = Reference.CHANNEL;
 			packet.length = bytes.size();
 			packet.data = bytes.toByteArray();
 			packet.length = bytes.size();
@@ -60,7 +61,7 @@ public class PacketErebusHandler implements IConnectionHandler, IPacketHandler
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player p) 
 	{
-        if (packet.channel.equals("erebus")) 
+        if (packet.channel.equals(Reference.CHANNEL)) 
         {
 			EntityPlayerSP player = (EntityPlayerSP)p;
 			if (player instanceof EntityPlayerSP) 

@@ -2,7 +2,6 @@ package erebus.Block;
 
 import java.util.Random;
 
-import erebus.CommonErebusProxy;
 import erebus.mod_Erebus;
 
 import net.minecraft.block.Block;

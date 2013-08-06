@@ -1,6 +1,6 @@
 package erebus.Block;
 
-import erebus.CommonErebusProxy;
+import erebus.core.proxy.CommonProxy;
 import erebus.mod_Erebus;
 import erebus.World.Gen.WorldGenErebusHugeTree;
 import erebus.World.Gen.WorldGenErebusTrees;

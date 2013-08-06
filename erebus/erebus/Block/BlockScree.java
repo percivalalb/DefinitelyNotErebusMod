@@ -2,7 +2,7 @@ package erebus.Block;
 
 import java.util.List;
 
-import erebus.CommonErebusProxy;
+import erebus.core.proxy.CommonProxy;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;

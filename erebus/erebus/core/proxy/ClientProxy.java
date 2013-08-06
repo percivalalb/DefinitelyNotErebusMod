@@ -1,4 +1,4 @@
-package erebus;
+package erebus.core.proxy;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
@@ -8,6 +8,8 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
+import erebus.ClientErebusTickHandler;
+import erebus.PortalOverlayRenderer;
 import erebus.Block.RenderBlockHollowLog;
 import erebus.Block.TileEntityHollowLog;
 import erebus.Block.TileEntityRenderHollowLog;
@@ -38,7 +40,7 @@ import erebus.Entity.RenderTarantula;
 import erebus.Entity.RenderVelvetWorm;
 import erebus.Entity.RenderWasp;
 
-public class ClientErebusProxy extends CommonErebusProxy
+public class ClientProxy extends CommonProxy
 {
 	  public static Minecraft mc = FMLClientHandler.instance().getClient();
 	  public Item item;

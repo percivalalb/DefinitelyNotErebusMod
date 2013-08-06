@@ -6,15 +6,21 @@ import java.util.Random;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockHollowLog extends BlockContainer// it has to extend BlockContainer or it wont read the tileentity file.
-{
-    public BlockHollowLog(int par1, Class class1) {
+/**
+ * @author ProPercivalalb
+ */
+public class BlockHollowLog extends BlockContainer {
+  
+	public BlockHollowLog(int par1, Class class1) {
         super(par1, Material.wood);
     }
 
@@ -39,53 +45,60 @@ public class BlockHollowLog extends BlockContainer// it has to extend BlockConta
     }
      */
     
-    /**
-     * Sets the block's bounds for rendering it as an item
-     */
     @Override
-    public void setBlockBoundsForItemRender()
-    {
+    public void setBlockBoundsForItemRender() {
         this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
     }
     
-    /**
-     * The type of render function that is called for this block
-     */
     @Override
-    public int getRenderType()
-    {
-        return -1;
+    public int getRenderType() {
+    	return -1;
     }
  
-    /**
-     * Adds all intersecting collision boxes to a list. (Be sure to only add boxes to the list if they intersect the
-     * mask.) Parameters: World, X, Y, Z, mask, list, colliding entity
-     */
-    public void addCollisionBoxesToList(World par1World, int par2, int par3, int par4, AxisAlignedBB par5AxisAlignedBB, List par6List, Entity par7Entity)
-    {
-        float f = 0.0625F; //1 pixel        
+    @Override
+    public void addCollisionBoxesToList(World par1World, int par2, int par3, int par4, AxisAlignedBB par5AxisAlignedBB, List par6List, Entity par7Entity) {
+        float pixel = 0.0625F; //1 pixel        
     	//bottom
-        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, pixel, 1.0F);
         super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
         
     	//top
-        this.setBlockBounds(0.0F, 1.0F - f, 0.0F, 1.0F, 1.0F, 1.0F);
+        this.setBlockBounds(0.0F, 1.0F - pixel, 0.0F, 1.0F, 1.0F, 1.0F);
         super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
         
     	//east
-        this.setBlockBounds(1.0F - f, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+        this.setBlockBounds(1.0F - pixel, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
         super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
         
     	//south
-        this.setBlockBounds(0.0F, 0.0F, 0.0F, 0.0F + f, 1.0F, 1.0F);
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 0.0F + pixel, 1.0F, 1.0F);
         super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
+        
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
     }
-
+    
     @Override
-    public int getRenderBlockPass() {
-        return 0;
-    }
+    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack)
+    {
+        int l = MathHelper.floor_double((double)(par5EntityLivingBase.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
+        if (l == 0){
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 2);
+        }
+
+        if (l == 1) {
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 2);
+        }
+
+        if (l == 2) {
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 2);
+        }
+
+        if (l == 3) {
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 2);
+        }
+    }
+    
     @Override
     public boolean isOpaqueCube() {
         return false;
@@ -111,13 +124,8 @@ public class BlockHollowLog extends BlockContainer// it has to extend BlockConta
         return true;
     }
     
-    /**
-     * Returns a new instance of a block's tile entity class. Called on placing the block.
-     */
     @Override
-    public TileEntity createNewTileEntity(World par1World)
-    {
-        TileEntityHollowLog tileentityhollowlog = new TileEntityHollowLog();
-        return tileentityhollowlog;
+    public TileEntity createNewTileEntity(World par1World) {
+        return new TileEntityHollowLog();
     }
 }

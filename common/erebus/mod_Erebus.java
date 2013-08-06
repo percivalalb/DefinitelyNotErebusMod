@@ -81,6 +81,7 @@ import erebus.Entity.EntityTarantula;
 import erebus.Entity.EntityVelvetWorm;
 import erebus.Entity.EntityWasp;
 import erebus.Entity.EntityWaspNoises;
+import erebus.Item.ItemCompoundGoggles;
 import erebus.Item.ItemExoskeletonArmor;
 import erebus.Item.ItemJadeArmor;
 import erebus.Item.ItemMaxSpeedBow;
@@ -184,6 +185,10 @@ public class mod_Erebus
 	public static Item jadeAxe;							public static int jadeAxeID;
 	public static Item jadeShovel;						public static int jadeShovelID;
 	public static Item jadePaxel;						public static int jadePaxelID;
+    public static Item compoundEyes;                    public static int compoundEyesID; 
+    public static Item compoundLens;                    public static int compoundLensID; 
+    public static Item compoundGoggles;                 public static int compoundGogglesID; 
+    
 	
 	public static CreativeTabs tabErebus;
 
@@ -287,6 +292,9 @@ public class mod_Erebus
 		jadeAxeID = config.get(config.CATEGORY_ITEM, "Item ID of Jade Axe", 9724).getInt();
 		jadeShovelID = config.get(config.CATEGORY_ITEM, "Item ID of Jade Shovel", 9725).getInt();
 		jadePaxelID = config.get(config.CATEGORY_ITEM, "Item ID of Jade Paxel", 9726).getInt();
+		compoundEyesID = config.get(config.CATEGORY_ITEM, "Item ID of Compound Eyes", 9727).getInt(); 
+        compoundLensID = config.get(config.CATEGORY_ITEM, "Item ID of Compound Lens", 9728).getInt(); 
+        compoundGogglesID = config.get(config.CATEGORY_ITEM, "Item ID of Compound Goggles", 9729).getInt(); 
 		
 		jungleID = config.get(config.CATEGORY_GENERAL, "Biome ID of Underground Jungle", 151).getInt();
 		desertID = config.get(config.CATEGORY_GENERAL, "Biome ID of Volcanic Desert", 152).getInt();
@@ -381,7 +389,10 @@ public class mod_Erebus
 		jadeAxe = new ItemAxe(jadeAxeID, toolJADE).setUnlocalizedName("axeJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "axeJade");
 		jadeShovel = new ItemSpade(jadeShovelID, toolJADE).setUnlocalizedName("shovelJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "shovelJade");
 		jadePaxel = new ItemPaxel(jadePaxelID, toolJADE).setUnlocalizedName("paxelJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "paxelJade");
-
+		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, armorEXOSKELETON, 2, 0).setUnlocalizedName("compoundGoggles").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "compoundGoggles"); 
+        compoundEyes = (new Item(compoundEyesID)).setUnlocalizedName("compoundEyes").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "compoundEyes"); 
+        compoundLens = (new Item(compoundLensID)).setUnlocalizedName("compoundLens").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "compoundLens"); 
+		
 		//Block Mining Levels
 		MinecraftForge.setBlockHarvestLevel(blockAmber, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(brickAmber, "pickaxe", 0);

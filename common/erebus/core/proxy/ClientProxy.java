@@ -13,9 +13,7 @@ import cpw.mods.fml.relauncher.Side;
 import erebus.ClientErebusTickHandler;
 import erebus.PortalOverlayRenderer;
 import erebus.mod_Erebus;
-import erebus.Block.RenderBlockHollowLog;
 import erebus.Block.TileEntityHollowLog;
-import erebus.Block.TileEntityRenderHollowLog;
 import erebus.Entity.EntityBeetle;
 import erebus.Entity.EntityBeetleLarva;
 import erebus.Entity.EntityCentipede;
@@ -43,35 +41,31 @@ import erebus.Entity.RenderTarantula;
 import erebus.Entity.RenderVelvetWorm;
 import erebus.Entity.RenderWasp;
 import erebus.client.render.item.HollowLogItemRenderer;
+import erebus.client.render.tileentity.TileEntityRenderHollowLog;
 
-public class ClientProxy extends CommonProxy
-{
-	  public static Minecraft mc = FMLClientHandler.instance().getClient();
-	  public Item item;
+public class ClientProxy extends CommonProxy {
+	
+	public static Minecraft mc = FMLClientHandler.instance().getClient();
+	public Item item;
 
-	  @Override
-	  public void registerRenderInformation()  {  
+	@Override
+	public void registerRenderInformation()  {  
     
-		  MinecraftForge.EVENT_BUS.register(new PortalOverlayRenderer());
-		  TickRegistry.registerTickHandler(new ClientErebusTickHandler(), Side.CLIENT);    
-		  RenderingRegistry.registerEntityRenderingHandler(EntityBeetleLarva.class, new RenderBeetleLarva(new ModelBeetleLarva(), 0.5F));
-		  RenderingRegistry.registerEntityRenderingHandler(EntityBeetle.class, new RenderBeetle(new ModelBeetle(), 0.5F));
-		  RenderingRegistry.registerEntityRenderingHandler(EntityFly.class, new RenderFly());
-		  //RenderingRegistry.registerEntityRenderingHandler(EntityGreenfly.class, new RenderGreenfly(new ModelGreenfly(), 0.5F));
-		  RenderingRegistry.registerEntityRenderingHandler(EntityTarantula.class, new RenderTarantula(new ModelTarantula(), 0.5F));
-		  RenderingRegistry.registerEntityRenderingHandler(EntityMosquito.class, new RenderMosquito(new ModelMosquito(), 0.5F));
-		  RenderingRegistry.registerEntityRenderingHandler(EntityVelvetWorm.class, new RenderVelvetWorm(new ModelVelvetWorm(), 0.6F, 1.0F));
-		  RenderingRegistry.registerEntityRenderingHandler(EntityWasp.class, new RenderWasp(new ModelWasp(), 0.5F));
-		  RenderingRegistry.registerEntityRenderingHandler(EntityCentipede.class, new RenderCentipede(new ModelCentipede(), 0.5F));
+		MinecraftForge.EVENT_BUS.register(new PortalOverlayRenderer());
+		TickRegistry.registerTickHandler(new ClientErebusTickHandler(), Side.CLIENT);    
+		RenderingRegistry.registerEntityRenderingHandler(EntityBeetleLarva.class, new RenderBeetleLarva(new ModelBeetleLarva(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBeetle.class, new RenderBeetle(new ModelBeetle(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityFly.class, new RenderFly());
+		//RenderingRegistry.registerEntityRenderingHandler(EntityGreenfly.class, new RenderGreenfly(new ModelGreenfly(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityTarantula.class, new RenderTarantula(new ModelTarantula(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityMosquito.class, new RenderMosquito(new ModelMosquito(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityVelvetWorm.class, new RenderVelvetWorm(new ModelVelvetWorm(), 0.6F, 1.0F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityWasp.class, new RenderWasp(new ModelWasp(), 0.5F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityCentipede.class, new RenderCentipede(new ModelCentipede(), 0.5F));
 
-		  //Special Renderer
-		  ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHollowLog.class, new TileEntityRenderHollowLog());
-		  
-		  //Block Renderer
-		  RenderingRegistry.registerBlockHandler(new RenderBlockHollowLog()); 
-		  MinecraftForgeClient.registerItemRenderer(mod_Erebus.hollowLogAcacia.blockID, new HollowLogItemRenderer(TileEntityRenderHollowLog.hollowLogResource));
-	  }
+		//Special Renderer
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHollowLog.class, new TileEntityRenderHollowLog());
 
-	  // Override any other methods that need to be handled differently client side.
-
+		MinecraftForgeClient.registerItemRenderer(mod_Erebus.hollowLogAcacia.blockID, new HollowLogItemRenderer(TileEntityRenderHollowLog.hollowLogResource));
+	}
 }

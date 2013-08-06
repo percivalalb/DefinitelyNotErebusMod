@@ -75,6 +75,9 @@ item.pickaxeJade.name=Jade Pickaxe
 item.axeJade.name=Jade Axe
 item.shovelJade.name=Jade Shovel
 item.paxelJade.name=Jade Paxel
+item.compoundEyes.name=Compound Eyes
+item.compoundLens.name=Compound Goggle Lens
+item.compoundGoggles.name=Compound Goggles
 
 #Entities
 entity.Erebus.BeetleLarva.name=Beetle Larva

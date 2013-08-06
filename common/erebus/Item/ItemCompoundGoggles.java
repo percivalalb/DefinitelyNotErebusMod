@@ -33,7 +33,7 @@ public class ItemCompoundGoggles extends ItemArmor  {
     	long worldTime = world.getWorldTime();
     	
     	if(worldTime % 20 == 0) {
-    		player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 30 * 20, 0));
+    		player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 13 * 20, 0));
     	}
     }
 }

@@ -83,19 +83,19 @@ public class BlockHollowLog extends BlockContainer {
         int l = MathHelper.floor_double((double)(par5EntityLivingBase.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
         if (l == 0){
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 2);
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 2);
         }
 
         if (l == 1) {
-            par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 2);
-        }
-
-        if (l == 2) {
             par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 2);
         }
 
-        if (l == 3) {
+        if (l == 2) {
             par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 2);
+        }
+
+        if (l == 3) {
+            par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 2);
         }
     }
     

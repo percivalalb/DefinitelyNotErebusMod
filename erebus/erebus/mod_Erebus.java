@@ -94,6 +94,7 @@ import erebus.World.Biomes.BiomeGenUndergroundDesert;
 import erebus.World.Biomes.BiomeGenUndergroundJungle;
 import erebus.World.Biomes.BiomeGenUndergroundSavannah;
 import erebus.api.Properties;
+import erebus.core.handler.LocalizationHandler;
 
 @Mod( modid = "Erebus", name="Erebus", version="0.1 for MC 1.6.2")
 @NetworkMod(channels = {"erebus"}, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketErebusHandler.class)
@@ -207,6 +208,9 @@ public class mod_Erebus
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)  {
+		
+		//Loads the Languages into the game
+		LocalizationHandler.loadLanguages();
 		
 		NetworkRegistry.instance().registerConnectionHandler(packeterebushandler);
 
@@ -449,96 +453,11 @@ public class mod_Erebus
 		GameRegistry.registerBlock(umbercobbleMossy, "erebus.cobbleUmberMossy");
 		GameRegistry.registerBlock(umbercobbleWebbed, "erebus.cobbleUmberWebbed");
 
-		//LanguageRegistry.addName(mud, "Mud");
-		LanguageRegistry.addName(portalErebus, "Erebus Portal");
-		LanguageRegistry.addName(blockAmber, "Amber");
-		LanguageRegistry.addName(brickAmber, "Amber Bricks");
-		LanguageRegistry.addName(glassAmber, "Amber Glass");
-		LanguageRegistry.addName(woodMahogany, "Mahogany Wood");
-		LanguageRegistry.addName(leavesMahogany, "Mahogany Leaves");
-		LanguageRegistry.addName(woodEucalyptus, "Eucalyptus Wood");
-		LanguageRegistry.addName(leavesEucalyptus, "Eucalyptus Leaves");
-		LanguageRegistry.addName(cobbleWebbed, "Webbed Cobblestone");
-		LanguageRegistry.addName(oreFossil, "Fossil Ore");
-		LanguageRegistry.addName(blockSilk, "Silk");
-		LanguageRegistry.addName(planksMahogany, "Mahogany Planks");
-		LanguageRegistry.addName(planksEucalyptus, "Eucalyptus Planks");
-		LanguageRegistry.addName(stairsMahogany, "Mahogany Stairs");
-		LanguageRegistry.addName(stairsEucalyptus, "Eucalyptus Stairs");
-		LanguageRegistry.addName(mirBrick, "Mirbrick");
-		LanguageRegistry.addName(spiderSpawner, "Spider Spawner");
-		LanguageRegistry.addName(blockSpiderSilk, "Silk");
-		LanguageRegistry.addName(thorns, "Thorns");
-		LanguageRegistry.addName(fern, "Fern");
-		LanguageRegistry.addName(woodAcacia, "Acacia Wood");
-		LanguageRegistry.addName(leavesAcacia, "Acacia Leaves");
-		LanguageRegistry.addName(erebusSapling, "Sapling");
-		LanguageRegistry.addName(erebusGrass, "Tall Grass");
-		LanguageRegistry.addName(planksAcacia, "Acacia Planks");
-		LanguageRegistry.addName(quickSand, "Quicksand");
-		LanguageRegistry.addName(dryScree, "Dry Scree");
-		LanguageRegistry.addName(screeBricks, "Scree Brick");
-		LanguageRegistry.addName(hollowLogAcacia, "Rotten Acacia Wood");
-		LanguageRegistry.addName(maggotLogAcacia, "Rotten Acacia Wood");
-		LanguageRegistry.addName(umberstone, "Umberstone");
-		LanguageRegistry.addName(oreGold_U, "Umberstone Gold Ore");
-		LanguageRegistry.addName(oreIron_U, "Umberstone Iron Ore");
-		LanguageRegistry.addName(oreCoal_U, "Umberstone Coal Ore");
-		LanguageRegistry.addName(oreLapis_U, "Umberstone Lapis Ore");
-		LanguageRegistry.addName(oreDiamond_U, "Umberstone Diamond Ore");
-		LanguageRegistry.addName(oreEmerald_U, "Umberstone Emerald Ore");
-		LanguageRegistry.addName(oreRedstone_U, "Umberstone Redstone Ore");
-		LanguageRegistry.addName(oreRedstoneGlowing_U, "Umberstone Redstone Ore");
-		LanguageRegistry.addName(oreJade_U, "Umberstone Jade Ore");
-		LanguageRegistry.addName(flyWing, "Fly Wing");
-		LanguageRegistry.addName(umbercobble, "Umbercobble");
-		LanguageRegistry.addName(umbercobbleMossy, "Mossy Umbercobble");
-		LanguageRegistry.addName(umbercobbleWebbed, "Webbed Umbercobble");
-
 		//BIOMES ( After block registration or NullPointerException )
 		underjungle = (new BiomeGenUndergroundJungle(jungleID).setColor(5470985).func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F)).setBiomeName("Undergound Jungle");
 		underdesert = (new BiomeGenUndergroundDesert(desertID).setColor(5470985).func_76733_a(5470985).setDisableRain().setTemperatureRainfall(2.2F, 0.2F)).setBiomeName("Volcanic Desert");
 		undersavannah = (new BiomeGenUndergroundSavannah(savannahID).setColor(5470985).func_76733_a(5470985).setDisableRain().setTemperatureRainfall(4.2F, 0.05F)).setBiomeName("Subterranean Savannah");
 		cavern = (new BiomeGenCavern(cavernID).setColor(5470985).func_76733_a(5470985).setDisableRain().setTemperatureRainfall(4.2F, 0.05F)).setBiomeName("Cavern");	  
-
-		String[] saplingNames = 
-			{ 
-				"Mahogany Sapling", 
-				"Eucalyptus Sapling", 
-				"Acacia Sapling", 
-				"Baobab Sapling"
-			};
-
-		for (int ix = 0; ix < 3; ix++) {
-			ItemStack saplingStack = new ItemStack(erebusSapling, 1, ix);
-			LanguageRegistry.addName(saplingStack, saplingNames[saplingStack.getItemDamage()]);
-		}
-
-		LanguageRegistry.addName(beetleLarvaRaw, "Beetle Larva");
-		LanguageRegistry.addName(beetleLarvaCooked, "Cooked Beetle Larva");
-		LanguageRegistry.addName(legCricket, "Cricket Leg");
-		LanguageRegistry.addName(legCricketCooked, "Cooked Cricket Leg");
-		LanguageRegistry.addName(exoskeletonPlate, "Exoskeleton Plate");
-		LanguageRegistry.addName(exoskeletonHelmet, "Exoskeleton Helmet");
-		LanguageRegistry.addName(exoskeletonBody, "Exoskeleton Chestplate");
-		LanguageRegistry.addName(exoskeletonLegs, "Exoskeleton Leggings");
-		LanguageRegistry.addName(exoskeletonBoots, "Exoskeleton Boots");
-		LanguageRegistry.addName(portalActivator, "Portal Activator");
-		LanguageRegistry.addName(fossilShard, "Bone Shard");
-		LanguageRegistry.addName(fossilClub, "Caveman's Club");
-		LanguageRegistry.addName(maxSpeedBow, "MaxSpeed Bow");
-		LanguageRegistry.addName(legTarantula, "Tarantula Paw");
-		LanguageRegistry.addName(legTarantulaCooked, "Crispy Tarantula Paw");
-		LanguageRegistry.addName(turnip, "Turnips");
-		LanguageRegistry.addName(jadeHelmet, "Jade Helmet");
-		LanguageRegistry.addName(jadeBody, "Jade Chestplate");
-		LanguageRegistry.addName(jadeLegs, "Jade Leggings");
-		LanguageRegistry.addName(jadeBoots, "Jade Boots");
-		LanguageRegistry.addName(jadeSword, "Jade Sword");
-		LanguageRegistry.addName(jadePickaxe, "Jade Pickaxe");
-		LanguageRegistry.addName(jadeAxe, "Jade Axe");
-		LanguageRegistry.addName(jadeShovel, "Jade Shovel");
-		LanguageRegistry.addName(jadePaxel, "Jade Paxel");
 
 		GameRegistry.addRecipe(new ItemStack(exoskeletonHelmet, 1), new Object[] {"sss", "s s", "   ", Character.valueOf('s'), exoskeletonPlate});
 		GameRegistry.addRecipe(new ItemStack(exoskeletonBody, 1), new Object[] {"s s", "sss", "sss", Character.valueOf('s'), exoskeletonPlate});
@@ -594,38 +513,27 @@ public class mod_Erebus
 		proxy.registerRenderInformation();
 
 		GameRegistry.addBiome(underjungle);
-		GameRegistry.removeBiome(underjungle);
-
-		LanguageRegistry.instance().addStringLocalization("itemGroup.erebus", "en_US", "The Erebus");		  
+		GameRegistry.removeBiome(underjungle);  
 
 		EntityRegistry.registerModEntity(EntityBeetleLarva.class, "BeetleLarva", 1, this, 40, 1, true);
-		LanguageRegistry.instance().addStringLocalization("entity.Erebus.BeetleLarva.name", "en_US", "Beetle Larva");
 		registerEntityEgg(EntityBeetleLarva.class, 0xD0FFA2, 0x693C00);
 		
 		EntityRegistry.registerModEntity(EntityWasp.class, "Wasp", 2, this, 40, 1, true);
-		LanguageRegistry.instance().addStringLocalization("entity.Erebus.Wasp.name", "en_US", "Wasp");
 		registerEntityEgg(EntityWasp.class, 0xFFFF00, 0x000000);
 		
 		EntityRegistry.registerModEntity(EntityCentipede.class, "Centipede", 3, this, 40, 1, true);
-		LanguageRegistry.instance().addStringLocalization("entity.Erebus.Centipede.name", "en_US", "Centipede");
 		registerEntityEgg(EntityCentipede.class, 0xFFFF00, 0x0000FF);
 		
 		// Mobs should be registered as ModEntity which means you can have as may ID's as you like
 		// as they are specific to only this mod!!!
 		// As above (Entity.class, "Name", unique mod ID, this mod, trackingRange, updateFrequency, sendsVelocityUpdates);
-		
 		EntityRegistry.registerGlobalEntityID(EntityBeetle.class, "Beetle", ModLoader.getUniqueEntityId(), 894731, 256);
-		LanguageRegistry.instance().addStringLocalization("entity.Beetle.name", "en_US", "Beetle");		 	
 		EntityRegistry.registerGlobalEntityID(EntityFly.class, "Fly", ModLoader.getUniqueEntityId(), 894731, 192);
-		LanguageRegistry.instance().addStringLocalization("entity.Fly.name", "en_US", "Fly");		 	
-		EntityRegistry.registerGlobalEntityID(EntityGreenfly.class, "Greenfly", ModLoader.getUniqueEntityId(), 894731, 512);
-		LanguageRegistry.instance().addStringLocalization("entity.Greenfly.name", "en_US", "Greenfly");		 	
+		//Removed for the moment... EntityRegistry.registerGlobalEntityID(EntityGreenfly.class, "Greenfly", ModLoader.getUniqueEntityId(), 894731, 512);
 		EntityRegistry.registerGlobalEntityID(EntityMosquito.class, "Mosquito", ModLoader.getUniqueEntityId(), 894731, 512);
-		LanguageRegistry.instance().addStringLocalization("entity.Mosquito.name", "en_US", "Mosquito");		 	
-		EntityRegistry.registerGlobalEntityID(EntityTarantula.class, "Tarantula", ModLoader.getUniqueEntityId(), 894731, 512);
-		LanguageRegistry.instance().addStringLocalization("entity.Tarantula.name", "en_US", "Tarantula");		
+		EntityRegistry.registerGlobalEntityID(EntityTarantula.class, "Tarantula", ModLoader.getUniqueEntityId(), 894731, 512);	
 		EntityRegistry.registerGlobalEntityID(EntityVelvetWorm.class, "VelvetWorm", ModLoader.getUniqueEntityId(), 894731, 000000);
-		LanguageRegistry.instance().addStringLocalization("entity.VelvetWorm.name", "en_US", "Velvet Worm");		
+	
 
 		/*LanguageRegistry.instance().addStringLocalization("entity.Erebus Stuff.Mosquito.name", "en_US", "Mosquito");	    	
 		  EntityRegistry.registerModEntity(EntityMosquito.class, "Mosquito", 17,  mod_Erebus.instance, 80, 3, true);

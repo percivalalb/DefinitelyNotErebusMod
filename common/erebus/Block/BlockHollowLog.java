@@ -3,14 +3,20 @@ package erebus.Block;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import erebus.api.Properties;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -19,31 +25,28 @@ import net.minecraft.world.World;
  * @author ProPercivalalb
  */
 public class BlockHollowLog extends BlockContainer {
-  
+	
+    private Icon tree_top;
+    private Icon tree_side;
+    
 	public BlockHollowLog(int par1, Class class1) {
         super(par1, Material.wood);
     }
-
-    /* Not needed : Invisible texture
-    //Top and Side Textures
-    private Icon tree_top;
-    private Icon tree_side;
-    String treeType = "acacia";
     
-    public Icon getIcon(int par1, int par2)
-    {
+    @Override
+    public Icon getIcon(int par1, int par2) {
         int k = par2 & 12;
         int l = par2 & 3;
         return k == 4 && (par1 == 1 || par1 == 0) ? this.tree_top : (k == 0 && (par1 == 2 || par1 == 3) ? this.tree_top : (k == 4 && (par1 == 2 || par1 == 3) ? this.tree_top : this.tree_side));
     }
     
+    @Override
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
-    {
-        this.tree_top = par1IconRegister.registerIcon("log_" + treeType + "_top");
-        this.tree_side = par1IconRegister.registerIcon("log_" + treeType);
+    public void registerIcons(IconRegister par1IconRegister) {
+        this.tree_top = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "log_acacia_top");
+        this.tree_side = par1IconRegister.registerIcon("log_acacia");
     }
-     */
+    
     
     @Override
     public void setBlockBoundsForItemRender() {

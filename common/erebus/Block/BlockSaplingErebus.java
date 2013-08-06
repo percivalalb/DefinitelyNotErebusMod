@@ -4,6 +4,7 @@ import erebus.core.proxy.CommonProxy;
 import erebus.mod_Erebus;
 import erebus.World.Gen.WorldGenErebusHugeTree;
 import erebus.World.Gen.WorldGenErebusTrees;
+import erebus.World.Gen.WorldGenEucalyptus;
 import erebus.World.Gen.WorldGenSavannaTree;
 import erebus.api.Properties;
 import cpw.mods.fml.relauncher.Side;
@@ -89,7 +90,7 @@ public class BlockSaplingErebus extends BlockSapling
 
         if (var6 == 1)
         {
-            var7 = new WorldGenEucalyptus(mod_Erebus.woodEucalyptus.blockID, 2, mod_Erebus.leavesEucalyptus.blockID, 2, 8 + par5Random.nextInt(4), 5, 8, Block.grass.blockID);
+        	var7 = new WorldGenEucalyptus(mod_Erebus.woodEucalyptus.blockID, 2, mod_Erebus.leavesEucalyptus.blockID, 2, 8 + par5Random.nextInt(4), 5, 8, Block.grass.blockID);
         }
         else if (var6 == 2)
         {

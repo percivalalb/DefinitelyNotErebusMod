@@ -21,6 +21,7 @@ import erebus.Entity.EntityTarantula;
 import erebus.Entity.EntityWasp;
 import erebus.World.Gen.WorldGenErebusHugeTree;
 import erebus.World.Gen.WorldGenErebusTrees;
+import erebus.World.Gen.WorldGenEucalyptus;
 import erebus.World.Gen.WorldGenGlowStoneErebus1;
 import erebus.World.Gen.WorldGenGlowStoneErebus2;
 import erebus.World.Gen.WorldGenMelonErebus;

@@ -5,7 +5,7 @@ import java.util.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
-import static erebus.smez.ErebusWorldHelper.setBlockIfEmpty;
+import static erebus.core.helper.ErebusWorldHelper.setBlockIfEmpty;
 
 public class WorldGenEucalyptus extends WorldGenerator
 {

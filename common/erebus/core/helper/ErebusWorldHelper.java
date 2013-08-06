@@ -1,4 +1,4 @@
-package erebus.smez;
+package erebus.core.helper;
 
 import java.util.Random;
 

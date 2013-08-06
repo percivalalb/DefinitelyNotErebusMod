@@ -13,11 +13,12 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityTarantula extends EntitySpider
-{
+/**
+ * @author ProPercivalalb
+ */
+public class EntityTarantula extends EntitySpider {
 
-	public EntityTarantula(World par1World) 
-	{
+	public EntityTarantula(World par1World)  {
 		super(par1World);
 		setSize(1.3F, 0.6F);
 	}
@@ -27,129 +28,85 @@ public class EntityTarantula extends EntitySpider
 	    super.func_110147_ax();
 	    this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(20.0D);
 	    this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.2D);
+	    this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(5.0D);
 	}
 
 	@Override
-	public int getTotalArmorValue()
-	{
+	public int getTotalArmorValue() {
 		return 4;
 	}
 
-	 /**
-     * Called to update the entity's position/logic.
-     */
-    public void onUpdate()
-    {
+	@Override
+    public void onUpdate() {
         super.onUpdate();
 
-        if (!this.worldObj.isRemote)
-        {
+        if (!this.worldObj.isRemote) {
             this.setBesideClimbableBlock(this.isCollidedHorizontally);
         }
     }
 
-    /**
-     * returns true if this entity is by a ladder, false otherwise
-     */
-    public boolean isOnLadder()
-    {
+	@Override
+    public boolean isOnLadder() {
         return this.isBesideClimbableBlock();
     }
 
-    /**
-     * Get this Entity's EnumCreatureAttribute
-     */
-    public EnumCreatureAttribute getCreatureAttribute()
-    {
+	@Override
+    public EnumCreatureAttribute getCreatureAttribute() {
         return EnumCreatureAttribute.ARTHROPOD;
     }
 
-    /**
-     * Updates the WatchableObject (Byte) created in entityInit(), setting it to 0x01 if par1 is true or 0x00 if it is
-     * false.
-     */
-    public void setBesideClimbableBlock(boolean par1)
-    {
+	@Override
+    public void setBesideClimbableBlock(boolean par1) {
         byte var2 = this.dataWatcher.getWatchableObjectByte(16);
 
-        if (par1)
-        {
+        if (par1) {
             var2 = (byte)(var2 | 1);
         }
-        else
-        {
+        else {
             var2 &= -2;
         }
 
         this.dataWatcher.updateObject(16, Byte.valueOf(var2));
     }
 
-    /**
-     * Determines if an entity can be despawned, used on idle far away entities
-     */
-    protected boolean canDespawn()
-    {
+	@Override
+    protected boolean canDespawn() {
         return false;
     }
 
     public int skin = rand.nextInt(99);
-
-	/**
-	 * Returns the amount of damage a mob should deal.
-	 */
-	public int getAttackStrength(Entity par1Entity)
-	{
-		switch(worldObj.difficultySetting)
-		{
-		default:
-			return 4;
-		case 1:
-			return 4;
-		case 2:
-			return 5;
-		case 3: 
-			return 6;
-		}
-	}
 	
 	@Override
-    public boolean attackEntityAsMob(Entity par1Entity)
-    {
-        if (super.attackEntityAsMob(par1Entity))
-        {
-            if (par1Entity instanceof EntityLiving)
-            {
+    public boolean attackEntityAsMob(Entity par1Entity) {
+        
+		if (super.attackEntityAsMob(par1Entity)) {
+           
+        	if (par1Entity instanceof EntityLiving) {
                 byte var2 = 0;
 
-                if (this.worldObj.difficultySetting > 1 && rand.nextInt(19) == 0)
-                {
-                    if (this.worldObj.difficultySetting == 2)
-                    {
+                if (this.worldObj.difficultySetting > 1 && rand.nextInt(19) == 0) {
+                    if (this.worldObj.difficultySetting == 2) {
                         var2 = 5;
                     }
-                    else if (this.worldObj.difficultySetting == 3)
-                    {
+                    else if (this.worldObj.difficultySetting == 3) {
                         var2 = 10;
                     }
                 }
 
-                if (var2 > 0)
-                {
+                if (var2 > 0) {
                     ((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
                 }
             }
 
             return true;
         }
-        else
-        {
+        else {
             return false;
         }
     }
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2)
-	{
+	protected void dropFewItems(boolean par1, int par2) {
 		int chanceFiftyFifty = this.rand.nextInt(1) + 1;
 
 		int chance40x40x20 = this.rand.nextInt(4);
@@ -157,16 +114,14 @@ public class EntityTarantula extends EntitySpider
 
 		switch(chance40x40x20)
 		{
-		case 0: stringDrop = 1;
-		break;
-		case 1: stringDrop = 1;
-		break;
-		case 2: stringDrop = 2;
-		break;
-		case 3: stringDrop = 2;
-		break;
-		case 4: stringDrop = 3;
-		break;
+			case 0:
+			case 1: stringDrop = 1;
+				break;
+			case 2: 
+			case 3: stringDrop = 2;
+				break;
+			case 4: stringDrop = 3;
+				break;
 		}
 
 		int chance20x60x20 = this.rand.nextInt(4);
@@ -174,26 +129,22 @@ public class EntityTarantula extends EntitySpider
 
 		switch(chance20x60x20)
 		{
-		case 0: legDrop = 1;
-		break;
-		case 1: legDrop = 2;
-		break;
-		case 2: legDrop = 2;
-		break;
-		case 3: legDrop = 2;
-		break;
-		case 4: legDrop = 3;
-		break;
+			case 0: legDrop = 1;
+				break;
+			case 1:
+			case 2:
+			case 3: legDrop = 2;
+				break;
+			case 4: legDrop = 3;
+				break;
 		}
 
 		this.dropItem(Item.silk.itemID, stringDrop + par2);
 
-		if (this.isBurning())
-        {
+		if (this.isBurning()) {
 			this.dropItem(mod_Erebus.legTarantulaCooked.itemID, legDrop + par2);
         }
-		else
-		{
+		else {
 			this.dropItem(mod_Erebus.legTarantula.itemID, legDrop + par2);
 		}
         

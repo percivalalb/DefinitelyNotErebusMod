@@ -11,7 +11,7 @@ import org.lwjgl.opengl.GL11;
 public class RenderBeetleLarva extends RenderLiving
 {
 	protected ModelBeetleLarva model;
-	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/Larva.png");
+	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/entities/larva.png");
 
 	public RenderBeetleLarva(ModelBeetleLarva par1ModelBase, float par2)
 	{

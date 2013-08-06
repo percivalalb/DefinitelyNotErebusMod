@@ -89,7 +89,7 @@ public class BlockSaplingErebus extends BlockSapling
 
         if (var6 == 1)
         {
-            var7 = new WorldGenErebusTrees(true, 6, 0, 0, false, mod_Erebus.woodEucalyptus.blockID, mod_Erebus.leavesEucalyptus.blockID, mod_Erebus.thorns.blockID);
+            var7 = new WorldGenEucalyptus(mod_Erebus.woodEucalyptus.blockID, 2, mod_Erebus.leavesEucalyptus.blockID, 2, 8 + par5Random.nextInt(4), 5, 8, Block.grass.blockID);
         }
         else if (var6 == 2)
         {

@@ -472,6 +472,9 @@ public class mod_Erebus
 		undersavannah = (new BiomeGenUndergroundSavannah(savannahID).setColor(5470985).func_76733_a(5470985).setDisableRain().setTemperatureRainfall(4.2F, 0.05F)).setBiomeName("Subterranean Savannah");
 		cavern = (new BiomeGenCavern(cavernID).setColor(5470985).func_76733_a(5470985).setDisableRain().setTemperatureRainfall(4.2F, 0.05F)).setBiomeName("Cavern");	  
 
+		GameRegistry.addRecipe(new ItemStack(compoundLens, 1), new Object[] {"GGG", "GEG", "GGG", 'G', glassAmber, 'E', compoundEyes}); 
+	    GameRegistry.addRecipe(new ItemStack(compoundGoggles, 1), new Object[] {"XXX", "OXO", "   ", 'O', compoundLens, 'X', exoskeletonPlate});  
+		
 		GameRegistry.addRecipe(new ItemStack(exoskeletonHelmet, 1), new Object[] {"sss", "s s", "   ", Character.valueOf('s'), exoskeletonPlate});
 		GameRegistry.addRecipe(new ItemStack(exoskeletonBody, 1), new Object[] {"s s", "sss", "sss", Character.valueOf('s'), exoskeletonPlate});
 		GameRegistry.addRecipe(new ItemStack(exoskeletonLegs, 1), new Object[] {"sss", "s s", "s s", Character.valueOf('s'), exoskeletonPlate});

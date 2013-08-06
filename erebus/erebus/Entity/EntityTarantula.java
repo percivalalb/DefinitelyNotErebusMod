@@ -19,7 +19,7 @@ public class EntityTarantula extends EntitySpider
 	public EntityTarantula(World par1World) 
 	{
 		super(par1World);
-		setSize(1.0F, 0.6F);
+		setSize(1.3F, 0.6F);
 	}
 
 	@Override

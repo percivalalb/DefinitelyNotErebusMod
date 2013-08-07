@@ -53,7 +53,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
 			}
 		}*/
 
-		for(int c = 300; c > 0; c--)
+		for(int c = 200; c > 0; c--)
 		{
 			int j2 = x + rand.nextInt(16);
 			int l3 = rand.nextInt(120);

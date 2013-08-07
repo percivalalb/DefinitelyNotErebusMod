@@ -83,7 +83,7 @@ public class EntityFly extends EntityAmbientCreature
     @Override
     protected String getDeathSound()
     {
-        return "erebus:Squish";
+        return "erebus:squish";
     }
 
     /**

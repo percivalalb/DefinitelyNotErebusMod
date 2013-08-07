@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.Entity.EntityBeetleLarva;
+import erebus.api.Properties;
 
 public class BlockMaggot extends Block
 {
@@ -61,8 +62,8 @@ public class BlockMaggot extends Block
      */
     public void registerIcons(IconRegister par1IconRegister)
     {
-        this.tree_top = par1IconRegister.registerIcon("log_" + treeType + "_top");
-        this.tree_side = par1IconRegister.registerIcon("log_" + treeType);
+        this.tree_top = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "log_" + treeType + "_top");
+        this.tree_side = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "log_" + treeType);
     }
 
     /**

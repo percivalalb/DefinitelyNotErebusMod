@@ -27,25 +27,18 @@ public class BlockLogAcacia extends Block
         this.setCreativeTab(CreativeTabs.tabBlock);
     }
 
-    /**
-     * The type of render function that is called for this block
-     */
-    public int getRenderType()
-    {
+
+    @Override
+    public int getRenderType() {
         return 31;
     }
 
-    /**
-     * Returns the quantity of items to drop on block destruction.
-     */
-    public int quantityDropped(Random par1Random)
-    {
+    @Override
+    public int quantityDropped(Random par1Random) {
         return 1;
     }
 
-    /**
-     * ejects contained items into the world, and notifies neighbours of an update, as appropriate
-     */
+    @Override
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
     {
         byte var7 = 4;
@@ -71,7 +64,8 @@ public class BlockLogAcacia extends Block
         }
     }
 
-    public int func_85104_a(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9)
+    @Override
+    public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9)
     {
         int var10 = par9 & 3;
         byte var11 = 0;
@@ -105,17 +99,13 @@ public class BlockLogAcacia extends Block
         return var3 == 0 && (par1 == 1 || par1 == 0) ? 9 : (var3 == 4 && (par1 == 5 || par1 == 4) ? 9 : (var3 == 8 && (par1 == 2 || par1 == 3) ? 9 : (var4 == 1 ? 116 : (var4 == 2 ? 117 : (var4 == 3 ? 153 : 8)))));
     }*/
 
-    @SideOnly(Side.CLIENT)
-
     @Override
-    public boolean canSustainLeaves(World world, int x, int y, int z)
-    {
+    public boolean canSustainLeaves(World world, int x, int y, int z) {
         return true;
     }
 
     @Override
-    public boolean isWood(World world, int x, int y, int z)
-    {
+    public boolean isWood(World world, int x, int y, int z) {
         return true;
     }
 

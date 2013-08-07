@@ -71,7 +71,7 @@ public class BlockLogEucalyptus extends Block
         }
     }
 
-    public int func_85104_a(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9)
+    public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9)
     {
         int var10 = par9 & 3;
         byte var11 = 0;
@@ -104,8 +104,6 @@ public class BlockLogEucalyptus extends Block
         int var4 = par2 & 3;
         return var3 == 0 && (par1 == 1 || par1 == 0) ? 5 : (var3 == 4 && (par1 == 5 || par1 == 4) ? 5 : (var3 == 8 && (par1 == 2 || par1 == 3) ? 5 : (var4 == 1 ? 116 : (var4 == 2 ? 117 : (var4 == 3 ? 153 : 4)))));
     }*/
-
-    @SideOnly(Side.CLIENT)
 
     @Override
     public boolean canSustainLeaves(World world, int x, int y, int z)

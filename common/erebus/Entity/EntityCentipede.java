@@ -43,14 +43,14 @@ public class EntityCentipede extends EntityMob
 		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 	}
 	
-	 protected void func_110147_ax()
-	    {
-	        super.func_110147_ax();
-	        this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(10.0D);
-	        this.func_110148_a(SharedMonsterAttributes.field_111265_b).func_111128_a(40.0D);
-	        this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.33000000417232513D);
-	        this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(2.0D);
-	    }
+	@Override
+	protected void func_110147_ax() {
+	    super.func_110147_ax();
+	    this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(10.0D);
+	    this.func_110148_a(SharedMonsterAttributes.field_111265_b).func_111128_a(40.0D);
+	    this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(0.33000000417232513D);
+	    this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(2.0D);
+	}
 	 
 	 public boolean getCanSpawnHere()
 	 {

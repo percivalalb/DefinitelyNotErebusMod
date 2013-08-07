@@ -1,9 +1,6 @@
 package erebus.Entity;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityBreakingFX;
-import net.minecraft.client.particle.EntityDiggingFX;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -17,60 +14,81 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.FMLCommonHandler;
 import erebus.mod_Erebus;
+import erebus.core.helper.ClientHelper;
 
-public class EntityBeetleLarva extends EntityUndergroundAnimal
-{
-	Minecraft mc = Minecraft.getMinecraft();
-	World world = mc.theWorld;
+/**
+ * @author ProPercivalalb
+ */
+public class EntityBeetleLarva extends EntityUndergroundAnimal {
+	
 	private EntityAIWander aiWander = new EntityAIWander(this, 0.48D);
 	private EntityAIWatchClosest aiWatchClosest = new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F);
+	public EntityAIEatWoodenItem aiEatWoodItem = new EntityAIEatWoodenItem(this, 0.48D);
+	
 	public boolean isEating;
 	private double moveSpeed;
 	public boolean isSquashed;
+	
 	public EntityBeetleLarva(World par1World)
     {
         super(par1World);
         this.setSize(0.9F, 0.5F);
-        this.moveSpeed = 0.4D;
+        this.moveSpeed = 0.35D;
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIEatWoodenItem(this, 0.48D));
+        this.tasks.addTask(1, aiEatWoodItem);
         this.tasks.addTask(2, new EntityAITempt(this, 0.48D, Item.stick.itemID, false));
         this.tasks.addTask(3, aiWander);
         this.tasks.addTask(4, aiWatchClosest);
         this.tasks.addTask(5, new EntityAILookIdle(this));
         this.tasks.addTask(6, new EntityAIPanic(this, 0.48D));
     }
-	 protected void entityInit()
-	    {
-	        super.entityInit();
-	    }
-    /**
-     * Returns true if the newer Entity AI code should be run
-     */
-    public boolean isAIEnabled()
-    {
+	
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+	}
+	
+	@Override
+    public boolean isAIEnabled() {
         return true;
     }
     
-	  public boolean canDeSpawn()
-	    {
-	        return false;
-	    }
-
-    public int getMaxHealth()
-    {
-        return 8;
-    }
+	
+	@Override
+	protected void func_110147_ax() {
+	    super.func_110147_ax();
+	    this.func_110148_a(SharedMonsterAttributes.field_111267_a).func_111128_a(8.0F); //Max Health
+	    this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(this.moveSpeed); //Movespeed
+	}
+	
+    @Override
+	public boolean canDespawn() {
+    	return false;
+	}
     
-    public EnumCreatureAttribute getCreatureAttribute()
-    {
+    @Override
+    public EnumCreatureAttribute getCreatureAttribute() {
     	return EnumCreatureAttribute.ARTHROPOD;
     }
-      
+    
+    @Override
+    public boolean getCanSpawnHere()
+    {
+    	 float f1 = this.getBrightness(1.0F);
+
+         if (f1 > 0.5F)
+         {
+        	 return true;
+         }
+        return super.getCanSpawnHere();
+    }
+    
+    @Override
     public void onCollideWithPlayer(EntityPlayer par1EntityPlayer)
     { 
     	super.onCollideWithPlayer(par1EntityPlayer);
@@ -115,134 +133,115 @@ public class EntityBeetleLarva extends EntityUndergroundAnimal
     }
     	return actionSound;
     }
-    /**
-     * Returns the sound this mob makes when it is hurt.
-     */
-    protected String getHurtSound()
-    {
+    
+    @Override
+    protected String getHurtSound() {
     	return "erebus:beetlelarvahurt";
     }
 
-    /**
-     * Returns the sound this mob makes on death.
-     */
-    protected String getDeathSound()
-    {
+    @Override
+    protected String getDeathSound() {
     	return "erebus:squish";
     }
     
-    protected String getJumpedOnSound()
-    {
+    protected String getJumpedOnSound() {
     	return "erebus:beetlelarvasplat";
     }
     
-    protected static String getHasMunched()
-    {
-     return "erebus:beetlelarvamunch";
+    protected static String getHasMunched() {
+    	return "erebus:beetlelarvamunch";
     }
 
-    /**
-     * Returns the volume for the sounds this mob makes.
-     */
-    protected float getSoundVolume()
-    {
-        return 1.0F;
+    @Override
+    protected float getSoundVolume() {
+        return 0.5F;
     }
- 
-    public void onUpdate()
-    {
+
+   @Override
+    public void onUpdate() {
         super.onUpdate();
         this.func_110148_a(SharedMonsterAttributes.field_111263_d).func_111128_a(this.moveSpeed); //Movespeed
     }
     
-    public void onDeathUpdate()
-    {
-        super.onDeathUpdate();
-        if (!this.worldObj.isRemote && this.isDead && !this.isSquashed)
-        {
-        	dropFewItems();
+    @Override
+    public void onDeathUpdate() {
+        
+    	super.onDeathUpdate();
+        if (!this.worldObj.isRemote && this.isDead && !this.isSquashed) {
+        	dropFewItems(false, 0);
         }
-        if (this.isSquashed &&  FMLCommonHandler.instance().getSide().isClient())
-        {
+        if (this.isSquashed && FMLCommonHandler.instance().getSide().isClient()) {
         	double d0 = this.rand.nextGaussian() * 0.02D;
         	double d1 = this.rand.nextGaussian() * 0.02D;
         	double d2 = this.rand.nextGaussian() * 0.02D;
-            for(int countparticles = 0; countparticles <= 200; ++countparticles)
+        	for(int countparticles = 0; countparticles <= 200; ++countparticles)
             {
-            	Minecraft.getMinecraft().effectRenderer.addEffect( new EntityBreakingFX(Minecraft.getMinecraft().theWorld, this.posX + (rand.nextDouble() - 0.5D) * (double)this.width, this.posY + rand.nextDouble() * (double)this.height - (double)this.yOffset, this.posZ + (rand.nextDouble() - 0.5D) * (double)this.width, Item.slimeBall));
+        		//ClientHelper.getMinecraft().effectRenderer.addEffect(new net.minecraft.client.particle.EntityBreakingFX(this.worldObj, this.posX + (rand.nextDouble() - 0.5D) * (double)this.width, this.posY + rand.nextDouble() * (double)this.height - (double)this.yOffset, this.posZ + (rand.nextDouble() - 0.5D) * (double)this.width, Item.slimeBall));
             }
             this.worldObj.playSoundEffect(this.posX, this.posY, this.posZ, getJumpedOnSound(), 1.0F, 0.5F);
             this.worldObj.playSoundEffect(this.posX, this.posY, this.posZ, getDeathSound(), 1.0F, 0.7F);	
         }
     }
-      
-	protected void dropFewItems()
-    {
-            if (this.isBurning())
-            {
-                this.dropItem(mod_Erebus.beetleLarvaCooked.itemID, 1);
-            }
-            else
-            {
-                this.dropItem(mod_Erebus.beetleLarvaRaw.itemID, 1);
-            }
+    
+    @Override
+	protected void dropFewItems(boolean par1, int par2) {
+        if (this.isBurning()) {
+            this.dropItem(mod_Erebus.beetleLarvaCooked.itemID, 1);
+        }
+        else {
+            this.dropItem(mod_Erebus.beetleLarvaRaw.itemID, 1);
+        }
     }
     
-    public boolean interact(EntityPlayer par1EntityPlayer)
-    {
+	@Override
+    public boolean interact(EntityPlayer par1EntityPlayer) {
         ItemStack itemstack = par1EntityPlayer.inventory.getCurrentItem();
-        if (!this.worldObj.isRemote && itemstack != null && itemstack.itemID == Item.stick.itemID)
-        {
+        if (!this.worldObj.isRemote && itemstack != null && itemstack.itemID == Item.wheat.itemID) {
         	System.out.println("Should do something here");
             return true;
         }
-        else
-        {
-            return super.interact(par1EntityPlayer);
+        
+        return super.interact(par1EntityPlayer);
+    }
+    
+    public void setMoveTasks(boolean par1) {
+        if(par1==false)	 {
+        	this.tasks.removeTask(this.aiWander);
+        	this.tasks.removeTask(this.aiWatchClosest);
+        }
+        
+        if(par1==true) {
+        	this.tasks.addTask(2, this.aiWander);
+        	this.tasks.addTask(4, aiWatchClosest);
         }
     }
     
-    public void setMoveTasks(boolean par1)
-    {
-        if(par1==false)	
-        {
-        this.tasks.removeTask(this.aiWander);
-        this.tasks.removeTask(this.aiWatchClosest);
-        }
-        
-        if(par1==true)
-        {
-         this.tasks.addTask(2, this.aiWander);
-         this.tasks.addTask(4, aiWatchClosest);
-        }
-}
-    
-    public void setisEating(boolean par1)
-    {
+    public void setIsEating(boolean par1){
     	this.isEating = par1;
     }
     
-    protected void munchBlock()
-    { 
-    if (this.isEating && FMLCommonHandler.instance().getSide().isClient())
-    {
-    	
-    	double d0 = this.rand.nextGaussian() * 0.5D;
-    	double d1 = this.rand.nextGaussian() * 0.01D;
-    	double d2 = this.rand.nextGaussian() * 0.5D;
-    	double woodX = EntityAIEatWoodenItem.WoodX;
-    	double woodY = EntityAIEatWoodenItem.WoodY;
-    	double woodZ = EntityAIEatWoodenItem.WoodZ;
-        for(int countparticles = 0; countparticles <= 50; ++countparticles)
-        {
-    	Minecraft.getMinecraft().effectRenderer.addEffect(new EntityDiggingFX(Minecraft.getMinecraft().theWorld, woodX + 0.5D + (rand.nextDouble() - 0.5D) * (double)this.width, woodY + 0.2D + rand.nextDouble() * (double)this.height - (double)this.yOffset, woodZ + 0.5D + (rand.nextDouble() - 0.5D) * (double)this.width, d0 ,d1, d2, Block.blocksList[5], 0));
-        }
-	}
-}
+    protected void munchBlock() { 
+    	if (this.isEating && FMLCommonHandler.instance().getSide().isClient() && this.worldObj.getWorldTime() % 20 == 0) {
+        	double woodX = this.aiEatWoodItem.WoodX;
+        	double woodY = this.aiEatWoodItem.WoodY;
+        	double woodZ = this.aiEatWoodItem.WoodZ;
+            for(int countparticles = 0; countparticles <= 50; ++countparticles)
+            {
+        		double d0 = this.rand.nextGaussian() * 0.5D;
+            	double d1 = this.rand.nextGaussian() * 0.01D;
+            	double d2 = this.rand.nextGaussian() * 0.5D;
+        		//ClientHelper.getMinecraft().effectRenderer.addEffect(new net.minecraft.client.particle.EntityDiggingFX(this.worldObj, woodX + 0.5D + (rand.nextDouble() - 0.5D) * (double)this.width, woodY + 0.2D + rand.nextDouble() * (double)this.height - (double)this.yOffset, woodZ + 0.5D + (rand.nextDouble() - 0.5D) * (double)this.width, d0 ,d1, d2, Block.blocksList[5], 0));
+            }
+    	}
+    }
     
-    public void setisSquashed(boolean par1)
-    {
+    public void setisSquashed(boolean par1) {
     	this.isSquashed = par1;
+    }
+    
+    @Override
+    public AxisAlignedBB getBoundingBox() {
+    	return this.boundingBox;
     }
 }
 

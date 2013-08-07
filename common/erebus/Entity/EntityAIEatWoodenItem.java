@@ -14,7 +14,7 @@ public class EntityAIEatWoodenItem extends EntityAIBase
 	protected double entityPosX;
 	protected  double entityPosY;
 	protected  double entityPosZ;
-	static int WoodX,WoodY,WoodZ;
+	public int WoodX,WoodY,WoodZ = -1;
 	private double moveSpeed;
 	private int ticksSpent=0;
 	private int reproCap=0;
@@ -30,6 +30,7 @@ public EntityAIEatWoodenItem(EntityLiving par1EntityLiving, double d)
 /**
 * Returns whether the EntityAIBase should begin execution.
 */
+@Override
 public boolean shouldExecute()
 {
 	if(this.theEntity.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"))
@@ -37,7 +38,7 @@ public boolean shouldExecute()
 		boolean hasFoundWood = findClosestWood(maxDToWood);
 		if(!hasFoundWood)
 		{
-			((EntityBeetleLarva) this.theEntity).setisEating(false);
+			((EntityBeetleLarva) this.theEntity).setIsEating(false);
 			return false;
 		}
 		return true;
@@ -57,9 +58,10 @@ public void startExecuting()
 /**
 * Returns whether an in-progress EntityAIBase should continue executing
 */
-public boolean continueExecuting()
-{ 			int x = this.theEntity.worldObj.getBlockId(WoodX, WoodY, WoodZ);
-	return (x != Block.fence.blockID) ? false : !this.theEntity.getNavigator().noPath()
+	public boolean continueExecuting()
+	{
+		int x = this.theEntity.worldObj.getBlockId(WoodX, WoodY, WoodZ);
+		return (x != Block.fence.blockID) ? false : !this.theEntity.getNavigator().noPath()
 	    || (x != Block.fenceGate.blockID)? false : !this.theEntity.getNavigator().noPath()
 		|| (x != Block.planks.blockID)? false : !this.theEntity.getNavigator().noPath()
 		|| (x != Block.doorWood.blockID)? false : !this.theEntity.getNavigator().noPath()		
@@ -72,51 +74,50 @@ public boolean continueExecuting()
 		|| (x != Block.woodDoubleSlab.blockID)? false : !this.theEntity.getNavigator().noPath()				
 		|| (x != Block.woodSingleSlab.blockID)? false : !this.theEntity.getNavigator().noPath();
 }
-	        /**
-	         * Updates the task
-	         */
-public void updateTask()
-{
-	AxisAlignedBB blockbounds = this.getBlockAABB(WoodX, WoodY, WoodZ);
-	this.theEntity.getLookHelper().setLookPosition(this.WoodX+0.5D, this.WoodY, this.WoodZ+0.5D, 50.0F, 8.0F);
-	this.theEntity.getNavigator().tryMoveToXYZ(WoodX+0.5D,WoodY,WoodZ+0.5D,this.moveSpeed);
-	if(this.theEntity.getNavigator().noPath() &&!this.theEntity.isCollidedHorizontally)
-{	
-		this.theEntity.getMoveHelper().setMoveTo(WoodX+0.5D, WoodY, WoodZ+0.5D, this.moveSpeed);
-}
-	this.ticksSpent++;	
-	if(this.theEntity.boundingBox.maxY >= blockbounds.minY && this.theEntity.boundingBox.minY <= blockbounds.maxY
-      		&& this.theEntity.boundingBox.maxX >= blockbounds.minX && this.theEntity.boundingBox.minX <= blockbounds.maxX
-        	&& this.theEntity.boundingBox.maxZ >= blockbounds.minZ && this.theEntity.boundingBox.minZ <= blockbounds.maxZ
-			&& this.ticksSpent < maxTicks)
+	@Override
+	public void updateTask()
 	{
-		System.out.println("Beetle Larva Eating");
-		((EntityBeetleLarva) this.theEntity).setisEating(true);
-		((EntityBeetleLarva) this.theEntity).munchBlock();
-	}
-	else
-	{
-		((EntityBeetleLarva) this.theEntity).setisEating(false);
-	}
-	if (this.ticksSpent >= maxTicks  && this.theEntity.worldObj.difficultySetting >= diffEaten && this.theEntity.boundingBox.maxY >= blockbounds.minY && this.theEntity.boundingBox.minY <= blockbounds.maxY)
-	{
-		this.theEntity.worldObj.destroyBlock(this.WoodX, this.WoodY, this.WoodZ, false);
-		((EntityBeetleLarva) this.theEntity).setMoveTasks(true);
-		this.ticksSpent=0;
-		if(this.reproCap<32)
-		{
-			reproCap++;
+		AxisAlignedBB blockbounds = this.getBlockAABB(WoodX, WoodY, WoodZ);
+		this.theEntity.getLookHelper().setLookPosition(this.WoodX+0.5D, this.WoodY, this.WoodZ+0.5D, 50.0F, 8.0F);
+		this.theEntity.getNavigator().tryMoveToXYZ(WoodX+0.5D,WoodY,WoodZ+0.5D,this.moveSpeed);
+		if(this.theEntity.getNavigator().noPath() &&!this.theEntity.isCollidedHorizontally)
+		{	
+			this.theEntity.getMoveHelper().setMoveTo(WoodX+0.5D, WoodY, WoodZ+0.5D, this.moveSpeed);
 		}
-		if(this.reproCap==32)
+		this.ticksSpent++;	
+		if(this.theEntity.boundingBox.maxY >= blockbounds.minY && this.theEntity.boundingBox.minY <= blockbounds.maxY
+				&& this.theEntity.boundingBox.maxX >= blockbounds.minX && this.theEntity.boundingBox.minX <= blockbounds.maxX
+				&& this.theEntity.boundingBox.maxZ >= blockbounds.minZ && this.theEntity.boundingBox.minZ <= blockbounds.maxZ
+				&& this.ticksSpent < maxTicks)
 		{
-			this.theEntity.setDead();
-			EntityBeetle entityBeetle = new EntityBeetle(theEntity.worldObj);
-			entityBeetle.setPosition(WoodX+0.5D, WoodY, WoodZ+0.5D);
-			this.theEntity.worldObj.spawnEntityInWorld(entityBeetle);
+			System.out.println("Beetle Larva Eating");
+			((EntityBeetleLarva) this.theEntity).setIsEating(true);
+			((EntityBeetleLarva) this.theEntity).munchBlock();
 		}
+		else
+		{
+			((EntityBeetleLarva) this.theEntity).setIsEating(false);
+		}
+		if (this.ticksSpent >= maxTicks  && this.theEntity.worldObj.difficultySetting >= diffEaten && this.theEntity.boundingBox.maxY >= blockbounds.minY && this.theEntity.boundingBox.minY <= blockbounds.maxY)
+		{
+			this.theEntity.worldObj.destroyBlock(this.WoodX, this.WoodY, this.WoodZ, false);
+			((EntityBeetleLarva) this.theEntity).setMoveTasks(true);
+			this.ticksSpent=0;
+			if(this.reproCap<3)
+			{
+				reproCap++;
+			}
+			if(this.reproCap==3)
+			{
+				//this bit of code is just here for future improvement (spawning a full grown beetle)
+				//this.theEntity.setDead();
+				//EntityBeetleLarva entityBeetleLarva = new EntityBeetleLarva(theEntity.worldObj);
+				//entityBeetleLarva.setPosition(WoodX, WoodY+1, WoodZ);
+				//this.theEntity.worldObj.spawnEntityInWorld(entityBeetleLarva);
+			}
+		}
+		super.updateTask();
 	}
-	super.updateTask();
-}
 
 private boolean findClosestWood(int maxDistance)
 	{//returns whether or not Wood was found "he-he! he said wood"
@@ -154,9 +155,8 @@ private boolean findClosestWood(int maxDistance)
 	return false;
 	}
 
-protected AxisAlignedBB getBlockAABB(int par1, int par2, int par3)
-{
-    return AxisAlignedBB.getAABBPool().getAABB((double)((float)WoodX), (double)WoodY, (double)((float)WoodZ), (double)(float)(WoodX + 1.0D), (double)WoodY + 1.0D, (double)(float)(WoodZ + 1.0D));
-}
+	protected AxisAlignedBB getBlockAABB(int par1, int par2, int par3) {
+		return AxisAlignedBB.getAABBPool().getAABB((double)((float)WoodX), (double)WoodY, (double)((float)WoodZ), (double)(float)(WoodX + 1.0D), (double)WoodY + 1.0D, (double)(float)(WoodZ + 1.0D));
+	}
 }
 

@@ -366,7 +366,7 @@ public class ErebusMod
 		umbercobble = new BlockUmberstone(umbercobbleID, Material.rock).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("Umbercobble");
 		umbercobbleMossy = new BlockUmberstone(umbercobbleMossyID, Material.rock).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("MossyUmbercobble");
 		umbercobbleWebbed = new BlockCobbleWebbed(umbercobbleWebbedID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("cobbleUmberWebbed").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "cobbleUmberWebbed");
-		bambooCrate = new BlockBambooCrate(bambooCrateID).setUnlocalizedName("cobbleUmberWebbed").setCreativeTab(tabErebus);
+		bambooCrate = new BlockBambooCrate(bambooCrateID).setUnlocalizedName("bambooCrate").setCreativeTab(tabErebus);
 		
 		dryScree = (new BlockScree(2550)).setHardness(0.5F).setStepSound(Block.soundSandFootstep).setUnlocalizedName("blockScree").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "blockScree");  
 		screeBricks = (new BlockErebusBrick(2551)).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("brickScree").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "brickScree");

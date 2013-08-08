@@ -48,6 +48,7 @@ tile.cobbleUmberWebbed.name=Webbed Umbercobble
 tile.sapling_mahogany.0.name=Mahogany Sapling
 tile.sapling_mahogany.1.name=Eucalyptus Sapling
 tile.sapling_mahogany.2.name=Acacia Sapling
+tile.bambooCrate.name=Bamboo Crate
 
 #Items
 item.beetleLarvaRaw.name=Beetle Larva

@@ -13,7 +13,6 @@ import cpw.mods.fml.relauncher.Side;
 import erebus.ClientErebusTickHandler;
 import erebus.PortalOverlayRenderer;
 import erebus.ErebusMod;
-import erebus.block.TileEntityHollowLog;
 import erebus.entity.EntityBeetle;
 import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityCentipede;
@@ -22,6 +21,8 @@ import erebus.entity.EntityMosquito;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
+import erebus.tileentity.TileEntityBambooCrate;
+import erebus.tileentity.TileEntityHollowLog;
 import erebus.client.model.entity.ModelBeetle;
 import erebus.client.model.entity.ModelBeetleLarva;
 import erebus.client.model.entity.ModelCentipede;
@@ -37,7 +38,9 @@ import erebus.client.render.entity.RenderMosquito;
 import erebus.client.render.entity.RenderTarantula;
 import erebus.client.render.entity.RenderVelvetWorm;
 import erebus.client.render.entity.RenderWasp;
+import erebus.client.render.item.BambooCrateItemRenderer;
 import erebus.client.render.item.HollowLogItemRenderer;
+import erebus.client.render.tileentity.TileEntityRenderBambooCrate;
 import erebus.client.render.tileentity.TileEntityRenderHollowLog;
 
 public class ClientProxy extends CommonProxy {
@@ -62,7 +65,9 @@ public class ClientProxy extends CommonProxy {
 
 		//Special Renderer
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHollowLog.class, new TileEntityRenderHollowLog());
-
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBambooCrate.class, new TileEntityRenderBambooCrate());
+		
 		MinecraftForgeClient.registerItemRenderer(ErebusMod.hollowLogAcacia.blockID, new HollowLogItemRenderer(TileEntityRenderHollowLog.hollowLogResource));
+		MinecraftForgeClient.registerItemRenderer(ErebusMod.bambooCrate.blockID, new BambooCrateItemRenderer(TileEntityRenderBambooCrate.bambooCrateResource));
 	}
 }

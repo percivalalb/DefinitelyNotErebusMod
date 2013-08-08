@@ -1,4 +1,4 @@
-package erebus.Item;
+package erebus.item;
 
 import java.util.logging.Level;
 

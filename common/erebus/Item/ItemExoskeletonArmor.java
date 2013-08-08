@@ -1,4 +1,4 @@
-package erebus.Item;
+package erebus.item;
 
 import erebus.core.proxy.CommonProxy;
 import erebus.ErebusMod;

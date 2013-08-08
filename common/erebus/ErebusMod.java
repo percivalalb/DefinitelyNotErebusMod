@@ -40,6 +40,7 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.block.BlockAmber;
+import erebus.block.BlockBambooCrate;
 import erebus.block.BlockCaveSpiderSpawner;
 import erebus.block.BlockCobbleWebbed;
 import erebus.block.BlockErebus;
@@ -67,9 +68,6 @@ import erebus.block.BlockStairsErebus;
 import erebus.block.BlockThorns;
 import erebus.block.BlockTurnip;
 import erebus.block.BlockUmberstone;
-import erebus.block.TileEntityCaveSpiderSpawner;
-import erebus.block.TileEntityHollowLog;
-import erebus.block.TileEntitySpiderSpawner;
 import erebus.entity.EntityBeetle;
 import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityCentipede;
@@ -78,14 +76,18 @@ import erebus.entity.EntityMosquito;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
-import erebus.Item.ItemCompoundGoggles;
-import erebus.Item.ItemExoskeletonArmor;
-import erebus.Item.ItemJadeArmor;
-import erebus.Item.ItemMaxSpeedBow;
-import erebus.Item.ItemPaxel;
-import erebus.Item.ItemPortalActivator;
-import erebus.Item.ItemSapling;
-import erebus.Item.ItemWeaponErebus;
+import erebus.item.ItemCompoundGoggles;
+import erebus.item.ItemExoskeletonArmor;
+import erebus.item.ItemJadeArmor;
+import erebus.item.ItemMaxSpeedBow;
+import erebus.item.ItemPaxel;
+import erebus.item.ItemPortalActivator;
+import erebus.item.ItemSapling;
+import erebus.item.ItemWeaponErebus;
+import erebus.tileentity.TileEntityBambooCrate;
+import erebus.tileentity.TileEntityCaveSpiderSpawner;
+import erebus.tileentity.TileEntityHollowLog;
+import erebus.tileentity.TileEntitySpiderSpawner;
 import erebus.world.WorldProviderErebus;
 import erebus.world.biomes.BiomeGenCavern;
 import erebus.world.biomes.BiomeGenUndergroundDesert;
@@ -161,8 +163,10 @@ public class ErebusMod
 	public static Block oreJade_U;             			public static int oreJade_UID;
 	public static Block umberstone;					    public static int umberstoneID;
 	public static Block umbercobble;					public static int umbercobbleID;
-	public static Block umbercobbleMossy;			   public static int umbercobbleMossyID;
-	public static Block umbercobbleWebbed;			   public static int umbercobbleWebbedID;
+	public static Block umbercobbleMossy;			    public static int umbercobbleMossyID;
+	public static Block umbercobbleWebbed;			    public static int umbercobbleWebbedID;
+	public static Block bambooCrate;			  	    public static int bambooCrateID;
+	
 
 	public static Item beetleLarvaRaw;					public static int beetleLarvaRawID;
 	public static Item beetleLarvaCooked;				public static int beetleLarvaCookedID;
@@ -195,7 +199,6 @@ public class ErebusMod
     public static Item compoundLens;                    public static int compoundLensID; 
     public static Item compoundGoggles;                 public static int compoundGogglesID; 
     
-	
 	public static CreativeTabs tabErebus;
 
 	public static BiomeGenBase underjungle;				public static int jungleID;
@@ -211,8 +214,7 @@ public class ErebusMod
 	// This method is used to add sounds
 	@EventHandler
 	@SideOnly(Side.CLIENT)
-	public void preInitClient(FMLPreInitializationEvent event)
-	{
+	public void preInitClient(FMLPreInitializationEvent event) {
 		// Create an Entity 'sound' class as below and this will add sounds to the pool
 		MinecraftForge.EVENT_BUS.register(new EntityBeetleLarvaNoises());
 		MinecraftForge.EVENT_BUS.register(new EntityWaspNoises());
@@ -273,6 +275,7 @@ public class ErebusMod
 		umbercobbleID = config.get(config.CATEGORY_BLOCK, "Block ID of Umbercobble", 2537).getInt();
 		umbercobbleMossyID = config.get(config.CATEGORY_BLOCK, "Block ID of Mossy Umbercobble", 2538).getInt();
 		umbercobbleWebbedID = config.get(config.CATEGORY_BLOCK, "Block ID of Webbed Umbercobble", 2539).getInt();
+		bambooCrateID = config.get(config.CATEGORY_BLOCK, "Block ID of Bamboo Crate", 2540).getInt();
 
 		beetleLarvaRawID = config.get(config.CATEGORY_ITEM, "Item ID of Beetle Larva", 9701).getInt();		  
 		beetleLarvaCookedID = config.get(config.CATEGORY_ITEM, "Item ID of Cooked Beetle Larva", 9702).getInt();
@@ -363,6 +366,7 @@ public class ErebusMod
 		umbercobble = new BlockUmberstone(umbercobbleID, Material.rock).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("Umbercobble");
 		umbercobbleMossy = new BlockUmberstone(umbercobbleMossyID, Material.rock).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("MossyUmbercobble");
 		umbercobbleWebbed = new BlockCobbleWebbed(umbercobbleWebbedID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("cobbleUmberWebbed").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "cobbleUmberWebbed");
+		bambooCrate = new BlockBambooCrate(bambooCrateID).setUnlocalizedName("cobbleUmberWebbed").setCreativeTab(tabErebus);
 		
 		dryScree = (new BlockScree(2550)).setHardness(0.5F).setStepSound(Block.soundSandFootstep).setUnlocalizedName("blockScree").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "blockScree");  
 		screeBricks = (new BlockErebusBrick(2551)).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("brickScree").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "brickScree");
@@ -474,6 +478,7 @@ public class ErebusMod
 		GameRegistry.registerBlock(umbercobble, "erebus.cobbleUmber");
 		GameRegistry.registerBlock(umbercobbleMossy, "erebus.cobbleUmberMossy");
 		GameRegistry.registerBlock(umbercobbleWebbed, "erebus.cobbleUmberWebbed");
+		GameRegistry.registerBlock(bambooCrate, "erebus.bambooCrate");
 
 		//BIOMES ( After block registration or NullPointerException )
 		underjungle = (new BiomeGenUndergroundJungle(jungleID).setColor(5470985).func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F)).setBiomeName("Undergound Jungle");
@@ -537,9 +542,6 @@ public class ErebusMod
 
 		proxy.registerRenderInformation();
 
-		GameRegistry.addBiome(underjungle);
-		GameRegistry.removeBiome(underjungle);  
-
 		EntityRegistry.registerModEntity(EntityBeetleLarva.class, "BeetleLarva", 1, this, 40, 1, true);
 		registerEntityEgg(EntityBeetleLarva.class, -1251634, -13032944);
 		
@@ -559,16 +561,10 @@ public class ErebusMod
 		EntityRegistry.registerGlobalEntityID(EntityTarantula.class, "Tarantula", ModLoader.getUniqueEntityId(), 894731, 512);	
 		EntityRegistry.registerGlobalEntityID(EntityVelvetWorm.class, "VelvetWorm", ModLoader.getUniqueEntityId(), 894731, 000000);
 	
-
-		/*LanguageRegistry.instance().addStringLocalization("entity.Erebus Stuff.Mosquito.name", "en_US", "Mosquito");	    	
-		  EntityRegistry.registerModEntity(EntityMosquito.class, "Mosquito", 17,  mod_Erebus.instance, 80, 3, true);
-		  EntityList.IDtoClassMapping.put(815, EntityMosquito.class);
-	      EntityList.entityEggs.put(Integer.valueOf(815), new EntityEggInfo(815, 0xB77A35, 0xD0D0D0));*/
-
-
 		GameRegistry.registerTileEntity(TileEntitySpiderSpawner.class, "Spider Spawner");
 		GameRegistry.registerTileEntity(TileEntityCaveSpiderSpawner.class, "Cave Spider Spawner");
 		GameRegistry.registerTileEntity(TileEntityHollowLog.class, "Hollow Log");
+		GameRegistry.registerTileEntity(TileEntityBambooCrate.class, "Bamboo Crate");
 
 		TickRegistry.registerTickHandler(new CommonErebusTickHandler(), Side.SERVER);
 	}

@@ -6,6 +6,7 @@ import java.util.Random;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.api.Properties;
+import erebus.tileentity.TileEntityHollowLog;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;

@@ -1,4 +1,4 @@
-package erebus.block;
+package erebus.tileentity;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

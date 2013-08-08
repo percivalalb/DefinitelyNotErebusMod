@@ -1,6 +1,7 @@
 package erebus.block;
 
 import erebus.core.proxy.CommonProxy;
+import erebus.tileentity.TileEntitySpiderSpawner;
 import erebus.api.Properties;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

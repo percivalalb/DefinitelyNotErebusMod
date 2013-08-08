@@ -1,4 +1,4 @@
-package erebus.block;
+package erebus.tileentity;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityMobSpawner;

@@ -535,13 +535,13 @@ public class ErebusMod
 		GameRegistry.removeBiome(underjungle);  
 
 		EntityRegistry.registerModEntity(EntityBeetleLarva.class, "BeetleLarva", 1, this, 40, 1, true);
-		registerEntityEgg(EntityBeetleLarva.class, 0xD0FFA2, 0x693C00);
+		registerEntityEgg(EntityBeetleLarva.class, -12116973, -5938366);
 		
 		EntityRegistry.registerModEntity(EntityWasp.class, "Wasp", 2, this, 40, 1, true);
-		registerEntityEgg(EntityWasp.class, 0xFFFF00, 0x000000);
+		registerEntityEgg(EntityWasp.class, -16382458, -256);
 		
 		EntityRegistry.registerModEntity(EntityCentipede.class, "Centipede", 3, this, 40, 1, true);
-		registerEntityEgg(EntityCentipede.class, 0xFFFF00, 0x0000FF);
+		registerEntityEgg(EntityCentipede.class, -13565952, -92160);
 		
 		// Mobs should be registered as ModEntity which means you can have as may ID's as you like
 		// as they are specific to only this mod!!!

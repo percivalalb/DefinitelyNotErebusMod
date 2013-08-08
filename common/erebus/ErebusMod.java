@@ -94,6 +94,7 @@ import erebus.api.Properties;
 import erebus.client.sound.EntityBeetleLarvaNoises;
 import erebus.client.sound.EntityCentipedeNoises;
 import erebus.client.sound.EntityFlyNoises;
+import erebus.client.sound.EntityMosquitoNoises;
 import erebus.client.sound.EntityWaspNoises;
 import erebus.core.handler.LocalizationHandler;
 import erebus.core.proxy.CommonProxy;
@@ -215,6 +216,7 @@ public class ErebusMod
 		MinecraftForge.EVENT_BUS.register(new EntityWaspNoises());
 		MinecraftForge.EVENT_BUS.register(new EntityFlyNoises());
 		MinecraftForge.EVENT_BUS.register(new EntityCentipedeNoises());
+		MinecraftForge.EVENT_BUS.register(new EntityMosquitoNoises());
 	}
 	
 	@EventHandler

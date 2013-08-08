@@ -76,12 +76,14 @@ public class EntityMosquito extends EntityFlying implements IMob
     }
     
     //gets stored NBTcompound data
+    @Override
     protected void entityInit()
     {
         super.entityInit();
         this.dataWatcher.addObject(15, Byte.valueOf((byte)0));
     }
     
+    @Override
     public void onUpdate()
     {
     	//revent the mosquito the glitch when the game is saved on top of an entity
@@ -137,6 +139,7 @@ public class EntityMosquito extends EntityFlying implements IMob
     }
     
     //determine offset when mounting mobs
+    @Override
     public double getYOffset()
     {
     	if(ridingEntity != null && ridingEntity instanceof EntityPlayer)
@@ -153,7 +156,7 @@ public class EntityMosquito extends EntityFlying implements IMob
         }
     }
     
-
+    @Override
     protected void updateEntityActionState()
     {
         super.updateEntityActionState();
@@ -228,10 +231,12 @@ public class EntityMosquito extends EntityFlying implements IMob
     }
     
     //removes step sounds when on the ground
+    @Override
     protected void playStepSound(int par1, int par2, int par3, int par4)
     {
     }
 
+    @Override
     public void onLivingUpdate()
     {
     	//rotate towards waypoints
@@ -263,7 +268,8 @@ public class EntityMosquito extends EntityFlying implements IMob
     }
     
     //determines if it should fight back when hit
-    public boolean attackEntityFrom(DamageSource par1DamageSource, int par2)
+    @Override
+    public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
     {
         if (this.isEntityInvulnerable())
         {
@@ -299,8 +305,8 @@ public class EntityMosquito extends EntityFlying implements IMob
         }
     }
     
-    public boolean canDespawn()
-    {
+    @Override
+    public boolean canDespawn() {
     	return true;
     }
     
@@ -310,6 +316,7 @@ public class EntityMosquito extends EntityFlying implements IMob
         return var1 != null && this.canEntityBeSeen(var1) ? var1 : null;
     }
     
+    @Override
     protected void dropFewItems(boolean par1, int par2)
     {
     	int i = 1 + getBloodConsumed();
@@ -370,50 +377,33 @@ public class EntityMosquito extends EntityFlying implements IMob
 
     }
     
-    /**
-     * Returns the sound this mob makes when it is hurt.
-     */
-    protected String getLivingSound()
-    {
-    	if(this.ridingEntity != null)
-    	{
-    		return "Erebus.Sound.mosquito_sucking";	
+    @Override
+    protected String getLivingSound() {
+    	if(this.ridingEntity != null) {
+    		return "erebus:mosquito_sucking";	
     	}
-    	else
-    	{
-    		return "Erebus.Sound.mosquito_flying";
+    	else {
+    		return "erebus:mosquito_flying";
     	}
     }
     
-    /**
-     * Returns the sound this mob makes when it is hurt.
-     */
-    protected String getHurtSound()
-    {
-        return "Erebus.Sound.mosquito_hit";
+    @Override
+    protected String getHurtSound() {
+        return "erebus:mosquito_hit";
     }
 
-    /**
-     * Returns the sound this mob makes on death.
-     */
-    protected String getDeathSound()
-    {
-        return "Erebus.Sound.mosquito_death";
+    @Override
+    protected String getDeathSound() {
+        return "erebus:mosquito_death";
     }
     
-    /**
-     * Returns the volume for the sounds this mob makes.
-     */
-    protected float getSoundVolume()
-    {
-        return 0.2F;
+    @Override
+    protected float getSoundVolume() {
+        return 0.1F;
     }
     
-    /**
-     * Gets the pitch of living sounds in living entities.
-     */
-    protected float getSoundPitch()
-    {
+    @Override
+    protected float getSoundPitch() {
         return 1.0F;
     }
     
@@ -428,15 +418,14 @@ public class EntityMosquito extends EntityFlying implements IMob
         this.dataWatcher.updateObject(15, Byte.valueOf((byte)par1));
     }
     
+    @Override
     public void writeEntityToNBT(NBTTagCompound nbttagcompound)
     {
         super.writeEntityToNBT(nbttagcompound);
         nbttagcompound.setInteger("BloodLevel", this.getBloodConsumed());
     }
 
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
+    @Override
     public void readEntityFromNBT(NBTTagCompound nbttagcompound)
     {
         super.readEntityFromNBT(nbttagcompound);
@@ -444,6 +433,7 @@ public class EntityMosquito extends EntityFlying implements IMob
     }
     
     //checks if entity can spawn. in this case it checks of water is nearby
+    @Override
     public boolean getCanSpawnHere()
     {
     	//if(this.worldObj.checkIfAABBIsClear(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty())

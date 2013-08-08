@@ -11,6 +11,7 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSeedFood;
 import net.minecraft.item.ItemSpade;
@@ -189,6 +190,7 @@ public class ErebusMod
 	public static Item jadeAxe;							public static int jadeAxeID;
 	public static Item jadeShovel;						public static int jadeShovelID;
 	public static Item jadePaxel;						public static int jadePaxelID;
+	public static Item jadeHoe;							public static int jadeHoeID;
     public static Item compoundEyes;                    public static int compoundEyesID; 
     public static Item compoundLens;                    public static int compoundLensID; 
     public static Item compoundGoggles;                 public static int compoundGogglesID; 
@@ -298,9 +300,10 @@ public class ErebusMod
 		jadeAxeID = config.get(config.CATEGORY_ITEM, "Item ID of Jade Axe", 9724).getInt();
 		jadeShovelID = config.get(config.CATEGORY_ITEM, "Item ID of Jade Shovel", 9725).getInt();
 		jadePaxelID = config.get(config.CATEGORY_ITEM, "Item ID of Jade Paxel", 9726).getInt();
-		compoundEyesID = config.get(config.CATEGORY_ITEM, "Item ID of Compound Eyes", 9727).getInt(); 
-        compoundLensID = config.get(config.CATEGORY_ITEM, "Item ID of Compound Lens", 9728).getInt(); 
-        compoundGogglesID = config.get(config.CATEGORY_ITEM, "Item ID of Compound Goggles", 9729).getInt(); 
+		jadeHoeID = config.get(config.CATEGORY_ITEM, "Item ID of Jade Hoe", 9727).getInt();
+		compoundEyesID = config.get(config.CATEGORY_ITEM, "Item ID of Compound Eyes", 9728).getInt(); 
+        compoundLensID = config.get(config.CATEGORY_ITEM, "Item ID of Compound Lens", 9729).getInt(); 
+        compoundGogglesID = config.get(config.CATEGORY_ITEM, "Item ID of Compound Goggles", 9730).getInt(); 
 		
 		jungleID = config.get(config.CATEGORY_GENERAL, "Biome ID of Underground Jungle", 151).getInt();
 		desertID = config.get(config.CATEGORY_GENERAL, "Biome ID of Volcanic Desert", 152).getInt();
@@ -394,6 +397,7 @@ public class ErebusMod
 		jadeAxe = new ItemAxe(jadeAxeID, toolJADE).setUnlocalizedName("axeJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "axeJade");
 		jadeShovel = new ItemSpade(jadeShovelID, toolJADE).setUnlocalizedName("shovelJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "shovelJade");
 		jadePaxel = new ItemPaxel(jadePaxelID, toolJADE).setUnlocalizedName("paxelJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "paxelJade");
+		jadeHoe = new ItemHoe(jadeHoeID, toolJADE).setUnlocalizedName("hoeJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "hoeJade");
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, armorEXOSKELETON, 2, 0).setUnlocalizedName("compoundGoggles").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "compoundGoggles"); 
         compoundEyes = (new Item(compoundEyesID)).setUnlocalizedName("compoundEyes").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "compoundEyes"); 
         compoundLens = (new Item(compoundLensID)).setUnlocalizedName("compoundLens").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "compoundLens"); 

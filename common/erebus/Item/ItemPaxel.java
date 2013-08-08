@@ -60,17 +60,17 @@ public class ItemPaxel extends ItemTool {
 	public static boolean isToolEffective(Block block, int metadata) {
         List toolClass = (List)ReflectionHelper.getField(ForgeHooks.class, HashMap.class, null, "toolClasses").get(Item.pickaxeIron);
         if(toolClass != null) {
-        	return ReflectionHelper.getField(ForgeHooks.class, HashSet.class, null, "toolHarvestLevels").contains(Arrays.asList(block, metadata, toolClass.get(0)));
+        	return ReflectionHelper.getField(ForgeHooks.class, HashSet.class, null, "toolEffectiveness").contains(Arrays.asList(block, metadata, toolClass.get(0)));
         }
         
         toolClass = (List)ReflectionHelper.getField(ForgeHooks.class, HashMap.class, null, "toolClasses").get(Item.axeIron);
         if(toolClass != null) {
-        	return ReflectionHelper.getField(ForgeHooks.class, HashSet.class, null, "toolHarvestLevels").contains(Arrays.asList(block, metadata, toolClass.get(0)));
+        	return ReflectionHelper.getField(ForgeHooks.class, HashSet.class, null, "toolEffectiveness").contains(Arrays.asList(block, metadata, toolClass.get(0)));
         }
         
         toolClass = (List)ReflectionHelper.getField(ForgeHooks.class, HashMap.class, null, "toolClasses").get(Item.shovelIron);
         if(toolClass != null) {
-        	return ReflectionHelper.getField(ForgeHooks.class, HashSet.class, null, "toolHarvestLevels").contains(Arrays.asList(block, metadata, toolClass.get(0)));
+        	return ReflectionHelper.getField(ForgeHooks.class, HashSet.class, null, "toolEffectiveness").contains(Arrays.asList(block, metadata, toolClass.get(0)));
         }
         
         return false;

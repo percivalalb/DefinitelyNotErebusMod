@@ -75,6 +75,7 @@ item.pickaxeJade.name=Jade Pickaxe
 item.axeJade.name=Jade Axe
 item.shovelJade.name=Jade Shovel
 item.paxelJade.name=Jade Paxel
+item.hoeJade.name=Jade Hoe
 item.compoundEyes.name=Compound Eyes
 item.compoundLens.name=Compound Goggle Lens
 item.compoundGoggles.name=Compound Goggles

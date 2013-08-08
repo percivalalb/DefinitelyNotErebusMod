@@ -535,7 +535,7 @@ public class ErebusMod
 		GameRegistry.removeBiome(underjungle);  
 
 		EntityRegistry.registerModEntity(EntityBeetleLarva.class, "BeetleLarva", 1, this, 40, 1, true);
-		registerEntityEgg(EntityBeetleLarva.class, -12116973, -5938366);
+		registerEntityEgg(EntityBeetleLarva.class, -1251634, -13032944);
 		
 		EntityRegistry.registerModEntity(EntityWasp.class, "Wasp", 2, this, 40, 1, true);
 		registerEntityEgg(EntityWasp.class, -16382458, -256);
@@ -546,10 +546,10 @@ public class ErebusMod
 		// Mobs should be registered as ModEntity which means you can have as may ID's as you like
 		// as they are specific to only this mod!!!
 		// As above (Entity.class, "Name", unique mod ID, this mod, trackingRange, updateFrequency, sendsVelocityUpdates);
-		EntityRegistry.registerGlobalEntityID(EntityBeetle.class, "Beetle", ModLoader.getUniqueEntityId(), 894731, 256);
-		EntityRegistry.registerGlobalEntityID(EntityFly.class, "Fly", ModLoader.getUniqueEntityId(), 894731, 192);
+		EntityRegistry.registerGlobalEntityID(EntityBeetle.class, "Beetle", ModLoader.getUniqueEntityId(), -12116973, -5938366);
+		EntityRegistry.registerGlobalEntityID(EntityFly.class, "Fly", ModLoader.getUniqueEntityId(), -13165534, -6750208);
 		//Removed for the moment... EntityRegistry.registerGlobalEntityID(EntityGreenfly.class, "Greenfly", ModLoader.getUniqueEntityId(), 894731, 512);
-		EntityRegistry.registerGlobalEntityID(EntityMosquito.class, "Mosquito", ModLoader.getUniqueEntityId(), 894731, 512);
+		EntityRegistry.registerGlobalEntityID(EntityMosquito.class, "Mosquito", ModLoader.getUniqueEntityId(), -13816034, -14803180);
 		EntityRegistry.registerGlobalEntityID(EntityTarantula.class, "Tarantula", ModLoader.getUniqueEntityId(), 894731, 512);	
 		EntityRegistry.registerGlobalEntityID(EntityVelvetWorm.class, "VelvetWorm", ModLoader.getUniqueEntityId(), 894731, 000000);
 	

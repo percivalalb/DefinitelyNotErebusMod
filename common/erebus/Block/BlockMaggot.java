@@ -1,4 +1,4 @@
-package erebus.Block;
+package erebus.block;
 
 import java.util.List;
 import java.util.Random;
@@ -12,7 +12,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.Entity.EntityBeetleLarva;
+import erebus.entity.EntityBeetleLarva;
 import erebus.api.Properties;
 
 public class BlockMaggot extends Block

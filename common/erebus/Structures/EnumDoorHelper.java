@@ -1,4 +1,4 @@
-package erebus.Structures;
+package erebus.structures;
 
 import net.minecraft.world.gen.structure.EnumDoor;
 

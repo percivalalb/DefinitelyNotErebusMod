@@ -1,19 +1,19 @@
-package erebus.World.Biomes;
+package erebus.world.biomes;
 
 import java.util.List;
 import java.util.Random;
 
 import erebus.ErebusMod;
-import erebus.Entity.*;
-import erebus.World.*;
-import erebus.World.Gen.WorldGenAmber;
-import erebus.World.Gen.WorldGenBigMushroomErebus;
-import erebus.World.Gen.WorldGenErebusHugeTree;
-import erebus.World.Gen.WorldGenErebusMinable;
-import erebus.World.Gen.WorldGenErebusTrees;
-import erebus.World.Gen.WorldGenGlowStoneErebus1;
-import erebus.World.Gen.WorldGenGlowStoneErebus2;
-import erebus.World.Gen.WorldGenMelonErebus;
+import erebus.entity.*;
+import erebus.world.*;
+import erebus.world.gen.WorldGenAmber;
+import erebus.world.gen.WorldGenBigMushroomErebus;
+import erebus.world.gen.WorldGenErebusHugeTree;
+import erebus.world.gen.WorldGenErebusMinable;
+import erebus.world.gen.WorldGenErebusTrees;
+import erebus.world.gen.WorldGenGlowStoneErebus1;
+import erebus.world.gen.WorldGenGlowStoneErebus2;
+import erebus.world.gen.WorldGenMelonErebus;
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;

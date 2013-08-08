@@ -1,4 +1,4 @@
-package erebus.Block;
+package erebus.block;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package erebus.core.helper;
 
-import erebus.Entity.EntityBeetleLarva;
+import erebus.entity.EntityBeetleLarva;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityBreakingFX;

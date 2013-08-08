@@ -1,11 +1,11 @@
-package erebus.Block;
+package erebus.block;
 
 import erebus.core.proxy.CommonProxy;
 import erebus.ErebusMod;
-import erebus.World.Gen.WorldGenErebusHugeTree;
-import erebus.World.Gen.WorldGenErebusTrees;
-import erebus.World.Gen.WorldGenEucalyptus;
-import erebus.World.Gen.WorldGenSavannaTree;
+import erebus.world.gen.WorldGenErebusHugeTree;
+import erebus.world.gen.WorldGenErebusTrees;
+import erebus.world.gen.WorldGenEucalyptus;
+import erebus.world.gen.WorldGenSavannaTree;
 import erebus.api.Properties;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

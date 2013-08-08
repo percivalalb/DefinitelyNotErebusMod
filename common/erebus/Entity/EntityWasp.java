@@ -1,4 +1,4 @@
-package erebus.Entity;
+package erebus.entity;
 
 import erebus.daveyx0.AnimationMathHelper;
 import net.minecraft.entity.Entity;

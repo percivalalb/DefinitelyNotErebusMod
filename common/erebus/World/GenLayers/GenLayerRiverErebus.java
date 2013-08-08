@@ -1,4 +1,4 @@
-package erebus.World.GenLayers;
+package erebus.world.genLayers;
 
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;

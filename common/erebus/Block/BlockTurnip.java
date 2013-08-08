@@ -1,4 +1,4 @@
-package erebus.Block;
+package erebus.block;
 
 import erebus.ErebusMod;
 import erebus.api.Properties;

@@ -1,4 +1,4 @@
-package erebus.Block;
+package erebus.block;
 
 import java.util.Random;
 
@@ -13,7 +13,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
-import erebus.World.Gen.WorldGenBigLake;
+import erebus.world.gen.WorldGenBigLake;
 import erebus.api.Properties;
 
 public class BlockRedstoneOre_U extends Block

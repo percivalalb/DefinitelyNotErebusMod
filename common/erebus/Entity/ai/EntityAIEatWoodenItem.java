@@ -1,6 +1,6 @@
-package erebus.Entity.ai;
+package erebus.entity.ai;
 
-import erebus.Entity.EntityBeetleLarva;
+import erebus.entity.EntityBeetleLarva;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;

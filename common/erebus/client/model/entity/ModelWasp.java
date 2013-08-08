@@ -7,7 +7,7 @@ import net.minecraft.util.MathHelper;
 
 import org.lwjgl.opengl.GL11;
 
-import erebus.Entity.EntityWasp;
+import erebus.entity.EntityWasp;
 import erebus.daveyx0.AnimationMathHelper;
 
 public class ModelWasp extends ModelBase

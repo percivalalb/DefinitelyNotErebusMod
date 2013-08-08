@@ -1,4 +1,4 @@
-package erebus.World.GenLayers;
+package erebus.world.genLayers;
 
 import erebus.ErebusMod;
 import net.minecraft.world.WorldType;

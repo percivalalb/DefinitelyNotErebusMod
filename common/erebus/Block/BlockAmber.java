@@ -1,10 +1,10 @@
-package erebus.Block;
+package erebus.block;
 
 import java.util.Random;
 
 import erebus.core.proxy.CommonProxy;
 import erebus.ErebusMod;
-import erebus.World.Gen.WorldGenMossbarkTree;
+import erebus.world.gen.WorldGenMossbarkTree;
 import erebus.api.Properties;
 
 import cpw.mods.fml.relauncher.Side;

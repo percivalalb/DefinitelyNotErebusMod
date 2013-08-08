@@ -22,8 +22,8 @@ import net.minecraft.util.StringUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import erebus.Block.ModelHollowLog;
-import erebus.Block.TileEntityHollowLog;
+import erebus.block.ModelHollowLog;
+import erebus.block.TileEntityHollowLog;
 
 @SideOnly(Side.CLIENT)
 public class TileEntityRenderHollowLog extends TileEntitySpecialRenderer

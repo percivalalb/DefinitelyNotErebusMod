@@ -1,10 +1,10 @@
-package erebus.Structures;
+package erebus.structures;
 
 import java.util.List;
 import java.util.Random;
 
 import erebus.ErebusMod;
-import erebus.Entity.EntityTarantula;
+import erebus.entity.EntityTarantula;
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.item.Item;

@@ -2,7 +2,7 @@ package erebus.client.render.entity;
 
 import org.lwjgl.opengl.GL11;
 
-import erebus.Entity.EntityVelvetWorm;
+import erebus.entity.EntityVelvetWorm;
 import erebus.client.model.entity.ModelVelvetWorm;
 
 import net.minecraft.client.model.ModelBase;

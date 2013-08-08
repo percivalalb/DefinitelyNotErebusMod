@@ -1,4 +1,4 @@
-package erebus.World.Biomes;
+package erebus.world.biomes;
 
 import java.util.Random;
 
@@ -10,14 +10,14 @@ import net.minecraft.world.biome.SpawnListEntry;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import erebus.ErebusMod;
-import erebus.Entity.EntityBeetle;
-import erebus.Entity.EntityBeetleLarva;
-import erebus.Entity.EntityFly;
-import erebus.Entity.EntityTarantula;
-import erebus.Entity.EntityWasp;
-import erebus.World.Gen.WorldGenRock;
-import erebus.World.Gen.WorldGenRottenAcacia;
-import erebus.World.Gen.WorldGenSavannaTree;
+import erebus.entity.EntityBeetle;
+import erebus.entity.EntityBeetleLarva;
+import erebus.entity.EntityFly;
+import erebus.entity.EntityTarantula;
+import erebus.entity.EntityWasp;
+import erebus.world.gen.WorldGenRock;
+import erebus.world.gen.WorldGenRottenAcacia;
+import erebus.world.gen.WorldGenSavannaTree;
 
 public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
 {

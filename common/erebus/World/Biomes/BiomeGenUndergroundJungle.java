@@ -1,4 +1,4 @@
-package erebus.World.Biomes;
+package erebus.world.biomes;
 
 import java.util.Random;
 
@@ -14,21 +14,21 @@ import net.minecraft.world.gen.feature.WorldGenHugeTrees;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenTrees;
 import erebus.ErebusMod;
-import erebus.Entity.EntityBeetle;
-import erebus.Entity.EntityBeetleLarva;
-import erebus.Entity.EntityFly;
-import erebus.Entity.EntityTarantula;
-import erebus.Entity.EntityWasp;
-import erebus.World.Gen.WorldGenErebusHugeTree;
-import erebus.World.Gen.WorldGenErebusTrees;
-import erebus.World.Gen.WorldGenEucalyptus;
-import erebus.World.Gen.WorldGenGlowStoneErebus1;
-import erebus.World.Gen.WorldGenGlowStoneErebus2;
-import erebus.World.Gen.WorldGenMelonErebus;
-import erebus.World.Gen.WorldGenMossbarkTree;
-import erebus.World.Gen.WorldGenPonds;
-import erebus.World.Gen.WorldGenQuickSand;
-import erebus.World.Gen.WorldGenTurnips;
+import erebus.entity.EntityBeetle;
+import erebus.entity.EntityBeetleLarva;
+import erebus.entity.EntityFly;
+import erebus.entity.EntityTarantula;
+import erebus.entity.EntityWasp;
+import erebus.world.gen.WorldGenErebusHugeTree;
+import erebus.world.gen.WorldGenErebusTrees;
+import erebus.world.gen.WorldGenEucalyptus;
+import erebus.world.gen.WorldGenGlowStoneErebus1;
+import erebus.world.gen.WorldGenGlowStoneErebus2;
+import erebus.world.gen.WorldGenMelonErebus;
+import erebus.world.gen.WorldGenMossbarkTree;
+import erebus.world.gen.WorldGenPonds;
+import erebus.world.gen.WorldGenQuickSand;
+import erebus.world.gen.WorldGenTurnips;
 
 public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 {

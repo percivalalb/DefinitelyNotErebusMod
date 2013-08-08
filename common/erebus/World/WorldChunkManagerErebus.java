@@ -1,4 +1,4 @@
-package erebus.World;
+package erebus.world;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +13,7 @@ import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import erebus.ErebusMod;
-import erebus.World.GenLayers.GenLayerErebus;
+import erebus.world.genLayers.GenLayerErebus;
 
 public class WorldChunkManagerErebus extends WorldChunkManager
 {

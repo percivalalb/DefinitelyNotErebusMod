@@ -1,5 +1,5 @@
 //TODO Redo all of this class to work with the spawner system
-package erebus.Block;
+package erebus.block;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

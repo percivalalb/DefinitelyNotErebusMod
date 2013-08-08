@@ -1,4 +1,4 @@
-package erebus.World.Biomes;
+package erebus.world.biomes;
 
 import java.util.Random;
 

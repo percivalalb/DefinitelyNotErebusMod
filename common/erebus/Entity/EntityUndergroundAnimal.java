@@ -1,4 +1,4 @@
-package erebus.Entity;
+package erebus.entity;
 
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;

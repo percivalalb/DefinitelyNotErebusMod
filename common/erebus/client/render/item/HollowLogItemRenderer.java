@@ -9,7 +9,7 @@ import org.lwjgl.opengl.GL11;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.Block.ModelHollowLog;
+import erebus.block.ModelHollowLog;
 
 /**
  * @author ProPercivalalb

@@ -1,4 +1,4 @@
-package erebus.Structures;
+package erebus.structures;
 
 import java.util.List;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package erebus.World;
+package erebus.world;
 
 import java.util.List;
 import java.util.Random;
@@ -7,10 +7,10 @@ import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 
 import erebus.ErebusMod;
-import erebus.World.Biomes.BiomeGenBaseErebus;
-import erebus.World.Biomes.BiomeGenUndergroundDesert;
-import erebus.World.Biomes.BiomeGenUndergroundSavannah;
-import erebus.World.Gen.WorldGenSpiderDungeons;
+import erebus.world.biomes.BiomeGenBaseErebus;
+import erebus.world.biomes.BiomeGenUndergroundDesert;
+import erebus.world.biomes.BiomeGenUndergroundSavannah;
+import erebus.world.gen.WorldGenSpiderDungeons;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;

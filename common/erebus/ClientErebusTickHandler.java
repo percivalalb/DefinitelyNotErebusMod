@@ -14,7 +14,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
-import erebus.World.Gen.WorldGenPonds;
+import erebus.world.gen.WorldGenPonds;
 
 public class ClientErebusTickHandler implements ITickHandler
 {

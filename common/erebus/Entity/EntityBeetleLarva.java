@@ -1,4 +1,4 @@
-package erebus.Entity;
+package erebus.entity;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -18,7 +18,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.FMLCommonHandler;
 import erebus.ErebusMod;
-import erebus.Entity.ai.EntityAIEatWoodenItem;
+import erebus.entity.ai.EntityAIEatWoodenItem;
 import erebus.core.helper.ClientHelper;
 
 /**

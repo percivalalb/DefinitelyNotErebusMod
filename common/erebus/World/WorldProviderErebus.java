@@ -1,6 +1,6 @@
-package erebus.World;
+package erebus.world;
 
-import erebus.World.Biomes.*;
+import erebus.world.biomes.*;
 import erebus.ErebusMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChunkCoordinates;

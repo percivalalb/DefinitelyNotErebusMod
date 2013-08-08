@@ -1,6 +1,6 @@
 package erebus.client.render.entity;
 
-import erebus.Entity.EntityCentipede;
+import erebus.entity.EntityCentipede;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;

@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import erebus.Entity.EntityWasp;
+import erebus.entity.EntityWasp;
 import erebus.client.model.entity.ModelWasp;
 
 

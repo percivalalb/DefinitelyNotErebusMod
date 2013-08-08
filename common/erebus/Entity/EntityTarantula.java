@@ -1,4 +1,4 @@
-package erebus.Entity;
+package erebus.entity;
 
 import erebus.ErebusMod;
 import net.minecraft.entity.Entity;

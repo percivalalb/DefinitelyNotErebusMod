@@ -1,4 +1,4 @@
-package erebus.Entity;
+package erebus.entity;
 
 import java.util.List;
 

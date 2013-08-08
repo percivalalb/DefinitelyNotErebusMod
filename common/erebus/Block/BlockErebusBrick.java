@@ -1,4 +1,4 @@
-package erebus.Block;
+package erebus.block;
 
 import erebus.core.proxy.CommonProxy;
 import cpw.mods.fml.relauncher.Side;

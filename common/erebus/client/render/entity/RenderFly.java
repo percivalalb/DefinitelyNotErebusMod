@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import erebus.Entity.EntityFly;
+import erebus.entity.EntityFly;
 import erebus.client.model.entity.ModelFly;
 
 @SideOnly(Side.CLIENT)

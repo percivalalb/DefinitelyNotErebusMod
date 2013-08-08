@@ -2,7 +2,7 @@ package erebus.client.model.entity;
 
 import org.lwjgl.opengl.GL11;
 
-import erebus.Entity.EntityMosquito;
+import erebus.entity.EntityMosquito;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import erebus.Entity.EntityBeetleLarva;
+import erebus.entity.EntityBeetleLarva;
 import erebus.client.model.entity.ModelBeetleLarva;
 
 public class RenderBeetleLarva extends RenderLiving

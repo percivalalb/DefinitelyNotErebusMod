@@ -1,4 +1,4 @@
-package erebus.Structures;
+package erebus.structures;
 
 import java.util.ArrayList;
 import java.util.Iterator;

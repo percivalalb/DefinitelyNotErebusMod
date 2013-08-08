@@ -1,4 +1,4 @@
-package erebus.Structures;
+package erebus.structures;
 
 final class StructureSpiderTunnelsPieceWeight3 extends StructureSpiderTunnelsPieceWeight
 {

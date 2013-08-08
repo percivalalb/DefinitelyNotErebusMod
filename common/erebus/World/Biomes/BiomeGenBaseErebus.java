@@ -2,7 +2,7 @@ package erebus.World.Biomes;
 
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import erebus.World.Gen.WorldGenErebusMinable;
 
 import net.minecraft.world.World;
@@ -30,7 +30,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase
 			int var6 = x + rand.nextInt(16);
 			int var7 = rand.nextInt(128);
 			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(mod_Erebus.oreCoal_U.blockID, 10)).generate(worldObj, rand, var6, var7, var8);
+			(new WorldGenErebusMinable(ErebusMod.oreCoal_U.blockID, 10)).generate(worldObj, rand, var6, var7, var8);
 		}
 
 		for (int var5 = 0; var5 < 20; ++var5)
@@ -38,7 +38,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase
 			int var6 = x + rand.nextInt(16);
 			int var7 = rand.nextInt(128);
 			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(mod_Erebus.oreIron_U.blockID, 8)).generate(worldObj, rand, var6, var7, var8);
+			(new WorldGenErebusMinable(ErebusMod.oreIron_U.blockID, 8)).generate(worldObj, rand, var6, var7, var8);
 		}
 
 		for (int var5 = 0; var5 < 4; ++var5)
@@ -46,7 +46,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase
 			int var6 = x + rand.nextInt(16);
 			int var7 = rand.nextInt(128);
 			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(mod_Erebus.oreGold_U.blockID, 8)).generate(worldObj, rand, var6, var7, var8);
+			(new WorldGenErebusMinable(ErebusMod.oreGold_U.blockID, 8)).generate(worldObj, rand, var6, var7, var8);
 		}
 
 		for (int var5 = 0; var5 < 1; ++var5)
@@ -54,7 +54,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase
 			int var6 = x + rand.nextInt(16);
 			int var7 = rand.nextInt(128);
 			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(mod_Erebus.oreLapis_U.blockID, 6)).generate(worldObj, rand, var6, var7, var8);
+			(new WorldGenErebusMinable(ErebusMod.oreLapis_U.blockID, 6)).generate(worldObj, rand, var6, var7, var8);
 		}    
 
 		for (int var5 = 0; var5 < 8; ++var5)
@@ -62,7 +62,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase
 			int var6 = x + rand.nextInt(16);
 			int var7 = rand.nextInt(128);
 			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(mod_Erebus.oreRedstone_U.blockID, 7)).generate(worldObj, rand, var6, var7, var8);
+			(new WorldGenErebusMinable(ErebusMod.oreRedstone_U.blockID, 7)).generate(worldObj, rand, var6, var7, var8);
 		}
 
 		for (int var5 = 0; var5 < 1; ++var5)
@@ -70,7 +70,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase
 			int var6 = x + rand.nextInt(16);
 			int var7 = rand.nextInt(128);
 			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(mod_Erebus.oreDiamond_U.blockID, 1)).generate(worldObj, rand, var6, var7, var8);
+			(new WorldGenErebusMinable(ErebusMod.oreDiamond_U.blockID, 1)).generate(worldObj, rand, var6, var7, var8);
 		}  
 
 		for (int var5 = 0; var5 < 1; ++var5)
@@ -78,7 +78,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase
 			int var6 = x + rand.nextInt(16);
 			int var7 = rand.nextInt(128);
 			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(mod_Erebus.oreJade_U.blockID, 4)).generate(worldObj, rand, var6, var7, var8);
+			(new WorldGenErebusMinable(ErebusMod.oreJade_U.blockID, 4)).generate(worldObj, rand, var6, var7, var8);
 		}  
 
 		for (int var5 = 0; var5 < 20; ++var5)
@@ -86,7 +86,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase
 			int var6 = x + rand.nextInt(16);
 			int var7 = rand.nextInt(128);
 			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(mod_Erebus.oreFossil.blockID, 3)).generate(worldObj, rand, var6, var7, var8);
+			(new WorldGenErebusMinable(ErebusMod.oreFossil.blockID, 3)).generate(worldObj, rand, var6, var7, var8);
 		}
 	}
 }

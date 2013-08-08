@@ -1,7 +1,7 @@
 package erebus.Block;
 
 import erebus.core.proxy.CommonProxy;
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
@@ -16,6 +16,6 @@ public class BlockPlanksErebus extends Block
     public BlockPlanksErebus(int par1)
     {
         super(par1, Material.wood);
-        this.setCreativeTab(mod_Erebus.tabErebus);
+        this.setCreativeTab(ErebusMod.tabErebus);
     }
 }

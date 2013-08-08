@@ -2,7 +2,7 @@ package erebus.Block;
 
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.block.Block;
@@ -16,7 +16,7 @@ public class BlockErebusOre extends Block
     public BlockErebusOre(int par1)
     {
         super(par1, Material.rock);
-        this.setCreativeTab(mod_Erebus.tabErebus);
+        this.setCreativeTab(ErebusMod.tabErebus);
     }
 
     /**
@@ -24,7 +24,7 @@ public class BlockErebusOre extends Block
      */
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return this.blockID == mod_Erebus.oreCoal_U.blockID ? Item.coal.itemID : (this.blockID == mod_Erebus.oreDiamond_U.blockID ? Item.diamond.itemID : (this.blockID == mod_Erebus.oreLapis_U.blockID ? Item.dyePowder.itemID : (this.blockID == mod_Erebus.oreEmerald_U.blockID ? Item.emerald.itemID : (this.blockID == mod_Erebus.oreJade_U.blockID ? null : this.blockID))));
+        return this.blockID == ErebusMod.oreCoal_U.blockID ? Item.coal.itemID : (this.blockID == ErebusMod.oreDiamond_U.blockID ? Item.diamond.itemID : (this.blockID == ErebusMod.oreLapis_U.blockID ? Item.dyePowder.itemID : (this.blockID == ErebusMod.oreEmerald_U.blockID ? Item.emerald.itemID : (this.blockID == ErebusMod.oreJade_U.blockID ? null : this.blockID))));
     }
 
     /**
@@ -32,7 +32,7 @@ public class BlockErebusOre extends Block
      */
     public int quantityDropped(Random par1Random)
     {
-        return this.blockID == mod_Erebus.oreLapis_U.blockID ? 4 + par1Random.nextInt(5) : 1;
+        return this.blockID == ErebusMod.oreLapis_U.blockID ? 4 + par1Random.nextInt(5) : 1;
     }
 
     /**
@@ -68,23 +68,23 @@ public class BlockErebusOre extends Block
         {
             int j1 = 0;
 
-            if (this.blockID == mod_Erebus.oreCoal_U.blockID)
+            if (this.blockID == ErebusMod.oreCoal_U.blockID)
             {
                 j1 = MathHelper.getRandomIntegerInRange(par1World.rand, 0, 2);
             }
-            else if (this.blockID == mod_Erebus.oreDiamond_U.blockID)
+            else if (this.blockID == ErebusMod.oreDiamond_U.blockID)
             {
                 j1 = MathHelper.getRandomIntegerInRange(par1World.rand, 3, 7);
             }
-            else if (this.blockID == mod_Erebus.oreEmerald_U.blockID)
+            else if (this.blockID == ErebusMod.oreEmerald_U.blockID)
             {
                 j1 = MathHelper.getRandomIntegerInRange(par1World.rand, 3, 7);
             }
-            else if (this.blockID == mod_Erebus.oreLapis_U.blockID)
+            else if (this.blockID == ErebusMod.oreLapis_U.blockID)
             {
                 j1 = MathHelper.getRandomIntegerInRange(par1World.rand, 2, 5);
             }
-            else if (this.blockID == mod_Erebus.oreJade_U.blockID)
+            else if (this.blockID == ErebusMod.oreJade_U.blockID)
             {
                 j1 = MathHelper.getRandomIntegerInRange(par1World.rand, 3, 7);
             }
@@ -98,6 +98,6 @@ public class BlockErebusOre extends Block
      */
     public int damageDropped(int par1)
     {
-        return this.blockID == mod_Erebus.oreLapis_U.blockID ? 4 : 0;
+        return this.blockID == ErebusMod.oreLapis_U.blockID ? 4 : 0;
     }
 }

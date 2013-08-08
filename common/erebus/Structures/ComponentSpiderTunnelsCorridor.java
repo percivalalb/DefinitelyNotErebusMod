@@ -3,7 +3,7 @@ package erebus.Structures;
 import java.util.List;
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureBoundingBox;

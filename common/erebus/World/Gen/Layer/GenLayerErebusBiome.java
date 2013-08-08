@@ -2,6 +2,7 @@ package erebus.World.Gen.Layer;
 
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerErebusBiome extends GenLayerErebus
 {

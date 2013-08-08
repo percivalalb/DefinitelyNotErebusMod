@@ -2,7 +2,7 @@ package erebus.Block;
 
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -12,6 +12,6 @@ public class BlockErebus extends Block {
 	
     public BlockErebus(int par1, Material par2Material) {
         super(par1, par2Material);
-        this.setCreativeTab(mod_Erebus.tabErebus);
+        this.setCreativeTab(ErebusMod.tabErebus);
     }
 }

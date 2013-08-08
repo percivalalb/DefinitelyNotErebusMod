@@ -13,7 +13,7 @@ import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenHugeTrees;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenTrees;
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import erebus.Entity.EntityBeetle;
 import erebus.Entity.EntityBeetleLarva;
 import erebus.Entity.EntityFly;
@@ -151,7 +151,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 			int j5 = z + getRandomXZOffset(rand);
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenErebusHugeTree(true, 20 + rand.nextInt(5), 0, 0, true, mod_Erebus.woodMahogany.blockID, mod_Erebus.leavesMahogany.blockID)).generate(worldObj, rand, j2, l3, j5);
+				(new WorldGenErebusHugeTree(true, 20 + rand.nextInt(5), 0, 0, true, ErebusMod.woodMahogany.blockID, ErebusMod.leavesMahogany.blockID)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 
@@ -162,7 +162,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 			int j5 = z + getRandomXZOffset(rand);
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenErebusTrees(true, 5, 0, 0, false, mod_Erebus.woodMahogany.blockID, mod_Erebus.leavesMahogany.blockID, mod_Erebus.thorns.blockID)).generate(worldObj, rand, j2, l3, j5);
+				(new WorldGenErebusTrees(true, 5, 0, 0, false, ErebusMod.woodMahogany.blockID, ErebusMod.leavesMahogany.blockID, ErebusMod.thorns.blockID)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 
@@ -173,7 +173,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 			int j5 = z + getRandomXZOffset(rand);
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenEucalyptus(mod_Erebus.woodEucalyptus.blockID, 2, mod_Erebus.leavesEucalyptus.blockID, 2, 8 + rand.nextInt(4), 5, 8, Block.grass.blockID)).generate(worldObj, rand, j2, l3, j5);
+				(new WorldGenEucalyptus(ErebusMod.woodEucalyptus.blockID, 2, ErebusMod.leavesEucalyptus.blockID, 2, 8 + rand.nextInt(4), 5, 8, Block.grass.blockID)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 
@@ -234,7 +234,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 			int j5 = z + getRandomXZOffset(rand);
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenTallGrass(mod_Erebus.fern.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
+				(new WorldGenTallGrass(ErebusMod.fern.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 
@@ -245,7 +245,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 			int j5 = z + getRandomXZOffset(rand);
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenTallGrass(mod_Erebus.erebusGrass.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
+				(new WorldGenTallGrass(ErebusMod.erebusGrass.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 
@@ -314,7 +314,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 					{
 						if(worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
 						{
-							worldObj.setBlock(posX3, posY3 - c, posZ3, mod_Erebus.thorns.blockID, 1, 3);
+							worldObj.setBlock(posX3, posY3 - c, posZ3, ErebusMod.thorns.blockID, 1, 3);
 						}
 					}
 				}
@@ -324,7 +324,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 					{
 						if(worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
 						{
-							worldObj.setBlock(posX3, posY3 - c, posZ3, mod_Erebus.thorns.blockID, 2, 3);
+							worldObj.setBlock(posX3, posY3 - c, posZ3, ErebusMod.thorns.blockID, 2, 3);
 						}
 					}
 				}
@@ -334,7 +334,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 					{
 						if(worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
 						{
-							worldObj.setBlock(posX3, posY3 - c, posZ3, mod_Erebus.thorns.blockID, 4, 3);
+							worldObj.setBlock(posX3, posY3 - c, posZ3, ErebusMod.thorns.blockID, 4, 3);
 						}
 					}
 				}
@@ -344,7 +344,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 					{
 						if(worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
 						{
-							worldObj.setBlock(posX3, posY3 - c, posZ3, mod_Erebus.thorns.blockID, 0, 3);
+							worldObj.setBlock(posX3, posY3 - c, posZ3, ErebusMod.thorns.blockID, 0, 3);
 						}
 					}
 				}

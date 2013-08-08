@@ -2,7 +2,7 @@ package erebus.World.Gen;
 
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -82,7 +82,7 @@ public class WorldGenBigMushroomErebus extends WorldGenerator
             {
                 var9 = par1World.getBlockId(par3, par4 - 1, par5);
 
-                if (var9 != mod_Erebus.umberstone.blockID && var9 != Block.obsidian.blockID && var9 != Block.glowStone.blockID)
+                if (var9 != ErebusMod.umberstone.blockID && var9 != Block.obsidian.blockID && var9 != Block.glowStone.blockID)
                 {
                     return false;
                 }

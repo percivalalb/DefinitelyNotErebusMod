@@ -1,5 +1,7 @@
 package erebus.World.Gen.Layer;
 
+import net.minecraft.world.gen.layer.IntCache;
+
 public class GenLayerErebusRiverInit extends GenLayerErebus
 {
     public GenLayerErebusRiverInit(long par1, GenLayerErebus par3GenLayerErebus)

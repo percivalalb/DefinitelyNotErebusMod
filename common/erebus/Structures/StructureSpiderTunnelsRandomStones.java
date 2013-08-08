@@ -2,7 +2,7 @@ package erebus.Structures;
 
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import net.minecraft.block.Block;
 import net.minecraft.world.gen.structure.StructurePieceBlockSelector;
 
@@ -17,7 +17,7 @@ class StructureSpiderTunnelsRandomStones extends StructurePieceBlockSelector
     {
         if (par5)
         {
-            this.selectedBlockId = mod_Erebus.cobbleWebbed.blockID;
+            this.selectedBlockId = ErebusMod.cobbleWebbed.blockID;
             float var6 = par1Random.nextFloat();
 
             if (var6 < 0.1F)

@@ -12,7 +12,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import erebus.World.GenLayers.GenLayerErebus;
 
 public class WorldChunkManagerErebus extends WorldChunkManager
@@ -20,7 +20,7 @@ public class WorldChunkManagerErebus extends WorldChunkManager
     /** The biome generator object. */
     private float hellTemperature;
     private List biomesToSpawnIn;
-    public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList<BiomeGenBase>(Arrays.asList(mod_Erebus.underjungle, mod_Erebus.undersavannah/*, mod_Erebus.underdesert*/));
+    public static ArrayList<BiomeGenBase> allowedBiomes = new ArrayList<BiomeGenBase>(Arrays.asList(ErebusMod.underjungle, ErebusMod.undersavannah/*, mod_Erebus.underdesert*/));
     private BiomeCache biomeCache;
     private GenLayer biomeIndexLayer;
     private GenLayer genBiomes;

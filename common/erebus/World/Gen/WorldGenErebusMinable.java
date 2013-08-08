@@ -2,7 +2,7 @@ package erebus.World.Gen;
 
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -20,7 +20,7 @@ public class WorldGenErebusMinable extends WorldGenerator
 
     public WorldGenErebusMinable(int par1, int par2)
     {
-        this(par1, par2, mod_Erebus.umberstone.blockID);
+        this(par1, par2, ErebusMod.umberstone.blockID);
     }
 
     public WorldGenErebusMinable(int par1, int par2, int par3)

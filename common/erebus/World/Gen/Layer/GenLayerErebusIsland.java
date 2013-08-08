@@ -1,5 +1,7 @@
 package erebus.World.Gen.Layer;
 
+import net.minecraft.world.gen.layer.IntCache;
+
 public class GenLayerErebusIsland extends GenLayerErebus
 {
     public GenLayerErebusIsland(long par1)

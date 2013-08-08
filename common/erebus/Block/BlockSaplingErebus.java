@@ -1,7 +1,7 @@
 package erebus.Block;
 
 import erebus.core.proxy.CommonProxy;
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import erebus.World.Gen.WorldGenErebusHugeTree;
 import erebus.World.Gen.WorldGenErebusTrees;
 import erebus.World.Gen.WorldGenEucalyptus;
@@ -41,7 +41,7 @@ public class BlockSaplingErebus extends BlockSapling
         super(par1);
         float var3 = 0.4F;
         this.setBlockBounds(0.5F - var3, 0.0F, 0.5F - var3, 0.5F + var3, var3 * 2.0F, 0.5F + var3);
-        this.setCreativeTab(mod_Erebus.tabErebus);
+        this.setCreativeTab(ErebusMod.tabErebus);
     }
 
     @Override
@@ -90,7 +90,7 @@ public class BlockSaplingErebus extends BlockSapling
 
         if (var6 == 1)
         {
-        	var7 = new WorldGenEucalyptus(mod_Erebus.woodEucalyptus.blockID, 2, mod_Erebus.leavesEucalyptus.blockID, 2, 8 + par5Random.nextInt(4), 5, 8, Block.grass.blockID);
+        	var7 = new WorldGenEucalyptus(ErebusMod.woodEucalyptus.blockID, 2, ErebusMod.leavesEucalyptus.blockID, 2, 8 + par5Random.nextInt(4), 5, 8, Block.grass.blockID);
         }
         else if (var6 == 2)
         {
@@ -105,7 +105,7 @@ public class BlockSaplingErebus extends BlockSapling
                 {
                     if (this.isSameSapling(par1World, par2 + var8, par3, par4 + var9, 0) && this.isSameSapling(par1World, par2 + var8 + 1, par3, par4 + var9, 0) && this.isSameSapling(par1World, par2 + var8, par3, par4 + var9 + 1, 0) && this.isSameSapling(par1World, par2 + var8 + 1, par3, par4 + var9 + 1, 0))
                     {
-                        var7 = new WorldGenErebusHugeTree(true, 20 + par5Random.nextInt(5), 0, 0, true, mod_Erebus.woodMahogany.blockID, mod_Erebus.leavesMahogany.blockID);
+                        var7 = new WorldGenErebusHugeTree(true, 20 + par5Random.nextInt(5), 0, 0, true, ErebusMod.woodMahogany.blockID, ErebusMod.leavesMahogany.blockID);
                         var10 = true;
                         break;
                     }
@@ -124,7 +124,7 @@ public class BlockSaplingErebus extends BlockSapling
         {
             var9 = 0;
             var8 = 0;
-            var7 = new WorldGenErebusTrees(true, 5, 0, 0, false, mod_Erebus.woodMahogany.blockID, mod_Erebus.leavesMahogany.blockID, mod_Erebus.thorns.blockID);
+            var7 = new WorldGenErebusTrees(true, 5, 0, 0, false, ErebusMod.woodMahogany.blockID, ErebusMod.leavesMahogany.blockID, ErebusMod.thorns.blockID);
         }
         
         if (var10)

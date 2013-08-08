@@ -3,7 +3,7 @@ package erebus.Structures;
 import java.util.List;
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
@@ -21,7 +21,7 @@ public class ComponentSpiderTunnelsStairs extends ComponentSpiderTunnels
 	public static final WeightedRandomChestContent[] spiderTunnelsChestContents = new WeightedRandomChestContent[] {
 		new WeightedRandomChestContent(Item.ingotIron.itemID, 0, 1, 5, 5), 
 		new WeightedRandomChestContent(Item.goldNugget.itemID, 0, 2, 8, 8), 
-		new WeightedRandomChestContent(mod_Erebus.exoskeletonPlate.itemID, 0, 1, 5, 5), 
+		new WeightedRandomChestContent(ErebusMod.exoskeletonPlate.itemID, 0, 1, 5, 5), 
 		new WeightedRandomChestContent(Item.silk.itemID, 0, 1, 3, 15), 
 		new WeightedRandomChestContent(Item.spiderEye.itemID, 0, 1, 3, 3), 
 		new WeightedRandomChestContent(Item.glowstone.itemID, 0, 2, 8, 8), 
@@ -101,14 +101,14 @@ public class ComponentSpiderTunnelsStairs extends ComponentSpiderTunnels
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(6), 1 + par2Random.nextInt(3), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(6), 1 + par2Random.nextInt(3), par3StructureBoundingBox);
             
-            this.placeBlockAtCurrentPosition(par1World, mod_Erebus.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(6), 1 + par2Random.nextInt(3), par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(6), 1 + par2Random.nextInt(3), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestoneMossy.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(6), 1 + par2Random.nextInt(3), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(6), 1 + par2Random.nextInt(3), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.stone.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(6), 1 + par2Random.nextInt(3), par3StructureBoundingBox);
             
             if (par2Random.nextInt(2) == 0)
             {
-            	this.placeBlockAtCurrentPosition(par1World, mod_Erebus.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(6), 1 + par2Random.nextInt(3), par3StructureBoundingBox);
+            	this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(6), 1 + par2Random.nextInt(3), par3StructureBoundingBox);
             }
             if (par2Random.nextInt(2) == 0)
             {

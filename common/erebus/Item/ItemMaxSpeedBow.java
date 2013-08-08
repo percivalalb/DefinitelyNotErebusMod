@@ -5,7 +5,7 @@ import java.util.Random;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.core.proxy.CommonProxy;
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import erebus.api.Properties;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -239,7 +239,7 @@ public class ItemMaxSpeedBow extends Item
     @Override
     public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining)
 	   {
-    		if (usingItem != null && usingItem.getItem().itemID == mod_Erebus.maxSpeedBow.itemID)
+    		if (usingItem != null && usingItem.getItem().itemID == ErebusMod.maxSpeedBow.itemID)
 	        {
 	            int k = usingItem.getMaxItemUseDuration() - useRemaining;
 	            if (k >= 6) return this.iconArray[2];

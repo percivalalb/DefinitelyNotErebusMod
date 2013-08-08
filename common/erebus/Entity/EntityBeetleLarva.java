@@ -17,7 +17,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.FMLCommonHandler;
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
+import erebus.Entity.ai.EntityAIEatWoodenItem;
 import erebus.core.helper.ClientHelper;
 
 /**
@@ -186,10 +187,10 @@ public class EntityBeetleLarva extends EntityUndergroundAnimal {
     @Override
 	protected void dropFewItems(boolean par1, int par2) {
         if (this.isBurning()) {
-            this.dropItem(mod_Erebus.beetleLarvaCooked.itemID, 1);
+            this.dropItem(ErebusMod.beetleLarvaCooked.itemID, 1);
         }
         else {
-            this.dropItem(mod_Erebus.beetleLarvaRaw.itemID, 1);
+            this.dropItem(ErebusMod.beetleLarvaRaw.itemID, 1);
         }
     }
     
@@ -220,7 +221,7 @@ public class EntityBeetleLarva extends EntityUndergroundAnimal {
     	this.isEating = par1;
     }
     
-    protected void munchBlock() { 
+    public void munchBlock() { 
     	if (this.isEating && FMLCommonHandler.instance().getSide().isClient() && this.worldObj.getWorldTime() % 20 == 0) {
         	double woodX = this.aiEatWoodItem.WoodX;
         	double woodY = this.aiEatWoodItem.WoodY;

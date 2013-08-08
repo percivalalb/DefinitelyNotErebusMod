@@ -2,7 +2,7 @@ package erebus.World.Gen;
 
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -27,7 +27,7 @@ public class WorldGenSavannaTree extends WorldGenerator
 		}
 		for(int i = 0; i < this.height + 6; i++)
 		{
-			var1.setBlock(var3, var4 + i, var5, mod_Erebus.woodAcacia.blockID);
+			var1.setBlock(var3, var4 + i, var5, ErebusMod.woodAcacia.blockID);
 		}
 		int size = var1.rand.nextInt(this.height + 1);
 		WorldGenSavannaLeaves worldGen = new WorldGenSavannaLeaves(4+size, 3+size);

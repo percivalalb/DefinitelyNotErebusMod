@@ -3,7 +3,7 @@ package erebus.Structures;
 import java.util.List;
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.EnumDoor;
@@ -116,28 +116,28 @@ public class ComponentSpiderTunnelsCrossing extends ComponentSpiderTunnels
             this.fillWithRandomizedBlocks(par1World, par3StructureBoundingBox, 5, 1, 5, 7, 1, 6, false, par2Random, StructureSpiderTunnelsPieces.getSpiderTunnelsStones());
             
             //Randomising
-            this.placeBlockAtCurrentPosition(par1World, mod_Erebus.cobbleWebbed.blockID, 0, 1, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 1, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestoneMossy.blockID, 0, 1, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 1, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.stone.blockID, 0, 1, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             
-            this.placeBlockAtCurrentPosition(par1World, mod_Erebus.cobbleWebbed.blockID, 0, 8, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 8, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestoneMossy.blockID, 0, 8, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 8, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.stone.blockID, 0, 8, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 8, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 8, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             
-            this.placeBlockAtCurrentPosition(par1World, mod_Erebus.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 1, par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 1, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestoneMossy.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 1, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 1, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.stone.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 1, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 1, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 1, par3StructureBoundingBox);
             
-            this.placeBlockAtCurrentPosition(par1World, mod_Erebus.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 9, par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 9, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestoneMossy.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 9, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 9, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.stone.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 9, par3StructureBoundingBox);
@@ -145,28 +145,28 @@ public class ComponentSpiderTunnelsCrossing extends ComponentSpiderTunnels
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 9, par3StructureBoundingBox);
             
             //Randomising x 2
-            this.placeBlockAtCurrentPosition(par1World, mod_Erebus.cobbleWebbed.blockID, 0, 1, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 1, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestoneMossy.blockID, 0, 1, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 1, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.stone.blockID, 0, 1, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             
-            this.placeBlockAtCurrentPosition(par1World, mod_Erebus.cobbleWebbed.blockID, 0, 8, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 8, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestoneMossy.blockID, 0, 8, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 8, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.stone.blockID, 0, 8, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 8, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 8, 3 + par2Random.nextInt(5), 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             
-            this.placeBlockAtCurrentPosition(par1World, mod_Erebus.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 1, par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 1, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestoneMossy.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 1, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 1, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.stone.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 1, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 1, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 1, par3StructureBoundingBox);
             
-            this.placeBlockAtCurrentPosition(par1World, mod_Erebus.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 9, par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 9, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestoneMossy.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 9, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 9, par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.stone.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 9, par3StructureBoundingBox);
@@ -174,14 +174,14 @@ public class ComponentSpiderTunnelsCrossing extends ComponentSpiderTunnels
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(8), 3 + par2Random.nextInt(5), 9, par3StructureBoundingBox);
             
             //Floor
-            this.placeBlockAtCurrentPosition(par1World, mod_Erebus.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 3, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 3, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestoneMossy.blockID, 0, 1 + par2Random.nextInt(8), 3, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 1 + par2Random.nextInt(8), 3, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.stone.blockID, 0, 1 + par2Random.nextInt(8), 3, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(8), 3, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(8), 3, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             
-            this.placeBlockAtCurrentPosition(par1World, mod_Erebus.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 3, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 3, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestoneMossy.blockID, 0, 1 + par2Random.nextInt(8), 3, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 1 + par2Random.nextInt(8), 3, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.stone.blockID, 0, 1 + par2Random.nextInt(8), 3, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
@@ -189,14 +189,14 @@ public class ComponentSpiderTunnelsCrossing extends ComponentSpiderTunnels
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(8), 3, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             
             //Roof
-            this.placeBlockAtCurrentPosition(par1World, mod_Erebus.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 7, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 7, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestoneMossy.blockID, 0, 1 + par2Random.nextInt(8), 7, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 1 + par2Random.nextInt(8), 7, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.stone.blockID, 0, 1 + par2Random.nextInt(8), 7, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(8), 7, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(8), 7, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             
-            this.placeBlockAtCurrentPosition(par1World, mod_Erebus.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 7, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(8), 7, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestoneMossy.blockID, 0, 1 + par2Random.nextInt(8), 7, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 1 + par2Random.nextInt(8), 7, 1 + par2Random.nextInt(9), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.stone.blockID, 0, 1 + par2Random.nextInt(8), 7, 1 + par2Random.nextInt(9), par3StructureBoundingBox);

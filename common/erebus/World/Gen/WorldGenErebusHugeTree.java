@@ -2,7 +2,7 @@ package erebus.World.Gen;
 
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -134,12 +134,12 @@ public class WorldGenErebusHugeTree extends WorldGenerator
                             {
                                 if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 - 1, par4 + var10, par5) && this.thorns == true)
                                 {
-                                    this.setBlockAndMetadata(par1World, par3 - 1, par4 + var10, par5, mod_Erebus.thorns.blockID, 8);
+                                    this.setBlockAndMetadata(par1World, par3 - 1, par4 + var10, par5, ErebusMod.thorns.blockID, 8);
                                 }
 
                                 if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3, par4 + var10, par5 - 1) && this.thorns == true)
                                 {
-                                    this.setBlockAndMetadata(par1World, par3, par4 + var10, par5 - 1, mod_Erebus.thorns.blockID, 1);
+                                    this.setBlockAndMetadata(par1World, par3, par4 + var10, par5 - 1, ErebusMod.thorns.blockID, 1);
                                 }
                             }
                         }
@@ -156,12 +156,12 @@ public class WorldGenErebusHugeTree extends WorldGenerator
                                 {
                                     if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 2, par4 + var10, par5) && this.thorns == true)
                                     {
-                                        this.setBlockAndMetadata(par1World, par3 + 2, par4 + var10, par5, mod_Erebus.thorns.blockID, 2);
+                                        this.setBlockAndMetadata(par1World, par3 + 2, par4 + var10, par5, ErebusMod.thorns.blockID, 2);
                                     }
 
                                     if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 1, par4 + var10, par5 - 1) && this.thorns == true)
                                     {
-                                        this.setBlockAndMetadata(par1World, par3 + 1, par4 + var10, par5 - 1, mod_Erebus.thorns.blockID, 1);
+                                        this.setBlockAndMetadata(par1World, par3 + 1, par4 + var10, par5 - 1, ErebusMod.thorns.blockID, 1);
                                     }
                                 }
                             }
@@ -176,12 +176,12 @@ public class WorldGenErebusHugeTree extends WorldGenerator
                                 {
                                     if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 2, par4 + var10, par5 + 1) && this.thorns == true)
                                     {
-                                        this.setBlockAndMetadata(par1World, par3 + 2, par4 + var10, par5 + 1, mod_Erebus.thorns.blockID, 2);
+                                        this.setBlockAndMetadata(par1World, par3 + 2, par4 + var10, par5 + 1, ErebusMod.thorns.blockID, 2);
                                     }
 
                                     if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 1, par4 + var10, par5 + 2) && this.thorns == true)
                                     {
-                                        this.setBlockAndMetadata(par1World, par3 + 1, par4 + var10, par5 + 2, mod_Erebus.thorns.blockID, 4);
+                                        this.setBlockAndMetadata(par1World, par3 + 1, par4 + var10, par5 + 2, ErebusMod.thorns.blockID, 4);
                                     }
                                 }
                             }
@@ -196,12 +196,12 @@ public class WorldGenErebusHugeTree extends WorldGenerator
                                 {
                                     if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 - 1, par4 + var10, par5 + 1) && this.thorns == true)
                                     {
-                                        this.setBlockAndMetadata(par1World, par3 - 1, par4 + var10, par5 + 1, mod_Erebus.thorns.blockID, 8);
+                                        this.setBlockAndMetadata(par1World, par3 - 1, par4 + var10, par5 + 1, ErebusMod.thorns.blockID, 8);
                                     }
 
                                     if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3, par4 + var10, par5 + 2) && this.thorns == true)
                                     {
-                                        this.setBlockAndMetadata(par1World, par3, par4 + var10, par5 + 2, mod_Erebus.thorns.blockID, 4);
+                                        this.setBlockAndMetadata(par1World, par3, par4 + var10, par5 + 2, ErebusMod.thorns.blockID, 4);
                                     }
                                 }
                             }

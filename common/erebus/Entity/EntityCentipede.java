@@ -1,7 +1,7 @@
 package erebus.Entity;
 
 import java.util.Random;
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -52,105 +52,88 @@ public class EntityCentipede extends EntityMob
 	    this.func_110148_a(SharedMonsterAttributes.field_111264_e).func_111128_a(2.0D);
 	}
 	 
-	 public boolean getCanSpawnHere()
-	 {
-	 	 float f1 = this.getBrightness(1.0F);
+	@Override
+	public boolean getCanSpawnHere() {
+		float f1 = this.getBrightness(1.0F);
 
-	      if (f1 > 0.5F)
-	      {
-	     return true;
-	     }
-	     return super.getCanSpawnHere();
-
-	 }
+		if (f1 > 0.5F) {
+			return true;
+	    }
+	    return super.getCanSpawnHere();
+	}
 	 
-	 public int getAttackStrength(Entity par1Entity)
-		{
-			switch(worldObj.difficultySetting)
-			{
-			default:
-				return 4;
-			case 1:
-				return 4;
-			case 2:
-				return 4;
-			case 3: 
-				return 5;
-			}
+	//TODO attack strenght in new 1.6 system
+	public int getAttackStrength(Entity par1Entity) {
+		switch(worldObj.difficultySetting) {
+		default:
+			return 4;
+		case 1:
+			return 4;
+		case 2:
+			return 4;
+		case 3: 
+			return 5;
 		}
+	}
 
-	/**
-	 * Returns true if the newer Entity AI code should be run
-	 */
-	public boolean isAIEnabled()
-	{
+	@Override
+	public boolean isAIEnabled(){
 		return true;
 	}
 
-
 	@Override
-	public int getTotalArmorValue()
-	{
+	public int getTotalArmorValue() {
 		return 8;
 	}
 
-	protected String getLivingSound()
-	{
-		return "Centipede.Sounds.CentipedeSound";
+	@Override
+	protected String getLivingSound() {
+		return "erebus:CentipedeSound";
 	}
 
-	protected String getHurtSound()
-	{
-		return "Centipede.Sounds.CentipedeHurt";
+	@Override
+	protected String getHurtSound() {
+		return "erebus:CentipedeHurt";
 	}
 
-	protected String getDeathSound()
-	{
-		return "Centipede.Sounds.Squish";
+	@Override
+	protected String getDeathSound() {
+		return "erebus:squish";
 	}
 
 	protected String getTunnelingSound()
 	{
-		return "Centipede.Sounds.TunnelingSound";
+		return "erebus:TunnelingSound";
 	}
 
-	protected void getStepSound(int par1, int par2, int par3, int par4)
-	{
-		this.worldObj.playSoundAtEntity(this, "Centipede.Sounds.CentipedeWalk", 0.15F, 1.0F);
+	@Override
+	protected void playStepSound(int par1, int par2, int par3, int par4) {
+		this.worldObj.playSoundAtEntity(this, "erebus:CentipedeWalk", 0.15F, 1.0F);
 	}
 
 
-	/**
-	 * Returns the volume for the sounds this mob makes.
-	 */
-	protected float getSoundVolume()
-	{
+	@Override
+	protected float getSoundVolume() {
 		return 0.4F;
 	}
 
-	public EnumCreatureAttribute getCreatureAttribute()
-	{
+	@Override
+	public EnumCreatureAttribute getCreatureAttribute() {
 		return EnumCreatureAttribute.ARTHROPOD;
 	}
 
-	/**
-	 * Returns the item ID for the item the mob drops on death.
-	 */
-	protected int getDropItemId()
-	{
-		return mod_Erebus.exoskeletonPlate.itemID;
+	@Override
+	protected int getDropItemId() {
+		return ErebusMod.exoskeletonPlate.itemID;
 	}
 
-	/**
-	 * Drop 0-2 items of this living's type
-	 */
-	protected void dropFewItems(boolean par1, int par2)
-	{
+	@Override
+	protected void dropFewItems(boolean par1, int par2) {
 		int var3 = 4 + this.rand.nextInt(3);
 		int var4;
 		for (var4 = 0; var4 < var3; ++var4)
 		{
-			this.dropItem(mod_Erebus.exoskeletonPlate.itemID, 1);
+			this.dropItem(ErebusMod.exoskeletonPlate.itemID, 1);
 		}
 	}
 }

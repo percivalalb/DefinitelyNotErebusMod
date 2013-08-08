@@ -2,7 +2,7 @@ package erebus.World.Gen;
 
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import net.minecraft.block.Block;
 import net.minecraft.util.Direction;
 import net.minecraft.world.World;
@@ -36,7 +36,7 @@ public class WorldGenErebusTrees extends WorldGenerator
 
     public WorldGenErebusTrees(boolean par1)
     {
-        this(par1, 6, 0, 0, false, mod_Erebus.woodMahogany.blockID, mod_Erebus.leavesMahogany.blockID, mod_Erebus.thorns.blockID);
+        this(par1, 6, 0, 0, false, ErebusMod.woodMahogany.blockID, ErebusMod.leavesMahogany.blockID, ErebusMod.thorns.blockID);
     }
 
     public WorldGenErebusTrees(boolean par1, int par2, int par3, int par4, boolean par5, int par6, int par7, int par8)

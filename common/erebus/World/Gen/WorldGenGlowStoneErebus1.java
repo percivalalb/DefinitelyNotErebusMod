@@ -2,7 +2,7 @@ package erebus.World.Gen;
 
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -15,7 +15,7 @@ public class WorldGenGlowStoneErebus1 extends WorldGenerator
         {
             return false;
         }
-        else if (par1World.getBlockId(par3, par4 + 1, par5) != mod_Erebus.umberstone.blockID)
+        else if (par1World.getBlockId(par3, par4 + 1, par5) != ErebusMod.umberstone.blockID)
         {
             return false;
         }

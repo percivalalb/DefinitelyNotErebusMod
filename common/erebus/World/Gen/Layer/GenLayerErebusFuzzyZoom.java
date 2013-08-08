@@ -1,5 +1,7 @@
 package erebus.World.Gen.Layer;
 
+import net.minecraft.world.gen.layer.IntCache;
+
 public class GenLayerErebusFuzzyZoom extends GenLayerErebus
 {
     public GenLayerErebusFuzzyZoom(long par1, GenLayerErebus par3GenLayerErebus)

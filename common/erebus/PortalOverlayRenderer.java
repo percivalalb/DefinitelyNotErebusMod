@@ -45,7 +45,7 @@ public class PortalOverlayRenderer {
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, par1);
         Minecraft.getMinecraft().func_110434_K().func_110577_a(TextureMap.field_110575_b);
-        Icon icon = mod_Erebus.portalErebus.getBlockTextureFromSide(0);
+        Icon icon = ErebusMod.portalErebus.getBlockTextureFromSide(0);
         float f1 = icon.getMinU();
         float f2 = icon.getMinV();
         float f3 = icon.getMaxU();

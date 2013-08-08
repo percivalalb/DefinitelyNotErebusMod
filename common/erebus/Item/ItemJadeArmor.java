@@ -1,7 +1,7 @@
 package erebus.Item;
 
 import erebus.core.proxy.CommonProxy;
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.EnumArmorMaterial;
@@ -22,7 +22,7 @@ public class ItemJadeArmor extends ItemArmor {
      */
     public ItemJadeArmor(int id, EnumArmorMaterial armorMaterial, int renderIndex, int armorType) {
         super(id, armorMaterial, renderIndex, armorType);
-        this.setCreativeTab(mod_Erebus.tabErebus);
+        this.setCreativeTab(ErebusMod.tabErebus);
     }
     
     /**
@@ -30,7 +30,7 @@ public class ItemJadeArmor extends ItemArmor {
      */
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
-        if(stack.itemID == mod_Erebus.jadeHelmet.itemID || stack.itemID == mod_Erebus.jadeBody.itemID || stack.itemID == mod_Erebus.jadeBoots.itemID) {
+        if(stack.itemID == ErebusMod.jadeHelmet.itemID || stack.itemID == ErebusMod.jadeBody.itemID || stack.itemID == ErebusMod.jadeBoots.itemID) {
             return "erebus:textures/armor/jade_1.png";
         }
         else { //if(itemstack.itemID == mod_Erebus.exoskeletonLegs.itemID) {

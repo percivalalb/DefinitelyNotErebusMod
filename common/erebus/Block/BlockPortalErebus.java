@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import erebus.TeleportErebusClient;
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import erebus.api.Properties;
 
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -43,7 +43,7 @@ public class BlockPortalErebus extends BlockBreakable
      	if (entity.ridingEntity == null && entity.riddenByEntity == null && entity instanceof EntityPlayerMP) 
      	{
 			    EntityPlayerMP player = (EntityPlayerMP)entity;
-			    mod_Erebus.instance.packeterebushandler.getPlayer(player.username).setInPortal();	        	 
+			    ErebusMod.instance.packeterebushandler.getPlayer(player.username).setInPortal();	        	 
      	}
      }
   	 else if (side == Side.CLIENT && entity instanceof EntityPlayer)
@@ -200,7 +200,7 @@ public class BlockPortalErebus extends BlockBreakable
          {
              for (i1 = 0; i1 < 3; ++i1)
              {
-                 par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, mod_Erebus.portalErebus.blockID, 0, 2);
+                 par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, ErebusMod.portalErebus.blockID, 0, 2);
              }
          }
 

@@ -45,7 +45,7 @@ public class CommonErebusTickHandler implements ITickHandler
                 if (type.equals(EnumSet.of(TickType.PLAYER)))
 		        {
 		        	EntityPlayerMP player = (EntityPlayerMP)tickData[0];
-		            mod_Erebus.instance.packeterebushandler.onTick(player);
+		            ErebusMod.instance.packeterebushandler.onTick(player);
 		        }
 		        else if (type.equals(EnumSet.of(TickType.WORLD)))
 		        {

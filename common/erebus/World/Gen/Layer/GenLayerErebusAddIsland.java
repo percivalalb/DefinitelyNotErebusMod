@@ -1,6 +1,7 @@
 package erebus.World.Gen.Layer;
 
 import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerErebusAddIsland extends GenLayerErebus
 {

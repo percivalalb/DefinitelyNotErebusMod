@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import erebus.core.helper.LocalizationHelper;
 
 /**
@@ -40,7 +40,7 @@ public class LocalizationHandler {
         	String localizationFile = Localizations.LANG_RESOURCE_LOCATION + localization.getFile();
         	
             try {
-	            BufferedReader paramReader = new BufferedReader(new InputStreamReader(mod_Erebus.class.getResourceAsStream(localizationFile))); 
+	            BufferedReader paramReader = new BufferedReader(new InputStreamReader(ErebusMod.class.getResourceAsStream(localizationFile))); 
 				
 	            String line = "";
 				

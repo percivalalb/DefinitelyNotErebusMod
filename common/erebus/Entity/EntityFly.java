@@ -11,7 +11,7 @@ import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 
 public class EntityFly extends EntityAmbientCreature
 {
@@ -86,9 +86,6 @@ public class EntityFly extends EntityAmbientCreature
         return "erebus:squish";
     }
 
-    /**
-     * Returns true if this entity should push and be pushed by other entities when colliding.
-     */
     @Override
     public boolean canBePushed()
     {
@@ -318,7 +315,7 @@ public class EntityFly extends EntityAmbientCreature
         for (var4 = 0; var4 < var3; ++var4)*/
         if (this.rand.nextInt(10) == 0)
     	{
-            this.dropItem(mod_Erebus.flyWing.itemID, 1);        	
+            this.dropItem(ErebusMod.flyWing.itemID, 1);        	
     	}
     }
 }

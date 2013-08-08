@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.SpawnListEntry;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import erebus.Entity.EntityBeetle;
 import erebus.Entity.EntityBeetleLarva;
 import erebus.Entity.EntityFly;
@@ -94,7 +94,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
 			int j5 = z + rand.nextInt(16) + 8;
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenTallGrass(mod_Erebus.erebusGrass.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
+				(new WorldGenTallGrass(ErebusMod.erebusGrass.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 

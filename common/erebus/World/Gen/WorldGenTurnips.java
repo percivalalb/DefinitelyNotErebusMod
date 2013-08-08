@@ -2,7 +2,7 @@ package erebus.World.Gen;
 
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -19,7 +19,7 @@ public class WorldGenTurnips extends WorldGenerator
 
             if (par1World.isAirBlock(var7, var8, var9) && par1World.getBlockId(var7, var8 - 1, var9) == Block.grass.blockID)
             {
-                par1World.setBlock(var7, var8, var9, mod_Erebus.blockTurnip.blockID, 10, 3);
+                par1World.setBlock(var7, var8, var9, ErebusMod.blockTurnip.blockID, 10, 3);
             }
         }
 

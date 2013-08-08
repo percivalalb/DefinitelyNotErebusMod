@@ -3,7 +3,7 @@ package erebus.Structures;
 import java.util.List;
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import erebus.Entity.EntityTarantula;
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityWitch;
@@ -24,13 +24,13 @@ public class ComponentSpiderTunnelsCavern extends ComponentSpiderTunnels
 	public static final WeightedRandomChestContent[] spiderTunnelsBossChestContents = new WeightedRandomChestContent[] {
 		new WeightedRandomChestContent(Item.ingotIron.itemID, 0, 1, 5, 5), 
 		new WeightedRandomChestContent(Item.goldNugget.itemID, 0, 2, 8, 8), 
-		new WeightedRandomChestContent(mod_Erebus.exoskeletonPlate.itemID, 0, 1, 5, 5), 
+		new WeightedRandomChestContent(ErebusMod.exoskeletonPlate.itemID, 0, 1, 5, 5), 
 		new WeightedRandomChestContent(Item.silk.itemID, 0, 1, 3, 15), 
 		new WeightedRandomChestContent(Item.spiderEye.itemID, 0, 1, 3, 3), 
 		new WeightedRandomChestContent(Item.glowstone.itemID, 0, 2, 8, 8), 
 		new WeightedRandomChestContent(Item.flint.itemID, 0, 1, 4, 5),
 	
-		new WeightedRandomChestContent(mod_Erebus.maxSpeedBow.itemID, 0, 1, 1, 1)}; 
+		new WeightedRandomChestContent(ErebusMod.maxSpeedBow.itemID, 0, 1, 1, 1)}; 
 	
     
 	public ComponentSpiderTunnelsCavern(int par1, Random par2Random, StructureBoundingBox par3StructureBoundingBox, int par4)
@@ -83,38 +83,38 @@ public class ComponentSpiderTunnelsCavern extends ComponentSpiderTunnels
         this.placeBlockAtCurrentPosition(par1World, 0, 0, 6, 5, 8, par3StructureBoundingBox);
         
         //Small Eggs
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 8, 1, 1, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 9, 1, 2, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 8, 2, 1, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 9, 2, 2, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 9, 3, 1, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 8, 1, 1, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 9, 1, 2, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 8, 2, 1, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 9, 2, 2, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 9, 3, 1, par3StructureBoundingBox);
         
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 2, 6, 7, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 1, 6, 6, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 2, 5, 7, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 1, 5, 6, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 1, 4, 7, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 2, 6, 7, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 1, 6, 6, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 2, 5, 7, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 1, 5, 6, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 1, 4, 7, par3StructureBoundingBox);
         
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 2, 1, 14, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 1, 1, 13, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 2, 2, 14, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 1, 2, 13, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 1, 3, 14, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 2, 1, 14, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 1, 1, 13, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 2, 2, 14, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 1, 2, 13, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 1, 3, 14, par3StructureBoundingBox);
         
         //Large Egg
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 9, 6, 14, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 9, 5, 13, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 8, 5, 14, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 9, 2, 13, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 8, 2, 14, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 9, 1, 14, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 9, 6, 14, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 9, 5, 13, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 8, 5, 14, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 9, 2, 13, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 8, 2, 14, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 9, 1, 14, par3StructureBoundingBox);
         
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 9, 4, 12, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 8, 4, 13, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 7, 4, 14, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 9, 3, 12, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 8, 3, 13, par3StructureBoundingBox);
-        this.placeBlockAtCurrentPosition(par1World, mod_Erebus.blockSpiderSilk.blockID, 0, 7, 3, 14, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 9, 4, 12, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 8, 4, 13, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 7, 4, 14, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 9, 3, 12, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 8, 3, 13, par3StructureBoundingBox);
+        this.placeBlockAtCurrentPosition(par1World, ErebusMod.blockSpiderSilk.blockID, 0, 7, 3, 14, par3StructureBoundingBox);
                 
         byte var14 = 2;
         byte var7 = 0;
@@ -153,11 +153,11 @@ public class ComponentSpiderTunnelsCavern extends ComponentSpiderTunnels
                 this.hasSpawner = true;
                 if (par2Random.nextInt(5) == 0)
                 {
-                	par1World.setBlock(var10, var13, var11, mod_Erebus.caveSpiderSpawner.blockID, 0, 0);
+                	par1World.setBlock(var10, var13, var11, ErebusMod.caveSpiderSpawner.blockID, 0, 0);
                 }
                 else
                 {
-                	par1World.setBlock(var10, var13, var11, mod_Erebus.spiderSpawner.blockID, 0, 0);
+                	par1World.setBlock(var10, var13, var11, ErebusMod.spiderSpawner.blockID, 0, 0);
                 }
             }
         }
@@ -173,11 +173,11 @@ public class ComponentSpiderTunnelsCavern extends ComponentSpiderTunnels
                 this.hasSpawner = true;
                 if (par2Random.nextInt(5) == 0)
                 {
-                	par1World.setBlock(var10, var13, var11, mod_Erebus.caveSpiderSpawner.blockID, 0, 0);
+                	par1World.setBlock(var10, var13, var11, ErebusMod.caveSpiderSpawner.blockID, 0, 0);
                 }
                 else
                 {
-                	par1World.setBlock(var10, var13, var11, mod_Erebus.spiderSpawner.blockID, 0, 0);
+                	par1World.setBlock(var10, var13, var11, ErebusMod.spiderSpawner.blockID, 0, 0);
                 }
             }
         }
@@ -193,11 +193,11 @@ public class ComponentSpiderTunnelsCavern extends ComponentSpiderTunnels
                 this.hasSpawner = true;
                 if (par2Random.nextInt(5) == 0)
                 {
-                	par1World.setBlock(var10, var13, var11, mod_Erebus.caveSpiderSpawner.blockID, 0, 0);
+                	par1World.setBlock(var10, var13, var11, ErebusMod.caveSpiderSpawner.blockID, 0, 0);
                 }
                 else
                 {
-                	par1World.setBlock(var10, var13, var11, mod_Erebus.spiderSpawner.blockID, 0, 0);
+                	par1World.setBlock(var10, var13, var11, ErebusMod.spiderSpawner.blockID, 0, 0);
                 }
             }
         }
@@ -213,11 +213,11 @@ public class ComponentSpiderTunnelsCavern extends ComponentSpiderTunnels
                 this.hasSpawner = true;
                 if (par2Random.nextInt(5) == 0)
                 {
-                	par1World.setBlock(var10, var13, var11, mod_Erebus.caveSpiderSpawner.blockID, 0, 0);
+                	par1World.setBlock(var10, var13, var11, ErebusMod.caveSpiderSpawner.blockID, 0, 0);
                 }
                 else
                 {
-                	par1World.setBlock(var10, var13, var11, mod_Erebus.spiderSpawner.blockID, 0, 0);
+                	par1World.setBlock(var10, var13, var11, ErebusMod.spiderSpawner.blockID, 0, 0);
                 }
             }
         }
@@ -231,11 +231,11 @@ public class ComponentSpiderTunnelsCavern extends ComponentSpiderTunnels
                 this.hasSpawner = true;
                 if (par2Random.nextInt(5) == 0)
                 {
-                	par1World.setBlock(var10, var13, var11, mod_Erebus.caveSpiderSpawner.blockID, 0, 0);
+                	par1World.setBlock(var10, var13, var11, ErebusMod.caveSpiderSpawner.blockID, 0, 0);
                 }
                 else
                 {
-                	par1World.setBlock(var10, var13, var11, mod_Erebus.spiderSpawner.blockID, 0, 0);
+                	par1World.setBlock(var10, var13, var11, ErebusMod.spiderSpawner.blockID, 0, 0);
                 }
             }
         }

@@ -6,7 +6,7 @@ import java.util.Random;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import erebus.World.Biomes.BiomeGenBaseErebus;
 import erebus.World.Biomes.BiomeGenUndergroundDesert;
 import erebus.World.Biomes.BiomeGenUndergroundSavannah;
@@ -145,12 +145,12 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
                                 //Underground Water
                                 if (i1 * 8 + j1 < byte1)
                                 {
-                                    j2 = mod_Erebus.umberstone.blockID;
+                                    j2 = ErebusMod.umberstone.blockID;
                                 }
 
                                 if (d15 > 0.0D)
                                 {
-                                    j2 = mod_Erebus.umberstone.blockID;
+                                    j2 = ErebusMod.umberstone.blockID;
                                 }
 
                                 par3ArrayOfByte[l1] = (byte)j2;
@@ -188,8 +188,8 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
                 boolean flag1 = gravelNoise[i + j * 16] + 10 > 0.0D;
                 int k = (int)(stoneExclusivityNoise[i + j * 16] / 3D + 3D + hellRNG.nextDouble() * 0.25D);
                 int l = -1;
-                byte byte1 = (byte)mod_Erebus.umberstone.blockID;
-                byte byte2 = (byte)mod_Erebus.umberstone.blockID;
+                byte byte1 = (byte)ErebusMod.umberstone.blockID;
+                byte byte2 = (byte)ErebusMod.umberstone.blockID;
 
                 for (int i1 = 127; i1 >= 0; i1--)
                 {
@@ -213,9 +213,9 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
                     {
                         l = -1;
                         
-                        if (par3ArrayOfByte[j1] == 0 && par3ArrayOfByte[j1 - 1] == mod_Erebus.umberstone.blockID)
+                        if (par3ArrayOfByte[j1] == 0 && par3ArrayOfByte[j1 - 1] == ErebusMod.umberstone.blockID)
                         {
-                        	par3ArrayOfByte[j1 - 1] = (byte)mod_Erebus.umberstone.blockID;
+                        	par3ArrayOfByte[j1 - 1] = (byte)ErebusMod.umberstone.blockID;
                         }
                         continue;
                     }
@@ -224,19 +224,19 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
                     {
                         if (k <= 2)
                         {
-                            byte1 = (byte)mod_Erebus.umberstone.blockID;
-                            byte2 = (byte)mod_Erebus.umberstone.blockID;
+                            byte1 = (byte)ErebusMod.umberstone.blockID;
+                            byte2 = (byte)ErebusMod.umberstone.blockID;
                         }
                         else if (i1 >= byte0 - 4 && i1 <= byte0 + 1)
                         {
-                            byte1 = (byte)mod_Erebus.umberstone.blockID;
-                            byte2 = (byte)mod_Erebus.umberstone.blockID;
+                            byte1 = (byte)ErebusMod.umberstone.blockID;
+                            byte2 = (byte)ErebusMod.umberstone.blockID;
                         }
 
                         //Underground Water
                         if (i1 < byte0 && byte1 == 0)
                         {
-                            byte1 = (byte)mod_Erebus.umberstone.blockID;
+                            byte1 = (byte)ErebusMod.umberstone.blockID;
                         }
 
                         l = k;
@@ -259,7 +259,7 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
                     
                     if (par3ArrayOfByte[j1 + 1] == 0 && par3ArrayOfByte[j1] == Block.dirt.blockID)
                     {
-                    	par3ArrayOfByte[j1] = (byte)mod_Erebus.umberstone.blockID;
+                    	par3ArrayOfByte[j1] = (byte)ErebusMod.umberstone.blockID;
                     }
                 }
             }
@@ -634,14 +634,14 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
                         {
                             var13 = -1;
                         }
-                        else if (var18 == mod_Erebus.umberstone.blockID || var18 == mod_Erebus.umberstoneID - 256) //Double check for the "itemblock"
+                        else if (var18 == ErebusMod.umberstone.blockID || var18 == ErebusMod.umberstoneID - 256) //Double check for the "itemblock"
                         {
                             if (var13 == -1)
                             {
                                 if (var12 <= 0)
                                 {
                                     var14 = 0;
-                                    var15 = (byte)mod_Erebus.umberstone.blockID;
+                                    var15 = (byte)ErebusMod.umberstone.blockID;
                                 }
                                 else if (var16 >= var5 - 4 && var16 <= var5 + 1)
                                 {

@@ -2,7 +2,7 @@ package erebus.Entity;
 
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -18,14 +18,12 @@ import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
-public class EntityBeetle extends EntityUndergroundAnimal
-{
+public class EntityBeetle extends EntityUndergroundAnimal {
 
 	public int skin = rand.nextInt(4);
 
-	public EntityBeetle(World par1World)
-	{
-		super(par1World);		
+	public EntityBeetle(World par1World) {
+		super(par1World);
 		this.setSize(0.9F, 0.9F);
 		this.getNavigator().setAvoidsWater(true);
 		this.tasks.addTask(0, new EntityAISwimming(this));
@@ -36,11 +34,8 @@ public class EntityBeetle extends EntityUndergroundAnimal
 		this.tasks.addTask(7, new EntityAILookIdle(this));
 	}
 
-	/**
-	 * Returns true if the newer Entity AI code should be run
-	 */
-	public boolean isAIEnabled()
-	{
+	@Override
+	public boolean isAIEnabled() {
 		return true;
 	}
 
@@ -52,61 +47,43 @@ public class EntityBeetle extends EntityUndergroundAnimal
 	}
 	
 	@Override
-	public int getTotalArmorValue()
-	{
+	public int getTotalArmorValue() {
 		return 4;
 	}
 
-	/**
-	 * Returns the sound this mob makes while it's alive.
-	 */
-	protected String getLivingSound()
-	{
+	@Override
+	protected String getLivingSound() {
 		return null;
 	}
 
-	/**
-	 * Returns the sound this mob makes when it is hurt.
-	 */
-	protected String getHurtSound()
-	{
+	@Override
+	protected String getHurtSound() {
 		return null;
 	}
 
-	/**
-	 * Returns the sound this mob makes on death.
-	 */
-	protected String getDeathSound()
-	{
+	@Override
+	protected String getDeathSound() {
 		return null;
 	}
 
-	/**
-	 * Returns the volume for the sounds this mob makes.
-	 */
+	@Override
 	protected float getSoundVolume()
 	{
 		return 0.4F;
 	}
 
-	/**
-	 * Returns the item ID for the item the mob drops on death.
-	 */
-	protected int getDropItemId()
-	{
-		return mod_Erebus.exoskeletonPlate.itemID;
+	@Override
+	protected int getDropItemId() {
+		return ErebusMod.exoskeletonPlate.itemID;
 	}
 
-	/**
-	 * Drop 0-2 items of this living's type
-	 */
-	protected void dropFewItems(boolean par1, int par2)
-	{
+	@Override
+	protected void dropFewItems(boolean par1, int par2) {
 		int var3 = this.rand.nextInt(4) + this.rand.nextInt(1 + par2);
 		int var4;
 		for (var4 = 0; var4 < var3; ++var4)
 		{
-			this.dropItem(mod_Erebus.exoskeletonPlate.itemID, 1);
+			this.dropItem(ErebusMod.exoskeletonPlate.itemID, 1);
 		}
 	}
 }

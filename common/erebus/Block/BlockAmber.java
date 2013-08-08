@@ -3,7 +3,7 @@ package erebus.Block;
 import java.util.Random;
 
 import erebus.core.proxy.CommonProxy;
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import erebus.World.Gen.WorldGenMossbarkTree;
 import erebus.api.Properties;
 
@@ -51,13 +51,13 @@ public class BlockAmber extends Block
     
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-    	if(this.blockID == mod_Erebus.blockAmber.blockID) {
+    	if(this.blockID == ErebusMod.blockAmber.blockID) {
             this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "blockAmber");	
     	}
-    	else if(this.blockID == mod_Erebus.glassAmber.blockID) {
+    	else if(this.blockID == ErebusMod.glassAmber.blockID) {
     	    this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "glassAmber");	
     	}
-    	else if(this.blockID == mod_Erebus.brickAmber.blockID) {
+    	else if(this.blockID == ErebusMod.brickAmber.blockID) {
     	    this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "brickAmber");	
     	}
     }

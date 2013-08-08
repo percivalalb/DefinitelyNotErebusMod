@@ -2,7 +2,7 @@ package erebus.World.Gen;
 
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
@@ -26,7 +26,7 @@ public class WorldGenSavannaLeaves extends WorldGenerator
 			{
 				for(int w2 = -(this.width - h); w2 < (this.width - h) + 1; w2++)
 	    		{
-					if(par1World.getBlockId(par3 + w, par6 + h, par5 + w2) == 0)par1World.setBlock(par3 + w, par6 + h, par5 + w2, mod_Erebus.leavesAcacia.blockID);
+					if(par1World.getBlockId(par3 + w, par6 + h, par5 + w2) == 0)par1World.setBlock(par3 + w, par6 + h, par5 + w2, ErebusMod.leavesAcacia.blockID);
 	    		}
 			}
 		}

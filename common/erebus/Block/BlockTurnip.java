@@ -1,6 +1,6 @@
 package erebus.Block;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 import erebus.api.Properties;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -49,7 +49,7 @@ public class BlockTurnip extends BlockCrops
      */
     protected int getSeedItem()
     {
-        return mod_Erebus.turnip.itemID;
+        return ErebusMod.turnip.itemID;
     }
     
     @Override
@@ -67,7 +67,7 @@ public class BlockTurnip extends BlockCrops
      */
     protected int getCropItem()
     {
-        return mod_Erebus.turnip.itemID;
+        return ErebusMod.turnip.itemID;
     }
 
     @SideOnly(Side.CLIENT)

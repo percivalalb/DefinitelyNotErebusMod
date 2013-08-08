@@ -5,7 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
 
-import erebus.mod_Erebus;
+import erebus.ErebusMod;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
@@ -29,6 +29,6 @@ public class BlockStairsErebus extends BlockStairs {
     public BlockStairsErebus(int par1, Block par2Block, int par3)
     {
         super(par1, par2Block, par3);
-        this.setCreativeTab(mod_Erebus.tabErebus);
+        this.setCreativeTab(ErebusMod.tabErebus);
     }
 }

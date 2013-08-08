@@ -1,5 +1,7 @@
 package erebus.World.Gen.Layer;
 
+import net.minecraft.world.gen.layer.IntCache;
+
 public class GenLayerErebusVoronoiZoom extends GenLayerErebus
 {
     public GenLayerErebusVoronoiZoom(long par1, GenLayerErebus par3GenLayerErebus)

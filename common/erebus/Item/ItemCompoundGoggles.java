@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import erebus.mod_Erebus; 
+import erebus.ErebusMod; 
  
 /**
  * @author ProPercivalalb
@@ -17,12 +17,12 @@ public class ItemCompoundGoggles extends ItemArmor  {
   
 	public ItemCompoundGoggles(int i, EnumArmorMaterial enumarmormaterial, int j, int k)   { 
         super(i, enumarmormaterial, j, k); 
-        this.setCreativeTab(mod_Erebus.tabErebus); 
+        this.setCreativeTab(ErebusMod.tabErebus); 
     }  
   
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) { 
-        if(stack.itemID == mod_Erebus.compoundGoggles.itemID) { 
+        if(stack.itemID == ErebusMod.compoundGoggles.itemID) { 
             return "erebus:textures/armor/goggles_1.png"; 
         } 
         else return null; 

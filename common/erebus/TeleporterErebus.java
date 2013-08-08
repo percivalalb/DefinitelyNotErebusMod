@@ -110,9 +110,9 @@ public class TeleporterErebus extends Teleporter
 
                     for (int var26 = this.field_85192_a.getActualHeight() - 1; var26 >= 0; --var26)
                     {
-                        if (this.field_85192_a.getBlockId(var48, var26, var23) == mod_Erebus.portalErebus.blockID)
+                        if (this.field_85192_a.getBlockId(var48, var26, var23) == ErebusMod.portalErebus.blockID)
                         {
-                            while (this.field_85192_a.getBlockId(var48, var26 - 1, var23) == mod_Erebus.portalErebus.blockID)
+                            while (this.field_85192_a.getBlockId(var48, var26 - 1, var23) == ErebusMod.portalErebus.blockID)
                             {
                                 --var26;
                             }
@@ -146,22 +146,22 @@ public class TeleporterErebus extends Teleporter
             var27 = (double)var14 + 0.5D;
             int var50 = -1;
 
-            if (this.field_85192_a.getBlockId(var12 - 1, var13, var14) == mod_Erebus.portalErebus.blockID)
+            if (this.field_85192_a.getBlockId(var12 - 1, var13, var14) == ErebusMod.portalErebus.blockID)
             {
                 var50 = 2;
             }
 
-            if (this.field_85192_a.getBlockId(var12 + 1, var13, var14) == mod_Erebus.portalErebus.blockID)
+            if (this.field_85192_a.getBlockId(var12 + 1, var13, var14) == ErebusMod.portalErebus.blockID)
             {
                 var50 = 0;
             }
 
-            if (this.field_85192_a.getBlockId(var12, var13, var14 - 1) == mod_Erebus.portalErebus.blockID)
+            if (this.field_85192_a.getBlockId(var12, var13, var14 - 1) == ErebusMod.portalErebus.blockID)
             {
                 var50 = 3;
             }
 
-            if (this.field_85192_a.getBlockId(var12, var13, var14 + 1) == mod_Erebus.portalErebus.blockID)
+            if (this.field_85192_a.getBlockId(var12, var13, var14 + 1) == ErebusMod.portalErebus.blockID)
             {
                 var50 = 1;
             }
@@ -467,7 +467,7 @@ public class TeleporterErebus extends Teleporter
                     var23 = var15 + var21;
                     var24 = var16 + (var20 - 1) * var18;
                     var33 = var20 == 0 || var20 == 3 || var21 == -1 || var21 == 3;
-                    this.field_85192_a.setBlock(var22, var23, var24, var33 ? Block.stoneBrick.blockID : mod_Erebus.portalErebus.blockID, 1, 0);
+                    this.field_85192_a.setBlock(var22, var23, var24, var33 ? Block.stoneBrick.blockID : ErebusMod.portalErebus.blockID, 1, 0);
                 }
             }
 

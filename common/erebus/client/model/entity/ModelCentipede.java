@@ -1,11 +1,12 @@
 package erebus.client.model.entity;
 
-
 import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.EntityDragon;
 import net.minecraft.util.MathHelper;
 
@@ -506,7 +507,8 @@ public class ModelCentipede extends ModelBase
     model.rotateAngleZ = z;
   }
   
-  public void setLivingAnimations(EntityLiving par1EntityLiving, float par2, float par3, float par4)
+  @Override
+  public void setLivingAnimations(EntityLivingBase par1EntityLiving, float par2, float par3, float par4)
   {
 	  	float ba = MathHelper.cos(par2 * 1.0F) * 1.5F * par3;
 	  	float bb = MathHelper.cos(par2 + 1.0F * 1.0F) * 2.25F * par3;
@@ -650,6 +652,7 @@ public class ModelCentipede extends ModelBase
 	      this.LLE3.rotateAngleZ = MathHelper.cos(par2 +3.0F * 1.0F) * 0.5F * par3 + 0.5235988F;
   }
   
+  @Override
   public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
   {
       this.Head1.rotateAngleY = par4  / (180F / (float)Math.PI);

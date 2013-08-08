@@ -73,7 +73,6 @@ import erebus.Entity.EntityBeetle;
 import erebus.Entity.EntityBeetleLarva;
 import erebus.Entity.EntityCentipede;
 import erebus.Entity.EntityFly;
-import erebus.Entity.EntityGreenfly;
 import erebus.Entity.EntityMosquito;
 import erebus.Entity.EntityTarantula;
 import erebus.Entity.EntityVelvetWorm;

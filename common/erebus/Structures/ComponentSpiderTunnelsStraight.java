@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.EnumDoor;
@@ -69,7 +70,7 @@ public class ComponentSpiderTunnelsStraight extends ComponentSpiderTunnels
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestone.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(5), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(5), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.web.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(5), par3StructureBoundingBox);
-            this.placeBlockAtCurrentPosition(par1World, ErebusMod.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(5), par3StructureBoundingBox);
+            this.placeBlockAtCurrentPosition(par1World, ModBlocks.cobbleWebbed.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(5), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.cobblestoneMossy.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(5), par3StructureBoundingBox);
             this.placeBlockAtCurrentPosition(par1World, Block.stone.blockID, 0, 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(3), 1 + par2Random.nextInt(5), par3StructureBoundingBox);
                         

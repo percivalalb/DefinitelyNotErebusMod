@@ -9,6 +9,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import erebus.ErebusMod; 
+import erebus.ModItems;
  
 /**
  * @author ProPercivalalb
@@ -22,7 +23,7 @@ public class ItemCompoundGoggles extends ItemArmor  {
   
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) { 
-        if(stack.itemID == ErebusMod.compoundGoggles.itemID) { 
+        if(stack.itemID == ModItems.compoundGoggles.itemID) { 
             return "erebus:textures/armor/goggles_1.png"; 
         } 
         else return null; 

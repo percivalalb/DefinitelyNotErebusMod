@@ -18,6 +18,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.FMLCommonHandler;
 import erebus.ErebusMod;
+import erebus.ModItems;
 import erebus.entity.ai.EntityAIEatWoodenItem;
 import erebus.core.helper.ClientHelper;
 
@@ -187,10 +188,10 @@ public class EntityBeetleLarva extends EntityUndergroundAnimal {
     @Override
 	protected void dropFewItems(boolean par1, int par2) {
         if (this.isBurning()) {
-            this.dropItem(ErebusMod.beetleLarvaCooked.itemID, 1);
+            this.dropItem(ModItems.beetleLarvaCooked.itemID, 1);
         }
         else {
-            this.dropItem(ErebusMod.beetleLarvaRaw.itemID, 1);
+            this.dropItem(ModItems.beetleLarvaRaw.itemID, 1);
         }
     }
     

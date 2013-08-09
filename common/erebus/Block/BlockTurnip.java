@@ -1,6 +1,7 @@
 package erebus.block;
 
 import erebus.ErebusMod;
+import erebus.ModItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -43,12 +44,10 @@ public class BlockTurnip extends BlockCrops
         }
     }
 
-    /**
-     * Generate a seed ItemStack for this crop.
-     */
+    @Override
     protected int getSeedItem()
     {
-        return ErebusMod.turnip.itemID;
+        return ModItems.turnip.itemID;
     }
     
     @Override
@@ -61,12 +60,10 @@ public class BlockTurnip extends BlockCrops
         return (soil != null && soil == Block.grass || soil == Block.tilledField || soil == Block.dirt);
     }
 
-    /**
-     * Generate a crop produce ItemStack for this crop.
-     */
+    @Override
     protected int getCropItem()
     {
-        return ErebusMod.turnip.itemID;
+        return ModItems.turnip.itemID;
     }
 
     @SideOnly(Side.CLIENT)

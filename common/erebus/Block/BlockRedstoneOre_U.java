@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 import erebus.world.feature.WorldGenBigLake;
 
 public class BlockRedstoneOre_U extends Block
@@ -77,9 +78,9 @@ public class BlockRedstoneOre_U extends Block
     {
         this.sparkle(par1World, par2, par3, par4);
 
-        if (this.blockID == ErebusMod.oreRedstone_U.blockID)
+        if (this.blockID == ModBlocks.oreRedstone_U.blockID)
         {
-            par1World.setBlock(par2, par3, par4, ErebusMod.oreRedstoneGlowing_U.blockID);
+            par1World.setBlock(par2, par3, par4, ModBlocks.oreRedstoneGlowing_U.blockID);
         }
     }
 
@@ -89,9 +90,9 @@ public class BlockRedstoneOre_U extends Block
     @Override
     public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
     {
-        if (this.blockID == ErebusMod.oreRedstoneGlowing_U.blockID)
+        if (this.blockID == ModBlocks.oreRedstoneGlowing_U.blockID)
         {
-            par1World.setBlock(par2, par3, par4, ErebusMod.oreRedstone_U.blockID);
+            par1World.setBlock(par2, par3, par4, ModBlocks.oreRedstone_U.blockID);
         }
     }
 
@@ -209,7 +210,7 @@ public class BlockRedstoneOre_U extends Block
     @Override
     protected ItemStack createStackedBlock(int par1)
     {
-        return new ItemStack(ErebusMod.oreRedstone_U);
+        return new ItemStack(ModBlocks.oreRedstone_U);
     }
     
     @Override

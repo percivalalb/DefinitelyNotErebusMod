@@ -1,6 +1,7 @@
 package erebus.entity;
 
 import erebus.ErebusMod;
+import erebus.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -142,10 +143,10 @@ public class EntityTarantula extends EntitySpider {
 		this.dropItem(Item.silk.itemID, stringDrop + par2);
 
 		if (this.isBurning()) {
-			this.dropItem(ErebusMod.legTarantulaCooked.itemID, legDrop + par2);
+			this.dropItem(ModItems.legTarantulaCooked.itemID, legDrop + par2);
         }
 		else {
-			this.dropItem(ErebusMod.legTarantula.itemID, legDrop + par2);
+			this.dropItem(ModItems.legTarantula.itemID, legDrop + par2);
 		}
         
 		this.dropItem(Item.spiderEye.itemID, chanceFiftyFifty + par2);

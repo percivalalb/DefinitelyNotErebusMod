@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 import erebus.entity.*;
 import erebus.world.*;
 import erebus.world.feature.WorldGenAmber;
@@ -45,8 +46,8 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
         spawnableMonsterList.add(new SpawnListEntry(EntityCaveSpider.class, 10, 1, 4));
         spawnableMonsterList.add(new SpawnListEntry(EntityTarantula.class, 5, 1, 4));
         spawnableCaveCreatureList.add(new SpawnListEntry(EntityFly.class, 10, 8, 8));
-        this.topBlock = (byte)ErebusMod.umberstone.blockID;
-        this.fillerBlock = (byte)ErebusMod.umberstone.blockID;
+        this.topBlock = (byte)ModBlocks.umberstone.blockID;
+        this.fillerBlock = (byte)ModBlocks.umberstone.blockID;
     }
     
     public void decorate(World worldObj, Random rand, int x, int z)
@@ -117,7 +118,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
                 		{
             				if(worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
             		    	{
-            					worldObj.setBlock(posX3, posY3 - c, posZ3, ErebusMod.thorns.blockID, 1, 3);
+            					worldObj.setBlock(posX3, posY3 - c, posZ3, ModBlocks.thorns.blockID, 1, 3);
             		    	}
                 		}
             		}
@@ -127,7 +128,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
                 		{
             				if(worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
             		    	{
-            					worldObj.setBlock(posX3, posY3 - c, posZ3, ErebusMod.thorns.blockID, 2, 3);
+            					worldObj.setBlock(posX3, posY3 - c, posZ3, ModBlocks.thorns.blockID, 2, 3);
             		    	}
                 		}
             		}
@@ -137,7 +138,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
                 		{
             				if(worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
             		    	{
-            					worldObj.setBlock(posX3, posY3 - c, posZ3, ErebusMod.thorns.blockID, 4, 3);
+            					worldObj.setBlock(posX3, posY3 - c, posZ3, ModBlocks.thorns.blockID, 4, 3);
             		    	}
                 		}
             		}
@@ -147,7 +148,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
                 		{
             				if(worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
             		    	{
-            					worldObj.setBlock(posX3, posY3 - c, posZ3, ErebusMod.thorns.blockID, 0, 3);
+            					worldObj.setBlock(posX3, posY3 - c, posZ3, ModBlocks.thorns.blockID, 0, 3);
             		    	}
                 		}
             		}
@@ -174,7 +175,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
         		int j2 = x + rand.nextInt(16) + 8;
         		int l3 = rand.nextInt(120);
             	int j5 = z + rand.nextInt(16) + 8;
-            	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == ErebusMod.umberstone.blockID)
+            	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == ModBlocks.umberstone.blockID)
             	{
             		(new WorldGenAmber()).generate(worldObj, rand, j2, l3, j5);
             	}
@@ -203,7 +204,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
         		int j2 = x + rand.nextInt(16) + 8;
         		int l3 = rand.nextInt(120);
             	int j5 = z + rand.nextInt(16) + 8;
-            	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == ErebusMod.umberstone.blockID)
+            	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == ModBlocks.umberstone.blockID)
             	{
             		(new WorldGenBigMushroomErebus(0)).generate(worldObj, rand, j2, l3, j5);
             	}
@@ -214,7 +215,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
         		int j2 = x + rand.nextInt(16) + 8;
         		int l3 = rand.nextInt(120);
             	int j5 = z + rand.nextInt(16) + 8;
-            	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == ErebusMod.umberstone.blockID)
+            	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == ModBlocks.umberstone.blockID)
             	{
             		(new WorldGenBigMushroomErebus(1)).generate(worldObj, rand, j2, l3, j5);
             	}
@@ -281,7 +282,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
                 int var6 = x + rand.nextInt(16);
                 int var7 = rand.nextInt(128);
                 int var8 = z + rand.nextInt(16);
-                (new WorldGenMinable(ErebusMod.oreFossil.blockID, 3)).generate(worldObj, rand, var6, var7, var8);
+                (new WorldGenMinable(ModBlocks.oreFossil.blockID, 3)).generate(worldObj, rand, var6, var7, var8);
             }
     	}
     }
@@ -354,7 +355,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
             		{
         				if(worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
         		    	{
-        					worldObj.setBlock(posX3, posY3 - c, posZ3, ErebusMod.thorns.blockID, 1, 3);
+        					worldObj.setBlock(posX3, posY3 - c, posZ3, ModBlocks.thorns.blockID, 1, 3);
         		    	}
             		}
         		}
@@ -364,7 +365,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
             		{
         				if(worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
         		    	{
-        					worldObj.setBlock(posX3, posY3 - c, posZ3, ErebusMod.thorns.blockID, 2, 3);
+        					worldObj.setBlock(posX3, posY3 - c, posZ3, ModBlocks.thorns.blockID, 2, 3);
         		    	}
             		}
         		}
@@ -374,7 +375,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
             		{
         				if(worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
         		    	{
-        					worldObj.setBlock(posX3, posY3 - c, posZ3, ErebusMod.thorns.blockID, 4, 3);
+        					worldObj.setBlock(posX3, posY3 - c, posZ3, ModBlocks.thorns.blockID, 4, 3);
         		    	}
             		}
         		}
@@ -384,7 +385,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
             		{
         				if(worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
         		    	{
-        					worldObj.setBlock(posX3, posY3 - c, posZ3, ErebusMod.thorns.blockID, 0, 3);
+        					worldObj.setBlock(posX3, posY3 - c, posZ3, ModBlocks.thorns.blockID, 0, 3);
         		    	}
             		}
         		}
@@ -412,7 +413,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
     		int j2 = x + rand.nextInt(16) + 8;
     		int l3 = rand.nextInt(120);
         	int j5 = z + rand.nextInt(16) + 8;
-        	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == ErebusMod.umberstone.blockID)
+        	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == ModBlocks.umberstone.blockID)
         	{
         		(new WorldGenAmber()).generate(worldObj, rand, j2, l3, j5);
         	}
@@ -441,7 +442,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
     		int j2 = x + rand.nextInt(16) + 8;
     		int l3 = rand.nextInt(120);
         	int j5 = z + rand.nextInt(16) + 8;
-        	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == ErebusMod.umberstone.blockID)
+        	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == ModBlocks.umberstone.blockID)
         	{
         		(new WorldGenBigMushroomErebus(0)).generate(worldObj, rand, j2, l3, j5);
         	}
@@ -452,7 +453,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
     		int j2 = x + rand.nextInt(16) + 8;
     		int l3 = rand.nextInt(120);
         	int j5 = z + rand.nextInt(16) + 8;
-        	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == ErebusMod.umberstone.blockID)
+        	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == ModBlocks.umberstone.blockID)
         	{
         		(new WorldGenBigMushroomErebus(1)).generate(worldObj, rand, j2, l3, j5);
         	}
@@ -463,7 +464,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
             int var6 = x + rand.nextInt(16);
             int var7 = rand.nextInt(128);
             int var8 = z + rand.nextInt(16);
-            (new WorldGenErebusMinable(ErebusMod.oreCoal_U.blockID, 10)).generate(worldObj, rand, var6, var7, var8);
+            (new WorldGenErebusMinable(ModBlocks.oreCoal_U.blockID, 10)).generate(worldObj, rand, var6, var7, var8);
         }
         
         for (int var5 = 0; var5 < 20; ++var5)
@@ -471,7 +472,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
             int var6 = x + rand.nextInt(16);
             int var7 = rand.nextInt(128);
             int var8 = z + rand.nextInt(16);
-            (new WorldGenErebusMinable(ErebusMod.oreIron_U.blockID, 8)).generate(worldObj, rand, var6, var7, var8);
+            (new WorldGenErebusMinable(ModBlocks.oreIron_U.blockID, 8)).generate(worldObj, rand, var6, var7, var8);
         }
         
         for (int var5 = 0; var5 < 4; ++var5)
@@ -479,7 +480,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
             int var6 = x + rand.nextInt(16);
             int var7 = rand.nextInt(128);
             int var8 = z + rand.nextInt(16);
-            (new WorldGenErebusMinable(ErebusMod.oreGold_U.blockID, 8)).generate(worldObj, rand, var6, var7, var8);
+            (new WorldGenErebusMinable(ModBlocks.oreGold_U.blockID, 8)).generate(worldObj, rand, var6, var7, var8);
         }
         
         for (int var5 = 0; var5 < 1; ++var5)
@@ -487,7 +488,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
             int var6 = x + rand.nextInt(16);
             int var7 = rand.nextInt(128);
             int var8 = z + rand.nextInt(16);
-            (new WorldGenErebusMinable(ErebusMod.oreLapis_U.blockID, 6)).generate(worldObj, rand, var6, var7, var8);
+            (new WorldGenErebusMinable(ModBlocks.oreLapis_U.blockID, 6)).generate(worldObj, rand, var6, var7, var8);
         }    
         
         for (int var5 = 0; var5 < 8; ++var5)
@@ -495,7 +496,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
             int var6 = x + rand.nextInt(16);
             int var7 = rand.nextInt(128);
             int var8 = z + rand.nextInt(16);
-            (new WorldGenErebusMinable(ErebusMod.oreRedstone_U.blockID, 7)).generate(worldObj, rand, var6, var7, var8);
+            (new WorldGenErebusMinable(ModBlocks.oreRedstone_U.blockID, 7)).generate(worldObj, rand, var6, var7, var8);
         }
         
         for (int var5 = 0; var5 < 1; ++var5)
@@ -503,7 +504,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
             int var6 = x + rand.nextInt(16);
             int var7 = rand.nextInt(128);
             int var8 = z + rand.nextInt(16);
-            (new WorldGenErebusMinable(ErebusMod.oreDiamond_U.blockID, 1)).generate(worldObj, rand, var6, var7, var8);
+            (new WorldGenErebusMinable(ModBlocks.oreDiamond_U.blockID, 1)).generate(worldObj, rand, var6, var7, var8);
         }  
         
         for (int var5 = 0; var5 < 1; ++var5)
@@ -511,7 +512,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
             int var6 = x + rand.nextInt(16);
             int var7 = rand.nextInt(128);
             int var8 = z + rand.nextInt(16);
-            (new WorldGenErebusMinable(ErebusMod.oreJade_U.blockID, 4)).generate(worldObj, rand, var6, var7, var8);
+            (new WorldGenErebusMinable(ModBlocks.oreJade_U.blockID, 4)).generate(worldObj, rand, var6, var7, var8);
         }  
         
         for (int var5 = 0; var5 < 20; ++var5)
@@ -519,7 +520,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
             int var6 = x + rand.nextInt(16);
             int var7 = rand.nextInt(128);
             int var8 = z + rand.nextInt(16);
-            (new WorldGenErebusMinable(ErebusMod.oreFossil.blockID, 3)).generate(worldObj, rand, var6, var7, var8);
+            (new WorldGenErebusMinable(ModBlocks.oreFossil.blockID, 3)).generate(worldObj, rand, var6, var7, var8);
         }
 	}
 }

@@ -83,10 +83,10 @@ public class BlockFern extends BlockUndergroundFlower implements IShearable
         return ret;
     }
     
-    /*@Override
+    @Override
     public void registerIcons(IconRegister par1IconRegister) {
         this.blockIcon = par1IconRegister.registerIcon("erebus:fern");
-    }*/
+    }
     
     @Override
     public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int i, int j, int k, int l) {

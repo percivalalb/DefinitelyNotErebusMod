@@ -94,3 +94,4 @@ entity.VelvetWorm.name=Velvet Worm
 
 #Other
 itemGroup.erebus=The Erebus
+container.bambooCrate=Bamboo Crate

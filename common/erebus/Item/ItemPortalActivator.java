@@ -11,6 +11,7 @@ import org.lwjgl.opengl.GL11;
 
 import erebus.core.proxy.CommonProxy;
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -128,7 +129,7 @@ public class ItemPortalActivator extends Item
      */
     public void onBlockAdded(World par1World, int par2, int par3, int par4)
     {
-         ErebusMod.portalErebus.tryToCreatePortal(par1World, par2, par3, par4);
+    	ModBlocks.portalErebus.tryToCreatePortal(par1World, par2, par3, par4);
     }
 
 }

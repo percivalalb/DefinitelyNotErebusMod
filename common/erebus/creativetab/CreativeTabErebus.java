@@ -3,6 +3,7 @@ package erebus.creativetab;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
+import erebus.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 
@@ -18,6 +19,6 @@ public class CreativeTabErebus extends CreativeTabs
     @Override
     @SideOnly(Side.CLIENT)
     public int getTabIconItemIndex() {
-        return ErebusMod.beetleLarvaRaw.itemID;
+        return ModItems.beetleLarvaRaw.itemID;
     }
 }

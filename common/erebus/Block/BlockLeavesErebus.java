@@ -2,6 +2,7 @@ package erebus.block;
 
 import erebus.core.proxy.CommonProxy;
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -222,7 +223,7 @@ public class BlockLeavesErebus extends BlockLeavesBase implements IShearable
      */
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return ErebusMod.erebusSapling.blockID;
+        return ModBlocks.erebusSapling.blockID;
     }
 
     @Override

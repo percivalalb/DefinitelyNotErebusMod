@@ -3,6 +3,7 @@ package erebus.entity;
 import java.util.Random;
 
 import erebus.ErebusMod;
+import erebus.ModItems;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -74,7 +75,7 @@ public class EntityBeetle extends EntityUndergroundAnimal {
 
 	@Override
 	protected int getDropItemId() {
-		return ErebusMod.exoskeletonPlate.itemID;
+		return ModItems.exoskeletonPlate.itemID;
 	}
 
 	@Override
@@ -83,7 +84,7 @@ public class EntityBeetle extends EntityUndergroundAnimal {
 		int var4;
 		for (var4 = 0; var4 < var3; ++var4)
 		{
-			this.dropItem(ErebusMod.exoskeletonPlate.itemID, 1);
+			this.dropItem(ModItems.exoskeletonPlate.itemID, 1);
 		}
 	}
 }

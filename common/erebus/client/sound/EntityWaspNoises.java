@@ -13,7 +13,7 @@ public class EntityWaspNoises
             //the "yourmod:yoursound.ogg" adds the sound to the sound library.. 
             event.manager.soundPoolSounds.addSound("erebus:WaspSound.ogg");      
             event.manager.soundPoolSounds.addSound("erebus:WaspHurt.ogg"); 
-            event.manager.soundPoolSounds.addSound("erebus:Squish.ogg"); 
+            event.manager.soundPoolSounds.addSound("erebus:squish.ogg"); 
         } 
         catch (Exception e)
         {

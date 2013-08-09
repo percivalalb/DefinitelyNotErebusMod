@@ -3,6 +3,7 @@ package erebus.world.feature;
 import java.util.Random;
 
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -25,19 +26,19 @@ public class WorldGenScree extends WorldGenerator
         }
         else
         {
-        	par1World.setBlock(par3, par4, par5, ErebusMod.dryScree.blockID);
-        	par1World.setBlock(par3, par4, par5 - 1, ErebusMod.dryScree.blockID);
-        	par1World.setBlock(par3, par4, par5 + 1, ErebusMod.dryScree.blockID);
-        	par1World.setBlock(par3 - 1, par4, par5, ErebusMod.dryScree.blockID);
-        	par1World.setBlock(par3 + 1, par4, par5, ErebusMod.dryScree.blockID);
-        	par1World.setBlock(par3 - 2, par4, par5, ErebusMod.dryScree.blockID);
-        	par1World.setBlock(par3 - 1, par4, par5 - 1, ErebusMod.dryScree.blockID);
-        	par1World.setBlock(par3 + 2, par4, par5, ErebusMod.dryScree.blockID);
-        	par1World.setBlock(par3 + 1, par4, par5 + 1, ErebusMod.dryScree.blockID);
-        	par1World.setBlock(par3, par4, par5 - 2, ErebusMod.dryScree.blockID);
-        	par1World.setBlock(par3 - 1, par4, par5 + 1, ErebusMod.dryScree.blockID);
-        	par1World.setBlock(par3, par4, par5 + 2, ErebusMod.dryScree.blockID);
-        	par1World.setBlock(par3 + 1, par4, par5 - 1, ErebusMod.dryScree.blockID);
+        	par1World.setBlock(par3, par4, par5, ModBlocks.dryScree.blockID);
+        	par1World.setBlock(par3, par4, par5 - 1, ModBlocks.dryScree.blockID);
+        	par1World.setBlock(par3, par4, par5 + 1, ModBlocks.dryScree.blockID);
+        	par1World.setBlock(par3 - 1, par4, par5, ModBlocks.dryScree.blockID);
+        	par1World.setBlock(par3 + 1, par4, par5, ModBlocks.dryScree.blockID);
+        	par1World.setBlock(par3 - 2, par4, par5, ModBlocks.dryScree.blockID);
+        	par1World.setBlock(par3 - 1, par4, par5 - 1, ModBlocks.dryScree.blockID);
+        	par1World.setBlock(par3 + 2, par4, par5, ModBlocks.dryScree.blockID);
+        	par1World.setBlock(par3 + 1, par4, par5 + 1, ModBlocks.dryScree.blockID);
+        	par1World.setBlock(par3, par4, par5 - 2, ModBlocks.dryScree.blockID);
+        	par1World.setBlock(par3 - 1, par4, par5 + 1, ModBlocks.dryScree.blockID);
+        	par1World.setBlock(par3, par4, par5 + 2, ModBlocks.dryScree.blockID);
+        	par1World.setBlock(par3 + 1, par4, par5 - 1, ModBlocks.dryScree.blockID);
         	
         	if (par2Random.nextInt(2) == 0)
         	{
@@ -46,12 +47,12 @@ public class WorldGenScree extends WorldGenerator
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 2, par4, par5 + 1, ErebusMod.dryScree.blockID);
+        		par1World.setBlock(par3 + 2, par4, par5 + 1, ModBlocks.dryScree.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 1, par4, par5 + 2, ErebusMod.dryScree.blockID);
+        		par1World.setBlock(par3 + 1, par4, par5 + 2, ModBlocks.dryScree.blockID);
         	}
         	
 
@@ -62,12 +63,12 @@ public class WorldGenScree extends WorldGenerator
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 - 2, par4, par5 + 1, ErebusMod.dryScree.blockID);
+        		par1World.setBlock(par3 - 2, par4, par5 + 1, ModBlocks.dryScree.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 - 1, par4, par5 + 2, ErebusMod.dryScree.blockID);
+        		par1World.setBlock(par3 - 1, par4, par5 + 2, ModBlocks.dryScree.blockID);
         	}
         	
 
@@ -78,12 +79,12 @@ public class WorldGenScree extends WorldGenerator
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 2, par4, par5 - 1, ErebusMod.dryScree.blockID);
+        		par1World.setBlock(par3 + 2, par4, par5 - 1, ModBlocks.dryScree.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 1, par4, par5 - 2, ErebusMod.dryScree.blockID);
+        		par1World.setBlock(par3 + 1, par4, par5 - 2, ModBlocks.dryScree.blockID);
         	}
         	
 
@@ -94,12 +95,12 @@ public class WorldGenScree extends WorldGenerator
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 - 2, par4, par5 - 1, ErebusMod.dryScree.blockID);
+        		par1World.setBlock(par3 - 2, par4, par5 - 1, ModBlocks.dryScree.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 - 1, par4, par5 - 2, ErebusMod.dryScree.blockID);
+        		par1World.setBlock(par3 - 1, par4, par5 - 2, ModBlocks.dryScree.blockID);
         	}
         	
             return true;

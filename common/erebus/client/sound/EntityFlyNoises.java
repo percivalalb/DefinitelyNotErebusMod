@@ -13,7 +13,7 @@ public class EntityFlyNoises
             //the "yourmod:yoursound.ogg" adds the sound to the sound library.. 
             event.manager.soundPoolSounds.addSound("erebus:FlySound.ogg");      
             event.manager.soundPoolSounds.addSound("erebus:FlyHurt.ogg"); 
-            event.manager.soundPoolSounds.addSound("erebus:Squish.ogg");  
+            event.manager.soundPoolSounds.addSound("erebus:squish.ogg");  
         } 
         catch (Exception e)
         {

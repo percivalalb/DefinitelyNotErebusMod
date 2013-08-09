@@ -97,8 +97,6 @@ public class BlockLogMahogany extends Block
         return var10 | var11;
     }
 
-    @SideOnly(Side.CLIENT)
-
     @Override
     public boolean canSustainLeaves(World world, int x, int y, int z)
     {

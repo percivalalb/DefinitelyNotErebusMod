@@ -3,6 +3,7 @@ package erebus.world.feature;
 import java.util.Random;
 
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -27,13 +28,13 @@ public class WorldGenRottenAcacia extends WorldGenerator
         }
         else
         {
-        	par1World.setBlock(par3, par4 + 1, par5 + 1, ErebusMod.hollowLogAcacia.blockID);
-        	par1World.setBlock(par3, par4 + 1, par5, ErebusMod.hollowLogAcacia.blockID);
-        	par1World.setBlock(par3, par4 + 1, par5 - 1, ErebusMod.hollowLogAcacia.blockID);
+        	par1World.setBlock(par3, par4 + 1, par5 + 1, ModBlocks.hollowLogAcacia.blockID);
+        	par1World.setBlock(par3, par4 + 1, par5, ModBlocks.hollowLogAcacia.blockID);
+        	par1World.setBlock(par3, par4 + 1, par5 - 1, ModBlocks.hollowLogAcacia.blockID);
         	
         	if (par2Random.nextInt(3) == 0)
         	{
-        		par1World.setBlock(par3, par4 + 1, par5  - 1 + par2Random.nextInt(3), ErebusMod.maggotLogAcacia.blockID);
+        		par1World.setBlock(par3, par4 + 1, par5  - 1 + par2Random.nextInt(3), ModBlocks.maggotLogAcacia.blockID);
         	}
         	
         	return true;

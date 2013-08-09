@@ -4,10 +4,12 @@ import java.util.Random;
 
 import erebus.core.proxy.CommonProxy;
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 
 public class BlockUmberstone extends Block 
 {
@@ -20,14 +22,19 @@ public class BlockUmberstone extends Block
     
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-    	if(this.blockID == ErebusMod.umberstone.blockID) {
+    	if(this.blockID == ModBlocks.umberstone.blockID) {
             this.blockIcon = par1IconRegister.registerIcon("erebus:Umberstone");	
     	}
-    	if(this.blockID == ErebusMod.umbercobble.blockID) {
+    	if(this.blockID == ModBlocks.umbercobble.blockID) {
             this.blockIcon = par1IconRegister.registerIcon("erebus:cobbleUmber");	
     	}
-    	if(this.blockID == ErebusMod.umbercobbleMossy.blockID) {
+    	if(this.blockID == ModBlocks.umbercobbleMossy.blockID) {
             this.blockIcon = par1IconRegister.registerIcon("erebus:cobbleUmberMossy");	
     	}
+    }
+    
+    @Override
+    public int idDropped(int par1, Random par2Random, int par3) {
+        return ModBlocks.umbercobble.blockID;
     }
 }

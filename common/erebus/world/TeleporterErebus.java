@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 import erebus.core.helper.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -122,9 +123,9 @@ public class TeleporterErebus extends Teleporter
 
                     for (int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
                     {
-                        if (this.worldServerInstance.getBlockId(k1, i2, l1) == ErebusMod.portalErebus.blockID)
+                        if (this.worldServerInstance.getBlockId(k1, i2, l1) == ModBlocks.portalErebus.blockID)
                         {
-                            while (this.worldServerInstance.getBlockId(k1, i2 - 1, l1) == ErebusMod.portalErebus.blockID)
+                            while (this.worldServerInstance.getBlockId(k1, i2 - 1, l1) == ModBlocks.portalErebus.blockID)
                             {
                                 --i2;
                             }
@@ -158,22 +159,22 @@ public class TeleporterErebus extends Teleporter
             d4 = (double)k + 0.5D;
             int j2 = -1;
 
-            if (this.worldServerInstance.getBlockId(i - 1, j, k) == ErebusMod.portalErebus.blockID)
+            if (this.worldServerInstance.getBlockId(i - 1, j, k) == ModBlocks.portalErebus.blockID)
             {
                 j2 = 2;
             }
 
-            if (this.worldServerInstance.getBlockId(i + 1, j, k) == ErebusMod.portalErebus.blockID)
+            if (this.worldServerInstance.getBlockId(i + 1, j, k) == ModBlocks.portalErebus.blockID)
             {
                 j2 = 0;
             }
 
-            if (this.worldServerInstance.getBlockId(i, j, k - 1) == ErebusMod.portalErebus.blockID)
+            if (this.worldServerInstance.getBlockId(i, j, k - 1) == ModBlocks.portalErebus.blockID)
             {
                 j2 = 3;
             }
 
-            if (this.worldServerInstance.getBlockId(i, j, k + 1) == ErebusMod.portalErebus.blockID)
+            if (this.worldServerInstance.getBlockId(i, j, k + 1) == ModBlocks.portalErebus.blockID)
             {
                 j2 = 1;
             }
@@ -475,7 +476,7 @@ public class TeleporterErebus extends Teleporter
                     j3 = j5 + l2;
                     i4 = j2 + (i3 - 1) * l5;
                     flag = i3 == 0 || i3 == 3 || l2 == -1 || l2 == 3;
-                    this.worldServerInstance.setBlock(k3, j3, i4, flag ? Block.stoneBrick.blockID : ErebusMod.portalErebus.blockID, flag ? 1 : 0, 2);
+                    this.worldServerInstance.setBlock(k3, j3, i4, flag ? Block.stoneBrick.blockID : ModBlocks.portalErebus.blockID, flag ? 1 : 0, 2);
                 }
             }
 

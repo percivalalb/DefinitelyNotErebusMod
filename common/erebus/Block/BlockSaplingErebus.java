@@ -2,6 +2,7 @@ package erebus.block;
 
 import erebus.core.proxy.CommonProxy;
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 import erebus.world.feature.WorldGenErebusHugeTree;
 import erebus.world.feature.WorldGenErebusTrees;
 import erebus.world.feature.WorldGenEucalyptus;
@@ -89,7 +90,7 @@ public class BlockSaplingErebus extends BlockSapling
 
         if (var6 == 1)
         {
-        	var7 = new WorldGenEucalyptus(ErebusMod.woodEucalyptus.blockID, 2, ErebusMod.leavesEucalyptus.blockID, 2, 8 + par5Random.nextInt(4), 5, 8, Block.grass.blockID);
+        	var7 = new WorldGenEucalyptus(ModBlocks.woodEucalyptus.blockID, 2, ModBlocks.leavesEucalyptus.blockID, 2, 8 + par5Random.nextInt(4), 5, 8, Block.grass.blockID);
         }
         else if (var6 == 2)
         {
@@ -104,7 +105,7 @@ public class BlockSaplingErebus extends BlockSapling
                 {
                     if (this.isSameSapling(par1World, par2 + var8, par3, par4 + var9, 0) && this.isSameSapling(par1World, par2 + var8 + 1, par3, par4 + var9, 0) && this.isSameSapling(par1World, par2 + var8, par3, par4 + var9 + 1, 0) && this.isSameSapling(par1World, par2 + var8 + 1, par3, par4 + var9 + 1, 0))
                     {
-                        var7 = new WorldGenErebusHugeTree(true, 20 + par5Random.nextInt(5), 0, 0, true, ErebusMod.woodMahogany.blockID, ErebusMod.leavesMahogany.blockID);
+                        var7 = new WorldGenErebusHugeTree(true, 20 + par5Random.nextInt(5), 0, 0, true, ModBlocks.woodMahogany.blockID, ModBlocks.leavesMahogany.blockID);
                         var10 = true;
                         break;
                     }
@@ -123,7 +124,7 @@ public class BlockSaplingErebus extends BlockSapling
         {
             var9 = 0;
             var8 = 0;
-            var7 = new WorldGenErebusTrees(true, 5, 0, 0, false, ErebusMod.woodMahogany.blockID, ErebusMod.leavesMahogany.blockID, ErebusMod.thorns.blockID);
+            var7 = new WorldGenErebusTrees(true, 5, 0, 0, false, ModBlocks.woodMahogany.blockID, ModBlocks.leavesMahogany.blockID, ModBlocks.thorns.blockID);
         }
         
         if (var10)

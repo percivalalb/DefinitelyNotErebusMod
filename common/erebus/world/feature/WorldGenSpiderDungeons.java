@@ -3,6 +3,8 @@ package erebus.world.feature;
 import java.util.Random;
 
 import erebus.ErebusMod;
+import erebus.ModBlocks;
+import erebus.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -16,7 +18,7 @@ import net.minecraftforge.common.DungeonHooks;
 
 public class WorldGenSpiderDungeons extends WorldGenerator
 {
-	public static final WeightedRandomChestContent[] field_111189_a = new WeightedRandomChestContent[] {new WeightedRandomChestContent(Item.goldNugget.itemID, 0, 4, 9, 10), new WeightedRandomChestContent(Item.ingotIron.itemID, 0, 1, 2, 10), new WeightedRandomChestContent(Item.bone.itemID, 0, 1, 1, 10), new WeightedRandomChestContent(Item.ingotGold.itemID, 0, 1, 2, 10), new WeightedRandomChestContent(ErebusMod.exoskeletonPlate.itemID, 0, 3, 8, 10), new WeightedRandomChestContent(Item.redstone.itemID, 0, 1, 4, 10), new WeightedRandomChestContent(ErebusMod.flyWing.itemID, 0, 1, 5, 10),new WeightedRandomChestContent(Item.arrow.itemID, 0, 1, 5, 10)};
+	public static final WeightedRandomChestContent[] field_111189_a = new WeightedRandomChestContent[] {new WeightedRandomChestContent(Item.goldNugget.itemID, 0, 4, 9, 10), new WeightedRandomChestContent(Item.ingotIron.itemID, 0, 1, 2, 10), new WeightedRandomChestContent(Item.bone.itemID, 0, 1, 1, 10), new WeightedRandomChestContent(Item.ingotGold.itemID, 0, 1, 2, 10), new WeightedRandomChestContent(ModItems.exoskeletonPlate.itemID, 0, 3, 8, 10), new WeightedRandomChestContent(Item.redstone.itemID, 0, 1, 4, 10), new WeightedRandomChestContent(ModItems.flyWing.itemID, 0, 1, 5, 10),new WeightedRandomChestContent(Item.arrow.itemID, 0, 1, 5, 10)};
 
 	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
 	{
@@ -74,15 +76,15 @@ public class WorldGenSpiderDungeons extends WorldGenerator
 						{
 							if (l1 == par4 - 1 && par2Random.nextInt(4) == 0)
 							{
-								par1World.setBlock(k1, l1, i2, ErebusMod.umbercobbleWebbed.blockID, 0, 2);
+								par1World.setBlock(k1, l1, i2, ModBlocks.umbercobbleWebbed.blockID, 0, 2);
 							}
 							else if (l1 == par4 - 1 && par2Random.nextInt(4) != 0)
 							{
-								par1World.setBlock(k1, l1, i2, ErebusMod.umbercobbleMossy.blockID, 0, 2);
+								par1World.setBlock(k1, l1, i2, ModBlocks.umbercobbleMossy.blockID, 0, 2);
 							}
 							else
 							{
-								par1World.setBlock(k1, l1, i2, ErebusMod.umbercobble.blockID, 0, 2);
+								par1World.setBlock(k1, l1, i2, ModBlocks.umbercobble.blockID, 0, 2);
 							}
 						}
 					}
@@ -161,7 +163,7 @@ public class WorldGenSpiderDungeons extends WorldGenerator
 			
 			//switch(par2Random.nextInt(3)){
 			//case 0:
-				par1World.setBlock(par3, par4, par5, ErebusMod.spiderSpawner.blockID, 0, 2);
+				par1World.setBlock(par3, par4, par5, ModBlocks.spiderSpawner.blockID, 0, 2);
 			//	break;
 			//case 1:
 			//	par1World.setBlock(par3, par4, par5, mod_Erebus.caveSpiderSpawner.blockID, 0, 2);

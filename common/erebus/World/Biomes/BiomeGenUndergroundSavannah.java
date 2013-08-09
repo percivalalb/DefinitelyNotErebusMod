@@ -10,6 +10,7 @@ import net.minecraft.world.biome.SpawnListEntry;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 import erebus.entity.EntityBeetle;
 import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityFly;
@@ -53,7 +54,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
 			}
 		}*/
 
-		for(int c = 200; c > 0; c--)
+		for(int c = 75; c > 0; c--)
 		{
 			int j2 = x + rand.nextInt(16);
 			int l3 = rand.nextInt(120);
@@ -87,14 +88,14 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
         	}
         }*/
 
-		for(int c = 0; c < 600; c++)
+		for(int c = 0; c < 200; c++)
 		{
 			int j2 = x + rand.nextInt(16) + 8;
 			int l3 = rand.nextInt(120);
 			int j5 = z + rand.nextInt(16) + 8;
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenTallGrass(ErebusMod.erebusGrass.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
+				(new WorldGenTallGrass(ModBlocks.erebusGrass.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 

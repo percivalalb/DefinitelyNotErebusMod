@@ -3,6 +3,7 @@ package erebus.core.handler;
 import org.lwjgl.opengl.GL11;
 
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 import erebus.core.teleport.TeleportClient;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -47,7 +48,7 @@ public class PortalOverlayHandler {
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, par1);
         Minecraft.getMinecraft().func_110434_K().func_110577_a(TextureMap.field_110575_b);
-        Icon icon = ErebusMod.portalErebus.getBlockTextureFromSide(0);
+        Icon icon = ModBlocks.portalErebus.getBlockTextureFromSide(0);
         float f1 = icon.getMinU();
         float f2 = icon.getMinV();
         float f3 = icon.getMaxU();

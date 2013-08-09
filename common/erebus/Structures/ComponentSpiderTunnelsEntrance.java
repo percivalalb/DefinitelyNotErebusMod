@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import erebus.ErebusMod;
+import erebus.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
@@ -21,7 +22,7 @@ public class ComponentSpiderTunnelsEntrance extends ComponentSpiderTunnels
 	public static final WeightedRandomChestContent[] spiderTunnelsChestContents = new WeightedRandomChestContent[] {
 		new WeightedRandomChestContent(Item.ingotIron.itemID, 0, 1, 5, 5), 
 		new WeightedRandomChestContent(Item.goldNugget.itemID, 0, 2, 8, 8), 
-		new WeightedRandomChestContent(ErebusMod.exoskeletonPlate.itemID, 0, 1, 5, 5), 
+		new WeightedRandomChestContent(ModItems.exoskeletonPlate.itemID, 0, 1, 5, 5), 
 		new WeightedRandomChestContent(Item.silk.itemID, 0, 1, 3, 15), 
 		new WeightedRandomChestContent(Item.spiderEye.itemID, 0, 1, 3, 3), 
 		new WeightedRandomChestContent(Item.glowstone.itemID, 0, 2, 8, 8), 

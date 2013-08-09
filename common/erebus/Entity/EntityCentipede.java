@@ -2,6 +2,7 @@ package erebus.entity;
 
 import java.util.Random;
 import erebus.ErebusMod;
+import erebus.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -124,7 +125,7 @@ public class EntityCentipede extends EntityMob
 
 	@Override
 	protected int getDropItemId() {
-		return ErebusMod.exoskeletonPlate.itemID;
+		return ModItems.exoskeletonPlate.itemID;
 	}
 
 	@Override
@@ -133,7 +134,7 @@ public class EntityCentipede extends EntityMob
 		int var4;
 		for (var4 = 0; var4 < var3; ++var4)
 		{
-			this.dropItem(ErebusMod.exoskeletonPlate.itemID, 1);
+			this.dropItem(ModItems.exoskeletonPlate.itemID, 1);
 		}
 	}
 }

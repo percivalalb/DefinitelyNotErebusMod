@@ -12,6 +12,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import erebus.ErebusMod;
+import erebus.ModItems;
 
 public class EntityFly extends EntityAmbientCreature
 {
@@ -315,7 +316,7 @@ public class EntityFly extends EntityAmbientCreature
         for (var4 = 0; var4 < var3; ++var4)*/
         if (this.rand.nextInt(10) == 0)
     	{
-            this.dropItem(ErebusMod.flyWing.itemID, 1);        	
+            this.dropItem(ModItems.flyWing.itemID, 1);        	
     	}
     }
 }

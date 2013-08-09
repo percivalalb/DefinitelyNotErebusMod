@@ -3,6 +3,7 @@ package erebus.world.biomes;
 import java.util.Random;
 
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
@@ -41,7 +42,7 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus
     		int posX = x + rand.nextInt(16);
     		int posY = rand.nextInt(120);
         	int posZ = z + rand.nextInt(16);
-        	if(worldObj.getBlockId(posX, posY, posZ) == ErebusMod.umberstone.blockID && worldObj.getBlockId(posX, posY - 1, posZ) == 0)
+        	if(worldObj.getBlockId(posX, posY, posZ) == ModBlocks.umberstone.blockID && worldObj.getBlockId(posX, posY - 1, posZ) == 0)
         	{
         		worldObj.setBlock(posX, posY, posZ, Block.lavaMoving.blockID);
         		/**Makes lava fall instantly

@@ -2,6 +2,7 @@ package erebus.item;
 
 import erebus.core.proxy.CommonProxy;
 import erebus.ErebusMod;
+import erebus.ModItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.EnumArmorMaterial;
@@ -30,7 +31,7 @@ public class ItemExoskeletonArmor extends ItemArmor {
      */
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
-        if(stack.itemID == ErebusMod.exoskeletonHelmet.itemID || stack.itemID == ErebusMod.exoskeletonBody.itemID || stack.itemID == ErebusMod.exoskeletonBoots.itemID) {
+        if(stack.itemID == ModItems.exoskeletonHelmet.itemID || stack.itemID == ModItems.exoskeletonBody.itemID || stack.itemID == ModItems.exoskeletonBoots.itemID) {
             return "erebus:textures/armor/exoskeleton_1.png";
         }
         else { //if(itemstack.itemID == mod_Erebus.exoskeletonLegs.itemID) {

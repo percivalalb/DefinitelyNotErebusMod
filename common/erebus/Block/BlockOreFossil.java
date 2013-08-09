@@ -4,6 +4,7 @@ import java.util.Random;
 
 import erebus.core.proxy.CommonProxy;
 import erebus.ErebusMod;
+import erebus.ModItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -27,7 +28,7 @@ public class BlockOreFossil extends Block
     {
     	if (par2Random.nextInt(20) == 0)
     	{
-    		return ErebusMod.fossilClub.itemID;
+    		return ModItems.fossilClub.itemID;
     	}
     	else if (par2Random.nextInt(3) == 0)
     	{
@@ -35,7 +36,7 @@ public class BlockOreFossil extends Block
     	}
     	else
     	{
-    		return ErebusMod.fossilShard.itemID;
+    		return ModItems.fossilShard.itemID;
     	}
     }
 

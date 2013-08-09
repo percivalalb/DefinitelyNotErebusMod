@@ -3,6 +3,7 @@ package erebus.world.feature;
 import java.util.Random;
 
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -25,163 +26,163 @@ public class WorldGenQuickSand extends WorldGenerator
         }
         else
         {
-        	par1World.setBlock(par3, par4, par5, ErebusMod.quickSand.blockID);
-        	par1World.setBlock(par3, par4 - 1, par5, ErebusMod.quickSand.blockID);
-        	par1World.setBlock(par3, par4 - 2, par5, ErebusMod.quickSand.blockID);
+        	par1World.setBlock(par3, par4, par5, ModBlocks.quickSand.blockID);
+        	par1World.setBlock(par3, par4 - 1, par5, ModBlocks.quickSand.blockID);
+        	par1World.setBlock(par3, par4 - 2, par5, ModBlocks.quickSand.blockID);
         	
-        	par1World.setBlock(par3, par4, par5 - 1, ErebusMod.quickSand.blockID);
-        	par1World.setBlock(par3, par4 - 1, par5 - 1, ErebusMod.quickSand.blockID);
+        	par1World.setBlock(par3, par4, par5 - 1, ModBlocks.quickSand.blockID);
+        	par1World.setBlock(par3, par4 - 1, par5 - 1, ModBlocks.quickSand.blockID);
         	
-        	par1World.setBlock(par3, par4, par5 + 1, ErebusMod.quickSand.blockID);
-        	par1World.setBlock(par3, par4 - 1, par5 + 1, ErebusMod.quickSand.blockID);
+        	par1World.setBlock(par3, par4, par5 + 1, ModBlocks.quickSand.blockID);
+        	par1World.setBlock(par3, par4 - 1, par5 + 1, ModBlocks.quickSand.blockID);
 
-        	par1World.setBlock(par3 - 1, par4, par5, ErebusMod.quickSand.blockID);
-        	par1World.setBlock(par3 - 1, par4 - 1, par5, ErebusMod.quickSand.blockID);
+        	par1World.setBlock(par3 - 1, par4, par5, ModBlocks.quickSand.blockID);
+        	par1World.setBlock(par3 - 1, par4 - 1, par5, ModBlocks.quickSand.blockID);
         	
-        	par1World.setBlock(par3 + 1, par4, par5, ErebusMod.quickSand.blockID);
-        	par1World.setBlock(par3 + 1, par4 - 1, par5, ErebusMod.quickSand.blockID);
+        	par1World.setBlock(par3 + 1, par4, par5, ModBlocks.quickSand.blockID);
+        	par1World.setBlock(par3 + 1, par4 - 1, par5, ModBlocks.quickSand.blockID);
         	
-        	par1World.setBlock(par3 - 2, par4, par5, ErebusMod.quickSand.blockID);
-        	par1World.setBlock(par3 - 1, par4, par5 - 1, ErebusMod.quickSand.blockID);
+        	par1World.setBlock(par3 - 2, par4, par5, ModBlocks.quickSand.blockID);
+        	par1World.setBlock(par3 - 1, par4, par5 - 1, ModBlocks.quickSand.blockID);
         	
-        	par1World.setBlock(par3 + 2, par4, par5, ErebusMod.quickSand.blockID);
-        	par1World.setBlock(par3 + 1, par4, par5 + 1, ErebusMod.quickSand.blockID);
+        	par1World.setBlock(par3 + 2, par4, par5, ModBlocks.quickSand.blockID);
+        	par1World.setBlock(par3 + 1, par4, par5 + 1, ModBlocks.quickSand.blockID);
         	
-        	par1World.setBlock(par3, par4, par5 - 2, ErebusMod.quickSand.blockID);
-        	par1World.setBlock(par3 - 1, par4, par5 + 1, ErebusMod.quickSand.blockID);
+        	par1World.setBlock(par3, par4, par5 - 2, ModBlocks.quickSand.blockID);
+        	par1World.setBlock(par3 - 1, par4, par5 + 1, ModBlocks.quickSand.blockID);
         	
-        	par1World.setBlock(par3, par4, par5 + 2, ErebusMod.quickSand.blockID);
-        	par1World.setBlock(par3 + 1, par4, par5 - 1, ErebusMod.quickSand.blockID);
+        	par1World.setBlock(par3, par4, par5 + 2, ModBlocks.quickSand.blockID);
+        	par1World.setBlock(par3 + 1, par4, par5 - 1, ModBlocks.quickSand.blockID);
         	
         	//Top Layer
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 1, par4 - 2, par5 + 0, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 + 1, par4 - 2, par5 + 0, ModBlocks.quickSand.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 0, par4 - 2, par5 + 1, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 + 0, par4 - 2, par5 + 1, ModBlocks.quickSand.blockID);
         	}        	
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 - 0, par4 - 2, par5 - 1, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 - 0, par4 - 2, par5 - 1, ModBlocks.quickSand.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 - 1, par4 - 2, par5 + 0, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 - 1, par4 - 2, par5 + 0, ModBlocks.quickSand.blockID);
         	}
         	  	
         	
         	//Middle Layer
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 2, par4 - 1, par5 + 0, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 + 2, par4 - 1, par5 + 0, ModBlocks.quickSand.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 1, par4 - 1, par5 + 1, ErebusMod.quickSand.blockID);
-        	}
-        	
-        	
-        	if (par2Random.nextInt(2) == 0)
-        	{
-        		par1World.setBlock(par3 - 0, par4 - 1, par5 + 2, ErebusMod.quickSand.blockID);
-        	}
-        	
-        	if (par2Random.nextInt(2) == 0)
-        	{
-        		par1World.setBlock(par3 - 1, par4 - 1, par5 + 1, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 + 1, par4 - 1, par5 + 1, ModBlocks.quickSand.blockID);
         	}
         	
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 - 2, par4 - 1, par5 - 0, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 - 0, par4 - 1, par5 + 2, ModBlocks.quickSand.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 1, par4 - 1, par5 - 1, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 - 1, par4 - 1, par5 + 1, ModBlocks.quickSand.blockID);
         	}
         	
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 - 0, par4 - 1, par5 - 2, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 - 2, par4 - 1, par5 - 0, ModBlocks.quickSand.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 - 1, par4 - 1, par5 - 1, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 + 1, par4 - 1, par5 - 1, ModBlocks.quickSand.blockID);
+        	}
+        	
+        	
+        	if (par2Random.nextInt(2) == 0)
+        	{
+        		par1World.setBlock(par3 - 0, par4 - 1, par5 - 2, ModBlocks.quickSand.blockID);
+        	}
+        	
+        	if (par2Random.nextInt(2) == 0)
+        	{
+        		par1World.setBlock(par3 - 1, par4 - 1, par5 - 1, ModBlocks.quickSand.blockID);
         	}
         	
         	
         	//Bottom Layer
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 3, par4, par5 + 0, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 + 3, par4, par5 + 0, ModBlocks.quickSand.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 2, par4, par5 + 1, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 + 2, par4, par5 + 1, ModBlocks.quickSand.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 1, par4, par5 + 2, ErebusMod.quickSand.blockID);
-        	}
-        	
-
-        	if (par2Random.nextInt(2) == 0)
-        	{
-        		par1World.setBlock(par3 - 3, par4, par5 + 0, ErebusMod.quickSand.blockID);
-        	}
-        	
-        	if (par2Random.nextInt(2) == 0)
-        	{
-        		par1World.setBlock(par3 - 2, par4, par5 + 1, ErebusMod.quickSand.blockID);
-        	}
-        	
-        	if (par2Random.nextInt(2) == 0)
-        	{
-        		par1World.setBlock(par3 - 1, par4, par5 + 2, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 + 1, par4, par5 + 2, ModBlocks.quickSand.blockID);
         	}
         	
 
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 0, par4, par5 - 3, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 - 3, par4, par5 + 0, ModBlocks.quickSand.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 2, par4, par5 - 1, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 - 2, par4, par5 + 1, ModBlocks.quickSand.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 + 1, par4, par5 - 2, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 - 1, par4, par5 + 2, ModBlocks.quickSand.blockID);
         	}
         	
 
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 - 0, par4, par5 + 3, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 + 0, par4, par5 - 3, ModBlocks.quickSand.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 - 2, par4, par5 - 1, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 + 2, par4, par5 - 1, ModBlocks.quickSand.blockID);
         	}
         	
         	if (par2Random.nextInt(2) == 0)
         	{
-        		par1World.setBlock(par3 - 1, par4, par5 - 2, ErebusMod.quickSand.blockID);
+        		par1World.setBlock(par3 + 1, par4, par5 - 2, ModBlocks.quickSand.blockID);
+        	}
+        	
+
+        	if (par2Random.nextInt(2) == 0)
+        	{
+        		par1World.setBlock(par3 - 0, par4, par5 + 3, ModBlocks.quickSand.blockID);
+        	}
+        	
+        	if (par2Random.nextInt(2) == 0)
+        	{
+        		par1World.setBlock(par3 - 2, par4, par5 - 1, ModBlocks.quickSand.blockID);
+        	}
+        	
+        	if (par2Random.nextInt(2) == 0)
+        	{
+        		par1World.setBlock(par3 - 1, par4, par5 - 2, ModBlocks.quickSand.blockID);
         	}
         	
             return true;

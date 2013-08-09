@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 import erebus.core.teleport.TeleportClient;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -198,7 +199,7 @@ public class BlockPortalErebus extends BlockBreakable
          {
              for (i1 = 0; i1 < 3; ++i1)
              {
-                 par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, ErebusMod.portalErebus.blockID, 0, 2);
+                 par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, ModBlocks.portalErebus.blockID, 0, 2);
              }
          }
 

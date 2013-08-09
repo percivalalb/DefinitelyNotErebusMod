@@ -13,8 +13,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
-import erebus.world.gen.WorldGenBigLake;
-import erebus.api.Properties;
+import erebus.world.feature.WorldGenBigLake;
 
 public class BlockRedstoneOre_U extends Block
 {
@@ -215,6 +214,6 @@ public class BlockRedstoneOre_U extends Block
     
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "oreRedstone_U");	
+        this.blockIcon = par1IconRegister.registerIcon("erebus:oreRedstone_U");	
     }
 }

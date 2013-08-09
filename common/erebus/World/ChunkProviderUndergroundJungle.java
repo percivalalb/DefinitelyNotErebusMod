@@ -10,7 +10,7 @@ import erebus.ErebusMod;
 import erebus.world.biomes.BiomeGenBaseErebus;
 import erebus.world.biomes.BiomeGenUndergroundDesert;
 import erebus.world.biomes.BiomeGenUndergroundSavannah;
-import erebus.world.gen.WorldGenSpiderDungeons;
+import erebus.world.feature.WorldGenSpiderDungeons;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;

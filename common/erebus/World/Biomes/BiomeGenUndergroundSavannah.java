@@ -15,9 +15,9 @@ import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityWasp;
-import erebus.world.gen.WorldGenRock;
-import erebus.world.gen.WorldGenRottenAcacia;
-import erebus.world.gen.WorldGenSavannaTree;
+import erebus.world.feature.WorldGenRock;
+import erebus.world.feature.WorldGenRottenAcacia;
+import erebus.world.feature.WorldGenSavannaTree;
 
 public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
 {

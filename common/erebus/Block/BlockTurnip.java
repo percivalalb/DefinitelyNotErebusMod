@@ -1,7 +1,6 @@
 package erebus.block;
 
 import erebus.ErebusMod;
-import erebus.api.Properties;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -82,7 +81,7 @@ public class BlockTurnip extends BlockCrops
 
         for (int i = 0; i < this.iconArray.length; ++i)
         {
-            this.iconArray[i] = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "turnips_" + i);
+            this.iconArray[i] = par1IconRegister.registerIcon("erebus:turnips_" + i);
         }
     }
 }

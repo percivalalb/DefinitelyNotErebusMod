@@ -1,6 +1,5 @@
 package erebus.block;
 
-import erebus.api.Properties;
 import erebus.tileentity.TileEntityBambooCrate;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -24,7 +23,7 @@ public class BlockBambooCrate extends BlockContainer {
 	
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
-        this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "bambooCrate");
+        this.blockIcon = par1IconRegister.registerIcon("erebus:bambooCrate");
     }
 
 	@Override

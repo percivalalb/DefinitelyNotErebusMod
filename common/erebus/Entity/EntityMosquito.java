@@ -2,7 +2,7 @@ package erebus.entity;
 
 import java.util.List;
 
-import erebus.daveyx0.AnimationMathHelper;
+import erebus.client.render.entity.AnimationMathHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;

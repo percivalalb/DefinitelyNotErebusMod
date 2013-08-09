@@ -10,8 +10,6 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
-import erebus.ClientErebusTickHandler;
-import erebus.PortalOverlayRenderer;
 import erebus.ErebusMod;
 import erebus.entity.EntityBeetle;
 import erebus.entity.EntityBeetleLarva;
@@ -42,6 +40,8 @@ import erebus.client.render.item.BambooCrateItemRenderer;
 import erebus.client.render.item.HollowLogItemRenderer;
 import erebus.client.render.tileentity.TileEntityRenderBambooCrate;
 import erebus.client.render.tileentity.TileEntityRenderHollowLog;
+import erebus.core.handler.ClientTickHandler;
+import erebus.core.handler.PortalOverlayHandler;
 
 public class ClientProxy extends CommonProxy {
 	
@@ -51,8 +51,8 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerRenderInformation()  {  
     
-		MinecraftForge.EVENT_BUS.register(new PortalOverlayRenderer());
-		TickRegistry.registerTickHandler(new ClientErebusTickHandler(), Side.CLIENT);    
+		MinecraftForge.EVENT_BUS.register(new PortalOverlayHandler());
+		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);    
 		RenderingRegistry.registerEntityRenderingHandler(EntityBeetleLarva.class, new RenderBeetleLarva(new ModelBeetleLarva(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBeetle.class, new RenderBeetle(new ModelBeetle(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityFly.class, new RenderFly());

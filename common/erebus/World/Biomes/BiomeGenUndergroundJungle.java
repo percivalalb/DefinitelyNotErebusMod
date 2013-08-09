@@ -19,16 +19,16 @@ import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityWasp;
-import erebus.world.gen.WorldGenErebusHugeTree;
-import erebus.world.gen.WorldGenErebusTrees;
-import erebus.world.gen.WorldGenEucalyptus;
-import erebus.world.gen.WorldGenGlowStoneErebus1;
-import erebus.world.gen.WorldGenGlowStoneErebus2;
-import erebus.world.gen.WorldGenMelonErebus;
-import erebus.world.gen.WorldGenMossbarkTree;
-import erebus.world.gen.WorldGenPonds;
-import erebus.world.gen.WorldGenQuickSand;
-import erebus.world.gen.WorldGenTurnips;
+import erebus.world.feature.WorldGenErebusHugeTree;
+import erebus.world.feature.WorldGenErebusTrees;
+import erebus.world.feature.WorldGenEucalyptus;
+import erebus.world.feature.WorldGenGlowStoneErebus1;
+import erebus.world.feature.WorldGenGlowStoneErebus2;
+import erebus.world.feature.WorldGenMelonErebus;
+import erebus.world.feature.WorldGenMossbarkTree;
+import erebus.world.feature.WorldGenPonds;
+import erebus.world.feature.WorldGenQuickSand;
+import erebus.world.feature.WorldGenTurnips;
 
 public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 {

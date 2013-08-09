@@ -1,7 +1,6 @@
 package erebus.block;
 
 import erebus.core.proxy.CommonProxy;
-import erebus.api.Properties;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -457,6 +456,6 @@ public class BlockThorns extends Block implements IShearable
     }
     
     /*public void registerIcons(IconRegister par1IconRegister) {
-        this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "thorns");
+        this.blockIcon = par1IconRegister.registerIcon("erebus:thorns");
     }*/
 }

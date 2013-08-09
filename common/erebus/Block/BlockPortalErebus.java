@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import erebus.TeleportErebusClient;
 import erebus.ErebusMod;
-import erebus.api.Properties;
-
+import erebus.core.teleport.TeleportClient;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -31,7 +29,7 @@ public class BlockPortalErebus extends BlockBreakable
 
  public BlockPortalErebus(int i, int j)
  {
-     super(i, Properties.TEX_PACkAGE + "portalErebus", Material.portal, false);
+     super(i, "erebus:portalErebus", Material.portal, false);
      this.setCreativeTab(CreativeTabs.tabBlock);
  }
 
@@ -48,7 +46,7 @@ public class BlockPortalErebus extends BlockBreakable
      }
   	 else if (side == Side.CLIENT && entity instanceof EntityPlayer)
   	 {
-  		TeleportErebusClient.setInPortal();
+  		TeleportClient.setInPortal();
   		((EntityPlayer)entity).addPotionEffect(new PotionEffect(Potion.confusion.id, 80, 0));     	
   	 }
  }

@@ -5,7 +5,6 @@ import java.util.Random;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.api.Properties;
 import erebus.tileentity.TileEntityHollowLog;
 
 import net.minecraft.block.BlockContainer;
@@ -44,8 +43,8 @@ public class BlockHollowLog extends BlockContainer {
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister) {
-        this.tree_top = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "log_acacia_top");
-        this.tree_side = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "log_acacia");
+        this.tree_top = par1IconRegister.registerIcon("erebus:log_acacia_top");
+        this.tree_side = par1IconRegister.registerIcon("erebus:log_acacia");
     }
     
     

@@ -2,11 +2,10 @@ package erebus.block;
 
 import erebus.core.proxy.CommonProxy;
 import erebus.ErebusMod;
-import erebus.world.gen.WorldGenErebusHugeTree;
-import erebus.world.gen.WorldGenErebusTrees;
-import erebus.world.gen.WorldGenEucalyptus;
-import erebus.world.gen.WorldGenSavannaTree;
-import erebus.api.Properties;
+import erebus.world.feature.WorldGenErebusHugeTree;
+import erebus.world.feature.WorldGenErebusTrees;
+import erebus.world.feature.WorldGenEucalyptus;
+import erebus.world.feature.WorldGenSavannaTree;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
@@ -185,8 +184,8 @@ public class BlockSaplingErebus extends BlockSapling
     }
     
     public void registerIcons(IconRegister par1IconRegister) {
-        this.mahoganySapling = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "sapling_mahogany");
-        this.eucalyptusSapling = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "sapling_eucalyptus");
-        this.acaciaSapling = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "sapling_acacia");
+        this.mahoganySapling = par1IconRegister.registerIcon("erebus:sapling_mahogany");
+        this.eucalyptusSapling = par1IconRegister.registerIcon("erebus:sapling_eucalyptus");
+        this.acaciaSapling = par1IconRegister.registerIcon("erebus:sapling_acacia");
     }
 }

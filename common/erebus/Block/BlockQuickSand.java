@@ -1,7 +1,6 @@
 package erebus.block;
 
 import erebus.core.proxy.CommonProxy;
-import erebus.api.Properties;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -30,6 +29,6 @@ public class BlockQuickSand extends Block {
     }
     
     public void registerIcons(IconRegister par1IconRegister) {
-        this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "quickSand");
+        this.blockIcon = par1IconRegister.registerIcon("erebus:quickSand");
     }
 }

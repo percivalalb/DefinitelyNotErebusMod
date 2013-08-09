@@ -4,8 +4,6 @@ import java.util.Random;
 
 import erebus.core.proxy.CommonProxy;
 import erebus.ErebusMod;
-import erebus.api.Properties;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -23,13 +21,13 @@ public class BlockUmberstone extends Block
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
     	if(this.blockID == ErebusMod.umberstone.blockID) {
-            this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "Umberstone");	
+            this.blockIcon = par1IconRegister.registerIcon("erebus:Umberstone");	
     	}
     	if(this.blockID == ErebusMod.umbercobble.blockID) {
-            this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "cobbleUmber");	
+            this.blockIcon = par1IconRegister.registerIcon("erebus:cobbleUmber");	
     	}
     	if(this.blockID == ErebusMod.umbercobbleMossy.blockID) {
-            this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "cobbleUmberMossy");	
+            this.blockIcon = par1IconRegister.registerIcon("erebus:cobbleUmberMossy");	
     	}
     }
 }

@@ -1,7 +1,6 @@
 package erebus.block;
 
 import erebus.core.proxy.CommonProxy;
-import erebus.api.Properties;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
@@ -133,7 +132,7 @@ public class BlockLogMahogany extends Block
      */
     public void registerIcons(IconRegister par1IconRegister)
     {
-        this.tree_top = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "tree_" + treeType + "_top");
-        this.tree_side = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "tree_" + treeType);
+        this.tree_top = par1IconRegister.registerIcon("erebus:tree_" + treeType + "_top");
+        this.tree_side = par1IconRegister.registerIcon("erebus:tree_" + treeType);
     }
 }

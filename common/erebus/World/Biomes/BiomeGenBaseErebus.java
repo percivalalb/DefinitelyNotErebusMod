@@ -3,7 +3,7 @@ package erebus.world.biomes;
 import java.util.Random;
 
 import erebus.ErebusMod;
-import erebus.world.gen.WorldGenErebusMinable;
+import erebus.world.feature.WorldGenErebusMinable;
 
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;

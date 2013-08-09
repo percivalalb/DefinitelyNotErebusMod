@@ -4,9 +4,7 @@ import java.util.Random;
 
 import erebus.core.proxy.CommonProxy;
 import erebus.ErebusMod;
-import erebus.world.gen.WorldGenMossbarkTree;
-import erebus.api.Properties;
-
+import erebus.world.feature.WorldGenMossbarkTree;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -52,13 +50,13 @@ public class BlockAmber extends Block
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
     	if(this.blockID == ErebusMod.blockAmber.blockID) {
-            this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "blockAmber");	
+            this.blockIcon = par1IconRegister.registerIcon("erebus:blockAmber");	
     	}
     	else if(this.blockID == ErebusMod.glassAmber.blockID) {
-    	    this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "glassAmber");	
+    	    this.blockIcon = par1IconRegister.registerIcon("erebus:glassAmber");	
     	}
     	else if(this.blockID == ErebusMod.brickAmber.blockID) {
-    	    this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "brickAmber");	
+    	    this.blockIcon = par1IconRegister.registerIcon("erebus:brickAmber");	
     	}
     }
    

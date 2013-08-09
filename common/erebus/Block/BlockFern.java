@@ -1,7 +1,6 @@
 package erebus.block;
 
 import erebus.core.proxy.CommonProxy;
-import erebus.api.Properties;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -86,7 +85,7 @@ public class BlockFern extends BlockUndergroundFlower implements IShearable
     
     /*@Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "fern");
+        this.blockIcon = par1IconRegister.registerIcon("erebus:fern");
     }*/
     
     @Override

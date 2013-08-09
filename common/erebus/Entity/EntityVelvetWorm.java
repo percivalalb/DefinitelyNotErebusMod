@@ -3,7 +3,8 @@ package erebus.entity;
 import java.util.Calendar;
 
 import erebus.ErebusMod;
-import erebus.api.RenderInfo;
+import erebus.client.render.entity.RenderInfo;
+
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;

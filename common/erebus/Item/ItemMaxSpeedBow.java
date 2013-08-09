@@ -6,7 +6,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.core.proxy.CommonProxy;
 import erebus.ErebusMod;
-import erebus.api.Properties;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -226,7 +225,7 @@ public class ItemMaxSpeedBow extends Item
 
         for (int i = 0; i < this.iconArray.length; ++i)
         {
-            this.iconArray[i] = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + bowPullIconNameArray[i]);
+            this.iconArray[i] = par1IconRegister.registerIcon("erebus:" + bowPullIconNameArray[i]);
         }
     }
 

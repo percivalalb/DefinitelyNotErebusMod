@@ -93,21 +93,24 @@ import erebus.world.biomes.BiomeGenCavern;
 import erebus.world.biomes.BiomeGenUndergroundDesert;
 import erebus.world.biomes.BiomeGenUndergroundJungle;
 import erebus.world.biomes.BiomeGenUndergroundSavannah;
-import erebus.api.Properties;
 import erebus.client.sound.EntityBeetleLarvaNoises;
 import erebus.client.sound.EntityCentipedeNoises;
 import erebus.client.sound.EntityFlyNoises;
 import erebus.client.sound.EntityMosquitoNoises;
 import erebus.client.sound.EntityWaspNoises;
+import erebus.core.handler.CommonTickHandler;
+import erebus.core.handler.ConnectionTeleportHandler;
 import erebus.core.handler.LocalizationHandler;
 import erebus.core.proxy.CommonProxy;
+import erebus.creativetab.CreativeTabErebus;
 import erebus.lib.Reference;
+import erebus.network.PacketHandler;
 
 /**
  * @author ProPercivalalb, Dylan4Ever, (Others PUT NAMES HERE)
  */
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION)
-@NetworkMod(channels = {Reference.CHANNEL}, clientSideRequired = true, serverSideRequired = true, packetHandler = PacketErebusHandler.class)
+@NetworkMod(channels = {Reference.CHANNEL}, clientSideRequired = true, serverSideRequired = true, packetHandler = PacketHandler.class)
 public class ErebusMod
 {	
 	@SidedProxy(clientSide = Reference.SP_CLIENT, serverSide = Reference.SP_SERVER)
@@ -208,7 +211,7 @@ public class ErebusMod
 
 	public static int erebusDimensionID;
 
-	public static PacketErebusHandler packeterebushandler = new PacketErebusHandler();
+	public static ConnectionTeleportHandler packeterebushandler = new ConnectionTeleportHandler();
 	static int startEntityId = 300; // used by  new beetle larva
 	
 	// This method is used to add sounds
@@ -332,79 +335,79 @@ public class ErebusMod
 		brickAmber = new BlockAmber(brickAmberID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("brickAmber").setCreativeTab(tabErebus);
 		glassAmber = new BlockAmber(glassAmberID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("glassAmber").setCreativeTab(tabErebus);
 		woodMahogany = new BlockLogMahogany(woodMahoganyID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("tree_mahogany").setCreativeTab(tabErebus);
-		leavesMahogany = (BlockLeavesErebus)(new BlockLeavesErebus(leavesMahoganyID, 0)).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("leaves_mahogany").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "leaves_mahogany");
+		leavesMahogany = (BlockLeavesErebus)(new BlockLeavesErebus(leavesMahoganyID, 0)).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("leaves_mahogany").setCreativeTab(tabErebus).func_111022_d("erebus:leaves_mahogany");
 		woodEucalyptus = new BlockLogEucalyptus(woodEucalyptusID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("tree_eucalyptus").setCreativeTab(tabErebus);
-		leavesEucalyptus = (BlockLeavesErebus)(new BlockLeavesErebus(leavesEucalyptusID, 1)).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("leaves_eucalyptus").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "leaves_eucalyptus");
-		cobbleWebbed = new BlockCobbleWebbed(cobbleWebbedID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("cobbleWebbed").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "cobbleWebbed");
-		oreFossil = new BlockOreFossil(oreFossilID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreFossil_U").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "oreFossil_U");
-		blockSilk = new BlockSilk(blockSilkID, 70).setHardness(0.2F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("blockSilk").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "blockSilk");
-		planksMahogany = new BlockPlanksErebus(planksMahoganyID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("wood_mahogany").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "wood_mahogany");
-		planksEucalyptus = new BlockPlanksErebus(planksEucalyptusID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("wood_eucalyptus").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "wood_eucalyptus");
-		mirBrick = new BlockErebus(mirBrickID, Material.rock).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("mirbrick").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "mirbrick");
-		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, 96).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("spiderSpawner").func_111022_d(Properties.TEX_PACkAGE + "spiderSpawner");
-		caveSpiderSpawner = new BlockCaveSpiderSpawner(caveSpiderSpawnerID, 96).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("spiderSpawner").func_111022_d(Properties.TEX_PACkAGE + "spiderSpawner");
-		blockSpiderSilk = new BlockSpiderSilk(blockSpiderSilkID).setHardness(0.2F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("blockSpiderSilk").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "blockSpiderSilk");
-		thorns = new BlockThorns(thornsID).setHardness(0.2F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("thorns").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "thorns");
-		fern = (BlockFern)(new BlockFern(fernID)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("erebusFern").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "erebusFern");
+		leavesEucalyptus = (BlockLeavesErebus)(new BlockLeavesErebus(leavesEucalyptusID, 1)).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("leaves_eucalyptus").setCreativeTab(tabErebus).func_111022_d("erebus:leaves_eucalyptus");
+		cobbleWebbed = new BlockCobbleWebbed(cobbleWebbedID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("cobbleWebbed").setCreativeTab(tabErebus).func_111022_d("erebus:cobbleWebbed");
+		oreFossil = new BlockOreFossil(oreFossilID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreFossil_U").setCreativeTab(tabErebus).func_111022_d("erebus:oreFossil_U");
+		blockSilk = new BlockSilk(blockSilkID, 70).setHardness(0.2F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("blockSilk").setCreativeTab(tabErebus).func_111022_d("erebus:blockSilk");
+		planksMahogany = new BlockPlanksErebus(planksMahoganyID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("wood_mahogany").setCreativeTab(tabErebus).func_111022_d("erebus:wood_mahogany");
+		planksEucalyptus = new BlockPlanksErebus(planksEucalyptusID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("wood_eucalyptus").setCreativeTab(tabErebus).func_111022_d("erebus:wood_eucalyptus");
+		mirBrick = new BlockErebus(mirBrickID, Material.rock).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("mirbrick").setCreativeTab(tabErebus).func_111022_d("erebus:mirbrick");
+		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, 96).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("spiderSpawner").func_111022_d("erebus:spiderSpawner");
+		caveSpiderSpawner = new BlockCaveSpiderSpawner(caveSpiderSpawnerID, 96).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("spiderSpawner").func_111022_d("erebus:spiderSpawner");
+		blockSpiderSilk = new BlockSpiderSilk(blockSpiderSilkID).setHardness(0.2F).setStepSound(Block.soundClothFootstep).setUnlocalizedName("blockSpiderSilk").setCreativeTab(tabErebus).func_111022_d("erebus:blockSpiderSilk");
+		thorns = new BlockThorns(thornsID).setHardness(0.2F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("thorns").setCreativeTab(tabErebus).func_111022_d("erebus:thorns");
+		fern = (BlockFern)(new BlockFern(fernID)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("erebusFern").setCreativeTab(tabErebus).func_111022_d("erebus:erebusFern");
 		woodAcacia = new BlockLogAcacia(woodAcaciaID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("tree_acacia").setCreativeTab(tabErebus);
-		leavesAcacia = (BlockLeavesErebus)(new BlockLeavesErebus(leavesAcaciaID, 2)).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("leaves_acacia").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "leaves_acacia");
+		leavesAcacia = (BlockLeavesErebus)(new BlockLeavesErebus(leavesAcaciaID, 2)).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("leaves_acacia").setCreativeTab(tabErebus).func_111022_d("erebus:leaves_acacia");
 		erebusSapling = new BlockSaplingErebus(erebusSaplingID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("sapling_mahogany");
-		erebusGrass = new BlockErebusGrass(erebusGrassID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("tallgrass").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "tallgrass");
-		planksAcacia = new BlockPlanksErebus(planksAcaciaID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("wood_acacia").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "wood_acacia");
+		erebusGrass = new BlockErebusGrass(erebusGrassID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("tallgrass").setCreativeTab(tabErebus).func_111022_d("erebus:tallgrass");
+		planksAcacia = new BlockPlanksErebus(planksAcaciaID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("wood_acacia").setCreativeTab(tabErebus).func_111022_d("erebus:wood_acacia");
 		quickSand = new BlockQuickSand(quickSandID).setHardness(0.5F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("quickSand").setCreativeTab(tabErebus);
 		blockTurnip = (new BlockTurnip(blockTurnipID)).setUnlocalizedName("turnips");
-		oreGold_U = (new BlockErebusOre(oreGold_UID)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreGoldU").func_111022_d(Properties.TEX_PACkAGE + "oreGoldU");
-		oreIron_U = (new BlockErebusOre(oreIron_UID)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreIronU").func_111022_d(Properties.TEX_PACkAGE + "oreIronU");
-		oreCoal_U = (new BlockErebusOre(oreCoal_UID)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreCoal_U").func_111022_d(Properties.TEX_PACkAGE + "oreCoal_U");
-		oreLapis_U = (new BlockErebusOre(oreLapis_UID)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreLapis_U").func_111022_d(Properties.TEX_PACkAGE + "oreLapis_U");
-		oreDiamond_U = (new BlockErebusOre(oreDiamond_UID)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreDiamond_U").func_111022_d(Properties.TEX_PACkAGE + "oreDiamond_U");
-		oreEmerald_U = (new BlockErebusOre(oreEmerald_UID)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreEmerald_U").func_111022_d(Properties.TEX_PACkAGE + "oreEmerald_U");
+		oreGold_U = (new BlockErebusOre(oreGold_UID)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreGoldU").func_111022_d("erebus:oreGoldU");
+		oreIron_U = (new BlockErebusOre(oreIron_UID)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreIronU").func_111022_d("erebus:oreIronU");
+		oreCoal_U = (new BlockErebusOre(oreCoal_UID)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreCoal_U").func_111022_d("erebus:oreCoal_U");
+		oreLapis_U = (new BlockErebusOre(oreLapis_UID)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreLapis_U").func_111022_d("erebus:oreLapis_U");
+		oreDiamond_U = (new BlockErebusOre(oreDiamond_UID)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreDiamond_U").func_111022_d("erebus:oreDiamond_U");
+		oreEmerald_U = (new BlockErebusOre(oreEmerald_UID)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreEmerald_U").func_111022_d("erebus:oreEmerald_U");
 		oreRedstone_U = (new BlockRedstoneOre_U(oreRedstone_UID, false)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreRedstone_U").setCreativeTab(tabErebus);
 		oreRedstoneGlowing_U = (new BlockRedstoneOre_U(oreRedstoneGlowing_UID, true)).setLightValue(0.625F).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreRedstone_U");
 		umberstone = new BlockUmberstone(umberstoneID, Material.rock).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("Umberstone");
-		oreJade_U = (new BlockErebusOre(oreJade_UID)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreJade").func_111022_d(Properties.TEX_PACkAGE + "oreJade");
+		oreJade_U = (new BlockErebusOre(oreJade_UID)).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreJade").func_111022_d("erebus:oreJade");
 		umbercobble = new BlockUmberstone(umbercobbleID, Material.rock).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("Umbercobble");
 		umbercobbleMossy = new BlockUmberstone(umbercobbleMossyID, Material.rock).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("MossyUmbercobble");
-		umbercobbleWebbed = new BlockCobbleWebbed(umbercobbleWebbedID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("cobbleUmberWebbed").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "cobbleUmberWebbed");
+		umbercobbleWebbed = new BlockCobbleWebbed(umbercobbleWebbedID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("cobbleUmberWebbed").setCreativeTab(tabErebus).func_111022_d("erebus:cobbleUmberWebbed");
 		bambooCrate = new BlockBambooCrate(bambooCrateID).setUnlocalizedName("bambooCrate").setCreativeTab(tabErebus);
 		
-		dryScree = (new BlockScree(2550)).setHardness(0.5F).setStepSound(Block.soundSandFootstep).setUnlocalizedName("blockScree").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "blockScree");  
-		screeBricks = (new BlockErebusBrick(2551)).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("brickScree").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "brickScree");
-		hollowLogAcacia = new BlockHollowLog(2552, TileEntityHollowLog.class).setHardness(0.4F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("log_acacia").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "log_acacia");
-		maggotLogAcacia = new BlockMaggot(2553, 164).setHardness(0.4F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("log_acacia").setCreativeTab(tabErebus).func_111022_d(Properties.TEX_PACkAGE + "log_acacia");
+		dryScree = (new BlockScree(2550)).setHardness(0.5F).setStepSound(Block.soundSandFootstep).setUnlocalizedName("blockScree").setCreativeTab(tabErebus).func_111022_d("erebus:blockScree");  
+		screeBricks = (new BlockErebusBrick(2551)).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("brickScree").setCreativeTab(tabErebus).func_111022_d("erebus:brickScree");
+		hollowLogAcacia = new BlockHollowLog(2552, TileEntityHollowLog.class).setHardness(0.4F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("log_acacia").setCreativeTab(tabErebus).func_111022_d("erebus:log_acacia");
+		maggotLogAcacia = new BlockMaggot(2553, 164).setHardness(0.4F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("log_acacia").setCreativeTab(tabErebus).func_111022_d("erebus:log_acacia");
 		stairsMahogany = new BlockStairsErebus(2554, planksMahogany, 0).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsMahogany").setCreativeTab(tabErebus);
 		stairsEucalyptus = new BlockStairsErebus(2555, planksEucalyptus, 0).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsEucalyptus").setCreativeTab(tabErebus);
 
 
-		beetleLarvaRaw = (new ItemFood(beetleLarvaRawID, 2, 0.8F, false)).setPotionEffect(Potion.confusion.id, 30, 0, 0.75F).setUnlocalizedName("beetleLarvaRaw").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "larvaRaw");
-		beetleLarvaCooked = (new ItemFood(beetleLarvaCookedID, 6, 0.8F, false)).setUnlocalizedName("beetleLarvaCooked").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "beetleLarvaCooked");exoskeletonPlate = (new Item(exoskeletonPlateID)).setUnlocalizedName("plateExo").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "plateExo");
-		exoskeletonHelmet = new ItemExoskeletonArmor(exoskeletonHelmetID, armorEXOSKELETON, 2, 0).setUnlocalizedName("helmetExo").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "helmetExo");
-		exoskeletonBody = new ItemExoskeletonArmor(exoskeletonBodyID, armorEXOSKELETON, 2, 1).setUnlocalizedName("chestplateExo").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "chestplateExo");
-		exoskeletonLegs = new ItemExoskeletonArmor(exoskeletonLegsID, armorEXOSKELETON, 2, 2).setUnlocalizedName("leggingsExo").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "leggingsExo");
-		exoskeletonBoots = new ItemExoskeletonArmor(exoskeletonBootsID, armorEXOSKELETON, 2, 3).setUnlocalizedName("bootsExo").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "bootsExo");
-		legCricket = (new ItemFood(legCricketID, 2, 0.8F, false)).setUnlocalizedName("cricketLegRaw").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "cricketLegRaw");
-		legCricketCooked = (new ItemFood(legCricketCookedID, 8, 0.8F, false)).setUnlocalizedName("cricketLegCooked").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "cricketLegCooked");
-		portalActivator = (new ItemPortalActivator(portalActivatorID)).setUnlocalizedName("portalActivator").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "portalActivator");
-		fossilShard = (new Item(fossilShardID)).setUnlocalizedName("shardBone").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "shardBone");
-		fossilClub = (new ItemWeaponErebus(fossilClubID, 72, 9, 12, Item.bone.itemID, fossilShard.itemID)).setUnlocalizedName("clubBone").setFull3D().setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "clubBone");
-		maxSpeedBow = (new ItemMaxSpeedBow(maxSpeedBowID, 301, 5)).setUnlocalizedName("maxSpeedBow").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "maxSpeedBow");
-		legTarantula = (new ItemFood(legTarantulaID, 2, 0.8F, false)).setUnlocalizedName("legTarantulaRaw").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "legTarantula");
-		legTarantulaCooked = (new ItemFood(legTarantulaCookedID, 6, 1.0F, false).setUnlocalizedName("legTarantulaCooked").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "legTarantulaCooked"));		  
-		turnip = (new ItemSeedFood(turnipID, 4, 0.6F, blockTurnip.blockID, Block.tilledField.blockID)).setUnlocalizedName("turnips").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "turnips");
-		flyWing = (new Item(flyWingID)).setUnlocalizedName("flyWing").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "flyWing");
-		jadeHelmet = new ItemJadeArmor(jadeHelmetID, armorJADE, 2, 0).setUnlocalizedName("helmetJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "helmetJade");
-		jadeBody = new ItemJadeArmor(jadeBodyID, armorJADE, 2, 1).setUnlocalizedName("chestplateJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "chestplateJade");
-		jadeLegs = new ItemJadeArmor(jadeLegsID, armorJADE, 2, 2).setUnlocalizedName("leggingsJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "leggingsJade");
-		jadeBoots = new ItemJadeArmor(jadeBootsID, armorJADE, 2, 3).setUnlocalizedName("bootsJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "bootsJade");
-		jadeSword = new ItemSword(jadeSwordID, toolJADE).setUnlocalizedName("swordJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "swordJade");
-		jadePickaxe = new ItemPickaxe(jadePickaxeID, toolJADE).setUnlocalizedName("pickaxeJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "pickaxeJade");
-		jadeAxe = new ItemAxe(jadeAxeID, toolJADE).setUnlocalizedName("axeJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "axeJade");
-		jadeShovel = new ItemSpade(jadeShovelID, toolJADE).setUnlocalizedName("shovelJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "shovelJade");
-		jadePaxel = new ItemPaxel(jadePaxelID, toolJADE).setUnlocalizedName("paxelJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "paxelJade");
-		jadeHoe = new ItemHoe(jadeHoeID, toolJADE).setUnlocalizedName("hoeJade").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "hoeJade");
-		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, armorEXOSKELETON, 2, 0).setUnlocalizedName("compoundGoggles").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "compoundGoggles"); 
-        compoundEyes = (new Item(compoundEyesID)).setUnlocalizedName("compoundEyes").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "compoundEyes"); 
-        compoundLens = (new Item(compoundLensID)).setUnlocalizedName("compoundLens").setCreativeTab(tabErebus).func_111206_d(Properties.TEX_PACkAGE + "compoundLens"); 
+		beetleLarvaRaw = (new ItemFood(beetleLarvaRawID, 2, 0.8F, false)).setPotionEffect(Potion.confusion.id, 30, 0, 0.75F).setUnlocalizedName("beetleLarvaRaw").setCreativeTab(tabErebus).func_111206_d("erebus:larvaRaw");
+		beetleLarvaCooked = (new ItemFood(beetleLarvaCookedID, 6, 0.8F, false)).setUnlocalizedName("beetleLarvaCooked").setCreativeTab(tabErebus).func_111206_d("erebus:beetleLarvaCooked");exoskeletonPlate = (new Item(exoskeletonPlateID)).setUnlocalizedName("plateExo").setCreativeTab(tabErebus).func_111206_d("erebus:plateExo");
+		exoskeletonHelmet = new ItemExoskeletonArmor(exoskeletonHelmetID, armorEXOSKELETON, 2, 0).setUnlocalizedName("helmetExo").setCreativeTab(tabErebus).func_111206_d("erebus:helmetExo");
+		exoskeletonBody = new ItemExoskeletonArmor(exoskeletonBodyID, armorEXOSKELETON, 2, 1).setUnlocalizedName("chestplateExo").setCreativeTab(tabErebus).func_111206_d("erebus:chestplateExo");
+		exoskeletonLegs = new ItemExoskeletonArmor(exoskeletonLegsID, armorEXOSKELETON, 2, 2).setUnlocalizedName("leggingsExo").setCreativeTab(tabErebus).func_111206_d("erebus:leggingsExo");
+		exoskeletonBoots = new ItemExoskeletonArmor(exoskeletonBootsID, armorEXOSKELETON, 2, 3).setUnlocalizedName("bootsExo").setCreativeTab(tabErebus).func_111206_d("erebus:bootsExo");
+		legCricket = (new ItemFood(legCricketID, 2, 0.8F, false)).setUnlocalizedName("cricketLegRaw").setCreativeTab(tabErebus).func_111206_d("erebus:cricketLegRaw");
+		legCricketCooked = (new ItemFood(legCricketCookedID, 8, 0.8F, false)).setUnlocalizedName("cricketLegCooked").setCreativeTab(tabErebus).func_111206_d("erebus:cricketLegCooked");
+		portalActivator = (new ItemPortalActivator(portalActivatorID)).setUnlocalizedName("portalActivator").setCreativeTab(tabErebus).func_111206_d("erebus:portalActivator");
+		fossilShard = (new Item(fossilShardID)).setUnlocalizedName("shardBone").setCreativeTab(tabErebus).func_111206_d("erebus:shardBone");
+		fossilClub = (new ItemWeaponErebus(fossilClubID, 72, 9, 12, Item.bone.itemID, fossilShard.itemID)).setUnlocalizedName("clubBone").setFull3D().setCreativeTab(tabErebus).func_111206_d("erebus:clubBone");
+		maxSpeedBow = (new ItemMaxSpeedBow(maxSpeedBowID, 301, 5)).setUnlocalizedName("maxSpeedBow").setCreativeTab(tabErebus).func_111206_d("erebus:maxSpeedBow");
+		legTarantula = (new ItemFood(legTarantulaID, 2, 0.8F, false)).setUnlocalizedName("legTarantulaRaw").setCreativeTab(tabErebus).func_111206_d("erebus:legTarantula");
+		legTarantulaCooked = (new ItemFood(legTarantulaCookedID, 6, 1.0F, false).setUnlocalizedName("legTarantulaCooked").setCreativeTab(tabErebus).func_111206_d("erebus:legTarantulaCooked"));		  
+		turnip = (new ItemSeedFood(turnipID, 4, 0.6F, blockTurnip.blockID, Block.tilledField.blockID)).setUnlocalizedName("turnips").setCreativeTab(tabErebus).func_111206_d("erebus:turnips");
+		flyWing = (new Item(flyWingID)).setUnlocalizedName("flyWing").setCreativeTab(tabErebus).func_111206_d("erebus:flyWing");
+		jadeHelmet = new ItemJadeArmor(jadeHelmetID, armorJADE, 2, 0).setUnlocalizedName("helmetJade").setCreativeTab(tabErebus).func_111206_d("erebus:helmetJade");
+		jadeBody = new ItemJadeArmor(jadeBodyID, armorJADE, 2, 1).setUnlocalizedName("chestplateJade").setCreativeTab(tabErebus).func_111206_d("erebus:chestplateJade");
+		jadeLegs = new ItemJadeArmor(jadeLegsID, armorJADE, 2, 2).setUnlocalizedName("leggingsJade").setCreativeTab(tabErebus).func_111206_d("erebus:leggingsJade");
+		jadeBoots = new ItemJadeArmor(jadeBootsID, armorJADE, 2, 3).setUnlocalizedName("bootsJade").setCreativeTab(tabErebus).func_111206_d("erebus:bootsJade");
+		jadeSword = new ItemSword(jadeSwordID, toolJADE).setUnlocalizedName("swordJade").setCreativeTab(tabErebus).func_111206_d("erebus:swordJade");
+		jadePickaxe = new ItemPickaxe(jadePickaxeID, toolJADE).setUnlocalizedName("pickaxeJade").setCreativeTab(tabErebus).func_111206_d("erebus:pickaxeJade");
+		jadeAxe = new ItemAxe(jadeAxeID, toolJADE).setUnlocalizedName("axeJade").setCreativeTab(tabErebus).func_111206_d("erebus:axeJade");
+		jadeShovel = new ItemSpade(jadeShovelID, toolJADE).setUnlocalizedName("shovelJade").setCreativeTab(tabErebus).func_111206_d("erebus:shovelJade");
+		jadePaxel = new ItemPaxel(jadePaxelID, toolJADE).setUnlocalizedName("paxelJade").setCreativeTab(tabErebus).func_111206_d("erebus:paxelJade");
+		jadeHoe = new ItemHoe(jadeHoeID, toolJADE).setUnlocalizedName("hoeJade").setCreativeTab(tabErebus).func_111206_d("erebus:hoeJade");
+		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, armorEXOSKELETON, 2, 0).setUnlocalizedName("compoundGoggles").setCreativeTab(tabErebus).func_111206_d("erebus:compoundGoggles"); 
+        compoundEyes = (new Item(compoundEyesID)).setUnlocalizedName("compoundEyes").setCreativeTab(tabErebus).func_111206_d("erebus:compoundEyes"); 
+        compoundLens = (new Item(compoundLensID)).setUnlocalizedName("compoundLens").setCreativeTab(tabErebus).func_111206_d("erebus:compoundLens"); 
 		
 		//Block Mining Levels
 		MinecraftForge.setBlockHarvestLevel(blockAmber, "pickaxe", 0);
@@ -566,7 +569,7 @@ public class ErebusMod
 		GameRegistry.registerTileEntity(TileEntityHollowLog.class, "Hollow Log");
 		GameRegistry.registerTileEntity(TileEntityBambooCrate.class, "Bamboo Crate");
 
-		TickRegistry.registerTickHandler(new CommonErebusTickHandler(), Side.SERVER);
+		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
 	}
 	
 	// This allows you to get rid of those nasty ModLoader methods and makes it easy to register spawn eggs

@@ -13,7 +13,7 @@ import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
 import erebus.ErebusMod;
-import erebus.world.genLayers.GenLayerErebus;
+import erebus.world.genlayer.GenLayerErebus;
 
 public class WorldChunkManagerErebus extends WorldChunkManager
 {

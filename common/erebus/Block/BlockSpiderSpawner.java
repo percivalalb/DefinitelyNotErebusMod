@@ -2,7 +2,6 @@ package erebus.block;
 
 import erebus.core.proxy.CommonProxy;
 import erebus.tileentity.TileEntitySpiderSpawner;
-import erebus.api.Properties;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
@@ -75,6 +74,6 @@ public class BlockSpiderSpawner extends BlockContainer
     }	
     
     /*public void registerIcons(IconRegister par1IconRegister) {
-        this.blockIcon = par1IconRegister.registerIcon(Properties.TEX_PACkAGE + "spiderSpawner");
+        this.blockIcon = par1IconRegister.registerIcon("erebus:spiderSpawner");
     }*/
 }

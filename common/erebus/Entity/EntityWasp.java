@@ -1,6 +1,6 @@
 package erebus.entity;
 
-import erebus.daveyx0.AnimationMathHelper;
+import erebus.client.render.entity.AnimationMathHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;

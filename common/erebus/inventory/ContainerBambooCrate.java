@@ -1,5 +1,6 @@
 package erebus.inventory;
 
+import invtweaks.api.container.ChestContainer;
 import erebus.tileentity.TileEntityBambooCrate;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -8,6 +9,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+@ChestContainer(rowSize = 9, isLargeChest = false)
 public class ContainerBambooCrate extends Container
 {
 	private InventoryPlayer playerInventory; 

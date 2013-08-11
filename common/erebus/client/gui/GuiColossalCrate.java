@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.List;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.GuiButton;
@@ -28,6 +29,7 @@ import erebus.tileentity.TileEntityBambooCrate;
 @SideOnly(Side.CLIENT)
 public class GuiColossalCrate extends GuiContainer {
    
+	public static final boolean hasInventoryTweaks = Loader.isModLoaded("inventorytweaks");
 	private static final ResourceLocation GUI_BAMBOO_CRATE = new ResourceLocation("erebus:textures/gui/collosalcrate.png");
 	private InventoryPlayer playerInventory; 
 	public TileEntityBambooCrate crate1;
@@ -61,7 +63,7 @@ public class GuiColossalCrate extends GuiContainer {
        Keyboard.enableRepeatEvents(true);
        this.buttonList.clear();
        this.buttonList.add(new GuiInvisibleButton(0, guiLeft + 7, guiTop + 4, 17, 11));
-       this.buttonList.add(new GuiInvisibleButton(1, guiLeft + 205, guiTop + 4, 17, 11));
+       this.buttonList.add(new GuiInvisibleButton(1, guiLeft + 205 - (hasInventoryTweaks ? 50 : 0), guiTop + 4, 17, 11));
     }
     
     @Override

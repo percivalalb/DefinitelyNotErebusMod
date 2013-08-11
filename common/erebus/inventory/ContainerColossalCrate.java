@@ -1,5 +1,7 @@
 package erebus.inventory;
 
+import invtweaks.api.container.ChestContainer;
+
 import java.util.List;
 
 import erebus.core.helper.LogHelper;
@@ -11,6 +13,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+@ChestContainer(rowSize = 12, isLargeChest = false)
 public class ContainerColossalCrate extends Container
 {
 	private InventoryPlayer playerInventory;

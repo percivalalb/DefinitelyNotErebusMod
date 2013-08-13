@@ -324,7 +324,7 @@ public class EntityFly extends EntityAmbientCreature
     	}
     	if (this.rand.nextInt(20) == 0)
     	{
-            this.dropItem(ModItems..compoundEyes.itemID, 1);       	
+            this.dropItem(ModItems.compoundEyes.itemID, 1);       	
     	}
     }
 }

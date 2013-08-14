@@ -1,5 +1,7 @@
 package erebus.block;
 
+import static net.minecraftforge.common.ForgeDirection.UP;
+
 import java.util.List;
 import java.util.Random;
 
@@ -11,7 +13,9 @@ import erebus.core.helper.LogHelper;
 import erebus.core.proxy.CommonProxy;
 import erebus.tileentity.TileEntityBamboo;
 import erebus.tileentity.TileEntityBambooCrate;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.BlockFlower;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -25,21 +29,31 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.IPlantable;
 
 /**
  * @author ProPercivalalb
  */
-public class BlockBambooCrate extends BlockContainer {
+public class BlockBambooCrate extends BlockContainer implements IPlantable {
 
 	private final Random crateRand = new Random();
 	
 	public BlockBambooCrate(int par1) {
 		super(par1, Material.wood);
+		this.setStepSound(soundWoodFootstep);
+		this.setResistance(3.0F);
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
 		return null;
+	}
+	
+	@Override
+	public int damageDropped(int meta) {
+		return meta;
 	}
 	
 	@Override
@@ -49,6 +63,15 @@ public class BlockBambooCrate extends BlockContainer {
 	    case 1: return new TileEntityBambooCrate();
 	    }
 		return null;
+	}
+	
+	public float getBlockHardness(World world, int x, int y, int z) {
+	    switch(world.getBlockMetadata(x, y, z)) {
+	    case 0: return 0.0F;
+	    case 1: return this.blockHardness;
+	    default: return super.getBlockHardness(world, x, y, z);
+	    }
+	    
 	}
 	
 	@Override
@@ -249,5 +272,73 @@ public class BlockBambooCrate extends BlockContainer {
     public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
         par3List.add(new ItemStack(par1, 1, 0));
         par3List.add(new ItemStack(par1, 1, 1));
+    }
+    
+    @Override
+    public void onNeighborBlockChange(World world, int x, int y, int z, int neighborBlockId) {
+    	if(world.getBlockMetadata(x, y, z) == 0) {
+    		this.checkBlockCoordValid(world, x, y, z);
+    	}
+    }
+    
+    protected final void checkBlockCoordValid(World par1World, int par2, int par3, int par4) {
+        if (!this.canBlockStay(par1World, par2, par3, par4)) {
+            this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
+            par1World.setBlockToAir(par2, par3, par4);
+        }
+    }
+
+    @Override
+    public boolean canBlockStay(World world, int x, int y, int z) {
+        if(world.getBlockMetadata(x, y, z) == 1) {
+        	return super.canBlockStay(world, x, y, z);
+        }
+    	return this.canPlaceBlockAt(world, x, y, z);
+    }
+
+    @Override
+    public boolean canPlaceBlockAt(World world, int x, int y, int z) {
+    	 if(world.getBlockMetadata(x, y, z) == 1) {
+    		 return super.canPlaceBlockAt(world, x, y, z);
+    	 }
+    	Block block = Block.blocksList[world.getBlockId(x, y - 1, z)];
+        return (block != null && block.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this));
+    }
+    
+    @Override
+    public boolean canSustainPlant(World world, int x, int y, int z, ForgeDirection direction, IPlantable plant) {
+        if(world.getBlockMetadata(x, y, z) == 1) {
+        	int plantMeta = plant.getPlantMetadata(world, x, y + 1, z);
+        	if(plantMeta == 1) return true;
+        }
+    	
+    	int plantID = plant.getPlantID(world, x, y + 1, z);
+        EnumPlantType plantType = plant.getPlantType(world, x, y + 1, z);
+
+        if (plantID == blockID) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public EnumPlantType getPlantType(World world, int x, int y, int z) {
+        return EnumPlantType.Cave;
+    }
+
+    @Override
+    public int getPlantID(World world, int x, int y, int z) {
+        return blockID;
+    }
+
+    @Override
+    public int getPlantMetadata(World world, int x, int y, int z) {
+        return world.getBlockMetadata(x, y, z);
+    }
+    
+    @Override
+    public int getDamageValue(World world, int x, int y, int z) {
+        return world.getBlockMetadata(x, y, z);
     }
 }

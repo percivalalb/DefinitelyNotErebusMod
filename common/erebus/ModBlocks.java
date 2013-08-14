@@ -101,7 +101,7 @@ public class ModBlocks {
 		blockTurnip = (new BlockTurnip(blockTurnipID)).setUnlocalizedName("turnips");
 		umberOreBlock = new BlockErebusOre(umberOreBlockID).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreBlockU");
 		umberstone = new BlockUmberstone(umberstoneID, Material.rock).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberstone");
-		bambooCrate = new BlockBambooCrate(bambooCrateID).setUnlocalizedName("bamboo").setCreativeTab(ErebusMod.tabErebus);
+		bambooCrate = new BlockBambooCrate(bambooCrateID).setUnlocalizedName("bamboo").setHardness(2.0F).setCreativeTab(ErebusMod.tabErebus);
 		
 		dryScree = (new BlockScree(2550)).setHardness(0.5F).setStepSound(Block.soundSandFootstep).setUnlocalizedName("blockScree").setCreativeTab(ErebusMod.tabErebus).func_111022_d("erebus:blockScree");  
 		screeBricks = (new BlockErebusBrick(2551)).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("brickScree").setCreativeTab(ErebusMod.tabErebus).func_111022_d("erebus:brickScree");

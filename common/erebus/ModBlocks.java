@@ -143,7 +143,7 @@ public class ModBlocks {
 		//GameRegistry.registerBlock(stairsEucalyptus);
 		GameRegistry.registerBlock(umberstone, ItemMultiBlock.class, "erebus.umberstone");		  
 		GameRegistry.registerBlock(umberOreBlock, ItemMultiBlock.class, "erebus.oreBlockU");		  	  
-		GameRegistry.registerBlock(bambooCrate, "erebus.bambooCrate");
+		GameRegistry.registerBlock(bambooCrate, ItemMultiBlock.class, "erebus.bamboo");
 		
 		//Block Mining Levels
 		MinecraftForge.setBlockHarvestLevel(blockAmber, "pickaxe", 0);

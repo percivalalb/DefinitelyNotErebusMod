@@ -1,14 +1,21 @@
 package erebus.block;
 
+import java.util.List;
 import java.util.Random;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 import erebus.ErebusMod;
 import erebus.core.helper.LogHelper;
 import erebus.core.proxy.CommonProxy;
+import erebus.tileentity.TileEntityBamboo;
 import erebus.tileentity.TileEntityBambooCrate;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,6 +23,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 /**
@@ -31,7 +39,16 @@ public class BlockBambooCrate extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityBambooCrate();
+		return null;
+	}
+	
+	@Override
+	public TileEntity createTileEntity(World world, int metadata) {
+	    switch(metadata) {
+	    case 0: return new TileEntityBamboo();
+	    case 1: return new TileEntityBambooCrate();
+	    }
+		return null;
 	}
 	
 	@Override
@@ -124,17 +141,10 @@ public class BlockBambooCrate extends BlockContainer {
 	}
 	
 	@Override
-	public void onPostBlockPlaced(World world, int x, int y, int z, int par5) {
-		boolean isValid = this.isValidCrate(world, x, y, z);
-		if(isValid) {
-			
-		}
-	}
-	
-	
-	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
-        if (world.isRemote) {
+        if(world.getBlockMetadata(x, y, z) == 0) return false;
+		
+		if (world.isRemote) {
             return true;
         }
         else
@@ -173,9 +183,10 @@ public class BlockBambooCrate extends BlockContainer {
         return false;
     }
     
+    @Override
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
     {
-    	
+    	if(par1World.getBlockMetadata(par2, par3, par4) == 0) return;
         TileEntityBambooCrate tileentitycrate = (TileEntityBambooCrate)par1World.getBlockTileEntity(par2, par3, par4);
 
         if (tileentitycrate != null)
@@ -220,5 +231,23 @@ public class BlockBambooCrate extends BlockContainer {
             }
         
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
+    }
+    
+    @Override
+    public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int x, int y, int z) {
+    	int meta = par1IBlockAccess.getBlockMetadata(x, y, z);
+    	if(meta == 0) {
+    		this.setBlockBounds(0.2F, 0.0F, 0.2F, 0.8F, 1.0F, 0.8F);
+    	}
+    	else if(meta == 1) {
+    		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+    	}
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+        par3List.add(new ItemStack(par1, 1, 0));
+        par3List.add(new ItemStack(par1, 1, 1));
     }
 }

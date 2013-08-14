@@ -77,7 +77,7 @@ public class BlockErebusOre extends Block {
     	int _default = meta == 3 ? 4 + random.nextInt(5) : 1;
     	
     	if (meta > 0 && this.blockID != this.idDropped(meta, random, fortune)) {
-    		int j = random.nextInt(meta + 2) - 1;
+    		int j = random.nextInt(fortune + 2) - 1;
 
             if (j < 0) {
                 j = 0;

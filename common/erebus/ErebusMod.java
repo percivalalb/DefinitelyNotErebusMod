@@ -17,6 +17,7 @@ import net.minecraft.item.ItemSeedFood;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.potion.Potion;
 import net.minecraft.src.ModLoader;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -39,35 +40,6 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.block.BlockAmber;
-import erebus.block.BlockBambooCrate;
-import erebus.block.BlockCaveSpiderSpawner;
-import erebus.block.BlockCobbleWebbed;
-import erebus.block.BlockErebus;
-import erebus.block.BlockErebusBrick;
-import erebus.block.BlockErebusGrass;
-import erebus.block.BlockErebusOre;
-import erebus.block.BlockFern;
-import erebus.block.BlockHollowLog;
-import erebus.block.BlockLeavesErebus;
-import erebus.block.BlockLogAcacia;
-import erebus.block.BlockLogEucalyptus;
-import erebus.block.BlockLogMahogany;
-import erebus.block.BlockMaggot;
-import erebus.block.BlockOreFossil;
-import erebus.block.BlockPlanksErebus;
-import erebus.block.BlockPortalErebus;
-import erebus.block.BlockQuickSand;
-import erebus.block.BlockRedstoneOre_U;
-import erebus.block.BlockSaplingErebus;
-import erebus.block.BlockScree;
-import erebus.block.BlockSilk;
-import erebus.block.BlockSpiderSilk;
-import erebus.block.BlockSpiderSpawner;
-import erebus.block.BlockStairsErebus;
-import erebus.block.BlockThorns;
-import erebus.block.BlockTurnip;
-import erebus.block.BlockUmberstone;
 import erebus.entity.EntityBeetle;
 import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityCentipede;
@@ -76,14 +48,7 @@ import erebus.entity.EntityMosquito;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
-import erebus.item.ItemCompoundGoggles;
-import erebus.item.ItemExoskeletonArmor;
-import erebus.item.ItemJadeArmor;
-import erebus.item.ItemMaxSpeedBow;
-import erebus.item.ItemPaxel;
-import erebus.item.ItemPortalActivator;
-import erebus.item.ItemSapling;
-import erebus.item.ItemWeaponErebus;
+import erebus.tileentity.TileEntityBamboo;
 import erebus.tileentity.TileEntityBambooCrate;
 import erebus.tileentity.TileEntityCaveSpiderSpawner;
 import erebus.tileentity.TileEntityHollowLog;
@@ -134,7 +99,6 @@ public class ErebusMod
 	public static int erebusDimensionID;
 
 	public static ConnectionTeleportHandler packeterebushandler = new ConnectionTeleportHandler();
-	static int startEntityId = 300; // used by  new beetle larva
 	
 	// This method is used to add sounds
 	@EventHandler
@@ -163,6 +127,7 @@ public class ErebusMod
 		//Adds Erebus blocks & items
 		ModBlocks.init();
 		ModItems.init();
+		ModEntities.init();
 		
 		NetworkRegistry.instance().registerConnectionHandler(packeterebushandler);
 		NetworkRegistry.instance().registerGuiHandler(this.instance, proxy);
@@ -181,7 +146,7 @@ public class ErebusMod
 		undersavannah = (new BiomeGenUndergroundSavannah(savannahID).setColor(5470985).func_76733_a(5470985).setDisableRain().setTemperatureRainfall(4.2F, 0.05F)).setBiomeName("Subterranean Savannah");
 		cavern = (new BiomeGenCavern(cavernID).setColor(5470985).func_76733_a(5470985).setDisableRain().setTemperatureRainfall(4.2F, 0.05F)).setBiomeName("Cavern");	  
 
-		GameRegistry.addRecipe(new ItemStack(ModItems.compoundLens, 1), new Object[] {"GGG", "GEG", "GGG", 'G', ModBlocks.glassAmber, 'E', ModItems.compoundEyes}); 
+		GameRegistry.addRecipe(new ItemStack(ModItems.compoundLens, 1), new Object[] {"GGG", "GEG", "GGG", 'G', new ItemStack(ModBlocks.blockAmber, 1, 1), 'E', ModItems.compoundEyes}); 
 	    GameRegistry.addRecipe(new ItemStack(ModItems.compoundGoggles, 1), new Object[] {"XXX", "OXO", "   ", 'O', ModItems.compoundLens, 'X', ModItems.exoskeletonPlate});  
 		
 		GameRegistry.addRecipe(new ItemStack(ModItems.exoskeletonHelmet, 1), new Object[] {"sss", "s s", "   ", 's', ModItems.exoskeletonPlate});
@@ -189,14 +154,22 @@ public class ErebusMod
 		GameRegistry.addRecipe(new ItemStack(ModItems.exoskeletonLegs, 1), new Object[] {"sss", "s s", "s s", 's', ModItems.exoskeletonPlate});
 		GameRegistry.addRecipe(new ItemStack(ModItems.exoskeletonBoots, 1), new Object[] {"   ", "s s", "s s", 's', ModItems.exoskeletonPlate});  
 		
-		GameRegistry.addRecipe(new ItemStack(Item.pickaxeStone, 1), new Object[] {"XXX", " # ", " # ", '#', Item.stick, 'X', ModBlocks.umbercobble});
-		GameRegistry.addRecipe(new ItemStack(Item.shovelStone, 1), new Object[] {"X", "#", "#", '#', Item.stick, 'X', ModBlocks.umbercobble});
-		GameRegistry.addRecipe(new ItemStack(Item.axeStone, 1), new Object[] {"XX", "X#", " #", '#', Item.stick, 'X', ModBlocks.umbercobble});
-		GameRegistry.addRecipe(new ItemStack(Item.hoeStone, 1), new Object[] {"XX", " #", " #", '#', Item.stick, 'X', ModBlocks.umbercobble});
-		GameRegistry.addRecipe(new ItemStack(Item.swordStone, 1), new Object[] {"X", "X", "#", '#', Item.stick, 'X', ModBlocks.umbercobble});
+		//Jade tools
+		//TODO add jade GameRegistry.addRecipe(new ItemStack(ModItems.jadePickaxe, 1), new Object[] {"XXX", " # ", " # ", '#', Item.stick, 'X', new ItemStack(ModBlocks.umberstone, 1, 1)});
+		//TODO add jade GameRegistry.addRecipe(new ItemStack(ModItems.jadeShovel, 1), new Object[] {"X", "#", "#", '#', Item.stick, 'X', new ItemStack(ModBlocks.umberstone, 1, 1)});
+		//TODO add jade GameRegistry.addRecipe(new ItemStack(ModItems.jadeAxe, 1), new Object[] {"XX", "X#", " #", '#', Item.stick, 'X', new ItemStack(ModBlocks.umberstone, 1, 1)});
+		//TODO add jade GameRegistry.addRecipe(new ItemStack(ModItems.jadeHoe, 1), new Object[] {"XX", " #", " #", '#', Item.stick, 'X', new ItemStack(ModBlocks.umberstone, 1, 1)});
+		//TODO add jade GameRegistry.addRecipe(new ItemStack(ModItems.jadeSword, 1), new Object[] {"X", "X", "#", '#', Item.stick, 'X', new ItemStack(ModBlocks.umberstone, 1, 1)});
+		
+		//Stone tools made from umberstone
+		GameRegistry.addRecipe(new ItemStack(Item.pickaxeStone, 1), new Object[] {"XXX", " # ", " # ", '#', Item.stick, 'X', new ItemStack(ModBlocks.umberstone, 1, 1)});
+		GameRegistry.addRecipe(new ItemStack(Item.shovelStone, 1), new Object[] {"X", "#", "#", '#', Item.stick, 'X', new ItemStack(ModBlocks.umberstone, 1, 1)});
+		GameRegistry.addRecipe(new ItemStack(Item.axeStone, 1), new Object[] {"XX", "X#", " #", '#', Item.stick, 'X', new ItemStack(ModBlocks.umberstone, 1, 1)});
+		GameRegistry.addRecipe(new ItemStack(Item.hoeStone, 1), new Object[] {"XX", " #", " #", '#', Item.stick, 'X', new ItemStack(ModBlocks.umberstone, 1, 1)});
+		GameRegistry.addRecipe(new ItemStack(Item.swordStone, 1), new Object[] {"X", "X", "#", '#', Item.stick, 'X', new ItemStack(ModBlocks.umberstone, 1, 1)});
 
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockSilk, 1), new Object[] {"sss", "sss", "sss", 's', Item.silk});  
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.brickAmber, 4), new Object[] {"ss", "ss", 's', ModBlocks.blockAmber});  
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockAmber, 4, 2), new Object[] {"ss", "ss", 's', new ItemStack(ModBlocks.blockAmber, 1, 0)});  
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksMahogany, 4), new Object[] {"#", '#', new ItemStack(ModBlocks.woodMahogany)});  
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksEucalyptus, 4), new Object[] {"#", '#', new ItemStack(ModBlocks.woodEucalyptus)});  
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksAcacia, 4), new Object[] {"#", '#', new ItemStack(ModBlocks.woodAcacia)});  
@@ -211,13 +184,13 @@ public class ErebusMod
 		GameRegistry.addRecipe(new ItemStack(Item.arrow, 4), new Object[] {"T", "S", "F", 'F', new ItemStack(ModItems.flyWing, 1, 0), 'S', new ItemStack(Item.stick, 1, 0), 'T', new ItemStack(ModItems.fossilShard, 1, 0)});  
 		GameRegistry.addRecipe(new ItemStack(Item.arrow, 4), new Object[] {"T", "S", "F", 'F', new ItemStack(ModItems.flyWing, 1, 0), 'S', new ItemStack(Item.stick, 1, 0), 'T', new ItemStack(Item.flint, 1, 0)});  
 
-		GameRegistry.addSmelting(ModBlocks.blockAmber.blockID, new ItemStack(ModBlocks.glassAmber, 1), 0.3F);
+		FurnaceRecipes.smelting().addSmelting(ModBlocks.blockAmber.blockID, 0, new ItemStack(ModBlocks.blockAmber, 1, 1), 0.3F);
 		GameRegistry.addSmelting(ModItems.beetleLarvaRaw.itemID, new ItemStack(ModItems.beetleLarvaCooked, 1), 0.2F);
 		GameRegistry.addSmelting(ModItems.legCricket.itemID, new ItemStack(ModItems.legCricketCooked, 1), 0.2F);
 		GameRegistry.addSmelting(ModItems.legTarantula.itemID, new ItemStack(ModItems.legTarantulaCooked, 1), 0.2F);
-		GameRegistry.addSmelting(ModBlocks.umbercobble.blockID, new ItemStack(ModBlocks.umberstone, 1), 0.2F);
+		FurnaceRecipes.smelting().addSmelting(ModBlocks.umberstone.blockID, 1, new ItemStack(ModBlocks.umberstone, 1), 0.2F);
 
-		OreDictionary.registerOre("blockCobble", new ItemStack(ModBlocks.umbercobble, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("blockCobble", new ItemStack(ModBlocks.umberstone, 1, 1));
 		OreDictionary.registerOre("logWood",     new ItemStack(ModBlocks.woodMahogany, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("plankWood",   new ItemStack(ModBlocks.planksMahogany, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("logWood",     new ItemStack(ModBlocks.woodEucalyptus, 1, OreDictionary.WILDCARD_VALUE));
@@ -228,58 +201,21 @@ public class ErebusMod
 		OreDictionary.registerOre("treeLeaves",  new ItemStack(ModBlocks.leavesMahogany, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeLeaves",  new ItemStack(ModBlocks.leavesEucalyptus, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeLeaves",  new ItemStack(ModBlocks.leavesAcacia, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("oreGold_U", ModBlocks.oreGold_U);
-		OreDictionary.registerOre("oreIron_U", ModBlocks.oreIron_U);
-		OreDictionary.registerOre("oreLapis_U", ModBlocks.oreLapis_U);
-		OreDictionary.registerOre("oreDiamond_U", ModBlocks.oreDiamond_U);
-		OreDictionary.registerOre("oreRedstone_U", ModBlocks.oreRedstone_U);
-		OreDictionary.registerOre("oreEmerald_U", ModBlocks.oreEmerald_U);
+		OreDictionary.registerOre("oreGold_U", new ItemStack(ModBlocks.umberOreBlock, 1, 2));
+		OreDictionary.registerOre("oreIron_U", new ItemStack(ModBlocks.umberOreBlock, 1, 1));
+		OreDictionary.registerOre("oreLapis_U", new ItemStack(ModBlocks.umberOreBlock, 1, 3));
+		OreDictionary.registerOre("oreDiamond_U", new ItemStack(ModBlocks.umberOreBlock, 1, 4));
+		OreDictionary.registerOre("oreEmerald_U", new ItemStack(ModBlocks.umberOreBlock, 1, 5));
 
 		proxy.registerRenderInformation();
-
-		EntityRegistry.registerModEntity(EntityBeetleLarva.class, "BeetleLarva", 1, this, 40, 1, true);
-		registerEntityEgg(EntityBeetleLarva.class, -1251634, -13032944);
 		
-		EntityRegistry.registerModEntity(EntityWasp.class, "Wasp", 2, this, 40, 1, true);
-		registerEntityEgg(EntityWasp.class, -16382458, -256);
-		
-		EntityRegistry.registerModEntity(EntityCentipede.class, "Centipede", 3, this, 40, 1, true);
-		registerEntityEgg(EntityCentipede.class, -13565952, -92160);
-		
-		// Mobs should be registered as ModEntity which means you can have as may ID's as you like
-		// as they are specific to only this mod!!!
-		// As above (Entity.class, "Name", unique mod ID, this mod, trackingRange, updateFrequency, sendsVelocityUpdates);
-		EntityRegistry.registerGlobalEntityID(EntityBeetle.class, "Beetle", ModLoader.getUniqueEntityId(), -12116973, -5938366);
-		EntityRegistry.registerGlobalEntityID(EntityFly.class, "Fly", ModLoader.getUniqueEntityId(), -13165534, -6750208);
-		//Removed for the moment... EntityRegistry.registerGlobalEntityID(EntityGreenfly.class, "Greenfly", ModLoader.getUniqueEntityId(), 894731, 512);
-		EntityRegistry.registerGlobalEntityID(EntityMosquito.class, "Mosquito", ModLoader.getUniqueEntityId(), -13816034, -14803180);
-		EntityRegistry.registerGlobalEntityID(EntityTarantula.class, "Tarantula", ModLoader.getUniqueEntityId(), 894731, 512);	
-		EntityRegistry.registerGlobalEntityID(EntityVelvetWorm.class, "VelvetWorm", ModLoader.getUniqueEntityId(), 894731, 000000);
-	
-		GameRegistry.registerTileEntity(TileEntitySpiderSpawner.class, "Spider Spawner");
-		GameRegistry.registerTileEntity(TileEntityCaveSpiderSpawner.class, "Cave Spider Spawner");
-		GameRegistry.registerTileEntity(TileEntityHollowLog.class, "Hollow Log");
-		GameRegistry.registerTileEntity(TileEntityBambooCrate.class, "Bamboo Crate");
+		GameRegistry.registerTileEntity(TileEntitySpiderSpawner.class, "Spider Spawner (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityCaveSpiderSpawner.class, "Cave Spider Spawner (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityHollowLog.class, "Hollow Log (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityBamboo.class, "Bamboo (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityBambooCrate.class, "Bamboo Crate (Erebus)");
 
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
-	}
-	
-	// This allows you to get rid of those nasty ModLoader methods and makes it easy to register spawn eggs
-	public static int getUniqueEntityId()
-	{
-		do
-		{
-			startEntityId++;
-		}
-		while(EntityList.getStringFromID(startEntityId)!= null);
-		return startEntityId;
-	}
-
-	public static void registerEntityEgg(Class <? extends Entity> entity, int primaryColor, int secondaryColor)
-	{
-		int id = getUniqueEntityId();
-		EntityList.IDtoClassMapping.put(id, entity);
-		EntityList.entityEggs.put(id, new EntityEggInfo(id, primaryColor, secondaryColor));
 	}
 }
 

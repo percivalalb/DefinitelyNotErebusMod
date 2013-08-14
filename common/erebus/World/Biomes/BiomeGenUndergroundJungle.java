@@ -152,7 +152,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 			int j5 = z + getRandomXZOffset(rand);
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenErebusHugeTree(true, 20 + rand.nextInt(5), 0, 0, true, ModBlocks.woodMahogany.blockID, ModBlocks.leavesMahogany.blockID)).generate(worldObj, rand, j2, l3, j5);
+				(new WorldGenErebusHugeTree(true, 20 + rand.nextInt(5), 0, 0, false, ModBlocks.woodMahogany.blockID, ModBlocks.leavesMahogany.blockID)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 

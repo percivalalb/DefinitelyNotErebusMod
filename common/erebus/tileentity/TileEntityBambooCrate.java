@@ -5,6 +5,9 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ModBlocks;
+import erebus.block.BlockBambooCrate;
+import erebus.core.helper.LogHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,7 +26,7 @@ import net.minecraft.util.AxisAlignedBB;
  */
 public class TileEntityBambooCrate extends TileEntity implements IInventory {
 
-	private ItemStack[] crateContents = new ItemStack[36];
+	private ItemStack[] crateContents = new ItemStack[27];
 
 	/** The custom GUI name of the crate **/
 	private String customName;
@@ -163,7 +166,17 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
 
     @Override
     public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-        return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+    	return true;
+    }
+    
+    public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer, boolean large) {
+     	BlockBambooCrate crate = (BlockBambooCrate)ModBlocks.bambooCrate;
+     	boolean close = this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+     	if(large) {
+     		return crate.isValidCrate(worldObj, xCoord, yCoord, zCoord) && close;
+     	}
+     	
+     	return close;
     }
 
     @Override
@@ -174,5 +187,14 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
     @Override
     public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack) {
         return true;
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public AxisAlignedBB getRenderBoundingBox() {
+		int x = xCoord;
+		int y = yCoord;
+		int z = zCoord;
+        return AxisAlignedBB.getAABBPool().getAABB(x - 1, y - 1, z - 1, x + 2, y + 2, z + 2);
     }
 }

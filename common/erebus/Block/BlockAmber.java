@@ -1,5 +1,6 @@
 package erebus.block;
 
+import java.util.List;
 import java.util.Random;
 
 import erebus.core.proxy.CommonProxy;
@@ -14,11 +15,17 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockAmber extends Block
 {
+	public Icon blockAmber;
+	public Icon glassAmber;
+	public Icon brickAmber;
+	
     public BlockAmber(int par1)
     {
         super(par1, Material.rock);
@@ -49,16 +56,29 @@ public class BlockAmber extends Block
     }
     
     @Override
+    @SideOnly(Side.CLIENT)
+    public Icon getIcon(int side, int meta) {
+    	switch(meta) {
+    	case 0: return this.blockAmber;
+    	case 1: return this.glassAmber;
+    	case 2: return this.brickAmber;
+    	}
+        return null;
+    }
+    
+    @Override
     public void registerIcons(IconRegister par1IconRegister) {
-    	if(this.blockID == ModBlocks.blockAmber.blockID) {
-            this.blockIcon = par1IconRegister.registerIcon("erebus:blockAmber");	
-    	}
-    	else if(this.blockID == ModBlocks.glassAmber.blockID) {
-    	    this.blockIcon = par1IconRegister.registerIcon("erebus:glassAmber");	
-    	}
-    	else if(this.blockID == ModBlocks.brickAmber.blockID) {
-    	    this.blockIcon = par1IconRegister.registerIcon("erebus:brickAmber");	
-    	}
+        this.blockAmber = par1IconRegister.registerIcon("erebus:blockAmber");	
+    	this.glassAmber = par1IconRegister.registerIcon("erebus:glassAmber");	
+    	this.brickAmber = par1IconRegister.registerIcon("erebus:brickAmber");	
+    }
+    
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+        par3List.add(new ItemStack(par1, 1, 0));
+        par3List.add(new ItemStack(par1, 1, 1));
+        par3List.add(new ItemStack(par1, 1, 2));
     }
    
     /**

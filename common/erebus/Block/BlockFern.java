@@ -70,14 +70,12 @@ public class BlockFern extends BlockUndergroundFlower implements IShearable
     }
 
     @Override
-    public boolean isShearable(ItemStack item, World world, int x, int y, int z)
-    {
+    public boolean isShearable(ItemStack item, World world, int x, int y, int z) {
         return true;
     }
 
     @Override
-    public ArrayList<ItemStack> onSheared(ItemStack item, World world, int x, int y, int z, int fortune)
-    {
+    public ArrayList<ItemStack> onSheared(ItemStack item, World world, int x, int y, int z, int fortune) {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
         ret.add(new ItemStack(this, 1, world.getBlockMetadata(x, y, z)));
         return ret;
@@ -85,7 +83,7 @@ public class BlockFern extends BlockUndergroundFlower implements IShearable
     
     @Override
     public void registerIcons(IconRegister par1IconRegister) {
-        this.blockIcon = par1IconRegister.registerIcon("erebus:fern");
+        this.blockIcon = par1IconRegister.registerIcon("erebus:erebusfern");
     }
     
     @Override

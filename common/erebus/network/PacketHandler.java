@@ -5,7 +5,11 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
+
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteStreams;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -16,22 +20,25 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.Player;
 import erebus.lib.Reference;
 import erebus.network.packet.PacketTeleport;
+import erebus.network.packet.PacketColossalCratePage;
 
 /**
  * @author ProPercivalalb
  **/
 public class PacketHandler implements IPacketHandler {
 
-	private Map<String, IPacket> map = new Hashtable<String, IPacket>();
+	private List<IPacket> map = new ArrayList<IPacket>();
 	
 	public PacketHandler() {
-        map.put(Reference.CHANNEL, new PacketTeleport());
+        map.add(new PacketTeleport());
+        map.add(new PacketColossalCratePage());
 	}
 	
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) {
-		if(map.containsKey(packet.channel)) { 
-			map.get(packet.channel).handle(manager, packet, (EntityPlayer)player);
+		if(packet.channel.equals(Reference.CHANNEL)) { 
+			ByteArrayDataInput data = ByteStreams.newDataInput(packet.data);
+			map.get(data.readInt()).handle(manager, packet, (EntityPlayer)player, data);
 		}
 	}
 }

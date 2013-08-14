@@ -20,6 +20,7 @@ import erebus.entity.EntityMosquito;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
+import erebus.tileentity.TileEntityBamboo;
 import erebus.tileentity.TileEntityBambooCrate;
 import erebus.tileentity.TileEntityHollowLog;
 import erebus.client.model.entity.ModelBeetle;
@@ -37,8 +38,9 @@ import erebus.client.render.entity.RenderMosquito;
 import erebus.client.render.entity.RenderTarantula;
 import erebus.client.render.entity.RenderVelvetWorm;
 import erebus.client.render.entity.RenderWasp;
-import erebus.client.render.item.BambooCrateItemRenderer;
+import erebus.client.render.item.BambooItemRenderer;
 import erebus.client.render.item.HollowLogItemRenderer;
+import erebus.client.render.tileentity.TileEntityRenderBamboo;
 import erebus.client.render.tileentity.TileEntityRenderBambooCrate;
 import erebus.client.render.tileentity.TileEntityRenderHollowLog;
 import erebus.core.handler.ClientTickHandler;
@@ -54,7 +56,6 @@ public class ClientProxy extends CommonProxy {
     
 		MinecraftForge.EVENT_BUS.register(new PortalOverlayHandler());
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);    
-		RenderingRegistry.registerEntityRenderingHandler(EntityBeetleLarva.class, new RenderBeetleLarva(new ModelBeetleLarva(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBeetle.class, new RenderBeetle(new ModelBeetle(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityFly.class, new RenderFly());
 		//RenderingRegistry.registerEntityRenderingHandler(EntityGreenfly.class, new RenderGreenfly(new ModelGreenfly(), 0.5F));
@@ -63,12 +64,14 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityVelvetWorm.class, new RenderVelvetWorm(new ModelVelvetWorm(), 0.6F, 1.0F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityWasp.class, new RenderWasp(new ModelWasp(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityCentipede.class, new RenderCentipede(new ModelCentipede(), 0.5F));
-
+		RenderingRegistry.registerEntityRenderingHandler(EntityBeetleLarva.class, new RenderBeetleLarva(new ModelBeetleLarva(), 0.5F));
+		
 		//Special Renderer
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHollowLog.class, new TileEntityRenderHollowLog());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBamboo.class, new TileEntityRenderBamboo());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBambooCrate.class, new TileEntityRenderBambooCrate());
 		
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.hollowLogAcacia.blockID, new HollowLogItemRenderer(TileEntityRenderHollowLog.hollowLogResource));
-		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooCrate.blockID, new BambooCrateItemRenderer(TileEntityRenderBambooCrate.bambooCrateResource));
+		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooCrate.blockID, new BambooItemRenderer());
 	}
 }

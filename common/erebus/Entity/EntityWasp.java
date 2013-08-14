@@ -18,7 +18,7 @@ public class EntityWasp extends EntityUndergroundAnimal
   public EntityWasp(World par1World)
   {
     super(par1World);
-    this.setSize(2.0F, 2.0F);
+    this.setSize(1.8F, 1.2F);
     //no AI needed - just seems to work o.k. being a 'monster'
   }
 
@@ -128,6 +128,7 @@ public class EntityWasp extends EntityUndergroundAnimal
     super.onLivingUpdate();
   }
 
+  @Override
   public boolean attackEntityAsMob(Entity par1Entity)
   {
     if (super.attackEntityAsMob(par1Entity))
@@ -160,6 +161,7 @@ public class EntityWasp extends EntityUndergroundAnimal
     return false;
   }
 
+  @Override
   protected void attackEntity(Entity par1Entity, float par2)
   {
     if ((par2 < 2.0F) && (par1Entity.boundingBox.maxY > this.boundingBox.minY) && (par1Entity.boundingBox.minY < this.boundingBox.maxY))

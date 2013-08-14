@@ -1,9 +1,11 @@
 package erebus.world.feature;
 
 import java.util.Random;
-
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenWaterlily;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
@@ -42,9 +44,9 @@ public class WorldGenPonds extends WorldGenerator
 
             for (i1 = 0; i1 < l; ++i1)
             {
-                double d0 = (par2Random.nextDouble() * 6.0D + 3.0D) * size;
-                double d1 = (par2Random.nextDouble() * 4.0D + 2.0D) * size / 2D;
-                double d2 = (par2Random.nextDouble() * 6.0D + 3.0D) * size;
+                double d0 = ((par2Random.nextDouble() * 6.0D + 3.0D) * size) * par2Random.nextDouble();
+                double d1 = (par2Random.nextDouble() * 4.0D + 2.0D) * size / 2.5D;
+                double d2 = ((par2Random.nextDouble() * 6.0D + 3.0D) * size) * par2Random.nextDouble();
                 double d3 = par2Random.nextDouble() * (16.0D - d0 - 2.0D) + 1.0D + d0 / 2.0D;
                 double d4 = par2Random.nextDouble() * (8.0D - d1 - 4.0D) + 2.0D + d1 / 2.0D;
                 double d5 = par2Random.nextDouble() * (16.0D - d2 - 2.0D) + 1.0D + d2 / 2.0D;
@@ -99,7 +101,6 @@ public class WorldGenPonds extends WorldGenerator
                 }
             }
 
-            /**Generating filler (water etc.)**/
             for (i1 = 0; i1 < 16; ++i1)
             {
                 for (j2 = 0; j2 < 16; ++j2)
@@ -114,6 +115,45 @@ public class WorldGenPonds extends WorldGenerator
                 }
             }
 
+            for (i1 = 0; i1 < 16; ++i1)
+            {
+                for (j2 = 0; j2 < 16; ++j2)
+                {
+                    for (i2 = 4; i2 < 8; ++i2)
+                    {
+                        if (aboolean[(i1 * 16 + j2) * 8 + i2] && par1World.getBlockId(par3 + i1, par4 + i2 - 1, par5 + j2) == Block.dirt.blockID && par1World.getSavedLightValue(EnumSkyBlock.Sky, par3 + i1, par4 + i2, par5 + j2) > 0)
+                        {
+                            BiomeGenBase biomegenbase = par1World.getBiomeGenForCoords(par3 + i1, par5 + j2);
+
+                            if (biomegenbase.topBlock == Block.mycelium.blockID)
+                            {
+                                par1World.setBlock(par3 + i1, par4 + i2 - 1, par5 + j2, Block.mycelium.blockID, 0, 2);
+                            }
+                            else
+                            {
+                                par1World.setBlock(par3 + i1, par4 + i2 - 1, par5 + j2, Block.grass.blockID, 0, 2);
+                            }
+                        }
+                    }
+                }
+            }
+            
+            if (Block.blocksList[this.blockIndex].blockMaterial == Material.water)
+            {
+                for (i1 = 0; i1 < 16; ++i1)
+                {
+                    for (j2 = 0; j2 < 16; ++j2)
+                    {
+                        byte b0 = 4;
+
+                        if (par1World.isBlockFreezable(par3 + i1, par4 + b0, par5 + j2))
+                        {
+                            par1World.setBlock(par3 + i1, par4 + b0, par5 + j2, Block.ice.blockID, 0, 2);
+                        }
+                    }
+                }
+            }
+            
             /**Generating ground**/
             if (this.groundIndex > 0)
             {

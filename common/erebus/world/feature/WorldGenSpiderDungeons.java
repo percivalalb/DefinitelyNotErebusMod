@@ -76,15 +76,15 @@ public class WorldGenSpiderDungeons extends WorldGenerator
 						{
 							if (l1 == par4 - 1 && par2Random.nextInt(4) == 0)
 							{
-								par1World.setBlock(k1, l1, i2, ModBlocks.umbercobbleWebbed.blockID, 0, 2);
+								par1World.setBlock(k1, l1, i2, ModBlocks.umberstone.blockID, 3, 2); //umbercobbleWebbed
 							}
 							else if (l1 == par4 - 1 && par2Random.nextInt(4) != 0)
 							{
-								par1World.setBlock(k1, l1, i2, ModBlocks.umbercobbleMossy.blockID, 0, 2);
+								par1World.setBlock(k1, l1, i2, ModBlocks.umberstone.blockID, 2, 2); //umbercobbleMossy
 							}
 							else
 							{
-								par1World.setBlock(k1, l1, i2, ModBlocks.umbercobble.blockID, 0, 2);
+								par1World.setBlock(k1, l1, i2, ModBlocks.umberstone.blockID, 1, 2); //umbercobble
 							}
 						}
 					}

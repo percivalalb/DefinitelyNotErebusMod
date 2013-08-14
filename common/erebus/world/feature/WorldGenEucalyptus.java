@@ -9,7 +9,7 @@ import static erebus.core.helper.ErebusWorldHelper.setBlockIfEmpty;
 
 public class WorldGenEucalyptus extends WorldGenerator
 {
-  int woodId;
+	int woodId;
 	int woodMeta;
 	int leavesId;
 	int leavesMeta;

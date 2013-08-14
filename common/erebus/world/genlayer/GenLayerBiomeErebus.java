@@ -13,7 +13,7 @@ public class GenLayerBiomeErebus extends GenLayer
 
     public GenLayerBiomeErebus(long par1, GenLayer par3GenLayer) {
         super(par1);
-        this.allowedBiomes = new BiomeGenBase[] {ErebusMod.underjungle, ErebusMod.underdesert, ErebusMod.undersavannah, ErebusMod.cavern};
+        this.allowedBiomes = new BiomeGenBase[] {ErebusMod.underjungle, ErebusMod.underdesert, ErebusMod.undersavannah};
         this.parent = par3GenLayer;
     }
 
@@ -32,32 +32,6 @@ public class GenLayerBiomeErebus extends GenLayer
             {
                 this.initChunkSeed((long)(j1 + par1), (long)(i1 + par2));
                 int k1 = aint[j1 + i1 * par3];
-
-                /*if (k1 == 0)
-                {
-                    aint1[j1 + i1 * par3] = 0;
-                }
-                else if (k1 == BiomeGenBase.mushroomIsland.biomeID)
-                {
-                    aint1[j1 + i1 * par3] = k1;
-                }
-                else if (k1 == 1)
-                {
-                    aint1[j1 + i1 * par3] = this.allowedBiomes[this.nextInt(this.allowedBiomes.length)].biomeID;
-                }
-                else
-                {
-                    int l1 = this.allowedBiomes[this.nextInt(this.allowedBiomes.length)].biomeID;
-
-                    if (l1 == BiomeGenBase.taiga.biomeID)
-                    {
-                        aint1[j1 + i1 * par3] = l1;
-                    }
-                    else
-                    {
-                        aint1[j1 + i1 * par3] = BiomeGenBase.icePlains.biomeID;
-                    }
-                }*/
                 BiomeGenBase biome = this.allowedBiomes[this.nextInt(this.allowedBiomes.length)];
                 aint1[j1 + i1 * par3] = biome.biomeID;
             }

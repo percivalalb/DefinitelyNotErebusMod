@@ -13,8 +13,6 @@ public class ConfigurationHandler {
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		config.load();
 		ModBlocks.blockAmberID = config.get(config.CATEGORY_BLOCK, "Block ID of Amber", 2501).getInt();		  
-		ModBlocks.brickAmberID = config.get(config.CATEGORY_BLOCK, "Block ID of Amber Bricks", 2502).getInt();		  
-		ModBlocks.glassAmberID = config.get(config.CATEGORY_BLOCK, "Block ID of Amber Glass", 2503).getInt();		  
 		ModBlocks.portalErebusID = config.get(config.CATEGORY_BLOCK, "Block ID of Erebus Portal", 2504).getInt();		  
 		ModBlocks.woodMahoganyID = config.get(config.CATEGORY_BLOCK, "Block ID of Mahogany Wood", 2505).getInt();		  
 		ModBlocks.leavesMahoganyID = config.get(config.CATEGORY_BLOCK, "Block ID of Mahogany Leaves", 2506).getInt();		  
@@ -39,19 +37,8 @@ public class ConfigurationHandler {
 		ModBlocks.quickSandID = config.get(config.CATEGORY_BLOCK, "Block ID of Quick Sand", 2525).getInt();		  
 		ModBlocks.blockTurnipID = config.get(config.CATEGORY_BLOCK, "Block ID of Turnips", 2526).getInt();		  
 		ModBlocks.hollowLogAcaciaID = config.get(config.CATEGORY_BLOCK, "Block ID of Hollow Log", 2527).getInt();
-		ModBlocks.oreGold_UID = config.get(config.CATEGORY_BLOCK, "Block ID of the Umberstone Gold Ore", 2528).getInt();
-		ModBlocks.oreIron_UID = config.get(config.CATEGORY_BLOCK, "Block ID of the Umberstone Iron Ore", 2529).getInt();
-		ModBlocks.oreCoal_UID = config.get(config.CATEGORY_BLOCK, "Block ID of the Umberstone Coal Ore", 2530).getInt();
-		ModBlocks.oreLapis_UID = config.get(config.CATEGORY_BLOCK, "Block ID of the Umberstone Lapis Ore", 2531).getInt();
-		ModBlocks.oreDiamond_UID = config.get(config.CATEGORY_BLOCK, "Block ID of the Umberstone Diamond Ore", 2532).getInt();
-		ModBlocks.oreEmerald_UID = config.get(config.CATEGORY_BLOCK, "Block ID of the Umberstone Emerald Ore", 2533).getInt();
-		ModBlocks.oreRedstone_UID = config.get(config.CATEGORY_BLOCK, "Block ID of the Umberstone Redstone Ore", 2534).getInt();
-		ModBlocks.oreRedstoneGlowing_UID = config.get(config.CATEGORY_BLOCK, "Block ID of the Umberstone Redstone Glowing Ore", 2535).getInt();
-		ModBlocks.oreJade_UID = config.get(config.CATEGORY_BLOCK, "Block ID of the Umberstone Jade Ore", 2536).getInt();
+		ModBlocks.umberOreBlockID = config.get(config.CATEGORY_BLOCK, "Block ID of the Umberstone Ores", 2528).getInt();
 		ModBlocks.umberstoneID = config.get(config.CATEGORY_BLOCK, "Block ID of Umberstone", 255, "Block IDs must be below 256").getInt();//ID MUST BE UNDER 256 ( Reason is that this block is the top layer (byte) of biome, and chunkprovider has the same problem.)
-		ModBlocks.umbercobbleID = config.get(config.CATEGORY_BLOCK, "Block ID of Umbercobble", 2537).getInt();
-		ModBlocks.umbercobbleMossyID = config.get(config.CATEGORY_BLOCK, "Block ID of Mossy Umbercobble", 2538).getInt();
-		ModBlocks.umbercobbleWebbedID = config.get(config.CATEGORY_BLOCK, "Block ID of Webbed Umbercobble", 2539).getInt();
 		ModBlocks.bambooCrateID = config.get(config.CATEGORY_BLOCK, "Block ID of Bamboo Crate", 2540).getInt();
 
 		ModItems.beetleLarvaRawID = config.get(config.CATEGORY_ITEM, "Item ID of Beetle Larva", 9701).getInt();		  

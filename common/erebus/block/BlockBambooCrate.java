@@ -36,7 +36,7 @@ import net.minecraftforge.common.IPlantable;
 /**
  * @author ProPercivalalb
  */
-public class BlockBambooCrate extends BlockContainer implements IPlantable {
+public class BlockBambooCrate extends BlockContainer {
 
 	private final Random crateRand = new Random();
 	
@@ -105,12 +105,12 @@ public class BlockBambooCrate extends BlockContainer implements IPlantable {
 					if(flag4 && (flag1 || flag2 || flag5 || flag6)) continue;
 	
 					if(flag1 || flag2 || flag3 || flag4 || flag5 || flag6) {
-						if(blockId == blockID) {
+						if(blockId == blockID && blockMeta == 1) {
 							return false;
 						}
 					}
 					else {
-						if(blockId != blockID) {
+						if(blockId != blockID && blockMeta == 0) {
 							return false;
 						}
 					}
@@ -157,9 +157,9 @@ public class BlockBambooCrate extends BlockContainer implements IPlantable {
 	}
 	
 	public boolean isValidCrate(World world, int x, int y, int z) {
-		if(world.getBlockId(x, y - 1, z) == blockID) y--;
-		if(world.getBlockId(x - 1, y, z) == blockID) x--;
-		if(world.getBlockId(x, y, z - 1) == blockID) z--;
+		if(world.getBlockId(x, y - 1, z) == blockID && world.getBlockMetadata(x, y - 1, z) == 1) y--;
+		if(world.getBlockId(x - 1, y, z) == blockID && world.getBlockMetadata(x - 1, y, z) == 1) x--;
+		if(world.getBlockId(x, y, z - 1) == blockID && world.getBlockMetadata(x, y, z - 1) == 1) z--;
 		return this.squareCrate(world, x, y, z);
 	}
 	
@@ -293,48 +293,19 @@ public class BlockBambooCrate extends BlockContainer implements IPlantable {
         if(world.getBlockMetadata(x, y, z) == 1) {
         	return super.canBlockStay(world, x, y, z);
         }
-    	return this.canPlaceBlockAt(world, x, y, z);
-    }
-
-    @Override
-    public boolean canPlaceBlockAt(World world, int x, int y, int z) {
-    	 if(world.getBlockMetadata(x, y, z) == 1) {
-    		 return super.canPlaceBlockAt(world, x, y, z);
-    	 }
-    	Block block = Block.blocksList[world.getBlockId(x, y - 1, z)];
-        return (block != null && block.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this));
+        Block block = Block.blocksList[world.getBlockId(x, y - 1, z)];
+    	return (world.getBlockId(x, y - 1, z) == blockID && world.getBlockMetadata(x, y - 1, z) == 0) || (block != null && block.isBlockSolidOnSide(world, x, y, z, ForgeDirection.UP));
     }
     
     @Override
-    public boolean canSustainPlant(World world, int x, int y, int z, ForgeDirection direction, IPlantable plant) {
-        if(world.getBlockMetadata(x, y, z) == 1) {
-        	int plantMeta = plant.getPlantMetadata(world, x, y + 1, z);
-        	if(plantMeta == 1) return true;
-        }
-    	
-    	int plantID = plant.getPlantID(world, x, y + 1, z);
-        EnumPlantType plantType = plant.getPlantType(world, x, y + 1, z);
-
-        if (plantID == blockID) {
-            return true;
-        }
-        
-        return false;
-    }
-    
-    @Override
-    public EnumPlantType getPlantType(World world, int x, int y, int z) {
-        return EnumPlantType.Cave;
-    }
-
-    @Override
-    public int getPlantID(World world, int x, int y, int z) {
-        return blockID;
-    }
-
-    @Override
-    public int getPlantMetadata(World world, int x, int y, int z) {
-        return world.getBlockMetadata(x, y, z);
+    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
+    	if(world.getBlockMetadata(x, y, z) == 0) {
+    	  	Block block = Block.blocksList[world.getBlockId(x, y - 1, z)];
+            if(!((world.getBlockId(x, y - 1, z) == blockID && world.getBlockMetadata(x, y - 1, z) == 0) || (block != null && block.isBlockSolidOnSide(world, x, y, z, ForgeDirection.UP)))) {
+            	world.setBlockToAir(x, y, z);
+            }
+    		
+    	}
     }
     
     @Override

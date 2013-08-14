@@ -47,9 +47,9 @@ public class TileEntityRenderBambooCrate extends TileEntitySpecialRenderer
     	int z = bambooCrate.zCoord;
     	
     	BlockBambooCrate crate = (BlockBambooCrate)ModBlocks.bambooCrate;
-		if(bambooCrate.worldObj.getBlockId(x, y - 1, z) == crate.blockID) y--;
-		if(bambooCrate.worldObj.getBlockId(x - 1, y, z) == crate.blockID) x--;
-		if(bambooCrate.worldObj.getBlockId(x, y, z - 1) == crate.blockID) z--;
+		if(bambooCrate.worldObj.getBlockId(x, y - 1, z) == crate.blockID && bambooCrate.worldObj.getBlockMetadata(x, y - 1, z) == 1) y--;
+		if(bambooCrate.worldObj.getBlockId(x - 1, y, z) == crate.blockID && bambooCrate.worldObj.getBlockMetadata(x - 1, y, z) == 1) x--;
+		if(bambooCrate.worldObj.getBlockId(x, y, z - 1) == crate.blockID && bambooCrate.worldObj.getBlockMetadata(x, y, z - 1) == 1) z--;
     	if(crate.squareCrate(bambooCrate.worldObj, x, y, z)) {
 	    	if(bambooCrate.xCoord != x || bambooCrate.yCoord != y || bambooCrate.zCoord != z) return;
     			

@@ -13,6 +13,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import erebus.ErebusMod;
 import erebus.ModItems;
+import erebus.client.render.entity.AnimationMathHelper;
 
 public class EntityFly extends EntityAmbientCreature
 {
@@ -21,6 +22,8 @@ public class EntityFly extends EntityAmbientCreature
      * upon getting close a new target will be selected
      */
     private ChunkCoordinates currentFlightTarget;
+    public float wingFloat;
+    AnimationMathHelper mathWings = new AnimationMathHelper();
 
     public EntityFly(World par1World)
     {
@@ -134,11 +137,13 @@ public class EntityFly extends EntityAmbientCreature
 
         if (this.getIsFlyHanging())
         {
+            this.wingFloat = 0.0F;
             this.motionX = this.motionY = this.motionZ = 0.0D;
             this.posY = (double)MathHelper.floor_double(this.posY) + 1.0D - (double)this.height;
         }
         else
         {
+ 	    this.wingFloat = mathWings.swing(4.0F, 0.1F); 
             this.motionY *= 0.6000000238418579D;
         }
     }
@@ -317,6 +322,10 @@ public class EntityFly extends EntityAmbientCreature
         if (this.rand.nextInt(10) == 0)
     	{
             this.dropItem(ModItems.flyWing.itemID, 1);        	
+    	}
+    	if (this.rand.nextInt(20) == 0)
+    	{
+            this.dropItem(ModItems.compoundEyes.itemID, 1);       	
     	}
     }
 }

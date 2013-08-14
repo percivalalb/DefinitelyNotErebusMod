@@ -36,6 +36,9 @@ import erebus.item.ItemMultiBlock;
 import erebus.item.ItemSapling;
 import erebus.tileentity.TileEntityHollowLog;
 
+/**
+ * @author ProPercivalalb
+ */
 public class ModBlocks {
 
 	//public static Block mud;

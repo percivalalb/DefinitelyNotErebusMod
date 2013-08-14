@@ -11,16 +11,16 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import erebus.inventory.ContainerBambooCrate;
-import erebus.tileentity.TileEntityBambooCrate;
+import erebus.tileentity.TileEntityBamboo;
 
 @SideOnly(Side.CLIENT)
 public class GuiBambooCrate extends GuiContainer {
    
 	private static final ResourceLocation GUI_BAMBOO_CRATE = new ResourceLocation("erebus:textures/gui/bambooCrate.png");
 	private InventoryPlayer playerInventory; 
-	private TileEntityBambooCrate bambooCrateInventory;
+	private TileEntityBamboo bambooCrateInventory;
 
-    public GuiBambooCrate(InventoryPlayer par1InventoryPlayer, TileEntityBambooCrate par2TileEntityBambooCrate) {
+    public GuiBambooCrate(InventoryPlayer par1InventoryPlayer, TileEntityBamboo par2TileEntityBambooCrate) {
         super(new ContainerBambooCrate(par1InventoryPlayer, par2TileEntityBambooCrate));
         this.playerInventory = par1InventoryPlayer;
         this.bambooCrateInventory = par2TileEntityBambooCrate;

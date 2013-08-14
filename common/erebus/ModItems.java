@@ -3,6 +3,7 @@ package erebus;
 import erebus.item.ItemCompoundGoggles;
 import erebus.item.ItemExoskeletonArmor;
 import erebus.item.ItemJadeArmor;
+import erebus.item.ItemMaterial;
 import erebus.item.ItemMaxSpeedBow;
 import erebus.item.ItemPaxel;
 import erebus.item.ItemPortalActivator;
@@ -19,8 +20,14 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
 
+/**
+ * @author ProPercivalalb
+ */
 public class ModItems {
 
+	public static Item erebusFood;					    public static int erebusFoodID = 2312;
+	public static Item erebusMaterials;  				public static int erebusMaterialsID = 2313;
+	
 	public static Item beetleLarvaRaw;					public static int beetleLarvaRawID;
 	public static Item beetleLarvaCooked;				public static int beetleLarvaCookedID;
 	public static Item legCricket;						public static int legCricketID;
@@ -61,6 +68,8 @@ public class ModItems {
 		exoskeletonBoots = new ItemExoskeletonArmor(exoskeletonBootsID, ErebusMod.armorEXOSKELETON, 2, 3).setUnlocalizedName("bootsExo").setCreativeTab(ErebusMod.tabErebus).func_111206_d("erebus:bootsExo");
 		legCricket = (new ItemFood(legCricketID, 2, 0.8F, false)).setUnlocalizedName("cricketLegRaw").setCreativeTab(ErebusMod.tabErebus).func_111206_d("erebus:cricketLegRaw");
 		legCricketCooked = (new ItemFood(legCricketCookedID, 8, 0.8F, false)).setUnlocalizedName("cricketLegCooked").setCreativeTab(ErebusMod.tabErebus).func_111206_d("erebus:cricketLegCooked");
+		erebusMaterials = new ItemMaterial(erebusMaterialsID).setUnlocalizedName("erebusMaterials").setCreativeTab(ErebusMod.tabErebus);
+		
 		portalActivator = (new ItemPortalActivator(portalActivatorID)).setUnlocalizedName("portalActivator").setCreativeTab(ErebusMod.tabErebus).func_111206_d("erebus:portalActivator");
 		fossilShard = (new Item(fossilShardID)).setUnlocalizedName("shardBone").setCreativeTab(ErebusMod.tabErebus).func_111206_d("erebus:shardBone");
 		fossilClub = (new ItemWeaponErebus(fossilClubID, 72, 9, 12, Item.bone.itemID, fossilShard.itemID)).setUnlocalizedName("clubBone").setFull3D().setCreativeTab(ErebusMod.tabErebus).func_111206_d("erebus:clubBone");

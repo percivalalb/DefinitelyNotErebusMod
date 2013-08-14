@@ -12,7 +12,6 @@ import erebus.ErebusMod;
 import erebus.core.helper.LogHelper;
 import erebus.core.proxy.CommonProxy;
 import erebus.tileentity.TileEntityBamboo;
-import erebus.tileentity.TileEntityBambooCrate;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFlower;
@@ -48,21 +47,12 @@ public class BlockBambooCrate extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		return null;
+		return new TileEntityBamboo();
 	}
 	
 	@Override
 	public int damageDropped(int meta) {
 		return meta;
-	}
-	
-	@Override
-	public TileEntity createTileEntity(World world, int metadata) {
-	    switch(metadata) {
-	    case 0: return new TileEntityBamboo();
-	    case 1: return new TileEntityBambooCrate();
-	    }
-		return null;
 	}
 	
 	public float getBlockHardness(World world, int x, int y, int z) {
@@ -173,7 +163,7 @@ public class BlockBambooCrate extends BlockContainer {
         else
         {
         	if(isValidCrate(world, x, y, z)) {
-        		TileEntityBambooCrate tileentitybamboocrate = (TileEntityBambooCrate)world.getBlockTileEntity(x, y, z);
+        		TileEntityBamboo tileentitybamboocrate = (TileEntityBamboo)world.getBlockTileEntity(x, y, z);
 
                 if (tileentitybamboocrate != null) {
                     player.openGui(ErebusMod.instance, CommonProxy.GUI_ID_COLOSSAL_CRATE, world, x, y, z);
@@ -181,7 +171,7 @@ public class BlockBambooCrate extends BlockContainer {
                 return true;
         	}
         	
-            TileEntityBambooCrate tileentitybamboocrate = (TileEntityBambooCrate)world.getBlockTileEntity(x, y, z);
+            TileEntityBamboo tileentitybamboocrate = (TileEntityBamboo)world.getBlockTileEntity(x, y, z);
 
             if (tileentitybamboocrate != null) {
                 player.openGui(ErebusMod.instance, CommonProxy.GUI_ID_BAMBOO_CRATE, world, x, y, z);
@@ -210,7 +200,7 @@ public class BlockBambooCrate extends BlockContainer {
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
     {
     	if(par1World.getBlockMetadata(par2, par3, par4) == 0) return;
-        TileEntityBambooCrate tileentitycrate = (TileEntityBambooCrate)par1World.getBlockTileEntity(par2, par3, par4);
+        TileEntityBamboo tileentitycrate = (TileEntityBamboo)par1World.getBlockTileEntity(par2, par3, par4);
 
         if (tileentitycrate != null)
         {
@@ -279,6 +269,18 @@ public class BlockBambooCrate extends BlockContainer {
     	if(world.getBlockMetadata(x, y, z) == 0) {
     		this.checkBlockCoordValid(world, x, y, z);
     	}
+    }
+    
+    @Override
+    public boolean canPlaceBlockOnSide(World world, int x, int y, int z, int side, ItemStack stack) {
+    	if(stack.getItemDamage() == 0) {
+    	  	Block block = Block.blocksList[world.getBlockId(x, y - 1, z)];
+            if(!((world.getBlockId(x, y - 1, z) == blockID && world.getBlockMetadata(x, y - 1, z) == 0) || (block != null && block.isBlockSolidOnSide(world, x, y, z, ForgeDirection.UP)))) {
+            	return false;
+            }
+    		
+    	}
+    	return true;
     }
     
     protected final void checkBlockCoordValid(World par1World, int par2, int par3, int par4) {

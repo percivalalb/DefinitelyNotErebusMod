@@ -1,7 +1,7 @@
 package erebus.inventory;
 
 import invtweaks.api.container.ChestContainer;
-import erebus.tileentity.TileEntityBambooCrate;
+import erebus.tileentity.TileEntityBamboo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -13,10 +13,10 @@ import net.minecraft.item.ItemStack;
 public class ContainerBambooCrate extends Container
 {
 	private InventoryPlayer playerInventory; 
-	private TileEntityBambooCrate bambooCrateInventory;
+	private TileEntityBamboo bambooCrateInventory;
 	public int numRows = 3;
 	
-    public ContainerBambooCrate(InventoryPlayer par1InventoryPlayer, TileEntityBambooCrate par2TileEntityBambooCrate)
+    public ContainerBambooCrate(InventoryPlayer par1InventoryPlayer, TileEntityBamboo par2TileEntityBambooCrate)
     {
         this.playerInventory = par1InventoryPlayer;
         this.bambooCrateInventory = par2TileEntityBambooCrate;

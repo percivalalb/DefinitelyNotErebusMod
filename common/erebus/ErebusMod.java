@@ -49,7 +49,6 @@ import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
 import erebus.tileentity.TileEntityBamboo;
-import erebus.tileentity.TileEntityBambooCrate;
 import erebus.tileentity.TileEntityCaveSpiderSpawner;
 import erebus.tileentity.TileEntityHollowLog;
 import erebus.tileentity.TileEntitySpiderSpawner;
@@ -212,8 +211,7 @@ public class ErebusMod
 		GameRegistry.registerTileEntity(TileEntitySpiderSpawner.class, "Spider Spawner (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityCaveSpiderSpawner.class, "Cave Spider Spawner (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityHollowLog.class, "Hollow Log (Erebus)");
-		GameRegistry.registerTileEntity(TileEntityBamboo.class, "Bamboo (Erebus)");
-		GameRegistry.registerTileEntity(TileEntityBambooCrate.class, "Bamboo Crate (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityBamboo.class, "Bamboo Crate (Erebus)");
 
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
 	}

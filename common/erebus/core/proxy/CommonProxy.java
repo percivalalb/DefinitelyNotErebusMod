@@ -13,7 +13,7 @@ import erebus.client.gui.GuiBambooCrate;
 import erebus.client.gui.GuiColossalCrate;
 import erebus.inventory.ContainerBambooCrate;
 import erebus.inventory.ContainerColossalCrate;
-import erebus.tileentity.TileEntityBambooCrate;
+import erebus.tileentity.TileEntityBamboo;
 
 public class CommonProxy implements IGuiHandler {
 
@@ -31,14 +31,14 @@ public class CommonProxy implements IGuiHandler {
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		if(ID == GUI_ID_BAMBOO_CRATE) {
 			TileEntity tileentity = world.getBlockTileEntity(x, y, z);
-			if(tileentity instanceof TileEntityBambooCrate) {
-				return new ContainerBambooCrate(player.inventory, (TileEntityBambooCrate)tileentity);
+			if(tileentity instanceof TileEntityBamboo) {
+				return new ContainerBambooCrate(player.inventory, (TileEntityBamboo)tileentity);
 			}
 		}
 		
 		else if(ID == GUI_ID_COLOSSAL_CRATE) {
 			TileEntity tileentity = world.getBlockTileEntity(x, y, z);
-			if(tileentity instanceof TileEntityBambooCrate) {
+			if(tileentity instanceof TileEntityBamboo) {
 				BlockBambooCrate crate = (BlockBambooCrate)ModBlocks.bambooCrate;
 				int xOld = x;
 				int yOld = y;
@@ -47,10 +47,10 @@ public class CommonProxy implements IGuiHandler {
 				if(world.getBlockId(x - 1, y, z) == crate.blockID) x--;
 				if(world.getBlockId(x, y, z - 1) == crate.blockID) z--;
 		    	if(crate.squareCrate(world, x, y, z)) {
-		    		List<TileEntityBambooCrate> list = new ArrayList<TileEntityBambooCrate>();
+		    		List<TileEntityBamboo> list = new ArrayList<TileEntityBamboo>();
 		    		int[][] places = new int[][] {{1, 0, 0}, {1, 0, 1}, {0, 0, 1}, {1, 1, 0}, {1, 1, 1}, {0, 1, 1}, {0, 1, 0}, {0, 0, 0}};
 		    		for(int[] place : places) {
-		    			TileEntityBambooCrate tilecrate = (TileEntityBambooCrate)world.getBlockTileEntity(x + place[0], y + place[1], z + place[2]);
+		    			TileEntityBamboo tilecrate = (TileEntityBamboo)world.getBlockTileEntity(x + place[0], y + place[1], z + place[2]);
 		    			list.add(tilecrate);
 		    		}
 					return new ContainerColossalCrate(player.inventory, list);	
@@ -65,14 +65,14 @@ public class CommonProxy implements IGuiHandler {
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		if(ID == GUI_ID_BAMBOO_CRATE) {
 			TileEntity tileentity = world.getBlockTileEntity(x, y, z);
-			if(tileentity instanceof TileEntityBambooCrate) {
-				return new GuiBambooCrate(player.inventory, (TileEntityBambooCrate)tileentity);
+			if(tileentity instanceof TileEntityBamboo) {
+				return new GuiBambooCrate(player.inventory, (TileEntityBamboo)tileentity);
 			}
 		}
 		
 		else if(ID == GUI_ID_COLOSSAL_CRATE) {
 			TileEntity tileentity = world.getBlockTileEntity(x, y, z);
-			if(tileentity instanceof TileEntityBambooCrate) {
+			if(tileentity instanceof TileEntityBamboo) {
 				BlockBambooCrate crate = (BlockBambooCrate)ModBlocks.bambooCrate;
 				int xOld = x;
 				int yOld = y;
@@ -81,10 +81,10 @@ public class CommonProxy implements IGuiHandler {
 				if(world.getBlockId(x - 1, y, z) == crate.blockID) x--;
 				if(world.getBlockId(x, y, z - 1) == crate.blockID) z--;
 		    	if(crate.squareCrate(world, x, y, z)) {
-		    		List<TileEntityBambooCrate> list = new ArrayList<TileEntityBambooCrate>();
+		    		List<TileEntityBamboo> list = new ArrayList<TileEntityBamboo>();
 		    		int[][] places = new int[][] {{1, 0, 0}, {1, 0, 1}, {0, 0, 1}, {1, 1, 0}, {1, 1, 1}, {0, 1, 1}, {0, 1, 0}, {0, 0, 0}};
 		    		for(int[] place : places) {
-		    			TileEntityBambooCrate tilecrate = (TileEntityBambooCrate)world.getBlockTileEntity(x + place[0], y + place[1], z + place[2]);
+		    			TileEntityBamboo tilecrate = (TileEntityBamboo)world.getBlockTileEntity(x + place[0], y + place[1], z + place[2]);
 		    			list.add(tilecrate);
 		    		}
 					return new GuiColossalCrate(player.inventory, list);	

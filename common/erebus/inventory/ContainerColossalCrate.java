@@ -5,7 +5,7 @@ import invtweaks.api.container.ChestContainer;
 import java.util.List;
 
 import erebus.core.helper.LogHelper;
-import erebus.tileentity.TileEntityBambooCrate;
+import erebus.tileentity.TileEntityBamboo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -17,19 +17,19 @@ import net.minecraft.item.ItemStack;
 public class ContainerColossalCrate extends Container
 {
 	private InventoryPlayer playerInventory;
-	public TileEntityBambooCrate crate1;
-	public TileEntityBambooCrate crate2;
-	public TileEntityBambooCrate crate3;
-	public TileEntityBambooCrate crate4;
-	public TileEntityBambooCrate crate5;
-	public TileEntityBambooCrate crate6;
-	public TileEntityBambooCrate crate7;
-	public TileEntityBambooCrate crate8;
-	public List<TileEntityBambooCrate> crateList;
+	public TileEntityBamboo crate1;
+	public TileEntityBamboo crate2;
+	public TileEntityBamboo crate3;
+	public TileEntityBamboo crate4;
+	public TileEntityBamboo crate5;
+	public TileEntityBamboo crate6;
+	public TileEntityBamboo crate7;
+	public TileEntityBamboo crate8;
+	public List<TileEntityBamboo> crateList;
 	
 	public int page = 1;
 	
-    public ContainerColossalCrate(InventoryPlayer par1InventoryPlayer, List<TileEntityBambooCrate> list)
+    public ContainerColossalCrate(InventoryPlayer par1InventoryPlayer, List<TileEntityBamboo> list)
     {
         this.playerInventory = par1InventoryPlayer;
         this.crate1 = list.get(0);

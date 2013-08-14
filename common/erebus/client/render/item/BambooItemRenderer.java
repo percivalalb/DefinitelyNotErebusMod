@@ -12,7 +12,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.block.ModelBamboo;
 import erebus.client.model.block.ModelBambooCrate;
 import erebus.client.render.tileentity.TileEntityRenderBamboo;
-import erebus.client.render.tileentity.TileEntityRenderBambooCrate;
 
 /**
  * @author ProPercivalalb
@@ -27,7 +26,7 @@ public class BambooItemRenderer implements IItemRenderer {
     public BambooItemRenderer() {
         this.modelBambooCrate = new ModelBambooCrate();
         this.modelBamboo = new ModelBamboo();
-        this.resourceBambooCrate = TileEntityRenderBambooCrate.bambooCrateResource;
+        this.resourceBambooCrate = TileEntityRenderBamboo.bambooCrateResource;
         this.resourceBamboo = TileEntityRenderBamboo.bambooResource;
     }
 

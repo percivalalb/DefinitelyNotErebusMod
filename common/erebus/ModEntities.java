@@ -11,6 +11,9 @@ import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
 
+/**
+ * @author ProPercivalalb
+ */
 public class ModEntities {
 
 	public static void init() {

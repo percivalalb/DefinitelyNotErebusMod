@@ -24,7 +24,7 @@ import org.lwjgl.opengl.GL11;
 import erebus.inventory.ContainerBambooCrate;
 import erebus.inventory.ContainerColossalCrate;
 import erebus.lib.Reference;
-import erebus.tileentity.TileEntityBambooCrate;
+import erebus.tileentity.TileEntityBamboo;
 
 @SideOnly(Side.CLIENT)
 public class GuiColossalCrate extends GuiContainer {
@@ -32,16 +32,16 @@ public class GuiColossalCrate extends GuiContainer {
 	public static final boolean hasInventoryTweaks = Loader.isModLoaded("inventorytweaks");
 	private static final ResourceLocation GUI_BAMBOO_CRATE = new ResourceLocation("erebus:textures/gui/collosalcrate.png");
 	private InventoryPlayer playerInventory; 
-	public TileEntityBambooCrate crate1;
-	public TileEntityBambooCrate crate2;
-	public TileEntityBambooCrate crate3;
-	public TileEntityBambooCrate crate4;
-	public TileEntityBambooCrate crate5;
-	public TileEntityBambooCrate crate6;
-	public TileEntityBambooCrate crate7;
-	public TileEntityBambooCrate crate8;
+	public TileEntityBamboo crate1;
+	public TileEntityBamboo crate2;
+	public TileEntityBamboo crate3;
+	public TileEntityBamboo crate4;
+	public TileEntityBamboo crate5;
+	public TileEntityBamboo crate6;
+	public TileEntityBamboo crate7;
+	public TileEntityBamboo crate8;
 
-    public GuiColossalCrate(InventoryPlayer par1InventoryPlayer, List<TileEntityBambooCrate> list) {
+    public GuiColossalCrate(InventoryPlayer par1InventoryPlayer, List<TileEntityBamboo> list) {
         super(new ContainerColossalCrate(par1InventoryPlayer, list));
         this.playerInventory = par1InventoryPlayer;
         this.crate1 = list.get(0);

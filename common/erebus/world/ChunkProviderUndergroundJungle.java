@@ -447,40 +447,42 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
     /**
      * Populates chunk with ores etc etc
      */
-    @Override
-    public void populate(IChunkProvider par1IChunkProvider, int xChunkCoords, int zChunkCoords)
+    public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
     {
         BlockSand.fallInstantly = true;
         //this.genSpiderTunnels.generateStructuresInChunk(this.worldObj, this.hellRNG, par2, par3);
         
         /**Convert chunk coords to world coords**/
-        int xWorldCoords = xChunkCoords * 16;
-        int zWorldCoords = zChunkCoords * 16;
+        int i = par2 * 16;
+        int j = par3 * 16;
 
         /**Get biome at world coords**/
-        BiomeGenBase biomegenbase = this.worldObj.getBiomeGenForCoords(xWorldCoords + 16, zWorldCoords + 16);
-        if(biomegenbase instanceof BiomeGenBaseErebus)
+        BiomeGenBase b = worldObj.getBiomeGenForCoords(i, j);
+        if(b instanceof BiomeGenBaseErebus)
         {
         	/**Generate biome specific world generation**/
-        	//((BiomeGenBaseErebus)biomegenbase).generateTerrain(worldObj, hellRNG, par1IChunkProvider, xWorldCoords, zWorldCoords);
+        	((BiomeGenBaseErebus)b).generateTerrain(worldObj, hellRNG, par1IChunkProvider, i, j);
         	
         	/**Generate default world generation (e.g. ores)**/
-        	//((BiomeGenBaseErebus)biomegenbase).generateDefault(worldObj, hellRNG, par1IChunkProvider, xWorldCoords, zWorldCoords);
+        	((BiomeGenBaseErebus)b).generateDefault(worldObj, hellRNG, par1IChunkProvider, i, j);
         }   
         
         int k1;
         int l1;
         int i2;
         
+        int k = par2 * 16;
+        int l = par3 * 16;
+        
         for (l1 = 0; l1 < 8; ++l1)
         {
-            k1 = xWorldCoords + this.rand.nextInt(16) + 8;
+            k1 = k + this.rand.nextInt(16) + 8;
             i2 = this.rand.nextInt(128);
-            int j2 = zWorldCoords + this.rand.nextInt(16) + 8;
+            int j2 = l + this.rand.nextInt(16) + 8;
             (new WorldGenSpiderDungeons()).generate(this.worldObj, this.rand, k1, i2, j2);
         }
         
-        biomegenbase.decorate(this.worldObj, this.rand, xWorldCoords, zWorldCoords);
+        
         
         BlockSand.fallInstantly = false;
     }

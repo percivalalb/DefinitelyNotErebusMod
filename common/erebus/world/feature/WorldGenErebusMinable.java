@@ -19,11 +19,6 @@ public class WorldGenErebusMinable extends WorldGenerator
     private int numberOfBlocks;
     private int field_94523_c;
 
-    public WorldGenErebusMinable(int par1, int par2)
-    {
-        this(par1, par2, ModBlocks.umberstone.blockID);
-    }
-
     public WorldGenErebusMinable(int id, int meta, int numberOfBlocks)
     {
         this.minableBlockId = id;

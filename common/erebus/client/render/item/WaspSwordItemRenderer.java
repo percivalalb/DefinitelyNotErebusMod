@@ -7,14 +7,15 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.FMLClientHandler;
+import erebus.client.model.item.ModelWaspSword;
 
 public class WaspSwordItemRenderer implements IItemRenderer 
 {
-	private erebus.client.model.item.ModelWaspSword ModelWaspSword;
+	private ModelWaspSword ModelWaspSword;
 	public static ResourceLocation texture = new ResourceLocation("erebus:textures/item/ModelWaspSword.png");
 	public WaspSwordItemRenderer(ResourceLocation resourcelocation) 
 	{
-		ModelWaspSword = new erebus.client.model.item.ModelWaspSword();
+		ModelWaspSword = new ModelWaspSword();
 	}
 	
 	@Override

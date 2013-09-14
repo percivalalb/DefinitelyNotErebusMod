@@ -23,9 +23,9 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus
         this.fillerBlock = (byte)Block.sandStone.blockID;
     }
 
-    @Override
-    public void decorate(World worldObj, Random rand, int x, int z)
-    {
+	@Override
+	public void generateTerrain(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) 
+	{
 		for(int c = 40; c > 0; c--)
     	{
     		int posX = x + rand.nextInt(16);
@@ -53,6 +53,5 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus
                 worldObj.scheduledUpdatesAreImmediate = false;
         	}
     	}
-		this.generateDefaultOres(worldObj, rand, x, z);
 	}
 }

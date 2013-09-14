@@ -52,7 +52,6 @@ public class ModItems {
     public static Item compoundGoggles;                 public static int compoundGogglesID; 
     public static Item waspSword;						public static int waspSwordID; 
     
-    
     public static void init() {
 		exoskeletonHelmet = new ItemExoskeletonArmor(exoskeletonHelmetID, ErebusMod.armorEXOSKELETON, 2, 0).setUnlocalizedName("helmetExo").setCreativeTab(ErebusMod.tabErebusGear).setTextureName("erebus:helmetExo");
 		exoskeletonBody = new ItemExoskeletonArmor(exoskeletonBodyID, ErebusMod.armorEXOSKELETON, 2, 1).setUnlocalizedName("chestplateExo").setCreativeTab(ErebusMod.tabErebusGear).setTextureName("erebus:chestplateExo");

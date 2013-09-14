@@ -26,9 +26,8 @@ import net.minecraft.world.World;
 
 public class BlockStairsErebus extends BlockStairs {
 
-    public BlockStairsErebus(int par1, Block par2Block, int par3)
+    public BlockStairsErebus(int id, Block block, int meta)
     {
-        super(par1, par2Block, par3);
-        this.setCreativeTab(ErebusMod.tabErebusBlock);
+        super(id, block, meta);
     }
 }

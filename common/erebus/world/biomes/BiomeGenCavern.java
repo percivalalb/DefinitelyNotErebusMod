@@ -50,7 +50,6 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
         this.fillerBlock = (byte)ModBlocks.umberstone.blockID;
     }
     
-    @Override
     public void decorate(World worldObj, Random rand, int x, int z)
     {
     	{
@@ -513,7 +512,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
             int var6 = x + rand.nextInt(16);
             int var7 = rand.nextInt(128);
             int var8 = z + rand.nextInt(16);
-            (new WorldGenErebusMinable(ModBlocks.oreFossil.blockID, 3)).generate(worldObj, rand, var6, var7, var8);
+            (new WorldGenErebusMinable(ModBlocks.oreFossil.blockID, 3, 10)).generate(worldObj, rand, var6, var7, var8);
         }
 	}
 }

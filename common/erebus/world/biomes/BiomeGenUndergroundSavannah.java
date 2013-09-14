@@ -41,8 +41,8 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
 	}
 
 	@Override
-    public void decorate(World worldObj, Random rand, int x, int z)
-    {
+	public void generateTerrain(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) 
+	{
 		/*for(int c = 20; c > 0; c--)
 		{
 			int posX = x + rand.nextInt(16);
@@ -109,6 +109,5 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
 				(new WorldGenRottenAcacia()).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
-		this.generateDefaultOres(worldObj, rand, x, z);
 	}
 }

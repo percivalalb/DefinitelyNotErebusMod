@@ -1,7 +1,6 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
@@ -13,8 +12,8 @@ import net.minecraft.world.gen.feature.WorldGenFlowers;
 import net.minecraft.world.gen.feature.WorldGenHugeTrees;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenTrees;
-import erebus.ErebusMod;
 import erebus.ModBlocks;
+import erebus.block.BlockLogErebus;
 import erebus.entity.EntityBeetle;
 import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityFly;
@@ -23,12 +22,12 @@ import erebus.entity.EntityWasp;
 import erebus.world.feature.WorldGenErebusHugeTree;
 import erebus.world.feature.WorldGenErebusTrees;
 import erebus.world.feature.WorldGenEucalyptus;
-import erebus.world.feature.WorldGenRedGem1;
-import erebus.world.feature.WorldGenRedGem2;
 import erebus.world.feature.WorldGenMelonErebus;
 import erebus.world.feature.WorldGenMossbarkTree;
 import erebus.world.feature.WorldGenPonds;
 import erebus.world.feature.WorldGenQuickSand;
+import erebus.world.feature.WorldGenRedGem1;
+import erebus.world.feature.WorldGenRedGem2;
 import erebus.world.feature.WorldGenTurnips;
 
 public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
@@ -57,8 +56,8 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 	}
 	
 	@Override
-    public void decorate(World worldObj, Random rand, int x, int z)
-    {
+	public void generateTerrain(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z)
+	{
 		/**Generating big lakes first to avoid complications**/
 		/**TODO: Currently broken, generates into other chunks and causes floating trees**/
 		/*for(int c = 5; c > 0; c--)
@@ -152,7 +151,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 			int j5 = z + getRandomXZOffset(rand);
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenErebusHugeTree(true, 20 + rand.nextInt(5), 0, 0, false, ModBlocks.woodMahogany.blockID, ModBlocks.leavesMahogany.blockID)).generate(worldObj, rand, j2, l3, j5);
+        (new WorldGenErebusHugeTree(true, 20 + rand.nextInt(5), BlockLogErebus.dataMahogany, 0, false, ModBlocks.logErebus.blockID, ModBlocks.leavesMahogany.blockID)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 
@@ -163,7 +162,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 			int j5 = z + getRandomXZOffset(rand);
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenErebusTrees(true, 5, 0, 0, false, ModBlocks.woodMahogany.blockID, ModBlocks.leavesMahogany.blockID, ModBlocks.thorns.blockID)).generate(worldObj, rand, j2, l3, j5);
+				(new WorldGenErebusTrees(true, 5, BlockLogErebus.dataMahogany, 0, false, ModBlocks.logErebus.blockID, ModBlocks.leavesMahogany.blockID, ModBlocks.thorns.blockID)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 
@@ -174,8 +173,8 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 			int j5 = z + getRandomXZOffset(rand);
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenEucalyptus(ModBlocks.woodEucalyptus.blockID, 2, ModBlocks.leavesEucalyptus.blockID, 2, 8 + rand.nextInt(4), 5, 8, Block.grass.blockID)).generate(worldObj, rand, j2, l3, j5);
-			}
+				(new WorldGenEucalyptus(ModBlocks.logErebus.blockID, BlockLogErebus.dataEucalyptus/*2*/, ModBlocks.leavesEucalyptus.blockID, 2, 8 + rand.nextInt(4), 5, 8, Block.grass.blockID)).generate(worldObj, rand, j2, l3, j5);
+			} // TODO wrong metadata?
 		}
 
 		//Glowstone
@@ -373,6 +372,5 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 				(new WorldGenTurnips()).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
-		this.generateDefaultOres(worldObj, rand, x, z);
 	}
 }

@@ -1,6 +1,7 @@
 package erebus.world.genlayer;
 
 import erebus.ErebusMod;
+import erebus.ModBiomes;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;
@@ -13,7 +14,7 @@ public class GenLayerBiomeErebus extends GenLayer
 
     public GenLayerBiomeErebus(long par1, GenLayer par3GenLayer) {
         super(par1);
-        this.allowedBiomes = new BiomeGenBase[] {ErebusMod.underjungle, ErebusMod.underdesert, ErebusMod.undersavannah};
+        this.allowedBiomes = new BiomeGenBase[] {ModBiomes.underjungle, ModBiomes.underdesert, ModBiomes.undersavannah};
         this.parent = par3GenLayer;
     }
 

@@ -90,7 +90,8 @@ public class BlockSaplingErebus extends BlockSapling
 
         if (var6 == 1)
         {
-        	var7 = new WorldGenEucalyptus(ModBlocks.woodEucalyptus.blockID, 2, ModBlocks.leavesEucalyptus.blockID, 2, 8 + par5Random.nextInt(4), 5, 8, Block.grass.blockID);
+          var7 = new WorldGenEucalyptus(ModBlocks.logErebus.blockID, BlockLogErebus.dataEucalyptus/*2*/, ModBlocks.leavesEucalyptus.blockID, 2, 8 + par5Random.nextInt(4), 5, 8, Block.grass.blockID);
+			// TODO wrong metadata?
         }
         else if (var6 == 2)
         {
@@ -105,7 +106,7 @@ public class BlockSaplingErebus extends BlockSapling
                 {
                     if (this.isSameSapling(par1World, par2 + var8, par3, par4 + var9, 0) && this.isSameSapling(par1World, par2 + var8 + 1, par3, par4 + var9, 0) && this.isSameSapling(par1World, par2 + var8, par3, par4 + var9 + 1, 0) && this.isSameSapling(par1World, par2 + var8 + 1, par3, par4 + var9 + 1, 0))
                     {
-                        var7 = new WorldGenErebusHugeTree(true, 20 + par5Random.nextInt(5), 0, 0, true, ModBlocks.woodMahogany.blockID, ModBlocks.leavesMahogany.blockID);
+                        var7 = new WorldGenErebusHugeTree(true, 20 + par5Random.nextInt(5), BlockLogErebus.dataMahogany, 0, true, ModBlocks.logErebus.blockID, ModBlocks.leavesMahogany.blockID);
                         var10 = true;
                         break;
                     }
@@ -124,7 +125,7 @@ public class BlockSaplingErebus extends BlockSapling
         {
             var9 = 0;
             var8 = 0;
-            var7 = new WorldGenErebusTrees(true, 5, 0, 0, false, ModBlocks.woodMahogany.blockID, ModBlocks.leavesMahogany.blockID, ModBlocks.thorns.blockID);
+            var7 = new WorldGenErebusTrees(true, 5, BlockLogErebus.dataMahogany, 0, false, ModBlocks.logErebus.blockID, ModBlocks.leavesMahogany.blockID, ModBlocks.thorns.blockID);
         }
         
         if (var10)

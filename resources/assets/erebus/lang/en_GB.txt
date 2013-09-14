@@ -1,0 +1,106 @@
+#Erebus Localization File
+
+#Blocks
+tile.portalErebus.name=Erebus Portal
+tile.blockAmber.0.name=Amber
+tile.blockAmber.1.name=Amber Bricks
+tile.blockAmber.2.name=Amber Glass
+tile.tree_mahogany.name=Mahogany Wood
+tile.leaves_mahogany.name=Mahogany Leaves
+tile.tree_eucalyptus.name=Eucalyptus Wood
+tile.leaves_eucalyptus.name=Eucalyptus Leaves
+tile.cobbleWebbed.name=Webbed Cobblestone
+tile.blockSilk.name=Silk
+tile.wood_mahogany.name=Mahogany Planks
+tile.wood_eucalyptus.name=Eucalyptus Planks
+tile.stairsMahogany.name=Mahogany Stairs
+tile.stairsEucalyptus.name=Eucalyptus Stairs
+tile.mirbrick.name=Mirbrick
+tile.spiderSpawner.name=Spider Spawner
+tile.blockSpiderSilk.name=Silk
+tile.thorns.name=Thorns
+tile.erebusFern.name=Fern
+tile.tree_acacia.name=Acacia Wood
+tile.leaves_acacia.name=Acacia Leaves
+tile.sapling_mahogany.name=Sapling
+tile.tallgrass.name=Tall Grass
+tile.wood_acacia.name=Acacia Planks
+tile.quickSand.name=Quicksand
+tile.blockScree.name=Dry Scree
+tile.brickScree.name=Scree Brick
+tile.log_acacia.name=Rotten Acacia Wood
+tile.log_acacia.name=Rotten Acacia Wood
+tile.umberstone.0.name=Umberstone
+tile.oreBlockU.2.name=Gold Ore
+tile.oreBlockU.1.name=Iron Ore
+tile.oreBlockU.0.name=Coal Ore
+tile.oreBlockU.3.name=Lapis Ore
+tile.oreBlockU.4.name=Diamond Ore
+tile.oreBlockU.5.name=Emerald Ore
+tile.oreBlockU.6.name=Jade Ore
+tile.oreFossil_U.name=Fossil Ore
+tile.umberstone.1.name=Umbercobble
+tile.umberstone.2.name=Mossy Umbercobble
+tile.umberstone.3.name=Webbed Umbercobble
+tile.sapling_mahogany.0.name=Mahogany Sapling
+tile.sapling_mahogany.1.name=Eucalyptus Sapling
+tile.sapling_mahogany.2.name=Acacia Sapling
+tile.bamboo.0.name=Bamboo Block
+tile.bamboo.1.name=Bamboo Crate
+tile.redGem.0.name=Red Gem
+tile.redGem.1.name=Red Lamp
+tile.redGem.2.name=Red Lamp
+
+#Items
+item.helmetExo.name=Exoskeleton Helmet
+item.chestplateExo.name=Exoskeleton Chestplate
+item.leggingsExo.name=Exoskeleton Leggings
+item.bootsExo.name=Exoskeleton Boots
+item.portalActivator.name=Portal Activator
+item.clubBone.name=Caveman's Club
+item.maxSpeedBow.name=MaxSpeed Bow
+item.turnips.name=Turnips
+item.helmetJade.name=Jade Helmet
+item.chestplateJade.name=Jade Chestplate
+item.leggingsJade.name=Jade Leggings
+item.bootsJade.name=Jade Boots
+item.swordJade.name=Jade Sword
+item.pickaxeJade.name=Jade Pickaxe
+item.axeJade.name=Jade Axe
+item.shovelJade.name=Jade Shovel
+item.paxelJade.name=Jade Paxel
+item.hoeJade.name=Jade Hoe
+item.compoundGoggles.name=Compound Goggles
+item.erebusMaterials.0.name=Exoskeleton Plate
+item.erebusMaterials.1.name=Jade
+item.erebusMaterials.2.name=Bone Shard
+item.erebusMaterials.3.name=Bamboo
+item.erebusMaterials.4.name=Compound Eyes
+item.erebusMaterials.5.name=Compound Goggle Lens
+item.erebusMaterials.6.name=Fly Wing
+item.erebusFood.0.name=Beetle Larva
+item.erebusFood.1.name=Cooked Beetle Larva
+item.erebusFood.2.name=Cricket Leg
+item.erebusFood.3.name=Cooked Cricket Leg
+item.erebusFood.4.name=Tarantula Paw
+item.erebusFood.5.name=Crispy Tarantula Paw
+item.bamBucket.0.name=Bambucket
+item.bamBucket.1.name=Water Bambucket
+item.waspSword.name=Wasp Sword
+
+#Entities
+entity.BeetleLarva - Erebus.name=Beetle Larva
+entity.Wasp - Erebus.name=Wasp
+entity.Centipede - Erebus.name=Centipede
+entity.Beetle - Erebus.name=Beetle
+entity.Fly - Erebus.name=Fly
+entity.Mosquito - Erebus.name=Mosquito
+entity.Tarantula - Erebus.name=Tarantula
+entity.VelvetWorm - Erebus.name=Velvet Worm
+
+#Other
+itemGroup.erebus.block=Erebus Blocks
+itemGroup.erebus.item=Erebus Items
+itemGroup.erebus.gear=Erebus Gear
+container.bambooCrate=Bamboo Crate
+container.colossalCrate=Bamboo Crate

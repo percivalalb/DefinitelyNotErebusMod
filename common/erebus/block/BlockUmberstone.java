@@ -29,7 +29,6 @@ public class BlockUmberstone extends Block {
 	
     public BlockUmberstone(int par1, Material par2Material) {
         super(par1, par2Material);
-        this.setCreativeTab(ErebusMod.tabErebusBlock);
     }
     
     @Override

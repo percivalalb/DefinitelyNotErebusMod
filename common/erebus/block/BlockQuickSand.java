@@ -13,7 +13,6 @@ public class BlockQuickSand extends Block {
 	
     public BlockQuickSand(int par1) {
         super(par1, Material.sand);
-        this.setCreativeTab(CreativeTabs.tabBlock);
     }
 
     @Override

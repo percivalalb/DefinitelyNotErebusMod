@@ -12,7 +12,6 @@ public class BlockScree extends Block
     public BlockScree(int par1)
     {
         super(par1, Material.sand);
-        this.setCreativeTab(CreativeTabs.tabBlock);
     }
     
     /**

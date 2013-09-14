@@ -19,7 +19,6 @@ public class BlockMaggot extends Block
     public BlockMaggot(int par1, int par2)
     {
         super(par1, Material.wood);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
     }
     
     //Top and Side Textures

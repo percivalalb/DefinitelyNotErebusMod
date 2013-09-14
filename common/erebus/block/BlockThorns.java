@@ -32,7 +32,6 @@ public class BlockThorns extends Block implements IShearable
     {
         super(par1, Material.vine);
         this.setTickRandomly(true);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
     }
     
     /**

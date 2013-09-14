@@ -58,9 +58,9 @@ public class ErebusMod
 	@Instance(Reference.MOD_ID)
 	public static ErebusMod instance; //The instance of the mod that will be defined, populated, and callable
 
-	static EnumArmorMaterial armorEXOSKELETON = EnumHelper.addArmorMaterial("EXOSKELETON", 11, new int[] {2, 4, 3, 2}, 15);
-	static EnumArmorMaterial armorJADE = EnumHelper.addArmorMaterial("JADE", 15, new int[] {3, 7, 5, 2}, 15);
-	static EnumToolMaterial toolJADE = EnumHelper.addToolMaterial("JADE", 2, 863, 10.0F, 3.0F, 18);
+	public static EnumArmorMaterial armorEXOSKELETON = EnumHelper.addArmorMaterial("EXOSKELETON", 11, new int[] {2, 4, 3, 2}, 15);
+	public static EnumArmorMaterial armorJADE = EnumHelper.addArmorMaterial("JADE", 15, new int[] {3, 7, 5, 2}, 15);
+	public static EnumToolMaterial toolJADE = EnumHelper.addToolMaterial("JADE", 2, 863, 10.0F, 3.0F, 18);
     
 	public static CreativeTabs tabErebusBlock = new CreativeTabErebusBlock(CreativeTabs.getNextID(), "erebus.block");
 	public static CreativeTabs tabErebusItem = new CreativeTabErebusItem(CreativeTabs.getNextID(), "erebus.item");

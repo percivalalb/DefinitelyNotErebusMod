@@ -491,7 +491,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
             (new WorldGenErebusMinable(ModBlocks.umberOreBlock.blockID, 3, 6)).generate(worldObj, rand, var6, var7, var8);
         }    
         
-        for (int var5 = 0; var5 < 1; ++var5)
+        for (int var5 = 0; var5 < 5; ++var5)
         {
             int var6 = x + rand.nextInt(16);
             int var7 = rand.nextInt(128);

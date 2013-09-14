@@ -11,6 +11,13 @@ import net.minecraft.util.Icon;
 import erebus.ErebusMod;
 
 public class BlockPlanksErebus extends Block{
+	public static final String[] plankTypes = new String[]{
+		"acacia", "eucalyptus", "mahogany", "baobab", "mossbark", "pink", "scorched"
+	};
+	
+	public static final byte dataAcacia = 0, dataEucalyptus = 1, dataMahogany = 2, dataBaobab = 3, dataMossbark = 4,
+			 			     dataPink = 5, dataScorched = 6;
+	
 	@SideOnly(Side.CLIENT)
     private Icon[] iconArray;
 	
@@ -41,10 +48,10 @@ public class BlockPlanksErebus extends Block{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister){
-		iconArray=new Icon[BlockLogErebus.logTypes.length];
+		iconArray=new Icon[plankTypes.length];
 
 		for(int i=0; i<iconArray.length; i++){
-			iconArray[i]=par1IconRegister.registerIcon("erebus:wood_"+BlockLogErebus.logTypes[i]);
+			iconArray[i]=par1IconRegister.registerIcon("erebus:wood_"+plankTypes[i]);
 		}
 	}
 }

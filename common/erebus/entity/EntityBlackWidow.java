@@ -17,8 +17,7 @@ import com.google.common.io.ByteArrayDataOutput;
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 
 public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpawnData{
-
-	private int ShouldDo;
+	private int shouldDo;
 	public float size=0.4F+rand.nextFloat();
 	Class[] preys={EntityFly.class,EntityBotFly.class};
 
@@ -159,19 +158,19 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 		else if (par2>5.0F&par2<8.0F){
 
 			if (this.attackTime==0){
-				++this.ShouldDo;
-				if (this.ShouldDo==1){
+				++this.shouldDo;
+				if (this.shouldDo==1){
 					this.attackTime=60;
 				}
-				else if (this.ShouldDo<=4){
+				else if (this.shouldDo<=4){
 					this.attackTime=6;
 				}
 				else{
 					this.attackTime=100;
-					this.ShouldDo=0;
+					this.shouldDo=0;
 				}
 
-				if (this.ShouldDo>1&&this.size>0.7F){
+				if (this.shouldDo>1&&this.size>0.7F){
 
 					this.worldObj.playSoundAtEntity(this,getWebSlingThrowSound(),1.0F,1.0F);
 					for(int var10=0; var10<1; ++var10){

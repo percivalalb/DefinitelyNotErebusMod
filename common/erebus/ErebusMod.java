@@ -40,6 +40,7 @@ import erebus.creativetab.CreativeTabErebusGear;
 import erebus.creativetab.CreativeTabErebusItem;
 import erebus.lib.Reference;
 import erebus.network.PacketHandler;
+import erebus.recipes.RecipePaxel;
 import erebus.tileentity.TileEntityBamboo;
 import erebus.tileentity.TileEntityCaveSpiderSpawner;
 import erebus.tileentity.TileEntityHollowLog;
@@ -59,8 +60,9 @@ public class ErebusMod
 	public static ErebusMod instance; //The instance of the mod that will be defined, populated, and callable
 
 	public static EnumArmorMaterial armorEXOSKELETON = EnumHelper.addArmorMaterial("EXOSKELETON", 11, new int[] {2, 4, 3, 2}, 15);
-	public static EnumArmorMaterial armorJADE = EnumHelper.addArmorMaterial("JADE", 15, new int[] {3, 7, 5, 2}, 15);
-	public static EnumToolMaterial toolJADE = EnumHelper.addToolMaterial("JADE", 2, 863, 10.0F, 3.0F, 18);
+	public static EnumArmorMaterial armorJADE = EnumHelper.addArmorMaterial("JADE", 24, new int[] {3, 7, 5, 2}, 15);
+	public static EnumToolMaterial toolJADE = EnumHelper.addToolMaterial("JADE", 2, 863, 10.0F, 4.0F, 18);
+	public static EnumToolMaterial toolJADEPAXEL = EnumHelper.addToolMaterial("JADEPAXEL", 2, 1079, 8.0F, 4.0F, 14);
     
 	public static CreativeTabs tabErebusBlock = new CreativeTabErebusBlock(CreativeTabs.getNextID(), "erebus.block");
 	public static CreativeTabs tabErebusItem = new CreativeTabErebusItem(CreativeTabs.getNextID(), "erebus.item");
@@ -110,10 +112,10 @@ public class ErebusMod
 
 	@EventHandler  
 	public void load(FMLInitializationEvent event) {
-    ModBiomes.init();
+		ModBiomes.init();
     
 		GameRegistry.addRecipe(new ItemStack(ModItems.erebusMaterials, 1, 5), new Object[] {"GGG", "GEG", "GGG", 'G', new ItemStack(ModBlocks.blockAmber, 1, 1), 'E', new ItemStack(ModItems.erebusMaterials, 1, 4)}); 
-	  GameRegistry.addRecipe(new ItemStack(ModItems.compoundGoggles, 1), new Object[] {"XXX", "OXO", "   ", 'O', new ItemStack(ModItems.erebusMaterials, 1, 5), 'X', new ItemStack(ModItems.erebusMaterials, 1, 0)});  
+		GameRegistry.addRecipe(new ItemStack(ModItems.compoundGoggles, 1), new Object[] {"XXX", "OXO", "   ", 'O', new ItemStack(ModItems.erebusMaterials, 1, 5), 'X', new ItemStack(ModItems.erebusMaterials, 1, 0)});  
 		
 		GameRegistry.addRecipe(new ItemStack(ModItems.exoskeletonHelmet, 1), new Object[] {"sss", "s s", "   ", 's', new ItemStack(ModItems.erebusMaterials, 1, 0)});
 		GameRegistry.addRecipe(new ItemStack(ModItems.exoskeletonBody, 1), new Object[] {"s s", "sss", "sss", 's', new ItemStack(ModItems.erebusMaterials, 1, 0)});
@@ -127,6 +129,7 @@ public class ErebusMod
 		GameRegistry.addRecipe(new ItemStack(ModItems.jadeAxe, 1), new Object[] {"XX", "X#", " #", '#', Item.stick, 'X', new ItemStack(ModItems.erebusMaterials, 1, 1)});
 		GameRegistry.addRecipe(new ItemStack(ModItems.jadeHoe, 1), new Object[] {"XX", " #", " #", '#', Item.stick, 'X', new ItemStack(ModItems.erebusMaterials, 1, 1)});
 		GameRegistry.addRecipe(new ItemStack(ModItems.jadeSword, 1), new Object[] {"X", "X", "#", '#', Item.stick, 'X', new ItemStack(ModItems.erebusMaterials, 1, 1)});
+		GameRegistry.addRecipe(new RecipePaxel());
 		
 		//Stone tools made from umberstone
 		GameRegistry.addRecipe(new ItemStack(Item.pickaxeStone, 1), new Object[] {"XXX", " # ", " # ", '#', Item.stick, 'X', new ItemStack(ModBlocks.umberstone, 1, 1)});

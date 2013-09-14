@@ -74,7 +74,7 @@ public class ModItems {
 		jadePickaxe = new ItemPickaxe(jadePickaxeID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("pickaxeJade").setTextureName("erebus:pickaxeJade");
 		jadeAxe = new ItemAxe(jadeAxeID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("axeJade").setTextureName("erebus:axeJade");
 		jadeShovel = new ItemSpade(jadeShovelID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("shovelJade").setTextureName("erebus:shovelJade");
-		jadePaxel = new ItemPaxel(jadePaxelID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("paxelJade").setTextureName("erebus:paxelJade");
+		jadePaxel = new ItemPaxel(jadePaxelID, ErebusMod.toolJADEPAXEL).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("paxelJade").setTextureName("erebus:paxelJade");
 		jadeHoe = new ItemHoe(jadeHoeID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("hoeJade").setTextureName("erebus:hoeJade");
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles"); 
 		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("waspSword");

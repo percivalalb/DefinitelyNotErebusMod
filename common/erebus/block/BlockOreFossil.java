@@ -19,7 +19,6 @@ public class BlockOreFossil extends Block {
    
 	public BlockOreFossil(int par1) {
         super(par1, Material.rock);
-        this.setCreativeTab(CreativeTabs.tabBlock);
     }
 
     @Override

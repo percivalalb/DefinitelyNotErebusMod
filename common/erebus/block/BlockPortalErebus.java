@@ -31,7 +31,6 @@ public class BlockPortalErebus extends BlockBreakable
  public BlockPortalErebus(int i, int j)
  {
      super(i, "erebus:portalErebus", Material.portal, false);
-     this.setCreativeTab(CreativeTabs.tabBlock);
  }
 
  public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)

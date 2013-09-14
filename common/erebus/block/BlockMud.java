@@ -14,7 +14,6 @@ public class BlockMud extends Block
     public BlockMud(int par1, int par2)
     {
         super(par1, Material.clay);
-        this.setCreativeTab(CreativeTabs.tabBlock);
     }
 
     /**

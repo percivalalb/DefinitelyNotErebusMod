@@ -31,7 +31,6 @@ public class BlockErebusOre extends Block {
 	
     public BlockErebusOre(int par1) {
         super(par1, Material.rock);
-        this.setCreativeTab(ErebusMod.tabErebusBlock);
     }
     
     @Override

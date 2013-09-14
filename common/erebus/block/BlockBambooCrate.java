@@ -41,8 +41,6 @@ public class BlockBambooCrate extends BlockContainer {
 	
 	public BlockBambooCrate(int par1) {
 		super(par1, Material.wood);
-		this.setStepSound(soundWoodFootstep);
-		this.setResistance(3.0F);
 	}
 
 	@Override

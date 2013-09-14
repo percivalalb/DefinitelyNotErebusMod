@@ -41,7 +41,6 @@ public class BlockSaplingErebus extends BlockSapling
         super(par1);
         float var3 = 0.4F;
         this.setBlockBounds(0.5F - var3, 0.0F, 0.5F - var3, 0.5F + var3, var3 * 2.0F, 0.5F + var3);
-        this.setCreativeTab(ErebusMod.tabErebusBlock);
     }
 
     @Override

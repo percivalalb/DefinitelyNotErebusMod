@@ -15,7 +15,6 @@ public class BlockCobbleWebbed extends Block
     public BlockCobbleWebbed(int par1)
     {
         super(par1, Material.rock);
-        this.setCreativeTab(CreativeTabs.tabBlock);
     }
 
     /**

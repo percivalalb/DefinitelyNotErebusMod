@@ -29,8 +29,6 @@ public class BlockAmber extends Block
     public BlockAmber(int par1)
     {
         super(par1, Material.rock);
-        this.setCreativeTab(CreativeTabs.tabBlock);
-        this.setLightOpacity(3);
     }
     
     @SideOnly(Side.CLIENT)

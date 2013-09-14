@@ -21,7 +21,6 @@ public class BlockUndergroundFlower extends Block implements IPlantable
         this.setTickRandomly(true);
         float var4 = 0.2F;
         this.setBlockBounds(0.5F - var4, 0.0F, 0.5F - var4, 0.5F + var4, var4 * 3.0F, 0.5F + var4);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
     }
 
     protected BlockUndergroundFlower(int par1, int par2)

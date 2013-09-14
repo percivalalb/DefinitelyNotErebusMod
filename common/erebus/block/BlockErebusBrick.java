@@ -15,7 +15,6 @@ public class BlockErebusBrick extends Block
     public BlockErebusBrick(int par1)
     {
         super(par1, Material.rock);
-        this.setCreativeTab(CreativeTabs.tabBlock);
     }
     
     /**

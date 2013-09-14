@@ -33,8 +33,6 @@ public class BlockRedGem extends Block {
 	
     public BlockRedGem(int par1) {
         super(par1, Material.glass);
-        this.setCreativeTab(ErebusMod.tabErebusBlock);
-        this.setLightValue(1.0F);
     }
     
     @Override

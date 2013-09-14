@@ -14,7 +14,6 @@ public class BlockMossyBrick extends Block
     public BlockMossyBrick(int par1, int par2)
     {
         super(par1, Material.clay);
-        this.setCreativeTab(CreativeTabs.tabBlock);
     }
 
     public Icon getBlockIconFromSide(int i)

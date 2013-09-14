@@ -40,7 +40,6 @@ public class BlockLeavesErebus extends BlockLeavesBase implements IShearable
         super(par1, Material.leaves, false);
         this.saplingMeta = par2;
         this.setTickRandomly(true);
-        this.setCreativeTab(CreativeTabs.tabDecorations);
     }
 
     /**

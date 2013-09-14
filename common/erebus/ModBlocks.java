@@ -43,10 +43,10 @@ public class ModBlocks {
 	//public static Block mud;
 	public static Block blockAmber;						public static int blockAmberID;
 	public static BlockPortalErebus portalErebus;		public static int portalErebusID;
-	public static Block logErebus;           			public static int logErebusID;
+	public static Block logErebusGroup1;           		public static int logErebusGroup1ID;
+	public static Block logErebusGroup2;           		public static int logErebusGroup2ID;
 	public static Block planksErebus;           		public static int planksErebusID;
-	public static BlockLeavesErebus leavesMahogany;		public static int leavesMahoganyID;
-	public static BlockLeavesErebus leavesEucalyptus;	public static int leavesEucalyptusID;
+	public static BlockLeavesErebus leavesErebus;		public static int leavesErebusID;
 	public static Block cobbleWebbed;					public static int cobbleWebbedID;
 	public static Block oreFossil;						public static int oreFossilID;
 	public static Block blockSilk;						public static int blockSilkID;
@@ -58,7 +58,6 @@ public class ModBlocks {
 	public static Block blockSpiderSilk;				public static int blockSpiderSilkID;
 	public static Block thorns;							public static int thornsID;
 	public static BlockFern fern;						public static int fernID;
-	public static BlockLeavesErebus leavesAcacia;		public static int leavesAcaciaID;
 	public static Block erebusSapling;					public static int erebusSaplingID;
 	public static Block erebusGrass;					public static int erebusGrassID;
 	public static Block quickSand;						public static int quickSandID;
@@ -78,9 +77,6 @@ public class ModBlocks {
 		//mud = new BlockMud(2501, 0).setHardness(0.5F).setStepSound(Block.soundGravelFootstep).setUnlocalizedName("mud");
 		portalErebus = (BlockPortalErebus)(new BlockPortalErebus(portalErebusID, 221)).setHardness(-1F).setLightValue(1.0F).setStepSound(Block.soundGlassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("portalErebus");
 		blockAmber = new BlockAmber(blockAmberID).setHardness(1.5F).setResistance(10.0F).setLightOpacity(3).setStepSound(Block.soundGlassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("blockAmber");
-		leavesMahogany = (BlockLeavesErebus)(new BlockLeavesErebus(leavesMahoganyID, 0)).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("leavesMahogany").setTextureName("erebus:leaves_mahogany");
-		leavesEucalyptus = (BlockLeavesErebus)(new BlockLeavesErebus(leavesEucalyptusID, 1)).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("leavesEucalyptus").setTextureName("erebus:leaves_eucalyptus");
-		leavesAcacia = (BlockLeavesErebus)(new BlockLeavesErebus(leavesAcaciaID, 2)).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("leaves_acacia").setTextureName("erebus:leaves_acacia");
 		cobbleWebbed = new BlockCobbleWebbed(cobbleWebbedID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundClothFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("cobbleWebbed").setTextureName("erebus:cobbleWebbed");
 		oreFossil = new BlockOreFossil(oreFossilID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("oreFossilU").setTextureName("erebus:oreFossil_U");
 		blockSilk = new BlockSilk(blockSilkID, 70).setHardness(0.2F).setStepSound(Block.soundClothFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("blockSilk").setTextureName("erebus:blockSilk");
@@ -104,17 +100,17 @@ public class ModBlocks {
 		hollowLogAcacia = new BlockHollowLog(2552, TileEntityHollowLog.class).setHardness(0.4F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("hollowLogAcacia").setTextureName("erebus:log_acacia");
 		maggotLogAcacia = new BlockMaggot(2553, 164).setHardness(0.4F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("maggotLogAcacia").setTextureName("erebus:log_acacia");
     
-		logErebus = new BlockLogErebus(logErebusID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("logErebus");
+		logErebusGroup1 = new BlockLogErebus(logErebusGroup1ID, 0).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("logErebus1");
+		logErebusGroup2 = new BlockLogErebus(logErebusGroup2ID, 1).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("logErebus2");
 		planksErebus = new BlockPlanksErebus(planksErebusID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("planksErebus");
-
+		leavesErebus = (BlockLeavesErebus)(new BlockLeavesErebus(leavesErebusID, 0)).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("leavesErebus");
+		
 		stairsMahogany = new BlockStairsErebus(2554, planksErebus, BlockLogErebus.dataMahogany).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsMahogany");
 		stairsEucalyptus = new BlockStairsErebus(2555, planksErebus, BlockLogErebus.dataEucalyptus).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsEucalyptus");
 	
 		//GameRegistry.registerBlock(mud);		  
 		GameRegistry.registerBlock(portalErebus, "erebus.portal");
-		GameRegistry.registerBlock(blockAmber, ItemMultiBlock.class, "erebus.blockAmber");		    
-		GameRegistry.registerBlock(leavesMahogany, "erebus.leavesMahogany");
-		GameRegistry.registerBlock(leavesEucalyptus, "erebus.leavesEucalyptus");		  
+		GameRegistry.registerBlock(blockAmber, ItemMultiBlock.class, "erebus.blockAmber");	  
 		GameRegistry.registerBlock(cobbleWebbed, "erebus.cobbleWebbed");		  
 		GameRegistry.registerBlock(oreFossil, "erebus.oreFossil");		  
 		GameRegistry.registerBlock(blockSilk, "erebus.blockSilk");
@@ -123,8 +119,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(caveSpiderSpawner, "erebus.caveSpiderSpawner");		  
 		GameRegistry.registerBlock(blockSpiderSilk, "erebus.blockSpiderSilk");		  
 		GameRegistry.registerBlock(thorns, "erebus.thorns");		  
-		GameRegistry.registerBlock(fern, "erebus.fern");  
-		GameRegistry.registerBlock(leavesAcacia, "erebus.leavesAcacia");	  
+		GameRegistry.registerBlock(fern, "erebus.fern");	  
 		GameRegistry.registerBlock(erebusSapling, ItemSapling.class, "erebus.erebusSapling");		  
 		GameRegistry.registerBlock(erebusGrass, "erebus.erebusGrass");		  
 		GameRegistry.registerBlock(quickSand, "erebus.quickSand");
@@ -139,8 +134,10 @@ public class ModBlocks {
 		GameRegistry.registerBlock(umberOreBlock, ItemMultiBlock.class, "erebus.oreBlockU");		  	  
 		GameRegistry.registerBlock(bambooCrate, ItemMultiBlock.class, "erebus.bamboo");
 		GameRegistry.registerBlock(redGem, ItemMultiBlock.class, "erebus.redGem");
-		GameRegistry.registerBlock(logErebus, ItemMultiBlock.class, "erebus.logErebus");
+		GameRegistry.registerBlock(logErebusGroup1, ItemMultiBlock.class, "erebus.logErebus1");
+		GameRegistry.registerBlock(logErebusGroup2, ItemMultiBlock.class, "erebus.logErebus2");
 		GameRegistry.registerBlock(planksErebus, ItemMultiBlock.class, "erebus.planksErebus");
+		GameRegistry.registerBlock(leavesErebus, ItemMultiBlock.class, "erebus.leavesErebus");
 		
 		//Block Mining Levels
 		MinecraftForge.setBlockHarvestLevel(blockAmber, "pickaxe", 0);

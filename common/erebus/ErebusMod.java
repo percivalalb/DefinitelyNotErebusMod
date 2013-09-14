@@ -23,6 +23,7 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.block.BlockLogErebus;
+import erebus.block.BlockPlanksErebus;
 import erebus.client.sound.EntityBeetleLarvaNoises;
 import erebus.client.sound.EntityBlackWidowNoises;
 import erebus.client.sound.EntityCentipedeNoises;
@@ -140,9 +141,14 @@ public class ErebusMod
 
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockSilk, 1), new Object[] {"sss", "sss", "sss", 's', Item.silk});  
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockAmber, 4, 2), new Object[] {"ss", "ss", 's', new ItemStack(ModBlocks.blockAmber, 1, 0)});  
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksErebus, 4, BlockLogErebus.dataMahogany), new Object[] { "#", '#', new ItemStack(ModBlocks.logErebus, 1, BlockLogErebus.dataMahogany) });
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksErebus, 4, BlockLogErebus.dataEucalyptus), new Object[] { "#", '#', new ItemStack(ModBlocks.logErebus, 1, BlockLogErebus.dataEucalyptus) });
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksErebus, 4, BlockLogErebus.dataAcacia), new Object[] { "#", '#', new ItemStack(ModBlocks.logErebus, 1, BlockLogErebus.dataAcacia) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksErebus, 4, BlockPlanksErebus.dataMahogany), new Object[] { "#", '#', new ItemStack(ModBlocks.logErebusGroup1, 1, BlockLogErebus.dataMahogany) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksErebus, 4, BlockPlanksErebus.dataEucalyptus), new Object[] { "#", '#', new ItemStack(ModBlocks.logErebusGroup1, 1, BlockLogErebus.dataEucalyptus) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksErebus, 4, BlockPlanksErebus.dataAcacia), new Object[] { "#", '#', new ItemStack(ModBlocks.logErebusGroup1, 1, BlockLogErebus.dataAcacia) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksErebus, 4, BlockPlanksErebus.dataBaobab), new Object[] { "#", '#', new ItemStack(ModBlocks.logErebusGroup1, 1, BlockLogErebus.dataBaobab) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksErebus, 4, BlockPlanksErebus.dataMossbark), new Object[] { "#", '#', new ItemStack(ModBlocks.logErebusGroup2, 1, BlockLogErebus.dataMossbark) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksErebus, 4, BlockPlanksErebus.dataPink), new Object[] { "#", '#', new ItemStack(ModBlocks.logErebusGroup2, 1, BlockLogErebus.dataPink) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksErebus, 4, BlockPlanksErebus.dataScorched), new Object[] { "#", '#', new ItemStack(ModBlocks.logErebusGroup2, 1, BlockLogErebus.dataScorched) });
+		
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.stairsMahogany, 4), new Object[] { "#  ", "## ", "###", '#', new ItemStack(ModBlocks.planksErebus, 1, BlockLogErebus.dataMahogany) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.stairsEucalyptus, 4), new Object[] { "#  ", "## ", "###", '#', new ItemStack(ModBlocks.planksErebus, 1, BlockLogErebus.dataEucalyptus) });
 		GameRegistry.addRecipe(new ItemStack(ModItems.portalActivator, 1), new Object[] {"  O", " / ", "/  ", 'O', new ItemStack(Item.spiderEye), '/', new ItemStack(Item.stick)});
@@ -161,12 +167,11 @@ public class ErebusMod
 		FurnaceRecipes.smelting().addSmelting(ModBlocks.umberstone.blockID, 1, new ItemStack(ModBlocks.umberstone, 1), 0.2F);
 
 		OreDictionary.registerOre("blockCobble", new ItemStack(ModBlocks.umberstone, 1, 1));
-		OreDictionary.registerOre("logWood", new ItemStack(ModBlocks.logErebus, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("logWood", new ItemStack(ModBlocks.logErebusGroup1, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("logWood", new ItemStack(ModBlocks.logErebusGroup2, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("plankWood", new ItemStack(ModBlocks.planksErebus, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeSapling", new ItemStack(ModBlocks.erebusSapling, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("treeLeaves",  new ItemStack(ModBlocks.leavesMahogany, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("treeLeaves",  new ItemStack(ModBlocks.leavesEucalyptus, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("treeLeaves",  new ItemStack(ModBlocks.leavesAcacia, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("treeLeaves",  new ItemStack(ModBlocks.leavesErebus, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("oreGold_U", new ItemStack(ModBlocks.umberOreBlock, 1, 2));
 		OreDictionary.registerOre("oreIron_U", new ItemStack(ModBlocks.umberOreBlock, 1, 1));
 		OreDictionary.registerOre("oreLapis_U", new ItemStack(ModBlocks.umberOreBlock, 1, 3));

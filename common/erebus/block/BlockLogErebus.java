@@ -11,17 +11,22 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
 
 public class BlockLogErebus extends BlockLog{
-	public static final String[] logTypes = new String[]{
-		"acacia", "eucalyptus", "mahogany"
+	public static final String[][] logTypes = new String[][]{
+		new String[]{ "acacia", "eucalyptus", "mahogany", "baobab" },
+		new String[]{ "mossbark", "pink", "scorched" }
 	};
 	
-	public static final byte dataAcacia = 0, dataEucalyptus = 1, dataMahogany = 2;
+	public static final byte dataAcacia = 0, dataEucalyptus = 1, dataMahogany = 2, dataBaobab = 3,
+						     dataMossbark = 0, dataPink = 1, dataScorched = 2;
 	
 	@SideOnly(Side.CLIENT)
 	private Icon[] iconSide,iconTop;
 	
-	public BlockLogErebus(int id){
+	private byte logGroup;
+	
+	public BlockLogErebus(int id, int logGroup){
 		super(id);
+		this.logGroup=(byte)logGroup;
 	}
 
 	@Override
@@ -39,20 +44,20 @@ public class BlockLogErebus extends BlockLog{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int id, CreativeTabs creativeTab, List list){
-		list.add(new ItemStack(id,1,0));
-		list.add(new ItemStack(id,1,1));
-		list.add(new ItemStack(id,1,2));
+		for(int a=0; a<logTypes[logGroup].length; a++){
+			list.add(new ItemStack(id,1,a));
+		}
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister){
-		iconSide=new Icon[logTypes.length];
-		iconTop=new Icon[logTypes.length];
+		iconSide=new Icon[logTypes[logGroup].length];
+		iconTop=new Icon[logTypes[logGroup].length];
 
-		for(int a=0; a<logTypes.length; a++){
-			iconSide[a]=iconRegister.registerIcon("erebus:tree_"+logTypes[a]);
-			iconTop[a]=iconRegister.registerIcon("erebus:tree_"+logTypes[a]+"_top");
+		for(int a=0; a<logTypes[logGroup].length; a++){
+			iconSide[a]=iconRegister.registerIcon("erebus:tree_"+logTypes[logGroup][a]);
+			iconTop[a]=iconRegister.registerIcon("erebus:tree_"+logTypes[logGroup][a]+"_top");
 		}
 	}
 }

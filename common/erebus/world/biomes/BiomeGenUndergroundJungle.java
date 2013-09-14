@@ -13,6 +13,7 @@ import net.minecraft.world.gen.feature.WorldGenHugeTrees;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import net.minecraft.world.gen.feature.WorldGenTrees;
 import erebus.ModBlocks;
+import erebus.block.BlockLeavesErebus;
 import erebus.block.BlockLogErebus;
 import erebus.entity.EntityBeetle;
 import erebus.entity.EntityBeetleLarva;
@@ -151,7 +152,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 			int j5 = z + getRandomXZOffset(rand);
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-        (new WorldGenErebusHugeTree(true, 20 + rand.nextInt(5), BlockLogErebus.dataMahogany, 0, false, ModBlocks.logErebus.blockID, ModBlocks.leavesMahogany.blockID)).generate(worldObj, rand, j2, l3, j5);
+				(new WorldGenErebusHugeTree(true, 20 + rand.nextInt(5), BlockLogErebus.dataMahogany, BlockLeavesErebus.dataMahoganyDecay, false, ModBlocks.logErebusGroup1.blockID, ModBlocks.leavesErebus.blockID)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 
@@ -162,7 +163,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 			int j5 = z + getRandomXZOffset(rand);
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenErebusTrees(true, 5, BlockLogErebus.dataMahogany, 0, false, ModBlocks.logErebus.blockID, ModBlocks.leavesMahogany.blockID, ModBlocks.thorns.blockID)).generate(worldObj, rand, j2, l3, j5);
+				(new WorldGenErebusTrees(true, 5, BlockLogErebus.dataMahogany, BlockLeavesErebus.dataMahoganyDecay, false, ModBlocks.logErebusGroup1.blockID, ModBlocks.leavesErebus.blockID, ModBlocks.thorns.blockID)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 
@@ -173,7 +174,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 			int j5 = z + getRandomXZOffset(rand);
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenEucalyptus(ModBlocks.logErebus.blockID, BlockLogErebus.dataEucalyptus/*2*/, ModBlocks.leavesEucalyptus.blockID, 2, 8 + rand.nextInt(4), 5, 8, Block.grass.blockID)).generate(worldObj, rand, j2, l3, j5);
+				(new WorldGenEucalyptus(ModBlocks.logErebusGroup1.blockID, BlockLogErebus.dataEucalyptus/*2*/, ModBlocks.leavesErebus.blockID, BlockLeavesErebus.dataEucalyptusDecay, 8 + rand.nextInt(4), 5, 8, Block.grass.blockID)).generate(worldObj, rand, j2, l3, j5);
 			} // TODO wrong metadata?
 		}
 

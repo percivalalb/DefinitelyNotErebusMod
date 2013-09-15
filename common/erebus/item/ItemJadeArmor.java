@@ -21,9 +21,8 @@ public class ItemJadeArmor extends ItemArmor {
      * @param renderIndex Render index that is used in the render code
      * @param armorType The armor type: 0 is helmet, 1 is plate, 2 is legs and 3 is boots
      */
-    public ItemJadeArmor(int id, EnumArmorMaterial armorMaterial, int renderIndex, int armorType) {
-        super(id, armorMaterial, renderIndex, armorType);
-        this.setCreativeTab(ErebusMod.tabErebusGear);
+    public ItemJadeArmor(int id, int armorType) {
+        super(id, ErebusMod.armorJADE, 2, armorType);
     }
     
     /**

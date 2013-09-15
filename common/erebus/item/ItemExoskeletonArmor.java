@@ -1,13 +1,11 @@
 package erebus.item;
 
-import erebus.core.proxy.CommonProxy;
-import erebus.ErebusMod;
-import erebus.ModItems;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import erebus.ErebusMod;
+import erebus.ModItems;
 
 /**
  * @author ProPercivalalb
@@ -21,9 +19,8 @@ public class ItemExoskeletonArmor extends ItemArmor {
      * @param renderIndex Render index that is used in the render code
      * @param armorType The armor type: 0 is helmet, 1 is plate, 2 is legs and 3 is boots
      */
-    public ItemExoskeletonArmor(int id, EnumArmorMaterial armorMaterial, int renderIndex, int armorType) {
-        super(id, armorMaterial, renderIndex, armorType);
-        this.setCreativeTab(ErebusMod.tabErebusGear);
+    public ItemExoskeletonArmor(int id, int armorType) {
+        super(id, ErebusMod.armorEXOSKELETON, 2, armorType);
     }
     
     /**

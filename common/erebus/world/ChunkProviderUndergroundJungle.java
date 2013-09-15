@@ -474,7 +474,7 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
         int k = par2 * 16;
         int l = par3 * 16;
         
-        for (l1 = 0; l1 < 8; ++l1)
+        for (l1 = 0; l1 < 12; ++l1)
         {
             k1 = k + this.rand.nextInt(16) + 8;
             i2 = this.rand.nextInt(128);

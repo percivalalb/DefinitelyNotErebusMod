@@ -15,10 +15,10 @@ public class ConfigurationHandler {
 		config.load();
 		ModBlocks.blockAmberID = config.get(config.CATEGORY_BLOCK, "Block ID of Amber", 2501).getInt();		  
 		ModBlocks.portalErebusID = config.get(config.CATEGORY_BLOCK, "Block ID of Erebus Portal", 2504).getInt();		  
-		ModBlocks.logErebusID = config.get(config.CATEGORY_BLOCK, "Block ID of Log", 2505).getInt();		  
-		ModBlocks.leavesMahoganyID = config.get(config.CATEGORY_BLOCK, "Block ID of Mahogany Leaves", 2506).getInt();		  
-		//ModBlocks.woodEucalyptusID = config.get(config.CATEGORY_BLOCK, "Block ID of Eucalyptus Wood", 2507).getInt();		  
-		ModBlocks.leavesEucalyptusID = config.get(config.CATEGORY_BLOCK, "Block ID of Eucalyptus Leaves", 2508).getInt();		  
+		ModBlocks.logErebusGroup1ID = config.get(config.CATEGORY_BLOCK, "Block ID of Log - group 1", 2505).getInt();
+		ModBlocks.leavesErebusID = config.get(config.CATEGORY_BLOCK, "Block ID of Leaves", 2506).getInt();		  
+		ModBlocks.logErebusGroup2ID = config.get(config.CATEGORY_BLOCK, "Block ID of Log - group 2", 2507).getInt();		  
+		//ModBlocks.leavesEucalyptusID = config.get(config.CATEGORY_BLOCK, "Block ID of Eucalyptus Leaves", 2508).getInt();		  
 		ModBlocks.cobbleWebbedID = config.get(config.CATEGORY_BLOCK, "Block ID of Webbed Cobblestone", 2509).getInt();		  
 		ModBlocks.oreFossilID = config.get(config.CATEGORY_BLOCK, "Block ID of Fossil Ore", 2510).getInt();		  
 		ModBlocks.blockSilkID = config.get(config.CATEGORY_BLOCK, "Block ID of Silk", 2511).getInt();		  
@@ -31,7 +31,7 @@ public class ConfigurationHandler {
 		ModBlocks.thornsID = config.get(config.CATEGORY_BLOCK, "Block ID of Thorns", 2518).getInt();		  
 		ModBlocks.fernID = config.get(config.CATEGORY_BLOCK, "Block ID of Ferns", 2519).getInt();		  
 		//ModBlocks.woodAcaciaID = config.get(config.CATEGORY_BLOCK, "Block ID of Acacia Wood", 2520).getInt();		  
-		ModBlocks.leavesAcaciaID = config.get(config.CATEGORY_BLOCK, "Block ID of Acacia Leaves", 2521, "Block IDs must be below 4096").getInt();		  
+		//ModBlocks.leavesAcaciaID = config.get(config.CATEGORY_BLOCK, "Block ID of Acacia Leaves", 2521, "Block IDs must be below 4096").getInt();		  
 		ModBlocks.erebusSaplingID = config.get(config.CATEGORY_BLOCK, "Block ID of Erebus Saplings", 2522).getInt();		  
 		ModBlocks.erebusGrassID = config.get(config.CATEGORY_BLOCK, "Block ID of Erebus Grass", 2523).getInt();		  
 		//ModBlocks.planksAcaciaID = config.get(config.CATEGORY_BLOCK, "Block ID of Acacia Planks", 2524).getInt();		  

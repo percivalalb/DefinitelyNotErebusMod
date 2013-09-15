@@ -33,7 +33,10 @@ import erebus.block.BlockTurnip;
 import erebus.block.BlockUmberstone;
 import erebus.item.ItemMultiBlock;
 import erebus.item.ItemSapling;
+import erebus.tileentity.TileEntityBamboo;
+import erebus.tileentity.TileEntityCaveSpiderSpawner;
 import erebus.tileentity.TileEntityHollowLog;
+import erebus.tileentity.TileEntitySpiderSpawner;
 
 /**
  * @author ProPercivalalb
@@ -155,5 +158,10 @@ public class ModBlocks {
 
 		MinecraftForge.setBlockHarvestLevel(quickSand, "shovel", 1);
 		MinecraftForge.setBlockHarvestLevel(dryScree, "shovel", 0);
+		
+		GameRegistry.registerTileEntity(TileEntitySpiderSpawner.class, "Spider Spawner (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityCaveSpiderSpawner.class, "Cave Spider Spawner (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityHollowLog.class, "Hollow Log (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityBamboo.class, "Bamboo Crate (Erebus)");
 	}
 }

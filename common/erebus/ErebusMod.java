@@ -119,7 +119,7 @@ public class ErebusMod
 		RecipeHandler.inti();
 		
 		AddonManager.registerAddons();
-		AddonManager.runRegisteredAddons();
+		AddonManager.runRegisteredAddons(ConfigurationHandler.configurationFile);
 		
 		proxy.registerRenderInformation();
 

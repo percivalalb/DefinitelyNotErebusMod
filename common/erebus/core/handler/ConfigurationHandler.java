@@ -9,9 +9,12 @@ import erebus.ModItems;
 
 public class ConfigurationHandler {
 
+	public static Configuration configurationFile;
+	
 	public static void loadConfig(FMLPreInitializationEvent event) {
 
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		configurationFile = config;
 		config.load();
 		ModBlocks.blockAmberID = config.get(config.CATEGORY_BLOCK, "Block ID of Amber", 2501).getInt();		  
 		ModBlocks.portalErebusID = config.get(config.CATEGORY_BLOCK, "Block ID of Erebus Portal", 2504).getInt();		  

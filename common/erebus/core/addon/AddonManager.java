@@ -2,6 +2,7 @@ package erebus.core.addon;
 
 import erebus.core.addon.buildcraft.BuildcraftAddon;
 import erebus.core.addon.forgemultipart.ForgeMultipartAddon;
+import net.minecraftforge.common.Configuration;
 import net.minecraftforge.event.EventBus;
 
 /**
@@ -16,9 +17,9 @@ public class AddonManager {
 		EVENT_BUS.register(new ForgeMultipartAddon());
 	}
 	
-	public static void runRegisteredAddons() {
-		EVENT_BUS.post(new AddonEvent.Pre());
-		EVENT_BUS.post(new AddonEvent.Init());
-		EVENT_BUS.post(new AddonEvent.Post());
+	public static void runRegisteredAddons(Configuration config) {
+		EVENT_BUS.post(new AddonEvent.Pre(config));
+		EVENT_BUS.post(new AddonEvent.Init(config));
+		EVENT_BUS.post(new AddonEvent.Post(config));
 	}
 }

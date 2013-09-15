@@ -1,24 +1,22 @@
 package erebus.world.feature;
 
 import java.util.Random;
-
-import erebus.ErebusMod;
-import erebus.ModBlocks;
-import erebus.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityChest;
-import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraftforge.common.ChestGenHooks;
-import net.minecraftforge.common.DungeonHooks;
+import erebus.ModBlocks;
+import erebus.ModItems;
+import erebus.world.loot.LootItemStack;
+import erebus.world.loot.LootUtil;
+import erebus.world.loot.WeightedLootList;
 
 public class WorldGenSpiderDungeons extends WorldGenerator
 {
-	public static final WeightedRandomChestContent[] field_111189_a = new WeightedRandomChestContent[] {
+	/*public static final WeightedRandomChestContent[] field_111189_a = new WeightedRandomChestContent[] {
 		new WeightedRandomChestContent(Item.goldNugget.itemID, 0, 4, 9, 10), 
 		new WeightedRandomChestContent(Item.ingotIron.itemID, 0, 1, 2, 10),
 		new WeightedRandomChestContent(Item.bone.itemID, 0, 1, 1, 10), 
@@ -27,6 +25,17 @@ public class WorldGenSpiderDungeons extends WorldGenerator
 		new WeightedRandomChestContent(Item.redstone.itemID, 0, 1, 4, 10), 
 		new WeightedRandomChestContent(ModItems.erebusMaterials.itemID, 6, 1, 5, 10), //Fly Wing
 		new WeightedRandomChestContent(Item.arrow.itemID, 0, 1, 5, 10)};
+	*/
+	public static final WeightedLootList chestLoot = new WeightedLootList(
+		new LootItemStack(Item.goldNugget).setAmount(4,9).setWeight(10),
+		new LootItemStack(Item.ingotIron).setAmount(1,2).setWeight(10),
+		new LootItemStack(Item.ingotGold).setAmount(1,2).setWeight(10),
+		new LootItemStack(Item.bone).setAmount(1,1).setWeight(10),
+		new LootItemStack(Item.redstone).setAmount(1,4).setWeight(10),
+		new LootItemStack(Item.arrow).setAmount(1,5).setWeight(10),
+		new LootItemStack(ModItems.erebusMaterials).setAmount(3,8).setWeight(10), // Exo-plate
+		new LootItemStack(ModItems.erebusMaterials).setAmount(1,5).setDamage(6).setWeight(10)  // Fly Wing
+	);
 
 	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
 	{
@@ -145,7 +154,8 @@ public class WorldGenSpiderDungeons extends WorldGenerator
 
 								if (tileentitychest != null)
 								{
-									WeightedRandomChestContent.generateChestContents(par2Random, field_111189_a, tileentitychest, field_111189_a.length);
+									//WeightedRandomChestContent.generateChestContents(par2Random, field_111189_a, tileentitychest, field_111189_a.length);
+									LootUtil.generateLoot(tileentitychest,par2Random,chestLoot,1,8);
 								}
 
 								break label101;

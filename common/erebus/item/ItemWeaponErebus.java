@@ -81,16 +81,6 @@ public class ItemWeaponErebus extends Item
         return this.weaponDamage;
     }
 
-    @SideOnly(Side.CLIENT)
-
-    /**
-     * Returns True is the item is renderer in full 3D when hold.
-     */
-    public boolean isFull3D()
-    {
-        return true;
-    }
-
     /**
      * returns the action that specifies what animation to play when the items is being used
      */

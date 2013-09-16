@@ -1,5 +1,6 @@
 package erebus;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import erebus.item.ItemBambucket;
 import erebus.item.ItemCompoundGoggles;
 import erebus.item.ItemErebusFood;
@@ -83,5 +84,29 @@ public class ModItems {
 		MinecraftForge.setToolClass(jadeAxe, "axe", 2);
 		MinecraftForge.setToolClass(jadePickaxe, "pickaxe", 2);
 		MinecraftForge.setToolClass(jadeShovel, "shovel", 2);
+		
+		GameRegistry.registerItem(exoskeletonHelmet, "erebus.helmetExo");
+		GameRegistry.registerItem(exoskeletonBody, "erebus.chestplateExo");
+		GameRegistry.registerItem(exoskeletonLegs, "erebus.leggingsExo");
+		GameRegistry.registerItem(exoskeletonBoots, "erebus.bootsExo");
+		GameRegistry.registerItem(erebusMaterials, "erebus.erebusMaterials");
+		GameRegistry.registerItem(erebusFood, "erebus.erebusFood");
+		GameRegistry.registerItem(bamBucket, "erebus.bamBucket");
+		GameRegistry.registerItem(portalActivator, "erebus.portalActivator");
+		GameRegistry.registerItem(fossilClub, "erebus.clubBone");
+		GameRegistry.registerItem(maxSpeedBow, "erebus.maxSpeedBow");
+		GameRegistry.registerItem(turnip, "erebus.turnips");
+		GameRegistry.registerItem(jadeHelmet, "erebus.helmetJade");
+		GameRegistry.registerItem(jadeBody, "erebus.chestplateJade");
+		GameRegistry.registerItem(jadeLegs, "erebus.leggingsJade");
+		GameRegistry.registerItem(jadeBoots, "erebus.bootsJade");
+		GameRegistry.registerItem(jadeSword, "erebus.swordJade");
+		GameRegistry.registerItem(jadePickaxe, "erebus.pickaxeJade");
+		GameRegistry.registerItem(jadeAxe, "erebus.axeJade");
+		GameRegistry.registerItem(jadeShovel, "erebus.shovelJade");
+		GameRegistry.registerItem(jadePaxel, "erebus.paxelJade");
+		GameRegistry.registerItem(jadeHoe, "erebus.hoeJade");
+		GameRegistry.registerItem(compoundGoggles, "erebus.compoundGoggles");
+		GameRegistry.registerItem(waspSword, "erebus.waspSword");
     }
 }

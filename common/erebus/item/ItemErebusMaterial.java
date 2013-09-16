@@ -56,5 +56,4 @@ public class ItemErebusMaterial extends Item {
         int i = par1ItemStack.getItemDamage();
         return super.getUnlocalizedName() + "." + i;
     }
-
 }

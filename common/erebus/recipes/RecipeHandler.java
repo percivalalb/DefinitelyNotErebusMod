@@ -22,6 +22,10 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModItems.exoskeletonBoots, 1), new Object[] {"   ", "s s", "s s", 's', new ItemStack(ModItems.erebusMaterials, 1, 0)});  
 		GameRegistry.addRecipe(new ItemStack(ModItems.bamBucket, 1, 0), new Object[] {"S", "B", 'S', Item.silk, 'B', new ItemStack(ModItems.erebusMaterials, 1, 0)});  
 		
+		// Petrified Wood stuffs
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedWoodPlanks), new Object[] {"xx", "xx", 'x', ModItems.itemPetrifiedWood});
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedCraftingTable), new Object[] {"xx", "xx", 'x', ModBlocks.petrifiedWoodPlanks});
+		
 		//Jade tools
 		GameRegistry.addRecipe(new ItemStack(ModItems.jadePickaxe, 1), new Object[] {"XXX", " # ", " # ", '#', Item.stick, 'X', new ItemStack(ModItems.erebusMaterials, 1, 1)});
 		GameRegistry.addRecipe(new ItemStack(ModItems.jadeShovel, 1), new Object[] {"X", "#", "#", '#', Item.stick, 'X', new ItemStack(ModItems.erebusMaterials, 1, 1)});

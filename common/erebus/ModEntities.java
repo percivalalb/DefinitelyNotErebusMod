@@ -13,6 +13,7 @@ import erebus.entity.EntityMosquito;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
+import erebus.entity.EntityScorpion;
 
 /**
  * @author ProPercivalalb
@@ -29,6 +30,7 @@ public class ModEntities {
 		registerEntity(EntityTarantula.class, "Tarantula", EntityRegistry.findGlobalUniqueEntityId(), 894731, 512);	
 		registerEntity(EntityVelvetWorm.class, "VelvetWorm", EntityRegistry.findGlobalUniqueEntityId(), 894731, 000000);
 		registerEntity(EntityBotFly.class, "BotFly", EntityRegistry.findGlobalUniqueEntityId(), 894731, 000000);
+		registerEntity(EntityScorpion.class, "Scorpion", EntityRegistry.findGlobalUniqueEntityId(), 0xFFA200, 0xFFDB9C);
 		registerEntity(EntityBlackWidow.class, "BlackWidow", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 		EntityRegistry.addSpawn(EntityBlackWidow.class, 100, 5, 10, EnumCreatureType.monster, BiomeGenBase.hell);
 	

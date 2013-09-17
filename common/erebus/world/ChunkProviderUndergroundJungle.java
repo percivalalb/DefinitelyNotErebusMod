@@ -47,6 +47,9 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
     private double gravelNoise[];
     private double stoneExclusivityNoise[];
     private MapGenBase netherCaveGenerator;
+    
+    private BiomeGenBase[] biomesForGeneration;
+    
     double noiseData1[];
     double noiseData2[];
     double noiseData3[];
@@ -87,6 +90,7 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
         int i = byte0 + 1;
         byte byte2 = 17;
         int j = byte0 + 1;
+        this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, par1 * 4 - 2, par2 * 4 - 2, i + 5, j + 5);
         field_4163_o = func_4057_a(field_4163_o, par1 * byte0, 0, par2 * byte0, i, byte2, j);
 
         for (int k = 0; k < byte0; k++)
@@ -261,10 +265,10 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
         hellRNG.setSeed((long)par1 * 0x4f9939f508L + (long)par2 * 0x1ef1565bd5L);
         rand.setSeed((long)par1 * 0x4f9939f508L + (long)par2 * 0x1ef1565bd5L);
         byte abyte0[] = new byte[32768];
-        BiomeGenBase abiomegenbase[] = worldObj.getWorldChunkManager().loadBlockGeneratorData(null, par1 * 16, par2 * 16, 16, 16);
+        biomesForGeneration = worldObj.getWorldChunkManager().loadBlockGeneratorData(biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
         generateNetherTerrain(par1, par2, abyte0);
         func_4058_b(par1, par2, abyte0);
-        this.replaceBlocksForBiome(par1, par2, abyte0, abiomegenbase);
+        this.replaceBlocksForBiome(par1, par2, abyte0, biomesForGeneration);
         //this.genSpiderTunnels.generate(this, this.worldObj, par1, par2, abyte0);
         netherCaveGenerator.generate(this, worldObj, par1, par2, abyte0);
         Chunk chunk = new Chunk(worldObj, abyte0, par1, par2);

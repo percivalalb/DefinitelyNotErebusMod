@@ -13,7 +13,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
 import erebus.ModBlocks;
 
-public class BlockLogErebus extends BlockLog{
+public class BlockLogErebus extends BlockLog {
+	
 	public static final String[][] logTypes = new String[][]{
 		new String[]{ "acacia", "eucalyptus", "mahogany", "baobab" },
 		new String[]{ "mossbark", "pink", "scorched" }

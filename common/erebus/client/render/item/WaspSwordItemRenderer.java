@@ -13,7 +13,7 @@ public class WaspSwordItemRenderer implements IItemRenderer
 {
 	private ModelWaspSword ModelWaspSword;
 	public static ResourceLocation texture = new ResourceLocation("erebus:textures/item/ModelWaspSword.png");
-	public WaspSwordItemRenderer(ResourceLocation resourcelocation) 
+	public WaspSwordItemRenderer() 
 	{
 		ModelWaspSword = new ModelWaspSword();
 	}
@@ -27,7 +27,7 @@ public class WaspSwordItemRenderer implements IItemRenderer
 	@Override
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper)
 	{
-		return true;
+		return helper != ItemRendererHelper.BLOCK_3D;
 	}
 	
 	@Override
@@ -38,7 +38,7 @@ public class WaspSwordItemRenderer implements IItemRenderer
             renderSword(0.0F, 1.0F, 0.0F, 1.D);
             break;
         case EQUIPPED: 
-        	renderSword(0.3F, 0.8F, 0.4F, 1.2D);
+        	renderEquipped(0.3F, 0.8F, 0.4F, 1.2D);
             break;
         case EQUIPPED_FIRST_PERSON: 
         	renderSwordFirstPerson(0.5F, 1.0F, 0.5F, 1.2D);
@@ -49,6 +49,17 @@ public class WaspSwordItemRenderer implements IItemRenderer
         default:
             break;
         }
+	}
+	
+	private void renderEquipped(float x, float y, float z, double size) {
+		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
+        GL11.glPushMatrix(); //Start Rendering
+        GL11.glTranslatef(x, y + 0.6F, z + 0.5F);// Position
+        GL11.glRotatef(20.0F, 1.0F, 0.0F, 0.0F);
+        GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
+        GL11.glScaled(-size, -size, size); //Changes the size (Only really used when reading in the inventory)
+        ModelWaspSword.render(0.0625F); //Render
+        GL11.glPopMatrix(); //End Rendering
 	}
 	
     private void renderSword(float x, float y, float z, double size) {

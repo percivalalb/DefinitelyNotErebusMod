@@ -5,11 +5,10 @@ import java.lang.reflect.Method;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import buildcraft.transport.Pipe;
-
 import com.google.common.base.Optional;
 
 import cpw.mods.fml.common.Loader;
+import erebus.core.helper.LogHelper;
 import erebus.core.helper.ReflectionHelper;
 
 /**
@@ -31,8 +30,8 @@ public class BuildcraftAPI {
 			registerFacadeMethod = Optional.fromNullable(ReflectionHelper.getMethod(facadeManagerClass.get(), BuildcraftLib.METHOD_REGISTER_FACADE, ItemStack.class));
 		buildcraftTransportClass = Optional.fromNullable(ReflectionHelper.getClass(BuildcraftLib.CLASS_BUILDCRAFT_TRANSPORT));
 		pipeClass = Optional.fromNullable(ReflectionHelper.getClass(BuildcraftLib.CLASS_PIPE));
-		if(buildcraftTransportClass.isPresent() && pipeClass.isPresent())
-			registerItemPipeMethod = Optional.fromNullable(ReflectionHelper.getMethod(facadeManagerClass.get(), BuildcraftLib.METHOD_REGISTER_ITEM_PIPE, Integer.TYPE, pipeClass.get(), String.class, Object[].class));
+		if(buildcraftTransportClass.isPresent() && pipeClass.isPresent()) 
+			registerItemPipeMethod = Optional.fromNullable(ReflectionHelper.getMethod(buildcraftTransportClass.get(), BuildcraftLib.METHOD_REGISTER_ITEM_PIPE, Integer.TYPE, Class.class, String.class, Object[].class));
 	}
 	
 	public void registerFacade(int id, int meta) {
@@ -48,7 +47,8 @@ public class BuildcraftAPI {
 	
 	public Item registerPipe(int defaultID, Class<?> clas, String descr, Object... ingredients) {
 		try {
-			if(registerItemPipeMethod.isPresent() && pipeClass.isPresent()) {
+			if(registerItemPipeMethod.isPresent()) {
+				LogHelper.logInfo("Create");
 				Item item = (Item)registerItemPipeMethod.get().invoke(null, defaultID, clas, descr, ingredients);
 				return item;
 			}

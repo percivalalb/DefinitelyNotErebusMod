@@ -87,5 +87,6 @@ public class RecipeHandler {
 		OreDictionary.registerOre("oreLapis", new ItemStack(ModBlocks.umberOreBlock, 1, 3));
 		OreDictionary.registerOre("oreDiamond", new ItemStack(ModBlocks.umberOreBlock, 1, 4));
 		OreDictionary.registerOre("oreEmerald", new ItemStack(ModBlocks.umberOreBlock, 1, 5));
+		OreDictionary.registerOre("craftingtable", new ItemStack(ModBlocks.petrifiedCraftingTable));
 	}
 }

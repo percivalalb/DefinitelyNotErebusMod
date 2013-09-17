@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import cpw.mods.fml.client.FMLClientHandler;
 
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeCache;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.terraingen.WorldTypeEvent;
 import erebus.ErebusMod;
 import erebus.ModBiomes;
 import erebus.world.genlayer.GenLayerErebus;
@@ -28,7 +32,7 @@ public class WorldChunkManagerErebus extends WorldChunkManager
     
     /** The rainfall in the world */
     private float rainfall;
-
+    
     public WorldChunkManagerErebus(float par2, float par3, World world)
     {
     	this.biomesToSpawnIn = new ArrayList(allowedBiomes);
@@ -157,7 +161,6 @@ public class WorldChunkManagerErebus extends WorldChunkManager
         else
         {
             int[] var7 = this.biomeIndexLayer.getInts(par2, par3, par4, par5);
-
             for (int var8 = 0; var8 < par4 * par5; ++var8)
             {
                 par1ArrayOfBiomeGenBase[var8] = BiomeGenBase.biomeList[var7[var8]];
@@ -230,5 +233,25 @@ public class WorldChunkManagerErebus extends WorldChunkManager
         }
 
         return true;
+    }
+    
+    @Override
+    public List getBiomesToSpawnIn()
+    {
+        return this.biomesToSpawnIn;
+    }
+    
+    @Override
+    public void cleanupCache()
+    {
+        this.biomeCache.cleanupCache();
+    }
+
+    @Override
+    public GenLayer[] getModdedBiomeGenerators(WorldType worldType, long seed, GenLayer[] original)
+    {
+        WorldTypeEvent.InitBiomeGens event = new WorldTypeEvent.InitBiomeGens(worldType, seed, original);
+        MinecraftForge.TERRAIN_GEN_BUS.post(event);
+        return event.newBiomeGens;
     }
 }

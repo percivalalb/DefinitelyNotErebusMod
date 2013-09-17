@@ -17,6 +17,14 @@ public class AddonManager {
 		EVENT_BUS.register(new ForgeMultipartAddon());
 	}
 	
+	public static void runFMLPre(Configuration config) {
+		EVENT_BUS.post(new AddonEvent.FMLPre(config));
+	}
+	
+	public static void runFMLInit(Configuration config) {
+		EVENT_BUS.post(new AddonEvent.FMLInit(config));
+	}
+	
 	public static void runRegisteredAddons(Configuration config) {
 		EVENT_BUS.post(new AddonEvent.Pre(config));
 		EVENT_BUS.post(new AddonEvent.Init(config));

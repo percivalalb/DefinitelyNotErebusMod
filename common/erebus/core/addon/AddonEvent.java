@@ -16,6 +16,18 @@ public class AddonEvent extends Event {
 	}
 	
 	//Fired in order of appearance
+	public static class FMLPre extends AddonEvent {
+		public FMLPre(Configuration config) {
+			super(config);
+		}
+	}
+	
+	public static class FMLInit extends AddonEvent {
+		public FMLInit(Configuration config) {
+			super(config);
+		}
+	}
+	
 	public static class Pre extends AddonEvent {
 		public Pre(Configuration config) {
 			super(config);

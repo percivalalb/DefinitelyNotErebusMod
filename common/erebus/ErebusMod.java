@@ -94,12 +94,15 @@ public class ErebusMod
 		ModItems.init();
 		ModEntities.init();
 		
+		AddonManager.registerAddons();
+		
 		NetworkRegistry.instance().registerConnectionHandler(packeterebushandler);
 		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
 		
 		DimensionManager.registerProviderType(erebusDimensionID, WorldProviderErebus.class, true);
 		DimensionManager.registerDimension(erebusDimensionID, erebusDimensionID);
 		//VillagerRegistry.addExtraVillageComponents(ComponentVillageWatchtower.class, 20, MathHelper.getRandomIntegerInRange(par0Random, 0 + par1, 1 + par1));
+		AddonManager.runFMLPre(ConfigurationHandler.configurationFile);
 	}
 
 	@EventHandler  
@@ -109,12 +112,12 @@ public class ErebusMod
 		RecipeHandler.inti();
 		
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
+		AddonManager.runFMLInit(ConfigurationHandler.configurationFile);
 	}
 	
 	//Don't try to use other mod's tools without making sure those mods are loaded in.
 	@EventHandler  
 	public void postLoad(FMLPostInitializationEvent event) {
-		AddonManager.registerAddons();
 		AddonManager.runRegisteredAddons(ConfigurationHandler.configurationFile);
 	}
 }

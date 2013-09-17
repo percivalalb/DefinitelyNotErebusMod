@@ -55,6 +55,7 @@ public class ErebusMod
 	public static EnumArmorMaterial armorJADE = EnumHelper.addArmorMaterial("JADE", 24, new int[] {3, 7, 5, 2}, 15);
 	public static EnumToolMaterial toolJADE = EnumHelper.addToolMaterial("JADE", 2, 863, 10.0F, 4.0F, 18);
 	public static EnumToolMaterial toolJADEPAXEL = EnumHelper.addToolMaterial("JADEPAXEL", 2, 1079, 8.0F, 4.0F, 14);
+	public static EnumToolMaterial toolCAVEMANCLUB = EnumHelper.addToolMaterial("CAVEMANCLUB", 0, 131, 4.0F, 2.0F, 12);
     
 	public static CreativeTabs tabErebusBlock = new CreativeTabErebusBlock(CreativeTabs.getNextID(), "erebus.block");
 	public static CreativeTabs tabErebusItem = new CreativeTabErebusItem(CreativeTabs.getNextID(), "erebus.item");
@@ -109,7 +110,7 @@ public class ErebusMod
 	public void load(FMLInitializationEvent event) {
 		ModBiomes.init();
 		proxy.registerRenderInformation();
-		RecipeHandler.inti();
+		RecipeHandler.init();
 		
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
 		AddonManager.runFMLInit(ConfigurationHandler.configurationFile);

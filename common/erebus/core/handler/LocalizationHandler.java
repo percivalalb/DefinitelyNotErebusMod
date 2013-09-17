@@ -14,7 +14,6 @@ public class LocalizationHandler {
 
 	public static enum Localizations {
 
-		EN_GB("en_GB.txt"),
 		EN_US("en_US.txt");
 	    
 		String fileName;

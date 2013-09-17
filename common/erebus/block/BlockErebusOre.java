@@ -29,8 +29,8 @@ public class BlockErebusOre extends Block {
 	public static final String[] iconPaths = new String[] {"oreCoalU", "oreIronU", "oreGoldU", "oreLapisU", "oreDiamondU", "oreEmeraldU", "oreJadeU"};
 	public static final Icon[] icons = new Icon[iconPaths.length];
 	
-    public BlockErebusOre(int par1) {
-        super(par1, Material.rock);
+    public BlockErebusOre(int id) {
+        super(id, Material.rock);
     }
     
     @Override
@@ -49,14 +49,10 @@ public class BlockErebusOre extends Block {
     
     @Override
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-        par3List.add(new ItemStack(par1, 1, 0));
-        par3List.add(new ItemStack(par1, 1, 1));
-        par3List.add(new ItemStack(par1, 1, 2));
-        par3List.add(new ItemStack(par1, 1, 3));
-        par3List.add(new ItemStack(par1, 1, 4));
-        par3List.add(new ItemStack(par1, 1, 5));
-        par3List.add(new ItemStack(par1, 1, 6));
+    public void getSubBlocks(int id, CreativeTabs creativeTab, List list) {
+    	for(int a=0; a<iconPaths.length; a++){
+    		list.add(new ItemStack(id,1,a));
+    	}
     }
     
     //Data about the item that drops when broken
@@ -76,7 +72,7 @@ public class BlockErebusOre extends Block {
     public int quantityDropped(int meta, int fortune, Random random) {
     	int _default = meta == 3 ? 4 + random.nextInt(5) : 1;
     	
-    	if (meta > 0 && this.blockID != this.idDropped(meta, random, fortune)) {
+    	if (this.blockID != this.idDropped(meta, random, fortune)) {
     		int j = random.nextInt(fortune + 2) - 1;
 
             if (j < 0) {

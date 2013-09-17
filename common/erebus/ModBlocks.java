@@ -101,13 +101,13 @@ public class ModBlocks {
 		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, 96).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner");
 		caveSpiderSpawner = new BlockCaveSpiderSpawner(caveSpiderSpawnerID, 96).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner");
 		thorns = new BlockThorns(thornsID).setHardness(0.2F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("thorns").setTextureName("erebus:thorns");
-		fern = (BlockFern)(new BlockFern(fernID)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFern").setCreativeTab(ErebusMod.tabErebusBlock);
-		erebusSapling = new BlockSaplingErebus(erebusSaplingID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("sapling_mahogany");
+		fern = (BlockFern)(new BlockFern(fernID)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFern");
+		erebusSapling = new BlockSaplingErebus(erebusSaplingID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("sapling_mahogany");
 		erebusGrass = new BlockErebusGrass(erebusGrassID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusTallGrass").setTextureName("erebus:tallgrass");
 		quickSand = new BlockQuickSand(quickSandID).setHardness(0.5F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("quickSand");
-		blockTurnip = (new BlockTurnip(blockTurnipID)).setUnlocalizedName("turnips");
-		umberOreBlock = new BlockErebusOre(umberOreBlockID).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreBlockU");
-		umberstone = new BlockUmberstone(umberstoneID, Material.rock).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberstone");
+		blockTurnip = (new BlockTurnip(blockTurnipID))/*.setCreativeTab(ErebusMod.tabErebusBlock)*/.setUnlocalizedName("turnips"); // TODO should this be in creative menu?
+		umberOreBlock = new BlockErebusOre(umberOreBlockID).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("oreBlockU");
+		umberstone = new BlockUmberstone(umberstoneID, Material.rock).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("umberstone");
 		bambooCrate = new BlockBambooCrate(bambooCrateID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("bamboo");
 		redGem = new BlockRedGem(redGemID).setHardness(0.3F).setLightValue(1F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("redGem");
 		dryScree = (new BlockScree(2550)).setHardness(0.5F).setStepSound(Block.soundSandFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("blockScree").setTextureName("erebus:blockScree");  
@@ -165,12 +165,12 @@ public class ModBlocks {
 		MinecraftForge.setBlockHarvestLevel(mirBrick, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(screeBricks, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 0, "pickaxe", 0);
+		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 1, "pickaxe", 1);
+		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 2, "pickaxe", 2);
 		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 3, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 4, "pickaxe", 2);
 		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 5, "pickaxe", 2);
-		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 1, "pickaxe", 1);
-		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 2, "pickaxe", 2);
-		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 5, "pickaxe", 2);
+		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 6, "pickaxe", 2);
 
 		MinecraftForge.setBlockHarvestLevel(quickSand, "shovel", 1);
 		MinecraftForge.setBlockHarvestLevel(dryScree, "shovel", 0);

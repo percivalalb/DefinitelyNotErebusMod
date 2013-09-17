@@ -31,9 +31,7 @@ public class WorldChunkManagerErebus extends WorldChunkManager
 
     public WorldChunkManagerErebus(float par2, float par3, World world)
     {
-    	this.biomesToSpawnIn = new ArrayList();
-        this.biomesToSpawnIn.clear();
-        this.biomesToSpawnIn.addAll(allowedBiomes);
+    	this.biomesToSpawnIn = new ArrayList(allowedBiomes);
         hellTemperature = par2;
         rainfall = par3;
         this.biomeCache = new BiomeCache(this);
@@ -196,7 +194,7 @@ public class WorldChunkManagerErebus extends WorldChunkManager
             int var17 = var7 + var15 / var10 << 2;
             BiomeGenBase var18 = BiomeGenBase.biomeList[var12[var15]];
 
-            if (allowedBiomes.contains(var18) && (var13 == null || par5Random.nextInt(var14 + 1) == 0))
+            if (par4List.contains(var18) && (var13 == null || par5Random.nextInt(var14 + 1) == 0))
             {
                 var13 = new ChunkPosition(var16, 0, var17);
                 ++var14;
@@ -225,7 +223,7 @@ public class WorldChunkManagerErebus extends WorldChunkManager
         {
             BiomeGenBase var13 = BiomeGenBase.biomeList[var11[var12]];
 
-            if (!allowedBiomes.contains(var13))
+            if (!par4List.contains(var13))
             {
                 return false;
             }

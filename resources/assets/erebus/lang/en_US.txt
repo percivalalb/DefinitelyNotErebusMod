@@ -61,6 +61,11 @@ tile.bamboo.1.name=Bamboo Crate
 tile.redGem.0.name=Red Gem
 tile.redGem.1.name=Red Lamp
 tile.redGem.2.name=Red Lamp
+tile.hollowLogAcacia.name=Hollow Acacia Log
+tile.petrifiedWoodOre.name=Petrified Wood Ore
+tile.petrifiedWoodPlanks.name=Petrified Wood Planks
+tile.petrifiedCraftingTable.name=Petrified Crafting Table
+
 
 #Items
 item.helmetExo.name=Exoskeleton Helmet
@@ -98,6 +103,7 @@ item.erebusFood.5.name=Crispy Tarantula Paw
 item.bamBucket.0.name=Bambucket
 item.bamBucket.1.name=Water Bambucket
 item.waspSword.name=Wasp Sword
+item.itemPetrifiedWood.name=Petrified Wood
 
 #Entities
 entity.BeetleLarva - Erebus.name=Beetle Larva

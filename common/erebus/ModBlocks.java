@@ -104,7 +104,7 @@ public class ModBlocks {
 		fern = (BlockFern)(new BlockFern(fernID)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFern");
 		erebusSapling = new BlockSaplingErebus(erebusSaplingID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("sapling_mahogany");
 		erebusGrass = new BlockErebusGrass(erebusGrassID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusTallGrass").setTextureName("erebus:tallgrass");
-		quickSand = new BlockQuickSand(quickSandID).setHardness(0.5F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("quickSand");
+		quickSand = new BlockQuickSand(quickSandID).setHardness(28F).setStepSound(Block.soundSandFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("quickSand").setTextureName("erebus:quickSand");
 		blockTurnip = (new BlockTurnip(blockTurnipID))/*.setCreativeTab(ErebusMod.tabErebusBlock)*/.setUnlocalizedName("turnips"); // TODO should this be in creative menu?
 		umberOreBlock = new BlockErebusOre(umberOreBlockID).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("oreBlockU");
 		umberstone = new BlockUmberstone(umberstoneID, Material.rock).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("umberstone");
@@ -144,8 +144,8 @@ public class ModBlocks {
 		GameRegistry.registerBlock(screeBricks, "erebus.screeBricks");		  
 		GameRegistry.registerBlock(hollowLogAcacia, "erebus.hollowLogAcacia");		  
 		//GameRegistry.registerBlock(maggotLogAcacia, "erebus.maggotLogAcacia");		  
-		GameRegistry.registerBlock(stairsMahogany);		  
-		GameRegistry.registerBlock(stairsEucalyptus);
+		GameRegistry.registerBlock(stairsMahogany, "erebus.stairsMahogany");		  
+		GameRegistry.registerBlock(stairsEucalyptus, "erebus.stairsEucalyptus");
 		GameRegistry.registerBlock(umberstone, ItemBlockUmberStone.class, "erebus.umberstone");		  
 		GameRegistry.registerBlock(umberOreBlock, ItemBlockUmberOre.class, "erebus.oreBlockU");		  	  
 		GameRegistry.registerBlock(bambooCrate, ItemBlockBamboo.class, "erebus.bamboo");
@@ -172,7 +172,7 @@ public class ModBlocks {
 		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 5, "pickaxe", 2);
 		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 6, "pickaxe", 2);
 
-		MinecraftForge.setBlockHarvestLevel(quickSand, "shovel", 1);
+		MinecraftForge.setBlockHarvestLevel(quickSand, "shovel", 2);
 		MinecraftForge.setBlockHarvestLevel(dryScree, "shovel", 0);
 		
 		GameRegistry.registerTileEntity(TileEntitySpiderSpawner.class, "Spider Spawner (Erebus)");

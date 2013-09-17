@@ -1,7 +1,6 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
@@ -9,15 +8,14 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.SpawnListEntry;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
-import erebus.ErebusMod;
 import erebus.ModBlocks;
 import erebus.entity.EntityBeetle;
 import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityWasp;
-import erebus.world.feature.WorldGenRock;
 import erebus.world.feature.WorldGenRottenAcacia;
+import erebus.world.feature.WorldGenSavannaRock;
 import erebus.world.feature.WorldGenSavannaTree;
 
 public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
@@ -63,6 +61,15 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
 			{
 				int size = worldObj.rand.nextInt(3);
 				(new WorldGenSavannaTree(size)).generate(worldObj, rand, j2, l3, j5);
+			}
+		}
+		
+		if (rand.nextInt(12)==0){
+			for(int yy=75; yy>20; yy--){
+				int xx=x+4+rand.nextInt(8),zz=z+4+rand.nextInt(8);
+				if (worldObj.getBlockId(xx,yy,zz)==0&&worldObj.getBlockId(xx,yy-1,zz)==Block.grass.blockID){
+					new WorldGenSavannaRock().generate(worldObj,rand,xx,yy,zz);
+				}
 			}
 		}
 

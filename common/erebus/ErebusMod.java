@@ -28,7 +28,6 @@ import erebus.core.addon.AddonManager;
 import erebus.core.handler.CommonTickHandler;
 import erebus.core.handler.ConfigurationHandler;
 import erebus.core.handler.ConnectionTeleportHandler;
-import erebus.core.handler.LocalizationHandler;
 import erebus.core.helper.LogHelper;
 import erebus.core.proxy.CommonProxy;
 import erebus.creativetab.CreativeTabErebusBlock;
@@ -83,9 +82,6 @@ public class ErebusMod
 		
 		/** Loads the configuration file before anything else **/
 		ConfigurationHandler.loadConfig(event);
-		
-		//Loads the Languages into the game
-		LocalizationHandler.loadLanguages();
 		
 		//Sets up the log helper
 		LogHelper.init();

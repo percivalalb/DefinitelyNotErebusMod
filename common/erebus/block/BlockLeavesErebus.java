@@ -12,6 +12,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
@@ -41,6 +42,18 @@ public class BlockLeavesErebus extends BlockLeaves{
 	public int colorMultiplier(IBlockAccess world, int x, int y, int z){
 		return 16777215;
 	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+    public int getBlockColor() {
+        return 16777215;
+    }
+
+	@Override
+    @SideOnly(Side.CLIENT)
+    public int getRenderColor(int par1) {
+        return 16777215;
+    }
 
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand){

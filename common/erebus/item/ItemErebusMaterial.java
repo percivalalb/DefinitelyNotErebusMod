@@ -16,7 +16,7 @@ import net.minecraft.util.Icon;
 public class ItemErebusMaterial extends Item {
 
 	/** The icon path, not including "erebus:" as it is joined when registering icon **/
-	public static final String[] iconPaths = new String[] {"plateExo", "jade", "shardBone", "bamboo", "compoundEyes", "compoundLens", "flyWing"};
+	public static final String[] iconPaths = new String[] {"plateExo", "jade", "shardBone", "bamboo", "compoundEyes", "compoundLens", "flyWing", "itemPetrifiedWood"};
 	public static final Icon[] icons = new Icon[iconPaths.length];
 	
 	public ItemErebusMaterial(int id) {
@@ -49,6 +49,7 @@ public class ItemErebusMaterial extends Item {
         par3List.add(new ItemStack(par1, 1, 4));
         par3List.add(new ItemStack(par1, 1, 5));
         par3List.add(new ItemStack(par1, 1, 6));
+        par3List.add(new ItemStack(par1, 1, 7));
     }
     
     @Override

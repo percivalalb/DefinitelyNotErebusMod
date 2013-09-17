@@ -23,7 +23,7 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModItems.bamBucket, 1, 0), new Object[] {"S", "B", 'S', Item.silk, 'B', new ItemStack(ModItems.erebusMaterials, 1, 0)});  
 		
 		// Petrified Wood stuffs
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedWoodPlanks), new Object[] {"xx", "xx", 'x', ModItems.itemPetrifiedWood});
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedWoodPlanks), new Object[] {"xx", "xx", 'x', new ItemStack(ModItems.erebusMaterials, 1, 7)});
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedCraftingTable), new Object[] {"xx", "xx", 'x', ModBlocks.petrifiedWoodPlanks});
 		
 		//Jade tools
@@ -81,11 +81,12 @@ public class RecipeHandler {
 		OreDictionary.registerOre("plankWood", new ItemStack(ModBlocks.planksErebus, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeSapling", new ItemStack(ModBlocks.erebusSapling, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeLeaves",  new ItemStack(ModBlocks.leavesErebus, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("oreCoal_U", new ItemStack(ModBlocks.umberOreBlock, 1, 0));
-		OreDictionary.registerOre("oreIron_U", new ItemStack(ModBlocks.umberOreBlock, 1, 1));
-		OreDictionary.registerOre("oreGold_U", new ItemStack(ModBlocks.umberOreBlock, 1, 2));
-		OreDictionary.registerOre("oreLapis_U", new ItemStack(ModBlocks.umberOreBlock, 1, 3));
-		OreDictionary.registerOre("oreDiamond_U", new ItemStack(ModBlocks.umberOreBlock, 1, 4));
-		OreDictionary.registerOre("oreEmerald_U", new ItemStack(ModBlocks.umberOreBlock, 1, 5));
+		OreDictionary.registerOre("oreCoal", new ItemStack(ModBlocks.umberOreBlock, 1, 0));
+		OreDictionary.registerOre("oreIron", new ItemStack(ModBlocks.umberOreBlock, 1, 1));
+		OreDictionary.registerOre("oreGold", new ItemStack(ModBlocks.umberOreBlock, 1, 2));
+		OreDictionary.registerOre("oreLapis", new ItemStack(ModBlocks.umberOreBlock, 1, 3));
+		OreDictionary.registerOre("oreDiamond", new ItemStack(ModBlocks.umberOreBlock, 1, 4));
+		OreDictionary.registerOre("oreEmerald", new ItemStack(ModBlocks.umberOreBlock, 1, 5));
+		OreDictionary.registerOre("craftingtable", new ItemStack(ModBlocks.petrifiedCraftingTable));
 	}
 }

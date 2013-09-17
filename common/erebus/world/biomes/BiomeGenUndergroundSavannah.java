@@ -64,7 +64,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
 			}
 		}
 		
-		if (rand.nextInt(12)==0){
+		if (rand.nextInt(3)==0){
 			for(int yy=75; yy>20; yy--){
 				int xx=x+4+rand.nextInt(8),zz=z+4+rand.nextInt(8);
 				if (worldObj.getBlockId(xx,yy,zz)==0&&worldObj.getBlockId(xx,yy-1,zz)==Block.grass.blockID){

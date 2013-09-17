@@ -53,7 +53,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 	}
 
 	public int getRandomXZOffset(Random rand) {
-		return 8 + rand.nextInt(9) - rand.nextInt(9);
+		return rand.nextInt(16);
 	}
 	
 	@Override

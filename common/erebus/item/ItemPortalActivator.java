@@ -65,6 +65,7 @@ public class ItemPortalActivator extends Item
         super(i);
         maxStackSize = 1;
         setMaxDamage(64);
+        setFull3D();
         this.setCreativeTab(CreativeTabs.tabMaterials);
     }    
 

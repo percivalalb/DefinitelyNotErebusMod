@@ -1,33 +1,37 @@
 package erebus.block;
 
-import erebus.core.proxy.CommonProxy;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 
-public class BlockQuickSand extends Block {
+public class BlockQuickSand extends Block{
+
+	public BlockQuickSand(int id){
+		super(id,Material.sand);
+	}
+
+	@Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z){
+		return world.getBlockId(x,y-1,z)==blockID?null:AxisAlignedBB.getAABBPool().getAABB(x,y,z,x+1,y+0.001F,z+1);
+	}
+
+	@Override
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity){
+		entity.isAirBorne=false;
+		entity.setInWeb();
+	}
 	
-    public BlockQuickSand(int par1) {
-        super(par1, Material.sand);
-    }
-
-    @Override
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
-        float var5 = 0.49F;
-        return AxisAlignedBB.getAABBPool().getAABB((double)par2, (double)par3, (double)par4, (double)(par2 + 1), (double)((float)(par3 + 1) - var5), (double)(par4 + 1));
-    }
-
-    @Override
-    public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
-        par5Entity.motionX *= 0.3D;
-        par5Entity.motionZ *= 0.3D;
-    }
-    
-    public void registerIcons(IconRegister par1IconRegister) {
-        this.blockIcon = par1IconRegister.registerIcon("erebus:quickSand");
-    }
+	@ForgeSubscribe
+	public void onEntityJump(LivingJumpEvent e){
+		if (e.entity.worldObj.getBlockId((int)Math.floor(e.entity.posX),(int)Math.floor(e.entity.posY)-1,(int)Math.floor(e.entity.posZ))==blockID){
+			e.entityLiving.motionY=0D;
+		}
+	}
 }

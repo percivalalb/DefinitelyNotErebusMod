@@ -3,27 +3,21 @@ package erebus;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.block.BlockLogErebus;
-import erebus.block.BlockPlanksErebus;
 import erebus.client.sound.EntityBeetleLarvaNoises;
 import erebus.client.sound.EntityBlackWidowNoises;
 import erebus.client.sound.EntityCentipedeNoises;
@@ -43,11 +37,6 @@ import erebus.creativetab.CreativeTabErebusItem;
 import erebus.lib.Reference;
 import erebus.network.PacketHandler;
 import erebus.recipes.RecipeHandler;
-import erebus.recipes.RecipePaxel;
-import erebus.tileentity.TileEntityBamboo;
-import erebus.tileentity.TileEntityCaveSpiderSpawner;
-import erebus.tileentity.TileEntityHollowLog;
-import erebus.tileentity.TileEntitySpiderSpawner;
 import erebus.world.WorldProviderErebus;
 
 /**
@@ -105,28 +94,33 @@ public class ErebusMod
 		ModItems.init();
 		ModEntities.init();
 		
+		AddonManager.registerAddons();
+		
 		NetworkRegistry.instance().registerConnectionHandler(packeterebushandler);
 		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
 		
 		DimensionManager.registerProviderType(erebusDimensionID, WorldProviderErebus.class, true);
 		DimensionManager.registerDimension(erebusDimensionID, erebusDimensionID);
 		//VillagerRegistry.addExtraVillageComponents(ComponentVillageWatchtower.class, 20, MathHelper.getRandomIntegerInRange(par0Random, 0 + par1, 1 + par1));
+		AddonManager.runFMLPre(ConfigurationHandler.configurationFile);
 	}
 
 	@EventHandler  
 	public void load(FMLInitializationEvent event) {
 		ModBiomes.init();
+		proxy.registerRenderInformation();
 		RecipeHandler.inti();
 		
-		AddonManager.registerAddons();
-		AddonManager.runRegisteredAddons();
-		
-		proxy.registerRenderInformation();
-
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
+		AddonManager.runFMLInit(ConfigurationHandler.configurationFile);
+	}
+	
+	//Don't try to use other mod's tools without making sure those mods are loaded in.
+	@EventHandler  
+	public void postLoad(FMLPostInitializationEvent event) {
+		AddonManager.runRegisteredAddons(ConfigurationHandler.configurationFile);
 	}
 }
-
 
 /*
 @ForgeSubscribe

@@ -9,9 +9,12 @@ import erebus.ModItems;
 
 public class ConfigurationHandler {
 
+	public static Configuration configurationFile;
+	
 	public static void loadConfig(FMLPreInitializationEvent event) {
 
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		configurationFile = config;
 		config.load();
 		ModBlocks.blockAmberID = config.get(config.CATEGORY_BLOCK, "Block ID of Amber", 2501).getInt();		  
 		ModBlocks.portalErebusID = config.get(config.CATEGORY_BLOCK, "Block ID of Erebus Portal", 2504).getInt();		  
@@ -42,7 +45,10 @@ public class ConfigurationHandler {
 		ModBlocks.umberstoneID = config.get(config.CATEGORY_BLOCK, "Block ID of Umberstone", 255, "Block IDs must be below 256").getInt();//ID MUST BE UNDER 256 ( Reason is that this block is the top layer (byte) of biome, and chunkprovider has the same problem.)
 		ModBlocks.bambooCrateID = config.get(config.CATEGORY_BLOCK, "Block ID of Bamboo Crate", 2540).getInt();
 		ModBlocks.redGemID = config.get(config.CATEGORY_BLOCK, "Block ID of Red Gem", 2541).getInt();
-
+		ModBlocks.petrifiedWoodOreID = config.get(config.CATEGORY_BLOCK, "Block ID of Petrified Wood Ore", 2542).getInt();
+		ModBlocks.petrifiedWoodPlanksID = config.get(config.CATEGORY_BLOCK, "Block ID of Petrified Wood Planks", 2543).getInt();
+		ModBlocks.petrifiedCraftingTableID = config.get(config.CATEGORY_BLOCK, "Block ID of Petrified Crafting Table", 2544).getInt();
+		
 		ModItems.exoskeletonHelmetID = config.get(config.CATEGORY_ITEM, "Item ID of Exoskeleton Helmet", 9706).getInt();
 		ModItems.exoskeletonBodyID = config.get(config.CATEGORY_ITEM, "Item ID of Exoskeleton Chestplate", 9707).getInt();
 		ModItems.exoskeletonLegsID = config.get(config.CATEGORY_ITEM, "Item ID of Exoskeleton Leggings", 9708).getInt();
@@ -63,6 +69,7 @@ public class ConfigurationHandler {
 		ModItems.jadeHoeID = config.get(config.CATEGORY_ITEM, "Item ID of Jade Hoe", 9727).getInt();
 		ModItems.compoundGogglesID = config.get(config.CATEGORY_ITEM, "Item ID of Compound Goggles", 9730).getInt(); 
 		ModItems.waspSwordID = config.get(config.CATEGORY_ITEM, "Item ID of Wasp Sword", 9731).getInt();
+		ModItems.itemPetrifiedWoodID = config.get(config.CATEGORY_ITEM, "Item ID of Petrified Wood", 9732).getInt();
 		
 		ModBiomes.jungleID = config.get(config.CATEGORY_GENERAL, "Biome ID of Underground Jungle", 151).getInt();
 		ModBiomes.desertID = config.get(config.CATEGORY_GENERAL, "Biome ID of Volcanic Desert", 152).getInt();

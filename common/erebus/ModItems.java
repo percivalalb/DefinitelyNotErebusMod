@@ -1,5 +1,6 @@
 package erebus;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import erebus.item.ItemBambucket;
 import erebus.item.ItemCompoundGoggles;
 import erebus.item.ItemErebusFood;
@@ -18,9 +19,12 @@ import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSeedFood;
 import net.minecraft.item.ItemSpade;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.FluidRegistry;
 
 /**
  * @author ProPercivalalb
@@ -49,7 +53,8 @@ public class ModItems {
 	public static Item jadePaxel;						public static int jadePaxelID;
 	public static Item jadeHoe;							public static int jadeHoeID;
     public static Item compoundGoggles;                 public static int compoundGogglesID; 
-    public static Item waspSword;						public static int waspSwordID; 
+    public static Item waspSword;						public static int waspSwordID;
+    public static Item itemPetrifiedWood;				public static int itemPetrifiedWoodID;
     
     public static void init() {
     	// constructor, set full 3D, creative tab, unlocalized name, texture name
@@ -78,10 +83,37 @@ public class ModItems {
 		jadeHoe = new ItemHoe(jadeHoeID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("hoeJade").setTextureName("erebus:hoeJade");
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles"); 
 		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("waspSword");
+		itemPetrifiedWood = new Item(itemPetrifiedWoodID).setCreativeTab(ErebusMod.tabErebusItem).setUnlocalizedName("itemPetrifiedWood").setTextureName("erebus:itemPetrifiedWood");
 		
 		//Tools classes
 		MinecraftForge.setToolClass(jadeAxe, "axe", 2);
 		MinecraftForge.setToolClass(jadePickaxe, "pickaxe", 2);
 		MinecraftForge.setToolClass(jadeShovel, "shovel", 2);
+		
+		GameRegistry.registerItem(exoskeletonHelmet, "erebus.helmetExo");
+		GameRegistry.registerItem(exoskeletonBody, "erebus.chestplateExo");
+		GameRegistry.registerItem(exoskeletonLegs, "erebus.leggingsExo");
+		GameRegistry.registerItem(exoskeletonBoots, "erebus.bootsExo");
+		GameRegistry.registerItem(erebusMaterials, "erebus.erebusMaterials");
+		GameRegistry.registerItem(erebusFood, "erebus.erebusFood");
+		GameRegistry.registerItem(bamBucket, "erebus.bamBucket");
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.WATER, new ItemStack(bamBucket,1,1), new ItemStack(bamBucket,1,0));
+		GameRegistry.registerItem(portalActivator, "erebus.portalActivator");
+		GameRegistry.registerItem(fossilClub, "erebus.clubBone");
+		GameRegistry.registerItem(maxSpeedBow, "erebus.maxSpeedBow");
+		GameRegistry.registerItem(turnip, "erebus.turnips");
+		GameRegistry.registerItem(jadeHelmet, "erebus.helmetJade");
+		GameRegistry.registerItem(jadeBody, "erebus.chestplateJade");
+		GameRegistry.registerItem(jadeLegs, "erebus.leggingsJade");
+		GameRegistry.registerItem(jadeBoots, "erebus.bootsJade");
+		GameRegistry.registerItem(jadeSword, "erebus.swordJade");
+		GameRegistry.registerItem(jadePickaxe, "erebus.pickaxeJade");
+		GameRegistry.registerItem(jadeAxe, "erebus.axeJade");
+		GameRegistry.registerItem(jadeShovel, "erebus.shovelJade");
+		GameRegistry.registerItem(jadePaxel, "erebus.paxelJade");
+		GameRegistry.registerItem(jadeHoe, "erebus.hoeJade");
+		GameRegistry.registerItem(compoundGoggles, "erebus.compoundGoggles");
+		GameRegistry.registerItem(waspSword, "erebus.waspSword");
+		GameRegistry.registerItem(itemPetrifiedWood, "erebus.itemPetrifiedWood");
     }
 }

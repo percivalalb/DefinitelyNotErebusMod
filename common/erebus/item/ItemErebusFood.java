@@ -109,5 +109,5 @@ public class ItemErebusFood extends ItemFood {
         int i = par1ItemStack.getItemDamage();
         return super.getUnlocalizedName() + "." + i;
     }
-    
+   
 }

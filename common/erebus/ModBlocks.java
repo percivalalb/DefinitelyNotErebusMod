@@ -8,7 +8,6 @@ import erebus.block.BlockAmber;
 import erebus.block.BlockBambooCrate;
 import erebus.block.BlockCaveSpiderSpawner;
 import erebus.block.BlockCobbleWebbed;
-import erebus.block.BlockMirBrick;
 import erebus.block.BlockErebusBrick;
 import erebus.block.BlockErebusGrass;
 import erebus.block.BlockErebusOre;
@@ -17,7 +16,10 @@ import erebus.block.BlockHollowLog;
 import erebus.block.BlockLeavesErebus;
 import erebus.block.BlockLogErebus;
 import erebus.block.BlockMaggot;
+import erebus.block.BlockMirBrick;
 import erebus.block.BlockOreFossil;
+import erebus.block.BlockPetrifiedCraftingTable;
+import erebus.block.BlockPetrifiedWoodOre;
 import erebus.block.BlockPlanksErebus;
 import erebus.block.BlockPortalErebus;
 import erebus.block.BlockQuickSand;
@@ -31,8 +33,16 @@ import erebus.block.BlockStairsErebus;
 import erebus.block.BlockThorns;
 import erebus.block.BlockTurnip;
 import erebus.block.BlockUmberstone;
-import erebus.item.ItemMultiBlock;
-import erebus.item.ItemSapling;
+import erebus.item.block.ItemBlockAmber;
+import erebus.item.block.ItemBlockBamboo;
+import erebus.item.block.ItemBlockLeavesErebus;
+import erebus.item.block.ItemBlockLogErebus1;
+import erebus.item.block.ItemBlockLogErebus2;
+import erebus.item.block.ItemBlockPlanksErebus;
+import erebus.item.block.ItemBlockRedGem;
+import erebus.item.block.ItemBlockUmberOre;
+import erebus.item.block.ItemBlockUmberStone;
+import erebus.item.block.ItemSapling;
 import erebus.tileentity.TileEntityBamboo;
 import erebus.tileentity.TileEntityCaveSpiderSpawner;
 import erebus.tileentity.TileEntityHollowLog;
@@ -73,6 +83,9 @@ public class ModBlocks {
 	public static Block umberOreBlock;					public static int umberOreBlockID;
 	public static Block bambooCrate;			  	    public static int bambooCrateID;
 	public static Block redGem;							public static int redGemID;
+	public static Block petrifiedWoodOre;				public static int petrifiedWoodOreID;
+	public static Block petrifiedWoodPlanks;			public static int petrifiedWoodPlanksID;
+	public static Block petrifiedCraftingTable;			public static int petrifiedCraftingTableID;
 	
 	public static void init() {
 		// constructor, hardness, resistance, light value, light opacity, step sound, creative tab, unlocalized name, texture name
@@ -97,23 +110,23 @@ public class ModBlocks {
 		umberstone = new BlockUmberstone(umberstoneID, Material.rock).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberstone");
 		bambooCrate = new BlockBambooCrate(bambooCrateID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("bamboo");
 		redGem = new BlockRedGem(redGemID).setHardness(0.3F).setLightValue(1F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("redGem");
-		
 		dryScree = (new BlockScree(2550)).setHardness(0.5F).setStepSound(Block.soundSandFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("blockScree").setTextureName("erebus:blockScree");  
 		screeBricks = (new BlockErebusBrick(2551)).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("brickScree").setTextureName("erebus:brickScree");
 		hollowLogAcacia = new BlockHollowLog(2552, TileEntityHollowLog.class).setHardness(0.4F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("hollowLogAcacia").setTextureName("erebus:log_acacia");
 		maggotLogAcacia = new BlockMaggot(2553, 164).setHardness(0.4F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("maggotLogAcacia").setTextureName("erebus:log_acacia");
-    
 		logErebusGroup1 = new BlockLogErebus(logErebusGroup1ID, 0).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("logErebus1");
 		logErebusGroup2 = new BlockLogErebus(logErebusGroup2ID, 1).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("logErebus2");
 		planksErebus = new BlockPlanksErebus(planksErebusID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("planksErebus");
 		leavesErebus = (BlockLeavesErebus)(new BlockLeavesErebus(leavesErebusID, 0)).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("leavesErebus");
-		
 		stairsMahogany = new BlockStairsErebus(2554, planksErebus, BlockLogErebus.dataMahogany).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsMahogany");
 		stairsEucalyptus = new BlockStairsErebus(2555, planksErebus, BlockLogErebus.dataEucalyptus).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsEucalyptus");
-	
+		petrifiedWoodOre = new BlockPetrifiedWoodOre(petrifiedWoodOreID).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("petrifiedWoodOre").setTextureName("erebus:petrifiedWoodore");
+		petrifiedWoodPlanks = new Block(petrifiedWoodPlanksID, Material.rock).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("petrifiedWoodPlanks").setTextureName("erebus:petrifiedWoodPlanks");
+		petrifiedCraftingTable = new BlockPetrifiedCraftingTable(petrifiedCraftingTableID).setHardness(2.5F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("petrifiedCraftingTable");
+		
 		//GameRegistry.registerBlock(mud);		  
 		GameRegistry.registerBlock(portalErebus, "erebus.portal");
-		GameRegistry.registerBlock(blockAmber, ItemMultiBlock.class, "erebus.blockAmber");	  
+		GameRegistry.registerBlock(blockAmber, ItemBlockAmber.class, "erebus.blockAmber");	  
 		GameRegistry.registerBlock(cobbleWebbed, "erebus.cobbleWebbed");		  
 		GameRegistry.registerBlock(oreFossil, "erebus.oreFossil");		  
 		GameRegistry.registerBlock(blockSilk, "erebus.blockSilk");
@@ -127,20 +140,23 @@ public class ModBlocks {
 		GameRegistry.registerBlock(erebusGrass, "erebus.erebusGrass");		  
 		GameRegistry.registerBlock(quickSand, "erebus.quickSand");
 		GameRegistry.registerBlock(blockTurnip, "erebus.blockTurnip");
-		//GameRegistry.registerBlock(dryScree, "erebus.dryScree");		  
-		//GameRegistry.registerBlock(screeBricks, "erebus.screeBricks");		  
+		GameRegistry.registerBlock(dryScree, "erebus.dryScree");		  
+		GameRegistry.registerBlock(screeBricks, "erebus.screeBricks");		  
 		GameRegistry.registerBlock(hollowLogAcacia, "erebus.hollowLogAcacia");		  
 		//GameRegistry.registerBlock(maggotLogAcacia, "erebus.maggotLogAcacia");		  
-		//GameRegistry.registerBlock(stairsMahogany);		  
-		//GameRegistry.registerBlock(stairsEucalyptus);
-		GameRegistry.registerBlock(umberstone, ItemMultiBlock.class, "erebus.umberstone");		  
-		GameRegistry.registerBlock(umberOreBlock, ItemMultiBlock.class, "erebus.oreBlockU");		  	  
-		GameRegistry.registerBlock(bambooCrate, ItemMultiBlock.class, "erebus.bamboo");
-		GameRegistry.registerBlock(redGem, ItemMultiBlock.class, "erebus.redGem");
-		GameRegistry.registerBlock(logErebusGroup1, ItemMultiBlock.class, "erebus.logErebus1");
-		GameRegistry.registerBlock(logErebusGroup2, ItemMultiBlock.class, "erebus.logErebus2");
-		GameRegistry.registerBlock(planksErebus, ItemMultiBlock.class, "erebus.planksErebus");
-		GameRegistry.registerBlock(leavesErebus, ItemMultiBlock.class, "erebus.leavesErebus");
+		GameRegistry.registerBlock(stairsMahogany);		  
+		GameRegistry.registerBlock(stairsEucalyptus);
+		GameRegistry.registerBlock(umberstone, ItemBlockUmberStone.class, "erebus.umberstone");		  
+		GameRegistry.registerBlock(umberOreBlock, ItemBlockUmberOre.class, "erebus.oreBlockU");		  	  
+		GameRegistry.registerBlock(bambooCrate, ItemBlockBamboo.class, "erebus.bamboo");
+		GameRegistry.registerBlock(redGem, ItemBlockRedGem.class, "erebus.redGem");
+		GameRegistry.registerBlock(logErebusGroup1, ItemBlockLogErebus1.class, "erebus.logErebus1");
+		GameRegistry.registerBlock(logErebusGroup2, ItemBlockLogErebus2.class, "erebus.logErebus2");
+		GameRegistry.registerBlock(planksErebus, ItemBlockPlanksErebus.class, "erebus.planksErebus");
+		GameRegistry.registerBlock(leavesErebus, ItemBlockLeavesErebus.class, "erebus.leavesErebus");
+		GameRegistry.registerBlock(petrifiedWoodOre, "erebus.petrifiedWoodOre");
+		GameRegistry.registerBlock(petrifiedWoodPlanks, "erebus.petrifiedWoodPlanks");
+		GameRegistry.registerBlock(petrifiedCraftingTable, "erebus.petrifiedCraftingTable");
 		
 		//Block Mining Levels
 		MinecraftForge.setBlockHarvestLevel(blockAmber, "pickaxe", 0);

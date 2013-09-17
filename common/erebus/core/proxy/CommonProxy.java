@@ -3,6 +3,7 @@ package erebus.core.proxy;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.client.gui.inventory.GuiCrafting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -13,12 +14,14 @@ import erebus.client.gui.GuiBambooCrate;
 import erebus.client.gui.GuiColossalCrate;
 import erebus.inventory.ContainerBambooCrate;
 import erebus.inventory.ContainerColossalCrate;
+import erebus.inventory.ContainerPetrifiedCraftingTable;
 import erebus.tileentity.TileEntityBamboo;
 
 public class CommonProxy implements IGuiHandler {
 
 	public static final int GUI_ID_BAMBOO_CRATE = 1;
 	public static final int GUI_ID_COLOSSAL_CRATE = 2;
+	public static final int GUI_ID_PETRIFIED_CRAFT = 3;
 	
 	/**
 	 * Client side only register stuff...
@@ -58,6 +61,10 @@ public class CommonProxy implements IGuiHandler {
 			}
 		}
 		
+		else if(ID == GUI_ID_PETRIFIED_CRAFT) {
+			return new ContainerPetrifiedCraftingTable(player.inventory, world, x, y, z);
+		}
+		
 		return null;
 	}
 	
@@ -91,6 +98,9 @@ public class CommonProxy implements IGuiHandler {
 		    	}
 			}
 		}
+		
+		else if(ID == GUI_ID_PETRIFIED_CRAFT)
+			return new GuiCrafting(player.inventory, world, x, y, z);
 		
 		return null;
 	}

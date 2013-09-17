@@ -2,21 +2,9 @@ package erebus.world;
 
 import java.util.List;
 import java.util.Random;
-
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.FMLCommonHandler;
-
-import erebus.ErebusMod;
-import erebus.ModBlocks;
-import erebus.world.biomes.BiomeGenBaseErebus;
-import erebus.world.biomes.BiomeGenUndergroundDesert;
-import erebus.world.biomes.BiomeGenUndergroundSavannah;
-import erebus.world.feature.WorldGenSpiderDungeons;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.IProgressUpdate;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
@@ -26,18 +14,12 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCavesHell;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
-import net.minecraft.world.gen.feature.WorldGenBigMushroom;
-import net.minecraft.world.gen.feature.WorldGenDungeons;
-import net.minecraft.world.gen.feature.WorldGenFlowers;
-import net.minecraft.world.gen.feature.WorldGenHellLava;
-import net.minecraft.world.gen.feature.WorldGenHugeTrees;
-import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraft.world.gen.feature.WorldGenTallGrass;
-import net.minecraft.world.gen.feature.WorldGenTrees;
-import net.minecraft.world.gen.structure.MapGenNetherBridge;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.terraingen.ChunkProviderEvent;
+import erebus.ModBlocks;
+import erebus.world.biomes.BiomeGenBaseErebus;
+import erebus.world.feature.WorldGenSpiderDungeons;
 
 public class ChunkProviderUndergroundJungle implements IChunkProvider
 {

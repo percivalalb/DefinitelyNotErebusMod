@@ -1,7 +1,5 @@
 package erebus.world;
 
-import erebus.world.biomes.*;
-import erebus.ErebusMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.Vec3;
@@ -11,6 +9,12 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ErebusMod;
+import erebus.ModBiomes;
+import erebus.world.biomes.BiomeGenBaseErebus;
+import erebus.world.biomes.BiomeGenCavern;
+import erebus.world.biomes.BiomeGenUndergroundDesert;
+import erebus.world.biomes.BiomeGenUndergroundSavannah;
 
 public class WorldProviderErebus extends WorldProvider {
 	
@@ -38,24 +42,23 @@ public class WorldProviderErebus extends WorldProvider {
 		double red = 0.029999999329447746D * 255D;
 		double green = 0.49999999329447746D * 255D;
 		double blue = 0.029999999329447746D * 255D;
-		if(b instanceof BiomeGenBaseErebus) {
-			BiomeGenBaseErebus biome = (BiomeGenBaseErebus)b;
-			if(biome instanceof BiomeGenUndergroundSavannah) {
-				red = 140D;
-				green = 116D;
-				blue = 9D;
-			}
-			else if(biome instanceof BiomeGenUndergroundDesert) {
-				red = 255D;
-				green = 231D;
-				blue = 10D;
-			}
-			else if(biome instanceof BiomeGenCavern) {
-				red = 100D;
-				green = 100D;
-				blue = 100D;
-			}
+		
+		if(b.biomeID == ModBiomes.savannahID) {
+			red = 140D;
+			green = 116D;
+			blue = 9D;
 		}
+		else if(b.biomeID == ModBiomes.desertID) {
+			red = 255D;
+			green = 231D;
+			blue = 10D;
+		}
+		else if(b.biomeID == ModBiomes.cavernID) {
+			red = 100D;
+			green = 100D;
+			blue = 100D;
+		}
+		
 		return this.worldObj.getWorldVec3Pool().getVecFromPool(red/255D, green/255D, blue/255D);
 	}
 
@@ -73,7 +76,7 @@ public class WorldProviderErebus extends WorldProvider {
 	public void registerWorldChunkManager() {
 		worldChunkMgr = new WorldChunkManagerErebus(1.0F, 0.0F, this.worldObj);    
 		this.hasNoSky = true;
-		this.dimensionId = 66;
+		this.dimensionId = ErebusMod.erebusDimensionID;
 	}        
 
 	@Override

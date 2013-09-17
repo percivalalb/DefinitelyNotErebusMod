@@ -1,30 +1,28 @@
 package erebus;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import erebus.item.ItemBambucket;
-import erebus.item.ItemCompoundGoggles;
-import erebus.item.ItemErebusFood;
-import erebus.item.ItemExoskeletonArmor;
-import erebus.item.ItemJadeArmor;
-import erebus.item.ItemErebusMaterial;
-import erebus.item.ItemMaxSpeedBow;
-import erebus.item.ItemPaxel;
-import erebus.item.ItemPortalActivator;
-import erebus.item.ItemWeaponErebus;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
-import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemSeedFood;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
+import erebus.item.ItemBambucket;
+import erebus.item.ItemCavemanClub;
+import erebus.item.ItemCompoundGoggles;
+import erebus.item.ItemErebusFood;
+import erebus.item.ItemErebusMaterial;
+import erebus.item.ItemExoskeletonArmor;
+import erebus.item.ItemJadeArmor;
+import erebus.item.ItemMaxSpeedBow;
+import erebus.item.ItemPaxel;
+import erebus.item.ItemPortalActivator;
 
 /**
  * @author ProPercivalalb
@@ -68,7 +66,7 @@ public class ModItems {
 		bamBucket = new ItemBambucket(bamBucketID).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("bamBucket");
 		
 		portalActivator = (new ItemPortalActivator(portalActivatorID)).setCreativeTab(ErebusMod.tabErebusItem).setUnlocalizedName("portalActivator").setTextureName("erebus:portalActivator");
-		fossilClub = (new ItemWeaponErebus(fossilClubID, 72, 9, 12, Item.bone.itemID)).setFull3D().setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("clubBone").setTextureName("erebus:clubBone");
+		fossilClub = (new ItemCavemanClub(fossilClubID, ErebusMod.toolCAVEMANCLUB)).setFull3D().setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("clubBone").setTextureName("erebus:clubBone");
 		maxSpeedBow = (new ItemMaxSpeedBow(maxSpeedBowID, 301, 5)).setUnlocalizedName("maxSpeedBow").setCreativeTab(ErebusMod.tabErebusGear).setTextureName("erebus:maxSpeedBow");
 		turnip = (new ItemSeedFood(turnipID, 4, 0.6F, ModBlocks.blockTurnip.blockID, Block.tilledField.blockID)).setCreativeTab(ErebusMod.tabErebusItem).setUnlocalizedName("turnips").setTextureName("erebus:turnips");
 		jadeHelmet = new ItemJadeArmor(jadeHelmetID, 0).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("helmetJade").setTextureName("erebus:helmetJade");

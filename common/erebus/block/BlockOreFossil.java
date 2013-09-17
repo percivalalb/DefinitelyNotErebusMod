@@ -29,16 +29,20 @@ public class BlockOreFossil extends Block {
     @Override
     public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-
-        int count = quantityDropped(metadata, fortune, world.rand);
+        
+        if (world.rand.nextInt(50-Math.min(6,fortune*2))==0){
+        	ret.add(new ItemStack(ModItems.fossilClub,1));
+        	return ret;
+        }
+        
+		int count = 1+world.rand.nextInt(3);
+        
         for(int i = 0; i < count; i++)
         {
             int id = -1;
             int damage = 0;
-            if (world.rand.nextInt(20) == 0) {
-        		id = ModItems.fossilClub.itemID;
-        	}
-        	else if (world.rand.nextInt(3) == 0) {
+            
+            if (world.rand.nextInt(3) == 0) {
         		id = Item.bone.itemID;
         	}
         	else {
@@ -51,10 +55,5 @@ public class BlockOreFossil extends Block {
             }
         }
         return ret;
-    }
-
-    @Override
-    public int quantityDropped(Random par1Random) {
-        return 1 + par1Random.nextInt(3);
     }
 }

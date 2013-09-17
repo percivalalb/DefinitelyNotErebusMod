@@ -12,7 +12,7 @@ import erebus.block.BlockPlanksErebus;
 
 public class RecipeHandler {
 
-	public static void inti() {
+	public static void init() {
 		GameRegistry.addRecipe(new ItemStack(ModItems.erebusMaterials, 1, 5), new Object[] {"GGG", "GEG", "GGG", 'G', new ItemStack(ModBlocks.blockAmber, 1, 1), 'E', new ItemStack(ModItems.erebusMaterials, 1, 4)}); 
 		GameRegistry.addRecipe(new ItemStack(ModItems.compoundGoggles, 1), new Object[] {"XXX", "OXO", "   ", 'O', new ItemStack(ModItems.erebusMaterials, 1, 5), 'X', new ItemStack(ModItems.erebusMaterials, 1, 0)});  
 		
@@ -67,6 +67,13 @@ public class RecipeHandler {
 		FurnaceRecipes.smelting().addSmelting(ModItems.erebusFood.itemID, 2, new ItemStack(ModItems.erebusFood, 1, 3), 0.2F);
 		FurnaceRecipes.smelting().addSmelting(ModItems.erebusFood.itemID, 4, new ItemStack(ModItems.erebusFood, 1, 5), 0.2F);
 		FurnaceRecipes.smelting().addSmelting(ModBlocks.umberstone.blockID, 1, new ItemStack(ModBlocks.umberstone, 1), 0.2F);
+		FurnaceRecipes.smelting().addSmelting(ModBlocks.umberOreBlock.blockID, 0, new ItemStack(Item.coal, 1), 0.1F);
+		FurnaceRecipes.smelting().addSmelting(ModBlocks.umberOreBlock.blockID, 1, new ItemStack(Item.ingotIron, 1), 0.7F);
+		FurnaceRecipes.smelting().addSmelting(ModBlocks.umberOreBlock.blockID, 2, new ItemStack(Item.ingotGold, 1), 1.0F);
+		FurnaceRecipes.smelting().addSmelting(ModBlocks.umberOreBlock.blockID, 3, new ItemStack(Item.dyePowder, 1, 4), 0.2F);
+		FurnaceRecipes.smelting().addSmelting(ModBlocks.umberOreBlock.blockID, 4, new ItemStack(Item.diamond, 1), 1.0F);
+		FurnaceRecipes.smelting().addSmelting(ModBlocks.umberOreBlock.blockID, 5, new ItemStack(Item.emerald, 1), 1.0F);
+		FurnaceRecipes.smelting().addSmelting(ModBlocks.umberOreBlock.blockID, 6, new ItemStack(ModItems.erebusMaterials, 1, 1), 1.0F);
 
 		OreDictionary.registerOre("blockCobble", new ItemStack(ModBlocks.umberstone, 1, 1));
 		OreDictionary.registerOre("logWood", new ItemStack(ModBlocks.logErebusGroup1, 1, OreDictionary.WILDCARD_VALUE));
@@ -74,8 +81,9 @@ public class RecipeHandler {
 		OreDictionary.registerOre("plankWood", new ItemStack(ModBlocks.planksErebus, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeSapling", new ItemStack(ModBlocks.erebusSapling, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("treeLeaves",  new ItemStack(ModBlocks.leavesErebus, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("oreGold_U", new ItemStack(ModBlocks.umberOreBlock, 1, 2));
+		OreDictionary.registerOre("oreCoal_U", new ItemStack(ModBlocks.umberOreBlock, 1, 0));
 		OreDictionary.registerOre("oreIron_U", new ItemStack(ModBlocks.umberOreBlock, 1, 1));
+		OreDictionary.registerOre("oreGold_U", new ItemStack(ModBlocks.umberOreBlock, 1, 2));
 		OreDictionary.registerOre("oreLapis_U", new ItemStack(ModBlocks.umberOreBlock, 1, 3));
 		OreDictionary.registerOre("oreDiamond_U", new ItemStack(ModBlocks.umberOreBlock, 1, 4));
 		OreDictionary.registerOre("oreEmerald_U", new ItemStack(ModBlocks.umberOreBlock, 1, 5));

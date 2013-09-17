@@ -48,7 +48,6 @@ umberOre_item_3.name=Lapis Ore
 umberOre_item_4.name=Diamond Ore
 umberOre_item_5.name=Emerald Ore
 umberOre_item_6.name=Jade Ore
-umberOre_item_7.name=Petrified Wood Ore
 tile.oreFossilU.name=Fossil Ore
 umberStone_item_0.name=Umberstone
 umberStone_item_1.name=Umbercobble
@@ -63,6 +62,7 @@ redGem_item_0.name=Red Gem
 redGem_item_1.name=Red Lamp
 redGem_item_2.name=Red Lamp
 tile.hollowLogAcacia.name=Hollow Acacia Log
+tile.petrifiedWoodOre.name=Petrified Wood Ore
 tile.petrifiedWoodPlanks.name=Petrified Wood Planks
 tile.petrifiedCraftingTable.name=Petrified Crafting Table
 
@@ -104,6 +104,11 @@ item.erebusFood.5.name=Crispy Tarantula Paw
 item.bamBucket.0.name=Bambucket
 item.bamBucket.1.name=Water Bambucket
 item.waspSword.name=Wasp Sword
+item.metalIngot0.name=Aluminium Ingot
+item.metalIngot1.name=Copper Ingot
+item.metalIngot2.name=Lead Ingot
+item.metalIngot3.name=Silver Ingot
+item.metalIngot4.name=Tin Ingot
 
 #Entities
 entity.BeetleLarva - Erebus.name=Beetle Larva

@@ -68,6 +68,7 @@ public class ConfigurationHandler {
 		ModItems.jadeHoeID = config.get(config.CATEGORY_ITEM, "Item ID of Jade Hoe", 9727).getInt();
 		ModItems.compoundGogglesID = config.get(config.CATEGORY_ITEM, "Item ID of Compound Goggles", 9730).getInt(); 
 		ModItems.waspSwordID = config.get(config.CATEGORY_ITEM, "Item ID of Wasp Sword", 9731).getInt();
+		ModItems.metalIngotID = config.get(config.CATEGORY_ITEM, "Item ID of Metal Ingots", 9732).getInt();
 		
 		ModBiomes.jungleID = config.get(config.CATEGORY_GENERAL, "Biome ID of Underground Jungle", 151).getInt();
 		ModBiomes.desertID = config.get(config.CATEGORY_GENERAL, "Biome ID of Volcanic Desert", 152).getInt();

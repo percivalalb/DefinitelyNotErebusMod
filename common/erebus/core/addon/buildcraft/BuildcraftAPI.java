@@ -45,7 +45,9 @@ public class BuildcraftAPI {
 			if(pipeRenderField.isPresent())
 				try {
 					pipeRender = (IItemRenderer)pipeRenderField.get().get(null);
-				} catch (IllegalArgumentException | IllegalAccessException e) {
+				} catch (IllegalArgumentException e) {
+					e.printStackTrace();
+				}catch(IllegalAccessException e) {
 					e.printStackTrace();
 				}
 		}

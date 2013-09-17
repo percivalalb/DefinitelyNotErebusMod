@@ -19,7 +19,6 @@ import erebus.block.BlockMaggot;
 import erebus.block.BlockMirBrick;
 import erebus.block.BlockOreFossil;
 import erebus.block.BlockPetrifiedCraftingTable;
-import erebus.block.BlockPetrifiedWoodOre;
 import erebus.block.BlockPlanksErebus;
 import erebus.block.BlockPortalErebus;
 import erebus.block.BlockQuickSand;
@@ -83,7 +82,6 @@ public class ModBlocks {
 	public static Block umberOreBlock;					public static int umberOreBlockID;
 	public static Block bambooCrate;			  	    public static int bambooCrateID;
 	public static Block redGem;							public static int redGemID;
-	public static Block petrifiedWoodOre;				public static int petrifiedWoodOreID;
 	public static Block petrifiedWoodPlanks;			public static int petrifiedWoodPlanksID;
 	public static Block petrifiedCraftingTable;			public static int petrifiedCraftingTableID;
 	
@@ -120,7 +118,6 @@ public class ModBlocks {
 		leavesErebus = (BlockLeavesErebus)(new BlockLeavesErebus(leavesErebusID, 0)).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("leavesErebus");
 		stairsMahogany = new BlockStairsErebus(2554, planksErebus, BlockLogErebus.dataMahogany).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsMahogany");
 		stairsEucalyptus = new BlockStairsErebus(2555, planksErebus, BlockLogErebus.dataEucalyptus).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsEucalyptus");
-		petrifiedWoodOre = new BlockPetrifiedWoodOre(petrifiedWoodOreID).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("petrifiedWoodOre").setTextureName("erebus:petrifiedWoodore");
 		petrifiedWoodPlanks = new Block(petrifiedWoodPlanksID, Material.rock).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("petrifiedWoodPlanks").setTextureName("erebus:petrifiedWoodPlanks");
 		petrifiedCraftingTable = new BlockPetrifiedCraftingTable(petrifiedCraftingTableID).setHardness(2.5F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("petrifiedCraftingTable");
 		
@@ -154,7 +151,6 @@ public class ModBlocks {
 		GameRegistry.registerBlock(logErebusGroup2, ItemBlockLogErebus2.class, "erebus.logErebus2");
 		GameRegistry.registerBlock(planksErebus, ItemBlockPlanksErebus.class, "erebus.planksErebus");
 		GameRegistry.registerBlock(leavesErebus, ItemBlockLeavesErebus.class, "erebus.leavesErebus");
-		GameRegistry.registerBlock(petrifiedWoodOre, "erebus.petrifiedWoodOre");
 		GameRegistry.registerBlock(petrifiedWoodPlanks, "erebus.petrifiedWoodPlanks");
 		GameRegistry.registerBlock(petrifiedCraftingTable, "erebus.petrifiedCraftingTable");
 		

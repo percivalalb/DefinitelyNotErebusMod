@@ -26,7 +26,7 @@ import net.minecraft.world.World;
 public class BlockErebusOre extends Block {
  
 	/** The icon path, not including "erebus:" as it is joined when registering icon **/
-	public static final String[] iconPaths = new String[] {"oreCoalU", "oreIronU", "oreGoldU", "oreLapisU", "oreDiamondU", "oreEmeraldU", "oreJadeU"};
+	public static final String[] iconPaths = new String[] {"oreCoalU", "oreIronU", "oreGoldU", "oreLapisU", "oreDiamondU", "oreEmeraldU", "oreJadeU", "petrifiedWoodore"};
 	public static final Icon[] icons = new Icon[iconPaths.length];
 	
     public BlockErebusOre(int id) {
@@ -64,6 +64,7 @@ public class BlockErebusOre extends Block {
     	case 5: return 0;
     	case 3: return 4;
     	case 6: return 1;
+    	case 7: return 7;
     	}
     	return meta;
     }
@@ -93,6 +94,7 @@ public class BlockErebusOre extends Block {
     	case 4: return Item.diamond.itemID;
     	case 5: return Item.emerald.itemID;
     	case 6: return ModItems.erebusMaterials.itemID; 
+    	case 7: return ModItems.erebusMaterials.itemID; 
     	}
     	return blockID;
     }

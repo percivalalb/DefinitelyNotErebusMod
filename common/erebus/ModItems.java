@@ -52,7 +52,6 @@ public class ModItems {
 	public static Item jadeHoe;							public static int jadeHoeID;
     public static Item compoundGoggles;                 public static int compoundGogglesID; 
     public static Item waspSword;						public static int waspSwordID;
-    public static Item itemPetrifiedWood;				public static int itemPetrifiedWoodID;
     
     public static void init() {
     	// constructor, set full 3D, creative tab, unlocalized name, texture name
@@ -81,7 +80,6 @@ public class ModItems {
 		jadeHoe = new ItemHoe(jadeHoeID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("hoeJade").setTextureName("erebus:hoeJade");
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles"); 
 		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("waspSword");
-		itemPetrifiedWood = new Item(itemPetrifiedWoodID).setCreativeTab(ErebusMod.tabErebusItem).setUnlocalizedName("itemPetrifiedWood").setTextureName("erebus:itemPetrifiedWood");
 		
 		//Tools classes
 		MinecraftForge.setToolClass(jadeAxe, "axe", 2);
@@ -112,6 +110,5 @@ public class ModItems {
 		GameRegistry.registerItem(jadeHoe, "erebus.hoeJade");
 		GameRegistry.registerItem(compoundGoggles, "erebus.compoundGoggles");
 		GameRegistry.registerItem(waspSword, "erebus.waspSword");
-		GameRegistry.registerItem(itemPetrifiedWood, "erebus.itemPetrifiedWood");
     }
 }

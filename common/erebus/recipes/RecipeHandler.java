@@ -23,7 +23,7 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModItems.bamBucket, 1, 0), new Object[] {"S", "B", 'S', Item.silk, 'B', new ItemStack(ModItems.erebusMaterials, 1, 0)});  
 		
 		// Petrified Wood stuffs
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedWoodPlanks), new Object[] {"xx", "xx", 'x', ModItems.itemPetrifiedWood});
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedWoodPlanks), new Object[] {"xx", "xx", 'x', new ItemStack(ModItems.erebusMaterials, 1, 7)});
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedCraftingTable), new Object[] {"xx", "xx", 'x', ModBlocks.petrifiedWoodPlanks});
 		
 		//Jade tools

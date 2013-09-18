@@ -121,6 +121,7 @@ entity.Tarantula - Erebus.name=Tarantula
 entity.VelvetWorm - Erebus.name=Velvet Worm
 entity.BotFly - Erebus.name=Bot Fly
 entity.BlackWidow - Erebus.name=Black Widow
+entity.Scorpion - Erebus.name=Scorpion
 
 #Other
 itemGroup.erebus.block=Erebus Blocks

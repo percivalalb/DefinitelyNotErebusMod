@@ -105,10 +105,11 @@ public class RecipeHandler {
 		OreDictionary.registerOre("ingotTin", new ItemStack(ModItems.metalIngot,1,3));
 		
 		if(ErebusMod.activateExtraOres) {
-			OreDictionary.registerOre("ingotCopper", new ItemStack(ModItems.metalIngot,1,0));
-			OreDictionary.registerOre("ingotLead", new ItemStack(ModItems.metalIngot,1,1));
-			OreDictionary.registerOre("ingotSilver", new ItemStack(ModItems.metalIngot,1,2));
-			OreDictionary.registerOre("ingotTin", new ItemStack(ModItems.metalIngot,1,3));
+			OreDictionary.registerOre("oreAluminum", new ItemStack(ModBlocks.erebusOreExtra,1,0));
+			OreDictionary.registerOre("oreCopper", new ItemStack(ModBlocks.erebusOreExtra,1,1));
+			OreDictionary.registerOre("oreLead", new ItemStack(ModBlocks.erebusOreExtra,1,2));
+			OreDictionary.registerOre("oreSilver", new ItemStack(ModBlocks.erebusOreExtra,1,3));
+			OreDictionary.registerOre("oreTin", new ItemStack(ModBlocks.erebusOreExtra,1,4));
 		}
 	}
 }

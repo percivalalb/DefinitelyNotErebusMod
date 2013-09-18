@@ -2,18 +2,12 @@ package erebus.block;
 
 import java.util.ArrayList;
 import java.util.Random;
-
-import erebus.core.proxy.CommonProxy;
-import erebus.ErebusMod;
-import erebus.ModItems;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import erebus.ModItems;
 
 public class BlockOreFossil extends Block {
    

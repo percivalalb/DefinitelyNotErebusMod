@@ -87,7 +87,8 @@ public class RenderFly extends RenderLiving
         this.func_82445_a((EntityFly)par1EntityLiving, par2, par4, par6);
     }
 
-    public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+    @Override
+	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
     {
         this.func_82443_a((EntityFly)par1EntityLiving, par2, par4, par6, par8, par9);
     }
@@ -98,7 +99,8 @@ public class RenderFly extends RenderLiving
      * (Render<T extends Entity) and this method has signature public void doRender(T entity, double d, double d1,
      * double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
      */
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+    @Override
+	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
     {
         this.func_82443_a((EntityFly)par1Entity, par2, par4, par6, par8, par9);
     }

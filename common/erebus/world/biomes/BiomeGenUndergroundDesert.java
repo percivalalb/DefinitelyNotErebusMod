@@ -1,14 +1,11 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
-import erebus.ErebusMod;
-import erebus.ModBlocks;
-
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenLakes;
+import erebus.ModBlocks;
 
 public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus
 {

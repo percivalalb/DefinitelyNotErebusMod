@@ -10,7 +10,6 @@ import net.minecraftforge.client.IItemRenderer;
 import com.google.common.base.Optional;
 
 import cpw.mods.fml.common.Loader;
-import erebus.core.helper.LogHelper;
 import erebus.core.helper.ReflectionHelper;
 
 /**

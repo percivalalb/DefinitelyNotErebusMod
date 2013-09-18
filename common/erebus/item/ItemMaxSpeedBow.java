@@ -1,12 +1,5 @@
 package erebus.item;
 
-import java.util.Random;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import erebus.core.proxy.CommonProxy;
-import erebus.ErebusMod;
-import erebus.ModItems;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -18,15 +11,17 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
-
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
-import net.minecraftforge.event.entity.player.ArrowNockEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ModItems;
 
 public class ItemMaxSpeedBow extends Item
 {
     private int weaponEnchantibility;
-	private int chargeTime;
+	//private int chargeTime;
+    // TODO chargeTime unused!
 
 	public static final String[] bowPullIconNameArray = new String[] {"maxSpeedBow_pull_0", "maxSpeedBow_pull_1", "maxSpeedBow_pull_2"};
     @SideOnly(Side.CLIENT)
@@ -218,7 +213,8 @@ public class ItemMaxSpeedBow extends Item
         return this.weaponEnchantibility;
     }
 
-    @SideOnly(Side.CLIENT)
+    @Override
+	@SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister)
     {
         super.registerIcons(par1IconRegister);

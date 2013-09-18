@@ -221,7 +221,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	@Override
 	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound){
 		super.readEntityFromNBT(par1NBTTagCompound);
-		if (par1NBTTagCompound.hasKey("WidowSize")) ;
+		if (par1NBTTagCompound.hasKey("WidowSize"))
 		{
 			this.setWidowSize(par1NBTTagCompound.getFloat("WidowSize"));
 		}

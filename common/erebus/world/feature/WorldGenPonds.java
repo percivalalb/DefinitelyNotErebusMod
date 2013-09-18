@@ -22,14 +22,12 @@ public class WorldGenPonds extends WorldGenerator
         this.size = size;
     }
 
-    public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
+    @Override
+	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
     {
         par3 -= 8;
 
-        for (par5 -= 8; par4 > 5 && par1World.isAirBlock(par3, par4, par5); --par4)
-        {
-            ;
-        }
+        for (par5 -= 8; par4 > 5 && par1World.isAirBlock(par3, par4, par5); --par4){}
 
         if (par4 <= 4)
         {

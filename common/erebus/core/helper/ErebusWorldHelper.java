@@ -1,9 +1,6 @@
 package erebus.core.helper;
 
-import java.util.Random;
-
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class ErebusWorldHelper
 {

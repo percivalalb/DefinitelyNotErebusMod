@@ -4,12 +4,10 @@ import invtweaks.api.container.ChestContainer;
 
 import java.util.List;
 
-import erebus.core.helper.LogHelper;
 import erebus.tileentity.TileEntityBamboo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 

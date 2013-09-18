@@ -1,13 +1,12 @@
 package erebus.core.helper;
 
-import erebus.entity.EntityBeetleLarva;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityBreakingFX;
 import net.minecraft.client.particle.EntityDiggingFX;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
+import erebus.entity.EntityBeetleLarva;
 
 /**
  * @author ProPercivalalb

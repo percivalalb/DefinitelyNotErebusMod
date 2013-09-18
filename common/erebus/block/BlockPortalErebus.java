@@ -1,29 +1,23 @@
 package erebus.block;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-
-import erebus.ErebusMod;
-import erebus.ModBlocks;
-import erebus.core.teleport.TeleportClient;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.IChunkProvider;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ErebusMod;
+import erebus.ModBlocks;
+import erebus.core.teleport.TeleportClient;
 
 public class BlockPortalErebus extends BlockBreakable
 {
@@ -33,7 +27,8 @@ public class BlockPortalErebus extends BlockBreakable
      super(i, "erebus:portalErebus", Material.portal, false);
  }
 
- public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
+ @Override
+public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
  {
 	 Side side = FMLCommonHandler.instance().getEffectiveSide();
      if(side == Side.SERVER)
@@ -41,7 +36,7 @@ public class BlockPortalErebus extends BlockBreakable
      	if (entity.ridingEntity == null && entity.riddenByEntity == null && entity instanceof EntityPlayerMP) 
      	{
 			    EntityPlayerMP player = (EntityPlayerMP)entity;
-			    ErebusMod.instance.packeterebushandler.getPlayer(player.username).setInPortal();	        	 
+			    ErebusMod.packeterebushandler.getPlayer(player.username).setInPortal();	        	 
      	}
      }
   	 else if (side == Side.CLIENT && entity instanceof EntityPlayer)
@@ -51,12 +46,14 @@ public class BlockPortalErebus extends BlockBreakable
   	 }
  }
  
- public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int i, int j, int k)
+ @Override
+public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int i, int j, int k)
  {
      return null;
  }
 
- public void setBlockBoundsBasedOnState(IBlockAccess iblockaccess, int i, int j, int k)
+ @Override
+public void setBlockBoundsBasedOnState(IBlockAccess iblockaccess, int i, int j, int k)
  {
      if(iblockaccess.getBlockId(i - 1, j, k) != blockID && iblockaccess.getBlockId(i + 1, j, k) != blockID)
      {
@@ -97,10 +94,7 @@ public class BlockPortalErebus extends BlockBreakable
 
      int i1;
 
-     for (i1 = par3; par1World.getBlockId(par2, i1 - 1, par4) == this.blockID; --i1)
-     {
-         ;
-     }
+     for (i1 = par3; par1World.getBlockId(par2, i1 - 1, par4) == this.blockID; --i1){}
 
      if (par1World.getBlockId(par2, i1 - 1, par4) != Block.stoneBrick.blockID)
      {
@@ -110,10 +104,7 @@ public class BlockPortalErebus extends BlockBreakable
      {
          int j1;
 
-         for (j1 = 1; j1 < 4 && par1World.getBlockId(par2, i1 + j1, par4) == this.blockID; ++j1)
-         {
-             ;
-         }
+         for (j1 = 1; j1 < 4 && par1World.getBlockId(par2, i1 + j1, par4) == this.blockID; ++j1){}
 
          if (j1 == 3 && par1World.getBlockId(par2, i1 + j1, par4) == Block.stoneBrick.blockID)
          {
@@ -206,7 +197,8 @@ public class BlockPortalErebus extends BlockBreakable
      }
  }
 
- @SideOnly(Side.CLIENT)
+ @Override
+@SideOnly(Side.CLIENT)
  public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int i, int j, int k, int l)
  {
      if(iblockaccess.getBlockId(i, j, k) == blockID)
@@ -230,13 +222,15 @@ public class BlockPortalErebus extends BlockBreakable
      return 0;
  }
  
- @SideOnly(Side.CLIENT)
+ @Override
+@SideOnly(Side.CLIENT)
  public int getRenderBlockPass()
  {
      return 1;
  }
  
- @SideOnly(Side.CLIENT)
+ @Override
+@SideOnly(Side.CLIENT)
  public void randomDisplayTick(World world, int i, int j, int k, Random random)
  {
      if(random.nextInt(100) == 0)

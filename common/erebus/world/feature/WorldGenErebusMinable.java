@@ -1,13 +1,11 @@
 package erebus.world.feature;
 
 import java.util.Random;
-
-import erebus.ErebusMod;
-import erebus.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import erebus.ModBlocks;
 
 public class WorldGenErebusMinable extends WorldGenerator
 {
@@ -33,7 +31,8 @@ public class WorldGenErebusMinable extends WorldGenerator
         minableBlockMeta = meta;
     }
 
-    public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
+    @Override
+	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
     {
         float f = par2Random.nextFloat() * (float)Math.PI;
         double d0 = (double)((float)(par3 + 8) + MathHelper.sin(f) * (float)this.numberOfBlocks / 8.0F);

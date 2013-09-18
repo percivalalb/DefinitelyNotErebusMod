@@ -23,7 +23,7 @@ import erebus.entity.EntityWasp;
 import erebus.world.feature.WorldGenErebusHugeTree;
 import erebus.world.feature.WorldGenErebusTrees;
 import erebus.world.feature.WorldGenEucalyptus;
-import erebus.world.feature.WorldGenMelonErebus;
+import erebus.world.feature.WorldGenMelon;
 import erebus.world.feature.WorldGenMossbarkTree;
 import erebus.world.feature.WorldGenPonds;
 import erebus.world.feature.WorldGenQuickSand;
@@ -224,7 +224,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 			int j5 = z + getRandomXZOffset(rand);
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenMelonErebus()).generate(worldObj, rand, j2, l3, j5);
+				(new WorldGenMelon()).generate(worldObj, rand, j2, l3, j5);
 			}
 		}  
 
@@ -359,7 +359,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus
 			int j5 = z + getRandomXZOffset(rand);
 			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 			{
-				(new WorldGenMelonErebus()).generate(worldObj, rand, j2, l3, j5);
+				(new WorldGenMelon()).generate(worldObj, rand, j2, l3, j5);
 			}
 		}  
 

@@ -52,7 +52,8 @@ public class WorldGenErebusTrees extends WorldGenerator
         this.vinesID = par8;
     }
 
-    public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
+    @Override
+	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
     {
         int var6 = par2Random.nextInt(3) + this.minTreeHeight;
         boolean var7 = true;

@@ -1,17 +1,9 @@
 package erebus.block;
 
 import java.util.Random;
-
-import erebus.core.proxy.CommonProxy;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.Item;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
 
 public class BlockSilk extends Block
 {
@@ -23,7 +15,8 @@ public class BlockSilk extends Block
     /**
      * Returns the quantity of items to drop on block destruction.
      */
-    public int quantityDropped(Random par1Random)
+    @Override
+	public int quantityDropped(Random par1Random)
     {
         return 4;
     }
@@ -31,7 +24,8 @@ public class BlockSilk extends Block
     /**
      * Returns the ID of the items to drop on destruction.
      */
-    public int idDropped(int par1, Random par2Random, int par3)
+    @Override
+	public int idDropped(int par1, Random par2Random, int par3)
     {
         return Item.silk.itemID;
     }

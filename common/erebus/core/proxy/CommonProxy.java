@@ -43,9 +43,6 @@ public class CommonProxy implements IGuiHandler {
 			TileEntity tileentity = world.getBlockTileEntity(x, y, z);
 			if(tileentity instanceof TileEntityBamboo) {
 				BlockBambooCrate crate = (BlockBambooCrate)ModBlocks.bambooCrate;
-				int xOld = x;
-				int yOld = y;
-				int zOld = z;
 				if(world.getBlockId(x, y - 1, z) == crate.blockID) y--;
 				if(world.getBlockId(x - 1, y, z) == crate.blockID) x--;
 				if(world.getBlockId(x, y, z - 1) == crate.blockID) z--;
@@ -81,9 +78,6 @@ public class CommonProxy implements IGuiHandler {
 			TileEntity tileentity = world.getBlockTileEntity(x, y, z);
 			if(tileentity instanceof TileEntityBamboo) {
 				BlockBambooCrate crate = (BlockBambooCrate)ModBlocks.bambooCrate;
-				int xOld = x;
-				int yOld = y;
-				int zOld = z;
 				if(world.getBlockId(x, y - 1, z) == crate.blockID) y--;
 				if(world.getBlockId(x - 1, y, z) == crate.blockID) x--;
 				if(world.getBlockId(x, y, z - 1) == crate.blockID) z--;

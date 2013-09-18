@@ -1,24 +1,21 @@
 package erebus.inventory;
 
 import invtweaks.api.container.ChestContainer;
-import erebus.tileentity.TileEntityBamboo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import erebus.tileentity.TileEntityBamboo;
 
 @ChestContainer(rowSize = 9, isLargeChest = false)
 public class ContainerBambooCrate extends Container
 {
-	private InventoryPlayer playerInventory; 
 	private TileEntityBamboo bambooCrateInventory;
 	public int numRows = 3;
 	
     public ContainerBambooCrate(InventoryPlayer par1InventoryPlayer, TileEntityBamboo par2TileEntityBambooCrate)
     {
-        this.playerInventory = par1InventoryPlayer;
         this.bambooCrateInventory = par2TileEntityBambooCrate;
         par2TileEntityBambooCrate.openChest();
         int i = (this.numRows - 4) * 18;

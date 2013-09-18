@@ -12,26 +12,25 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 public class WorldGenBigLake extends WorldGenerator
 {
     private int blockIndex;
-    private int groundIndex;
-    private int patchIndex;
-    private double size;
+    //private int groundIndex;
+    //private int patchIndex;
+    //private double size;
+    // TODO unused?
 
     public WorldGenBigLake(int filler, int ground, int patchIndex, double size)
     {
         this.blockIndex = filler;
-        this.groundIndex = ground;
+        /*this.groundIndex = ground;
         this.patchIndex = patchIndex;
-        this.size = size;
+        this.size = size;*/
     }
 
-    public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
+    @Override
+	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
     {
         par3 -= 8;
 
-        for (par5 -= 8; par4 > 5 && par1World.isAirBlock(par3, par4, par5); --par4)
-        {
-            ;
-        }
+        for (par5 -= 8; par4 > 5 && par1World.isAirBlock(par3, par4, par5); --par4){}
 
         if (par4 <= 4)
         {

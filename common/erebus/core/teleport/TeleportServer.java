@@ -8,8 +8,6 @@ import erebus.world.TeleporterErebus;
 
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.packet.Packet;
-import net.minecraft.src.ModLoader;
-import net.minecraft.world.Teleporter;
 
 public class TeleportServer 
 {
@@ -44,7 +42,6 @@ public class TeleportServer
             {
             	this.timeInPortal = 1.0F;
                 this.timeUntilPortal = 10;
-                boolean var4 = false;
                 player.playerNetServerHandler.sendPacketToPlayer(ConnectionTeleportHandler.getDataPacket(player));
                 if (player.dimension == (byte)ErebusMod.erebusDimensionID)  {
                 	player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, TeleporterErebus.TELEPORTER_TO_OVERWORLD);

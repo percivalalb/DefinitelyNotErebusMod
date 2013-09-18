@@ -1,13 +1,10 @@
 package erebus.item;
 
-import erebus.core.proxy.CommonProxy;
-import erebus.ErebusMod;
-import erebus.ModItems;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import erebus.ErebusMod;
+import erebus.ModItems;
 
 /**
  * @author ProPercivalalb

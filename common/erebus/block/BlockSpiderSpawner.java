@@ -1,17 +1,13 @@
 package erebus.block;
 
-import erebus.core.proxy.CommonProxy;
-import erebus.tileentity.TileEntitySpiderSpawner;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
-
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityMobSpawner;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import erebus.tileentity.TileEntitySpiderSpawner;
 
 public class BlockSpiderSpawner extends BlockContainer
 {
@@ -23,7 +19,8 @@ public class BlockSpiderSpawner extends BlockContainer
     /**
      * Returns a new instance of a block's tile entity class. Called on placing the block.
      */
-    public TileEntity createNewTileEntity(World par1World)
+    @Override
+	public TileEntity createNewTileEntity(World par1World)
     {
         return new TileEntitySpiderSpawner();
     }
@@ -31,7 +28,8 @@ public class BlockSpiderSpawner extends BlockContainer
     /**
      * Returns the ID of the items to drop on destruction.
      */
-    public int idDropped(int par1, Random par2Random, int par3)
+    @Override
+	public int idDropped(int par1, Random par2Random, int par3)
     {
         return 0;
     }
@@ -39,7 +37,8 @@ public class BlockSpiderSpawner extends BlockContainer
     /**
      * Returns the quantity of items to drop on block destruction.
      */
-    public int quantityDropped(Random par1Random)
+    @Override
+	public int quantityDropped(Random par1Random)
     {
         return 0;
     }
@@ -47,7 +46,8 @@ public class BlockSpiderSpawner extends BlockContainer
     /**
      * Drops the block items with a specified chance of dropping the specified items
      */
-    public void dropBlockAsItemWithChance(World par1World, int par2, int par3, int par4, int par5, float par6, int par7)
+    @Override
+	public void dropBlockAsItemWithChance(World par1World, int par2, int par3, int par4, int par5, float par6, int par7)
     {
         super.dropBlockAsItemWithChance(par1World, par2, par3, par4, par5, par6, par7);
         int var8 = 15 + par1World.rand.nextInt(15) + par1World.rand.nextInt(15);
@@ -58,12 +58,14 @@ public class BlockSpiderSpawner extends BlockContainer
      * Is this block (a) opaque and (b) a full 1m cube?  This determines whether or not to render the shared face of two
      * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
      */
-    public boolean isOpaqueCube()
+    @Override
+	public boolean isOpaqueCube()
     {
         return false;
     }
 
-    @SideOnly(Side.CLIENT)
+    @Override
+	@SideOnly(Side.CLIENT)
 
     /**
      * only called by clickMiddleMouseButton , and passed to inventory.setCurrentItem (along with isCreative)

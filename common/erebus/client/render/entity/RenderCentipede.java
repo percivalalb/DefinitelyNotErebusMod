@@ -1,12 +1,11 @@
 package erebus.client.render.entity;
 
-import erebus.entity.EntityCentipede;
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
+import erebus.entity.EntityCentipede;
 
 public class RenderCentipede extends RenderLiving
 {
@@ -20,7 +19,8 @@ public class RenderCentipede extends RenderLiving
         super.doRenderLiving(par1EntityTarantula, par2, par4, par6, par8, par9);
     }
 
-    public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+    @Override
+	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
     {
         this.renderCentipede((EntityCentipede)par1EntityLiving, par2, par4, par6, par8, par9);
     }
@@ -31,7 +31,8 @@ public class RenderCentipede extends RenderLiving
      * (Render<T extends Entity) and this method has signature public void doRender(T entity, double d, double d1,
      * double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
      */
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+    @Override
+	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
     {
         this.renderCentipede((EntityCentipede)par1Entity, par2, par4, par6, par8, par9);
     }

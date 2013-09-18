@@ -9,15 +9,14 @@ import erebus.ModBlocks;
 /**
  * @author ProPercivalalb
  */
-public class CreativeTabErebusBlock extends CreativeTabs
-{
-    public CreativeTabErebusBlock(int par1, String par2Str) {
-        super(par1, par2Str);
-    }
+public class CreativeTabErebusBlock extends CreativeTabs {
+	public CreativeTabErebusBlock(int par1, String par2Str) {
+		super(par1, par2Str);
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public ItemStack getIconItemStack() {
-        return new ItemStack(ModBlocks.umberstone, 1, 0);
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public ItemStack getIconItemStack() {
+		return new ItemStack(ModBlocks.umberstone, 1, 0);
+	}
 }

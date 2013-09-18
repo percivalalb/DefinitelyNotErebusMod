@@ -1,22 +1,23 @@
 package erebus;
+
 import erebus.world.biomes.BiomeGenCavern;
 import erebus.world.biomes.BiomeGenUndergroundDesert;
 import erebus.world.biomes.BiomeGenUndergroundJungle;
 import erebus.world.biomes.BiomeGenUndergroundSavannah;
 import net.minecraft.world.biome.BiomeGenBase;
 
-public class ModBiomes{
+public class ModBiomes {
 	public static int jungleID;
 	public static int desertID;
 	public static int savannahID;
 	public static int cavernID;
-	
+
 	public static BiomeGenBase underjungle;
 	public static BiomeGenBase underdesert;
 	public static BiomeGenBase undersavannah;
 	public static BiomeGenBase cavern;
-	
-	public static void init(){
+
+	public static void init() {
 		underjungle = new BiomeGenUndergroundJungle(jungleID).setColor(5470985).func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setBiomeName("Undergound Jungle");
 		underdesert = new BiomeGenUndergroundDesert(desertID).setColor(5470985).func_76733_a(5470985).setDisableRain().setTemperatureRainfall(2.2F, 0.2F).setBiomeName("Volcanic Desert");
 		undersavannah = new BiomeGenUndergroundSavannah(savannahID).setColor(5470985).func_76733_a(5470985).setDisableRain().setTemperatureRainfall(4.2F, 0.05F).setBiomeName("Subterranean Savannah");

@@ -17,9 +17,9 @@ public class PacketColossalCratePage implements IPacket {
 	public void handle(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data) {
 		if (player instanceof EntityPlayerMP) {
 			int page = data.readInt();
-			EntityPlayerMP playerMP = (EntityPlayerMP)player;
-			if(playerMP.openContainer instanceof ContainerColossalCrate) {
-				ContainerColossalCrate crate = (ContainerColossalCrate)playerMP.openContainer;
+			EntityPlayerMP playerMP = (EntityPlayerMP) player;
+			if (playerMP.openContainer instanceof ContainerColossalCrate) {
+				ContainerColossalCrate crate = (ContainerColossalCrate) playerMP.openContainer;
 				crate.changePage(page);
 			}
 		}

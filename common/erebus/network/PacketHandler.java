@@ -19,17 +19,17 @@ import erebus.network.packet.PacketTeleport;
 public class PacketHandler implements IPacketHandler {
 
 	private List<IPacket> map = new ArrayList<IPacket>();
-	
+
 	public PacketHandler() {
-        map.add(new PacketTeleport());
-        map.add(new PacketColossalCratePage());
+		map.add(new PacketTeleport());
+		map.add(new PacketColossalCratePage());
 	}
-	
+
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player) {
-		if(packet.channel.equals(Reference.CHANNEL)) { 
+		if (packet.channel.equals(Reference.CHANNEL)) {
 			ByteArrayDataInput data = ByteStreams.newDataInput(packet.data);
-			map.get(data.readInt()).handle(manager, packet, (EntityPlayer)player, data);
+			map.get(data.readInt()).handle(manager, packet, (EntityPlayer) player, data);
 		}
 	}
 }

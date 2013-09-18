@@ -10,21 +10,21 @@ import net.minecraftforge.event.EventBus;
  */
 public class AddonManager {
 
-	private static final EventBus EVENT_BUS	= new EventBus();
-	
+	private static final EventBus EVENT_BUS = new EventBus();
+
 	public static void registerAddons() {
 		EVENT_BUS.register(new BuildcraftAddon());
 		EVENT_BUS.register(new ForgeMultipartAddon());
 	}
-	
+
 	public static void runFMLPre(Configuration config) {
 		EVENT_BUS.post(new AddonEvent.FMLPre(config));
 	}
-	
+
 	public static void runFMLInit(Configuration config) {
 		EVENT_BUS.post(new AddonEvent.FMLInit(config));
 	}
-	
+
 	public static void runRegisteredAddons(Configuration config) {
 		EVENT_BUS.post(new AddonEvent.Pre(config));
 		EVENT_BUS.post(new AddonEvent.Init(config));

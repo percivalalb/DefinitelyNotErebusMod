@@ -459,10 +459,9 @@ public class ModelScorpion extends ModelBase {
 		RBL1.addChild(RBL4);
 
 	}
-	
-@Override
-	public void render(Entity par1Entity, float par2, float par3, float par4,
-			float par5, float par6, float par7) {
+
+	@Override
+	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
 		super.render(par1Entity, par2, par3, par4, par5, par6, par7);
 		setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
 		RMand.render(par7);
@@ -526,30 +525,24 @@ public class ModelScorpion extends ModelBase {
 		Sting2.render(par7);
 	}
 
-
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
-	
-@Override
-	public void setRotationAngles(float par1, float par2, float par3,
-			float par4, float par5, float par6, Entity par7Entity) {
+
+	@Override
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
 
-		float cosz1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.3F
-				* par2;
+		float cosz1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.3F * par2;
 		float cosz2 = MathHelper.cos(par1 * 1.0F) * 0.3F * par2;
 
-		float cozy1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.4F
-				* par2;
+		float cozy1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.4F * par2;
 		float cozy2 = MathHelper.cos(par1 * 1.0F) * 0.4F * par2;
 
-		float cosxnz1 = MathHelper.cos(par1 / 3.0F + (float) Math.PI) * 0.1F
-				* par2;
-		float cosxnz2 = MathHelper.cos(par1 / 3.0F + (float) Math.PI) * 0.05F
-				* par2;
+		float cosxnz1 = MathHelper.cos(par1 / 3.0F + (float) Math.PI) * 0.1F * par2;
+		float cosxnz2 = MathHelper.cos(par1 / 3.0F + (float) Math.PI) * 0.05F * par2;
 
 		this.LBL1.rotateAngleZ = cosz1 - 0.3F;
 		this.LML1.rotateAngleZ = cosz2 - 0.3F;
@@ -603,10 +596,8 @@ public class ModelScorpion extends ModelBase {
 		this.Sting2.rotateAngleZ = -cosxnz1;
 		// rotateAngleX for tail sting
 
-		this.RMand.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2
-				+ 1.570796F;
-		this.LMand.rotateAngleY = -MathHelper
-				.cos(par1 * 0.5F + (float) Math.PI) * 0.2F * par2 + 1.570796F;
+		this.RMand.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2 + 1.570796F;
+		this.LMand.rotateAngleY = -MathHelper.cos(par1 * 0.5F + (float) Math.PI) * 0.2F * par2 + 1.570796F;
 	}
 
 }

@@ -6,4 +6,3 @@ public class ItemBlockLogErebus1 extends ItemBlockGeneric {
 		super(id, "logErebus1");
 	}
 }
-

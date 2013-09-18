@@ -17,11 +17,11 @@ public class BlockErebusOreExtras extends Block {
 	private final String[] types = { "oreAluminiumU", "oreCopperU", "oreLeadU", "oreSilverU", "oreTinU" };
 	@SideOnly(Side.CLIENT)
 	private Icon[] blockIcon = new Icon[types.length];
-	
+
 	public BlockErebusOreExtras(int id) {
 		super(id, Material.rock);
 	}
-	
+
 	@Override
 	public int damageDropped(int meta) {
 		return meta;

@@ -17,17 +17,17 @@ import erebus.ModItems;
  */
 public class EntityTarantula extends EntitySpider {
 
-	public EntityTarantula(World par1World)  {
+	public EntityTarantula(World par1World) {
 		super(par1World);
 		setSize(1.3F, 0.6F);
 	}
 
 	@Override
 	protected void applyEntityAttributes() {
-	    super.applyEntityAttributes();
-	    this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D);
-	    this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.2D);
-	    this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(5.0D);
+		super.applyEntityAttributes();
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.2D);
+		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(5.0D);
 	}
 
 	@Override
@@ -36,73 +36,70 @@ public class EntityTarantula extends EntitySpider {
 	}
 
 	@Override
-    public void onUpdate() {
-        super.onUpdate();
+	public void onUpdate() {
+		super.onUpdate();
 
-        if (!this.worldObj.isRemote) {
-            this.setBesideClimbableBlock(this.isCollidedHorizontally);
-        }
-    }
-
-	@Override
-    public boolean isOnLadder() {
-        return this.isBesideClimbableBlock();
-    }
+		if (!this.worldObj.isRemote) {
+			this.setBesideClimbableBlock(this.isCollidedHorizontally);
+		}
+	}
 
 	@Override
-    public EnumCreatureAttribute getCreatureAttribute() {
-        return EnumCreatureAttribute.ARTHROPOD;
-    }
+	public boolean isOnLadder() {
+		return this.isBesideClimbableBlock();
+	}
 
 	@Override
-    public void setBesideClimbableBlock(boolean par1) {
-        byte var2 = this.dataWatcher.getWatchableObjectByte(16);
-
-        if (par1) {
-            var2 = (byte)(var2 | 1);
-        }
-        else {
-            var2 &= -2;
-        }
-
-        this.dataWatcher.updateObject(16, Byte.valueOf(var2));
-    }
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return EnumCreatureAttribute.ARTHROPOD;
+	}
 
 	@Override
-    protected boolean canDespawn() {
-        return false;
-    }
+	public void setBesideClimbableBlock(boolean par1) {
+		byte var2 = this.dataWatcher.getWatchableObjectByte(16);
 
-    public int skin = rand.nextInt(99);
-	
+		if (par1) {
+			var2 = (byte) (var2 | 1);
+		} else {
+			var2 &= -2;
+		}
+
+		this.dataWatcher.updateObject(16, Byte.valueOf(var2));
+	}
+
 	@Override
-    public boolean attackEntityAsMob(Entity par1Entity) {
-        
+	protected boolean canDespawn() {
+		return false;
+	}
+
+	public int skin = rand.nextInt(99);
+
+	@Override
+	public boolean attackEntityAsMob(Entity par1Entity) {
+
 		if (super.attackEntityAsMob(par1Entity)) {
-           
-        	if (par1Entity instanceof EntityLiving) {
-                byte var2 = 0;
 
-                if (this.worldObj.difficultySetting > 1 && rand.nextInt(19) == 0) {
-                    if (this.worldObj.difficultySetting == 2) {
-                        var2 = 5;
-                    }
-                    else if (this.worldObj.difficultySetting == 3) {
-                        var2 = 10;
-                    }
-                }
+			if (par1Entity instanceof EntityLiving) {
+				byte var2 = 0;
 
-                if (var2 > 0) {
-                    ((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
-                }
-            }
+				if (this.worldObj.difficultySetting > 1 && rand.nextInt(19) == 0) {
+					if (this.worldObj.difficultySetting == 2) {
+						var2 = 5;
+					} else if (this.worldObj.difficultySetting == 3) {
+						var2 = 10;
+					}
+				}
 
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
+				if (var2 > 0) {
+					((EntityLiving) par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
+				}
+			}
+
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
@@ -111,46 +108,51 @@ public class EntityTarantula extends EntitySpider {
 		int chance40x40x20 = this.rand.nextInt(4);
 		int stringDrop = 0;
 
-		switch(chance40x40x20)
-		{
+		switch (chance40x40x20) {
 			case 0:
-			case 1: stringDrop = 1;
+			case 1:
+				stringDrop = 1;
 				break;
-			case 2: 
-			case 3: stringDrop = 2;
+			case 2:
+			case 3:
+				stringDrop = 2;
 				break;
-			case 4: stringDrop = 3;
+			case 4:
+				stringDrop = 3;
 				break;
 		}
 
 		int chance20x60x20 = this.rand.nextInt(4);
 		int legDrop = 0;
 
-		switch(chance20x60x20)
-		{
-			case 0: legDrop = 1;
+		switch (chance20x60x20) {
+			case 0:
+				legDrop = 1;
 				break;
 			case 1:
 			case 2:
-			case 3: legDrop = 2;
+			case 3:
+				legDrop = 2;
 				break;
-			case 4: legDrop = 3;
+			case 4:
+				legDrop = 3;
 				break;
 		}
 
 		this.dropItem(Item.silk.itemID, stringDrop + par2);
 
 		if (this.isBurning()) {
-			this.entityDropItem(new ItemStack(ModItems.erebusFood, legDrop + par2, 5), 0.0F);  
-        }
-		else {
-			this.entityDropItem(new ItemStack(ModItems.erebusFood, legDrop + par2, 4), 0.0F);  
+			this.entityDropItem(new ItemStack(ModItems.erebusFood, legDrop + par2, 5), 0.0F);
+		} else {
+			this.entityDropItem(new ItemStack(ModItems.erebusFood, legDrop + par2, 4), 0.0F);
 		}
-        
+
 		this.dropItem(Item.spiderEye.itemID, chanceFiftyFifty + par2);
 
-		/* 50% chance for 1 Spider eye, 50% for two
-		 * 40% chance for 1 String, 40% for two and 20% for three
-		 * 20% for zero tarantula legs, 60% for 1 and 20% for two*/
+		/*
+		 * 50% chance for 1 Spider eye, 50% for two 40% chance for 1 String, 40%
+		 * for two and 20% for three 20% for zero tarantula legs, 60% for 1 and
+		 * 20% for two
+		 */
 	}
 }

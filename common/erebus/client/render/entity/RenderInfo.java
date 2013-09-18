@@ -4,7 +4,7 @@ package erebus.client.render.entity;
  * A little space in the entity to save some render/model state
  */
 public class RenderInfo {
-	
+
 	public int ri1;
 	public int ri2;
 	public int ri3;

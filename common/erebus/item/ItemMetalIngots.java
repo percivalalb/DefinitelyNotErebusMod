@@ -14,31 +14,31 @@ public class ItemMetalIngots extends Item {
 
 	@SideOnly(Side.CLIENT)
 	private Icon[] icons = new Icon[4];
-	
+
 	public ItemMetalIngots(int id) {
 		super(id);
 		setMaxDamage(0);
 		setHasSubtypes(true);
 	}
-	
+
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		return "item.metalIngot" + stack.getItemDamage();
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIconFromDamage(int i) {
 		return icons[i];
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int itemID, CreativeTabs tabs, List list) {
-		for(int i = 0; i < icons.length; i++)
+		for (int i = 0; i < icons.length; i++)
 			list.add(new ItemStack(itemID, 1, i));
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {

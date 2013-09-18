@@ -13,8 +13,9 @@ import erebus.ErebusMod;
 import erebus.ModBiomes;
 
 public class WorldProviderErebus extends WorldProvider {
-	
-	public WorldProviderErebus() {}
+
+	public WorldProviderErebus() {
+	}
 
 	@Override
 	public boolean canRespawnHere() {
@@ -34,28 +35,26 @@ public class WorldProviderErebus extends WorldProvider {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public Vec3 getFogColor(float par1, float par2) {
-		BiomeGenBase b = worldObj.getBiomeGenForCoords((int)Minecraft.getMinecraft().thePlayer.posX, (int)Minecraft.getMinecraft().thePlayer.posZ);
+		BiomeGenBase b = worldObj.getBiomeGenForCoords((int) Minecraft.getMinecraft().thePlayer.posX, (int) Minecraft.getMinecraft().thePlayer.posZ);
 		double red = 0.029999999329447746D * 255D;
 		double green = 0.49999999329447746D * 255D;
 		double blue = 0.029999999329447746D * 255D;
-		
-		if(b.biomeID == ModBiomes.savannahID) {
+
+		if (b.biomeID == ModBiomes.savannahID) {
 			red = 140D;
 			green = 116D;
 			blue = 9D;
-		}
-		else if(b.biomeID == ModBiomes.desertID) {
+		} else if (b.biomeID == ModBiomes.desertID) {
 			red = 255D;
 			green = 231D;
 			blue = 10D;
-		}
-		else if(b.biomeID == ModBiomes.cavernID) {
+		} else if (b.biomeID == ModBiomes.cavernID) {
 			red = 100D;
 			green = 100D;
 			blue = 100D;
 		}
-		
-		return this.worldObj.getWorldVec3Pool().getVecFromPool(red/255D, green/255D, blue/255D);
+
+		return this.worldObj.getWorldVec3Pool().getVecFromPool(red / 255D, green / 255D, blue / 255D);
 	}
 
 	@Override
@@ -63,17 +62,17 @@ public class WorldProviderErebus extends WorldProvider {
 		float f = 0.1F;
 
 		for (int i = 0; i <= 15; i++) {
-			float f1 = 1.0F - (float)i / 15F;
+			float f1 = 1.0F - (float) i / 15F;
 			lightBrightnessTable[i] = ((1.0F - f1) / (f1 * 3F + 1.0F)) * (1.0F - f) + f;
 		}
 	}
 
 	@Override
 	public void registerWorldChunkManager() {
-		worldChunkMgr = new WorldChunkManagerErebus(1.0F, 0.0F, this.worldObj);    
+		worldChunkMgr = new WorldChunkManagerErebus(1.0F, 0.0F, this.worldObj);
 		this.hasNoSky = true;
 		this.dimensionId = ErebusMod.erebusDimensionID;
-	}        
+	}
 
 	@Override
 	public IChunkProvider createChunkGenerator() {
@@ -90,26 +89,26 @@ public class WorldProviderErebus extends WorldProvider {
 	public boolean doesXZShowFog(int par1, int par2) {
 		return false;
 	}
-	
+
 	@Override
 	public String getDimensionName() {
 		return "Erebus";
 	}
-	
+
 	@Override
 	public ChunkCoordinates getRandomizedSpawnPoint() {
-        ChunkCoordinates chunkcoordinates = new ChunkCoordinates(this.worldObj.getSpawnPoint());
+		ChunkCoordinates chunkcoordinates = new ChunkCoordinates(this.worldObj.getSpawnPoint());
 
-        boolean isAdventure = worldObj.getWorldInfo().getGameType() == EnumGameType.ADVENTURE;
-        int spawnFuzz = 100;
-        int spawnFuzzHalf = spawnFuzz / 2;
+		boolean isAdventure = worldObj.getWorldInfo().getGameType() == EnumGameType.ADVENTURE;
+		int spawnFuzz = 100;
+		int spawnFuzzHalf = spawnFuzz / 2;
 
-        if (!hasNoSky && !isAdventure) {
-            chunkcoordinates.posX += this.worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
-            chunkcoordinates.posZ += this.worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
-            chunkcoordinates.posY = this.worldObj.getTopSolidOrLiquidBlock(chunkcoordinates.posX, chunkcoordinates.posZ);
-        }
+		if (!hasNoSky && !isAdventure) {
+			chunkcoordinates.posX += this.worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
+			chunkcoordinates.posZ += this.worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
+			chunkcoordinates.posY = this.worldObj.getTopSolidOrLiquidBlock(chunkcoordinates.posX, chunkcoordinates.posZ);
+		}
 
-        return chunkcoordinates;
-    }
+		return chunkcoordinates;
+	}
 }

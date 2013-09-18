@@ -10,62 +10,53 @@ import cpw.mods.fml.common.TickType;
 import erebus.ErebusMod;
 import erebus.world.TeleporterErebus;
 
-public class CommonTickHandler implements ITickHandler
-{
+public class CommonTickHandler implements ITickHandler {
 	public boolean genLairNextTick = false;
 	private int ticksToGo = 5;
-	
-            @Override
-			public EnumSet ticks()
-            {
-                return EnumSet.of(TickType.SERVER, TickType.PLAYER, TickType.WORLD);
-            }
 
-            @Override
-			public String getLabel()
-            {
-                return null;
-            }
-            
-        	//private int HypothermiaTimer = 0;
+	@Override
+	public EnumSet ticks() {
+		return EnumSet.of(TickType.SERVER, TickType.PLAYER, TickType.WORLD);
+	}
 
-            private void onTickInGame() 
-            {
-            
-            }
+	@Override
+	public String getLabel() {
+		return null;
+	}
 
-			@Override
-			public void tickStart(EnumSet<TickType> type, Object... tickData) {
-				// TODO Auto-generated method stub
-				
+	// private int HypothermiaTimer = 0;
+
+	private void onTickInGame() {
+
+	}
+
+	@Override
+	public void tickStart(EnumSet<TickType> type, Object... tickData) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
+		if (type.equals(EnumSet.of(TickType.SERVER))) {
+			onTickInGame();
+		}
+		if (type.equals(EnumSet.of(TickType.PLAYER))) {
+			EntityPlayerMP player = (EntityPlayerMP) tickData[0];
+			ErebusMod.packeterebushandler.onTick(player);
+		} else if (type.equals(EnumSet.of(TickType.WORLD))) {
+			World world = (World) tickData[0];
+			if (world.provider.dimensionId == ErebusMod.erebusDimensionID) {
+				TeleporterErebus.TELEPORTER_TO_EREBUS.removeStalePortalLocations(world.getTotalWorldTime());
+				TeleporterErebus.TELEPORTER_TO_OVERWORLD.removeStalePortalLocations(world.getTotalWorldTime());
 			}
-			
-			@Override
-			public void tickEnd(EnumSet<TickType> type, Object... tickData) 
-			{
-                if(type.equals(EnumSet.of(TickType.SERVER)))
-                {
-                        onTickInGame();
-                }
-                if (type.equals(EnumSet.of(TickType.PLAYER)))
-		        {
-		        	EntityPlayerMP player = (EntityPlayerMP)tickData[0];
-		            ErebusMod.packeterebushandler.onTick(player);
-		        }
-		        else if (type.equals(EnumSet.of(TickType.WORLD)))
-		        {
-		        	World world = (World)tickData[0];
-		        	if(world.provider.dimensionId == ErebusMod.erebusDimensionID) {
-		        		TeleporterErebus.TELEPORTER_TO_EREBUS.removeStalePortalLocations(world.getTotalWorldTime());
-		        		TeleporterErebus.TELEPORTER_TO_OVERWORLD.removeStalePortalLocations(world.getTotalWorldTime());
-		        	}
-		        	
-		        	if (genLairNextTick) {
-		        		ticksToGo--;
-		        		if (ticksToGo <= 0) {
-		        			
-		        		}
-		        	}
-		        }
+
+			if (genLairNextTick) {
+				ticksToGo--;
+				if (ticksToGo <= 0) {
+
+				}
 			}
+		}
+	}
 }

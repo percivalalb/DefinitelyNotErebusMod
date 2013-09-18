@@ -10,26 +10,26 @@ import erebus.ModItems;
 public class ConfigurationHandler {
 
 	public static Configuration configurationFile;
-	
+
 	public static void loadConfig(FMLPreInitializationEvent event) {
 
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		configurationFile = config;
 		config.load();
-		
+
 		/*
 		 * Blocks
 		 */
 		ModBlocks.portalErebusID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Erebus Portal", 2500).getInt();
-		
+
 		ModBlocks.umberstoneID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Umberstone", 255, "Umberstone Block ID must be below 256").getInt();
 		ModBlocks.umbercobbleStairsID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Umbercobble Stairs", 2501).getInt();
-		ModBlocks.umberOreBlockID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of the Umberstone Ores", 2502).getInt();	  
+		ModBlocks.umberOreBlockID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of the Umberstone Ores", 2502).getInt();
 		ModBlocks.oreFossilID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Fossil Ore", 2503).getInt();
 		ModBlocks.redGemID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Red Gem", 2504).getInt();
 		ModBlocks.blockAmberID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Amber", 2505).getInt();
 		ModBlocks.quickSandID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Quick Sand", 2506).getInt();
-		
+
 		ModBlocks.logErebusGroup1ID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Log - group 1", 2507).getInt();
 		ModBlocks.logErebusGroup2ID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Log - group 2", 2508).getInt();
 		ModBlocks.planksErebusID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Planks", 2509).getInt();
@@ -43,22 +43,22 @@ public class ConfigurationHandler {
 		ModBlocks.stairsPinkID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Pink Stairs", 2517).getInt();
 		ModBlocks.stairsScorchedID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Scorched Stairs", 2518).getInt();
 		ModBlocks.hollowLogAcaciaID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Hollow Log", 2519).getInt();
-		
+
 		ModBlocks.erebusGrassID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Erebus Grass", 2520).getInt();
 		ModBlocks.thornsID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Thorns", 2521).getInt();
 		ModBlocks.fernID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Ferns", 2522).getInt();
 		ModBlocks.blockTurnipID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Turnips", 2523).getInt();
-		
+
 		ModBlocks.blockSilkID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Silk", 2524).getInt();
 		ModBlocks.mirBrickID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Mirbrick", 2525).getInt();
 		ModBlocks.petrifiedWoodPlanksID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Petrified Wood Planks", 2526).getInt();
 		ModBlocks.petrifiedWoodStairsID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Petrified Wood Stairs", 2527).getInt();
 		ModBlocks.petrifiedCraftingTableID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Petrified Crafting Table", 2528).getInt();
 		ModBlocks.bambooCrateID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Bamboo Crate", 2529).getInt();
-		
+
 		ModBlocks.spiderSpawnerID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Spider Spawners", 2530).getInt();
 		ModBlocks.caveSpiderSpawnerID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Cave Spider Spawners", 2531).getInt();
-		
+
 		ModBlocks.erebusOreExtraID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Extra Erebus Ores", 2532).getInt();
 		/*
 		 * Items
@@ -81,10 +81,10 @@ public class ConfigurationHandler {
 		ModItems.jadeShovelID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Jade Shovel", 9725).getInt();
 		ModItems.jadePaxelID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Jade Paxel", 9726).getInt();
 		ModItems.jadeHoeID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Jade Hoe", 9727).getInt();
-		ModItems.compoundGogglesID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Compound Goggles", 9730).getInt(); 
+		ModItems.compoundGogglesID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Compound Goggles", 9730).getInt();
 		ModItems.waspSwordID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Wasp Sword", 9731).getInt();
 		ModItems.metalIngotID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Metal Ingots", 9732).getInt();
-		
+
 		/*
 		 * Biomes & misc
 		 */
@@ -95,7 +95,7 @@ public class ConfigurationHandler {
 
 		ErebusMod.erebusDimensionID = config.get(Configuration.CATEGORY_GENERAL, "Dimension ID of The Erebus", 66, "There doesn't appear to be a limit on dimension IDs, but try to keep it low").getInt();
 		ErebusMod.activateExtraOres = config.get(Configuration.CATEGORY_GENERAL, "Should generate copper, lead, silver and tin?", false).getBoolean(false);
-		
+
 		config.save();
 	}
 

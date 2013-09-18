@@ -6,4 +6,3 @@ public class ItemBlockBamboo extends ItemBlockGeneric {
 		super(id, "blockBamboo");
 	}
 }
-

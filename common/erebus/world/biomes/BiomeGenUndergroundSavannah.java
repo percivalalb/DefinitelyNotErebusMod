@@ -18,10 +18,8 @@ import erebus.world.feature.WorldGenRottenAcacia;
 import erebus.world.feature.WorldGenSavannaRock;
 import erebus.world.feature.WorldGenSavannaTree;
 
-public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
-{
-	public BiomeGenUndergroundSavannah(int par1)
-	{
+public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
+	public BiomeGenUndergroundSavannah(int par1) {
 		super(par1);
 		spawnableMonsterList.clear();
 		spawnableCreatureList.clear();
@@ -34,63 +32,53 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
 		spawnableMonsterList.add(new SpawnListEntry(EntityCaveSpider.class, 10, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityTarantula.class, 5, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityWasp.class, 30, 1, 8));
-		this.topBlock = (byte)Block.grass.blockID;
-		this.fillerBlock = (byte)Block.dirt.blockID;
+		this.topBlock = (byte) Block.grass.blockID;
+		this.fillerBlock = (byte) Block.dirt.blockID;
 	}
 
 	@Override
-	public void generateTerrain(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) 
-	{
-		for(int c = 75; c > 0; c--)
-		{
+	public void generateTerrain(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) {
+		for (int c = 75; c > 0; c--) {
 			int j2 = x + rand.nextInt(16);
 			int l3 = rand.nextInt(120);
 			int j5 = z + rand.nextInt(16);
-			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
-			{
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
 				int size = worldObj.rand.nextInt(3);
 				(new WorldGenSavannaTree(size)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
-		
-		if (rand.nextInt(3)==0){
-			for(int yy=75; yy>20; yy--){
-				int xx=x+4+rand.nextInt(8),zz=z+4+rand.nextInt(8);
-				if (worldObj.getBlockId(xx,yy,zz)==0&&worldObj.getBlockId(xx,yy-1,zz)==Block.grass.blockID){
-					new WorldGenSavannaRock().generate(worldObj,rand,xx,yy,zz);
+
+		if (rand.nextInt(3) == 0) {
+			for (int yy = 75; yy > 20; yy--) {
+				int xx = x + 4 + rand.nextInt(8), zz = z + 4 + rand.nextInt(8);
+				if (worldObj.getBlockId(xx, yy, zz) == 0 && worldObj.getBlockId(xx, yy - 1, zz) == Block.grass.blockID) {
+					new WorldGenSavannaRock().generate(worldObj, rand, xx, yy, zz);
 				}
 			}
 		}
 
-		/*for(int c = 0; c < 50; c++)
-        {
-        	int j2 = x + rand.nextInt(16) + 8;
-    		int l3 = rand.nextInt(120);
-        	int j5 = z + rand.nextInt(16) + 8;
-        	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
-        	{
-        		(new WorldGenRottenAcacia()).generate(worldObj, rand, j2, l3, j5);
-        	}
-        }*/
+		/*
+		 * for(int c = 0; c < 50; c++) { int j2 = x + rand.nextInt(16) + 8; int
+		 * l3 = rand.nextInt(120); int j5 = z + rand.nextInt(16) + 8;
+		 * if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3
+		 * - 1, j5) == Block.grass.blockID) { (new
+		 * WorldGenRottenAcacia()).generate(worldObj, rand, j2, l3, j5); } }
+		 */
 
-		for(int c = 0; c < 200; c++)
-		{
+		for (int c = 0; c < 200; c++) {
 			int j2 = x + rand.nextInt(16) + 8;
 			int l3 = rand.nextInt(120);
 			int j5 = z + rand.nextInt(16) + 8;
-			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
-			{
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
 				(new WorldGenTallGrass(ModBlocks.erebusGrass.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 
-		for(int c = 0; c < 50; c++)
-		{
+		for (int c = 0; c < 50; c++) {
 			int j2 = x + rand.nextInt(16) + 8;
 			int l3 = rand.nextInt(120);
 			int j5 = z + rand.nextInt(16) + 8;
-			if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
-			{
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
 				(new WorldGenRottenAcacia()).generate(worldObj, rand, j2, l3, j5);
 			}
 		}

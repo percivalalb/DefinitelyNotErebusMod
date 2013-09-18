@@ -54,18 +54,19 @@ import erebus.tileentity.TileEntityBamboo;
 import erebus.tileentity.TileEntityHollowLog;
 
 public class ClientProxy extends CommonProxy {
-	
+
 	public static Minecraft mc = FMLClientHandler.instance().getClient();
 	public Item item;
 
 	@Override
-	public void registerRenderInformation()  {  
-    
+	public void registerRenderInformation() {
+
 		MinecraftForge.EVENT_BUS.register(new PortalOverlayHandler());
-		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);    
+		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
 		RenderingRegistry.registerEntityRenderingHandler(EntityBeetle.class, new RenderBeetle(new ModelBeetle(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityFly.class, new RenderFly());
-		//RenderingRegistry.registerEntityRenderingHandler(EntityGreenfly.class, new RenderGreenfly(new ModelGreenfly(), 0.5F));
+		// RenderingRegistry.registerEntityRenderingHandler(EntityGreenfly.class,
+		// new RenderGreenfly(new ModelGreenfly(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityTarantula.class, new RenderTarantula(new ModelTarantula(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityMosquito.class, new RenderMosquito(new ModelMosquito(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityVelvetWorm.class, new RenderVelvetWorm(new ModelVelvetWorm(), 0.6F, 1.0F));
@@ -75,11 +76,11 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityBotFly.class, new RenderBotFly(new ModelBotFly(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBlackWidow.class, new RenderBlackWidow(new ModelBlackWidow(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityScorpion.class, new RenderScorpion(new ModelScorpion(), 0.3F));
-		
-		//Special Renderer
+
+		// Special Renderer
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHollowLog.class, new TileEntityRenderHollowLog());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBamboo.class, new TileEntityRenderBamboo());
-		
+
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.hollowLogAcacia.blockID, new HollowLogItemRenderer(TileEntityRenderHollowLog.hollowLogResource));
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooCrate.blockID, new BambooItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.waspSword.itemID, new WaspSwordItemRenderer());

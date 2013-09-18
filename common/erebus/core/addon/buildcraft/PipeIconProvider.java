@@ -9,17 +9,16 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class PipeIconProvider implements IIconProvider {
 
 	public static PipeIconProvider INSTANCE = new PipeIconProvider();
-	
+
 	public enum TYPE {
 
-		PipeItemPetrifiedWoodStandard("pipeItemsPetrified"),
-		PipeAllPetrifiedWoodSolid("pipeAllPetrified_solid");
+		PipeItemPetrifiedWoodStandard("pipeItemsPetrified"), PipeAllPetrifiedWoodSolid("pipeAllPetrified_solid");
 		public static final TYPE[] VALUES = values();
 		private final String iconTag;
 		private final String iconTagColorBlind;
 		private Icon icon;
 
-		private TYPE(String iconTag, String IconTagColorBlind){
+		private TYPE(String iconTag, String IconTagColorBlind) {
 			this.iconTag = iconTag;
 			this.iconTagColorBlind = IconTagColorBlind;
 		}

@@ -10,117 +10,95 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import erebus.ModItems;
 
-public class EntityScorpion extends EntityMob{
+public class EntityScorpion extends EntityMob {
 	protected EntityLiving theEntity;
-	    
-	public EntityScorpion(World par1World)
-	{
-		
+
+	public EntityScorpion(World par1World) {
+
 		super(par1World);
 		this.stepHeight = 0.1F;
 		this.isImmuneToFire = true;
 		this.setSize(2.0F, 2.0F);
 	}
-	
+
 	@Override
-	 protected void entityInit()
-	    {
-	        super.entityInit();
-	    }
-	 
-	 @Override
-	 public void onUpdate()
-	 {
-	     super.onUpdate();
-	      getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D); //Movespeed
-	      getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(30.0D); //Max Health
-	      getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D); //atkDmg
-	      getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); //followRange
-	    }
+	protected void entityInit() {
+		super.entityInit();
+	}
 
-@Override
-public EnumCreatureAttribute getCreatureAttribute()
-{
-	return EnumCreatureAttribute.ARTHROPOD;
-}
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D); // Movespeed
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(30.0D); // Max
+																					// Health
+		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D); // atkDmg
+		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
+	}
 
-@Override
-protected String getLivingSound()
-{
-	return "erebus:scorpionsound";
-}
+	@Override
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return EnumCreatureAttribute.ARTHROPOD;
+	}
 
-@Override
-protected String getHurtSound()
-{
-	return "erebus:scorpionhurt";
-}
+	@Override
+	protected String getLivingSound() {
+		return "erebus:scorpionsound";
+	}
 
-@Override
-protected String getDeathSound()
-{
-	return "erebus:squish";
-}
+	@Override
+	protected String getHurtSound() {
+		return "erebus:scorpionhurt";
+	}
 
-protected void getStepSound(int par1, int par2, int par3, int par4)
-{
-	this.worldObj.playSoundAtEntity(this, "mob.zombie.wood", 0.15F, 1.0F);
-}
+	@Override
+	protected String getDeathSound() {
+		return "erebus:squish";
+	}
 
-@Override
-protected int getDropItemId()
-{	
+	protected void getStepSound(int par1, int par2, int par3, int par4) {
+		this.worldObj.playSoundAtEntity(this, "mob.zombie.wood", 0.15F, 1.0F);
+	}
+
+	@Override
+	protected int getDropItemId() {
 
 		return ModItems.erebusMaterialsID;
 
-}
+	}
 
-@Override
-public boolean isOnLadder()
-{
-  return (this.isCollidedHorizontally);
-}
+	@Override
+	public boolean isOnLadder() {
+		return (this.isCollidedHorizontally);
+	}
 
-@Override
-protected void attackEntity(Entity par1Entity, float par2)
-{
-	super.attackEntity(par1Entity, par2);
-        if (par2 < 1.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY)
-        {
-        	this.attackEntityAsMob(par1Entity);
-        }
-    }
+	@Override
+	protected void attackEntity(Entity par1Entity, float par2) {
+		super.attackEntity(par1Entity, par2);
+		if (par2 < 1.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY) {
+			this.attackEntityAsMob(par1Entity);
+		}
+	}
 
-@Override
-public boolean attackEntityAsMob(Entity par1Entity)
-{	
-	if (super.attackEntityAsMob(par1Entity))	    		
-    {
-        if (par1Entity instanceof EntityLiving)
-        {
-            byte var2 = 0;
-            if (this.worldObj.difficultySetting > 1)
-            {
-                if (this.worldObj.difficultySetting == 2)
-                {
-                    var2 = 7;
-                }
-                else if (this.worldObj.difficultySetting == 3)
-                {
-                    var2 = 15;
-                }
-            }
-            if (var2 > 0)
-            {
-                ((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
-                }
-        }
-        return true; 
-    }
-    else
-    {
-        return false;
-    }
+	@Override
+	public boolean attackEntityAsMob(Entity par1Entity) {
+		if (super.attackEntityAsMob(par1Entity)) {
+			if (par1Entity instanceof EntityLiving) {
+				byte var2 = 0;
+				if (this.worldObj.difficultySetting > 1) {
+					if (this.worldObj.difficultySetting == 2) {
+						var2 = 7;
+					} else if (this.worldObj.difficultySetting == 3) {
+						var2 = 15;
+					}
+				}
+				if (var2 > 0) {
+					((EntityLiving) par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
+				}
+			}
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
-}
-

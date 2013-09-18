@@ -32,11 +32,6 @@ public class WorldGenRottenAcacia extends WorldGenerator
         	par1World.setBlock(par3, par4 + 1, par5, ModBlocks.hollowLogAcacia.blockID);
         	par1World.setBlock(par3, par4 + 1, par5 - 1, ModBlocks.hollowLogAcacia.blockID);
         	
-        	if (par2Random.nextInt(3) == 0)
-        	{
-        		par1World.setBlock(par3, par4 + 1, par5  - 1 + par2Random.nextInt(3), ModBlocks.maggotLogAcacia.blockID);
-        	}
-        	
         	return true;
         }
     }

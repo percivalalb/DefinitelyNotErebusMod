@@ -1,6 +1,7 @@
 package erebus.block;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
@@ -28,7 +29,7 @@ public class BlockPortalErebus extends BlockBreakable {
 	@Override
 	public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity) {
 		Side side = FMLCommonHandler.instance().getEffectiveSide();
-		if (side == Side.SERVER) {
+		if (side == Side.SERVER){
 			if (entity.ridingEntity == null && entity.riddenByEntity == null && entity instanceof EntityPlayerMP) {
 				EntityPlayerMP player = (EntityPlayerMP) entity;
 				ErebusMod.packeterebushandler.getPlayer(player.username).setInPortal();
@@ -195,22 +196,22 @@ public class BlockPortalErebus extends BlockBreakable {
 			// 0.4F + 0.8F);
 		}
 		for (int l = 0; l < 4; l++) {
-			double d = (float) i + random.nextFloat();
-			double d1 = (float) j + random.nextFloat();
-			double d2 = (float) k + random.nextFloat();
+			double d = i + random.nextFloat();
+			double d1 = j + random.nextFloat();
+			double d2 = k + random.nextFloat();
 			double d3 = 0.0D;
 			double d4 = 0.0D;
 			double d5 = 0.0D;
 			int i1 = random.nextInt(2) * 2 - 1;
-			d3 = ((double) random.nextFloat() - 0.5D) * 0.5D;
-			d4 = ((double) random.nextFloat() - 0.5D) * 0.5D;
-			d5 = ((double) random.nextFloat() - 0.5D) * 0.5D;
+			d3 = (random.nextFloat() - 0.5D) * 0.5D;
+			d4 = (random.nextFloat() - 0.5D) * 0.5D;
+			d5 = (random.nextFloat() - 0.5D) * 0.5D;
 			if (world.getBlockId(i - 1, j, k) != blockID && world.getBlockId(i + 1, j, k) != blockID) {
-				d = (double) i + 0.5D + 0.25D * (double) i1;
-				d3 = random.nextFloat() * 2.0F * (float) i1;
+				d = i + 0.5D + 0.25D * i1;
+				d3 = random.nextFloat() * 2.0F * i1;
 			} else {
-				d2 = (double) k + 0.5D + 0.25D * (double) i1;
-				d5 = random.nextFloat() * 2.0F * (float) i1;
+				d2 = k + 0.5D + 0.25D * i1;
+				d5 = random.nextFloat() * 2.0F * i1;
 			}
 			world.spawnParticle("smoke", d, d1, d2, d3 / 4D, d4 / 4D, d5 / 4D);
 		}

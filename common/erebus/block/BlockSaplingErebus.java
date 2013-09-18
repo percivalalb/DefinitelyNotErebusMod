@@ -11,6 +11,8 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -55,11 +57,7 @@ public class BlockSaplingErebus extends BlockSapling {
 
 	@Override
 	public Icon getIcon(int par1, int par2) {
-		return par2 == 0 ? mahoganySapling : (par2 == 1 ? eucalyptusSapling : (par2 == 2 ? acaciaSapling : /**
-		 * 
-		 * ELSE
-		 **/
-		mahoganySapling));
+		return par2 == 0 ? mahoganySapling : (par2 == 1 ? eucalyptusSapling : (par2 == 2 ? acaciaSapling : mahoganySapling));
 	}
 
 	/**
@@ -83,7 +81,7 @@ public class BlockSaplingErebus extends BlockSapling {
 			int size = par1World.rand.nextInt(3);
 			var7 = new WorldGenSavannaTree(size);
 		}
-		if (var6 == 0) {
+		else if (var6 == 0) {
 			for (var8 = 0; var8 >= -1; --var8) {
 				for (var9 = 0; var9 >= -1; --var9) {
 					if (this.isSameSapling(par1World, par2 + var8, par3, par4 + var9, 0) && this.isSameSapling(par1World, par2 + var8 + 1, par3, par4 + var9, 0) && this.isSameSapling(par1World, par2 + var8, par3, par4 + var9 + 1, 0) &&
@@ -162,5 +160,10 @@ public class BlockSaplingErebus extends BlockSapling {
 		this.mahoganySapling = par1IconRegister.registerIcon("erebus:sapling_mahogany");
 		this.eucalyptusSapling = par1IconRegister.registerIcon("erebus:sapling_eucalyptus");
 		this.acaciaSapling = par1IconRegister.registerIcon("erebus:sapling_acacia");
+	}
+	
+	@ForgeSubscribe
+	public void onBonemeal(BonemealEvent e){
+		if (!e.world.isRemote&&e.ID==blockID)growTree(e.world,e.X,e.Y,e.Z,e.world.rand);
 	}
 }

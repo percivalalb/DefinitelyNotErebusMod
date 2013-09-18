@@ -15,7 +15,7 @@ import erebus.core.proxy.CommonProxy;
 public class BlockPetrifiedCraftingTable extends Block {
 
 	@SideOnly(Side.CLIENT)
-	private Icon blockTop, blockFront, blockBottom;
+	private Icon blockTop, blockBottom;
 
 	public BlockPetrifiedCraftingTable(int id) {
 		super(id, Material.rock);
@@ -34,7 +34,7 @@ public class BlockPetrifiedCraftingTable extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int m) {
-		return side == 1 ? blockTop : (side == 0 ? blockBottom : (side != 2 && side != 4 ? blockIcon : blockFront));
+		return side == 1 ? blockTop : side == 0 ? blockBottom : blockIcon;
 	}
 
 	@Override
@@ -42,7 +42,6 @@ public class BlockPetrifiedCraftingTable extends Block {
 	public void registerIcons(IconRegister reg) {
 		blockIcon = reg.registerIcon("erebus:petrifiedCraft_side");
 		blockTop = reg.registerIcon("erebus:petrifiedCraft_top");
-		blockFront = reg.registerIcon("erebus:petrifiedCraft_front");
 		blockBottom = reg.registerIcon("erebus:petrifiedCraft_bottom");
 	}
 }

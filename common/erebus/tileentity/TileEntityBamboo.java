@@ -35,7 +35,7 @@ public class TileEntityBamboo extends TileEntity implements IInventory {
 
     @Override
     public int getSizeInventory() {
-        return 27;
+        return crateContents.length;
     }
 
     @Override

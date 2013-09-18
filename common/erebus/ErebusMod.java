@@ -83,10 +83,8 @@ public class ErebusMod
 		/** Loads the configuration file before anything else **/
 		ConfigurationHandler.loadConfig(event);
 		
-		//Sets up the log helper
 		LogHelper.init();
-		
-		//Adds Erebus blocks & items
+
 		ModBlocks.init();
 		ModItems.init();
 		ModEntities.init();
@@ -98,7 +96,6 @@ public class ErebusMod
 		
 		DimensionManager.registerProviderType(erebusDimensionID, WorldProviderErebus.class, true);
 		DimensionManager.registerDimension(erebusDimensionID, erebusDimensionID);
-		//VillagerRegistry.addExtraVillageComponents(ComponentVillageWatchtower.class, 20, MathHelper.getRandomIntegerInRange(par0Random, 0 + par1, 1 + par1));
 		AddonManager.runFMLPre(ConfigurationHandler.configurationFile);
 	}
 

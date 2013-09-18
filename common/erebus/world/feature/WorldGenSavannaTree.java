@@ -17,12 +17,14 @@ public class WorldGenSavannaTree extends WorldGenerator {
 	@Override
 	public boolean generate(World world, Random rand, int x, int y, int z) {
 		for (int i = 0; i < 6 + extraHeight; i++) {
-			if (world.getBlockId(x, y + i, z) != 0)
+			if (world.getBlockId(x, y + i, z) != 0){
 				return false;
+			}
 		}
 
-		for (int i = 0; i < 6 + extraHeight; i++)
+		for (int i = 0; i < 6 + extraHeight; i++){
 			world.setBlock(x, y + i, z, ModBlocks.logErebusGroup1.blockID, BlockLogErebus.dataAcacia, 2);
+		}
 
 		int leafSizeFactor = world.rand.nextInt(1 + extraHeight), leafSize = 4 + leafSizeFactor;
 		y += 3 + extraHeight;

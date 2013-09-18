@@ -109,6 +109,7 @@ public class ErebusMod {
 		proxy.registerRenderInformation();
 		RecipeHandler.init();
 
+		MinecraftForge.EVENT_BUS.register(ModBlocks.erebusSapling);
 		MinecraftForge.EVENT_BUS.register(ModBlocks.quickSand);
 
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);

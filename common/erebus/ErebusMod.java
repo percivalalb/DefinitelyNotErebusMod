@@ -123,12 +123,3 @@ public class ErebusMod {
 		AddonManager.runRegisteredAddons(ConfigurationHandler.configurationFile);
 	}
 }
-
-/*
- * @ForgeSubscribe public void onUseBonemeal(BonemealEvent event) {
- * MinecraftForge.EVENT_BUS.post(event); if (event.ID ==
- * mod_Erebus.erebusSapling.blockID) { if (!event.world.isRemote) { if
- * ((double)event.world.rand.nextFloat() < 0.45D) {
- * ((BlockSaplingErebus)mod_Erebus.erebusSapling).growTree(event.world, event.X,
- * event.Y, event.Z, event.world.rand); } } } }
- */

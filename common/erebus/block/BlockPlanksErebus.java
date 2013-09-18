@@ -40,9 +40,9 @@ public class BlockPlanksErebus extends Block{
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int id, CreativeTabs creativeTabs, List list){
-		list.add(new ItemStack(id,1,0));
-		list.add(new ItemStack(id,1,1));
-		list.add(new ItemStack(id,1,2));
+		for(int a=0; a<iconArray.length; a++){
+			list.add(new ItemStack(id,1,a));
+		}
 	}
 
 	@Override

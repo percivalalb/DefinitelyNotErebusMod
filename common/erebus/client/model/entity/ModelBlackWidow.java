@@ -504,7 +504,8 @@ public class ModelBlackWidow extends ModelBase
       LegBR1.addChild(LegBR6);
   }
   
-  public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
+  @Override
+public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
   {
 	super.render(par1Entity, par2, par3, par4, par5, par6, par7);
 	setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
@@ -540,7 +541,8 @@ public class ModelBlackWidow extends ModelBase
     model.rotateAngleZ = z;
   }
   
-  public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
+  @Override
+public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
   {
     super.setRotationAngles(par1, par2,  par3,  par4, par5,  par6, par7Entity);
     
@@ -565,7 +567,7 @@ public class ModelBlackWidow extends ModelBase
     float x= 0.7853982F;
     float b= 1.2F;
     float x2= -2.3561946F;
-    float b2= -1.9853982F;
+    //float b2= -1.9853982F; << unnecessary
     
     float movcos1= MathHelper.cos(par1 * 0.7F) * 0.4F * par2;
     float movsin1= MathHelper.sin(par1 * 0.7F) * 0.4F * par2; 
@@ -620,7 +622,7 @@ public class ModelBlackWidow extends ModelBase
     this.LegMFR1.rotateAngleY = 3.317F - movcos1;
     this.LegMFR1.rotateAngleX = 3.317F + movsin1;
     this.LegMFR1.rotateAngleZ = -x - movcos2;
-    this.LegMFR2.rotateAngleZ = x2 - movcos3;;
+    this.LegMFR2.rotateAngleZ = x2 - movcos3;
     this.LegMFR3.rotateAngleZ = 0.2617994F + x2 - movcos3;
     this.LegMFR4.rotateAngleZ = 0.2617994F + x2 - movcos3;
     this.LegMFR5.rotateAngleZ = 0.7853982F + x2 - movcos3;
@@ -629,7 +631,7 @@ public class ModelBlackWidow extends ModelBase
     this.LegMBR1.rotateAngleY = 2.967F + movcos1;
     this.LegMBR1.rotateAngleX = 2.967F - movsin1;
     this.LegMBR1.rotateAngleZ = -x + movcos2;
-    this.LegMBR2.rotateAngleZ =  x2 + movcos3;;
+    this.LegMBR2.rotateAngleZ =  x2 + movcos3;
     this.LegMBR3.rotateAngleZ = 0.2617994F + x2 + movcos3;
     this.LegMBR4.rotateAngleZ = 0.2617994F + x2 + movcos3;
     this.LegMBR5.rotateAngleZ = 0.7853982F + x2 + movcos3;
@@ -638,7 +640,7 @@ public class ModelBlackWidow extends ModelBase
     this.LegBR1.rotateAngleY = 2.443F - movcos1;
     this.LegBR1.rotateAngleX = 2.443F + movsin1;
     this.LegBR1.rotateAngleZ = -b - movcos2;
-    this.LegBR2.rotateAngleZ =  x2 - movcos3;;
+    this.LegBR2.rotateAngleZ =  x2 - movcos3;
     this.LegBR3.rotateAngleZ = 0.2617994F + x2 - movcos3;
     this.LegBR4.rotateAngleZ = 0.2617994F + x2 - movcos3;
     this.LegBR5.rotateAngleZ = 0.7853982F + x2 - movcos3;

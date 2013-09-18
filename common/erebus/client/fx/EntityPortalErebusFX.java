@@ -1,12 +1,10 @@
 package erebus.client.fx;
 
-import java.util.Random;
-
-import cpw.mods.fml.relauncher.SideOnly;
-import cpw.mods.fml.relauncher.Side;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class EntityPortalErebusFX extends EntityFX
@@ -22,7 +20,8 @@ public class EntityPortalErebusFX extends EntityFX
      field_4086_p = posX = d;
      field_4085_q = posY = d1;
      field_4084_r = posZ = d2;
-     float f = rand.nextFloat() * 0.6F + 0.4F;
+     //float f = rand.nextFloat() * 0.6F + 0.4F;
+     rand.nextFloat();
      field_4083_a = particleScale = rand.nextFloat() * 0.2F + 0.5F;
      particleRed = 1.0F;
      particleBlue = 1.0F;
@@ -32,7 +31,8 @@ public class EntityPortalErebusFX extends EntityFX
      setParticleTextureIndex((int)(Math.random() * 8D));
  }
 
- public void renderParticle(Tessellator tessellator, float f, float f1, float f2, float f3, float f4, float f5)
+ @Override
+public void renderParticle(Tessellator tessellator, float f, float f1, float f2, float f3, float f4, float f5)
  {
      float f6 = ((float)particleAge + f) / (float)particleMaxAge;
      f6 = 1.0F - f6;
@@ -42,7 +42,8 @@ public class EntityPortalErebusFX extends EntityFX
      super.renderParticle(tessellator, f, f1, f2, f3, f4, f5);
  }
 
- public float getBrightness(float par1)
+ @Override
+public float getBrightness(float par1)
  {
      float var2 = super.getBrightness(par1);
      float var3 = (float)this.particleAge / (float)this.particleMaxAge;
@@ -50,7 +51,8 @@ public class EntityPortalErebusFX extends EntityFX
      return var2 * (1.0F - var3) + var3;
  }
 
- public void onUpdate()
+ @Override
+public void onUpdate()
  {
      prevPosX = posX;
      prevPosY = posY;

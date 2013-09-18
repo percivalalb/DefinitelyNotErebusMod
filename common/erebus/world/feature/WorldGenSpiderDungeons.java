@@ -5,7 +5,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntityChest;
-import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import erebus.ModBlocks;
@@ -16,16 +15,6 @@ import erebus.world.loot.WeightedLootList;
 
 public class WorldGenSpiderDungeons extends WorldGenerator
 {
-	/*public static final WeightedRandomChestContent[] field_111189_a = new WeightedRandomChestContent[] {
-		new WeightedRandomChestContent(Item.goldNugget.itemID, 0, 4, 9, 10), 
-		new WeightedRandomChestContent(Item.ingotIron.itemID, 0, 1, 2, 10),
-		new WeightedRandomChestContent(Item.bone.itemID, 0, 1, 1, 10), 
-		new WeightedRandomChestContent(Item.ingotGold.itemID, 0, 1, 2, 10), 
-		new WeightedRandomChestContent(ModItems.erebusMaterials.itemID, 0, 3, 8, 10), //Exo-plate
-		new WeightedRandomChestContent(Item.redstone.itemID, 0, 1, 4, 10), 
-		new WeightedRandomChestContent(ModItems.erebusMaterials.itemID, 6, 1, 5, 10), //Fly Wing
-		new WeightedRandomChestContent(Item.arrow.itemID, 0, 1, 5, 10)};
-	*/
 	public static final WeightedLootList chestLoot = new WeightedLootList(
 		new LootItemStack(Item.goldNugget).setAmount(4,9).setWeight(10),
 		new LootItemStack(Item.ingotIron).setAmount(1,2).setWeight(10),
@@ -37,6 +26,7 @@ public class WorldGenSpiderDungeons extends WorldGenerator
 		new LootItemStack(ModItems.erebusMaterials).setAmount(1,5).setDamage(6).setWeight(10)  // Fly Wing
 	);
 
+	@Override
 	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
 	{
 		byte b0 = 3;
@@ -154,7 +144,6 @@ public class WorldGenSpiderDungeons extends WorldGenerator
 
 								if (tileentitychest != null)
 								{
-									//WeightedRandomChestContent.generateChestContents(par2Random, field_111189_a, tileentitychest, field_111189_a.length);
 									LootUtil.generateLoot(tileentitychest,par2Random,chestLoot,1,8);
 								}
 

@@ -1,35 +1,24 @@
 package erebus.world.biomes;
 
-import java.util.List;
 import java.util.Random;
-
-import erebus.ErebusMod;
-import erebus.ModBlocks;
-import erebus.entity.*;
-import erebus.world.*;
-import erebus.world.feature.WorldGenAmber;
-import erebus.world.feature.WorldGenBigMushroomErebus;
-import erebus.world.feature.WorldGenErebusHugeTree;
-import erebus.world.feature.WorldGenErebusMinable;
-import erebus.world.feature.WorldGenErebusTrees;
-import erebus.world.feature.WorldGenRedGem1;
-import erebus.world.feature.WorldGenRedGem2;
-import erebus.world.feature.WorldGenMelonErebus;
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
-import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.biome.SpawnListEntry;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.feature.WorldGenBigMushroom;
-import net.minecraft.world.gen.feature.WorldGenDesertWells;
 import net.minecraft.world.gen.feature.WorldGenFlowers;
-import net.minecraft.world.gen.feature.WorldGenHugeTrees;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraft.world.gen.feature.WorldGenTallGrass;
-import net.minecraft.world.gen.feature.WorldGenTrees;
+import erebus.ModBlocks;
+import erebus.entity.EntityBeetle;
+import erebus.entity.EntityBeetleLarva;
+import erebus.entity.EntityFly;
+import erebus.entity.EntityTarantula;
+import erebus.world.feature.WorldGenAmber;
+import erebus.world.feature.WorldGenBigMushroomErebus;
+import erebus.world.feature.WorldGenErebusMinable;
+import erebus.world.feature.WorldGenRedGem1;
+import erebus.world.feature.WorldGenRedGem2;
 
 public class BiomeGenCavern extends BiomeGenBaseErebus
 {
@@ -50,7 +39,8 @@ public class BiomeGenCavern extends BiomeGenBaseErebus
         this.fillerBlock = (byte)ModBlocks.umberstone.blockID;
     }
     
-    public void decorate(World worldObj, Random rand, int x, int z)
+    @Override
+	public void decorate(World worldObj, Random rand, int x, int z)
     {
     	{
     		/**Generating jungle vines**/

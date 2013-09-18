@@ -41,17 +41,6 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
 	@Override
 	public void generateTerrain(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) 
 	{
-		/*for(int c = 20; c > 0; c--)
-		{
-			int posX = x + rand.nextInt(16);
-			int posY = rand.nextInt(120);
-			int posZ = z + rand.nextInt(16);
-			if(worldObj.getBlockId(posX, posY, posZ) == 0 && worldObj.getBlockId(posX, posY - 1, posZ) == Block.grass.blockID)
-			{
-				(new WorldGenRock(Block.cobblestone.blockID, worldObj.rand.nextDouble() * 3 + 4)).generate(worldObj, worldObj.rand, posX, posY - 4, posZ);
-			}
-		}*/
-
 		for(int c = 75; c > 0; c--)
 		{
 			int j2 = x + rand.nextInt(16);
@@ -81,17 +70,6 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus
         	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
         	{
         		(new WorldGenRottenAcacia()).generate(worldObj, rand, j2, l3, j5);
-        	}
-        }*/
-
-		/*for(int c = 0; c < 30; c++)
-        {
-        	int j2 = x + rand.nextInt(16) + 8;
-    		int l3 = rand.nextInt(120);
-        	int j5 = z + rand.nextInt(16) + 8;
-        	if(worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
-        	{
-        		(new WorldGenScree()).generate(worldObj, rand, j2, l3, j5);
         	}
         }*/
 

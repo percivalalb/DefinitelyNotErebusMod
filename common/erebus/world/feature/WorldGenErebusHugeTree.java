@@ -1,13 +1,11 @@
 package erebus.world.feature;
 
 import java.util.Random;
-
-import erebus.ErebusMod;
-import erebus.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import erebus.ModBlocks;
 
 public class WorldGenErebusHugeTree extends WorldGenerator
 {
@@ -40,7 +38,8 @@ public class WorldGenErebusHugeTree extends WorldGenerator
         this.leavesID = par7;
     }
 
-    public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
+    @Override
+	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
     {
         int var6 = par2Random.nextInt(3) + this.baseHeight;
         boolean var7 = true;

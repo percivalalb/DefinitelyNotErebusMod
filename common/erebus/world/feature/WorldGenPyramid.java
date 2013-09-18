@@ -8,7 +8,8 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenPyramid extends WorldGenerator
 {
-    public boolean generate(World par1World, Random par2Random, int par3, int par6, int par5)
+    @Override
+	public boolean generate(World par1World, Random par2Random, int par3, int par6, int par5)
     {
 		for(int h = 10; h > 0; h--)
 		{

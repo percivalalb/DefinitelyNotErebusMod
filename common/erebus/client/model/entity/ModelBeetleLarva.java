@@ -1,11 +1,8 @@
 package erebus.client.model.entity;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.MathHelper;
 
 public class ModelBeetleLarva extends ModelBase
@@ -159,7 +156,8 @@ public class ModelBeetleLarva extends ModelBase
       setRotation(sensorright, -0.7063936F, 0.1487195F, 0F);
 	  }
   
-  public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
+  @Override
+public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
   {
 	super.render(par1Entity, par2, par3, par4, par5, par6, par7);
 	setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
@@ -196,7 +194,8 @@ public class ModelBeetleLarva extends ModelBase
     model.rotateAngleZ = z;
   }
   
-  public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
+  @Override
+public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
   {
 	  	float ba = MathHelper.cos(par1 * 1.0F) * 1.5F * par2;
 	  	float bb = MathHelper.cos(par1 + 1.0F * 1.0F) * 2.25F * par2;

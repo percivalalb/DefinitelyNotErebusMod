@@ -1,14 +1,11 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
-import erebus.ErebusMod;
-import erebus.ModBlocks;
-import erebus.world.feature.WorldGenErebusMinable;
-
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
+import erebus.ModBlocks;
+import erebus.world.feature.WorldGenErebusMinable;
 
 public abstract class BiomeGenBaseErebus extends BiomeGenBase
 {

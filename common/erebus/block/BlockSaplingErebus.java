@@ -1,34 +1,24 @@
 package erebus.block;
 
-import erebus.core.proxy.CommonProxy;
-import erebus.ErebusMod;
-import erebus.ModBlocks;
-import erebus.world.feature.WorldGenErebusHugeTree;
-import erebus.world.feature.WorldGenErebusTrees;
-import erebus.world.feature.WorldGenEucalyptus;
-import erebus.world.feature.WorldGenSavannaTree;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
-
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFlower;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenBigTree;
-import net.minecraft.world.gen.feature.WorldGenForest;
-import net.minecraft.world.gen.feature.WorldGenHugeTrees;
-import net.minecraft.world.gen.feature.WorldGenTaiga2;
-import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
-
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ModBlocks;
+import erebus.world.feature.WorldGenErebusHugeTree;
+import erebus.world.feature.WorldGenErebusTrees;
+import erebus.world.feature.WorldGenEucalyptus;
+import erebus.world.feature.WorldGenSavannaTree;
 
 public class BlockSaplingErebus extends BlockSapling
 {
@@ -53,7 +43,8 @@ public class BlockSaplingErebus extends BlockSapling
     /**
      * Ticks the block if it's been scheduled
      */
-    public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
+    @Override
+	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
     {
         if (!par1World.isRemote)
         {
@@ -61,8 +52,6 @@ public class BlockSaplingErebus extends BlockSapling
 
             //if (par1World.getBlockLightValue(par2, par3 + 1, par4) >= 9 && par5Random.nextInt(7) == 0)
             {
-                int var6 = par1World.getBlockMetadata(par2, par3, par4);
-
                 this.growTree(par1World, par2, par3, par4, par5Random);
             }
         }
@@ -77,7 +66,8 @@ public class BlockSaplingErebus extends BlockSapling
     /**
      * Attempts to grow a sapling into a tree
      */
-    public void growTree(World par1World, int par2, int par3, int par4, Random par5Random)
+    @Override
+	public void growTree(World par1World, int par2, int par3, int par4, Random par5Random)
     {
         if (!TerrainGen.saplingGrowTree(par1World, par5Random, par2, par3, par4)) return;
 
@@ -158,7 +148,8 @@ public class BlockSaplingErebus extends BlockSapling
     /**
      * Determines if the same sapling is present at the given location.
      */
-    public boolean isSameSapling(World par1World, int par2, int par3, int par4, int par5)
+    @Override
+	public boolean isSameSapling(World par1World, int par2, int par3, int par4, int par5)
     {
         return par1World.getBlockId(par2, par3, par4) == this.blockID && (par1World.getBlockMetadata(par2, par3, par4) & 3) == par5;
     }
@@ -166,12 +157,14 @@ public class BlockSaplingErebus extends BlockSapling
     /**
      * Determines the damage on the item the block drops. Used in cloth and wood.
      */
-    public int damageDropped(int par1)
+    @Override
+	public int damageDropped(int par1)
     {
         return par1;
     }
 
-    @SideOnly(Side.CLIENT)
+    @Override
+	@SideOnly(Side.CLIENT)
 
     /**
      * returns a list of blocks with the same ID, but different meta (eg: wood returns 4 blocks)
@@ -184,7 +177,8 @@ public class BlockSaplingErebus extends BlockSapling
         /*par3List.add(new ItemStack(par1, 1, 3));*/ 
     }
     
-    public void registerIcons(IconRegister par1IconRegister) {
+    @Override
+	public void registerIcons(IconRegister par1IconRegister) {
         this.mahoganySapling = par1IconRegister.registerIcon("erebus:sapling_mahogany");
         this.eucalyptusSapling = par1IconRegister.registerIcon("erebus:sapling_eucalyptus");
         this.acaciaSapling = par1IconRegister.registerIcon("erebus:sapling_acacia");

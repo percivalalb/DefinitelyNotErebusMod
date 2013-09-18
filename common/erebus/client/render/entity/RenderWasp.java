@@ -29,16 +29,19 @@ public class RenderWasp extends RenderLiving
         super.doRenderLiving(par1EntityWasp, par2, par4, par6, par8, par9);
     }
 
-    public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+    @Override
+	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
     {
         this.renderWasp((EntityWasp)par1EntityLiving, par2, par4, par6, par8, par9);
     }
 
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+    @Override
+	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
     {
         this.renderWasp((EntityWasp)par1Entity, par2, par4, par6, par8, par9);
     }
     
+	@Override
 	protected void preRenderCallback(EntityLivingBase entityliving, float f)
 	{
 		scaleWasp((EntityWasp) entityliving, f);

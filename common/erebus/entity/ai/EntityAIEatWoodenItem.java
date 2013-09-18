@@ -52,6 +52,7 @@ public boolean shouldExecute()
 /**
 * Execute a one shot task or start executing a continuous task
 */
+@Override
 public void startExecuting()
 { 
 	super.startExecuting();
@@ -59,6 +60,7 @@ public void startExecuting()
 /**
 * Returns whether an in-progress EntityAIBase should continue executing
 */
+	@Override
 	public boolean continueExecuting()
 	{
 		int x = this.theEntity.worldObj.getBlockId(WoodX, WoodY, WoodZ);

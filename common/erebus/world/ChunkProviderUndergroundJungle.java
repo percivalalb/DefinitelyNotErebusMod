@@ -171,8 +171,8 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
         {
             for (int j = 0; j < 16; j++)
             {
-                boolean flag = slowsandNoise[i + j * 16] + 10 > 0.0D;
-                boolean flag1 = gravelNoise[i + j * 16] + 10 > 0.0D;
+                //boolean flag = slowsandNoise[i + j * 16] + 10 > 0.0D;
+                //boolean flag1 = gravelNoise[i + j * 16] + 10 > 0.0D;
                 int k = (int)(stoneExclusivityNoise[i + j * 16] / 3D + 3D + hellRNG.nextDouble() * 0.25D);
                 int l = -1;
                 byte byte1 = (byte)ModBlocks.umberstone.blockID;
@@ -425,7 +425,8 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
     /**
      * Checks to see if a chunk exists at x, y
      */
-    public boolean chunkExists(int par1, int par2)
+    @Override
+	public boolean chunkExists(int par1, int par2)
     {
         return true;
     }
@@ -433,7 +434,8 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
     /**
      * Populates chunk with ores etc etc
      */
-    public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
+    @Override
+	public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
     {
         BlockSand.fallInstantly = true;
         //this.genSpiderTunnels.generateStructuresInChunk(this.worldObj, this.hellRNG, par2, par3);
@@ -477,7 +479,8 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
      * Two modes of operation: if passed true, save all Chunks in one go.  If passed false, save up to two chunks.
      * Return true if all chunks have been saved.
      */
-    public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)
+    @Override
+	public boolean saveChunks(boolean par1, IProgressUpdate par2IProgressUpdate)
     {
         return true;
     }
@@ -494,7 +497,8 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
     /**
      * Returns if the IChunkProvider supports saving.
      */
-    public boolean canSave()
+    @Override
+	public boolean canSave()
     {
         return true;
     }
@@ -502,7 +506,8 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
     /**
      * Converts the instance data to a readable string.
      */
-    public String makeString()
+    @Override
+	public String makeString()
     {
         return "HellRandomLevelSource";
     }
@@ -510,7 +515,8 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
     /**
      * Returns a list of creatures of the specified type that can spawn at the given location.
      */
-    public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4)
+    @Override
+	public List getPossibleCreatures(EnumCreatureType par1EnumCreatureType, int par2, int par3, int par4)
     {
         /*if (par1EnumCreatureType == EnumCreatureType.monster && this.genSpiderTunnels.hasStructureAt(par2, par3, par4))
         {
@@ -526,7 +532,8 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
     /**
      * Returns the location of the closest structure of the specified type. If not found returns null.
      */
-    public ChunkPosition findClosestStructure(World par1World, String par2Str, int par3, int i, int j)
+    @Override
+	public ChunkPosition findClosestStructure(World par1World, String par2Str, int par3, int i, int j)
     {
         return null;
     }
@@ -543,15 +550,18 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
     }
 
     /**Testing stuff**/
-    private double[] noiseArray;
+    //private double[] noiseArray;
     private double[] stoneNoise = new double[256];
     /** A NoiseGeneratorOctaves used in generating terrain */
-    private NoiseGeneratorOctaves noiseGen1;
+    @SuppressWarnings("unused")
+	private NoiseGeneratorOctaves noiseGen1;
 
     /** A NoiseGeneratorOctaves used in generating terrain */
+    @SuppressWarnings("unused")
     private NoiseGeneratorOctaves noiseGen2;
 
     /** A NoiseGeneratorOctaves used in generating terrain */
+    @SuppressWarnings("unused")
     private NoiseGeneratorOctaves noiseGen3;
 
     /** A NoiseGeneratorOctaves used in generating terrain */

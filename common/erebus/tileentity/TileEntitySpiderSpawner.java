@@ -77,7 +77,8 @@ public class TileEntitySpiderSpawner extends TileEntity
      * Allows the entity to update its state. Overridden in most subclasses, e.g. the mob spawner uses this to count
      * ticks and creates a new spawn inside its implementation.
      */
-    public void updateEntity()
+    @Override
+	public void updateEntity()
     {
         if (this.anyPlayerInRange())
         {
@@ -213,7 +214,8 @@ public class TileEntitySpiderSpawner extends TileEntity
     /**
      * Reads a tile entity from NBT.
      */
-    public void readFromNBT(NBTTagCompound par1NBTTagCompound)
+    @Override
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
         this.mobID = par1NBTTagCompound.getString("EntityId");
@@ -270,7 +272,8 @@ public class TileEntitySpiderSpawner extends TileEntity
     /**
      * Writes a tile entity to NBT.
      */
-    public void writeToNBT(NBTTagCompound par1NBTTagCompound)
+    @Override
+	public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setString("EntityId", this.func_92015_a());
@@ -330,7 +333,8 @@ public class TileEntitySpiderSpawner extends TileEntity
     /**
      * Overriden in a sign to provide the text.
      */
-    public Packet getDescriptionPacket()
+    @Override
+	public Packet getDescriptionPacket()
     {
         NBTTagCompound var1 = new NBTTagCompound();
         this.writeToNBT(var1);
@@ -342,7 +346,8 @@ public class TileEntitySpiderSpawner extends TileEntity
      * Called when a client event is received with the event number and argument, see World.sendClientEvent
      * @return 
      */
-    public boolean receiveClientEvent(int par1, int par2)
+    @Override
+	public boolean receiveClientEvent(int par1, int par2)
     {
         if (par1 == 1 && this.worldObj.isRemote)
         {

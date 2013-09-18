@@ -11,10 +11,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
 import erebus.ModBiomes;
-import erebus.world.biomes.BiomeGenBaseErebus;
-import erebus.world.biomes.BiomeGenCavern;
-import erebus.world.biomes.BiomeGenUndergroundDesert;
-import erebus.world.biomes.BiomeGenUndergroundSavannah;
 
 public class WorldProviderErebus extends WorldProvider {
 	

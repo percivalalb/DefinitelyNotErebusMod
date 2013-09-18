@@ -70,6 +70,11 @@ tile.petrifiedWoodOre.name=Petrified Wood Ore
 tile.petrifiedWoodPlanks.name=Petrified Wood Planks
 tile.petrifiedWoodStairs.name=Petrified Wood Stairs
 tile.petrifiedCraftingTable.name=Petrified Crafting Table
+erebusOreExtra_item_0.name=Aluminium Ore
+erebusOreExtra_item_1.name=Copper Ore
+erebusOreExtra_item_2.name=Lead Ore
+erebusOreExtra_item_3.name=Silver Ore
+erebusOreExtra_item_4.name=Tin Ore
 
 
 #Items
@@ -109,11 +114,10 @@ item.erebusFood.5.name=Crispy Tarantula Paw
 item.bamBucket.0.name=Bambucket
 item.bamBucket.1.name=Water Bambucket
 item.waspSword.name=Wasp Sword
-item.metalIngot0.name=Aluminium Ingot
-item.metalIngot1.name=Copper Ingot
-item.metalIngot2.name=Lead Ingot
-item.metalIngot3.name=Silver Ingot
-item.metalIngot4.name=Tin Ingot
+item.metalIngot0.name=Copper Ingot
+item.metalIngot1.name=Lead Ingot
+item.metalIngot2.name=Silver Ingot
+item.metalIngot3.name=Tin Ingot
 
 #Entities
 entity.BeetleLarva - Erebus.name=Beetle Larva

@@ -61,7 +61,8 @@ public class ErebusMod
 	public static CreativeTabs tabErebusGear = new CreativeTabErebusGear(CreativeTabs.getNextID(), "erebus.gear");
 
 	public static int erebusDimensionID;
-
+	public static boolean activateExtraOres = false;
+	
 	public static ConnectionTeleportHandler packeterebushandler = new ConnectionTeleportHandler();
 	
 	// This method is used to add sounds

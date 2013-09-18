@@ -59,6 +59,7 @@ public class ConfigurationHandler {
 		ModBlocks.spiderSpawnerID = config.get(config.CATEGORY_BLOCK, "Block ID of Spider Spawners", 2530).getInt();
 		ModBlocks.caveSpiderSpawnerID = config.get(config.CATEGORY_BLOCK, "Block ID of Cave Spider Spawners", 2531).getInt();
 		
+		ModBlocks.erebusOreExtraID = config.get(config.CATEGORY_BLOCK, "Block ID of Extra Erebus Ores", 2532).getInt();
 		/*
 		 * Items
 		 */
@@ -93,6 +94,7 @@ public class ConfigurationHandler {
 		ModBiomes.cavernID = config.get(config.CATEGORY_GENERAL, "Biome ID of Cavern", 154, "Biome IDs must be below 256").getInt();
 
 		ErebusMod.erebusDimensionID = config.get(config.CATEGORY_GENERAL, "Dimension ID of The Erebus", 66, "There doesn't appear to be a limit on dimension IDs, but try to keep it low").getInt();
+		ErebusMod.activateExtraOres = config.get(config.CATEGORY_GENERAL, "Should generate copper, lead, silver and tin?", false).getBoolean(false);
 		
 		config.save();
 	}

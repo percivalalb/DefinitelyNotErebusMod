@@ -13,7 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemMetalIngots extends Item {
 
 	@SideOnly(Side.CLIENT)
-	private Icon[] icons = new Icon[5];
+	private Icon[] icons = new Icon[4];
 	
 	public ItemMetalIngots(int id) {
 		super(id);

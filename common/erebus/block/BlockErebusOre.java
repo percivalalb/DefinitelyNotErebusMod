@@ -26,11 +26,14 @@ import net.minecraft.world.World;
 public class BlockErebusOre extends Block {
  
 	/** The icon path, not including "erebus:" as it is joined when registering icon **/
-	public static final String[] iconPaths = new String[] {"oreCoalU", "oreIronU", "oreGoldU", "oreLapisU", "oreDiamondU", "oreEmeraldU", "oreJadeU", "petrifiedWoodore"};
-	public static final Icon[] icons = new Icon[iconPaths.length];
+	protected String[] iconPaths;
+	@SideOnly(Side.CLIENT)
+	protected Icon[] icons;
 	
     public BlockErebusOre(int id) {
         super(id, Material.rock);
+        iconPaths = new String[] {"oreCoalU", "oreIronU", "oreGoldU", "oreLapisU", "oreDiamondU", "oreEmeraldU", "oreJadeU", "petrifiedWoodore"};
+        icons = new Icon[iconPaths.length];
     }
     
     @Override

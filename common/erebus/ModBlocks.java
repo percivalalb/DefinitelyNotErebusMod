@@ -9,6 +9,7 @@ import erebus.block.BlockBambooCrate;
 import erebus.block.BlockCaveSpiderSpawner;
 import erebus.block.BlockErebusGrass;
 import erebus.block.BlockErebusOre;
+import erebus.block.BlockErebusOreExtras;
 import erebus.block.BlockFern;
 import erebus.block.BlockHollowLog;
 import erebus.block.BlockLeavesErebus;
@@ -29,6 +30,7 @@ import erebus.block.BlockTurnip;
 import erebus.block.BlockUmberstone;
 import erebus.item.block.ItemBlockAmber;
 import erebus.item.block.ItemBlockBamboo;
+import erebus.item.block.ItemBlockErebusOreExtras;
 import erebus.item.block.ItemBlockLeavesErebus;
 import erebus.item.block.ItemBlockLogErebus1;
 import erebus.item.block.ItemBlockLogErebus2;
@@ -58,6 +60,7 @@ public class ModBlocks {
 	public static Block redGem;       					public static int redGemID;
 	public static Block blockAmber;      				public static int blockAmberID;
 	public static Block quickSand;      				public static int quickSandID;
+	public static Block erebusOreExtra;      			public static int erebusOreExtraID;
 	 
 	// WOOD
 	public static Block logErebusGroup1;            	public static int logErebusGroup1ID;
@@ -103,6 +106,7 @@ public class ModBlocks {
 		redGem = new BlockRedGem(redGemID).setHardness(0.3F).setLightValue(1F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("redGem");
 		blockAmber = new BlockAmber(blockAmberID).setHardness(1.5F).setResistance(10.0F).setLightOpacity(3).setStepSound(Block.soundGlassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("blockAmber");
 		quickSand = new BlockQuickSand(quickSandID).setHardness(28F).setStepSound(Block.soundSandFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("quickSand").setTextureName("erebus:quickSand");
+		erebusOreExtra = new BlockErebusOreExtras(erebusOreExtraID).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusOreExtras");
 		
 		logErebusGroup1 = new BlockLogErebus(logErebusGroup1ID, 0).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("logErebus1");
 		logErebusGroup2 = new BlockLogErebus(logErebusGroup2ID, 1).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("logErebus2");
@@ -144,6 +148,8 @@ public class ModBlocks {
 		GameRegistry.registerBlock(redGem, ItemBlockRedGem.class, "erebus.redGem");
 		GameRegistry.registerBlock(blockAmber, ItemBlockAmber.class, "erebus.blockAmber");		  
 		GameRegistry.registerBlock(quickSand, "erebus.quickSand");
+		if(ErebusMod.activateExtraOres)
+			GameRegistry.registerBlock(erebusOreExtra, ItemBlockErebusOreExtras.class, "erebus.erebusOreExtras");
 		
 		GameRegistry.registerBlock(logErebusGroup1, ItemBlockLogErebus1.class, "erebus.logErebus1");
 		GameRegistry.registerBlock(logErebusGroup2, ItemBlockLogErebus2.class, "erebus.logErebus2");
@@ -188,6 +194,13 @@ public class ModBlocks {
 		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 6, "pickaxe", 2);
 		MinecraftForge.setBlockHarvestLevel(quickSand, "shovel", 2);
 		
+		if(ErebusMod.activateExtraOres) {
+			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 0, "pickaxe", 1);
+			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 1, "pickaxe", 1);
+			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 2, "pickaxe", 2);
+			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 3, "pickaxe", 2);
+			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 4, "pickaxe", 1);
+		}
 		
 		// Tile entities
 		GameRegistry.registerTileEntity(TileEntitySpiderSpawner.class, "Spider Spawner (Erebus)");

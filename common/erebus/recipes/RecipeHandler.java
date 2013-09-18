@@ -5,6 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.registry.GameRegistry;
+import erebus.ErebusMod;
 import erebus.ModBlocks;
 import erebus.ModItems;
 import erebus.block.BlockLogErebus;
@@ -97,5 +98,17 @@ public class RecipeHandler {
 		OreDictionary.registerOre("oreDiamond", new ItemStack(ModBlocks.umberOreBlock, 1, 4));
 		OreDictionary.registerOre("oreEmerald", new ItemStack(ModBlocks.umberOreBlock, 1, 5));
 		OreDictionary.registerOre("craftingtable", new ItemStack(ModBlocks.petrifiedCraftingTable));
+		
+		OreDictionary.registerOre("ingotCopper", new ItemStack(ModItems.metalIngot,1,0));
+		OreDictionary.registerOre("ingotLead", new ItemStack(ModItems.metalIngot,1,1));
+		OreDictionary.registerOre("ingotSilver", new ItemStack(ModItems.metalIngot,1,2));
+		OreDictionary.registerOre("ingotTin", new ItemStack(ModItems.metalIngot,1,3));
+		
+		if(ErebusMod.activateExtraOres) {
+			OreDictionary.registerOre("ingotCopper", new ItemStack(ModItems.metalIngot,1,0));
+			OreDictionary.registerOre("ingotLead", new ItemStack(ModItems.metalIngot,1,1));
+			OreDictionary.registerOre("ingotSilver", new ItemStack(ModItems.metalIngot,1,2));
+			OreDictionary.registerOre("ingotTin", new ItemStack(ModItems.metalIngot,1,3));
+		}
 	}
 }

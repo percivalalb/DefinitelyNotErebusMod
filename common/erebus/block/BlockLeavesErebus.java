@@ -5,17 +5,12 @@ import java.util.List;
 import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
-import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.IShearable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
@@ -30,7 +25,8 @@ public class BlockLeavesErebus extends BlockLeaves{
 	
 	private Icon[] iconArray;
 	private int[] adjacentTreeBlocks;
-	private int saplingMeta;
+	@SuppressWarnings("unused")
+	private int saplingMeta; // TODO finish saplings
 
 	public BlockLeavesErebus(int id, int saplingMeta){
 		super(id);
@@ -134,8 +130,9 @@ public class BlockLeavesErebus extends BlockLeaves{
 
 				l1=adjacentTreeBlocks[k1*j1+k1*b1+k1];
 
-				if (l1>=0);//world.setBlockMetadataWithNotify(x,y,z,meta&-9,4);
-				else removeLeaves(world,x,y,z);
+				/*if (l1>=0)world.setBlockMetadataWithNotify(x,y,z,meta&-9,4);
+				else removeLeaves(world,x,y,z);*/
+				if (l1<0)removeLeaves(world,x,y,z);
 			}
 		}
 	}
@@ -219,7 +216,7 @@ public class BlockLeavesErebus extends BlockLeaves{
 
 	@Override
 	public void beginLeavesDecay(World world, int x, int y, int z){
-		int meta=world.getBlockMetadata(x,y,z);
+		//int meta=world.getBlockMetadata(x,y,z);
 		//if (meta<8)world.setBlockMetadataWithNotify(x,y,z,world.getBlockMetadata(x,y,z)+8,4);
 	}
 }

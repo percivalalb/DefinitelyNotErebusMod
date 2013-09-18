@@ -1,7 +1,6 @@
 package erebus.entity;
 
 import java.util.Calendar;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityAmbientCreature;
@@ -12,7 +11,6 @@ import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import erebus.ErebusMod;
 import erebus.ModItems;
 import erebus.client.render.entity.AnimationMathHelper;
 
@@ -33,7 +31,8 @@ public class EntityFly extends EntityAmbientCreature
         this.setIsFlyHanging(false);
     }
 
-    protected void entityInit()
+    @Override
+	protected void entityInit()
     {
         super.entityInit();
         this.dataWatcher.addObject(16, new Byte((byte)0));

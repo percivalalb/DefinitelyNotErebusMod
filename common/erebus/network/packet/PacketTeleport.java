@@ -1,19 +1,12 @@
 package erebus.network.packet;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-
-import com.google.common.io.ByteArrayDataInput;
-import com.google.common.io.ByteStreams;
-
-import erebus.core.teleport.TeleportClient;
-import erebus.network.IPacket;
-
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+import com.google.common.io.ByteArrayDataInput;
+import erebus.core.teleport.TeleportClient;
+import erebus.network.IPacket;
 
 /**
  * @author ProPercivalalb

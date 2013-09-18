@@ -1,12 +1,10 @@
 package erebus.core.teleport;
 
 import java.util.Random;
-
-import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.src.*;
+import cpw.mods.fml.client.FMLClientHandler;
 
 public class TeleportClient 
 {

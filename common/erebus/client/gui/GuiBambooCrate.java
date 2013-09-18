@@ -1,15 +1,12 @@
 package erebus.client.gui;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.ContainerChest;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.inventory.ContainerBambooCrate;
 import erebus.tileentity.TileEntityBamboo;
 
@@ -17,12 +14,10 @@ import erebus.tileentity.TileEntityBamboo;
 public class GuiBambooCrate extends GuiContainer {
    
 	private static final ResourceLocation GUI_BAMBOO_CRATE = new ResourceLocation("erebus:textures/gui/bambooCrate.png");
-	private InventoryPlayer playerInventory; 
 	private TileEntityBamboo bambooCrateInventory;
 
     public GuiBambooCrate(InventoryPlayer par1InventoryPlayer, TileEntityBamboo par2TileEntityBambooCrate) {
         super(new ContainerBambooCrate(par1InventoryPlayer, par2TileEntityBambooCrate));
-        this.playerInventory = par1InventoryPlayer;
         this.bambooCrateInventory = par2TileEntityBambooCrate;
         this.allowUserInput = false;
         this.ySize = 168;

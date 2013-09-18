@@ -26,7 +26,8 @@ public abstract class EntityUndergroundAnimal extends EntityCreature implements 
      * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
      * use this to react to sunlight and start to burn.
      */
-    public void onLivingUpdate()
+    @Override
+	public void onLivingUpdate()
     {
         this.updateArmSwingProgress();
         float var1 = this.getBrightness(1.0F);
@@ -42,7 +43,8 @@ public abstract class EntityUndergroundAnimal extends EntityCreature implements 
     /**
      * Called to update the entity's position/logic.
      */
-    public void onUpdate()
+    @Override
+	public void onUpdate()
     {
         super.onUpdate();
 
@@ -56,7 +58,8 @@ public abstract class EntityUndergroundAnimal extends EntityCreature implements 
      * Finds the closest player within 16 blocks to attack, or null if this Entity isn't interested in attacking
      * (Animals, Spiders at day, peaceful PigZombies).
      */
-    protected Entity findPlayerToAttack()
+    @Override
+	protected Entity findPlayerToAttack()
     {
         EntityPlayer var1 = this.worldObj.getClosestVulnerablePlayerToEntity(this, 16.0D);
         return var1 != null && this.canEntityBeSeen(var1) ? var1 : null;
@@ -95,7 +98,8 @@ public abstract class EntityUndergroundAnimal extends EntityCreature implements 
         }
     }
 
-    public boolean attackEntityAsMob(Entity par1Entity)
+    @Override
+	public boolean attackEntityAsMob(Entity par1Entity)
     {
         int var2 = this.getAttackStrength(par1Entity);
 
@@ -147,7 +151,8 @@ public abstract class EntityUndergroundAnimal extends EntityCreature implements 
     /**
      * Basic mob attack. Default to touch of death in EntityCreature. Overridden by each mob to define their attack.
      */
-    protected void attackEntity(Entity par1Entity, float par2)
+    @Override
+	protected void attackEntity(Entity par1Entity, float par2)
     {
         if (this.attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY)
         {
@@ -160,7 +165,8 @@ public abstract class EntityUndergroundAnimal extends EntityCreature implements 
      * Takes a coordinate in and returns a weight to determine how likely this creature will try to path to the block.
      * Args: x, y, z
      */
-    public float getBlockPathWeight(int par1, int par2, int par3)
+    @Override
+	public float getBlockPathWeight(int par1, int par2, int par3)
     {
         return 0.5F - this.worldObj.getLightBrightness(par1, par2, par3);
     }
@@ -197,7 +203,8 @@ public abstract class EntityUndergroundAnimal extends EntityCreature implements 
     /**
      * Checks if the entity's current position is a valid location to spawn this entity.
      */
-    public boolean getCanSpawnHere()
+    @Override
+	public boolean getCanSpawnHere()
     {
         int var1 = MathHelper.floor_double(this.posX);
         int var2 = MathHelper.floor_double(this.boundingBox.minY);

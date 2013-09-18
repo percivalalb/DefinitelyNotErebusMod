@@ -1,27 +1,21 @@
 package erebus.core.handler;
 
 import java.util.EnumSet;
-
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
-
 import org.lwjgl.input.Keyboard;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 import erebus.core.teleport.TeleportClient;
-import erebus.world.feature.WorldGenPonds;
 
 public class ClientTickHandler implements ITickHandler
 {
 	public static Minecraft mc = FMLClientHandler.instance().getClient();
 	public boolean keyStates[] = new boolean[256];
-	private static int ticks = 0;
+	//private static int ticks = 0;
 
 	public boolean checkKey(int i) {
 		if(Minecraft.getMinecraft().currentScreen != null) {
@@ -86,9 +80,9 @@ public class ClientTickHandler implements ITickHandler
 
 	public void onRenderTickEnd(float ticks)
 	{
-		ScaledResolution var5 = new ScaledResolution(TeleportClient.mc.gameSettings, TeleportClient.mc.displayWidth, TeleportClient.mc.displayHeight);
-		int width = var5.getScaledWidth();
-		int height = var5.getScaledHeight();
+		//ScaledResolution var5 = new ScaledResolution(TeleportClient.mc.gameSettings, TeleportClient.mc.displayWidth, TeleportClient.mc.displayHeight);
+		//int width = var5.getScaledWidth();
+		//int height = var5.getScaledHeight();
 		//TODO	mod_Erebus.renderBossHealth();
 		float time = TeleportClient.prevTimeInPortal + (TeleportClient.timeInPortal - TeleportClient.prevTimeInPortal) * ticks;
 		if (time > 0.0F && TeleportClient.mc.currentScreen == null)

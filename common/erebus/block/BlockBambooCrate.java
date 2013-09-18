@@ -1,21 +1,9 @@
 package erebus.block;
 
-import static net.minecraftforge.common.ForgeDirection.UP;
-
 import java.util.List;
 import java.util.Random;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import erebus.ErebusMod;
-import erebus.core.helper.LogHelper;
-import erebus.core.proxy.CommonProxy;
-import erebus.tileentity.TileEntityBamboo;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
-import net.minecraft.block.BlockFlower;
-import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -25,12 +13,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.common.IPlantable;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ErebusMod;
+import erebus.core.proxy.CommonProxy;
+import erebus.tileentity.TileEntityBamboo;
 
 /**
  * @author ProPercivalalb
@@ -53,6 +43,7 @@ public class BlockBambooCrate extends BlockContainer {
 		return meta;
 	}
 	
+	@Override
 	public float getBlockHardness(World world, int x, int y, int z) {
 	    switch(world.getBlockMetadata(x, y, z)) {
 	    case 0: return 0.0F;
@@ -114,7 +105,6 @@ public class BlockBambooCrate extends BlockContainer {
 				for(int zCount = z - 1; zCount <= z + 2; zCount++) {
 					if(xCount == x && yCount == y && zCount == z) continue;
 					int blockId = world.getBlockId(xCount, yCount, zCount); 
-					int blockMeta = world.getBlockMetadata(xCount, yCount, zCount); 
 					
 					boolean flag1 = xCount == x - 1;
 					boolean flag2 = xCount == x + 2;

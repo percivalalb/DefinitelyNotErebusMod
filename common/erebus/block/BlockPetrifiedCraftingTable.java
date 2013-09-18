@@ -9,7 +9,6 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
-import erebus.ModBlocks;
 import erebus.core.proxy.CommonProxy;
 
 public class BlockPetrifiedCraftingTable extends Block {

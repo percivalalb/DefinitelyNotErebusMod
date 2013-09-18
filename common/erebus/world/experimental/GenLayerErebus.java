@@ -3,9 +3,6 @@ package erebus.world.experimental;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.gen.layer.GenLayer;
 
-import net.minecraftforge.common.*;
-import net.minecraftforge.event.terraingen.*;
-
 public abstract class GenLayerErebus extends GenLayer
 {
 

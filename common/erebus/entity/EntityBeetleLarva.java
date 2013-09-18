@@ -1,6 +1,5 @@
 package erebus.entity;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -17,10 +16,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.FMLCommonHandler;
-import erebus.ErebusMod;
 import erebus.ModItems;
 import erebus.entity.ai.EntityAIEatWoodenItem;
-import erebus.core.helper.ClientHelper;
 
 /**
  * @author ProPercivalalb
@@ -126,7 +123,8 @@ public class EntityBeetleLarva extends EntityUndergroundAnimal {
     /**
      * Returns the sound this mob makes while it's alive.
      */
-    protected String getLivingSound()
+    @Override
+	protected String getLivingSound()
     {
     	String actionSound = "erebus:beetlelarvasound";
     	if(this.isEating)
@@ -173,9 +171,6 @@ public class EntityBeetleLarva extends EntityUndergroundAnimal {
         	dropFewItems(false, 0);
         }
         if (this.isSquashed && FMLCommonHandler.instance().getSide().isClient()) {
-        	double d0 = this.rand.nextGaussian() * 0.02D;
-        	double d1 = this.rand.nextGaussian() * 0.02D;
-        	double d2 = this.rand.nextGaussian() * 0.02D;
         	for(int countparticles = 0; countparticles <= 200; ++countparticles)
             {
         		//ClientHelper.getMinecraft().effectRenderer.addEffect(new net.minecraft.client.particle.EntityBreakingFX(this.worldObj, this.posX + (rand.nextDouble() - 0.5D) * (double)this.width, this.posY + rand.nextDouble() * (double)this.height - (double)this.yOffset, this.posZ + (rand.nextDouble() - 0.5D) * (double)this.width, Item.slimeBall));
@@ -224,15 +219,8 @@ public class EntityBeetleLarva extends EntityUndergroundAnimal {
     
     public void munchBlock() { 
     	if (this.isEating && FMLCommonHandler.instance().getSide().isClient() && this.worldObj.getWorldTime() % 20 == 0) {
-        	double woodX = this.aiEatWoodItem.WoodX;
-        	double woodY = this.aiEatWoodItem.WoodY;
-        	double woodZ = this.aiEatWoodItem.WoodZ;
-            for(int countparticles = 0; countparticles <= 50; ++countparticles)
+        	for(int countparticles = 0; countparticles <= 50; ++countparticles)
             {
-        		double d0 = this.rand.nextGaussian() * 0.5D;
-            	double d1 = this.rand.nextGaussian() * 0.01D;
-            	double d2 = this.rand.nextGaussian() * 0.5D;
-        		//ClientHelper.getMinecraft().effectRenderer.addEffect(new net.minecraft.client.particle.EntityDiggingFX(this.worldObj, woodX + 0.5D + (rand.nextDouble() - 0.5D) * (double)this.width, woodY + 0.2D + rand.nextDouble() * (double)this.height - (double)this.yOffset, woodZ + 0.5D + (rand.nextDouble() - 0.5D) * (double)this.width, d0 ,d1, d2, Block.blocksList[5], 0));
             }
     	}
     }

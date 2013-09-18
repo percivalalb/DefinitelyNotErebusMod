@@ -65,7 +65,8 @@ public class EntityWebSling extends EntitySnowball
     /**
      * Returns true if other Entities should be prevented from moving through this Entity.
      */
-    public boolean canBeCollidedWith()
+    @Override
+	public boolean canBeCollidedWith()
     {
         return false;
     }

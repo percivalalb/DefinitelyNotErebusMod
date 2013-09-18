@@ -1,12 +1,7 @@
 package erebus.block;
 
-import java.util.Random;
-
-import erebus.core.proxy.CommonProxy;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.Icon;
 
 public class BlockMossyBrick extends Block

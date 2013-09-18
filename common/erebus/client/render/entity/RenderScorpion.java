@@ -9,9 +9,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import erebus.entity.EntityScorpion;
-import erebus.entity.EntityWasp;
 import erebus.client.model.entity.ModelScorpion;
-import erebus.client.model.entity.ModelWasp;
 
 
 public class RenderScorpion extends RenderLiving 
@@ -31,16 +29,19 @@ public class RenderScorpion extends RenderLiving
         super.doRenderLiving(par1EntityScorpion, par2, par4, par6, par8, par9);
     }
 
-    public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+    @Override
+	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
     {
         this.renderScorpion((EntityScorpion)par1EntityLiving, par2, par4, par6, par8, par9);
     }
 
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+    @Override
+	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
     {
         this.renderScorpion((EntityScorpion)par1Entity, par2, par4, par6, par8, par9);
     }
     
+	@Override
 	protected void preRenderCallback(EntityLivingBase entityliving, float f)
 	{
 		scaleScorpion((EntityScorpion) entityliving, f);

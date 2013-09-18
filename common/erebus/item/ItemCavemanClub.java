@@ -9,6 +9,7 @@ public class ItemCavemanClub extends ItemSword{
 		super(id,material);
 	}
 	
+	@Override
 	public boolean getIsRepairable(ItemStack itemStack1, ItemStack itemStack2){
 		return Item.bone.itemID==itemStack2.itemID?true:super.getIsRepairable(itemStack1,itemStack2);
 	}

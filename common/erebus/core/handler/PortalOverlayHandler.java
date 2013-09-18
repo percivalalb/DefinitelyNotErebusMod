@@ -1,18 +1,15 @@
 package erebus.core.handler;
 
-import org.lwjgl.opengl.GL11;
-
-import erebus.ErebusMod;
-import erebus.ModBlocks;
-import erebus.core.teleport.TeleportClient;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.Icon;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.ForgeSubscribe;
+import org.lwjgl.opengl.GL11;
+import erebus.ModBlocks;
+import erebus.core.teleport.TeleportClient;
 
 /**
  * @author ProPercivalalb

@@ -1,15 +1,12 @@
 package erebus.client.render.entity;
 
-import org.lwjgl.opengl.GL11;
-
-import erebus.entity.EntityVelvetWorm;
-import erebus.client.model.entity.ModelVelvetWorm;
-
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
+import erebus.client.model.entity.ModelVelvetWorm;
+import erebus.entity.EntityVelvetWorm;
 
 public class RenderVelvetWorm extends RenderLiving 
 {
@@ -31,7 +28,8 @@ public class RenderVelvetWorm extends RenderLiving
         super.doRenderLiving(par1EntityEntityVelvetWorm, par2, par4, par6, par8, par9);
     }
 
-    public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+    @Override
+	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
     {
         this.renderEntityVelvetWorm((EntityVelvetWorm)par1EntityLiving, par2, par4, par6, par8, par9);
     }
@@ -42,7 +40,8 @@ public class RenderVelvetWorm extends RenderLiving
      * (Render<T extends Entity) and this method has signature public void doRender(T entity, double d, double d1,
      * double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
      */
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+    @Override
+	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
     {
         this.renderEntityVelvetWorm((EntityVelvetWorm)par1Entity, par2, par4, par6, par8, par9);
     }

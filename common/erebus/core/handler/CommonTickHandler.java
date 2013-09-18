@@ -5,7 +5,6 @@ import java.util.EnumSet;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.world.World;
 
-import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 import erebus.ErebusMod;
@@ -16,17 +15,19 @@ public class CommonTickHandler implements ITickHandler
 	public boolean genLairNextTick = false;
 	private int ticksToGo = 5;
 	
-            public EnumSet ticks()
+            @Override
+			public EnumSet ticks()
             {
                 return EnumSet.of(TickType.SERVER, TickType.PLAYER, TickType.WORLD);
             }
 
-            public String getLabel()
+            @Override
+			public String getLabel()
             {
                 return null;
             }
             
-        	private int HypothermiaTimer = 0;
+        	//private int HypothermiaTimer = 0;
 
             private void onTickInGame() 
             {
@@ -39,6 +40,7 @@ public class CommonTickHandler implements ITickHandler
 				
 			}
 			
+			@Override
 			public void tickEnd(EnumSet<TickType> type, Object... tickData) 
 			{
                 if(type.equals(EnumSet.of(TickType.SERVER)))
@@ -48,7 +50,7 @@ public class CommonTickHandler implements ITickHandler
                 if (type.equals(EnumSet.of(TickType.PLAYER)))
 		        {
 		        	EntityPlayerMP player = (EntityPlayerMP)tickData[0];
-		            ErebusMod.instance.packeterebushandler.onTick(player);
+		            ErebusMod.packeterebushandler.onTick(player);
 		        }
 		        else if (type.equals(EnumSet.of(TickType.WORLD)))
 		        {

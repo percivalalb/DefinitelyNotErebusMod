@@ -8,7 +8,6 @@ import net.minecraft.util.MathHelper;
 import org.lwjgl.opengl.GL11;
 
 import erebus.entity.EntityWasp;
-import erebus.client.render.entity.AnimationMathHelper;
 
 public class ModelWasp extends ModelBase
 {
@@ -398,7 +397,8 @@ public class ModelWasp extends ModelBase
       setRotation(LWingFront, 0F, 0.1745329F, 0F);
   }
   
-  public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
+  @Override
+public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
   {
 	super.render(par1Entity, par2, par3, par4, par5, par6, par7);
 	setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
@@ -442,7 +442,7 @@ public class ModelWasp extends ModelBase
     RFLD.render(par7);
     RMLA.render(par7);
     RMLB.render(par7);
-    RMLC.render(par7);;
+    RMLC.render(par7);
     RMLD.render(par7);
     RBLA.render(par7);
     RBLB.render(par7);
@@ -476,7 +476,8 @@ public class ModelWasp extends ModelBase
     model.rotateAngleZ = z;
   }
   
-  public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
+  @Override
+public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
   {
 	  super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
       this.HeadA.rotateAngleY = par4 / (180F / (float)Math.PI);

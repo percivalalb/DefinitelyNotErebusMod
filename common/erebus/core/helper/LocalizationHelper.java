@@ -1,7 +1,5 @@
 package erebus.core.helper;
 
-import cpw.mods.fml.common.registry.LanguageRegistry;
-
 /**
  * @author ProPercivalalb
  */

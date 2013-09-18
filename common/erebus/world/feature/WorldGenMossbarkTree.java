@@ -15,7 +15,8 @@ public class WorldGenMossbarkTree extends WorldGenerator
  
     }
 
-    public boolean generate(World world, Random random, int i, int j, int k)
+    @Override
+	public boolean generate(World world, Random random, int i, int j, int k)
     {
     	int l = random.nextInt(3) + 8;
         boolean flag = true;
@@ -41,7 +42,6 @@ public class WorldGenMossbarkTree extends WorldGenerator
                         {
                             k1 = world.getBlockId(l1, i1, j1);
 
-                            Block block = Block.blocksList[k1];
                             boolean isAir = world.isAirBlock(l1, i1, j1);
 
                             if (!isAir &&

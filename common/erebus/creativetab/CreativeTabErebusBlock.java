@@ -1,13 +1,10 @@
 package erebus.creativetab;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import erebus.ErebusMod;
-import erebus.ModBlocks;
-import erebus.ModItems;
-import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ModBlocks;
 
 /**
  * @author ProPercivalalb

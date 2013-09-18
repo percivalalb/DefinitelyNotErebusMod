@@ -27,20 +27,22 @@ public class RenderBeetleLarva extends RenderLiving
         super.doRenderLiving(par1EntityBeetleLarva, par2, par4, par6, par8, par9);
     }
 
-    public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+    @Override
+	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
     {
         this.renderBeetleLarva((EntityBeetleLarva)par1EntityLiving, par2, par4, par6, par8, par9);
     }
 
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+    @Override
+	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
     {
         this.renderBeetleLarva((EntityBeetleLarva)par1Entity, par2, par4, par6, par8, par9);
     }
 
-    protected void preRenderCallback(EntityLivingBase entityliving, float f)
+    @Override
+	protected void preRenderCallback(EntityLivingBase entityliving, float f)
 	{
 		scaleBeetleLarva((EntityBeetleLarva) entityliving, f);
-		EntityBeetleLarva entityBeetleLarva = (EntityBeetleLarva) entityliving;
 	}
 
 	protected void scaleBeetleLarva(EntityBeetleLarva entityBeetleLarva, float f)

@@ -1,43 +1,26 @@
 package erebus.entity;
 
-import java.util.Calendar;
-
-import erebus.ErebusMod;
-import erebus.client.render.entity.RenderInfo;
-
-import net.minecraft.block.Block;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIArrowAttack;
-import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldProviderHell;
 
 public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob
 {
 	//Help for animation
-    private RenderInfo renderdata = new RenderInfo();
+    //private RenderInfo renderdata = new RenderInfo();
     
     private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 0.25F, 20, 60, 15.0F);
 
@@ -51,7 +34,6 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob
         this.fireResistance = 10;
         this.isImmuneToFire = false;
         //this.health = 25;
-        renderdata = new RenderInfo();
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
        //TODO this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0, true));
@@ -66,7 +48,8 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob
         }
 	}
 	
-    protected void entityInit()
+    @Override
+	protected void entityInit()
     {
         super.entityInit();
         this.dataWatcher.addObject(13, new Byte((byte)0));
@@ -75,7 +58,8 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob
     /**
      * Returns true if the newer Entity AI code should be run
      */
-    public boolean isAIEnabled()
+    @Override
+	public boolean isAIEnabled()
     {
         return true;
     }
@@ -89,7 +73,8 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob
 	 /**
      * Called to update the entity's position/logic.
      */
-    public void onUpdate()
+    @Override
+	public void onUpdate()
     {
         super.onUpdate();
     }
@@ -97,7 +82,8 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob
     /**
      * Get this Entity's EnumCreatureAttribute
      */
-    public EnumCreatureAttribute getCreatureAttribute()
+    @Override
+	public EnumCreatureAttribute getCreatureAttribute()
     {
         return EnumCreatureAttribute.ARTHROPOD;
     }
@@ -105,7 +91,8 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob
     /**
      * Determines if an entity can be despawned, used on idle far away entities
      */
-    protected boolean canDespawn()
+    @Override
+	protected boolean canDespawn()
     {
         return false;
     }
@@ -142,7 +129,8 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob
 		}
 	}
 	
-    public boolean attackEntityAsMob(Entity par1Entity)
+    @Override
+	public boolean attackEntityAsMob(Entity par1Entity)
     {
         if (super.attackEntityAsMob(par1Entity))
         {
@@ -154,6 +142,7 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob
         }
     }
 
+	@Override
 	protected void dropFewItems(boolean par1, int par2)
 	{
 		int chanceFiftyFifty = this.rand.nextInt(1) + 1;
@@ -164,7 +153,8 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob
     /**
      * Attack the specified entity using a ranged attack.
      */
-    public void attackEntityWithRangedAttack(EntityLivingBase par1EntityLiving, float par2)
+    @Override
+	public void attackEntityWithRangedAttack(EntityLivingBase par1EntityLiving, float par2)
     {
         EntityArrow entityarrow = new EntityArrow(this.worldObj, this, par1EntityLiving, 1.0F, (float)(14 - this.worldObj.difficultySetting * 4));
         entityarrow.setDamage((double)(par2 * 2.0F) + this.rand.nextGaussian() * 0.25D + (double)((float)this.worldObj.difficultySetting * 0.11F));

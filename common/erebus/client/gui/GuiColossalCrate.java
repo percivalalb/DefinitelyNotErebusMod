@@ -3,25 +3,17 @@ package erebus.client.gui;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.List;
-
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.ContainerChest;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
-
-import erebus.inventory.ContainerBambooCrate;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.inventory.ContainerColossalCrate;
 import erebus.lib.Reference;
 import erebus.tileentity.TileEntityBamboo;
@@ -31,7 +23,6 @@ public class GuiColossalCrate extends GuiContainer {
    
 	public static final boolean hasInventoryTweaks = Loader.isModLoaded("inventorytweaks");
 	private static final ResourceLocation GUI_BAMBOO_CRATE = new ResourceLocation("erebus:textures/gui/collosalcrate.png");
-	private InventoryPlayer playerInventory; 
 	public TileEntityBamboo crate1;
 	public TileEntityBamboo crate2;
 	public TileEntityBamboo crate3;
@@ -43,7 +34,6 @@ public class GuiColossalCrate extends GuiContainer {
 
     public GuiColossalCrate(InventoryPlayer par1InventoryPlayer, List<TileEntityBamboo> list) {
         super(new ContainerColossalCrate(par1InventoryPlayer, list));
-        this.playerInventory = par1InventoryPlayer;
         this.crate1 = list.get(0);
         this.crate2 = list.get(1);
         this.crate3 = list.get(2);

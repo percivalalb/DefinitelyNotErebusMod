@@ -1,7 +1,6 @@
 package erebus.item;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import erebus.ErebusMod;

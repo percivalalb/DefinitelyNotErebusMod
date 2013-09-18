@@ -202,7 +202,7 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
                         
                         if (par3ArrayOfByte[j1] == 0 && par3ArrayOfByte[j1 - 1] == ModBlocks.umberstone.blockID)
                         {
-                        	par3ArrayOfByte[j1 - 1] = (byte)ModBlocks.umberstone.blockID;
+                            par3ArrayOfByte[j1 - 1] = (byte)ModBlocks.umberstone.blockID;
                         }
                         continue;
                     }
@@ -246,7 +246,7 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
                     
                     if (par3ArrayOfByte[j1 + 1] == 0 && par3ArrayOfByte[j1] == Block.dirt.blockID)
                     {
-                    	par3ArrayOfByte[j1] = (byte)ModBlocks.umberstone.blockID;
+                        par3ArrayOfByte[j1] = (byte)ModBlocks.umberstone.blockID;
                     }
                 }
             }
@@ -258,29 +258,29 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
     {
         return provideChunk(par1, par2);
     }
-
+    
     @Override
     public Chunk provideChunk(int par1, int par2)
     {
-        hellRNG.setSeed((long)par1 * 0x4f9939f508L + (long)par2 * 0x1ef1565bd5L);
-        rand.setSeed((long)par1 * 0x4f9939f508L + (long)par2 * 0x1ef1565bd5L);
-        byte abyte0[] = new byte[32768];
-        biomesForGeneration = worldObj.getWorldChunkManager().loadBlockGeneratorData(biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
-        generateNetherTerrain(par1, par2, abyte0);
-        func_4058_b(par1, par2, abyte0);
-        this.replaceBlocksForBiome(par1, par2, abyte0, biomesForGeneration);
-        //this.genSpiderTunnels.generate(this, this.worldObj, par1, par2, abyte0);
-        netherCaveGenerator.generate(this, worldObj, par1, par2, abyte0);
-        Chunk chunk = new Chunk(worldObj, abyte0, par1, par2);
-        /*byte abyte1[] = chunk.getBiomeArray();
-
-        for (int i = 0; i < abyte1.length; i++)
-        {
-            abyte1[i] = (byte)abiomegenbase[i].biomeID;
-        }*/
-
-        chunk.resetRelightChecks();
+        this.rand.setSeed((long)par1 * 341873128712L + (long)par2 * 132897987541L);
+        byte[] abyte = new byte[32768];
+        this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
+        this.replaceBlocksForBiome(par1, par2, abyte, this.biomesForGeneration);
+        generateNetherTerrain(par1, par2, abyte);
+        func_4058_b(par1, par2, abyte);
+        replaceBlocksForBiome(par1, par2, abyte, biomesForGeneration);
+        netherCaveGenerator.generate(this, worldObj, par1, par2, abyte);
         
+        Chunk chunk = new Chunk(this.worldObj, abyte, par1, par2);
+        byte[] abyte1 = chunk.getBiomeArray();
+
+        for (int k = 0; k < abyte1.length; ++k)
+        {
+            abyte1[k] = (byte)this.biomesForGeneration[k].biomeID;
+        }
+
+        chunk.generateSkylightMap();
+        chunk.resetRelightChecks();
         return chunk;
     }
 
@@ -446,11 +446,11 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
         BiomeGenBase b = worldObj.getBiomeGenForCoords(i, j);
         if(b instanceof BiomeGenBaseErebus)
         {
-        	/**Generate biome specific world generation**/
-        	((BiomeGenBaseErebus)b).generateTerrain(worldObj, hellRNG, par1IChunkProvider, i, j);
-        	
-        	/**Generate default world generation (e.g. ores)**/
-        	((BiomeGenBaseErebus)b).generateDefault(worldObj, hellRNG, par1IChunkProvider, i, j);
+            /**Generate biome specific world generation**/
+            ((BiomeGenBaseErebus)b).generateTerrain(worldObj, hellRNG, par1IChunkProvider, i, j);
+            
+            /**Generate default world generation (e.g. ores)**/
+            ((BiomeGenBaseErebus)b).generateDefault(worldObj, hellRNG, par1IChunkProvider, i, j);
         }   
         
         int k1;
@@ -531,37 +531,18 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
         return null;
     }
 
-	@Override
-	public int getLoadedChunkCount() {
-		return 0;
-	}
+    @Override
+    public int getLoadedChunkCount() {
+        return 0;
+    }
 
-	@Override
-	public void recreateStructures(int par1, int par2)
+    @Override
+    public void recreateStructures(int par1, int par2)
     {
         //this.genSpiderTunnels.generate(this, this.worldObj, par1, par2, (byte[])null);
     }
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	/**Testing stuff**/
+
+    /**Testing stuff**/
     private double[] noiseArray;
     private double[] stoneNoise = new double[256];
     /** A NoiseGeneratorOctaves used in generating terrain */
@@ -583,7 +564,7 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
     public NoiseGeneratorOctaves noiseGen6;
     
     public Random rand;
-	
+    
     public void replaceBlocksForBiome(int par1, int par2, byte[] par3ArrayOfByte, BiomeGenBase[] par4ArrayOfBiomeGenBase)
     {
         ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, par1, par2, par3ArrayOfByte, par4ArrayOfBiomeGenBase);
@@ -632,8 +613,8 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
                                 }
                                 else if (var16 >= var5 - 4 && var16 <= var5 + 1)
                                 {
-                            		var14 = var10.topBlock;
-                                	var15 = var10.fillerBlock;                               
+                                    var14 = var10.topBlock;
+                                    var15 = var10.fillerBlock;                               
                                 }
 
                                 if (var16 < var5 && var14 == 0)
@@ -677,15 +658,14 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider
         }
     }
 
-	@Override
-	public boolean unloadQueuedChunks() {
-		return false;
-	}
+    @Override
+    public boolean unloadQueuedChunks() {
+        return false;
+    }
 
 
-	@Override
-	public void saveExtraData() {
-		
-	}
-
+    @Override
+    public void saveExtraData() {
+        
+    }
 }

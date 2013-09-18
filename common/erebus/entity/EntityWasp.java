@@ -10,14 +10,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import ErebusNotIncluded.mobs.render.AnimationMathHelper;
 import erebus.ModItems;
 
 public class EntityWasp extends EntityMob {
 	private float heightOffset = 0.5F;
 	public float wingFloat;
-	AnimationMathHelper mathWings = new AnimationMathHelper();
-
+	
 	public EntityWasp(World par1World) {
 		super(par1World);
 		this.setSize(2.0F, 2.0F);
@@ -102,7 +100,7 @@ public class EntityWasp extends EntityMob {
 			this.wingFloat = 0.0F;
 		}
 		if (this.isFlying()) {
-			this.wingFloat = mathWings.swing(4.0F, 0.1F);
+			//this.wingFloat = mathWings.swing(4.0F, 0.1F);
 		}
 	}
 

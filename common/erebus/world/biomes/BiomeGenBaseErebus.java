@@ -66,11 +66,13 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 			(new WorldGenErebusMinable(ModBlocks.umberOreBlock.blockID, 6, 4)).generate(worldObj, rand, var6, var7, var8);
 		}
 
-		for (int var5 = 0; var5 < 20; ++var5) {
-			int var6 = x + rand.nextInt(16);
-			int var7 = rand.nextInt(128);
-			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(ModBlocks.oreFossil.blockID, 3, 10)).generate(worldObj, rand, var6, var7, var8);
+		if (rand.nextInt(3) == 0){
+			for (int var5 = 0; var5 < 16; ++var5) {
+				int var6 = x + rand.nextInt(16);
+				int var7 = rand.nextInt(128);
+				int var8 = z + rand.nextInt(16);
+				(new WorldGenErebusMinable(ModBlocks.oreFossil.blockID, 3, 14)).generate(worldObj, rand, var6, var7, var8);
+			}
 		}
 	}
 }

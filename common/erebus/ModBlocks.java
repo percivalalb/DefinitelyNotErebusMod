@@ -27,6 +27,7 @@ import erebus.block.BlockSpiderSpawner;
 import erebus.block.BlockStairsErebus;
 import erebus.block.BlockThorns;
 import erebus.block.BlockTurnip;
+import erebus.block.BlockUmberFurnace;
 import erebus.block.BlockUmberstone;
 import erebus.item.block.ItemBlockAmber;
 import erebus.item.block.ItemBlockBamboo;
@@ -39,10 +40,7 @@ import erebus.item.block.ItemBlockRedGem;
 import erebus.item.block.ItemBlockUmberOre;
 import erebus.item.block.ItemBlockUmberStone;
 import erebus.item.block.ItemSapling;
-import erebus.tileentity.TileEntityBamboo;
-import erebus.tileentity.TileEntityCaveSpiderSpawner;
 import erebus.tileentity.TileEntityHollowLog;
-import erebus.tileentity.TileEntitySpiderSpawner;
 
 /**
  * @author ProPercivalalb
@@ -91,6 +89,8 @@ public class ModBlocks {
 	public static Block petrifiedWoodStairs;  		  	public static int petrifiedWoodStairsID;
 	public static Block petrifiedCraftingTable;  		public static int petrifiedCraftingTableID;
 	public static Block bambooCrate;          			public static int bambooCrateID;
+	public static Block umberFurnace;					public static int umberFurnaceID;
+	public static Block umberFurnace_on;				public static int umberFurnace_onID;
 	
 	// DUNGEONS
 	public static Block spiderSpawner;     				public static int spiderSpawnerID;
@@ -135,6 +135,8 @@ public class ModBlocks {
 		petrifiedWoodStairs = new BlockStairsErebus(petrifiedWoodStairsID, petrifiedWoodPlanks, 0).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("petrifiedWoodStairs");
 		petrifiedCraftingTable = new BlockPetrifiedCraftingTable(petrifiedCraftingTableID).setHardness(2.5F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("petrifiedCraftingTable");
 		bambooCrate = new BlockBambooCrate(bambooCrateID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("bamboo");
+		umberFurnace = new BlockUmberFurnace(umberFurnaceID, false).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("umberFurnaceOFF");
+		umberFurnace_on = new BlockUmberFurnace(umberFurnace_onID, true).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberFurnaceON");
 		
 		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, 96).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner");
 		caveSpiderSpawner = new BlockCaveSpiderSpawner(caveSpiderSpawnerID, 96).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner");
@@ -150,9 +152,8 @@ public class ModBlocks {
 		GameRegistry.registerBlock(redGem, ItemBlockRedGem.class, "erebus.redGem");
 		GameRegistry.registerBlock(blockAmber, ItemBlockAmber.class, "erebus.blockAmber");		  
 		GameRegistry.registerBlock(quickSand, "erebus.quickSand");
-		if(ErebusMod.activateExtraOres){
+		if(ErebusMod.activateExtraOres)
 			GameRegistry.registerBlock(erebusOreExtra, ItemBlockErebusOreExtras.class, "erebus.erebusOreExtras");
-		}
 		
 		GameRegistry.registerBlock(logErebusGroup1, ItemBlockLogErebus1.class, "erebus.logErebus1");
 		GameRegistry.registerBlock(logErebusGroup2, ItemBlockLogErebus2.class, "erebus.logErebus2");
@@ -180,10 +181,11 @@ public class ModBlocks {
 		GameRegistry.registerBlock(petrifiedWoodStairs, "erebus.petrifiedWoodStairs");
 		GameRegistry.registerBlock(petrifiedCraftingTable, "erebus.petrifiedCraftingTable");
 		GameRegistry.registerBlock(bambooCrate, ItemBlockBamboo.class, "erebus.bamboo");
+		GameRegistry.registerBlock(umberFurnace, "erebus.umberFurnaceOff");
+		GameRegistry.registerBlock(umberFurnace_on, "erebus.umberFurnaceOn");
 		
 		GameRegistry.registerBlock(spiderSpawner, "erebus.spiderSpawner");		  
 		GameRegistry.registerBlock(caveSpiderSpawner, "erebus.caveSpiderSpawner");
-		
 		
 		// Mining levels
 		MinecraftForge.setBlockHarvestLevel(blockAmber, "pickaxe", 0);
@@ -205,11 +207,5 @@ public class ModBlocks {
 			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 3, "pickaxe", 2);
 			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 4, "pickaxe", 1);
 		}
-		
-		// Tile entities
-		GameRegistry.registerTileEntity(TileEntitySpiderSpawner.class, "Spider Spawner (Erebus)");
-		GameRegistry.registerTileEntity(TileEntityCaveSpiderSpawner.class, "Cave Spider Spawner (Erebus)");
-		GameRegistry.registerTileEntity(TileEntityHollowLog.class, "Hollow Log (Erebus)");
-		GameRegistry.registerTileEntity(TileEntityBamboo.class, "Bamboo Crate (Erebus)");
 	}
 }

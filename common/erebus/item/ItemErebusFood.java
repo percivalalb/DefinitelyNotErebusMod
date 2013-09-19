@@ -19,7 +19,7 @@ public class ItemErebusFood extends ItemFood {
 	 * The icon path, not including "erebus:" as it is joined when registering
 	 * icon
 	 **/
-	public static final String[] iconPaths = new String[] { "larvaRaw", "beetleLarvaCooked", "cricketLegRaw", "cricketLegCooked", "legTarantula", "legTarantulaCooked" };
+	public static final String[] iconPaths = new String[] { "larvaRaw", "beetleLarvaCooked", "grasshopperLegRaw", "grasshopperLegCooked", "legTarantula", "legTarantulaCooked" };
 	public static final Icon[] icons = new Icon[iconPaths.length];
 
 	public ItemErebusFood(int id) {

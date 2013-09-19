@@ -19,7 +19,7 @@ public class ItemErebusMaterial extends Item {
 	 * The icon path, not including "erebus:" as it is joined when registering
 	 * icon
 	 **/
-	public static final String[] iconPaths = new String[] { "plateExo", "jade", "shardBone", "bamboo", "compoundEyes", "compoundLens", "flyWing", "itemPetrifiedWood" };
+	public static final String[] iconPaths = new String[] { "plateExo", "jade", "shardBone", "bamboo", "compoundEyes", "compoundLens", "flyWing", "itemPetrifiedWood", "biovelocity", "elasticFibre", "waspSting"};
 	public static final Icon[] icons = new Icon[iconPaths.length];
 
 	public ItemErebusMaterial(int id) {
@@ -54,6 +54,9 @@ public class ItemErebusMaterial extends Item {
 		par3List.add(new ItemStack(par1, 1, 5));
 		par3List.add(new ItemStack(par1, 1, 6));
 		par3List.add(new ItemStack(par1, 1, 7));
+		par3List.add(new ItemStack(par1, 1, 8));
+		par3List.add(new ItemStack(par1, 1, 9));
+		par3List.add(new ItemStack(par1, 1, 10));
 	}
 
 	@Override

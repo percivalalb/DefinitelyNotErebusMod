@@ -1,11 +1,16 @@
 package erebus.world.biomes;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.SpawnListEntry;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import erebus.ModBlocks;
+import erebus.entity.EntityBlackWidow;
+import erebus.entity.EntityCentipede;
+import erebus.entity.EntityScorpion;
 
 public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 	public BiomeGenUndergroundDesert(int par1) {
@@ -14,6 +19,9 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 		spawnableCreatureList.clear();
 		spawnableWaterCreatureList.clear();
 		spawnableCaveCreatureList.clear();
+		spawnableMonsterList.add(new SpawnListEntry(EntityBlackWidow.class, 5, 1, 2));
+		spawnableMonsterList.add(new SpawnListEntry(EntityCentipede.class, 10, 1, 4));
+		spawnableMonsterList.add(new SpawnListEntry(EntityScorpion.class, 10, 1, 4));
 		this.topBlock = (byte) Block.sand.blockID;
 		this.fillerBlock = (byte) Block.sandStone.blockID;
 	}

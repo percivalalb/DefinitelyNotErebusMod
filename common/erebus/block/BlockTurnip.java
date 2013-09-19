@@ -1,8 +1,10 @@
 package erebus.block;
 
+import java.util.ArrayList;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -19,9 +21,6 @@ public class BlockTurnip extends BlockCrops {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	/**
-	 * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
-	 */
 	public Icon getIcon(int par1, int par2) {
 		if (par2 < 7) {
 			if (par2 == 6) {
@@ -35,14 +34,26 @@ public class BlockTurnip extends BlockCrops {
 	}
 
 	@Override
+	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune){
+		ArrayList<ItemStack> ret=super.getBlockDropped(world,x,y,z,metadata,fortune);
+
+		if (metadata>=7){
+			for(int n=0; n<2+fortune; n++){
+				if (world.rand.nextInt(15)<=metadata){
+					ret.add(new ItemStack(this.getSeedItem(),1,0));
+				}
+			}
+		}
+
+		return ret;
+	}
+
+	@Override
 	protected int getSeedItem() {
 		return ModItems.turnip.itemID;
 	}
 
 	@Override
-	/**
-	 * Can this block stay at this position.  Similar to canPlaceBlockAt except gets checked often with plants.
-	 */
 	public boolean canBlockStay(World par1World, int par2, int par3, int par4) {
 		Block soil = blocksList[par1World.getBlockId(par2, par3 - 1, par4)];
 		return (soil != null && soil == Block.grass || soil == Block.tilledField || soil == Block.dirt);

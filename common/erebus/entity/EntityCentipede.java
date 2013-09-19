@@ -1,43 +1,34 @@
 package erebus.entity;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import erebus.ModItems;
 
 public class EntityCentipede extends EntityMob {
 
-	public int skin = rand.nextInt(2);
+	public int skin = rand.nextInt(3);
 
 	public EntityCentipede(World par1World) {
 		super(par1World);
-		this.setSize(1.2F, 0.9F);
+		this.setSize (1.0F, 0.8F);
 		this.getNavigator().setAvoidsWater(true);
-		this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
-		this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
-		this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-		this.tasks.addTask(7, new EntityAILookIdle(this));
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+
 	}
 
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.33000000417232513D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D);
+	    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D); //Movespeed
+	    getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); //Max Health
+	    getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(getAttackStrength()); //atkDmg
+	    getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); //followRange	 
 	}
 
 	@Override
@@ -50,23 +41,17 @@ public class EntityCentipede extends EntityMob {
 		return super.getCanSpawnHere();
 	}
 
-	// TODO attack strenght in new 1.6 system
-	public int getAttackStrength(Entity par1Entity) {
+	public double getAttackStrength() {
 		switch (worldObj.difficultySetting) {
 			default:
-				return 4;
+				return 2.0D;
 			case 1:
-				return 4;
+				return 2.0D;
 			case 2:
-				return 4;
+				return 2.0D;
 			case 3:
-				return 5;
+				return 4.0D;
 		}
-	}
-
-	@Override
-	public boolean isAIEnabled() {
-		return true;
 	}
 
 	@Override
@@ -89,10 +74,6 @@ public class EntityCentipede extends EntityMob {
 		return "erebus:squish";
 	}
 
-	protected String getTunnelingSound() {
-		return "erebus:TunnelingSound";
-	}
-
 	@Override
 	protected void playStepSound(int par1, int par2, int par3, int par4) {
 		this.worldObj.playSoundAtEntity(this, "erebus:CentipedeWalk", 0.15F, 1.0F);
@@ -110,10 +91,49 @@ public class EntityCentipede extends EntityMob {
 
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
-		int var3 = 4 + this.rand.nextInt(3);
-		int var4;
-		for (var4 = 0; var4 < var3; ++var4) {
-			this.entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 0), 0.0F);
-		}
+		this.entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 8), 0.0F);
+		this.entityDropItem(new ItemStack(ModItems.erebusMaterials, this.rand.nextInt(3) + 1, 0), 0.0F);
+	}
+
+	@Override
+	protected void attackEntity(Entity par1Entity, float par2)
+	{
+		super.attackEntity(par1Entity, par2);
+	        if (par2 < 1.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY)
+	        {
+	        	this.attackEntityAsMob(par1Entity);
+	        }
+	    }
+
+	@Override
+	public boolean attackEntityAsMob(Entity par1Entity)
+	{	
+		if (super.attackEntityAsMob(par1Entity))	    		
+	    {
+	        if (par1Entity instanceof EntityLiving)
+	        {
+	            byte var2 = 0;
+	            if (this.worldObj.difficultySetting > 1)
+	            {
+	                if (this.worldObj.difficultySetting == 2)
+	                {
+	                    var2 = 7;
+	                }
+	                else if (this.worldObj.difficultySetting == 3)
+	                {
+	                    var2 = 15;
+	                }
+	            }
+	            if (var2 > 0)
+	            {
+	                ((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
+	                }
+	        }
+	        return true; 
+	    }
+	    else
+	    {
+	        return false;
+	    }
 	}
 }

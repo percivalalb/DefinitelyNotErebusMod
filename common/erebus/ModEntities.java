@@ -22,7 +22,7 @@ public class ModEntities {
 
 	public static void init() {
 		registerEntity(EntityBeetleLarva.class, "BeetleLarva", EntityRegistry.findGlobalUniqueEntityId(), -1251634, -13032944);
-		registerEntity(EntityWasp.class, "Wasp", EntityRegistry.findGlobalUniqueEntityId(), -16382458, -256);
+		registerEntity(EntityWasp.class, "Wasp", EntityRegistry.findGlobalUniqueEntityId(), -256, -16382458);
 		registerEntity(EntityCentipede.class, "Centipede", EntityRegistry.findGlobalUniqueEntityId(), -13565952, -92160);
 		registerEntity(EntityBeetle.class, "Beetle", EntityRegistry.findGlobalUniqueEntityId(), -12116973, -5938366);
 		registerEntity(EntityFly.class, "Fly", EntityRegistry.findGlobalUniqueEntityId(), -13165534, -6750208);

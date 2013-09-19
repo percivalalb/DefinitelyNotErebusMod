@@ -60,6 +60,8 @@ public class EntityWasp extends EntityMob {
 
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
+		
+		this.entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 10), 0.0F);
 		switch (this.rand.nextInt(2)) {
 		case 0:
 			this.entityDropItem(new ItemStack(ModItems.erebusMaterials,
@@ -73,7 +75,6 @@ public class EntityWasp extends EntityMob {
 
 	@Override
 	protected void dropRareDrop(int par1) {
-
 		dropItem(ModItems.waspSwordID, 1);
 	}
 

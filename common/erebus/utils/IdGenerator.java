@@ -7,12 +7,12 @@ package erebus.utils;
  * 
  */
 
-public class IdGenetator {
+public class IdGenerator {
 	
 	private final int itemIDBase, blockIDbase;
 	private int currentItemID, currentBlockID;
 	
-	public IdGenetator(int itemIDBase, int blockIDbase) {
+	public IdGenerator(int itemIDBase, int blockIDbase) {
 		this.itemIDBase = itemIDBase - 1;
 		this.blockIDbase = blockIDbase - 1;
 		currentItemID = this.itemIDBase;

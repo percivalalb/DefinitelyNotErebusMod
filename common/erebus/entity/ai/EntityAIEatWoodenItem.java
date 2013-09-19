@@ -1,10 +1,13 @@
 package erebus.entity.ai;
 
-import erebus.entity.EntityBeetleLarva;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLog;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.AxisAlignedBB;
+import erebus.ErebusMod;
+import erebus.entity.EntityBeetleLarva;
 
 public class EntityAIEatWoodenItem extends EntityAIBase {
 	private int diffEaten = 0;// 0-peaceful,1-easy,2-med,3-hard
@@ -55,11 +58,12 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 	 */
 	@Override
 	public boolean continueExecuting() {
-		int x = this.theEntity.worldObj.getBlockId(WoodX, WoodY, WoodZ);
+		/*int x = this.theEntity.worldObj.getBlockId(WoodX, WoodY, WoodZ);
 		return (x != Block.fence.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.fenceGate.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.planks.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.doorWood.blockID) ? false
 		: !this.theEntity.getNavigator().noPath() || (x != Block.workbench.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.trapdoor.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.stairsWoodOak.blockID) ? false : !this.theEntity.getNavigator()
 		.noPath() || (x != Block.stairsWoodSpruce.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.stairsWoodBirch.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.stairsWoodJungle.blockID) ? false : !this.theEntity.getNavigator().noPath() ||
-		(x != Block.woodDoubleSlab.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.woodSingleSlab.blockID) ? false : !this.theEntity.getNavigator().noPath();
+		(x != Block.woodDoubleSlab.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.woodSingleSlab.blockID) ? false : !this.theEntity.getNavigator().noPath();*/
+		return isBlockEdible(WoodX,WoodY,WoodZ)||!theEntity.getNavigator().noPath();
 	}
 
 	@Override
@@ -99,16 +103,12 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 		super.updateTask();
 	}
 
-	private boolean findClosestWood(int maxDistance) {// returns whether or not
-														// Wood was found
-														// "he-he! he said wood"
+	private boolean findClosestWood(int maxDistance) {// returns whether or not Wood was found (he-he! he said wood)
 		for (int currentCheckDistance = 1; currentCheckDistance < maxDistance; currentCheckDistance++) {
-			for (int x = -currentCheckDistance; x < currentCheckDistance; x++) {
-				for (int y = -currentCheckDistance; y < currentCheckDistance; y++) {
-					for (int z = -currentCheckDistance; z < currentCheckDistance; z++) {
-						int blockid = this.theEntity.worldObj.getBlockId((int) this.theEntity.posX + x, (int) this.theEntity.posY + y, (int) this.theEntity.posZ + z);
-						if (blockid == Block.fence.blockID || blockid == Block.fenceGate.blockID || blockid == Block.planks.blockID || blockid == Block.doorWood.blockID || blockid == Block.workbench.blockID || blockid == Block.trapdoor.blockID || blockid == Block.stairsWoodOak.blockID ||
-						blockid == Block.stairsWoodSpruce.blockID || blockid == Block.stairsWoodBirch.blockID || blockid == Block.stairsWoodJungle.blockID || blockid == Block.woodDoubleSlab.blockID || blockid == Block.woodSingleSlab.blockID) {
+			for (int x = -currentCheckDistance; x <= currentCheckDistance; x++) {
+				for (int y = -currentCheckDistance; y <= currentCheckDistance; y++) {
+					for (int z = -currentCheckDistance; z <= currentCheckDistance; z++) {
+						if (isBlockEdible((int)theEntity.posX+x,(int)theEntity.posY+y,(int)theEntity.posZ+z)){
 							WoodX = (int) this.theEntity.posX + x;
 							WoodY = (int) this.theEntity.posY + y;
 							WoodZ = (int) this.theEntity.posZ + z;
@@ -119,6 +119,20 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 			}
 		}
 		return false;
+	}
+	
+	private boolean isBlockEdible(int x, int y, int z){
+		int blockID=theEntity.worldObj.getBlockId(x,y,z);
+		if (blockID==0)return false;
+		
+		Block block=Block.blocksList[blockID];
+		if (block.blockHardness==-1)return false;
+		
+		if (ErebusMod.beetleLarvaEating==2)return true;
+		else if (block.blockMaterial!=Material.wood||block instanceof BlockLog)return false;
+		else if (ErebusMod.beetleLarvaEating==0&&block.hasTileEntity(theEntity.worldObj.getBlockMetadata(x,y,z)))return false;
+		
+		return true;
 	}
 
 	protected AxisAlignedBB getBlockAABB(int par1, int par2, int par3) {

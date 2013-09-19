@@ -11,9 +11,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPlanksErebus extends Block {
-	public static final String[] plankTypes = new String[] { "acacia", "eucalyptus", "mahogany", "baobab", "mossbark", "pink", "scorched" };
+	public static final String[] plankTypes = new String[] { "acacia", "eucalyptus", "mahogany", "baobab", "mossbark", "pink", "scorched", "asper" };
 
-	public static final byte dataAcacia = 0, dataEucalyptus = 1, dataMahogany = 2, dataBaobab = 3, dataMossbark = 4, dataPink = 5, dataScorched = 6;
+	public static final byte dataAcacia = 0, dataEucalyptus = 1, dataMahogany = 2, dataBaobab = 3, dataMossbark = 4, dataPink = 5, dataScorched = 6, dataAsper = 7;
 
 	@SideOnly(Side.CLIENT)
 	private Icon[] iconArray;

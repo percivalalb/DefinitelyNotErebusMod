@@ -7,6 +7,7 @@ import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import erebus.tileentity.TileEntityUmberFurnace;
@@ -19,8 +20,8 @@ public class ContainerUmberFurnace extends Container {
 		furnace = tile;
 
 		addSlotToContainer(new SlotFluidContainer(tile, 0, 31, 35));
-		addSlotToContainer(new Slot(tile, 1, 56, 17));
-		addSlotToContainer(new Slot(tile, 2, 56, 53));
+		addSlotToContainer(new SlotSmelt(tile, 1, 56, 17));
+		addSlotToContainer(new SlotFuel(tile, 2, 56, 53));
 		addSlotToContainer(new SlotFurnace(inventory.player, tile, 3, 116, 35));
 
 		for (int i = 0; i < 3; ++i)
@@ -65,8 +66,9 @@ public class ContainerUmberFurnace extends Container {
 			} else if (TileEntityFurnace.isItemFuel(slotItemStack)) {
 				if (!mergeItemStack(slotItemStack, 2, 3, false))
 					return null;
-			} else if (!mergeItemStack(slotItemStack, 1, 2, false))
-				return null;
+			} else if (FurnaceRecipes.smelting().getSmeltingResult(slotItemStack) != null)
+				if (!mergeItemStack(slotItemStack, 1, 2, false))
+					return null;
 
 			if (slotItemStack.stackSize == 0)
 				slot.putStack((ItemStack) null);

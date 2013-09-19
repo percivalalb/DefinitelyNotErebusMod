@@ -1,6 +1,7 @@
 package erebus.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -15,6 +16,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+import erebus.inventory.ContainerUmberFurnace;
 
 /**
  * Erebus
@@ -38,7 +40,9 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 
 	@Override
 	public void updateEntity() {
-
+		if (tank.getFluidAmount() < tank.getCapacity() - FluidContainerRegistry.BUCKET_VOLUME)
+			if (FluidContainerRegistry.isFilledContainer(inventory[BUCKET_SLOT]) && FluidContainerRegistry.getFluidForFilledItem(inventory[BUCKET_SLOT]).getFluid() == FluidRegistry.LAVA)
+				tank.fill(new FluidStack(FluidRegistry.LAVA, FluidContainerRegistry.BUCKET_VOLUME), true);
 	}
 
 	@Override
@@ -167,6 +171,25 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from) {
 		return new FluidTankInfo[] { tank.getInfo() };
+	}
+
+	public int getScaledFluidAmount(int scale) {
+		return tank.getFluid() != null ? (int) (((float) tank.getFluid().amount / (float) (tank.getCapacity())) * scale) : 0;
+	}
+
+	public void getGUIData(int id, int value) {
+		switch (id) {
+			case 1:
+				if (tank.getFluid() == null)
+					tank.setFluid(new FluidStack(0, value));
+				else
+					tank.getFluid().amount = value;
+				break;
+		}
+	}
+
+	public void sendGUIData(ContainerUmberFurnace furnace, ICrafting craft) {
+		craft.sendProgressBarUpdate(furnace, 1, tank.getFluid() != null ? tank.getFluid().amount : 0);
 	}
 
 	@Override

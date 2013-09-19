@@ -103,6 +103,7 @@ public class ErebusMod {
 
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
+		proxy.registerTileEntities();
 		ModBiomes.init();
 		proxy.registerRenderInformation();
 		RecipeHandler.init();

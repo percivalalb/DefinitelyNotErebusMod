@@ -20,7 +20,8 @@ import erebus.ModBlocks;
 import erebus.world.feature.WorldGenErebusHugeTree;
 import erebus.world.feature.WorldGenErebusTrees;
 import erebus.world.feature.WorldGenEucalyptus;
-import erebus.world.feature.WorldGenSavannaTree;
+import erebus.world.feature.trees.WorldGenMossbarkTree;
+import erebus.world.feature.trees.WorldGenSavannaTree;
 
 public class BlockSaplingErebus extends BlockSapling {
 	public static final String[] saplingTypes = new String[] { "acacia", "eucalyptus", "mahogany", "mossbark", "asper" };
@@ -57,6 +58,9 @@ public class BlockSaplingErebus extends BlockSapling {
 		}
 	}
 
+	@Override
+	public void markOrGrowMarked(World world, int x, int y, int z, Random rand){}
+
 	/**
 	 * Attempts to grow a sapling into a tree
 	 */
@@ -77,6 +81,9 @@ public class BlockSaplingErebus extends BlockSapling {
 		else if (meta == dataMahogany) {
 			int size = world.rand.nextInt(3);
 			worldGen = new WorldGenSavannaTree(size);
+		}
+		else if (meta == dataMossbark) {
+			worldGen = new WorldGenMossbarkTree();
 		}
 		else if (meta == dataAcacia) {
 			for (var8 = 0; var8 >= -1; --var8) {

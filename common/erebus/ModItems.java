@@ -82,7 +82,8 @@ public class ModItems {
 		jadeHoe = new ItemHoe(jadeHoeID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("hoeJade").setTextureName("erebus:hoeJade");
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles"); 
 		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("waspSword");
-		metalIngot = new ItemMetalIngots(metalIngotID).setCreativeTab(ErebusMod.tabErebusItem);
+		if(ErebusMod.activateExtraOres)
+			metalIngot = new ItemMetalIngots(metalIngotID).setCreativeTab(ErebusMod.tabErebusItem);
 		
 		//Tools classes
 		MinecraftForge.setToolClass(jadeAxe, "axe", 2);
@@ -113,6 +114,7 @@ public class ModItems {
 		GameRegistry.registerItem(jadeHoe, "erebus.hoeJade");
 		GameRegistry.registerItem(compoundGoggles, "erebus.compoundGoggles");
 		GameRegistry.registerItem(waspSword, "erebus.waspSword");
-		GameRegistry.registerItem(metalIngot, "erebus.metalIngot");
+		if(ErebusMod.activateExtraOres)
+			GameRegistry.registerItem(metalIngot, "erebus.metalIngot");
     }
 }

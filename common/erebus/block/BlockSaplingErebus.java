@@ -20,6 +20,7 @@ import erebus.ModBlocks;
 import erebus.world.feature.WorldGenErebusHugeTree;
 import erebus.world.feature.WorldGenErebusTrees;
 import erebus.world.feature.WorldGenEucalyptus;
+import erebus.world.feature.trees.WorldGenAsperTree;
 import erebus.world.feature.trees.WorldGenMossbarkTree;
 import erebus.world.feature.trees.WorldGenSavannaTree;
 
@@ -79,11 +80,13 @@ public class BlockSaplingErebus extends BlockSapling {
 			worldGen = new WorldGenEucalyptus(ModBlocks.logErebusGroup1.blockID, BlockLogErebus.dataEucalyptus, ModBlocks.leavesErebus.blockID, BlockLeavesErebus.dataEucalyptusDecay, 8 + rand.nextInt(4), 5, 8, Block.grass.blockID);
 		}
 		else if (meta == dataMahogany) {
-			int size = world.rand.nextInt(3);
-			worldGen = new WorldGenSavannaTree(size);
+			worldGen = new WorldGenSavannaTree(world.rand.nextInt(3));
 		}
 		else if (meta == dataMossbark) {
 			worldGen = new WorldGenMossbarkTree();
+		}
+		else if (meta == dataAsper) {
+			worldGen = new WorldGenAsperTree();
 		}
 		else if (meta == dataAcacia) {
 			for (var8 = 0; var8 >= -1; --var8) {

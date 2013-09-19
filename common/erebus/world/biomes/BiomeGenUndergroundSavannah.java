@@ -16,6 +16,7 @@ import erebus.entity.EntityTarantula;
 import erebus.entity.EntityWasp;
 import erebus.world.feature.WorldGenRottenAcacia;
 import erebus.world.feature.WorldGenSavannaRock;
+import erebus.world.feature.trees.WorldGenAsperTree;
 import erebus.world.feature.trees.WorldGenSavannaTree;
 
 public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
@@ -64,6 +65,15 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 		 * - 1, j5) == Block.grass.blockID) { (new
 		 * WorldGenRottenAcacia()).generate(worldObj, rand, j2, l3, j5); } }
 		 */
+		
+		for (int c = 10; c > 0; c--) {
+			int j2 = x + rand.nextInt(16);
+			int l3 = rand.nextInt(120);
+			int j5 = z + rand.nextInt(16);
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+				(new WorldGenAsperTree()).generate(worldObj, rand, j2, l3, j5);
+			}
+		}
 
 		for (int c = 0; c < 200; c++) {
 			int j2 = x + rand.nextInt(16) + 8;

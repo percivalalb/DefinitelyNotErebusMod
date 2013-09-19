@@ -16,7 +16,7 @@ import erebus.entity.EntityTarantula;
 import erebus.entity.EntityWasp;
 import erebus.world.feature.WorldGenRottenAcacia;
 import erebus.world.feature.WorldGenSavannaRock;
-import erebus.world.feature.WorldGenSavannaTree;
+import erebus.world.feature.trees.WorldGenSavannaTree;
 
 public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 	public BiomeGenUndergroundSavannah(int par1) {

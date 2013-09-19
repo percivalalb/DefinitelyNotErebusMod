@@ -64,6 +64,7 @@ public class ErebusMod {
 
 	public static int erebusDimensionID;
 	public static boolean activateExtraOres = false;
+	public static byte beetleLarvaEating = 0;
 
 	public static ConnectionTeleportHandler packeterebushandler = new ConnectionTeleportHandler();
 

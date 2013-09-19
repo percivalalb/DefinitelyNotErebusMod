@@ -25,9 +25,7 @@ public class BlockPlanksErebus extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int meta) {
-		if (meta < 0 || meta >= iconArray.length)
-			meta = 0;
-		return iconArray[meta];
+		return iconArray[meta<0||meta>=iconArray.length?0:meta];
 	}
 
 	@Override

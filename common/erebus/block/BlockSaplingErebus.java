@@ -160,7 +160,7 @@ public class BlockSaplingErebus extends BlockSapling {
 		iconArray = new Icon[saplingTypes.length];
 
 		for (int i = 0; i < iconArray.length; i++) {
-			iconArray[i] = par1IconRegister.registerIcon("erebus:wood_" + saplingTypes[i]);
+			iconArray[i] = par1IconRegister.registerIcon("erebus:sapling_" + saplingTypes[i]);
 		}
 	}
 	

@@ -23,12 +23,9 @@ public class BlockLeavesErebus extends BlockLeaves {
 
 	private Icon[] iconArray;
 	private int[] adjacentTreeBlocks;
-	@SuppressWarnings("unused")
-	private int saplingMeta; // TODO finish saplings
 
-	public BlockLeavesErebus(int id, int saplingMeta) {
+	public BlockLeavesErebus(int id) {
 		super(id);
-		this.saplingMeta = saplingMeta;
 	}
 
 	@Override
@@ -89,7 +86,7 @@ public class BlockLeavesErebus extends BlockLeaves {
 						}
 					}
 
-					for (l1 = 1; l1 <= 4; ++l1) {
+					for (l1 = 1; l1 <= 6; ++l1) { // increased range 4 -> 6
 						for (i2 = -b0; i2 <= b0; ++i2) {
 							for (j2 = -b0; j2 <= b0; ++j2) {
 								for (k2 = -b0; k2 <= b0; ++k2) {
@@ -158,25 +155,24 @@ public class BlockLeavesErebus extends BlockLeaves {
 
 	@Override
 	public int damageDropped(int meta) {
-		return meta < 3 ? meta : 0;
+		switch(meta){
+			case dataAcacia: return BlockSaplingErebus.dataAcacia;
+			case dataEucalyptus: return BlockSaplingErebus.dataEucalyptus;
+			case dataMahogany: return BlockSaplingErebus.dataMahogany;
+			case dataMossbark: return BlockSaplingErebus.dataMossbark;
+			case dataAsper: return BlockSaplingErebus.dataAsper;
+			default: return -1;
+		}
 	}
 
 	@Override
 	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int meta, float par6, int fortune) {
 		if (!world.isRemote) {
-			byte saplingChance = 20;
-			if (meta < 8)
-				saplingChance = 40;
+			byte saplingChance = (byte)(meta<8?40:20);
 
-			if (world.rand.nextInt(saplingChance) == 0) {
+			if (world.rand.nextInt(saplingChance) == 0 && damageDropped(meta) != -1) {
 				dropBlockAsItem_do(world, x, y, z, new ItemStack(idDropped(meta, world.rand, fortune), 1, damageDropped(meta)));
 			}
-
-			/*
-			 * if (par5>=8&&par1World.rand.nextInt(200)==0){
-			 * this.dropBlockAsItem_do(par1World,par2,par3,par4,new
-			 * ItemStack(Item.appleRed,1,0)); }
-			 */
 		}
 	}
 

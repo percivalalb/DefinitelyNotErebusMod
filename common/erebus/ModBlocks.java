@@ -112,7 +112,7 @@ public class ModBlocks {
 		logErebusGroup1 = new BlockLogErebus(logErebusGroup1ID, 0).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("logErebus1");
 		logErebusGroup2 = new BlockLogErebus(logErebusGroup2ID, 1).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("logErebus2");
 		planksErebus = new BlockPlanksErebus(planksErebusID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("planksErebus");
-		leavesErebus = (BlockLeavesErebus)(new BlockLeavesErebus(leavesErebusID, 0)).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("leavesErebus");
+		leavesErebus = (BlockLeavesErebus)(new BlockLeavesErebus(leavesErebusID)).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("leavesErebus");
 		erebusSapling = new BlockSaplingErebus(erebusSaplingID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("sapling_mahogany");
 		stairsAcacia = new BlockStairsErebus(stairsAcaciaID, planksErebus, BlockPlanksErebus.dataAcacia).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsAcacia");
 		stairsEucalyptus = new BlockStairsErebus(stairsEucalyptusID, planksErebus, BlockPlanksErebus.dataEucalyptus).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsEucalyptus");
@@ -122,7 +122,7 @@ public class ModBlocks {
 		stairsPink = new BlockStairsErebus(stairsPinkID, planksErebus, BlockPlanksErebus.dataPink).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsPink");
 		stairsScorched = new BlockStairsErebus(stairsScorchedID, planksErebus, BlockPlanksErebus.dataScorched).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsScorched");
 		stairsAsper = new BlockStairsErebus(stairsAsperID, planksErebus, BlockPlanksErebus.dataAsper).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsAsper");
-		hollowLogAcacia = new BlockHollowLog(hollowLogAcaciaID, TileEntityHollowLog.class).setHardness(0.4F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("hollowLogAcacia").setTextureName("erebus:log_acacia");
+		hollowLogAcacia = new BlockHollowLog(hollowLogAcaciaID, TileEntityHollowLog.class).setHardness(0.7F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("hollowLogAcacia").setTextureName("erebus:log_acacia");
 		
 		erebusGrass = new BlockErebusGrass(erebusGrassID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusTallGrass").setTextureName("erebus:tallgrass");
 		thorns = new BlockThorns(thornsID).setHardness(0.2F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("thorns").setTextureName("erebus:thorns");

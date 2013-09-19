@@ -27,6 +27,7 @@ import erebus.block.BlockSpiderSpawner;
 import erebus.block.BlockStairsErebus;
 import erebus.block.BlockThorns;
 import erebus.block.BlockTurnip;
+import erebus.block.BlockUmberFurnace;
 import erebus.block.BlockUmberstone;
 import erebus.item.block.ItemBlockAmber;
 import erebus.item.block.ItemBlockBamboo;
@@ -91,6 +92,8 @@ public class ModBlocks {
 	public static Block petrifiedWoodStairs;  		  	public static int petrifiedWoodStairsID;
 	public static Block petrifiedCraftingTable;  		public static int petrifiedCraftingTableID;
 	public static Block bambooCrate;          			public static int bambooCrateID;
+	public static Block umberFurnace;					public static int umberFurnaceID;
+	public static Block umberFurnace_on;				public static int umberFurnace_onID;
 	
 	// DUNGEONS
 	public static Block spiderSpawner;     				public static int spiderSpawnerID;
@@ -135,6 +138,8 @@ public class ModBlocks {
 		petrifiedWoodStairs = new BlockStairsErebus(petrifiedWoodStairsID, petrifiedWoodPlanks, 0).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("petrifiedWoodStairs");
 		petrifiedCraftingTable = new BlockPetrifiedCraftingTable(petrifiedCraftingTableID).setHardness(2.5F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("petrifiedCraftingTable");
 		bambooCrate = new BlockBambooCrate(bambooCrateID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("bamboo");
+		umberFurnace = new BlockUmberFurnace(umberFurnaceID, false).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("umberFurnaceOFF");
+		umberFurnace_on = new BlockUmberFurnace(umberFurnaceID, true).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberFurnaceON");
 		
 		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, 96).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner");
 		caveSpiderSpawner = new BlockCaveSpiderSpawner(caveSpiderSpawnerID, 96).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner");
@@ -180,6 +185,8 @@ public class ModBlocks {
 		GameRegistry.registerBlock(petrifiedWoodStairs, "erebus.petrifiedWoodStairs");
 		GameRegistry.registerBlock(petrifiedCraftingTable, "erebus.petrifiedCraftingTable");
 		GameRegistry.registerBlock(bambooCrate, ItemBlockBamboo.class, "erebus.bamboo");
+		GameRegistry.registerBlock(umberFurnace, "erebus.umberFurnaceOff");
+		GameRegistry.registerBlock(umberFurnace_on, "erebus.umberFurnaceOn");
 		
 		GameRegistry.registerBlock(spiderSpawner, "erebus.spiderSpawner");		  
 		GameRegistry.registerBlock(caveSpiderSpawner, "erebus.caveSpiderSpawner");

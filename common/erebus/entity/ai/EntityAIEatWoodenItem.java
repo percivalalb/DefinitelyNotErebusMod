@@ -58,11 +58,6 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 	 */
 	@Override
 	public boolean continueExecuting() {
-		/*int x = this.theEntity.worldObj.getBlockId(WoodX, WoodY, WoodZ);
-		return (x != Block.fence.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.fenceGate.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.planks.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.doorWood.blockID) ? false
-		: !this.theEntity.getNavigator().noPath() || (x != Block.workbench.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.trapdoor.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.stairsWoodOak.blockID) ? false : !this.theEntity.getNavigator()
-		.noPath() || (x != Block.stairsWoodSpruce.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.stairsWoodBirch.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.stairsWoodJungle.blockID) ? false : !this.theEntity.getNavigator().noPath() ||
-		(x != Block.woodDoubleSlab.blockID) ? false : !this.theEntity.getNavigator().noPath() || (x != Block.woodSingleSlab.blockID) ? false : !this.theEntity.getNavigator().noPath();*/
 		return isBlockEdible(WoodX,WoodY,WoodZ)||!theEntity.getNavigator().noPath();
 	}
 
@@ -77,7 +72,6 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 		this.ticksSpent++;
 		if (this.theEntity.boundingBox.maxY >= blockbounds.minY && this.theEntity.boundingBox.minY <= blockbounds.maxY && this.theEntity.boundingBox.maxX >= blockbounds.minX && this.theEntity.boundingBox.minX <= blockbounds.maxX && this.theEntity.boundingBox.maxZ >= blockbounds.minZ &&
 		this.theEntity.boundingBox.minZ <= blockbounds.maxZ && this.ticksSpent < maxTicks) {
-			System.out.println("Beetle Larva Eating");
 			((EntityBeetleLarva) this.theEntity).setIsEating(true);
 			((EntityBeetleLarva) this.theEntity).munchBlock();
 		} else {

@@ -75,6 +75,7 @@ public class ModBlocks {
 	public static Block stairsMossbark;    				public static int stairsMossbarkID;
 	public static Block stairsPink;     				public static int stairsPinkID;
 	public static Block stairsScorched;  		  		public static int stairsScorchedID;
+	public static Block stairsAsper;	  		  		public static int stairsAsperID;
 	public static Block hollowLogAcacia;    			public static int hollowLogAcaciaID;
 	
 	// UNDERGROWTH
@@ -120,6 +121,7 @@ public class ModBlocks {
 		stairsMossbark = new BlockStairsErebus(stairsMossbarkID, planksErebus, BlockPlanksErebus.dataMossbark).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsMossbark");
 		stairsPink = new BlockStairsErebus(stairsPinkID, planksErebus, BlockPlanksErebus.dataPink).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsPink");
 		stairsScorched = new BlockStairsErebus(stairsScorchedID, planksErebus, BlockPlanksErebus.dataScorched).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsScorched");
+		stairsAsper = new BlockStairsErebus(stairsAsperID, planksErebus, BlockPlanksErebus.dataAsper).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("stairsAsper");
 		hollowLogAcacia = new BlockHollowLog(hollowLogAcaciaID, TileEntityHollowLog.class).setHardness(0.4F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("hollowLogAcacia").setTextureName("erebus:log_acacia");
 		
 		erebusGrass = new BlockErebusGrass(erebusGrassID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusTallGrass").setTextureName("erebus:tallgrass");
@@ -148,8 +150,9 @@ public class ModBlocks {
 		GameRegistry.registerBlock(redGem, ItemBlockRedGem.class, "erebus.redGem");
 		GameRegistry.registerBlock(blockAmber, ItemBlockAmber.class, "erebus.blockAmber");		  
 		GameRegistry.registerBlock(quickSand, "erebus.quickSand");
-		if(ErebusMod.activateExtraOres)
+		if(ErebusMod.activateExtraOres){
 			GameRegistry.registerBlock(erebusOreExtra, ItemBlockErebusOreExtras.class, "erebus.erebusOreExtras");
+		}
 		
 		GameRegistry.registerBlock(logErebusGroup1, ItemBlockLogErebus1.class, "erebus.logErebus1");
 		GameRegistry.registerBlock(logErebusGroup2, ItemBlockLogErebus2.class, "erebus.logErebus2");
@@ -160,9 +163,10 @@ public class ModBlocks {
 		GameRegistry.registerBlock(stairsEucalyptus, "erebus.stairsEucalyptus");
 		GameRegistry.registerBlock(stairsMahogany, "erebus.stairsMahogany");		  
 		GameRegistry.registerBlock(stairsBaobab, "erebus.stairsBaobab");
-		GameRegistry.registerBlock(stairsMossbark, "erebus.stairsMossbark");		  
+		GameRegistry.registerBlock(stairsMossbark, "erebus.stairsMossbark");
 		GameRegistry.registerBlock(stairsPink, "erebus.stairsPink");
 		GameRegistry.registerBlock(stairsScorched, "erebus.stairsScorched");
+		GameRegistry.registerBlock(stairsAsper, "erebus.stairsAsper");
 		GameRegistry.registerBlock(hollowLogAcacia, "erebus.hollowLogAcacia");
 		
 		GameRegistry.registerBlock(erebusGrass, "erebus.erebusGrass");

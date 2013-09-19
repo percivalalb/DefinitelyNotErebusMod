@@ -6,12 +6,12 @@ import erebus.ErebusMod;
 import erebus.ModBiomes;
 import erebus.ModBlocks;
 import erebus.ModItems;
-import erebus.utils.IdGenetator;
+import erebus.utils.IdGenerator;
 
 public class ConfigurationHandler {
 
 	public static Configuration configurationFile;
-	private static IdGenetator idGen = new IdGenetator(9706, 2500); 
+	private static IdGenerator idGen = new IdGenerator(9706, 2500); 
 	
 	public static void loadConfig(FMLPreInitializationEvent event) {
 
@@ -44,6 +44,7 @@ public class ConfigurationHandler {
 		ModBlocks.stairsMossbarkID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Mossbark Stairs", idGen.getNextBlockID()).getInt();
 		ModBlocks.stairsPinkID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Pink Stairs", idGen.getNextBlockID()).getInt();
 		ModBlocks.stairsScorchedID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Scorched Stairs", idGen.getNextBlockID()).getInt();
+		ModBlocks.stairsAsperID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Asper Stairs", idGen.getNextBlockID()).getInt();
 		ModBlocks.hollowLogAcaciaID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Hollow Log", idGen.getNextBlockID()).getInt();
 
 		ModBlocks.erebusGrassID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Erebus Grass", idGen.getNextBlockID()).getInt();
@@ -97,6 +98,7 @@ public class ConfigurationHandler {
 
 		ErebusMod.erebusDimensionID = config.get(Configuration.CATEGORY_GENERAL, "Dimension ID of The Erebus", 66, "There doesn't appear to be a limit on dimension IDs, but try to keep it low").getInt();
 		ErebusMod.activateExtraOres = config.get(Configuration.CATEGORY_GENERAL, "Should generate copper, lead, silver and tin?", false).getBoolean(false);
+		ErebusMod.beetleLarvaEating = (byte)config.get(Configuration.CATEGORY_GENERAL, "Beatle larva eating settings", 0, "0 = only wooden blocks except tile entities & logs, 1 = only wooden blocks except logs, 2 = anything").getInt();
 
 		config.save();
 	}

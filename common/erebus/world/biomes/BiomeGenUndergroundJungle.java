@@ -29,6 +29,7 @@ import erebus.world.feature.WorldGenQuickSand;
 import erebus.world.feature.WorldGenRedGem1;
 import erebus.world.feature.WorldGenRedGem2;
 import erebus.world.feature.WorldGenTurnips;
+import erebus.world.feature.trees.WorldGenAsperTree;
 import erebus.world.feature.trees.WorldGenMossbarkTree;
 import erebus.world.feature.trees.WorldGenTallJungleTree;
 
@@ -131,6 +132,15 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			int j5 = z + getRandomXZOffset(rand);
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
 				(new WorldGenTallJungleTree()).generate(worldObj, rand, j2, l3, j5);
+			}
+		}
+		
+		for (int c = 300; c > 0; c--) {
+			int j2 = x + getRandomXZOffset(rand);
+			int l3 = rand.nextInt(120);
+			int j5 = z + getRandomXZOffset(rand);
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+				(new WorldGenAsperTree()).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 

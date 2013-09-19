@@ -79,7 +79,7 @@ public class WorldGenMossbarkTree extends WorldGenerator{
 	}
 
 	public void generateMiddleBranch(World world, Random random, int x, int y, int z, int height){
-		for(int yy=0; yy<2; ++yy)world.setBlock(x,y-1-yy,z,ModBlocks.leavesErebus.blockID,BlockLeavesErebus.dataMossbark,3);
+		for(int yy=0; yy<2; ++yy)world.setBlock(x,y-1-yy,z,ModBlocks.leavesErebus.blockID,BlockLeavesErebus.dataMossbarkDecay,3);
 		
 		for(int yy=0; yy<height; ++yy){
 			world.setBlock(x,y+yy,z,ModBlocks.logErebusGroup2.blockID,BlockLogErebus.dataMossbark,3);
@@ -88,14 +88,14 @@ public class WorldGenMossbarkTree extends WorldGenerator{
 
 	public void generateOutsideBranch(World world, Random random, int x, int y, int z, int height){
 		for(int yy=0; yy<2; ++yy){
-			world.setBlock(x,y-1-yy,z,ModBlocks.leavesErebus.blockID,BlockLeavesErebus.dataMossbark,3);
-			world.setBlock(x,y+height+yy,z,ModBlocks.leavesErebus.blockID,BlockLeavesErebus.dataMossbark,3);
+			world.setBlock(x,y-1-yy,z,ModBlocks.leavesErebus.blockID,BlockLeavesErebus.dataMossbarkDecay,3);
+			world.setBlock(x,y+height+yy,z,ModBlocks.leavesErebus.blockID,BlockLeavesErebus.dataMossbarkDecay,3);
 		}
 		
 		for(int yy=0; yy<height; ++yy){
 			if (yy<height-1)world.setBlock(x,y+yy,z,ModBlocks.logErebusGroup2.blockID,BlockLogErebus.dataMossbark,3);
 			
-			for(int a=0; a<4; a++)world.setBlock(x+offsetX[a],y+yy,z+offsetZ[a],ModBlocks.leavesErebus.blockID,BlockLeavesErebus.dataMossbark,3);
+			for(int a=0; a<4; a++)world.setBlock(x+offsetX[a],y+yy,z+offsetZ[a],ModBlocks.leavesErebus.blockID,BlockLeavesErebus.dataMossbarkDecay,3);
 		}
 	}
 }

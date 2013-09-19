@@ -168,7 +168,7 @@ public class BlockLeavesErebus extends BlockLeaves {
 	@Override
 	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int meta, float par6, int fortune) {
 		if (!world.isRemote) {
-			byte saplingChance = (byte)(meta<8?40:20);
+			byte saplingChance = (byte)(meta<8?20:40);
 
 			if (world.rand.nextInt(saplingChance) == 0 && damageDropped(meta) != -1) {
 				dropBlockAsItem_do(world, x, y, z, new ItemStack(idDropped(meta, world.rand, fortune), 1, damageDropped(meta)));

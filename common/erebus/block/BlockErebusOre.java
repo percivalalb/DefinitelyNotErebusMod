@@ -24,21 +24,20 @@ public class BlockErebusOre extends Block {
 	 * The icon path, not including "erebus:" as it is joined when registering
 	 * icon
 	 **/
-	protected String[] iconPaths;
+	protected String[] iconPaths = new String[] { "oreCoalU", "oreIronU", "oreGoldU", "oreLapisU", "oreDiamondU", "oreEmeraldU", "oreJadeU", "petrifiedWoodore" };
 	@SideOnly(Side.CLIENT)
 	protected Icon[] icons;
 
 	public BlockErebusOre(int id) {
 		super(id, Material.rock);
-		iconPaths = new String[] { "oreCoalU", "oreIronU", "oreGoldU", "oreLapisU", "oreDiamondU", "oreEmeraldU", "oreJadeU", "petrifiedWoodore" };
-		icons = new Icon[iconPaths.length];
 	}
 
 	@Override
 	public void registerIcons(IconRegister iconRegister) {
-		int i = 0;
-		for (String path : iconPaths) {
-			icons[i++] = iconRegister.registerIcon("erebus:" + path);
+		icons = new Icon[iconPaths.length];
+		
+		for(int a=0; a<iconPaths.length; a++){
+			icons[a] = iconRegister.registerIcon("erebus:" + iconPaths[a]);
 		}
 	}
 

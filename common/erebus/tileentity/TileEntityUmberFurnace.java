@@ -276,6 +276,10 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 		return tank.getFluid() != null ? (int) (((float) tank.getFluid().amount / (float) (tank.getCapacity())) * scale) : 0;
 	}
 
+	public String getFluidAmount() {
+		return tank.getFluidAmount() + " mB";
+	}
+
 	public void getGUIData(int id, int value) {
 		switch (id) {
 			case 1:

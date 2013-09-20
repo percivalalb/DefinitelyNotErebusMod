@@ -101,7 +101,8 @@ public class ModBlocks {
 
 	public static void init() {
 		// Block declaration: constructor, hardness, resistance, light value, light opacity, step sound, creative tab, unlocalized name, texture name
-		portalErebus = (BlockPortalErebus)(new BlockPortalErebus(portalErebusID, 221)).setHardness(-1F).setLightValue(1.0F).setStepSound(Block.soundGlassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("portalErebus");
+		// FIXME Remove the creative tab before release!!!
+		portalErebus = (BlockPortalErebus) (new BlockPortalErebus(portalErebusID, 221)).setHardness(-1F).setLightValue(1.0F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("portalErebus");
 
 		umberstone = new BlockUmberstone(umberstoneID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("umberstone");
 		umbercobbleStairs = new BlockStairsErebus(umbercobbleStairsID, umberstone, 1).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("umbercobbleStairs");

@@ -81,8 +81,9 @@ public class ModBlocks {
 	// UNDERGROWTH
 	public static Block erebusGrass;     				public static int erebusGrassID;
 	public static Block thorns;       					public static int thornsID;
-	public static BlockFern fern;      					public static int fernID;
+	public static Block fern;      						public static int fernID;
 	public static Block blockTurnip;     				public static int blockTurnipID;
+	public static Block fiddlehead;      				public static int fiddleheadID;
 
 	// DECORATIONS AND UTILITIES
 	public static Block blockSilk;      				public static int blockSilkID;
@@ -130,8 +131,9 @@ public class ModBlocks {
 
 		erebusGrass = new BlockErebusGrass(erebusGrassID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusTallGrass").setTextureName("erebus:tallgrass");
 		thorns = new BlockThorns(thornsID).setHardness(0.2F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("thorns").setTextureName("erebus:thorns");
-		fern = (BlockFern)(new BlockFern(fernID)).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFern");
+		fern = new BlockFern(fernID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFern");
 		blockTurnip = (new BlockTurnip(blockTurnipID)).setUnlocalizedName("turnips");
+		fiddlehead = new BlockFern(fiddleheadID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFiddlehead");
 
 		blockSilk = new BlockSilk(blockSilkID, 70).setHardness(0.2F).setStepSound(Block.soundClothFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("blockSilk").setTextureName("erebus:blockSilk");
 		mirBrick = new BlockMirBrick(mirBrickID, Material.rock).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("mirbrick").setTextureName("erebus:mirbrick");
@@ -179,6 +181,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(thorns, "erebus.thorns");
 		GameRegistry.registerBlock(fern, "erebus.fern");
 		GameRegistry.registerBlock(blockTurnip, "erebus.blockTurnip");
+		GameRegistry.registerBlock(fiddlehead, "erebus.fiddlehead");
 
 		GameRegistry.registerBlock(blockSilk, "erebus.blockSilk");
 		GameRegistry.registerBlock(mirBrick, "erebus.mirBrick");

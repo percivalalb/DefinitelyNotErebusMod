@@ -2,6 +2,7 @@ package erebus.block;
 
 import java.util.ArrayList;
 import java.util.Random;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,10 +13,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 
 public class BlockFern extends BlockUndergroundFlower implements IShearable {
+
 	public BlockFern(int par1) {
 		super(par1, Material.vine);
 		float var3 = 0.4F;
-		this.setBlockBounds(0.5F - var3, 0.0F, 0.5F - var3, 0.5F + var3, 0.8F, 0.5F + var3);
+		setBlockBounds(0.5F - var3, 0.0F, 0.5F - var3, 0.5F + var3, 0.8F, 0.5F + var3);
 	}
 
 	/**
@@ -23,17 +25,16 @@ public class BlockFern extends BlockUndergroundFlower implements IShearable {
 	 */
 	@Override
 	public int idDropped(int par1, Random par2Random, int par3) {
-		if (par2Random.nextInt(2) == 0) {
+		if (par2Random.nextInt(2) == 0)
 			return -1;
-		} else if (par2Random.nextInt(2) == 0) {
+		else if (par2Random.nextInt(2) == 0)
 			return -1;
-		} else if (par2Random.nextInt(2) == 0) {
+		else if (par2Random.nextInt(2) == 0)
 			return -1;
-		} else if (par2Random.nextInt(2) == 0) {
+		else if (par2Random.nextInt(2) == 0)
 			return Item.seeds.itemID;
-		} else {
+		else
 			return Item.melonSeeds.itemID;
-		}
 	}
 
 	/**
@@ -60,7 +61,7 @@ public class BlockFern extends BlockUndergroundFlower implements IShearable {
 
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
-		this.blockIcon = par1IconRegister.registerIcon("erebus:erebusfern");
+		blockIcon = par1IconRegister.registerIcon("erebus:erebusfern");
 	}
 
 	@Override

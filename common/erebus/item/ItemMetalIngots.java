@@ -13,7 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ItemMetalIngots extends Item {
 
 	@SideOnly(Side.CLIENT)
-	private Icon[] icons = new Icon[4];
+	private Icon[] icons;
 
 	public ItemMetalIngots(int id) {
 		super(id);
@@ -42,6 +42,8 @@ public class ItemMetalIngots extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
+		icons = new Icon[4];
+		
 		for (int i = 0; i < icons.length; i++)
 			icons[i] = reg.registerIcon("erebus:metalIngot" + i);
 	}

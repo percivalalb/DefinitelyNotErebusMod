@@ -2,6 +2,7 @@ package erebus.block;
 
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -21,19 +22,18 @@ public class BlockUmberstone extends Block {
 	 * The icon path, not including "erebus:" as it is joined when registering
 	 * icon
 	 **/
-	public static final String[] iconPaths = new String[] { "Umberstone", "cobbleUmber", "cobbleUmberMossy", "cobbleUmberWebbed" };
+	public static final String[] iconPaths = new String[] { "Umberstone", "cobbleUmber", "cobbleUmberMossy", "cobbleUmberWebbed", "umberstoneBricks" };
 	public static final Icon[] icons = new Icon[iconPaths.length];
 
-	public BlockUmberstone(int par1, Material par2Material) {
-		super(par1, par2Material);
+	public BlockUmberstone(int id) {
+		super(id, Material.rock);
 	}
 
 	@Override
 	public void registerIcons(IconRegister iconRegister) {
 		int i = 0;
-		for (String path : iconPaths) {
+		for (String path : iconPaths)
 			icons[i++] = iconRegister.registerIcon("erebus:" + path);
-		}
 	}
 
 	@Override
@@ -50,16 +50,16 @@ public class BlockUmberstone extends Block {
 		par3List.add(new ItemStack(par1, 1, 1));
 		par3List.add(new ItemStack(par1, 1, 2));
 		par3List.add(new ItemStack(par1, 1, 3));
+		par3List.add(new ItemStack(par1, 1, 4));
 	}
 
 	// Data about the item that drops when broken
 	@Override
 	public int damageDropped(int meta) {
-		switch (meta) {
-			case 0:
-				return 1;
-		}
-		return meta;
+		if (meta == 0)
+			return 1;
+		else
+			return meta;
 	}
 
 	@Override

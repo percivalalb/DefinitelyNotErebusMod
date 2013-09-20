@@ -1,13 +1,13 @@
 package erebus.core.teleport;
 
 import java.util.Random;
-
-import erebus.ErebusMod;
-import erebus.core.handler.ConnectionTeleportHandler;
-import erebus.world.TeleporterErebus;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.packet.Packet;
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.common.network.Player;
+import erebus.ErebusMod;
+import erebus.network.PacketHandler;
+import erebus.world.TeleporterErebus;
 
 public class TeleportServer {
 	private EntityPlayerMP player;
@@ -35,7 +35,8 @@ public class TeleportServer {
 			if (this.timeInPortal >= 1.0F) {
 				this.timeInPortal = 1.0F;
 				this.timeUntilPortal = 10;
-				player.playerNetServerHandler.sendPacketToPlayer(ConnectionTeleportHandler.getDataPacket(player));
+				PacketDispatcher.sendPacketToPlayer(PacketHandler.buildPacket(0),(Player)player);
+				
 				if (player.dimension == (byte) ErebusMod.erebusDimensionID) {
 					player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, TeleporterErebus.TELEPORTER_TO_OVERWORLD);
 				} else if (player.dimension == (byte) 0) {

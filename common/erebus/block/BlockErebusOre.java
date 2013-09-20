@@ -24,7 +24,7 @@ public class BlockErebusOre extends Block {
 	 * The icon path, not including "erebus:" as it is joined when registering
 	 * icon
 	 **/
-	protected String[] iconPaths = new String[] { "oreCoalU", "oreIronU", "oreGoldU", "oreLapisU", "oreDiamondU", "oreEmeraldU", "oreJadeU", "petrifiedWoodore" };
+	protected String[] iconPaths = new String[] { "oreCoalU", "oreIronU", "oreGoldU", "oreLapisU", "oreDiamondU", "oreEmeraldU", "oreJadeU", "petrifiedWoodOre" };
 	@SideOnly(Side.CLIENT)
 	protected Icon[] icons;
 

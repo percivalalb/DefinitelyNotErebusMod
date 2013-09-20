@@ -35,14 +35,15 @@ public class BlockTurnip extends BlockCrops {
 
 	@Override
 	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune){
-		ArrayList<ItemStack> ret=super.getBlockDropped(world,x,y,z,metadata,fortune);
+		ArrayList<ItemStack> ret=new ArrayList<ItemStack>();
 
-		if (metadata>=7){
-			for(int n=0; n<2+fortune; n++){
-				if (world.rand.nextInt(15)<=metadata){
-					ret.add(new ItemStack(this.getSeedItem(),1,0));
-				}
-			}
+		int dropAmount=1;
+		
+		if (metadata>=7)dropAmount+=world.rand.nextInt(3);
+		else if (metadata>=4)dropAmount+=world.rand.nextInt(2);
+
+		for(int n=0; n<dropAmount+fortune; n++){
+			ret.add(new ItemStack(getSeedItem(),1,0));
 		}
 
 		return ret;

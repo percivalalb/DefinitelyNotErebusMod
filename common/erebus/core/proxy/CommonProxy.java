@@ -2,9 +2,11 @@ package erebus.core.proxy;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import com.google.common.io.ByteArrayDataInput;
 import net.minecraft.client.gui.inventory.GuiCrafting;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.network.INetworkManager;
+import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -45,6 +47,10 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntityHollowLog.class, "Hollow Log (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityBamboo.class, "Bamboo Crate (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityUmberFurnace.class, "Umber Furnace (Erebus)");
+	}
+	
+	public void handleParticlePacket(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data){
+		// Unused server side. -- see ClientProxy for implementation
 	}
 
 	@Override

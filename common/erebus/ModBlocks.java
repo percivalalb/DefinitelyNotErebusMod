@@ -11,6 +11,7 @@ import erebus.block.BlockErebusGrass;
 import erebus.block.BlockErebusOre;
 import erebus.block.BlockErebusOreExtras;
 import erebus.block.BlockFern;
+import erebus.block.BlockFiddlehead;
 import erebus.block.BlockHollowLog;
 import erebus.block.BlockLeavesErebus;
 import erebus.block.BlockLogErebus;
@@ -133,7 +134,7 @@ public class ModBlocks {
 		thorns = new BlockThorns(thornsID).setHardness(0.2F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("thorns").setTextureName("erebus:thorns");
 		fern = (BlockFern) new BlockFern(fernID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFern");
 		blockTurnip = (new BlockTurnip(blockTurnipID)).setUnlocalizedName("turnips");
-		fiddlehead = new BlockFern(fiddleheadID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFiddlehead");
+		fiddlehead = new BlockFiddlehead(fiddleheadID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFiddlehead");
 
 		blockSilk = new BlockSilk(blockSilkID, 70).setHardness(0.2F).setStepSound(Block.soundClothFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("blockSilk").setTextureName("erebus:blockSilk");
 		mirBrick = new BlockMirBrick(mirBrickID, Material.rock).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("mirbrick").setTextureName("erebus:mirbrick");

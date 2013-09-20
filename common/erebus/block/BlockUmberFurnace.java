@@ -84,13 +84,16 @@ public class BlockUmberFurnace extends BlockContainer {
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+		if (world.isRemote)
+			return true;
+
 		TileEntityUmberFurnace tile = (TileEntityUmberFurnace) world.getBlockTileEntity(x, y, z);
 
 		if (player.isSneaking())
 			return false;
 
 		if (player.getCurrentEquippedItem() != null) {
-			tile.fillTankWithBucket(player.getCurrentEquippedItem());
+			player.inventory.setInventorySlotContents(player.inventory.currentItem, tile.fillTankWithBucket(player.inventory.getStackInSlot(player.inventory.currentItem)));
 			return true;
 		}
 

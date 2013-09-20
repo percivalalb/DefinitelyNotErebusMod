@@ -49,17 +49,16 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 		tank.setFluid(new FluidStack(FluidRegistry.LAVA, 0));
 	}
 
-	public void fillTankWithBucket(ItemStack bucket) {
-		if (bucket != null)
-			if (tank.getFluidAmount() <= tank.getCapacity() - FluidContainerRegistry.BUCKET_VOLUME)
-				if (FluidContainerRegistry.isFilledContainer(bucket) && FluidContainerRegistry.getFluidForFilledItem(bucket).getFluid() == FluidRegistry.LAVA)
-					if (bucket.stackSize == 1) {
-						tank.fill(new FluidStack(FluidRegistry.LAVA, FluidContainerRegistry.BUCKET_VOLUME), true);
-						for (FluidContainerData data : FluidContainerRegistry.getRegisteredFluidContainerData())
-							if (data != null)
-								if (data.filledContainer.itemID == inventory[BUCKET_SLOT].itemID && data.filledContainer.getItemDamage() == bucket.getItemDamage())
-									bucket = data.emptyContainer.copy();
-					}
+	public ItemStack fillTankWithBucket(ItemStack bucket) {
+		if (tank.getFluidAmount() <= tank.getCapacity() - FluidContainerRegistry.BUCKET_VOLUME)
+			if (FluidContainerRegistry.isFilledContainer(bucket) && FluidContainerRegistry.getFluidForFilledItem(bucket).getFluid() == FluidRegistry.LAVA)
+				if (bucket.stackSize == 1) {
+					tank.fill(new FluidStack(FluidRegistry.LAVA, FluidContainerRegistry.BUCKET_VOLUME), true);
+					for (FluidContainerData data : FluidContainerRegistry.getRegisteredFluidContainerData())
+						if (data.filledContainer.itemID == bucket.itemID && data.filledContainer.getItemDamage() == bucket.getItemDamage())
+							return data.emptyContainer.copy();
+				}
+		return bucket;
 	}
 
 	@Override
@@ -68,7 +67,7 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 			return;
 
 		// Draining buckets
-		fillTankWithBucket(inventory[BUCKET_SLOT]);
+		inventory[BUCKET_SLOT] = fillTankWithBucket(inventory[BUCKET_SLOT]);
 
 		cookTime = COOK_TIME_BASE - (int) (COOK_TIME_BASE * 0.8F * ((float) tank.getFluidAmount() / (float) tank.getCapacity()));
 
@@ -275,6 +274,10 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 
 	public int getScaledFluidAmount(int scale) {
 		return tank.getFluid() != null ? (int) (((float) tank.getFluid().amount / (float) (tank.getCapacity())) * scale) : 0;
+	}
+
+	public String getFluidAmount() {
+		return tank.getFluidAmount() + " mB";
 	}
 
 	public void getGUIData(int id, int value) {

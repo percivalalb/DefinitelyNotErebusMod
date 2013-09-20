@@ -17,7 +17,6 @@ public class BlockQuickSand extends Block {
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
 		return null;
-		//return world.getBlockId(x, y - 1, z) == blockID ? null : AxisAlignedBB.getAABBPool().getAABB(x, y, z, x + 1, y + 0.001F, z + 1);
 	}
 
 	@Override

@@ -50,6 +50,7 @@ public class ConfigurationHandler {
 		ModBlocks.erebusGrassID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Erebus Grass", idGen.getNextBlockID()).getInt();
 		ModBlocks.thornsID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Thorns", idGen.getNextBlockID()).getInt();
 		ModBlocks.fernID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Ferns", idGen.getNextBlockID()).getInt();
+		ModBlocks.fiddleheadID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Fiddlehead", idGen.getNextBlockID()).getInt();
 		ModBlocks.blockTurnipID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Turnips", idGen.getNextBlockID()).getInt();
 
 		ModBlocks.blockSilkID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Silk", idGen.getNextBlockID()).getInt();

@@ -25,9 +25,8 @@ import net.minecraft.world.World;
  * @author ProPercivalalb
  */
 public class BlockHollowLog extends BlockContainer {
-
-	private Icon tree_top;
-	private Icon tree_side;
+	@SideOnly(Side.CLIENT)
+	private Icon tree_top,tree_side;
 
 	public BlockHollowLog(int par1, Class class1) {
 		super(par1, Material.wood);

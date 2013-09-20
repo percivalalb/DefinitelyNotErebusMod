@@ -14,7 +14,7 @@ import erebus.ModBiomes;
 
 public class WorldProviderErebus extends WorldProvider {
 	@SideOnly(Side.CLIENT)
-	private double[] currentFogColor = null, targetFogColor = new double[3];
+	private double[] currentFogColor, targetFogColor;
 
 	public WorldProviderErebus() {
 	}
@@ -39,6 +39,7 @@ public class WorldProviderErebus extends WorldProvider {
 	public Vec3 getFogColor(float par1, float par2) {
 		BiomeGenBase b = worldObj.getBiomeGenForCoords((int) Minecraft.getMinecraft().thePlayer.posX, (int) Minecraft.getMinecraft().thePlayer.posZ);
 		
+		if (targetFogColor==null)targetFogColor = new double[3];
 		targetFogColor[0] = 0.029999999329447746D * 255D;
 		targetFogColor[1] = 0.49999999329447746D * 255D;
 		targetFogColor[2] = 0.029999999329447746D * 255D;

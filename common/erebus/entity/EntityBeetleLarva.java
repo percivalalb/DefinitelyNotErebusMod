@@ -1,9 +1,5 @@
 package erebus.entity;
 
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityBreakingFX;
-import net.minecraft.client.particle.EntityDiggingFX;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -19,9 +15,11 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.network.PacketDispatcher;
 import erebus.ModItems;
 import erebus.entity.ai.EntityAIEatWoodenItem;
+import erebus.network.PacketHandler;
+import erebus.network.packet.PacketParticle;
 
 /**
  * @author ProPercivalalb
@@ -152,20 +150,20 @@ public class EntityBeetleLarva extends EntityUndergroundAnimal {
 	}
 
 	@Override
-	public void onDeathUpdate() {
+	public void onDeathUpdate(){
 
 		super.onDeathUpdate();
-		if (!this.worldObj.isRemote && this.isDead && !this.isSquashed) {
-			dropFewItems(false, 0);
+		if (!this.worldObj.isRemote&&this.isDead&&!this.isSquashed){
+			dropFewItems(false,0);
 		}
-		 if (this.isSquashed && FMLCommonHandler.instance().getSide().isClient()) {
-	        	for(int countparticles = 0; countparticles <= 200; ++countparticles)
-	            {
-	            	Minecraft.getMinecraft().effectRenderer.addEffect(new EntityBreakingFX(Minecraft.getMinecraft().theWorld, this.posX + (rand.nextDouble() - 0.5D) * (double)this.width, this.posY + rand.nextDouble() * (double)this.height - (double)this.yOffset, this.posZ + (rand.nextDouble() - 0.5D) * (double)this.width, Item.slimeBall));
-	            }
-	            this.worldObj.playSoundEffect(this.posX, this.posY, this.posZ, getJumpedOnSound(), 1.0F, 0.5F);
-	            this.worldObj.playSoundEffect(this.posX, this.posY, this.posZ, getDeathSound(), 1.0F, 0.7F);	
-	        }
+		if (this.isSquashed){
+			PacketDispatcher.sendPacketToAllAround(posX,posY,posZ,64D,dimension,
+				PacketHandler.buildPacket(2,PacketParticle.BEETLE_LARVA_SQUISH,entityId)
+			);
+
+			this.worldObj.playSoundEffect(this.posX,this.posY,this.posZ,getJumpedOnSound(),1.0F,0.5F);
+			this.worldObj.playSoundEffect(this.posX,this.posY,this.posZ,getDeathSound(),1.0F,0.7F);
+		}
 	}
 
 	@Override
@@ -205,18 +203,14 @@ public class EntityBeetleLarva extends EntityUndergroundAnimal {
 	}
 
 	 public void munchBlock() { 
-	    	if (this.isEating && FMLCommonHandler.instance().getSide().isClient() && this.worldObj.getWorldTime() % 5 == 0)
+	    	if (this.isEating && this.worldObj.getWorldTime() % 5 == 0)
 	    	{
-	        	double woodX = this.aiEatWoodItem.WoodX;
-	        	double woodY = this.aiEatWoodItem.WoodY;
-	        	double woodZ = this.aiEatWoodItem.WoodZ;
-	            for(int countparticles = 0; countparticles <= 50; ++countparticles)
-	            {
-	        		double d0 = this.rand.nextGaussian() * 0.5D;
-	            	double d1 = this.rand.nextGaussian() * 0.01D;
-	            	double d2 = this.rand.nextGaussian() * 0.5D;
-	            	Minecraft.getMinecraft().effectRenderer.addEffect (new EntityDiggingFX(Minecraft.getMinecraft().theWorld, woodX + 0.5D + (rand.nextDouble() - 0.5D) * (double)this.width, woodY + 0.2D + rand.nextDouble() * (double)this.height - (double)this.yOffset, woodZ + 0.5D + (rand.nextDouble() - 0.5D) * (double)this.width, d0 ,d1, d2, Block.blocksList[5], 0));
-	            }
+	        	PacketDispatcher.sendPacketToAllAround(posX,posY,posZ,64D,dimension,
+	    			PacketHandler.buildPacket(2,PacketParticle.BEETLE_LARVA_EAT,entityId,
+	    					aiEatWoodItem.WoodX,aiEatWoodItem.WoodY,aiEatWoodItem.WoodZ,
+	    					worldObj.getBlockId(aiEatWoodItem.WoodX,aiEatWoodItem.WoodY,aiEatWoodItem.WoodZ),
+	    					Byte.valueOf((byte)worldObj.getBlockMetadata(aiEatWoodItem.WoodX,aiEatWoodItem.WoodY,aiEatWoodItem.WoodZ)))
+	    		);
 	    	}
 	    }
 

@@ -1,13 +1,10 @@
 package erebus.client.gui;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.util.List;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -15,7 +12,7 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.inventory.ContainerColossalCrate;
-import erebus.lib.Reference;
+import erebus.network.PacketHandler;
 import erebus.tileentity.TileEntityBamboo;
 
 @SideOnly(Side.CLIENT)
@@ -73,33 +70,15 @@ public class GuiColossalCrate extends GuiContainer {
 			switch (button.id) {
 				case 0:
 					newPage = getPageNumber() - 1;
-					this.mc.getNetHandler().addToSendQueue(getDataPacket(newPage));
+					this.mc.getNetHandler().addToSendQueue(PacketHandler.buildPacket(1,newPage));
 					((ContainerColossalCrate) inventorySlots).changePage(newPage);
 					break;
 				case 1:
 					newPage = getPageNumber() + 1;
-					this.mc.getNetHandler().addToSendQueue(getDataPacket(newPage));
+					this.mc.getNetHandler().addToSendQueue(PacketHandler.buildPacket(1,newPage));
 					((ContainerColossalCrate) inventorySlots).changePage(newPage);
 					break;
 			}
-		}
-	}
-
-	public Packet250CustomPayload getDataPacket(int page) {
-		try {
-			ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-			DataOutputStream data = new DataOutputStream(bytes);
-			data.writeInt(1);
-			data.writeInt(page);
-			Packet250CustomPayload packet = new Packet250CustomPayload();
-			packet.channel = Reference.CHANNEL;
-			packet.length = bytes.size();
-			packet.data = bytes.toByteArray();
-			packet.length = bytes.size();
-			return packet;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
 		}
 	}
 

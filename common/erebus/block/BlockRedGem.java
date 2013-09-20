@@ -25,8 +25,9 @@ public class BlockRedGem extends Block {
 	 * The icon path, not including "erebus:" as it is joined when registering
 	 * icon
 	 **/
-	public static final String[] iconPaths = new String[] { "redGem", "redlamp_off", "redlamp_on" };
-	public static final Icon[] icons = new Icon[iconPaths.length];
+	public static final String[] iconPaths = new String[] { "redgem", "redlamp_off", "redlamp_on" };
+	@SideOnly(Side.CLIENT)
+	public static Icon[] icons;
 
 	public BlockRedGem(int par1) {
 		super(par1, Material.glass);
@@ -34,6 +35,8 @@ public class BlockRedGem extends Block {
 
 	@Override
 	public void registerIcons(IconRegister iconRegister) {
+		icons = new Icon[iconPaths.length];
+		
 		int i = 0;
 		for (String path : iconPaths) {
 			icons[i++] = iconRegister.registerIcon("erebus:" + path);
@@ -72,10 +75,7 @@ public class BlockRedGem extends Block {
 
 	@Override
 	public int idDropped(int meta, Random random, int fortune) {
-		if (meta == 0) {
-			return Item.redstone.itemID;
-		}
-		return blockID;
+		return meta == 0?Item.redstone.itemID:blockID;
 	}
 
 	/**

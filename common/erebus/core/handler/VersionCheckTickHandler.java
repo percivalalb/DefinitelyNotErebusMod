@@ -6,6 +6,7 @@ import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 import erebus.lib.Reference;
+import erebus.utils.VersionHelper;
 
 /**
  * Erebus

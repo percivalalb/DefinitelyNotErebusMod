@@ -20,15 +20,11 @@ public class GuiUmberFurnace extends GuiContainer {
 
 	private static final ResourceLocation GUI_UMBER_FURNACE = new ResourceLocation("erebus:textures/gui/umberfurnace.png");
 	TileEntityUmberFurnace furnace;
-	private final int tankXMin, tankYMin, tankXMax, tankYMax;
+	private int tankXMin, tankYMin, tankXMax, tankYMax;
 
 	public GuiUmberFurnace(InventoryPlayer inventory, TileEntityUmberFurnace tile) {
 		super(new ContainerUmberFurnace(inventory, tile));
 		furnace = tile;
-		tankXMin = 134;
-		tankYMin = 47;
-		tankXMax = tankXMin + 18;
-		tankYMax = tankYMin + 65;
 	}
 
 	@Override
@@ -56,12 +52,18 @@ public class GuiUmberFurnace extends GuiContainer {
 
 		int size = furnace.getScaledFluidAmount(65);
 		drawTexturedModalRect(k + 10, l + 75 - size, 176, 96 - size, 18, size);
+	}
 
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float f) {
+		super.drawScreen(mouseX, mouseY, f);
+		tankXMin = ((width - xSize) / 2) + 11;
+		tankYMin = ((height - ySize) / 2) + 11;
+		tankXMax = tankXMin + 16;
+		tankYMax = tankYMin + 65;
 		if (mouseX >= tankXMin && mouseX <= tankXMax)
-			if (mouseY >= tankYMin && mouseY <= tankYMax) {
-				String toolTip = furnace.getFluidAmount();
-				drawToolTip(mouseX, mouseY, toolTip);
-			}
+			if (mouseY >= tankYMin && mouseY <= tankYMax)
+				drawToolTip(mouseX, mouseY, furnace.getFluidAmount());
 	}
 
 	private void drawToolTip(int mouseX, int mouseY, String text) {

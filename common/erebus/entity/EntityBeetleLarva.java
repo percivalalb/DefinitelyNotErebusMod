@@ -61,7 +61,8 @@ public class EntityBeetleLarva extends EntityUndergroundAnimal {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(8.0F); // Max Health
+		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(8.0F); // Max
+																						// Health
 		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(this.moveSpeed); // Movespeed
 	}
 
@@ -150,19 +151,17 @@ public class EntityBeetleLarva extends EntityUndergroundAnimal {
 	}
 
 	@Override
-	public void onDeathUpdate(){
+	public void onDeathUpdate() {
 
 		super.onDeathUpdate();
-		if (!this.worldObj.isRemote&&this.isDead&&!this.isSquashed){
-			dropFewItems(false,0);
+		if (!this.worldObj.isRemote && this.isDead && !this.isSquashed) {
+			dropFewItems(false, 0);
 		}
-		if (this.isSquashed){
-			PacketDispatcher.sendPacketToAllAround(posX,posY,posZ,64D,dimension,
-				PacketHandler.buildPacket(2,PacketParticle.BEETLE_LARVA_SQUISH,entityId)
-			);
+		if (this.isSquashed) {
+			PacketDispatcher.sendPacketToAllAround(posX, posY, posZ, 64D, dimension, PacketHandler.buildPacket(2, PacketParticle.BEETLE_LARVA_SQUISH, entityId));
 
-			this.worldObj.playSoundEffect(this.posX,this.posY,this.posZ,getJumpedOnSound(),1.0F,0.5F);
-			this.worldObj.playSoundEffect(this.posX,this.posY,this.posZ,getDeathSound(),1.0F,0.7F);
+			this.worldObj.playSoundEffect(this.posX, this.posY, this.posZ, getJumpedOnSound(), 1.0F, 0.5F);
+			this.worldObj.playSoundEffect(this.posX, this.posY, this.posZ, getDeathSound(), 1.0F, 0.7F);
 		}
 	}
 
@@ -202,17 +201,18 @@ public class EntityBeetleLarva extends EntityUndergroundAnimal {
 		this.isEating = par1;
 	}
 
-	 public void munchBlock() { 
-	    	if (this.isEating && this.worldObj.getWorldTime() % 5 == 0)
-	    	{
-	        	PacketDispatcher.sendPacketToAllAround(posX,posY,posZ,64D,dimension,
-	    			PacketHandler.buildPacket(2,PacketParticle.BEETLE_LARVA_EAT,entityId,
-	    					aiEatWoodItem.WoodX,aiEatWoodItem.WoodY,aiEatWoodItem.WoodZ,
-	    					worldObj.getBlockId(aiEatWoodItem.WoodX,aiEatWoodItem.WoodY,aiEatWoodItem.WoodZ),
-	    					Byte.valueOf((byte)worldObj.getBlockMetadata(aiEatWoodItem.WoodX,aiEatWoodItem.WoodY,aiEatWoodItem.WoodZ)))
-	    		);
-	    	}
-	    }
+	public void munchBlock() {
+		if (this.isEating && this.worldObj.getWorldTime() % 5 == 0) {
+			PacketDispatcher.sendPacketToAllAround(
+			posX,
+			posY,
+			posZ,
+			64D,
+			dimension,
+			PacketHandler.buildPacket(2, PacketParticle.BEETLE_LARVA_EAT, entityId, aiEatWoodItem.WoodX, aiEatWoodItem.WoodY, aiEatWoodItem.WoodZ, worldObj.getBlockId(aiEatWoodItem.WoodX, aiEatWoodItem.WoodY, aiEatWoodItem.WoodZ),
+			Byte.valueOf((byte) worldObj.getBlockMetadata(aiEatWoodItem.WoodX, aiEatWoodItem.WoodY, aiEatWoodItem.WoodZ))));
+		}
+	}
 
 	public void setisSquashed(boolean par1) {
 		this.isSquashed = par1;

@@ -29,7 +29,7 @@ public class BlockPortalErebus extends BlockBreakable {
 	@Override
 	public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity) {
 		Side side = FMLCommonHandler.instance().getEffectiveSide();
-		if (side == Side.SERVER){
+		if (side == Side.SERVER) {
 			if (entity.ridingEntity == null && entity.riddenByEntity == null && entity instanceof EntityPlayerMP) {
 				EntityPlayerMP player = (EntityPlayerMP) entity;
 				ErebusMod.packeterebushandler.getPlayer(player.username).setInPortal();

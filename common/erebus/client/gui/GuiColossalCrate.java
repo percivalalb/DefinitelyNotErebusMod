@@ -70,12 +70,12 @@ public class GuiColossalCrate extends GuiContainer {
 			switch (button.id) {
 				case 0:
 					newPage = getPageNumber() - 1;
-					this.mc.getNetHandler().addToSendQueue(PacketHandler.buildPacket(1,newPage));
+					this.mc.getNetHandler().addToSendQueue(PacketHandler.buildPacket(1, newPage));
 					((ContainerColossalCrate) inventorySlots).changePage(newPage);
 					break;
 				case 1:
 					newPage = getPageNumber() + 1;
-					this.mc.getNetHandler().addToSendQueue(PacketHandler.buildPacket(1,newPage));
+					this.mc.getNetHandler().addToSendQueue(PacketHandler.buildPacket(1, newPage));
 					((ContainerColossalCrate) inventorySlots).changePage(newPage);
 					break;
 			}

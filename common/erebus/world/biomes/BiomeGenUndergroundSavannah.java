@@ -58,7 +58,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 				}
 			}
 		}
-		
+
 		if (rand.nextInt(18) == 0) {
 			for (int yy = 100; yy > 20; yy--) {
 				int xx = x + 4 + rand.nextInt(8), zz = z + 4 + rand.nextInt(8);
@@ -66,8 +66,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 					new WorldGenBamboo(7).generate(worldObj, rand, xx, yy, zz);
 				}
 			}
-		}
-		else{
+		} else {
 			for (int c = 10; c > 0; c--) {
 				int j2 = x + rand.nextInt(16);
 				int l3 = rand.nextInt(120);

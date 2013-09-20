@@ -58,7 +58,7 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 	 */
 	@Override
 	public boolean continueExecuting() {
-		return isBlockEdible(WoodX,WoodY,WoodZ)||!theEntity.getNavigator().noPath();
+		return isBlockEdible(WoodX, WoodY, WoodZ) || !theEntity.getNavigator().noPath();
 	}
 
 	@Override
@@ -97,12 +97,14 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 		super.updateTask();
 	}
 
-	private boolean findClosestWood(int maxDistance) {// returns whether or not Wood was found (he-he! he said wood)
+	private boolean findClosestWood(int maxDistance) {// returns whether or not
+														// Wood was found
+														// (he-he! he said wood)
 		for (int currentCheckDistance = 1; currentCheckDistance < maxDistance; currentCheckDistance++) {
 			for (int x = -currentCheckDistance; x <= currentCheckDistance; x++) {
 				for (int y = -currentCheckDistance; y <= currentCheckDistance; y++) {
 					for (int z = -currentCheckDistance; z <= currentCheckDistance; z++) {
-						if (isBlockEdible((int)theEntity.posX+x,(int)theEntity.posY+y,(int)theEntity.posZ+z)){
+						if (isBlockEdible((int) theEntity.posX + x, (int) theEntity.posY + y, (int) theEntity.posZ + z)) {
 							WoodX = (int) this.theEntity.posX + x;
 							WoodY = (int) this.theEntity.posY + y;
 							WoodZ = (int) this.theEntity.posZ + z;
@@ -114,18 +116,23 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 		}
 		return false;
 	}
-	
-	private boolean isBlockEdible(int x, int y, int z){
-		int blockID=theEntity.worldObj.getBlockId(x,y,z);
-		if (blockID==0)return false;
-		
-		Block block=Block.blocksList[blockID];
-		if (block.blockHardness==-1)return false;
-		
-		if (ErebusMod.beetleLarvaEating==2)return true;
-		else if (block.blockMaterial!=Material.wood||block instanceof BlockLog)return false;
-		else if (ErebusMod.beetleLarvaEating==0&&block.hasTileEntity(theEntity.worldObj.getBlockMetadata(x,y,z)))return false;
-		
+
+	private boolean isBlockEdible(int x, int y, int z) {
+		int blockID = theEntity.worldObj.getBlockId(x, y, z);
+		if (blockID == 0)
+			return false;
+
+		Block block = Block.blocksList[blockID];
+		if (block.blockHardness == -1)
+			return false;
+
+		if (ErebusMod.beetleLarvaEating == 2)
+			return true;
+		else if (block.blockMaterial != Material.wood || block instanceof BlockLog)
+			return false;
+		else if (ErebusMod.beetleLarvaEating == 0 && block.hasTileEntity(theEntity.worldObj.getBlockMetadata(x, y, z)))
+			return false;
+
 		return true;
 	}
 

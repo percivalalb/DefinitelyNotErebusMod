@@ -52,15 +52,15 @@ public class BlockSaplingErebus extends BlockSapling {
 		if (!world.isRemote) {
 			super.updateTick(world, x, y, z, rand);
 
-			 if (world.getBlockLightValue(x, y + 1, z) >= 9 && rand.nextInt(7) == 0)
-			{
+			if (world.getBlockLightValue(x, y + 1, z) >= 9 && rand.nextInt(7) == 0) {
 				this.growTree(world, x, y, z, rand);
 			}
 		}
 	}
 
 	@Override
-	public void markOrGrowMarked(World world, int x, int y, int z, Random rand){}
+	public void markOrGrowMarked(World world, int x, int y, int z, Random rand) {
+	}
 
 	/**
 	 * Attempts to grow a sapling into a tree
@@ -78,21 +78,16 @@ public class BlockSaplingErebus extends BlockSapling {
 
 		if (meta == dataEucalyptus) {
 			worldGen = new WorldGenEucalyptus(ModBlocks.logErebusGroup1.blockID, BlockLogErebus.dataEucalyptus, ModBlocks.leavesErebus.blockID, BlockLeavesErebus.dataEucalyptusDecay, 8 + rand.nextInt(4), 5, 8, Block.grass.blockID);
-		}
-		else if (meta == dataMahogany) {
+		} else if (meta == dataMahogany) {
 			worldGen = new WorldGenSavannaTree(world.rand.nextInt(3));
-		}
-		else if (meta == dataMossbark) {
+		} else if (meta == dataMossbark) {
 			worldGen = new WorldGenMossbarkTree();
-		}
-		else if (meta == dataAsper) {
+		} else if (meta == dataAsper) {
 			worldGen = new WorldGenAsperTree();
-		}
-		else if (meta == dataAcacia) {
+		} else if (meta == dataAcacia) {
 			for (var8 = 0; var8 >= -1; --var8) {
 				for (var9 = 0; var9 >= -1; --var9) {
-					if (isSameSapling(world, x + var8, y, z + var9, 0) && isSameSapling(world, x + var8 + 1, y, z + var9, 0) &&
-						isSameSapling(world, x + var8, y, z + var9 + 1, 0) && isSameSapling(world, x + var8 + 1, y, z + var9 + 1, 0)) {
+					if (isSameSapling(world, x + var8, y, z + var9, 0) && isSameSapling(world, x + var8 + 1, y, z + var9, 0) && isSameSapling(world, x + var8, y, z + var9 + 1, 0) && isSameSapling(world, x + var8 + 1, y, z + var9 + 1, 0)) {
 						worldGen = new WorldGenErebusHugeTree(true, 20 + rand.nextInt(5), BlockLogErebus.dataMahogany, BlockLeavesErebus.dataMahoganyDecay, true, ModBlocks.logErebusGroup1.blockID, ModBlocks.leavesErebus.blockID);
 						var10 = true;
 						break;
@@ -148,7 +143,7 @@ public class BlockSaplingErebus extends BlockSapling {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int meta) {
-		return iconArray[meta<0||meta>=iconArray.length?0:meta];
+		return iconArray[meta < 0 || meta >= iconArray.length ? 0 : meta];
 	}
 
 	@Override
@@ -173,9 +168,10 @@ public class BlockSaplingErebus extends BlockSapling {
 			iconArray[i] = par1IconRegister.registerIcon("erebus:sapling_" + saplingTypes[i]);
 		}
 	}
-	
+
 	@ForgeSubscribe
-	public void onBonemeal(BonemealEvent e){
-		if (!e.world.isRemote&&e.ID==blockID)growTree(e.world,e.X,e.Y,e.Z,e.world.rand);
+	public void onBonemeal(BonemealEvent e) {
+		if (!e.world.isRemote && e.ID == blockID)
+			growTree(e.world, e.X, e.Y, e.Z, e.world.rand);
 	}
 }

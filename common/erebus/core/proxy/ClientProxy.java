@@ -95,41 +95,31 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooCrate.blockID, new BambooItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.waspSword.itemID, new WaspSwordItemRenderer());
 	}
-	
+
 	@Override
-	public void handleParticlePacket(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data){
-		EffectRenderer eff=Minecraft.getMinecraft().effectRenderer;
-		byte particleType=data.readByte();
-		
-		if (particleType == PacketParticle.BEETLE_LARVA_SQUISH){
-			EntityLivingBase e=(EntityLivingBase)player.worldObj.getEntityByID(data.readInt());
-			
-			for(int countparticles = 0; countparticles <= 200; ++countparticles){
-				eff.addEffect(new EntityBreakingFX(player.worldObj,
-						e.posX+(e.getRNG().nextDouble()-0.5D)*(double)e.width,
-						e.posY+e.getRNG().nextDouble()*(double)e.height-(double)e.yOffset,
-						e.posZ+(e.getRNG().nextDouble()-0.5D)*(double)e.width,
-						Item.slimeBall));
-            }
-		}
-		else if (particleType == PacketParticle.BEETLE_LARVA_EAT){ // x,y,z,blockID
-			EntityLivingBase e=(EntityLivingBase)player.worldObj.getEntityByID(data.readInt());
-			int woodX=data.readInt(),woodY=data.readInt(),woodZ=data.readInt();
-			Block block=Block.blocksList[data.readInt()];
-			int blockMeta=data.readByte();
-			
-			if (block==null)return;
-			
-			for(int countparticles = 0; countparticles <= 50; ++countparticles){
-				eff.addEffect(new EntityDiggingFX(player.worldObj,
-						woodX+0.5D+(e.getRNG().nextDouble()-0.5D)*(double)e.width,
-						woodY+0.2D+e.getRNG().nextDouble()*(double)e.height-(double)e.yOffset,
-						woodZ+0.5D+(e.getRNG().nextDouble()-0.5D)*(double)e.width,
-						e.getRNG().nextGaussian()*0.5D,
-						e.getRNG().nextGaussian()*0.01D,
-						e.getRNG().nextGaussian()*0.5D,
-						block,blockMeta));
-            }
+	public void handleParticlePacket(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data) {
+		EffectRenderer eff = Minecraft.getMinecraft().effectRenderer;
+		byte particleType = data.readByte();
+
+		if (particleType == PacketParticle.BEETLE_LARVA_SQUISH) {
+			EntityLivingBase e = (EntityLivingBase) player.worldObj.getEntityByID(data.readInt());
+
+			for (int countparticles = 0; countparticles <= 200; ++countparticles) {
+				eff.addEffect(new EntityBreakingFX(player.worldObj, e.posX + (e.getRNG().nextDouble() - 0.5D) * (double) e.width, e.posY + e.getRNG().nextDouble() * (double) e.height - (double) e.yOffset, e.posZ + (e.getRNG().nextDouble() - 0.5D) * (double) e.width, Item.slimeBall));
+			}
+		} else if (particleType == PacketParticle.BEETLE_LARVA_EAT) { // x,y,z,blockID
+			EntityLivingBase e = (EntityLivingBase) player.worldObj.getEntityByID(data.readInt());
+			int woodX = data.readInt(), woodY = data.readInt(), woodZ = data.readInt();
+			Block block = Block.blocksList[data.readInt()];
+			int blockMeta = data.readByte();
+
+			if (block == null)
+				return;
+
+			for (int countparticles = 0; countparticles <= 50; ++countparticles) {
+				eff.addEffect(new EntityDiggingFX(player.worldObj, woodX + 0.5D + (e.getRNG().nextDouble() - 0.5D) * (double) e.width, woodY + 0.2D + e.getRNG().nextDouble() * (double) e.height - (double) e.yOffset, woodZ + 0.5D + (e.getRNG().nextDouble() - 0.5D) * (double) e.width, e.getRNG()
+				.nextGaussian() * 0.5D, e.getRNG().nextGaussian() * 0.01D, e.getRNG().nextGaussian() * 0.5D, block, blockMeta));
+			}
 		}
 	}
 }

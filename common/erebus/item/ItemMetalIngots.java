@@ -43,7 +43,7 @@ public class ItemMetalIngots extends Item {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
 		icons = new Icon[4];
-		
+
 		for (int i = 0; i < icons.length; i++)
 			icons[i] = reg.registerIcon("erebus:metalIngot" + i);
 	}

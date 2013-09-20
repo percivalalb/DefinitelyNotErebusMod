@@ -22,16 +22,16 @@ import erebus.network.packet.PacketTeleport;
  **/
 public class PacketHandler implements IPacketHandler {
 
-	private Map<Short,IPacket> map = new HashMap<Short,IPacket>();
+	private Map<Short, IPacket> map = new HashMap<Short, IPacket>();
 
 	public PacketHandler() {
 		register(0, new PacketTeleport());
 		register(1, new PacketColossalCratePage());
 		register(2, new PacketParticle());
 	}
-	
-	private void register(int packetID, IPacket packet){
-		map.put((short)packetID,packet);
+
+	private void register(int packetID, IPacket packet) {
+		map.put((short) packetID, packet);
 	}
 
 	@Override
@@ -41,43 +41,56 @@ public class PacketHandler implements IPacketHandler {
 			map.get(data.readShort()).handle(manager, packet, (EntityPlayer) player, data);
 		}
 	}
-	
-	public static Packet250CustomPayload buildPacket(int packetID, Object...data){
-		Packet250CustomPayload packet=new Packet250CustomPayload();
-		packet.channel=Reference.CHANNEL;
-		
-		Object[] finalData=new Object[data.length+1];
-		finalData[0]=Short.valueOf((short)packetID);
-		for(int a=0; a<data.length; a++)finalData[a+1]=data[a];
-		
-		ByteArrayOutputStream ns=PacketHandler.createDataStream(finalData);
-		packet.data=ns.toByteArray();
-		packet.length=ns.size();
+
+	public static Packet250CustomPayload buildPacket(int packetID, Object... data) {
+		Packet250CustomPayload packet = new Packet250CustomPayload();
+		packet.channel = Reference.CHANNEL;
+
+		Object[] finalData = new Object[data.length + 1];
+		finalData[0] = Short.valueOf((short) packetID);
+		for (int a = 0; a < data.length; a++)
+			finalData[a + 1] = data[a];
+
+		ByteArrayOutputStream ns = PacketHandler.createDataStream(finalData);
+		packet.data = ns.toByteArray();
+		packet.length = ns.size();
 		return packet;
 	}
-	
-	public static ByteArrayOutputStream createDataStream(Object...data){
-		int bytes=0;
-		for(Object o:data){
-			if (o instanceof String)bytes+=((String)o).length()*2;
-			else if (o instanceof Integer||o instanceof Float)bytes+=4;
-			else if (o instanceof Boolean||o instanceof Byte)bytes+=1;
-			else if (o instanceof Short)bytes+=2;
-			else if (o instanceof Double)bytes+=8;
+
+	public static ByteArrayOutputStream createDataStream(Object... data) {
+		int bytes = 0;
+		for (Object o : data) {
+			if (o instanceof String)
+				bytes += ((String) o).length() * 2;
+			else if (o instanceof Integer || o instanceof Float)
+				bytes += 4;
+			else if (o instanceof Boolean || o instanceof Byte)
+				bytes += 1;
+			else if (o instanceof Short)
+				bytes += 2;
+			else if (o instanceof Double)
+				bytes += 8;
 		}
-		
-		ByteArrayOutputStream bos=new ByteArrayOutputStream(bytes);
-		DataOutputStream dos=new DataOutputStream(bos);
-		for(Object o:data){
-			try{
-				if (o instanceof String)dos.writeChars((String)o);
-				else if (o instanceof Integer)dos.writeInt((Integer)o);
-				else if (o instanceof Boolean)dos.writeBoolean((Boolean)o);
-				else if (o instanceof Byte)dos.writeByte((Byte)o);
-				else if (o instanceof Short)dos.writeShort((Short)o);
-				else if (o instanceof Double)dos.writeDouble((Double)o);
-				else if (o instanceof Float)dos.writeFloat((Float)o);
-			}catch(IOException e){
+
+		ByteArrayOutputStream bos = new ByteArrayOutputStream(bytes);
+		DataOutputStream dos = new DataOutputStream(bos);
+		for (Object o : data) {
+			try {
+				if (o instanceof String)
+					dos.writeChars((String) o);
+				else if (o instanceof Integer)
+					dos.writeInt((Integer) o);
+				else if (o instanceof Boolean)
+					dos.writeBoolean((Boolean) o);
+				else if (o instanceof Byte)
+					dos.writeByte((Byte) o);
+				else if (o instanceof Short)
+					dos.writeShort((Short) o);
+				else if (o instanceof Double)
+					dos.writeDouble((Double) o);
+				else if (o instanceof Float)
+					dos.writeFloat((Float) o);
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}

@@ -20,6 +20,7 @@ import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityWasp;
+import erebus.world.feature.WorldGenBamboo;
 import erebus.world.feature.WorldGenErebusHugeTree;
 import erebus.world.feature.WorldGenErebusTrees;
 import erebus.world.feature.WorldGenEucalyptus;
@@ -219,6 +220,15 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			int j5 = z + getRandomXZOffset(rand);
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
 				(new WorldGenMelon()).generate(worldObj, rand, j2, l3, j5);
+			}
+		}
+		
+		if (rand.nextInt(5) == 0) {
+			for (int yy = 100; yy > 20; yy--) {
+				int xx = x + 4 + rand.nextInt(8), zz = z + 4 + rand.nextInt(8);
+				if (worldObj.getBlockId(xx, yy, zz) == 0 && worldObj.getBlockId(xx, yy - 1, zz) == Block.grass.blockID) {
+					new WorldGenBamboo(16).generate(worldObj, rand, xx, yy, zz);
+				}
 			}
 		}
 

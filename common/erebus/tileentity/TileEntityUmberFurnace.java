@@ -49,20 +49,26 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 		tank.setFluid(new FluidStack(FluidRegistry.LAVA, 0));
 	}
 
+	public void fillTankWithBucket(ItemStack bucket) {
+		if (bucket != null)
+			if (tank.getFluidAmount() <= tank.getCapacity() - FluidContainerRegistry.BUCKET_VOLUME)
+				if (FluidContainerRegistry.isFilledContainer(bucket) && FluidContainerRegistry.getFluidForFilledItem(bucket).getFluid() == FluidRegistry.LAVA)
+					if (bucket.stackSize == 1) {
+						tank.fill(new FluidStack(FluidRegistry.LAVA, FluidContainerRegistry.BUCKET_VOLUME), true);
+						for (FluidContainerData data : FluidContainerRegistry.getRegisteredFluidContainerData())
+							if (data != null)
+								if (data.filledContainer.itemID == inventory[BUCKET_SLOT].itemID && data.filledContainer.getItemDamage() == bucket.getItemDamage())
+									bucket = data.emptyContainer.copy();
+					}
+	}
+
 	@Override
 	public void updateEntity() {
 		if (worldObj.isRemote)
 			return;
 
 		// Draining buckets
-		if (tank.getFluidAmount() <= tank.getCapacity() - FluidContainerRegistry.BUCKET_VOLUME)
-			if (FluidContainerRegistry.isFilledContainer(inventory[BUCKET_SLOT]) && FluidContainerRegistry.getFluidForFilledItem(inventory[BUCKET_SLOT]).getFluid() == FluidRegistry.LAVA)
-				if (inventory[BUCKET_SLOT].stackSize == 1) {
-					tank.fill(new FluidStack(FluidRegistry.LAVA, FluidContainerRegistry.BUCKET_VOLUME), true);
-					for (FluidContainerData data : FluidContainerRegistry.getRegisteredFluidContainerData())
-						if (data.filledContainer.itemID == inventory[BUCKET_SLOT].itemID && data.filledContainer.getItemDamage() == inventory[BUCKET_SLOT].getItemDamage())
-							inventory[BUCKET_SLOT] = data.emptyContainer.copy();
-				}
+		fillTankWithBucket(inventory[BUCKET_SLOT]);
 
 		cookTime = COOK_TIME_BASE - (int) (COOK_TIME_BASE * 0.8F * ((float) tank.getFluidAmount() / (float) tank.getCapacity()));
 
@@ -313,6 +319,7 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 	@Override
 	public void readFromNBT(NBTTagCompound data) {
 		super.readFromNBT(data);
+		tank.readFromNBT(data);
 		NBTTagList nbttaglist = data.getTagList("Items");
 		inventory = new ItemStack[getSizeInventory()];
 
@@ -332,6 +339,7 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 	@Override
 	public void writeToNBT(NBTTagCompound data) {
 		super.writeToNBT(data);
+		tank.writeToNBT(data);
 		NBTTagList nbttaglist = new NBTTagList();
 
 		for (int i = 0; i < inventory.length; ++i)

@@ -14,10 +14,15 @@ import erebus.world.loot.LootUtil;
 import erebus.world.loot.WeightedLootList;
 
 public class WorldGenSpiderDungeons extends WorldGenerator {
-	public static final WeightedLootList chestLoot = new WeightedLootList(new LootItemStack(Item.goldNugget).setAmount(4, 9).setWeight(10), new LootItemStack(Item.ingotIron).setAmount(1, 2).setWeight(10), new LootItemStack(Item.ingotGold).setAmount(1, 2).setWeight(10), new LootItemStack(Item.bone)
-	.setAmount(1, 1).setWeight(10), new LootItemStack(Item.redstone).setAmount(1, 4).setWeight(10), new LootItemStack(Item.arrow).setAmount(1, 5).setWeight(10), new LootItemStack(ModItems.erebusMaterials).setAmount(3, 8).setWeight(10), // Exo-plate
-	new LootItemStack(ModItems.erebusMaterials).setAmount(1, 5).setDamage(6).setWeight(10) // Fly
-																							// Wing
+	public static final WeightedLootList chestLoot = new WeightedLootList(
+			new LootItemStack(Item.goldNugget).setAmount(4, 9).setWeight(10),
+			new LootItemStack(Item.ingotIron).setAmount(1, 2).setWeight(10),
+			new LootItemStack(Item.ingotGold).setAmount(1, 2).setWeight(10),
+			new LootItemStack(Item.bone).setAmount(1, 1).setWeight(10),
+			new LootItemStack(Item.redstone).setAmount(1, 4).setWeight(10),
+			new LootItemStack(Item.arrow).setAmount(1, 5).setWeight(10),
+			new LootItemStack(ModItems.erebusMaterials).setAmount(3, 8).setWeight(10), // Exo-plate
+			new LootItemStack(ModItems.erebusMaterials).setAmount(1, 5).setDamage(6).setWeight(10) // Fly Wing
 	);
 
 	@Override

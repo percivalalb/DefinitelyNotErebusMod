@@ -58,16 +58,16 @@ public class ContainerUmberFurnace extends Container {
 			itemStack = slotItemStack.copy();
 
 			if (slotIndex < 4) {
-				if (!mergeItemStack(slotItemStack, 1, inventorySlots.size(), true))
+				if (!mergeItemStack(slotItemStack, 4, inventorySlots.size(), true))
 					return null;
 			} else if (FluidContainerRegistry.isContainer(slotItemStack)) {
 				if (!mergeItemStack(slotItemStack, 0, 1, false))
 					return null;
-			} else if (TileEntityFurnace.isItemFuel(slotItemStack)) {
-				if (!mergeItemStack(slotItemStack, 2, 3, false))
-					return null;
-			} else if (FurnaceRecipes.smelting().getSmeltingResult(slotItemStack) != null)
+			} else if (FurnaceRecipes.smelting().getSmeltingResult(slotItemStack) != null) {
 				if (!mergeItemStack(slotItemStack, 1, 2, false))
+					return null;
+			} else if (TileEntityFurnace.isItemFuel(slotItemStack))
+				if (!mergeItemStack(slotItemStack, 2, 3, false))
 					return null;
 
 			if (slotItemStack.stackSize == 0)

@@ -28,6 +28,7 @@ import erebus.core.addon.AddonManager;
 import erebus.core.handler.CommonTickHandler;
 import erebus.core.handler.ConfigurationHandler;
 import erebus.core.handler.ConnectionTeleportHandler;
+import erebus.core.handler.VersionCheckTickHandler;
 import erebus.core.helper.LogHelper;
 import erebus.core.proxy.CommonProxy;
 import erebus.creativetab.CreativeTabErebusBlock;
@@ -36,6 +37,7 @@ import erebus.creativetab.CreativeTabErebusItem;
 import erebus.lib.Reference;
 import erebus.network.PacketHandler;
 import erebus.recipes.RecipeHandler;
+import erebus.utils.VersionHelper;
 import erebus.world.WorldProviderErebus;
 
 /**
@@ -61,6 +63,7 @@ public class ErebusMod {
 
 	public static int erebusDimensionID;
 	public static boolean activateExtraOres = false;
+	public static boolean shouldDoVersionCheck = true;
 	public static byte beetleLarvaEating = 0;
 
 	public static ConnectionTeleportHandler packeterebushandler = new ConnectionTeleportHandler();
@@ -81,11 +84,15 @@ public class ErebusMod {
 
 	@EventHandler
 	public void preInitServer(FMLPreInitializationEvent event) {
+		LogHelper.init();
 
 		/** Loads the configuration file before anything else **/
 		ConfigurationHandler.loadConfig(event);
 
-		LogHelper.init();
+		if (shouldDoVersionCheck) {
+			VersionHelper.execute();
+			TickRegistry.registerTickHandler(new VersionCheckTickHandler(), Side.CLIENT);
+		}
 
 		ModBlocks.init();
 		ModItems.init();

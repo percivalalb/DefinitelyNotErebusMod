@@ -11,8 +11,8 @@ import erebus.utils.IdGenerator;
 public class ConfigurationHandler {
 
 	public static Configuration configurationFile;
-	private static IdGenerator idGen = new IdGenerator(9706, 2500); 
-	
+	private static IdGenerator idGen = new IdGenerator(9706, 2500);
+
 	public static void loadConfig(FMLPreInitializationEvent event) {
 
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -60,7 +60,8 @@ public class ConfigurationHandler {
 		ModBlocks.bambooCrateID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Bamboo Crate", idGen.getNextBlockID()).getInt();
 		ModBlocks.umberFurnaceID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Umber Furnace ON", idGen.getNextBlockID()).getInt();
 		ModBlocks.umberFurnace_onID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Umebr Furnace OFF", idGen.getNextBlockID()).getInt();
-		
+		ModBlocks.umberPaverID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Umebrpaver", idGen.getNextBlockID()).getInt();
+
 		ModBlocks.spiderSpawnerID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Spider Spawners", idGen.getNextBlockID()).getInt();
 		ModBlocks.caveSpiderSpawnerID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Cave Spider Spawners", idGen.getNextBlockID()).getInt();
 
@@ -101,6 +102,7 @@ public class ConfigurationHandler {
 		ErebusMod.erebusDimensionID = config.get(Configuration.CATEGORY_GENERAL, "Dimension ID of The Erebus", 66, "There doesn't appear to be a limit on dimension IDs, but try to keep it low").getInt();
 		ErebusMod.activateExtraOres = config.get(Configuration.CATEGORY_GENERAL, "Should generate copper, lead, silver and tin?", false).getBoolean(false);
 		ErebusMod.beetleLarvaEating = (byte)config.get(Configuration.CATEGORY_GENERAL, "Beetle larva eating settings", 0, "0 = only wooden blocks except tile entities & logs, 1 = only wooden blocks except logs, 2 = anything").getInt();
+		ErebusMod.shouldDoVersionCheck = config.get(Configuration.CATEGORY_GENERAL, "Should do version check?", true).getBoolean(true);
 
 		config.save();
 	}

@@ -40,7 +40,7 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 	private final int RESULT_SLOT = 3;
 
 	private final int COOK_TIME_BASE = 200;
-	private int COOK_TIME = 200;
+	private int cookTime = 200;
 	private int furnaceBurnTime;
 	private int currentItemBurnTime;
 	private int furnaceCookTime;
@@ -64,7 +64,7 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 							inventory[BUCKET_SLOT] = data.emptyContainer.copy();
 				}
 
-		COOK_TIME = COOK_TIME_BASE - (int) (COOK_TIME_BASE * 0.8F * ((float) tank.getFluidAmount() / (float) tank.getCapacity()));
+		cookTime = COOK_TIME_BASE - (int) (COOK_TIME_BASE * 0.8F * ((float) tank.getFluidAmount() / (float) tank.getCapacity()));
 
 		// Smelting items
 		// Stolen from vanilla furnace.
@@ -86,7 +86,7 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 			}
 			if (isBurning() && canSmelt()) {
 				++furnaceCookTime;
-				if (furnaceCookTime == COOK_TIME) {
+				if (furnaceCookTime >= cookTime) {
 					furnaceCookTime = 0;
 					smeltItem();
 					flag1 = true;
@@ -279,29 +279,40 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 				else
 					tank.getFluid().amount = value;
 				break;
+			case 2:
+				furnaceBurnTime = value;
+				break;
+			case 3:
+				furnaceCookTime = value;
+				break;
+			case 4:
+				cookTime = value;
+				break;
 		}
 	}
 
 	public void sendGUIData(ContainerUmberFurnace furnace, ICrafting craft) {
 		craft.sendProgressBarUpdate(furnace, 1, tank.getFluid() != null ? tank.getFluid().amount : 0);
+		craft.sendProgressBarUpdate(furnace, 2, furnaceBurnTime);
+		craft.sendProgressBarUpdate(furnace, 3, furnaceCookTime);
+		craft.sendProgressBarUpdate(furnace, 4, cookTime);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public int getBurnTimeRemainingScaled(int scale) {
 		if (currentItemBurnTime == 0)
-			currentItemBurnTime = COOK_TIME;
+			currentItemBurnTime = cookTime;
 		return furnaceBurnTime * scale / currentItemBurnTime;
 	}
 
 	@SideOnly(Side.CLIENT)
 	public int getCookProgressScaled(int scale) {
-		return furnaceCookTime * scale / COOK_TIME;
+		return furnaceCookTime * scale / cookTime;
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound data) {
 		super.readFromNBT(data);
-		tank.readFromNBT(data);
 		NBTTagList nbttaglist = data.getTagList("Items");
 		inventory = new ItemStack[getSizeInventory()];
 
@@ -312,12 +323,15 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 			if (b0 >= 0 && b0 < inventory.length)
 				inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 		}
+
+		currentItemBurnTime = data.getInteger("currentItemBurnTime");
+		furnaceBurnTime = data.getInteger("furnaceBurnTime");
+		furnaceCookTime = data.getInteger("furnaceCookTime");
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound data) {
 		super.writeToNBT(data);
-		tank.writeToNBT(data);
 		NBTTagList nbttaglist = new NBTTagList();
 
 		for (int i = 0; i < inventory.length; ++i)
@@ -329,5 +343,9 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 			}
 
 		data.setTag("Items", nbttaglist);
+
+		data.setInteger("currentItemBurnTime", currentItemBurnTime);
+		data.setInteger("furnaceBurnTime", furnaceBurnTime);
+		data.setInteger("furnaceCookTime", furnaceCookTime);
 	}
 }

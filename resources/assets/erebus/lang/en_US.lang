@@ -79,7 +79,9 @@ erebusOreExtra_item_1.name=Copper Ore
 erebusOreExtra_item_2.name=Lead Ore
 erebusOreExtra_item_3.name=Silver Ore
 erebusOreExtra_item_4.name=Tin Ore
-
+blockUmberpaver_item_0.name=Umberpaver
+blockUmberpaver_item_1.name=Mossy Umberpaver
+blockUmberpaver_item_2.name=Webbed Umberpaver
 
 #Items
 item.helmetExo.name=Exoskeleton Helmet
@@ -145,3 +147,4 @@ itemGroup.erebus.item=Erebus Items
 itemGroup.erebus.gear=Erebus Gear
 container.bambooCrate=Bamboo Crate
 container.colossalCrate=Bamboo Crate
+container.umberFurnace=Umber Furnace

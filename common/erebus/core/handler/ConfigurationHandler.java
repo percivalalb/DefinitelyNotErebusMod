@@ -60,6 +60,7 @@ public class ConfigurationHandler {
 		ModBlocks.bambooCrateID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Bamboo Crate", idGen.getNextBlockID()).getInt();
 		ModBlocks.umberFurnaceID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Umber Furnace ON", idGen.getNextBlockID()).getInt();
 		ModBlocks.umberFurnace_onID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Umebr Furnace OFF", idGen.getNextBlockID()).getInt();
+		ModBlocks.umberPaverID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Umebrpaver", idGen.getNextBlockID()).getInt();
 
 		ModBlocks.spiderSpawnerID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Spider Spawners", idGen.getNextBlockID()).getInt();
 		ModBlocks.caveSpiderSpawnerID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Cave Spider Spawners", idGen.getNextBlockID()).getInt();

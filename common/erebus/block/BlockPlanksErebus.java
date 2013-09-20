@@ -1,6 +1,7 @@
 package erebus.block;
 
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -11,9 +12,9 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPlanksErebus extends Block {
-	public static final String[] plankTypes = new String[] { "acacia", "eucalyptus", "mahogany", "baobab", "mossbark", "pink", "scorched", "asper" };
+	public static final String[] plankTypes = new String[] { "acacia", "eucalyptus", "mahogany", "baobab", "mossbark", "pink", "scorched", "asper", "white" };
 
-	public static final byte dataAcacia = 0, dataEucalyptus = 1, dataMahogany = 2, dataBaobab = 3, dataMossbark = 4, dataPink = 5, dataScorched = 6, dataAsper = 7;
+	public static final byte dataAcacia = 0, dataEucalyptus = 1, dataMahogany = 2, dataBaobab = 3, dataMossbark = 4, dataPink = 5, dataScorched = 6, dataAsper = 7, dataWhite = 8;
 
 	@SideOnly(Side.CLIENT)
 	private Icon[] iconArray;
@@ -36,9 +37,8 @@ public class BlockPlanksErebus extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int id, CreativeTabs creativeTabs, List list) {
-		for (int a = 0; a < iconArray.length; a++) {
+		for (int a = 0; a < iconArray.length; a++)
 			list.add(new ItemStack(id, 1, a));
-		}
 	}
 
 	@Override
@@ -46,8 +46,7 @@ public class BlockPlanksErebus extends Block {
 	public void registerIcons(IconRegister par1IconRegister) {
 		iconArray = new Icon[plankTypes.length];
 
-		for (int i = 0; i < iconArray.length; i++) {
+		for (int i = 0; i < iconArray.length; i++)
 			iconArray[i] = par1IconRegister.registerIcon("erebus:wood_" + plankTypes[i]);
-		}
 	}
 }

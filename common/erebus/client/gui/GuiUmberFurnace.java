@@ -41,8 +41,8 @@ public class GuiUmberFurnace extends GuiContainer {
 
 		int i1;
 		if (furnace.isBurning()) {
-			i1 = furnace.getBurnTimeRemainingScaled(12);
-			drawTexturedModalRect(k + 56, l + 36 + 12 - i1, 175, 12 - i1, 14, i1 + 2);
+			i1 = furnace.getBurnTimeRemainingScaled(14);
+			drawTexturedModalRect(k + 58, l + 51 - i1, 177, 14 - i1, 14, i1);
 		}
 		i1 = furnace.getCookProgressScaled(24);
 		drawTexturedModalRect(k + 79, l + 35, 176, 14, i1 + 1, 16);

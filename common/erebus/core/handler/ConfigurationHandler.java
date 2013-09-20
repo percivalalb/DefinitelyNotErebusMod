@@ -94,6 +94,8 @@ public class ConfigurationHandler {
 		ModItems.compoundGogglesID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Compound Goggles", idGen.getNextItemID()).getInt();
 		ModItems.waspSwordID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Wasp Sword", idGen.getNextItemID()).getInt();
 		ModItems.metalIngotID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Metal Ingots", idGen.getNextItemID()).getInt();
+		ModItems.jumpBootsID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Jump Boots", idGen.getNextItemID()).getInt();
+		ModItems.sprintLeggingsID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Sprint Leggings", idGen.getNextItemID()).getInt();
 
 		/*
 		 * Biomes & misc

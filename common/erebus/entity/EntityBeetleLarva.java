@@ -21,9 +21,6 @@ import erebus.entity.ai.EntityAIEatWoodenItem;
 import erebus.network.PacketHandler;
 import erebus.network.packet.PacketParticle;
 
-/**
- * @author ProPercivalalb
- */
 public class EntityBeetleLarva extends EntityUndergroundAnimal {
 
 	private EntityAIWander aiWander = new EntityAIWander(this, 0.48D);

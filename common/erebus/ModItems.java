@@ -33,6 +33,7 @@ public class ModItems {
 	public static Item erebusMaterials;  				public static int erebusMaterialsID;
 	public static Item bamBucket;						public static int bamBucketID;
 
+
 	public static Item exoskeletonHelmet;				public static int exoskeletonHelmetID;
 	public static Item exoskeletonBody;					public static int exoskeletonBodyID;
 	public static Item exoskeletonLegs;					public static int exoskeletonLegsID;
@@ -54,6 +55,8 @@ public class ModItems {
 	public static Item compoundGoggles;                 public static int compoundGogglesID;
 	public static Item waspSword;						public static int waspSwordID;
 	public static Item metalIngot;						public static int metalIngotID;
+	public static Item jumpBoots;						public static int jumpBootsID;
+	public static Item sprintLeggings;					public static int sprintLeggingsID;
 
 	public static void init() {
 		// constructor, set full 3D, creative tab, unlocalized name, texture name

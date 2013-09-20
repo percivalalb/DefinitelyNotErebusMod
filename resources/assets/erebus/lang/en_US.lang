@@ -108,6 +108,8 @@ item.shovelJade.name=Jade Shovel
 item.paxelJade.name=Jade Paxel
 item.hoeJade.name=Jade Hoe
 item.compoundGoggles.name=Compound Goggles
+item.jumpBoots.name=Jump Boots
+item.sprintLeggings.name=Sprint Leggings
 item.erebusMaterials.0.name=Exoskeleton Plate
 item.erebusMaterials.1.name=Jade
 item.erebusMaterials.2.name=Bone Shard
@@ -145,6 +147,8 @@ entity.VelvetWorm - Erebus.name=Velvet Worm
 entity.BotFly - Erebus.name=Bot Fly
 entity.BlackWidow - Erebus.name=Black Widow
 entity.Scorpion - Erebus.name=Scorpion
+entity.Grasshopper - Erebus.name=Grasshopper
+entity.Locust - Erebus.name=Locust
 
 #Other
 itemGroup.erebus.block=Erebus Blocks

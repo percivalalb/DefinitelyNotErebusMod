@@ -16,7 +16,7 @@ public class BlockErebusOreExtras extends Block {
 
 	private final String[] types = { "oreAluminiumU", "oreCopperU", "oreLeadU", "oreSilverU", "oreTinU" };
 	@SideOnly(Side.CLIENT)
-	private Icon[] blockIcon = new Icon[types.length];
+	private Icon[] blockIcon;
 
 	public BlockErebusOreExtras(int id) {
 		super(id, Material.rock);
@@ -43,7 +43,9 @@ public class BlockErebusOreExtras extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		for (int i = 0; i < blockIcon.length; i++)
+		blockIcon = new Icon[types.length];
+		for (int i = 0; i < blockIcon.length; i++){
 			blockIcon[i] = reg.registerIcon("erebus:" + types[i]);
+		}
 	}
 }

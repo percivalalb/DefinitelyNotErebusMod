@@ -86,7 +86,7 @@ public class BlockLeavesErebus extends BlockLeaves {
 						}
 					}
 
-					for (l1 = 1; l1 <= 6; ++l1) { // increased range 4 -> 6
+					for (l1 = 1; l1 <= 8; ++l1) { // increased range 4 -> 8
 						for (i2 = -b0; i2 <= b0; ++i2) {
 							for (j2 = -b0; j2 <= b0; ++j2) {
 								for (k2 = -b0; k2 <= b0; ++k2) {

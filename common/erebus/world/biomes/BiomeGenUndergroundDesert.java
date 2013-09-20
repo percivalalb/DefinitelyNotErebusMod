@@ -6,6 +6,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import erebus.ModBlocks;
+import erebus.world.feature.trees.WorldGenScorchedTree;
 
 public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 	public BiomeGenUndergroundDesert(int par1) {
@@ -41,6 +42,16 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 				worldObj.scheduledUpdatesAreImmediate = true;
 				Block.blocksList[Block.lavaMoving.blockID].updateTick(worldObj, posX, posY, posZ, rand);
 				worldObj.scheduledUpdatesAreImmediate = false;
+			}
+		}
+		
+		for (int c = 22; c > 0; c--) {
+			int j2 = x + rand.nextInt(16);
+			int l3 = rand.nextInt(120);
+			int j5 = z + rand.nextInt(16);
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.sand.blockID) {
+				(new WorldGenScorchedTree()).generate(worldObj, rand, j2, l3, j5);
+				if (rand.nextInt(4)!=0)break;
 			}
 		}
 	}

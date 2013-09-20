@@ -81,7 +81,7 @@ public class ModBlocks {
 	// UNDERGROWTH
 	public static Block erebusGrass;     				public static int erebusGrassID;
 	public static Block thorns;       					public static int thornsID;
-	public static Block fern;      						public static int fernID;
+	public static BlockFern fern;      					public static int fernID;
 	public static Block blockTurnip;     				public static int blockTurnipID;
 	public static Block fiddlehead;      				public static int fiddleheadID;
 
@@ -131,7 +131,7 @@ public class ModBlocks {
 
 		erebusGrass = new BlockErebusGrass(erebusGrassID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusTallGrass").setTextureName("erebus:tallgrass");
 		thorns = new BlockThorns(thornsID).setHardness(0.2F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("thorns").setTextureName("erebus:thorns");
-		fern = new BlockFern(fernID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFern");
+		fern = (BlockFern) new BlockFern(fernID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFern");
 		blockTurnip = (new BlockTurnip(blockTurnipID)).setUnlocalizedName("turnips");
 		fiddlehead = new BlockFern(fiddleheadID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFiddlehead");
 

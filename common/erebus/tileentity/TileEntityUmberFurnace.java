@@ -313,6 +313,7 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 	@Override
 	public void readFromNBT(NBTTagCompound data) {
 		super.readFromNBT(data);
+		tank.readFromNBT(data);
 		NBTTagList nbttaglist = data.getTagList("Items");
 		inventory = new ItemStack[getSizeInventory()];
 
@@ -332,6 +333,7 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 	@Override
 	public void writeToNBT(NBTTagCompound data) {
 		super.writeToNBT(data);
+		tank.writeToNBT(data);
 		NBTTagList nbttaglist = new NBTTagList();
 
 		for (int i = 0; i < inventory.length; ++i)

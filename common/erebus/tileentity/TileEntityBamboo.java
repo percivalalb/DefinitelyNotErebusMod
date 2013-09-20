@@ -32,88 +32,82 @@ public class TileEntityBamboo extends TileEntity implements IInventory {
 
 	@Override
 	public ItemStack getStackInSlot(int par1) {
-		return this.crateContents[par1];
+		return crateContents[par1];
 	}
 
 	@Override
 	public ItemStack decrStackSize(int par1, int par2) {
-		if (this.crateContents[par1] != null) {
+		if (crateContents[par1] != null) {
 			ItemStack itemstack;
 
-			if (this.crateContents[par1].stackSize <= par2) {
-				itemstack = this.crateContents[par1];
-				this.crateContents[par1] = null;
-				this.onInventoryChanged();
+			if (crateContents[par1].stackSize <= par2) {
+				itemstack = crateContents[par1];
+				crateContents[par1] = null;
+				onInventoryChanged();
 				return itemstack;
 			} else {
-				itemstack = this.crateContents[par1].splitStack(par2);
+				itemstack = crateContents[par1].splitStack(par2);
 
-				if (this.crateContents[par1].stackSize == 0) {
-					this.crateContents[par1] = null;
-				}
+				if (crateContents[par1].stackSize == 0)
+					crateContents[par1] = null;
 
-				this.onInventoryChanged();
+				onInventoryChanged();
 				return itemstack;
 			}
-		} else {
+		} else
 			return null;
-		}
 	}
 
 	@Override
 	public ItemStack getStackInSlotOnClosing(int par1) {
-		if (this.crateContents[par1] != null) {
-			ItemStack itemstack = this.crateContents[par1];
-			this.crateContents[par1] = null;
+		if (crateContents[par1] != null) {
+			ItemStack itemstack = crateContents[par1];
+			crateContents[par1] = null;
 			return itemstack;
-		} else {
+		} else
 			return null;
-		}
 	}
 
 	@Override
 	public void setInventorySlotContents(int par1, ItemStack par2ItemStack) {
-		this.crateContents[par1] = par2ItemStack;
+		crateContents[par1] = par2ItemStack;
 
-		if (par2ItemStack != null && par2ItemStack.stackSize > this.getInventoryStackLimit()) {
-			par2ItemStack.stackSize = this.getInventoryStackLimit();
-		}
+		if (par2ItemStack != null && par2ItemStack.stackSize > getInventoryStackLimit())
+			par2ItemStack.stackSize = getInventoryStackLimit();
 
-		this.onInventoryChanged();
+		onInventoryChanged();
 	}
 
 	@Override
 	public String getInvName() {
-		return this.isInvNameLocalized() ? this.customName : "container.bambooCrate";
+		return isInvNameLocalized() ? customName : "container.bambooCrate";
 	}
 
 	@Override
 	public boolean isInvNameLocalized() {
-		return this.customName != null && this.customName.length() > 0;
+		return customName != null && customName.length() > 0;
 	}
 
 	public void setCrateGuiName(String par1Str) {
-		this.customName = par1Str;
+		customName = par1Str;
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readFromNBT(par1NBTTagCompound);
-		if (this.getBlockMetadata() == 1) {
+		if (true) {
 			NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
-			this.crateContents = new ItemStack[this.getSizeInventory()];
+			crateContents = new ItemStack[getSizeInventory()];
 
-			if (par1NBTTagCompound.hasKey("CustomName")) {
-				this.customName = par1NBTTagCompound.getString("CustomName");
-			}
+			if (par1NBTTagCompound.hasKey("CustomName"))
+				customName = par1NBTTagCompound.getString("CustomName");
 
 			for (int i = 0; i < nbttaglist.tagCount(); ++i) {
 				NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.tagAt(i);
 				int j = nbttagcompound1.getByte("Slot") & 255;
 
-				if (j >= 0 && j < this.crateContents.length) {
-					this.crateContents[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-				}
+				if (j >= 0 && j < crateContents.length)
+					crateContents[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 			}
 		}
 	}
@@ -121,23 +115,21 @@ public class TileEntityBamboo extends TileEntity implements IInventory {
 	@Override
 	public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
 		super.writeToNBT(par1NBTTagCompound);
-		if (this.getBlockMetadata() == 1) {
+		if (true) {
 			NBTTagList nbttaglist = new NBTTagList();
 
-			for (int i = 0; i < this.crateContents.length; ++i) {
-				if (this.crateContents[i] != null) {
+			for (int i = 0; i < crateContents.length; ++i)
+				if (crateContents[i] != null) {
 					NBTTagCompound nbttagcompound1 = new NBTTagCompound();
 					nbttagcompound1.setByte("Slot", (byte) i);
-					this.crateContents[i].writeToNBT(nbttagcompound1);
+					crateContents[i].writeToNBT(nbttagcompound1);
 					nbttaglist.appendTag(nbttagcompound1);
 				}
-			}
 
 			par1NBTTagCompound.setTag("Items", nbttaglist);
 
-			if (this.isInvNameLocalized()) {
-				par1NBTTagCompound.setString("CustomName", this.customName);
-			}
+			if (isInvNameLocalized())
+				par1NBTTagCompound.setString("CustomName", customName);
 		}
 	}
 
@@ -153,10 +145,9 @@ public class TileEntityBamboo extends TileEntity implements IInventory {
 
 	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer, boolean large) {
 		BlockBambooCrate crate = (BlockBambooCrate) ModBlocks.bambooCrate;
-		boolean close = this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : par1EntityPlayer.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D, (double) this.zCoord + 0.5D) <= 64.0D;
-		if (large) {
+		boolean close = worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) != this ? false : par1EntityPlayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64.0D;
+		if (large)
 			return crate.isValidCrate(worldObj, xCoord, yCoord, zCoord) && close;
-		}
 
 		return close;
 	}
@@ -180,9 +171,9 @@ public class TileEntityBamboo extends TileEntity implements IInventory {
 		int x = xCoord;
 		int y = yCoord;
 		int z = zCoord;
-		if (this.getBlockMetadata() == 0) {
-			this.getBlockType().setBlockBoundsBasedOnState(worldObj, x, y, z);
-			return this.getBlockType().getCollisionBoundingBoxFromPool(worldObj, x, y, z);
+		if (getBlockMetadata() == 0) {
+			getBlockType().setBlockBoundsBasedOnState(worldObj, x, y, z);
+			return getBlockType().getCollisionBoundingBoxFromPool(worldObj, x, y, z);
 		}
 		return AxisAlignedBB.getAABBPool().getAABB(x - 1, y - 1, z - 1, x + 2, y + 2, z + 2);
 	}

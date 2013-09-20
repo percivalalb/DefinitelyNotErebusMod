@@ -4,6 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
@@ -11,11 +12,15 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.FluidContainerRegistry.FluidContainerData;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import erebus.block.BlockUmberFurnace;
 import erebus.inventory.ContainerUmberFurnace;
 
 /**
@@ -30,9 +35,15 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 	ItemStack[] inventory = new ItemStack[4];
 	private final FluidTank tank = new FluidTank(FluidContainerRegistry.BUCKET_VOLUME * 16);
 	private final int BUCKET_SLOT = 0;
-	private final int FUEL_SLOT = 1;
-	private final int SMELT_SLOT = 2;
+	private final int SMELT_SLOT = 1;
+	private final int FUEL_SLOT = 2;
 	private final int RESULT_SLOT = 3;
+
+	private final int COOK_TIME_BASE = 200;
+	private int COOK_TIME = 200;
+	private int furnaceBurnTime;
+	private int currentItemBurnTime;
+	private int furnaceCookTime;
 
 	public TileEntityUmberFurnace() {
 		tank.setFluid(new FluidStack(FluidRegistry.LAVA, 0));
@@ -40,9 +51,92 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 
 	@Override
 	public void updateEntity() {
-		if (tank.getFluidAmount() < tank.getCapacity() - FluidContainerRegistry.BUCKET_VOLUME)
+		if (worldObj.isRemote)
+			return;
+
+		// Draining buckets
+		if (tank.getFluidAmount() <= tank.getCapacity() - FluidContainerRegistry.BUCKET_VOLUME)
 			if (FluidContainerRegistry.isFilledContainer(inventory[BUCKET_SLOT]) && FluidContainerRegistry.getFluidForFilledItem(inventory[BUCKET_SLOT]).getFluid() == FluidRegistry.LAVA)
-				tank.fill(new FluidStack(FluidRegistry.LAVA, FluidContainerRegistry.BUCKET_VOLUME), true);
+				if (inventory[BUCKET_SLOT].stackSize == 1) {
+					tank.fill(new FluidStack(FluidRegistry.LAVA, FluidContainerRegistry.BUCKET_VOLUME), true);
+					for (FluidContainerData data : FluidContainerRegistry.getRegisteredFluidContainerData())
+						if (data.filledContainer.itemID == inventory[BUCKET_SLOT].itemID && data.filledContainer.getItemDamage() == inventory[BUCKET_SLOT].getItemDamage())
+							inventory[BUCKET_SLOT] = data.emptyContainer.copy();
+				}
+
+		COOK_TIME = COOK_TIME_BASE - (int) (COOK_TIME_BASE * 0.8F * ((float) tank.getFluidAmount() / (float) tank.getCapacity()));
+
+		// Smelting items
+		// Stolen from vanilla furnace.
+		boolean flag = furnaceBurnTime > 0;
+		boolean flag1 = false;
+		if (furnaceBurnTime > 0)
+			--furnaceBurnTime;
+		if (!worldObj.isRemote) {
+			if (furnaceBurnTime == 0 && canSmelt()) {
+				currentItemBurnTime = furnaceBurnTime = TileEntityFurnace.getItemBurnTime(inventory[FUEL_SLOT]);
+				if (furnaceBurnTime > 0) {
+					flag1 = true;
+					if (inventory[FUEL_SLOT] != null) {
+						--inventory[FUEL_SLOT].stackSize;
+						if (inventory[FUEL_SLOT].stackSize == 0)
+							inventory[FUEL_SLOT] = inventory[FUEL_SLOT].getItem().getContainerItemStack(inventory[FUEL_SLOT]);
+					}
+				}
+			}
+			if (isBurning() && canSmelt()) {
+				++furnaceCookTime;
+				if (furnaceCookTime == COOK_TIME) {
+					furnaceCookTime = 0;
+					smeltItem();
+					flag1 = true;
+				}
+			} else
+				furnaceCookTime = 0;
+			if (flag != furnaceBurnTime > 0) {
+				flag1 = true;
+				BlockUmberFurnace.updateFurnaceBlockState(furnaceBurnTime > 0, worldObj, xCoord, yCoord, zCoord);
+			}
+		}
+		if (flag1)
+			onInventoryChanged();
+	}
+
+	private boolean canSmelt() {
+		if (inventory[SMELT_SLOT] == null)
+			return false;
+		else {
+			ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(inventory[SMELT_SLOT]);
+			if (itemstack == null)
+				return false;
+			if (inventory[RESULT_SLOT] == null)
+				return true;
+			if (!inventory[RESULT_SLOT].isItemEqual(itemstack))
+				return false;
+			int result = inventory[RESULT_SLOT].stackSize + itemstack.stackSize;
+			return (result <= getInventoryStackLimit() && result <= itemstack.getMaxStackSize());
+		}
+	}
+
+	private void smeltItem() {
+		if (canSmelt()) {
+			ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(inventory[SMELT_SLOT]);
+
+			if (inventory[RESULT_SLOT] == null)
+				inventory[RESULT_SLOT] = itemstack.copy();
+			else if (inventory[RESULT_SLOT].isItemEqual(itemstack))
+				inventory[RESULT_SLOT].stackSize += itemstack.stackSize;
+
+			tank.drain(FluidContainerRegistry.BUCKET_VOLUME / 10, true);
+			--inventory[SMELT_SLOT].stackSize;
+
+			if (inventory[SMELT_SLOT].stackSize <= 0)
+				inventory[SMELT_SLOT] = null;
+		}
+	}
+
+	public boolean isBurning() {
+		return furnaceBurnTime > 0;
 	}
 
 	@Override
@@ -122,12 +216,12 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
-		return slot == BUCKET_SLOT ? FluidContainerRegistry.isContainer(stack) : slot == FUEL_SLOT ? TileEntityFurnace.isItemFuel(stack) : slot == SMELT_SLOT ? true : false;
+		return slot == BUCKET_SLOT ? FluidContainerRegistry.isContainer(stack) : slot == FUEL_SLOT ? TileEntityFurnace.isItemFuel(stack) : slot == SMELT_SLOT ? FurnaceRecipes.smelting().getSmeltingResult(stack) != null : false;
 	}
 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int side) {
-		return side == 0 ? new int[] { RESULT_SLOT } : new int[] { BUCKET_SLOT, FUEL_SLOT, SMELT_SLOT };
+		return side == 0 ? new int[] { RESULT_SLOT, BUCKET_SLOT } : new int[] { BUCKET_SLOT, FUEL_SLOT, SMELT_SLOT };
 	}
 
 	@Override
@@ -137,7 +231,7 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 
 	@Override
 	public boolean canExtractItem(int slot, ItemStack stack, int side) {
-		return true;
+		return slot == BUCKET_SLOT ? FluidContainerRegistry.isEmptyContainer(stack) : true;
 	}
 
 	@Override
@@ -190,6 +284,18 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 
 	public void sendGUIData(ContainerUmberFurnace furnace, ICrafting craft) {
 		craft.sendProgressBarUpdate(furnace, 1, tank.getFluid() != null ? tank.getFluid().amount : 0);
+	}
+
+	@SideOnly(Side.CLIENT)
+	public int getBurnTimeRemainingScaled(int scale) {
+		if (currentItemBurnTime == 0)
+			currentItemBurnTime = COOK_TIME;
+		return furnaceBurnTime * scale / currentItemBurnTime;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public int getCookProgressScaled(int scale) {
+		return furnaceCookTime * scale / COOK_TIME;
 	}
 
 	@Override

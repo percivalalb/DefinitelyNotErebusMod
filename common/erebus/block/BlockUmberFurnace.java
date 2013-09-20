@@ -84,16 +84,21 @@ public class BlockUmberFurnace extends BlockContainer {
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-		if (world.isRemote)
-			return true;
-		else {
-			TileEntityUmberFurnace tile = (TileEntityUmberFurnace) world.getBlockTileEntity(x, y, z);
+		TileEntityUmberFurnace tile = (TileEntityUmberFurnace) world.getBlockTileEntity(x, y, z);
 
-			if (tile != null)
-				player.openGui(ErebusMod.instance, CommonProxy.GUI_ID_UMBER_FURNACE, world, x, y, z);
+		if (player.isSneaking())
+			return false;
 
+		if (player.getCurrentEquippedItem() != null) {
+			tile.fillTankWithBucket(player.getCurrentEquippedItem());
 			return true;
 		}
+
+		if (tile != null)
+			player.openGui(ErebusMod.instance, CommonProxy.GUI_ID_UMBER_FURNACE, world, x, y, z);
+
+		return true;
+
 	}
 
 	public static void updateFurnaceBlockState(boolean isActive, World world, int x, int y, int z) {

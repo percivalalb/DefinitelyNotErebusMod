@@ -1,11 +1,9 @@
 package erebus.block;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -19,19 +17,19 @@ public class BlockFern extends BlockUndergroundFlower implements IShearable {
 		setBlockBounds(0.5F - var3, 0.0F, 0.5F - var3, 0.5F + var3, 0.8F, 0.5F + var3);
 	}
 
-	@Override
-	public int idDropped(int par1, Random par2Random, int par3) {
-		if (par2Random.nextInt(2) == 0)
-			return -1;
-		else if (par2Random.nextInt(2) == 0)
-			return -1;
-		else if (par2Random.nextInt(2) == 0)
-			return -1;
-		else if (par2Random.nextInt(2) == 0)
-			return Item.seeds.itemID;
-		else
-			return Item.melonSeeds.itemID;
-	}
+	// @Override
+	// public int idDropped(int par1, Random par2Random, int par3) {
+	// if (par2Random.nextInt(2) == 0)
+	// return -1;
+	// else if (par2Random.nextInt(2) == 0)
+	// return -1;
+	// else if (par2Random.nextInt(2) == 0)
+	// return -1;
+	// else if (par2Random.nextInt(2) == 0)
+	// return Item.seeds.itemID;
+	// else
+	// return Item.melonSeeds.itemID;
+	// }
 
 	@Override
 	public boolean isShearable(ItemStack item, World world, int x, int y, int z) {

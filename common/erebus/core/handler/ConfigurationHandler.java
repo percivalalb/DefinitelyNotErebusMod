@@ -70,6 +70,9 @@ public class ConfigurationHandler {
 		/*
 		 * Items
 		 */
+		ModItems.erebusFoodID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Erebus Food", idGen.getNextItemID()).getInt();
+		ModItems.erebusMaterialsID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Erebus Materials", idGen.getNextItemID()).getInt();
+		ModItems.bamBucketID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Bambucket", idGen.getNextItemID()).getInt();
 		ModItems.exoskeletonHelmetID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Exoskeleton Helmet", idGen.getNextItemID()).getInt();
 		ModItems.exoskeletonBodyID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Exoskeleton Chestplate", idGen.getNextItemID()).getInt();
 		ModItems.exoskeletonLegsID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Exoskeleton Leggings", idGen.getNextItemID()).getInt();

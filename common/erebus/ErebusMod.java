@@ -62,6 +62,7 @@ public class ErebusMod {
 	public static boolean activateExtraOres = false;
 	public static boolean shouldDoVersionCheck = true;
 	public static byte beetleLarvaEating = 0;
+	public static byte grasshopperEating = 0;
 
 	public static ConnectionTeleportHandler packeterebushandler = new ConnectionTeleportHandler();
 

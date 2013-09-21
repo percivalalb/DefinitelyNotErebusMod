@@ -10,22 +10,22 @@ import erebus.ErebusMod;
 import erebus.entity.EntityBeetleLarva;
 
 public class EntityAIEatWoodenItem extends EntityAIBase {
-	private int diffEaten = 0;// 0-peaceful,1-easy,2-med,3-hard
-	private int maxTicks = 240;// approx 30 tick/sec +- processing delays
-	private int maxDToWood = 8;// this variable has a childish name. he-he.
+	private final int diffEaten = 0;// 0-peaceful,1-easy,2-med,3-hard
+	private final int maxTicks = 240;// approx 30 tick/sec +- processing delays
+	private final int maxDToWood = 8;// this variable has a childish name. he-he.
 	protected EntityLiving theEntity;
 	protected double entityPosX;
 	protected double entityPosY;
 	protected double entityPosZ;
 	public int WoodX, WoodY, WoodZ = -1;
-	private double moveSpeed;
+	private final double moveSpeed;
 	private int ticksSpent = 0;
 	private int reproCap = 0;
 
 	public EntityAIEatWoodenItem(EntityLiving par1EntityLiving, double d) {
-		this.theEntity = par1EntityLiving;
-		this.moveSpeed = d;
-		this.setMutexBits(3);
+		theEntity = par1EntityLiving;
+		moveSpeed = d;
+		setMutexBits(3);
 	}
 
 	/**
@@ -33,16 +33,15 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 	 */
 	@Override
 	public boolean shouldExecute() {
-		if (this.theEntity.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing")) {
+		if (theEntity.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing")) {
 			boolean hasFoundWood = findClosestWood(maxDToWood);
 			if (!hasFoundWood) {
-				((EntityBeetleLarva) this.theEntity).setIsEating(false);
+				((EntityBeetleLarva) theEntity).setIsEating(false);
 				return false;
 			}
 			return true;
-		} else {
+		} else
 			return false;
-		}
 	}
 
 	/**
@@ -63,28 +62,25 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 
 	@Override
 	public void updateTask() {
-		AxisAlignedBB blockbounds = this.getBlockAABB(WoodX, WoodY, WoodZ);
-		this.theEntity.getLookHelper().setLookPosition(this.WoodX + 0.5D, this.WoodY, this.WoodZ + 0.5D, 50.0F, 8.0F);
-		this.theEntity.getNavigator().tryMoveToXYZ(WoodX + 0.5D, WoodY, WoodZ + 0.5D, this.moveSpeed);
-		if (this.theEntity.getNavigator().noPath() && !this.theEntity.isCollidedHorizontally) {
-			this.theEntity.getMoveHelper().setMoveTo(WoodX + 0.5D, WoodY, WoodZ + 0.5D, this.moveSpeed);
-		}
-		this.ticksSpent++;
-		if (this.theEntity.boundingBox.maxY >= blockbounds.minY && this.theEntity.boundingBox.minY <= blockbounds.maxY && this.theEntity.boundingBox.maxX >= blockbounds.minX && this.theEntity.boundingBox.minX <= blockbounds.maxX && this.theEntity.boundingBox.maxZ >= blockbounds.minZ &&
-		this.theEntity.boundingBox.minZ <= blockbounds.maxZ && this.ticksSpent < maxTicks) {
-			((EntityBeetleLarva) this.theEntity).setIsEating(true);
-			((EntityBeetleLarva) this.theEntity).munchBlock();
-		} else {
-			((EntityBeetleLarva) this.theEntity).setIsEating(false);
-		}
-		if (this.ticksSpent >= maxTicks && this.theEntity.worldObj.difficultySetting >= diffEaten && this.theEntity.boundingBox.maxY >= blockbounds.minY && this.theEntity.boundingBox.minY <= blockbounds.maxY) {
-			this.theEntity.worldObj.destroyBlock(this.WoodX, this.WoodY, this.WoodZ, false);
-			((EntityBeetleLarva) this.theEntity).setMoveTasks(true);
-			this.ticksSpent = 0;
-			if (this.reproCap < 3) {
+		AxisAlignedBB blockbounds = getBlockAABB(WoodX, WoodY, WoodZ);
+		theEntity.getLookHelper().setLookPosition(WoodX + 0.5D, WoodY, WoodZ + 0.5D, 50.0F, 8.0F);
+		theEntity.getNavigator().tryMoveToXYZ(WoodX + 0.5D, WoodY, WoodZ + 0.5D, moveSpeed);
+		if (theEntity.getNavigator().noPath() && !theEntity.isCollidedHorizontally)
+			theEntity.getMoveHelper().setMoveTo(WoodX + 0.5D, WoodY, WoodZ + 0.5D, moveSpeed);
+		ticksSpent++;
+		if (theEntity.boundingBox.maxY >= blockbounds.minY && theEntity.boundingBox.minY <= blockbounds.maxY && theEntity.boundingBox.maxX >= blockbounds.minX && theEntity.boundingBox.minX <= blockbounds.maxX && theEntity.boundingBox.maxZ >= blockbounds.minZ &&
+		theEntity.boundingBox.minZ <= blockbounds.maxZ && ticksSpent < maxTicks) {
+			((EntityBeetleLarva) theEntity).setIsEating(true);
+			((EntityBeetleLarva) theEntity).munchBlock();
+		} else
+			((EntityBeetleLarva) theEntity).setIsEating(false);
+		if (ticksSpent >= maxTicks && theEntity.worldObj.difficultySetting >= diffEaten && theEntity.boundingBox.maxY >= blockbounds.minY && theEntity.boundingBox.minY <= blockbounds.maxY) {
+			theEntity.worldObj.destroyBlock(WoodX, WoodY, WoodZ, false);
+			((EntityBeetleLarva) theEntity).setMoveTasks(true);
+			ticksSpent = 0;
+			if (reproCap < 3)
 				reproCap++;
-			}
-			if (this.reproCap == 3) {
+			if (reproCap == 3) {
 				// this bit of code is just here for future improvement
 				// (spawning a full grown beetle)
 				// this.theEntity.setDead();
@@ -98,22 +94,18 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 	}
 
 	private boolean findClosestWood(int maxDistance) {// returns whether or not
-														// Wood was found
-														// (he-he! he said wood)
-		for (int currentCheckDistance = 1; currentCheckDistance < maxDistance; currentCheckDistance++) {
-			for (int x = -currentCheckDistance; x <= currentCheckDistance; x++) {
-				for (int y = -currentCheckDistance; y <= currentCheckDistance; y++) {
-					for (int z = -currentCheckDistance; z <= currentCheckDistance; z++) {
+		// Wood was found
+		// (he-he! he said wood)
+		for (int currentCheckDistance = 1; currentCheckDistance < maxDistance; currentCheckDistance++)
+			for (int x = -currentCheckDistance; x <= currentCheckDistance; x++)
+				for (int y = -currentCheckDistance; y <= currentCheckDistance; y++)
+					for (int z = -currentCheckDistance; z <= currentCheckDistance; z++)
 						if (isBlockEdible((int) theEntity.posX + x, (int) theEntity.posY + y, (int) theEntity.posZ + z)) {
-							WoodX = (int) this.theEntity.posX + x;
-							WoodY = (int) this.theEntity.posY + y;
-							WoodZ = (int) this.theEntity.posZ + z;
+							WoodX = (int) theEntity.posX + x;
+							WoodY = (int) theEntity.posY + y;
+							WoodZ = (int) theEntity.posZ + z;
 							return true;
 						}
-					}
-				}
-			}
-		}
 		return false;
 	}
 
@@ -137,6 +129,6 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 	}
 
 	protected AxisAlignedBB getBlockAABB(int par1, int par2, int par3) {
-		return AxisAlignedBB.getAABBPool().getAABB((double) ((float) WoodX), (double) WoodY, (double) ((float) WoodZ), (double) (float) (WoodX + 1.0D), (double) WoodY + 1.0D, (double) (float) (WoodZ + 1.0D));
+		return AxisAlignedBB.getAABBPool().getAABB((WoodX), WoodY, (WoodZ), (float) (WoodX + 1.0D), WoodY + 1.0D, (float) (WoodZ + 1.0D));
 	}
 }

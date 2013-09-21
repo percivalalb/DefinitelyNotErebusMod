@@ -116,7 +116,7 @@ public class ClientProxy extends CommonProxy {
 
 			for (int countparticles = 0; countparticles <= 200; ++countparticles)
 				eff.addEffect(new EntityBreakingFX(player.worldObj, e.posX + (e.getRNG().nextDouble() - 0.5D) * e.width, e.posY + e.getRNG().nextDouble() * e.height - e.yOffset, e.posZ + (e.getRNG().nextDouble() - 0.5D) * e.width, Item.slimeBall));
-		} else if (particleType == PacketParticle.BEETLE_LARVA_EAT) { // x,y,z,blockID
+		} else if (particleType == PacketParticle.BEETLE_LARVA_EAT || particleType == PacketParticle.GRASSHOPPER_EAT) { // x,y,z,blockID
 			EntityLivingBase e = (EntityLivingBase) player.worldObj.getEntityByID(data.readInt());
 			int woodX = data.readInt(), woodY = data.readInt(), woodZ = data.readInt();
 			Block block = Block.blocksList[data.readInt()];

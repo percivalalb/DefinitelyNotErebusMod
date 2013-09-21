@@ -233,12 +233,21 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			}
 		}
 
-		for (int c = 0; c < 200; c++) {
+		for (int c = 0; c < 150; c++) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
 				(new WorldGenTallGrass(ModBlocks.fern.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
+			}
+		}
+		
+		for (int c = 0; c < 60; c++) {
+			int j2 = x + getRandomXZOffset(rand);
+			int l3 = rand.nextInt(120);
+			int j5 = z + getRandomXZOffset(rand);
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+				(new WorldGenTallGrass(ModBlocks.fiddlehead.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
 

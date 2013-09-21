@@ -20,10 +20,12 @@ import erebus.item.ItemErebusFood;
 import erebus.item.ItemErebusMaterial;
 import erebus.item.ItemExoskeletonArmor;
 import erebus.item.ItemJadeArmor;
+import erebus.item.ItemJumpBoots;
 import erebus.item.ItemMaxSpeedBow;
 import erebus.item.ItemMetalIngots;
 import erebus.item.ItemPaxel;
 import erebus.item.ItemPortalActivator;
+import erebus.item.ItemSprintLeggings;
 
 /**
  * @author ProPercivalalb
@@ -84,6 +86,9 @@ public class ModItems {
 		jadePaxel = new ItemPaxel(jadePaxelID, ErebusMod.toolJADEPAXEL).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("paxelJade").setTextureName("erebus:paxelJade");
 		jadeHoe = new ItemHoe(jadeHoeID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("hoeJade").setTextureName("erebus:hoeJade");
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
+		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorEXOSKELETON, 2, 3).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
+		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorEXOSKELETON, 2, 2).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
+
 		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("waspSword");
 		if(ErebusMod.activateExtraOres)
 			metalIngot = new ItemMetalIngots(metalIngotID).setCreativeTab(ErebusMod.tabErebusItem);
@@ -116,6 +121,8 @@ public class ModItems {
 		GameRegistry.registerItem(jadePaxel, "erebus.paxelJade");
 		GameRegistry.registerItem(jadeHoe, "erebus.hoeJade");
 		GameRegistry.registerItem(compoundGoggles, "erebus.compoundGoggles");
+		GameRegistry.registerItem(jumpBoots, "erebus.jumpBoots");
+		GameRegistry.registerItem(sprintLeggings, "erebus.sprintLeggings");
 		GameRegistry.registerItem(waspSword, "erebus.waspSword");
 		if(ErebusMod.activateExtraOres)
 			GameRegistry.registerItem(metalIngot, "erebus.metalIngot");

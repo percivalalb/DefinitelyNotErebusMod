@@ -38,8 +38,9 @@ public class WorldProviderErebus extends WorldProvider {
 	@Override
 	public Vec3 getFogColor(float par1, float par2) {
 		BiomeGenBase b = worldObj.getBiomeGenForCoords((int) Minecraft.getMinecraft().thePlayer.posX, (int) Minecraft.getMinecraft().thePlayer.posZ);
-		
-		if (targetFogColor==null)targetFogColor = new double[3];
+
+		if (targetFogColor == null)
+			targetFogColor = new double[3];
 		targetFogColor[0] = 0.029999999329447746D * 255D;
 		targetFogColor[1] = 0.49999999329447746D * 255D;
 		targetFogColor[2] = 0.029999999329447746D * 255D;
@@ -57,21 +58,23 @@ public class WorldProviderErebus extends WorldProvider {
 			targetFogColor[1] = 100D;
 			targetFogColor[2] = 100D;
 		}
-		
-		if (currentFogColor==null){
+
+		if (currentFogColor == null) {
 			currentFogColor = new double[3];
-			for(int a=0; a<3; a++)currentFogColor[a]=targetFogColor[a];
+			for (int a = 0; a < 3; a++)
+				currentFogColor[a] = targetFogColor[a];
 		}
-		
-		for(int a=0; a<3; a++){
-			if (currentFogColor[a]!=targetFogColor[a]){
-				if (currentFogColor[a]<targetFogColor[a]){
-					currentFogColor[a]+=2D;
-					if (currentFogColor[a]>targetFogColor[a])currentFogColor[a]=targetFogColor[a];
-				}
-				else if (currentFogColor[a]>targetFogColor[a]){
-					currentFogColor[a]-=2D;
-					if (currentFogColor[a]<targetFogColor[a])currentFogColor[a]=targetFogColor[a];
+
+		for (int a = 0; a < 3; a++) {
+			if (currentFogColor[a] != targetFogColor[a]) {
+				if (currentFogColor[a] < targetFogColor[a]) {
+					currentFogColor[a] += 2D;
+					if (currentFogColor[a] > targetFogColor[a])
+						currentFogColor[a] = targetFogColor[a];
+				} else if (currentFogColor[a] > targetFogColor[a]) {
+					currentFogColor[a] -= 2D;
+					if (currentFogColor[a] < targetFogColor[a])
+						currentFogColor[a] = targetFogColor[a];
 				}
 			}
 		}

@@ -35,8 +35,8 @@ public class BlockErebusOre extends Block {
 	@Override
 	public void registerIcons(IconRegister iconRegister) {
 		icons = new Icon[iconPaths.length];
-		
-		for(int a=0; a<iconPaths.length; a++){
+
+		for (int a = 0; a < iconPaths.length; a++) {
 			icons[a] = iconRegister.registerIcon("erebus:" + iconPaths[a]);
 		}
 	}

@@ -108,7 +108,8 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 		}
 
 		// Trees
-		// TODO clean up and make it more efficient? 300 cycles per tree seems a bit too much...
+		// TODO clean up and make it more efficient? 300 cycles per tree seems a
+		// bit too much...
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
@@ -126,7 +127,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenMossbarkTree()).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
-		
+
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
@@ -135,7 +136,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenTallJungleTree()).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
-		
+
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
@@ -222,7 +223,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenMelon()).generate(worldObj, rand, j2, l3, j5);
 			}
 		}
-		
+
 		if (rand.nextInt(5) == 0) {
 			for (int yy = 100; yy > 20; yy--) {
 				int xx = x + 4 + rand.nextInt(8), zz = z + 4 + rand.nextInt(8);

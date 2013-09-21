@@ -155,20 +155,26 @@ public class BlockLeavesErebus extends BlockLeaves {
 
 	@Override
 	public int damageDropped(int meta) {
-		switch(meta){
-			case dataAcacia: return BlockSaplingErebus.dataAcacia;
-			case dataEucalyptus: return BlockSaplingErebus.dataEucalyptus;
-			case dataMahogany: return BlockSaplingErebus.dataMahogany;
-			case dataMossbark: return BlockSaplingErebus.dataMossbark;
-			case dataAsper: return BlockSaplingErebus.dataAsper;
-			default: return -1;
+		switch (meta) {
+			case dataAcacia:
+				return BlockSaplingErebus.dataAcacia;
+			case dataEucalyptus:
+				return BlockSaplingErebus.dataEucalyptus;
+			case dataMahogany:
+				return BlockSaplingErebus.dataMahogany;
+			case dataMossbark:
+				return BlockSaplingErebus.dataMossbark;
+			case dataAsper:
+				return BlockSaplingErebus.dataAsper;
+			default:
+				return -1;
 		}
 	}
 
 	@Override
 	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int meta, float par6, int fortune) {
 		if (!world.isRemote) {
-			byte saplingChance = (byte)(meta<8?20:40);
+			byte saplingChance = (byte) (meta < 8 ? 20 : 40);
 
 			if (world.rand.nextInt(saplingChance) == 0 && damageDropped(meta) != -1) {
 				dropBlockAsItem_do(world, x, y, z, new ItemStack(idDropped(meta, world.rand, fortune), 1, damageDropped(meta)));

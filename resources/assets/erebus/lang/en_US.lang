@@ -54,7 +54,7 @@ umberOre_item_3.name=Lapis Ore
 umberOre_item_4.name=Diamond Ore
 umberOre_item_5.name=Emerald Ore
 umberOre_item_6.name=Jade Ore
-umberOre_item_6.name=Petrified Wood Ore
+umberOre_item_7.name=Petrified Wood Ore
 tile.oreFossilU.name=Fossil Ore
 umberStone_item_0.name=Umberstone
 umberStone_item_1.name=Umbercobble
@@ -85,6 +85,8 @@ erebusOreExtra_item_4.name=Tin Ore
 blockUmberpaver_item_0.name=Umberpaver
 blockUmberpaver_item_1.name=Mossy Umberpaver
 blockUmberpaver_item_2.name=Webbed Umberpaver
+tile.umberFurnaceOFF.name=Umber Furnace
+tile.erebusFiddlehead.name=Fiddlehead
 
 #Items
 item.helmetExo.name=Exoskeleton Helmet
@@ -106,6 +108,8 @@ item.shovelJade.name=Jade Shovel
 item.paxelJade.name=Jade Paxel
 item.hoeJade.name=Jade Hoe
 item.compoundGoggles.name=Compound Goggles
+item.jumpBoots.name=Jump Boots
+item.sprintLeggings.name=Sprint Leggings
 item.erebusMaterials.0.name=Exoskeleton Plate
 item.erebusMaterials.1.name=Jade
 item.erebusMaterials.2.name=Bone Shard
@@ -143,6 +147,8 @@ entity.VelvetWorm - Erebus.name=Velvet Worm
 entity.BotFly - Erebus.name=Bot Fly
 entity.BlackWidow - Erebus.name=Black Widow
 entity.Scorpion - Erebus.name=Scorpion
+entity.Grasshopper - Erebus.name=Grasshopper
+entity.Locust - Erebus.name=Locust
 
 #Other
 itemGroup.erebus.block=Erebus Blocks

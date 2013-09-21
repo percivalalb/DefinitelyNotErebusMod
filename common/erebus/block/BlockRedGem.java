@@ -36,7 +36,7 @@ public class BlockRedGem extends Block {
 	@Override
 	public void registerIcons(IconRegister iconRegister) {
 		icons = new Icon[iconPaths.length];
-		
+
 		int i = 0;
 		for (String path : iconPaths) {
 			icons[i++] = iconRegister.registerIcon("erebus:" + path);
@@ -75,7 +75,7 @@ public class BlockRedGem extends Block {
 
 	@Override
 	public int idDropped(int meta, Random random, int fortune) {
-		return meta == 0?Item.redstone.itemID:blockID;
+		return meta == 0 ? Item.redstone.itemID : blockID;
 	}
 
 	/**

@@ -6,15 +6,14 @@ import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.registry.GameRegistry;
 import erebus.block.BlockAmber;
 import erebus.block.BlockBambooCrate;
-import erebus.block.BlockCaveSpiderSpawner;
 import erebus.block.BlockErebusGrass;
 import erebus.block.BlockErebusOre;
 import erebus.block.BlockErebusOreExtras;
 import erebus.block.BlockFern;
+import erebus.block.BlockFiddlehead;
 import erebus.block.BlockHollowLog;
 import erebus.block.BlockLeavesErebus;
 import erebus.block.BlockLogErebus;
-import erebus.block.BlockMirBrick;
 import erebus.block.BlockOreFossil;
 import erebus.block.BlockPetrifiedCraftingTable;
 import erebus.block.BlockPlanksErebus;
@@ -23,7 +22,7 @@ import erebus.block.BlockQuickSand;
 import erebus.block.BlockRedGem;
 import erebus.block.BlockSaplingErebus;
 import erebus.block.BlockSilk;
-import erebus.block.BlockSpiderSpawner;
+import erebus.block.BlockSpawner;
 import erebus.block.BlockStairsErebus;
 import erebus.block.BlockThorns;
 import erebus.block.BlockTurnip;
@@ -49,6 +48,8 @@ import erebus.tileentity.TileEntityHollowLog;
  */
 public class ModBlocks {
 
+	// TELL DAVE TO CHECK HIS CODE BEFORE SYNCING. I THINK I DELETE SOMETHING HE MADE.
+	
 	// PORTAL
 	public static BlockPortalErebus portalErebus;		public static int portalErebusID;
 
@@ -133,10 +134,10 @@ public class ModBlocks {
 		thorns = new BlockThorns(thornsID).setHardness(0.2F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("thorns").setTextureName("erebus:thorns");
 		fern = (BlockFern) new BlockFern(fernID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFern");
 		blockTurnip = (new BlockTurnip(blockTurnipID)).setUnlocalizedName("turnips");
-		fiddlehead = new BlockFern(fiddleheadID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFiddlehead");
+		fiddlehead = new BlockFiddlehead(fiddleheadID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("erebusFiddlehead");
 
-		blockSilk = new BlockSilk(blockSilkID, 70).setHardness(0.2F).setStepSound(Block.soundClothFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("blockSilk").setTextureName("erebus:blockSilk");
-		mirBrick = new BlockMirBrick(mirBrickID, Material.rock).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("mirbrick").setTextureName("erebus:mirbrick");
+		blockSilk = new BlockSilk(blockSilkID).setHardness(0.2F).setStepSound(Block.soundClothFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("blockSilk").setTextureName("erebus:blockSilk");
+		mirBrick = new Block(mirBrickID, Material.rock).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("mirbrick").setTextureName("erebus:mirbrick");
 		petrifiedWoodPlanks = new Block(petrifiedWoodPlanksID, Material.rock).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("petrifiedWoodPlanks").setTextureName("erebus:petrifiedWoodPlanks");
 		petrifiedWoodStairs = new BlockStairsErebus(petrifiedWoodStairsID, petrifiedWoodPlanks, 0).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("petrifiedWoodStairs");
 		petrifiedCraftingTable = new BlockPetrifiedCraftingTable(petrifiedCraftingTableID).setHardness(2.5F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("petrifiedCraftingTable");
@@ -145,8 +146,15 @@ public class ModBlocks {
 		umberFurnace_on = new BlockUmberFurnace(umberFurnace_onID, true).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberFurnaceON");
 		umberPaver = new BlockUmberPaver(umberPaverID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("umberPaver");
 
-		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, 96).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner");
-		caveSpiderSpawner = new BlockCaveSpiderSpawner(caveSpiderSpawnerID, 96).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner");
+		// Left a couple of comments on the TileEntitySpawner class to help you guys out since I won't be here this weekend
+		// Create them using any mob.
+		// Just pass in the name as it shows in the mob's class.
+		// E.g.: EntityCreeper. Should use "Creeper". EntityPigMan. Should use "PigMan"
+		// TODO Remember to remove creative tabs before release!!!
+		// FIXME Block won't render the entity spinning in the middle. This is not a bug. It just hasn't been implemented yet.
+		// <3 Love you guys in the face. <3
+		spiderSpawner = new BlockSpawner(spiderSpawnerID, "Spider").setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner").setCreativeTab(ErebusMod.tabErebusBlock);
+		caveSpiderSpawner = new BlockSpawner(caveSpiderSpawnerID, "CaveSpider").setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner").setCreativeTab(ErebusMod.tabErebusBlock);
 
 
 		// Registering blocks

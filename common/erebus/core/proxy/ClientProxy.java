@@ -12,7 +12,9 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
+
 import com.google.common.io.ByteArrayDataInput;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -25,6 +27,8 @@ import erebus.client.model.entity.ModelBeetleLarva;
 import erebus.client.model.entity.ModelBlackWidow;
 import erebus.client.model.entity.ModelBotFly;
 import erebus.client.model.entity.ModelCentipede;
+import erebus.client.model.entity.ModelGrasshopper;
+import erebus.client.model.entity.ModelLocust;
 import erebus.client.model.entity.ModelMosquito;
 import erebus.client.model.entity.ModelScorpion;
 import erebus.client.model.entity.ModelTarantula;
@@ -36,6 +40,8 @@ import erebus.client.render.entity.RenderBlackWidow;
 import erebus.client.render.entity.RenderBotFly;
 import erebus.client.render.entity.RenderCentipede;
 import erebus.client.render.entity.RenderFly;
+import erebus.client.render.entity.RenderGrasshopper;
+import erebus.client.render.entity.RenderLocust;
 import erebus.client.render.entity.RenderMosquito;
 import erebus.client.render.entity.RenderScorpion;
 import erebus.client.render.entity.RenderTarantula;
@@ -54,6 +60,8 @@ import erebus.entity.EntityBlackWidow;
 import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
 import erebus.entity.EntityFly;
+import erebus.entity.EntityGrasshopper;
+import erebus.entity.EntityLocust;
 import erebus.entity.EntityMosquito;
 import erebus.entity.EntityScorpion;
 import erebus.entity.EntityTarantula;
@@ -86,6 +94,8 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityBotFly.class, new RenderBotFly(new ModelBotFly(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBlackWidow.class, new RenderBlackWidow(new ModelBlackWidow(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityScorpion.class, new RenderScorpion(new ModelScorpion(), 0.3F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityGrasshopper.class, new RenderGrasshopper(new ModelGrasshopper(), 0.3F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityLocust.class, new RenderLocust(new ModelLocust(), 0.3F));
 
 		// Special Renderer
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHollowLog.class, new TileEntityRenderHollowLog());
@@ -95,41 +105,29 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooCrate.blockID, new BambooItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.waspSword.itemID, new WaspSwordItemRenderer());
 	}
-	
+
 	@Override
-	public void handleParticlePacket(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data){
-		EffectRenderer eff=Minecraft.getMinecraft().effectRenderer;
-		byte particleType=data.readByte();
-		
-		if (particleType == PacketParticle.BEETLE_LARVA_SQUISH){
-			EntityLivingBase e=(EntityLivingBase)player.worldObj.getEntityByID(data.readInt());
-			
-			for(int countparticles = 0; countparticles <= 200; ++countparticles){
-				eff.addEffect(new EntityBreakingFX(player.worldObj,
-						e.posX+(e.getRNG().nextDouble()-0.5D)*(double)e.width,
-						e.posY+e.getRNG().nextDouble()*(double)e.height-(double)e.yOffset,
-						e.posZ+(e.getRNG().nextDouble()-0.5D)*(double)e.width,
-						Item.slimeBall));
-            }
-		}
-		else if (particleType == PacketParticle.BEETLE_LARVA_EAT){ // x,y,z,blockID
-			EntityLivingBase e=(EntityLivingBase)player.worldObj.getEntityByID(data.readInt());
-			int woodX=data.readInt(),woodY=data.readInt(),woodZ=data.readInt();
-			Block block=Block.blocksList[data.readInt()];
-			int blockMeta=data.readByte();
-			
-			if (block==null)return;
-			
-			for(int countparticles = 0; countparticles <= 50; ++countparticles){
-				eff.addEffect(new EntityDiggingFX(player.worldObj,
-						woodX+0.5D+(e.getRNG().nextDouble()-0.5D)*(double)e.width,
-						woodY+0.2D+e.getRNG().nextDouble()*(double)e.height-(double)e.yOffset,
-						woodZ+0.5D+(e.getRNG().nextDouble()-0.5D)*(double)e.width,
-						e.getRNG().nextGaussian()*0.5D,
-						e.getRNG().nextGaussian()*0.01D,
-						e.getRNG().nextGaussian()*0.5D,
-						block,blockMeta));
-            }
+	public void handleParticlePacket(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data) {
+		EffectRenderer eff = Minecraft.getMinecraft().effectRenderer;
+		byte particleType = data.readByte();
+
+		if (particleType == PacketParticle.BEETLE_LARVA_SQUISH) {
+			EntityLivingBase e = (EntityLivingBase) player.worldObj.getEntityByID(data.readInt());
+
+			for (int countparticles = 0; countparticles <= 200; ++countparticles)
+				eff.addEffect(new EntityBreakingFX(player.worldObj, e.posX + (e.getRNG().nextDouble() - 0.5D) * e.width, e.posY + e.getRNG().nextDouble() * e.height - e.yOffset, e.posZ + (e.getRNG().nextDouble() - 0.5D) * e.width, Item.slimeBall));
+		} else if (particleType == PacketParticle.BEETLE_LARVA_EAT || particleType == PacketParticle.GRASSHOPPER_EAT) { // x,y,z,blockID
+			EntityLivingBase e = (EntityLivingBase) player.worldObj.getEntityByID(data.readInt());
+			int woodX = data.readInt(), woodY = data.readInt(), woodZ = data.readInt();
+			Block block = Block.blocksList[data.readInt()];
+			int blockMeta = data.readByte();
+
+			if (block == null)
+				return;
+
+			for (int countparticles = 0; countparticles <= 50; ++countparticles)
+				eff.addEffect(new EntityDiggingFX(player.worldObj, woodX + 0.5D + (e.getRNG().nextDouble() - 0.5D) * e.width, woodY + 0.2D + e.getRNG().nextDouble() * e.height - e.yOffset, woodZ + 0.5D + (e.getRNG().nextDouble() - 0.5D) * e.width, e.getRNG()
+				.nextGaussian() * 0.5D, e.getRNG().nextGaussian() * 0.01D, e.getRNG().nextGaussian() * 0.5D, block, blockMeta));
 		}
 	}
 }

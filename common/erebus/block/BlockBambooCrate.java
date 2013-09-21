@@ -38,15 +38,15 @@ public class BlockBambooCrate extends BlockContainer {
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityBamboo();
 	}
-	
+
 	@Override
-	public int idDropped(int meta, Random rand, int fortune){
-		return meta == 0?ModItems.erebusMaterials.itemID:blockID;
+	public int idDropped(int meta, Random rand, int fortune) {
+		return meta == 0 ? ModItems.erebusMaterials.itemID : blockID;
 	}
 
 	@Override
 	public int damageDropped(int meta) {
-		return meta == 0?3:meta;
+		return meta == 0 ? 3 : meta;
 	}
 
 	@Override

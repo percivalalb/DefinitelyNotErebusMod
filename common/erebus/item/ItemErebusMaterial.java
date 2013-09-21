@@ -19,7 +19,7 @@ public class ItemErebusMaterial extends Item {
 	 * The icon path, not including "erebus:" as it is joined when registering
 	 * icon
 	 **/
-	public static final String[] iconPaths = new String[] { "plateExo", "jade", "shardBone", "bamboo", "compoundEyes", "compoundLens", "flyWing", "itemPetrifiedWood", "biovelocity", "elasticFibre", "waspSting"};
+	public static final String[] iconPaths = new String[] { "plateExo", "jade", "shardBone", "bamboo", "compoundEyes", "compoundLens", "flyWing", "itemPetrifiedWood", "biovelocity", "elasticFibre", "waspSting" };
 	public static final Icon[] icons = new Icon[iconPaths.length];
 
 	public ItemErebusMaterial(int id) {

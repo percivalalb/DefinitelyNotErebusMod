@@ -14,6 +14,7 @@ import erebus.ModItems;
 public class EntityScorpion extends EntityMob {
 	protected EntityLiving theEntity;
 	public boolean isCaptured;
+
 	public EntityScorpion(World par1World) {
 
 		super(par1World);
@@ -31,10 +32,11 @@ public class EntityScorpion extends EntityMob {
 	public void onUpdate() {
 		super.onUpdate();
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D); // Movespeed
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(30.0D); // Max Health
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(30.0D); // Max
+																					// Health
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D); // atkDmg
 		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
-		
+
 		if (!this.worldObj.isRemote && this.riddenByEntity == null) {
 			this.setIsInJaws(false);
 		}
@@ -75,25 +77,22 @@ public class EntityScorpion extends EntityMob {
 	public boolean isOnLadder() {
 		return (this.isCollidedHorizontally);
 	}
-	
+
 	@Override
 	public boolean canRiderInteract() {
 		return true;
 	}
-	
+
 	@Override
 	public boolean shouldRiderSit() {
 		return false;
 	}
-	
+
 	@Override
 	public void onCollideWithPlayer(EntityPlayer par1EntityPlayer) {
 		super.onCollideWithPlayer(par1EntityPlayer);
 		byte var2 = 0;
-		if (!this.worldObj.isRemote
-				&& par1EntityPlayer.boundingBox.maxY >= this.boundingBox.minY
-				&& par1EntityPlayer.boundingBox.minY <= this.boundingBox.maxY
-				&& !this.isCaptured) {
+		if (!this.worldObj.isRemote && par1EntityPlayer.boundingBox.maxY >= this.boundingBox.minY && par1EntityPlayer.boundingBox.minY <= this.boundingBox.maxY && !this.isCaptured) {
 			if (this.worldObj.difficultySetting > 1) {
 				if (this.worldObj.difficultySetting == 2) {
 					var2 = 7;
@@ -109,7 +108,7 @@ public class EntityScorpion extends EntityMob {
 			updateRiderPosition();
 		}
 	}
-	
+
 	@Override
 	public void updateRiderPosition() {
 		double a = Math.toRadians(this.rotationYaw);
@@ -119,11 +118,10 @@ public class EntityScorpion extends EntityMob {
 			this.riddenByEntity.setPosition(this.posX + offSetX, this.posY + 0.75D + this.riddenByEntity.getYOffset(), this.posZ + offSetZ);
 		}
 	}
-	
+
 	public void setIsInJaws(boolean par1) {
 		this.isCaptured = par1;
 	}
-
 
 	@Override
 	protected void attackEntity(Entity par1Entity, float par2) {

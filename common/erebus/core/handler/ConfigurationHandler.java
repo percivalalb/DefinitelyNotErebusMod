@@ -70,6 +70,9 @@ public class ConfigurationHandler {
 		/*
 		 * Items
 		 */
+		ModItems.erebusFoodID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Erebus Food", idGen.getNextItemID()).getInt();
+		ModItems.erebusMaterialsID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Erebus Materials", idGen.getNextItemID()).getInt();
+		ModItems.bamBucketID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Bambucket", idGen.getNextItemID()).getInt();
 		ModItems.exoskeletonHelmetID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Exoskeleton Helmet", idGen.getNextItemID()).getInt();
 		ModItems.exoskeletonBodyID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Exoskeleton Chestplate", idGen.getNextItemID()).getInt();
 		ModItems.exoskeletonLegsID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Exoskeleton Leggings", idGen.getNextItemID()).getInt();
@@ -91,6 +94,8 @@ public class ConfigurationHandler {
 		ModItems.compoundGogglesID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Compound Goggles", idGen.getNextItemID()).getInt();
 		ModItems.waspSwordID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Wasp Sword", idGen.getNextItemID()).getInt();
 		ModItems.metalIngotID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Metal Ingots", idGen.getNextItemID()).getInt();
+		ModItems.jumpBootsID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Jump Boots", idGen.getNextItemID()).getInt();
+		ModItems.sprintLeggingsID = config.get(Configuration.CATEGORY_ITEM, "Item ID of Sprint Leggings", idGen.getNextItemID()).getInt();
 
 		/*
 		 * Biomes & misc
@@ -102,7 +107,8 @@ public class ConfigurationHandler {
 
 		ErebusMod.erebusDimensionID = config.get(Configuration.CATEGORY_GENERAL, "Dimension ID of The Erebus", 66, "There doesn't appear to be a limit on dimension IDs, but try to keep it low").getInt();
 		ErebusMod.activateExtraOres = config.get(Configuration.CATEGORY_GENERAL, "Should generate copper, lead, silver and tin?", false).getBoolean(false);
-		ErebusMod.beetleLarvaEating = (byte)config.get(Configuration.CATEGORY_GENERAL, "Beetle larva eating settings", 0, "0 = only wooden blocks except tile entities & logs, 1 = only wooden blocks except logs, 2 = anything").getInt();
+		ErebusMod.beetleLarvaEating = (byte) config.get(Configuration.CATEGORY_GENERAL, "Beetle larva eating settings", 0, "0 = only wooden blocks except tile entities & logs, 1 = only wooden blocks except logs, 2 = anything").getInt();
+		ErebusMod.grasshopperEating = (byte) config.get(Configuration.CATEGORY_GENERAL, "Grasshopper eating settings", 0, "dunno").getInt();
 		ErebusMod.shouldDoVersionCheck = config.get(Configuration.CATEGORY_GENERAL, "Should do version check?", true).getBoolean(true);
 
 		config.save();

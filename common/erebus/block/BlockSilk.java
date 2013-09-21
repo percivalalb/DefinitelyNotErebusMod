@@ -1,12 +1,13 @@
 package erebus.block;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 
 public class BlockSilk extends Block {
-	public BlockSilk(int par1, int par2) {
+	public BlockSilk(int par1) {
 		super(par1, Material.cloth);
 	}
 

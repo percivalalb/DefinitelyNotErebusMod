@@ -17,7 +17,6 @@ public class BlockFiddlehead extends BlockFern {
 		super.harvestBlock(par1World, par2EntityPlayer, par3, par4, par5, par6);
 	}
 
-
 	@Override
 	public void registerIcons(IconRegister par1IconRegister) {
 		blockIcon = par1IconRegister.registerIcon("erebus:Fiddlehead");

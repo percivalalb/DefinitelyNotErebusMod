@@ -60,16 +60,13 @@ public class EntityWasp extends EntityMob {
 
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
-		
+
 		this.entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 10), 0.0F);
 		switch (this.rand.nextInt(2)) {
-		case 0:
-			this.entityDropItem(new ItemStack(ModItems.erebusMaterials,
-					this.rand.nextInt(3) + 1, 0), 0.0F);
-		case 1:
-			this.entityDropItem(
-					new ItemStack(Item.dyePowder, this.rand.nextInt(2) + 1, 11),
-					0.0F);
+			case 0:
+				this.entityDropItem(new ItemStack(ModItems.erebusMaterials, this.rand.nextInt(3) + 1, 0), 0.0F);
+			case 1:
+				this.entityDropItem(new ItemStack(Item.dyePowder, this.rand.nextInt(2) + 1, 11), 0.0F);
 		}
 	}
 
@@ -90,15 +87,11 @@ public class EntityWasp extends EntityMob {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(
-				0.75D); // Movespeed
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(
-				25.0D); // Max
-						// Health
-		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(
-				6.0D); // atkDmg
-		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(
-				16.0D); // followRange
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.75D); // Movespeed
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // Max
+																					// Health
+		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(6.0D); // atkDmg
+		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
 
 		if (!this.isFlying()) {
 			this.wingFloat = 0.0F;
@@ -112,10 +105,7 @@ public class EntityWasp extends EntityMob {
 	public void onLivingUpdate() {
 		if (!this.worldObj.isRemote) {
 			this.heightOffset = (0.5F + (float) this.rand.nextGaussian() * 5.0F);
-			if ((getEntityToAttack() != null)
-					&& (getEntityToAttack().posY
-							+ getEntityToAttack().getEyeHeight() > this.posY
-							+ getEyeHeight() + this.heightOffset)) {
+			if ((getEntityToAttack() != null) && (getEntityToAttack().posY + getEntityToAttack().getEyeHeight() > this.posY + getEyeHeight() + this.heightOffset)) {
 				this.motionY += (0.350000011920929D - this.motionY) * 0.350000011920929D;
 			}
 		}
@@ -140,9 +130,7 @@ public class EntityWasp extends EntityMob {
 				}
 
 				if (var2 > 0) {
-					((EntityLivingBase) par1Entity)
-							.addPotionEffect(new PotionEffect(Potion.poison.id,
-									var2 * 20, 0));
+					((EntityLivingBase) par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
 				}
 			}
 
@@ -154,9 +142,7 @@ public class EntityWasp extends EntityMob {
 
 	@Override
 	protected void attackEntity(Entity par1Entity, float par2) {
-		if ((par2 < 2.0F)
-				&& (par1Entity.boundingBox.maxY > this.boundingBox.minY)
-				&& (par1Entity.boundingBox.minY < this.boundingBox.maxY)) {
+		if ((par2 < 2.0F) && (par1Entity.boundingBox.maxY > this.boundingBox.minY) && (par1Entity.boundingBox.minY < this.boundingBox.maxY)) {
 			attackEntityAsMob(par1Entity);
 		}
 	}

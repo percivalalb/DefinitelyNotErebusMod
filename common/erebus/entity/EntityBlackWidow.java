@@ -36,7 +36,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	@Override
 	public void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20D);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);
 	}
 
 	@Override

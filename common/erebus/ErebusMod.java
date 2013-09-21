@@ -18,6 +18,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.client.sound.AmbientMusicManager;
 import erebus.client.sound.EntitySoundEvent;
 import erebus.core.addon.AddonManager;
 import erebus.core.handler.CommonTickHandler;
@@ -70,6 +71,7 @@ public class ErebusMod {
 	@SideOnly(Side.CLIENT)
 	public void preInitClient(FMLPreInitializationEvent event) {
 		MinecraftForge.EVENT_BUS.register(new EntitySoundEvent());
+		AmbientMusicManager.register();
 	}
 
 	@EventHandler

@@ -62,7 +62,7 @@ public class ClientTickHandler implements ITickHandler {
 
 	@Override
 	public String getLabel() {
-		return null;
+		return "Erebus_ClientTickHandler";
 	}
 
 	public void onRenderTick() {

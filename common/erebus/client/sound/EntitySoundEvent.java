@@ -4,11 +4,9 @@ import net.minecraftforge.client.event.sound.SoundLoadEvent;
 import net.minecraftforge.event.ForgeSubscribe;
 
 public class EntitySoundEvent {
-
 	@ForgeSubscribe
 	public void onSound(SoundLoadEvent event) {
 		try {
-
 			// Squish sound
 			event.manager.addSound("erebus:squish.ogg");
 
@@ -45,6 +43,7 @@ public class EntitySoundEvent {
 			event.manager.addSound("erebus:WaspSound.ogg");
 			event.manager.addSound("erebus:WaspHurt.ogg");
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.err.println("Erebus had a problem loading its sounds. Please report it to the authors.");
 		}
 	}

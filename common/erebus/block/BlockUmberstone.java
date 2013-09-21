@@ -46,14 +46,11 @@ public class BlockUmberstone extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		par3List.add(new ItemStack(par1, 1, 0));
-		par3List.add(new ItemStack(par1, 1, 1));
-		par3List.add(new ItemStack(par1, 1, 2));
-		par3List.add(new ItemStack(par1, 1, 3));
-		par3List.add(new ItemStack(par1, 1, 4));
+		for(int a=0; a<icons.length; a++){
+			par3List.add(new ItemStack(par1, 1, a));
+		}
 	}
 
-	// Data about the item that drops when broken
 	@Override
 	public int damageDropped(int meta) {
 		if (meta == 0)

@@ -1,5 +1,6 @@
 package erebus.block;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import net.minecraft.block.Block;
@@ -21,6 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
 import erebus.ModItems;
 import erebus.core.proxy.CommonProxy;
+import erebus.item.ItemErebusMaterial;
 import erebus.tileentity.TileEntityBamboo;
 
 /**
@@ -47,6 +49,16 @@ public class BlockBambooCrate extends BlockContainer {
 	@Override
 	public int damageDropped(int meta) {
 		return meta == 0 ? 3 : meta;
+	}
+	
+	@Override
+	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune){
+		if (metadata == 0 && world.rand.nextInt(20) == 0){
+			ArrayList<ItemStack> ret=new ArrayList<ItemStack>();
+			ret.add(new ItemStack(ModItems.erebusMaterials.itemID,1,ItemErebusMaterial.dataBambooShoot));
+			return ret;
+		}
+		else return super.getBlockDropped(world,x,y,z,metadata,fortune);
 	}
 
 	@Override

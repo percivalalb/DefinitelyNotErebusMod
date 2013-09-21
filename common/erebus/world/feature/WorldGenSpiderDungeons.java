@@ -9,15 +9,27 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import erebus.ModBlocks;
 import erebus.ModItems;
+import erebus.item.ItemErebusMaterial;
 import erebus.world.loot.LootItemStack;
 import erebus.world.loot.LootUtil;
 import erebus.world.loot.WeightedLootList;
 
 public class WorldGenSpiderDungeons extends WorldGenerator {
-	public static final WeightedLootList chestLoot = new WeightedLootList(new LootItemStack(Item.goldNugget).setAmount(4, 9).setWeight(10), new LootItemStack(Item.ingotIron).setAmount(1, 2).setWeight(10), new LootItemStack(Item.ingotGold).setAmount(1, 2).setWeight(10), new LootItemStack(Item.bone)
-	.setAmount(1, 1).setWeight(10), new LootItemStack(Item.redstone).setAmount(1, 4).setWeight(10), new LootItemStack(Item.arrow).setAmount(1, 5).setWeight(10), new LootItemStack(ModItems.erebusMaterials).setAmount(3, 8).setWeight(10), // Exo-plate
-	new LootItemStack(ModItems.erebusMaterials).setAmount(1, 5).setDamage(6).setWeight(10) // Fly
-																							// Wing
+	public static final WeightedLootList chestLoot = new WeightedLootList(
+			new LootItemStack(Item.silk).setAmount(5, 10).setWeight(13),
+			new LootItemStack(Block.web).setAmount(3, 8).setWeight(13),
+			new LootItemStack(Item.stick).setAmount(1, 8).setWeight(12),
+			new LootItemStack(Item.goldNugget).setAmount(3, 11).setWeight(12),
+			new LootItemStack(ModItems.erebusMaterials).setAmount(3, 8).setDamage(ItemErebusMaterial.dataBoneShard).setWeight(12),
+			new LootItemStack(Item.bone).setAmount(1, 3).setWeight(11),
+			new LootItemStack(Item.ingotIron).setAmount(1, 3).setWeight(10),
+			new LootItemStack(Item.ingotGold).setAmount(1, 2).setWeight(10),
+			new LootItemStack(ModItems.erebusMaterials).setAmount(1, 5).setDamage(ItemErebusMaterial.dataFlyWing).setWeight(10),
+			new LootItemStack(ModItems.erebusMaterials).setAmount(1).setDamage(ItemErebusMaterial.dataJade).setWeight(9),
+			new LootItemStack(ModItems.erebusMaterials).setAmount(3, 6).setDamage(ItemErebusMaterial.dataExoPlate).setWeight(8),
+			new LootItemStack(ModItems.erebusMaterials).setAmount(2, 6).setDamage(ItemErebusMaterial.dataCompoundEyes).setWeight(7),
+			new LootItemStack(ModItems.erebusMaterials).setAmount(1, 1).setDamage(ItemErebusMaterial.dataCompoundLens).setWeight(2),
+			new LootItemStack(ModItems.maxSpeedBow).setAmount(1).setWeight(1)
 	);
 
 	@Override
@@ -106,7 +118,7 @@ public class WorldGenSpiderDungeons extends WorldGenerator {
 									TileEntityChest tileentitychest = (TileEntityChest) par1World.getBlockTileEntity(i2, par4, j2);
 
 									if (tileentitychest != null) {
-										LootUtil.generateLoot(tileentitychest, par2Random, chestLoot, 1, 8);
+										LootUtil.generateLoot(tileentitychest, par2Random, chestLoot, 3, 10);
 									}
 
 									break label101;

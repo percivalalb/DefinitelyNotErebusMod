@@ -19,8 +19,11 @@ public class ItemErebusFood extends ItemFood {
 	 * The icon path, not including "erebus:" as it is joined when registering
 	 * icon
 	 **/
-	public static final String[] iconPaths = new String[] { "larvaRaw", "beetleLarvaCooked", "grasshopperLegRaw", "grasshopperLegCooked", "legTarantula", "legTarantulaCooked" };
-	public static final Icon[] icons = new Icon[iconPaths.length];
+	public static final String[] iconPaths = new String[] { "larvaRaw", "beetleLarvaCooked", "grasshopperLegRaw", "grasshopperLegCooked", "legTarantula", "legTarantulaCooked", "bambooSoup" };
+	public static final short dataLarvaRaw = 0, dataLarvaCooked = 1, dataGrasshopperLegRaw = 2, dataGrasshopperLegCooked = 3, dataLegTarantula = 4, dataLegTarantulaCooked = 5, dataBambooSoup = 6;
+	
+	@SideOnly(Side.CLIENT)
+	public static Icon[] icons;
 
 	public ItemErebusFood(int id) {
 		super(id, 3, 0.5F, false);
@@ -43,6 +46,8 @@ public class ItemErebusFood extends ItemFood {
 				return 2;
 			case 5:
 				return 6;
+			case 6:
+				return 6;
 			default:
 				return 0;
 		}
@@ -52,16 +57,18 @@ public class ItemErebusFood extends ItemFood {
 		int meta = stack.getItemDamage();
 		switch (meta) {
 			case 0:
-				return 0.8F;
+				return 0.7F;
 			case 1:
-				return 0.8F;
+				return 0.9F;
 			case 2:
 				return 0.8F;
 			case 3:
-				return 0.8F;
+				return 0.9F;
 			case 4:
-				return 0.8F;
+				return 0.6F;
 			case 5:
+				return 1.0F;
+			case 6:
 				return 1.0F;
 			default:
 				return 0.0F;
@@ -98,6 +105,7 @@ public class ItemErebusFood extends ItemFood {
 
 	@Override
 	public void registerIcons(IconRegister iconRegister) {
+		icons = new Icon[iconPaths.length];
 		int i = 0;
 		for (String path : iconPaths) {
 			icons[i++] = iconRegister.registerIcon("erebus:" + path);
@@ -114,12 +122,9 @@ public class ItemErebusFood extends ItemFood {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		par3List.add(new ItemStack(par1, 1, 0));
-		par3List.add(new ItemStack(par1, 1, 1));
-		par3List.add(new ItemStack(par1, 1, 2));
-		par3List.add(new ItemStack(par1, 1, 3));
-		par3List.add(new ItemStack(par1, 1, 4));
-		par3List.add(new ItemStack(par1, 1, 5));
+		for(int a=0; a<iconPaths.length; a++){
+			par3List.add(new ItemStack(par1, 1, a));
+		}
 	}
 
 	@Override

@@ -22,7 +22,7 @@ import erebus.block.BlockQuickSand;
 import erebus.block.BlockRedGem;
 import erebus.block.BlockSaplingErebus;
 import erebus.block.BlockSilk;
-import erebus.block.BlockSpawner;
+import erebus.block.BlockSpiderSpawner;
 import erebus.block.BlockStairsErebus;
 import erebus.block.BlockThorns;
 import erebus.block.BlockTurnip;
@@ -153,8 +153,8 @@ public class ModBlocks {
 		// TODO Remember to remove creative tabs before release!!!
 		// FIXME Block won't render the entity spinning in the middle. This is not a bug. It just hasn't been implemented yet.
 		// <3 Love you guys in the face. <3
-		spiderSpawner = new BlockSpawner(spiderSpawnerID, "Spider").setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner").setCreativeTab(ErebusMod.tabErebusBlock);
-		caveSpiderSpawner = new BlockSpawner(caveSpiderSpawnerID, "CaveSpider").setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner").setCreativeTab(ErebusMod.tabErebusBlock);
+		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, "Spider").setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner").setCreativeTab(ErebusMod.tabErebusBlock);
+		caveSpiderSpawner = new BlockSpiderSpawner(caveSpiderSpawnerID, "CaveSpider").setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner").setCreativeTab(ErebusMod.tabErebusBlock);
 
 
 		// Registering blocks
@@ -208,6 +208,8 @@ public class ModBlocks {
 		MinecraftForge.setBlockHarvestLevel(blockAmber, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(oreFossil, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(mirBrick, "pickaxe", 1);
+		MinecraftForge.setBlockHarvestLevel(spiderSpawner, 0, "pickaxe", 0);
+		MinecraftForge.setBlockHarvestLevel(caveSpiderSpawner, 0, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 0, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 1, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 2, "pickaxe", 2);

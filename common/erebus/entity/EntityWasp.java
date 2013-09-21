@@ -99,6 +99,7 @@ public class EntityWasp extends EntityMob {
 			wingFloat = 0.0F;
 		if (isFlying())
 			wingFloat = mathWings.swing(4.0F, 0.1F);
+		super.onUpdate();
 	}
 
 	@Override

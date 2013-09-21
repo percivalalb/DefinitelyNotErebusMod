@@ -2,6 +2,7 @@ package erebus.world;
 
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
@@ -22,31 +23,31 @@ import erebus.world.biomes.BiomeGenBaseErebus;
 import erebus.world.feature.WorldGenSpiderDungeons;
 
 public class ChunkProviderUndergroundJungle implements IChunkProvider {
-	private Random hellRNG;
+	private final Random hellRNG;
 
 	/** A NoiseGeneratorOctaves used in generating nether terrain */
-	private NoiseGeneratorOctaves netherNoiseGen1;
-	private NoiseGeneratorOctaves netherNoiseGen2;
-	private NoiseGeneratorOctaves netherNoiseGen3;
+	private final NoiseGeneratorOctaves netherNoiseGen1;
+	private final NoiseGeneratorOctaves netherNoiseGen2;
+	private final NoiseGeneratorOctaves netherNoiseGen3;
 
 	/** Determines whether slowsand or gravel can be generated at a location */
-	private NoiseGeneratorOctaves slowsandGravelNoiseGen;
+	private final NoiseGeneratorOctaves slowsandGravelNoiseGen;
 
 	/**
 	 * Determines whether something other than nettherack can be generated at a
 	 * location
 	 */
-	private NoiseGeneratorOctaves stoneExculsivityNoiseGen;
+	private final NoiseGeneratorOctaves stoneExculsivityNoiseGen;
 	public NoiseGeneratorOctaves netherNoiseGen6;
 	public NoiseGeneratorOctaves netherNoiseGen7;
 
 	/** Is the world that the nether is getting generated. */
-	private World worldObj;
+	private final World worldObj;
 	private double field_4163_o[];
 	private double slowsandNoise[];
 	private double gravelNoise[];
 	private double stoneExclusivityNoise[];
-	private MapGenBase netherCaveGenerator;
+	private final MapGenBase netherCaveGenerator;
 
 	private BiomeGenBase[] biomesForGeneration;
 
@@ -67,12 +68,12 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 		netherNoiseGen1 = new NoiseGeneratorOctaves(hellRNG, 16);
 		netherNoiseGen2 = new NoiseGeneratorOctaves(hellRNG, 16);
 		netherNoiseGen3 = new NoiseGeneratorOctaves(hellRNG, 8);
-		this.noiseGen1 = new NoiseGeneratorOctaves(this.rand, 16);
-		this.noiseGen2 = new NoiseGeneratorOctaves(this.rand, 16);
-		this.noiseGen3 = new NoiseGeneratorOctaves(this.rand, 8);
-		this.noiseGen4 = new NoiseGeneratorOctaves(this.rand, 4);
-		this.noiseGen5 = new NoiseGeneratorOctaves(this.rand, 10);
-		this.noiseGen6 = new NoiseGeneratorOctaves(this.rand, 16);
+		noiseGen1 = new NoiseGeneratorOctaves(rand, 16);
+		noiseGen2 = new NoiseGeneratorOctaves(rand, 16);
+		noiseGen3 = new NoiseGeneratorOctaves(rand, 8);
+		noiseGen4 = new NoiseGeneratorOctaves(rand, 4);
+		noiseGen5 = new NoiseGeneratorOctaves(rand, 10);
+		noiseGen6 = new NoiseGeneratorOctaves(rand, 16);
 		slowsandGravelNoiseGen = new NoiseGeneratorOctaves(hellRNG, 4);
 		stoneExculsivityNoiseGen = new NoiseGeneratorOctaves(hellRNG, 4);
 		netherNoiseGen6 = new NoiseGeneratorOctaves(hellRNG, 10);
@@ -88,11 +89,11 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 		int i = byte0 + 1;
 		byte byte2 = 17;
 		int j = byte0 + 1;
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().getBiomesForGeneration(this.biomesForGeneration, par1 * 4 - 2, par2 * 4 - 2, i + 5, j + 5);
+		biomesForGeneration = worldObj.getWorldChunkManager().getBiomesForGeneration(biomesForGeneration, par1 * 4 - 2, par2 * 4 - 2, i + 5, j + 5);
 		field_4163_o = func_4057_a(field_4163_o, par1 * byte0, 0, par2 * byte0, i, byte2, j);
 
-		for (int k = 0; k < byte0; k++) {
-			for (int l = 0; l < byte0; l++) {
+		for (int k = 0; k < byte0; k++)
+			for (int l = 0; l < byte0; l++)
 				for (int i1 = 0; i1 < 16; i1++) {
 					double d = 0.125D;
 					double d1 = field_4163_o[((k + 0) * j + (l + 0)) * byte2 + (i1 + 0)];
@@ -122,13 +123,11 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 								int j2 = 0;
 
 								// Underground Water
-								if (i1 * 8 + j1 < byte1) {
+								if (i1 * 8 + j1 < byte1)
 									j2 = ModBlocks.umberstone.blockID;
-								}
 
-								if (d15 > 0.0D) {
+								if (d15 > 0.0D)
 									j2 = ModBlocks.umberstone.blockID;
-								}
 
 								par3ArrayOfByte[l1] = (byte) j2;
 								l1 += c;
@@ -145,8 +144,6 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 						d4 += d8;
 					}
 				}
-			}
-		}
 	}
 
 	public void func_4058_b(int par1, int par2, byte par3ArrayOfByte[]) {
@@ -156,7 +153,7 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 		gravelNoise = slowsandGravelNoiseGen.generateNoiseOctaves(gravelNoise, par1 * 16, 109, par2 * 16, 16, 1, 16, d, 1.0D, d);
 		stoneExclusivityNoise = stoneExculsivityNoiseGen.generateNoiseOctaves(stoneExclusivityNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, d * 2D, d * 2D, d * 2D);
 
-		for (int i = 0; i < 16; i++) {
+		for (int i = 0; i < 16; i++)
 			for (int j = 0; j < 16; j++) {
 				// boolean flag = slowsandNoise[i + j * 16] + 10 > 0.0D;
 				// boolean flag1 = gravelNoise[i + j * 16] + 10 > 0.0D;
@@ -183,9 +180,8 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 					if (byte3 == 0) {
 						l = -1;
 
-						if (par3ArrayOfByte[j1] == 0 && par3ArrayOfByte[j1 - 1] == ModBlocks.umberstone.blockID) {
+						if (par3ArrayOfByte[j1] == 0 && par3ArrayOfByte[j1 - 1] == ModBlocks.umberstone.blockID)
 							par3ArrayOfByte[j1 - 1] = (byte) ModBlocks.umberstone.blockID;
-						}
 						continue;
 					}
 
@@ -199,17 +195,15 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 						}
 
 						// Underground Water
-						if (i1 < byte0 && byte1 == 0) {
+						if (i1 < byte0 && byte1 == 0)
 							byte1 = (byte) ModBlocks.umberstone.blockID;
-						}
 
 						l = k;
 
-						if (i1 >= byte0 - 1) {
+						if (i1 >= byte0 - 1)
 							par3ArrayOfByte[j1] = byte1;
-						} else {
+						else
 							par3ArrayOfByte[j1] = byte2;
-						}
 					}
 
 					if (l > 0) {
@@ -217,12 +211,10 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 						par3ArrayOfByte[j1] = byte2;
 					}
 
-					if (par3ArrayOfByte[j1 + 1] == 0 && par3ArrayOfByte[j1] == Block.dirt.blockID) {
+					if (par3ArrayOfByte[j1 + 1] == 0 && par3ArrayOfByte[j1] == Block.dirt.blockID)
 						par3ArrayOfByte[j1] = (byte) ModBlocks.umberstone.blockID;
-					}
 				}
 			}
-		}
 	}
 
 	@Override
@@ -232,21 +224,20 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 
 	@Override
 	public Chunk provideChunk(int par1, int par2) {
-		this.rand.setSeed((long) par1 * 341873128712L + (long) par2 * 132897987541L);
+		rand.setSeed(par1 * 341873128712L + par2 * 132897987541L);
 		byte[] abyte = new byte[32768];
-		this.biomesForGeneration = this.worldObj.getWorldChunkManager().loadBlockGeneratorData(this.biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
-		this.replaceBlocksForBiome(par1, par2, abyte, this.biomesForGeneration);
+		biomesForGeneration = worldObj.getWorldChunkManager().loadBlockGeneratorData(biomesForGeneration, par1 * 16, par2 * 16, 16, 16);
+		replaceBlocksForBiome(par1, par2, abyte, biomesForGeneration);
 		generateNetherTerrain(par1, par2, abyte);
 		func_4058_b(par1, par2, abyte);
 		replaceBlocksForBiome(par1, par2, abyte, biomesForGeneration);
 		netherCaveGenerator.generate(this, worldObj, par1, par2, abyte);
 
-		Chunk chunk = new Chunk(this.worldObj, abyte, par1, par2);
+		Chunk chunk = new Chunk(worldObj, abyte, par1, par2);
 		byte[] abyte1 = chunk.getBiomeArray();
 
-		for (int k = 0; k < abyte1.length; ++k) {
-			abyte1[k] = (byte) this.biomesForGeneration[k].biomeID;
-		}
+		for (int k = 0; k < abyte1.length; ++k)
+			abyte1[k] = (byte) biomesForGeneration[k].biomeID;
 
 		chunk.generateSkylightMap();
 		chunk.resetRelightChecks();
@@ -254,9 +245,8 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 	}
 
 	private double[] func_4057_a(double par1ArrayOfDouble[], int par2, int par3, int par4, int par5, int par6, int par7) {
-		if (par1ArrayOfDouble == null) {
+		if (par1ArrayOfDouble == null)
 			par1ArrayOfDouble = new double[par5 * par6 * par7];
-		}
 
 		double d = 684.41200000000003D;
 		double d1 = 2053.2359999999999D;
@@ -270,12 +260,11 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 		double ad[] = new double[par6];
 
 		for (int k = 0; k < par6; k++) {
-			ad[k] = Math.cos(((double) k * Math.PI * 6D) / (double) par6) * 2D;
+			ad[k] = Math.cos((k * Math.PI * 6D) / par6) * 2D;
 			double d2 = k;
 
-			if (k > par6 / 2) {
+			if (k > par6 / 2)
 				d2 = par6 - 1 - k;
-			}
 
 			if (d2 < 4D) {
 				d2 = 4D - d2;
@@ -283,43 +272,39 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 			}
 		}
 
-		for (int l = 0; l < par5; l++) {
+		for (int l = 0; l < par5; l++)
 			for (int i1 = 0; i1 < par7; i1++) {
 				double d3 = (noiseData4[j] + 256D) / 512D;
 
-				if (d3 > 1.0D) {
+				if (d3 > 1.0D)
 					d3 = 1.0D;
-				}
 
 				double d4 = 0.0D;
 				double d5 = noiseData5[j] / 8000D;
 
-				if (d5 < 0.0D) {
+				if (d5 < 0.0D)
 					d5 = -d5;
-				}
 
 				d5 = d5 * 3D - 3D;
 
 				if (d5 < 0.0D) {
 					d5 /= 2D;
 
-					if (d5 < -1D) {
+					if (d5 < -1D)
 						d5 = -1D;
-					}
 
 					d5 /= 1.3999999999999999D;
 					d5 /= 2D;
 					d3 = 0.0D;
 				} else {
-					if (d5 > 1.0D) {
+					if (d5 > 1.0D)
 						d5 = 1.0D;
-					}
 
 					d5 /= 6D;
 				}
 
 				d3 += 0.5D;
-				d5 = (d5 * (double) par6) / 16D;
+				d5 = (d5 * par6) / 16D;
 				j++;
 
 				for (int j1 = 0; j1 < par6; j1++) {
@@ -329,31 +314,28 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 					double d9 = noiseData3[i] / 512D;
 					double d10 = (noiseData1[i] / 10D + 1.0D) / 2D;
 
-					if (d10 < 0.0D) {
+					if (d10 < 0.0D)
 						d6 = d8;
-					} else if (d10 > 1.0D) {
+					else if (d10 > 1.0D)
 						d6 = d9;
-					} else {
+					else
 						d6 = d8 + (d9 - d8) * d10;
-					}
 
 					d6 -= d7;
 
 					if (j1 > par6 - 4) {
-						double d11 = (float) (j1 - (par6 - 4)) / 3F;
+						double d11 = (j1 - (par6 - 4)) / 3F;
 						d6 = d6 * (1.0D - d11) + -10D * d11;
 					}
 
-					if ((double) j1 < d4) {
-						double d12 = (d4 - (double) j1) / 4D;
+					if (j1 < d4) {
+						double d12 = (d4 - j1) / 4D;
 
-						if (d12 < 0.0D) {
+						if (d12 < 0.0D)
 							d12 = 0.0D;
-						}
 
-						if (d12 > 1.0D) {
+						if (d12 > 1.0D)
 							d12 = 1.0D;
-						}
 
 						d6 = d6 * (1.0D - d12) + -10D * d12;
 					}
@@ -362,7 +344,6 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 					i++;
 				}
 			}
-		}
 
 		return par1ArrayOfDouble;
 	}
@@ -406,10 +387,10 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 		int l = par3 * 16;
 
 		for (l1 = 0; l1 < 12; ++l1) {
-			k1 = k + this.rand.nextInt(16) + 8;
-			i2 = this.rand.nextInt(128);
-			int j2 = l + this.rand.nextInt(16) + 8;
-			(new WorldGenSpiderDungeons()).generate(this.worldObj, this.rand, k1, i2, j2);
+			k1 = k + rand.nextInt(16) + 8;
+			i2 = rand.nextInt(128);
+			int j2 = l + rand.nextInt(16) + 8;
+			(new WorldGenSpiderDungeons()).generate(worldObj, rand, k1, i2, j2);
 		}
 
 		BlockSand.fallInstantly = false;
@@ -461,7 +442,7 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 		 * this.genSpiderTunnels.hasStructureAt(par2, par3, par4)) { return
 		 * this.genSpiderTunnels.getSpawnList(); } else {
 		 */
-		BiomeGenBase var5 = this.worldObj.getBiomeGenForCoords(par2, par4);
+		BiomeGenBase var5 = worldObj.getBiomeGenForCoords(par2, par4);
 		return var5 == null ? null : var5.getSpawnableList(par1EnumCreatureType);
 		// }
 	}
@@ -490,19 +471,16 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 	// private double[] noiseArray;
 	private double[] stoneNoise = new double[256];
 	/** A NoiseGeneratorOctaves used in generating terrain */
-	@SuppressWarnings("unused")
-	private NoiseGeneratorOctaves noiseGen1;
+	private final NoiseGeneratorOctaves noiseGen1;
 
 	/** A NoiseGeneratorOctaves used in generating terrain */
-	@SuppressWarnings("unused")
-	private NoiseGeneratorOctaves noiseGen2;
+	private final NoiseGeneratorOctaves noiseGen2;
 
 	/** A NoiseGeneratorOctaves used in generating terrain */
-	@SuppressWarnings("unused")
-	private NoiseGeneratorOctaves noiseGen3;
+	private final NoiseGeneratorOctaves noiseGen3;
 
 	/** A NoiseGeneratorOctaves used in generating terrain */
-	private NoiseGeneratorOctaves noiseGen4;
+	private final NoiseGeneratorOctaves noiseGen4;
 
 	/** A NoiseGeneratorOctaves used in generating terrain */
 	public NoiseGeneratorOctaves noiseGen5;
@@ -520,13 +498,13 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 
 		byte var5 = 0;
 		double var6 = 0.03125D;
-		this.stoneNoise = this.noiseGen4.generateNoiseOctaves(this.stoneNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, var6 * 2.0D, var6 * 2.0D, var6 * 2.0D);
+		stoneNoise = noiseGen4.generateNoiseOctaves(stoneNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, var6 * 2.0D, var6 * 2.0D, var6 * 2.0D);
 
-		for (int var8 = 0; var8 < 16; ++var8) {
+		for (int var8 = 0; var8 < 16; ++var8)
 			for (int var9 = 0; var9 < 16; ++var9) {
 				BiomeGenBase var10 = par4ArrayOfBiomeGenBase[var9 + var8 * 16];
 				float var11 = var10.getFloatTemperature();
-				int var12 = (int) (this.stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
+				int var12 = (int) (stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + rand.nextDouble() * 0.25D);
 				int var13 = -1;
 				byte var14 = var10.topBlock;
 				byte var15 = var10.fillerBlock;
@@ -534,19 +512,14 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 				for (int var16 = 127; var16 >= 0; --var16) {
 					int var17 = (var9 * 16 + var8) * 128 + var16;
 
-					if (var16 <= 0 + this.rand.nextInt(5)) {
+					if (var16 <= 0 + rand.nextInt(5))
 						par3ArrayOfByte[var17] = (byte) Block.bedrock.blockID;
-					} else {
+					else {
 						byte var18 = par3ArrayOfByte[var17];
 
-						if (var18 == 0) {
+						if (var18 == 0)
 							var13 = -1;
-						} else if (var18 == ModBlocks.umberstone.blockID || var18 == ModBlocks.umberstoneID - 256) // Double
-																													// check
-																													// for
-																													// the
-																													// "itemblock"
-						{
+						else if (var18 == ModBlocks.umberstone.blockID || var18 == ModBlocks.umberstoneID - 256)
 							if (var13 == -1) {
 								if (var12 <= 0) {
 									var14 = 0;
@@ -556,35 +529,30 @@ public class ChunkProviderUndergroundJungle implements IChunkProvider {
 									var15 = var10.fillerBlock;
 								}
 
-								if (var16 < var5 && var14 == 0) {
-									if (var11 < 0.15F) {
+								if (var16 < var5 && var14 == 0)
+									if (var11 < 0.15F)
 										var14 = (byte) Block.ice.blockID;
-									} else {
+									else
 										var14 = (byte) Block.waterStill.blockID;
-									}
-								}
 
 								var13 = var12;
 
-								if (var16 >= var5 - 1) {
+								if (var16 >= var5 - 1)
 									par3ArrayOfByte[var17] = var14;
-								} else {
+								else
 									par3ArrayOfByte[var17] = var15;
-								}
 							} else if (var13 > 0) {
 								--var13;
 								par3ArrayOfByte[var17] = var15;
 
 								if (var13 == 0 && var15 == Block.sand.blockID) {
-									var13 = this.rand.nextInt(4);
+									var13 = rand.nextInt(4);
 									var15 = (byte) Block.sandStone.blockID;
 								}
 							}
-						}
 					}
 				}
 			}
-		}
 	}
 
 	@Override

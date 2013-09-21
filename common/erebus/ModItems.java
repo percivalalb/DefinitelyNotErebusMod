@@ -86,8 +86,8 @@ public class ModItems {
 		jadePaxel = new ItemPaxel(jadePaxelID, ErebusMod.toolJADEPAXEL).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("paxelJade").setTextureName("erebus:paxelJade");
 		jadeHoe = new ItemHoe(jadeHoeID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("hoeJade").setTextureName("erebus:hoeJade");
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
-		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorEXOSKELETON, 2, 3).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
-		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorEXOSKELETON, 2, 2).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
+		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorEXOSKELETON, 3).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
+		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorEXOSKELETON, 2).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
 
 		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("waspSword");
 		if(ErebusMod.activateExtraOres)

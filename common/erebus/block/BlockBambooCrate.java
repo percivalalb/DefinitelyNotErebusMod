@@ -65,7 +65,7 @@ public class BlockBambooCrate extends BlockContainer {
 	public float getBlockHardness(World world, int x, int y, int z) {
 		switch (world.getBlockMetadata(x, y, z)) {
 			case 0:
-				return 0.0F;
+				return 1.0F;
 			case 1:
 				return this.blockHardness;
 			default:

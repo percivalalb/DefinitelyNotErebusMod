@@ -93,8 +93,11 @@ public class BlockUmberFurnace extends BlockContainer {
 			return false;
 
 		if (player.getCurrentEquippedItem() != null) {
-			player.inventory.setInventorySlotContents(player.inventory.currentItem, tile.fillTankWithBucket(player.inventory.getStackInSlot(player.inventory.currentItem)));
-			return true;
+			ItemStack oldItem = player.getCurrentEquippedItem();
+			ItemStack newItem = tile.fillTankWithBucket(player.inventory.getStackInSlot(player.inventory.currentItem));
+			
+			player.inventory.setInventorySlotContents(player.inventory.currentItem, newItem);
+			if (!ItemStack.areItemStacksEqual(oldItem,newItem))return true;
 		}
 
 		if (tile != null)

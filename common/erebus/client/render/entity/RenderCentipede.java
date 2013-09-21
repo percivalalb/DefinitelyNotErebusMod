@@ -40,7 +40,6 @@ public class RenderCentipede extends RenderLiving {
 	@Override
 	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
 		scaleCentipede((EntityCentipede) entityliving, f);
-		EntityCentipede entityCentipede = (EntityCentipede) entityliving;
 	}
 
 	protected void rotateCentipede(EntityLivingBase entityliving) {

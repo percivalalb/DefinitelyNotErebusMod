@@ -18,7 +18,7 @@ public class EntityAIEatCrops extends EntityAIBase {
 	protected double entityPosX;
 	protected double entityPosY;
 	protected double entityPosZ;
-	public static int PlantX, PlantY, PlantZ = -1;
+	public int PlantX, PlantY, PlantZ = -1;
 	private final double moveSpeed;
 	private int ticksSpent = 0;
 	private int reproCap = 0;

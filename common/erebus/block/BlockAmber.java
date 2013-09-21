@@ -34,8 +34,8 @@ public class BlockAmber extends Block {
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-		return super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, 1 - par5);
+	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side){
+		return world.getBlockId(x,y,z) == blockID ? false : super.shouldSideBeRendered(world,x,y,z,side);
 	}
 
 	@Override
@@ -53,31 +53,52 @@ public class BlockAmber extends Block {
 	public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side){
 		int meta = world.getBlockMetadata(x,y,z);
 		
-		if (meta == 1){ // TODO work-in-progress
-			boolean[] nearby;
+		if (meta == 1){
+			boolean[] nearby = null;
 			
-			if (side == 0 || side == 1){ // bottom (y+), top (y-)
+			if (side == 0 || side == 1){
 				nearby = new boolean[]{
 					isGlass(world,x-1,y,z), isGlass(world,x+1,y,z), isGlass(world,x,y,z-1), isGlass(world,x,y,z+1)
 				};
-				
-				if (!nearby[0] && !nearby[1] && !nearby[2] && !nearby[3])return glassAmber;
-				else if (nearby[0] && nearby[1] && nearby[2] && nearby[3])return connectedGlass[0];
-				else if (nearby[0] && !nearby[1] && nearby[2] && !nearby[3])return connectedGlass[2];
-				else if (!nearby[0] && nearby[1] && !nearby[2] && nearby[3])return connectedGlass[3];
-				else if (nearby[0] && !nearby[1] && !nearby[2] && nearby[3])return connectedGlass[4];
-				else if (!nearby[0] && nearby[1] && nearby[2] && !nearby[3])return connectedGlass[5];
-				else if (nearby[0] && nearby[1])return connectedGlass[9];
-				else if (nearby[2] && nearby[3])return connectedGlass[10];
-				else if (!nearby[0] && nearby[1] && !nearby[2] && !nearby[3])return connectedGlass[11];
-				else if (nearby[0] && !nearby[1] && !nearby[2] && !nearby[3])return connectedGlass[12];
-				else if (!nearby[0] && !nearby[1] && nearby[2] && !nearby[3])return connectedGlass[13];
-				else if (!nearby[0] && !nearby[1] && !nearby[2] && nearby[3])return connectedGlass[14];
-				
 			}
-			else if (side == 1){ // y-1
-				//return brickAmber;
+			else if (side == 2){
+				nearby = new boolean[]{
+					isGlass(world,x+1,y,z), isGlass(world,x-1,y,z), isGlass(world,x,y+1,z), isGlass(world,x,y-1,z)
+				};
 			}
+			else if (side == 3){
+				nearby = new boolean[]{
+						isGlass(world,x-1,y,z), isGlass(world,x+1,y,z), isGlass(world,x,y+1,z), isGlass(world,x,y-1,z)
+					};
+			}
+			else if (side == 4){
+				nearby = new boolean[]{
+					isGlass(world,x,y,z-1), isGlass(world,x,y,z+1), isGlass(world,x,y+1,z), isGlass(world,x,y-1,z)
+				};
+			}
+			else if (side == 5){
+				nearby = new boolean[]{
+						isGlass(world,x,y,z+1), isGlass(world,x,y,z-1), isGlass(world,x,y+1,z), isGlass(world,x,y-1,z)
+					};
+			}
+			else return glassAmber; // staph complaining about nearby being null
+				
+			if (!nearby[0] && !nearby[1] && !nearby[2] && !nearby[3])return glassAmber;
+			else if (nearby[0] && nearby[1] && nearby[2] && nearby[3])return connectedGlass[0];
+			else if (!nearby[0] && nearby[1] && nearby[2] && !nearby[3])return connectedGlass[1];
+			else if (nearby[0] && !nearby[1] && nearby[2] && !nearby[3])return connectedGlass[2];
+			else if (!nearby[0] && nearby[1] && !nearby[2] && nearby[3])return connectedGlass[3];
+			else if (nearby[0] && !nearby[1] && !nearby[2] && nearby[3])return connectedGlass[4];
+			else if (!nearby[0] && nearby[1] && nearby[2] && nearby[3])return connectedGlass[5];
+			else if (nearby[0] && !nearby[1] && nearby[2] && nearby[3])return connectedGlass[6];
+			else if (nearby[0] && nearby[1] && nearby[2] && !nearby[3])return connectedGlass[7];
+			else if (nearby[0] && nearby[1] && !nearby[2] && nearby[3])return connectedGlass[8];
+			else if (nearby[0] && nearby[1])return connectedGlass[9];
+			else if (nearby[2] && nearby[3])return connectedGlass[10];
+			else if (!nearby[0] && nearby[1] && !nearby[2] && !nearby[3])return connectedGlass[11];
+			else if (nearby[0] && !nearby[1] && !nearby[2] && !nearby[3])return connectedGlass[12];
+			else if (!nearby[0] && !nearby[1] && nearby[2] && !nearby[3])return connectedGlass[13];
+			else if (!nearby[0] && !nearby[1] && !nearby[2] && nearby[3])return connectedGlass[14];
 			
 		}
 		

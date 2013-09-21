@@ -41,13 +41,12 @@ import erebus.world.WorldProviderErebus;
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, dependencies = Reference.MOD_DEPENDENCIES)
 @NetworkMod(channels = { Reference.CHANNEL }, clientSideRequired = true, serverSideRequired = true, packetHandler = PacketHandler.class)
 public class ErebusMod {
+
 	@SidedProxy(clientSide = Reference.SP_CLIENT, serverSide = Reference.SP_SERVER)
-	public static CommonProxy proxy; // This object will be populated with the
-										// class that you choose for the
-										// environment
+	public static CommonProxy proxy;
+
 	@Instance(Reference.MOD_ID)
-	public static ErebusMod instance; // The instance of the mod that will be
-										// defined, populated, and callable
+	public static ErebusMod instance;
 
 	public static EnumArmorMaterial armorEXOSKELETON = EnumHelper.addArmorMaterial("EXOSKELETON", 11, new int[] { 2, 4, 3, 2 }, 15);
 	public static EnumArmorMaterial armorJADE = EnumHelper.addArmorMaterial("JADE", 24, new int[] { 3, 7, 5, 2 }, 15);
@@ -66,12 +65,9 @@ public class ErebusMod {
 
 	public static ConnectionTeleportHandler packeterebushandler = new ConnectionTeleportHandler();
 
-	// This method is used to add sounds
 	@EventHandler
 	@SideOnly(Side.CLIENT)
 	public void preInitClient(FMLPreInitializationEvent event) {
-		// Create an Entity 'sound' class as below and this will add sounds to
-		// the pool
 		MinecraftForge.EVENT_BUS.register(new EntitySoundEvent());
 	}
 
@@ -79,7 +75,6 @@ public class ErebusMod {
 	public void preInitServer(FMLPreInitializationEvent event) {
 		LogHelper.init();
 
-		/** Loads the configuration file before anything else **/
 		ConfigurationHandler.loadConfig(event);
 
 		if (shouldDoVersionCheck) {
@@ -115,8 +110,6 @@ public class ErebusMod {
 		AddonManager.runFMLInit(ConfigurationHandler.configurationFile);
 	}
 
-	// Don't try to use other mod's tools without making sure those mods are
-	// loaded in.
 	@EventHandler
 	public void postLoad(FMLPostInitializationEvent event) {
 		AddonManager.runRegisteredAddons(ConfigurationHandler.configurationFile);

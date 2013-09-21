@@ -194,7 +194,5 @@ public class EntityGrasshopper extends EntityMob
 	public void onUpdate()
 	{
 		super.onUpdate();
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.6D); //Movespeed
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(15.0D); //Max Health
 	}
 }

@@ -14,6 +14,7 @@ import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityWasp;
+import erebus.world.feature.WorldGenAmber;
 import erebus.world.feature.WorldGenBamboo;
 import erebus.world.feature.WorldGenRottenAcacia;
 import erebus.world.feature.WorldGenSavannaRock;

@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 
 /**
- * @author ProPercivalalb
+ * @author ProPercivalalb, chylex
  */
 public class ItemErebusMaterial extends Item {
 
@@ -19,8 +19,11 @@ public class ItemErebusMaterial extends Item {
 	 * The icon path, not including "erebus:" as it is joined when registering
 	 * icon
 	 **/
-	public static final String[] iconPaths = new String[] { "plateExo", "jade", "shardBone", "bamboo", "compoundEyes", "compoundLens", "flyWing", "itemPetrifiedWood", "biovelocity", "elasticFibre", "waspSting" };
-	public static final Icon[] icons = new Icon[iconPaths.length];
+	public static final String[] iconPaths = new String[] { "plateExo", "jade", "shardBone", "bamboo", "compoundEyes", "compoundLens", "flyWing", "itemPetrifiedWood", "biovelocity", "elasticFibre", "waspSting", "bambooShoot" };
+	public static final short dataExoPlate = 0, dataJade = 1, dataBoneShard = 2, dataBamboo = 3, dataCompoundEyes = 4, dataCompoundLens = 5, dataFlyWing = 6, dataPetrifiedWood = 7, dataBioVelocity = 8, dataElasticFibre = 9, dataWaspString = 10, dataBambooShoot = 11;
+	
+	@SideOnly(Side.CLIENT)
+	public static Icon[] icons;
 
 	public ItemErebusMaterial(int id) {
 		super(id);
@@ -30,6 +33,7 @@ public class ItemErebusMaterial extends Item {
 
 	@Override
 	public void registerIcons(IconRegister iconRegister) {
+		icons = new Icon[iconPaths.length];
 		int i = 0;
 		for (String path : iconPaths) {
 			icons[i++] = iconRegister.registerIcon("erebus:" + path);
@@ -46,17 +50,9 @@ public class ItemErebusMaterial extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		par3List.add(new ItemStack(par1, 1, 0));
-		par3List.add(new ItemStack(par1, 1, 1));
-		par3List.add(new ItemStack(par1, 1, 2));
-		par3List.add(new ItemStack(par1, 1, 3));
-		par3List.add(new ItemStack(par1, 1, 4));
-		par3List.add(new ItemStack(par1, 1, 5));
-		par3List.add(new ItemStack(par1, 1, 6));
-		par3List.add(new ItemStack(par1, 1, 7));
-		par3List.add(new ItemStack(par1, 1, 8));
-		par3List.add(new ItemStack(par1, 1, 9));
-		par3List.add(new ItemStack(par1, 1, 10));
+		for(int a=0; a<iconPaths.length; a++){
+			par3List.add(new ItemStack(par1, 1, a));
+		}
 	}
 
 	@Override

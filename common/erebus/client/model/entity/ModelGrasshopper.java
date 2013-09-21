@@ -312,7 +312,8 @@ public class ModelGrasshopper extends ModelBase
 
 	  }
   
-  public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
+  @Override
+public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
   {
 	super.render(par1Entity, par2, par3, par4, par5, par6, par7);
 	setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
@@ -326,7 +327,7 @@ public class ModelGrasshopper extends ModelBase
 	    HeadLBot.render(par7);
 	    HeadCBot.render(par7);
 	    HeadRBot.render(par7);
-	    Thorax1.render(par7);;
+	    Thorax1.render(par7);
 	    Thorax2.render(par7);
 	    Ab1.render(par7);
 	    Ab2.render(par7);
@@ -369,7 +370,8 @@ public class ModelGrasshopper extends ModelBase
     model.rotateAngleZ = z;
   }
   
-  public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
+  @Override
+public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
   {
       this.Head1.rotateAngleY = par4 / (180F / (float)Math.PI);
       this.Head2.rotateAngleY = par4 / (180F / (float)Math.PI);

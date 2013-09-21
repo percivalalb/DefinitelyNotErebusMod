@@ -1,10 +1,12 @@
 package erebus.world.biomes;
 
 import java.util.Random;
+import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import erebus.ModBlocks;
+import erebus.block.BlockErebusOre;
 import erebus.world.feature.WorldGenErebusMinable;
 
 public abstract class BiomeGenBaseErebus extends BiomeGenBase {
@@ -24,54 +26,59 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 	 * generation like ores
 	 **/
 	public void generateDefault(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) {
-		for (int var5 = 0; var5 < 20; ++var5) {
-			int var6 = x + rand.nextInt(16);
-			int var7 = rand.nextInt(128);
-			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(ModBlocks.umberOreBlock.blockID, 0, 10)).generate(worldObj, rand, var6, var7, var8);
+		for (int a = 0; a < 18; ++a) {
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataCoal, 12, worldObj, rand, x, z, 16, 112, 3);
 		}
 
-		for (int var5 = 0; var5 < 20; ++var5) {
-			int var6 = x + rand.nextInt(16);
-			int var7 = rand.nextInt(128);
-			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(ModBlocks.umberOreBlock.blockID, 1, 8)).generate(worldObj, rand, var6, var7, var8);
+		for (int a = 0; a < 20; ++a) {
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataIron, 8, worldObj, rand, x, z, 16, 112, 3);
 		}
 
-		for (int var5 = 0; var5 < 4; ++var5) {
-			int var6 = x + rand.nextInt(16);
-			int var7 = rand.nextInt(128);
-			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(ModBlocks.umberOreBlock.blockID, 2, 8)).generate(worldObj, rand, var6, var7, var8);
+		for (int a = 0; a < 7; ++a) {
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataGold, 8, worldObj, rand, x, z, 16, 112, 3);
 		}
 
-		for (int var5 = 0; var5 < 1; ++var5) {
-			int var6 = x + rand.nextInt(16);
-			int var7 = rand.nextInt(128);
-			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(ModBlocks.umberOreBlock.blockID, 3, 6)).generate(worldObj, rand, var6, var7, var8);
+		for (int a = 0; a < 3; ++a) {
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataLapis, 6, worldObj, rand, x, z, 16, 112, 2);
 		}
 
-		for (int var5 = 0; var5 < 5; ++var5) {
-			int var6 = x + rand.nextInt(16);
-			int var7 = rand.nextInt(128);
-			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(ModBlocks.umberOreBlock.blockID, 4, 1)).generate(worldObj, rand, var6, var7, var8);
+		for (int a = 0; a < 8; ++a) {
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataDiamond, 2, worldObj, rand, x, z, 16, 112, 1);
 		}
 
-		for (int var5 = 0; var5 < 1; ++var5) {
-			int var6 = x + rand.nextInt(16);
-			int var7 = rand.nextInt(128);
-			int var8 = z + rand.nextInt(16);
-			(new WorldGenErebusMinable(ModBlocks.umberOreBlock.blockID, 6, 4)).generate(worldObj, rand, var6, var7, var8);
+		for (int a = 0; a < 5; ++a) {
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataJade, 4, worldObj, rand, x, z, 16, 112, 2);
+		}
+		
+		for (int a = 0; a < 9; ++a) {
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataPetrifiedWood, 9, worldObj, rand, x, z, 16, 112, 2);
 		}
 
 		if (rand.nextInt(3) == 0) {
-			for (int var5 = 0; var5 < 16; ++var5) {
-				int var6 = x + rand.nextInt(16);
-				int var7 = rand.nextInt(128);
-				int var8 = z + rand.nextInt(16);
-				(new WorldGenErebusMinable(ModBlocks.oreFossil.blockID, 3, 14)).generate(worldObj, rand, var6, var7, var8);
+			for (int a = 0; a < 8; ++a) {
+				generateOreCluster(ModBlocks.oreFossil, 3, 14, worldObj, rand, x, z, 16, 112, 3);
+			}
+		}
+	}
+	
+	private static final byte[] checkX = new byte[]{ -1, -1, 1, 1, 0, 0 }, checkY = new byte[]{ 0, 0, 0, 0, -1, 1 }, checkZ = new byte[]{ -1, 1, -1, 1, 0, 0 };
+	private void generateOreCluster(Block oreBlock, int oreMeta, int oreNumber, World world, Random rand, int x, int z, int minY, int maxY, int checkArea){
+		WorldGenErebusMinable gen=new WorldGenErebusMinable(oreBlock.blockID, oreMeta, oreNumber);
+		
+		for(int xx,yy,zz,attempt=0; attempt<36; attempt++){
+			xx=x+2+rand.nextInt(12);
+			zz=z+2+rand.nextInt(12);
+			yy=minY+rand.nextInt(Math.max(1,1+maxY-minY));
+			
+			for(int a=0; a<6; a++){
+				int testX=xx+checkX[a]*checkArea,testY=yy+checkY[a]*checkArea,testZ=zz+checkZ[a]*checkArea;
+				if ((testX>>4)!=(x>>4))testX=x;
+				if ((testZ>>4)!=(z>>4))testZ=z;
+				
+				if (world.isAirBlock(testX,testY,testZ)){
+					gen.generate(world,rand,xx,yy,zz);
+					return;
+				}
 			}
 		}
 	}

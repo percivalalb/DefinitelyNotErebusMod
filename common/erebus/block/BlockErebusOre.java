@@ -25,6 +25,8 @@ public class BlockErebusOre extends Block {
 	 * icon
 	 **/
 	protected String[] iconPaths = new String[] { "oreCoalU", "oreIronU", "oreGoldU", "oreLapisU", "oreDiamondU", "oreEmeraldU", "oreJadeU", "petrifiedWoodOre" };
+	public static final byte dataCoal = 0, dataIron = 1, dataGold = 2, dataLapis = 3, dataDiamond = 4, dataEmerald = 5, dataJade = 6, dataPetrifiedWood = 7;
+	
 	@SideOnly(Side.CLIENT)
 	protected Icon[] icons;
 

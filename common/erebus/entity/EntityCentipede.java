@@ -17,8 +17,8 @@ public class EntityCentipede extends EntityMob {
 
 	public EntityCentipede(World par1World) {
 		super(par1World);
-		this.setSize(1.0F, 0.8F);
-		this.getNavigator().setAvoidsWater(true);
+		setSize(1.0F, 0.8F);
+		getNavigator().setAvoidsWater(true);
 
 	}
 
@@ -26,19 +26,17 @@ public class EntityCentipede extends EntityMob {
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D); // Movespeed
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // Max
-																					// Health
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(getAttackStrength()); // atkDmg
 		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
 	}
 
 	@Override
 	public boolean getCanSpawnHere() {
-		float f1 = this.getBrightness(1.0F);
+		float f1 = getBrightness(1.0F);
 
-		if (f1 > 0.5F) {
+		if (f1 > 0.5F)
 			return true;
-		}
 		return super.getCanSpawnHere();
 	}
 
@@ -77,7 +75,7 @@ public class EntityCentipede extends EntityMob {
 
 	@Override
 	protected void playStepSound(int par1, int par2, int par3, int par4) {
-		this.worldObj.playSoundAtEntity(this, "erebus:CentipedeWalk", 0.15F, 1.0F);
+		worldObj.playSoundAtEntity(this, "erebus:CentipedeWalk", 0.15F, 1.0F);
 	}
 
 	@Override
@@ -92,16 +90,15 @@ public class EntityCentipede extends EntityMob {
 
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
-		this.entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 8), 0.0F);
-		this.entityDropItem(new ItemStack(ModItems.erebusMaterials, this.rand.nextInt(3) + 1, 0), 0.0F);
+		entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 8), 0.0F);
+		entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3) + 1, 0), 0.0F);
 	}
 
 	@Override
 	protected void attackEntity(Entity par1Entity, float par2) {
 		super.attackEntity(par1Entity, par2);
-		if (par2 < 1.0F && par1Entity.boundingBox.maxY > this.boundingBox.minY && par1Entity.boundingBox.minY < this.boundingBox.maxY) {
-			this.attackEntityAsMob(par1Entity);
-		}
+		if (par2 < 1.0F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY)
+			attackEntityAsMob(par1Entity);
 	}
 
 	@Override
@@ -109,20 +106,16 @@ public class EntityCentipede extends EntityMob {
 		if (super.attackEntityAsMob(par1Entity)) {
 			if (par1Entity instanceof EntityLiving) {
 				byte var2 = 0;
-				if (this.worldObj.difficultySetting > 1) {
-					if (this.worldObj.difficultySetting == 2) {
+				if (worldObj.difficultySetting > 1)
+					if (worldObj.difficultySetting == 2)
 						var2 = 7;
-					} else if (this.worldObj.difficultySetting == 3) {
+					else if (worldObj.difficultySetting == 3)
 						var2 = 15;
-					}
-				}
-				if (var2 > 0) {
+				if (var2 > 0)
 					((EntityLiving) par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
-				}
 			}
 			return true;
-		} else {
+		} else
 			return false;
-		}
 	}
 }

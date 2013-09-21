@@ -21,38 +21,37 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob {
 	// Help for animation
 	// private RenderInfo renderdata = new RenderInfo();
 
-	private EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 0.25F, 20, 60, 15.0F);
+	private final EntityAIArrowAttack aiArrowAttack = new EntityAIArrowAttack(this, 0.25F, 20, 60, 15.0F);
 
 	public EntityVelvetWorm(World par1World) {
 		super(par1World);
 		// this.moveSpeed = 0.8F;
-		this.setSize(1.35F, 1.0F/*
-								 * Never put lower than 1.0F else it would be
-								 * nervous to hit
-								 */);
-		this.getNavigator().setAvoidsWater(false);
-		this.experienceValue = 15;
-		this.fireResistance = 10;
-		this.isImmuneToFire = false;
+		setSize(1.35F, 1.0F/*
+		 * Never put lower than 1.0F else it would be
+		 * nervous to hit
+		 */);
+		getNavigator().setAvoidsWater(false);
+		experienceValue = 15;
+		fireResistance = 10;
+		isImmuneToFire = false;
 		// this.health = 25;
-		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
+		tasks.addTask(0, new EntityAISwimming(this));
+		targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		// TODO this.targetTasks.addTask(2, new
 		// EntityAINearestAttackableTarget(this, EntityPlayer.class, 16.0F, 0,
 		// true));
-		this.tasks.addTask(3, new EntityAILookIdle(this));
-		this.tasks.addTask(5, new EntityAIWander(this, 0.8F));
-		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+		tasks.addTask(3, new EntityAILookIdle(this));
+		tasks.addTask(5, new EntityAIWander(this, 0.8F));
+		tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 
-		if (par1World != null && !par1World.isRemote) {
-			this.tasks.addTask(4, this.aiArrowAttack);
-		}
+		if (par1World != null && !par1World.isRemote)
+			tasks.addTask(4, aiArrowAttack);
 	}
 
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		this.dataWatcher.addObject(13, new Byte((byte) 0));
+		dataWatcher.addObject(13, new Byte((byte) 0));
 	}
 
 	/**
@@ -66,8 +65,9 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.8D);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.8D);
+		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(getAttackStrength()); // atkDmg
 	}
 
 	/**
@@ -98,43 +98,41 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob {
 	public int skin = rand.nextInt(99);
 
 	public String getTexture() {
-		if (skin <= 10) {
+		if (skin <= 10)
 			return "/Erebus/Textures/Mob/Velvet worm2.png";
-		} else {
+		else
 			return "/Erebus/Textures/Mob/Velvet worm.png";
-		}
 	}
 
 	/**
 	 * Returns the amount of damage a mob should deal.
 	 */
-	public int getAttackStrength(Entity par1Entity) {
+	public double getAttackStrength() {
 		switch (worldObj.difficultySetting) {
 			default:
-				return 4;
+				return 4.0D;
 			case 1:
-				return 4;
+				return 4.0D;
 			case 2:
-				return 5;
+				return 5.0D;
 			case 3:
-				return 6;
+				return 6.0D;
 		}
 	}
 
 	@Override
 	public boolean attackEntityAsMob(Entity par1Entity) {
-		if (super.attackEntityAsMob(par1Entity)) {
+		if (super.attackEntityAsMob(par1Entity))
 			return true;
-		} else {
+		else
 			return false;
-		}
 	}
 
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
-		int chanceFiftyFifty = this.rand.nextInt(1) + 1;
+		int chanceFiftyFifty = rand.nextInt(1) + 1;
 
-		this.dropItem(Item.slimeBall.itemID, chanceFiftyFifty + par2);
+		dropItem(Item.slimeBall.itemID, chanceFiftyFifty + par2);
 	}
 
 	/**
@@ -142,8 +140,8 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob {
 	 */
 	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase par1EntityLiving, float par2) {
-		EntityArrow entityarrow = new EntityArrow(this.worldObj, this, par1EntityLiving, 1.0F, (float) (14 - this.worldObj.difficultySetting * 4));
-		entityarrow.setDamage((double) (par2 * 2.0F) + this.rand.nextGaussian() * 0.25D + (double) ((float) this.worldObj.difficultySetting * 0.11F));
-		this.worldObj.spawnEntityInWorld(entityarrow);
+		EntityArrow entityarrow = new EntityArrow(worldObj, this, par1EntityLiving, 1.0F, 14 - worldObj.difficultySetting * 4);
+		entityarrow.setDamage(par2 * 2.0F + rand.nextGaussian() * 0.25D + worldObj.difficultySetting * 0.11F);
+		worldObj.spawnEntityInWorld(entityarrow);
 	}
 }

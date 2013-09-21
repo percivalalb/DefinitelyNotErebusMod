@@ -18,12 +18,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.client.sound.EntityBeetleLarvaNoises;
-import erebus.client.sound.EntityBlackWidowNoises;
-import erebus.client.sound.EntityCentipedeNoises;
-import erebus.client.sound.EntityFlyNoises;
-import erebus.client.sound.EntityMosquitoNoises;
-import erebus.client.sound.EntityWaspNoises;
+import erebus.client.sound.EntitySoundEvent;
 import erebus.core.addon.AddonManager;
 import erebus.core.handler.CommonTickHandler;
 import erebus.core.handler.ConfigurationHandler;
@@ -77,12 +72,7 @@ public class ErebusMod {
 	public void preInitClient(FMLPreInitializationEvent event) {
 		// Create an Entity 'sound' class as below and this will add sounds to
 		// the pool
-		MinecraftForge.EVENT_BUS.register(new EntityBeetleLarvaNoises());
-		MinecraftForge.EVENT_BUS.register(new EntityWaspNoises());
-		MinecraftForge.EVENT_BUS.register(new EntityFlyNoises());
-		MinecraftForge.EVENT_BUS.register(new EntityCentipedeNoises());
-		MinecraftForge.EVENT_BUS.register(new EntityMosquitoNoises());
-		MinecraftForge.EVENT_BUS.register(new EntityBlackWidowNoises());
+		MinecraftForge.EVENT_BUS.register(new EntitySoundEvent());
 	}
 
 	@EventHandler

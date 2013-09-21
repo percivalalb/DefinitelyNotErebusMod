@@ -11,24 +11,13 @@ import erebus.ModItems;
 
 public class ItemSprintLeggings extends ItemArmor {
 
-<<<<<<< HEAD
 	public ItemSprintLeggings(int i, EnumArmorMaterial enumarmormaterial, int k) {
 		super(i, enumarmormaterial, 2, k);
-=======
-	public ItemSprintLeggings(int i, EnumArmorMaterial enumarmormaterial,
-	int j, int k) {
-		super(i, enumarmormaterial, j, k);
->>>>>>> 2c4ee7cc22d4569d9a3fddd1188503b3bc1f11d9
 		setCreativeTab(ErebusMod.tabErebusGear);
 	}
 
 	@Override
-<<<<<<< HEAD
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
-=======
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot,
-	int layer) {
->>>>>>> 2c4ee7cc22d4569d9a3fddd1188503b3bc1f11d9
 		if (stack.itemID == ModItems.sprintLeggings.itemID)
 			return "erebus:textures/armor/cent_1.png";
 		else

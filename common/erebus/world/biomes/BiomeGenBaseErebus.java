@@ -42,8 +42,8 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataLapis, 6, worldObj, rand, x, z, 16, 112, 2);
 		}
 
-		for (int a = 0; a < 8; ++a) {
-			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataDiamond, 2, worldObj, rand, x, z, 16, 112, 1);
+		for (int a = 0; a < 12; ++a) {
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataDiamond, 1, worldObj, rand, x, z, 16, 112, 2);
 		}
 
 		for (int a = 0; a < 5; ++a) {

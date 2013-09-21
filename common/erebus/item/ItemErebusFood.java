@@ -47,7 +47,7 @@ public class ItemErebusFood extends ItemFood {
 			case 5:
 				return 6;
 			case 6:
-				return 6;
+				return 4;
 			default:
 				return 0;
 		}

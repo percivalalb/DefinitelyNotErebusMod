@@ -9,10 +9,12 @@ public class EntitySoundEvent {
 	public void onSound(SoundLoadEvent event) {
 		try {
 
+			// Squish sound
+			event.manager.addSound("erebus:squish.ogg");
+
 			// Beetle Larva
 			event.manager.addSound("erebus:beetlelarvasound.ogg");
 			event.manager.addSound("erebus:beetlelarvahurt.ogg");
-			event.manager.addSound("erebus:squish.ogg");
 			event.manager.addSound("erebus:beetlelarvasplat.ogg");
 			event.manager.addSound("erebus:beetlelarvamunch.ogg");
 
@@ -21,19 +23,17 @@ public class EntitySoundEvent {
 			event.manager.addSound("erebus:blackwidowhurt.ogg");
 			event.manager.addSound("erebus:webslingthrow.ogg");
 			event.manager.addSound("erebus:webslingsplat.ogg");
-			event.manager.addSound("erebus:squish.ogg");
+
 
 			// Centipede
 			event.manager.addSound("erebus:CentipedeSound.ogg");
 			event.manager.addSound("erebus:CentipedeHurt.ogg");
-			event.manager.addSound("erebus:squish.ogg");
 			event.manager.addSound("erebus:TunnelingSound.ogg");
 			event.manager.addSound("erebus:CentipedeWalk.ogg");
 
 			// Fly
 			event.manager.addSound("erebus:FlySound.ogg");
 			event.manager.addSound("erebus:FlyHurt.ogg");
-			event.manager.addSound("erebus:squish.ogg");
 
 			// Mosquito
 			event.manager.addSound("erebus:mosquito_sucking.ogg");
@@ -44,7 +44,6 @@ public class EntitySoundEvent {
 			// Wasp
 			event.manager.addSound("erebus:WaspSound.ogg");
 			event.manager.addSound("erebus:WaspHurt.ogg");
-			event.manager.addSound("erebus:squish.ogg");
 		} catch (Exception e) {
 			System.err.println("Erebus had a problem loading its sounds. Please report it to the authors.");
 		}

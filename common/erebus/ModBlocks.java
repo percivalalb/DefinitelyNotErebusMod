@@ -151,7 +151,6 @@ public class ModBlocks {
 		// Just pass in the name as it shows in the mob's class.
 		// E.g.: EntityCreeper. Should use "Creeper". EntityPigMan. Should use "PigMan"
 		// TODO Remember to remove creative tabs before release!!!
-		// FIXME Block won't render the entity spinning in the middle. This is not a bug. It just hasn't been implemented yet.
 		// <3 Love you guys in the face. <3
 		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, "Spider").setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner").setCreativeTab(ErebusMod.tabErebusBlock);
 		caveSpiderSpawner = new BlockSpiderSpawner(caveSpiderSpawnerID, "CaveSpider").setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner").setCreativeTab(ErebusMod.tabErebusBlock);

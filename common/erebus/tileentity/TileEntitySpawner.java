@@ -8,9 +8,20 @@ import net.minecraft.entity.EntityLivingData;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+/**
+ * 
+ * Erebus
+ * 
+ * @author ganymedes01
+ * 
+ */
 
 public class TileEntitySpawner extends TileEntity {
-	public int spawnDelay = 20;
+	private int spawnDelay = 20;
 	private final String mobName;
 
 	// Change these to make entities spawn faster
@@ -43,6 +54,12 @@ public class TileEntitySpawner extends TileEntity {
 				double d0 = zCoord + worldObj.rand.nextFloat();
 				worldObj.spawnParticle("smoke", d1, d2, d0, 0.0D, 0.0D, 0.0D);
 				worldObj.spawnParticle("flame", d1, d2, d0, 0.0D, 0.0D, 0.0D);
+
+				if (spawnDelay == -1)
+					resetDelay();
+				if (spawnDelay > 0)
+					spawnDelay--;
+
 			} else {
 				if (spawnDelay == -1)
 					resetDelay();
@@ -99,5 +116,17 @@ public class TileEntitySpawner extends TileEntity {
 	public void writeToNBT(NBTTagCompound data) {
 		super.writeToNBT(data);
 		data.setInteger("spawnDelay", spawnDelay);
+	}
+
+	@SideOnly(Side.CLIENT)
+	public Entity getEntityToRender() {
+		Entity entity = EntityList.createEntityByName(mobName, (World) null);
+		entity = spawnEntity(entity);
+		return entity;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public int getSpawnDelay() {
+		return spawnDelay;
 	}
 }

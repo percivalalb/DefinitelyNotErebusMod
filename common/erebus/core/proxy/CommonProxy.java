@@ -2,13 +2,16 @@ package erebus.core.proxy;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.google.common.io.ByteArrayDataInput;
+
 import net.minecraft.client.gui.inventory.GuiCrafting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import com.google.common.io.ByteArrayDataInput;
+
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import erebus.ModBlocks;
@@ -21,9 +24,8 @@ import erebus.inventory.ContainerColossalCrate;
 import erebus.inventory.ContainerPetrifiedCraftingTable;
 import erebus.inventory.ContainerUmberFurnace;
 import erebus.tileentity.TileEntityBamboo;
-import erebus.tileentity.TileEntityCaveSpiderSpawner;
 import erebus.tileentity.TileEntityHollowLog;
-import erebus.tileentity.TileEntitySpiderSpawner;
+import erebus.tileentity.TileEntitySpawner;
 import erebus.tileentity.TileEntityUmberFurnace;
 
 public class CommonProxy implements IGuiHandler {
@@ -42,8 +44,7 @@ public class CommonProxy implements IGuiHandler {
 
 	public void registerTileEntities() {
 		// Why the fancy names? No one will be reading those
-		GameRegistry.registerTileEntity(TileEntitySpiderSpawner.class, "Spider Spawner (Erebus)");
-		GameRegistry.registerTileEntity(TileEntityCaveSpiderSpawner.class, "Cave Spider Spawner (Erebus)");
+		GameRegistry.registerTileEntity(TileEntitySpawner.class, "TILE ENTITY SPAWNER MWAHAHAHAHAA SHHDSAIUSDSAG 42");
 		GameRegistry.registerTileEntity(TileEntityHollowLog.class, "Hollow Log (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityBamboo.class, "Bamboo Crate (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityUmberFurnace.class, "Umber Furnace (Erebus)");

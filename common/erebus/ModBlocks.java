@@ -6,7 +6,6 @@ import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.registry.GameRegistry;
 import erebus.block.BlockAmber;
 import erebus.block.BlockBambooCrate;
-import erebus.block.BlockCaveSpiderSpawner;
 import erebus.block.BlockErebusGrass;
 import erebus.block.BlockErebusOre;
 import erebus.block.BlockErebusOreExtras;
@@ -23,7 +22,7 @@ import erebus.block.BlockQuickSand;
 import erebus.block.BlockRedGem;
 import erebus.block.BlockSaplingErebus;
 import erebus.block.BlockSilk;
-import erebus.block.BlockSpiderSpawner;
+import erebus.block.BlockSpawner;
 import erebus.block.BlockStairsErebus;
 import erebus.block.BlockThorns;
 import erebus.block.BlockTurnip;
@@ -145,8 +144,15 @@ public class ModBlocks {
 		umberFurnace_on = new BlockUmberFurnace(umberFurnace_onID, true).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberFurnaceON");
 		umberPaver = new BlockUmberPaver(umberPaverID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("umberPaver");
 
-		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, 96).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner");
-		caveSpiderSpawner = new BlockCaveSpiderSpawner(caveSpiderSpawnerID, 96).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner");
+		// Left a couple of comments on the TileEntitySpawner class to help you guys out since I won't be here this weekend
+		// Create them using any mob.
+		// Just pass in the name as it shows in the mob's class.
+		// E.g.: EntityCreeper. Should use "Creeper". EntityPigMan. Should use "PigMan"
+		// TODO Remember to remove creative tabs before release!!!
+		// FIXME Block won't render the entity spinning in the middle. This is not a bug. It just hasn't been implemented yet.
+		// <3 Love you guys in the face. <3
+		spiderSpawner = new BlockSpawner(spiderSpawnerID, "Spider").setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner").setCreativeTab(ErebusMod.tabErebusBlock);
+		caveSpiderSpawner = new BlockSpawner(caveSpiderSpawnerID, "CaveSpider").setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner").setCreativeTab(ErebusMod.tabErebusBlock);
 
 
 		// Registering blocks

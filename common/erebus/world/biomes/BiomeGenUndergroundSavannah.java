@@ -14,7 +14,6 @@ import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityWasp;
-import erebus.world.feature.WorldGenAmber;
 import erebus.world.feature.WorldGenBamboo;
 import erebus.world.feature.WorldGenRottenAcacia;
 import erebus.world.feature.WorldGenSavannaRock;
@@ -60,7 +59,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 			}
 		}
 
-		if (rand.nextInt(18) == 0) {
+		if (rand.nextInt(25) == 0) {
 			for (int yy = 100; yy > 20; yy--) {
 				int xx = x + 4 + rand.nextInt(8), zz = z + 4 + rand.nextInt(8);
 				if (worldObj.getBlockId(xx, yy, zz) == 0 && worldObj.getBlockId(xx, yy - 1, zz) == Block.grass.blockID) {

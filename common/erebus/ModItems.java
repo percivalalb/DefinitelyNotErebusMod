@@ -34,8 +34,6 @@ public class ModItems {
 	public static Item erebusFood;						public static int erebusFoodID;
 	public static Item erebusMaterials;  				public static int erebusMaterialsID;
 	public static Item bamBucket;						public static int bamBucketID;
-
-
 	public static Item exoskeletonHelmet;				public static int exoskeletonHelmetID;
 	public static Item exoskeletonBody;					public static int exoskeletonBodyID;
 	public static Item exoskeletonLegs;					public static int exoskeletonLegsID;

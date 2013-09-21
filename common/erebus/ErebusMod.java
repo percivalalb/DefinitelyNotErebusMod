@@ -106,6 +106,7 @@ public class ErebusMod {
 
 		MinecraftForge.EVENT_BUS.register(ModBlocks.erebusSapling);
 		MinecraftForge.EVENT_BUS.register(ModBlocks.quickSand);
+		MinecraftForge.EVENT_BUS.register(ModItems.jumpBoots);
 
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
 		AddonManager.runFMLInit(ConfigurationHandler.configurationFile);

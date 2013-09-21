@@ -98,7 +98,7 @@ public class BlockRedGem extends Block {
 	@Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z) {
 		int meta = world.getBlockMetadata(x, y, z);
-		if (meta == 0 || meta == 2) {
+		if (meta == 0 || meta == 1) {
 			return 15;
 		}
 		return 0;

@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.AxisAlignedBB;
+import erebus.ModBlocks;
 import erebus.entity.EntityGrasshopper;
 import erebus.entity.EntityLocust;
 
@@ -119,8 +120,7 @@ public class EntityAIEatCrops extends EntityAIBase {
 			for(int x = -currentCheckDistance; x<currentCheckDistance;x++)
 				for(int y = -currentCheckDistance; y<currentCheckDistance; y++)
 					for(int z = -currentCheckDistance; z<currentCheckDistance; z++)
-						if(theEntity.worldObj.getBlockId((int)theEntity.posX+x, (int)theEntity.posY+y, (int)theEntity.posZ+z) == Block.tallGrass.blockID
-						|| theEntity.worldObj.getBlockId((int)theEntity.posX+x, (int)theEntity.posY+y, (int)theEntity.posZ+z) == Block.crops.blockID)
+						if(isPlant(theEntity.worldObj.getBlockId((int)theEntity.posX+x, (int)theEntity.posY+y, (int)theEntity.posZ+z)))
 						{
 							PlantX = (int)theEntity.posX+x;
 							PlantY = (int)theEntity.posY+y;
@@ -128,6 +128,10 @@ public class EntityAIEatCrops extends EntityAIBase {
 							return true;
 						}
 		return false;
+	}
+	
+	private boolean isPlant(int blockID){
+		return blockID == Block.tallGrass.blockID || blockID == ModBlocks.erebusGrass.blockID || blockID == Block.crops.blockID;
 	}
 
 	protected AxisAlignedBB getBlockAABB(int par1, int par2, int par3) {

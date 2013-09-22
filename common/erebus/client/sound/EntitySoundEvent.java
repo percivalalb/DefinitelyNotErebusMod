@@ -42,6 +42,13 @@ public class EntitySoundEvent {
 			// Wasp
 			event.manager.addSound("erebus:WaspSound.ogg");
 			event.manager.addSound("erebus:WaspHurt.ogg");
+
+			// Grasshopper & Locust
+			event.manager.addSound("erebus:grasshoppersound.ogg");
+			event.manager.addSound("erebus:grasshopperhurt.ogg");
+			event.manager.addSound("erebus:locustsound.ogg");
+			event.manager.addSound("erebus:locusthurt.ogg");
+			event.manager.addSound("erebus:locustspawn.ogg");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println("Erebus had a problem loading its sounds. Please report it to the authors.");

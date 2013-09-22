@@ -33,10 +33,6 @@ public class EntityCentipede extends EntityMob {
 
 	@Override
 	public boolean getCanSpawnHere() {
-		float f1 = getBrightness(1.0F);
-
-		if (f1 > 0.5F)
-			return true;
 		return super.getCanSpawnHere();
 	}
 

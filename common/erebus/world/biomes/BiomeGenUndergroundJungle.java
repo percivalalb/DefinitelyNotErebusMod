@@ -1,6 +1,7 @@
 package erebus.world.biomes;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
@@ -20,6 +21,7 @@ import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
 import erebus.entity.EntityFly;
+import erebus.entity.EntityMoth;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
@@ -56,6 +58,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 		spawnableMonsterList.add(new SpawnListEntry(EntityBeetleLarva.class, 150, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityBeetle.class, 30, 1, 3));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityFly.class, 10, 8, 8));
+		spawnableCaveCreatureList.add(new SpawnListEntry(EntityMoth.class, 5, 4, 4));
 		topBlock = (byte) Block.grass.blockID;
 		fillerBlock = (byte) Block.dirt.blockID;
 	}
@@ -89,18 +92,14 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenPonds(Block.waterMoving.blockID, Block.blockClay.blockID, (rand.nextDouble() + 1.0D) * 2D)).generate(worldObj, rand, j2, l3, j5);
 		}
-		
-		if (rand.nextInt(5) == 0){
-			for(int attempt = 0; attempt < 4; attempt++){
+
+		if (rand.nextInt(5) == 0)
+			for(int attempt = 0; attempt < 4; attempt++)
 				if (new WorldGenAmberGround().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16))) break;
-			}
-		}
-		
-		if (rand.nextInt(3) == 0){
-			for(int attempt = 0; attempt < 3; attempt++){
+
+		if (rand.nextInt(3) == 0)
+			for(int attempt = 0; attempt < 3; attempt++)
 				if (new WorldGenAmberUmberstone().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16))) break;
-			}
-		}
 
 		if (rand.nextInt(1) == 0) {
 			int i2 = x + getRandomXZOffset(rand);

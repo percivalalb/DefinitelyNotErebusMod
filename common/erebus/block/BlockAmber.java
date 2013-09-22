@@ -23,7 +23,9 @@ public class BlockAmber extends Block {
 		"topleft_c","topright_c","bottomleft_c","bottomright_c","centerall", // 19
 		"center_bl_br", "center_tl_tr", "center_tl_bl", "center_tr_br", "center_tl_br", "center_tr_bl", // 25
 		"center_tl_bl_br", "center_tl_tr_bl", "center_tl_tr_br", "center_tr_bl_br", // 29
-		"center_tl", "center_tr", "center_bl", "center_br" // 33
+		"center_tl", "center_tr", "center_bl", "center_br", // 33
+		"sidingbottom_l", "sidingbottom_r", "sidingbottom_lr", "sidingtop_l", "sidingtop_r", "sidingtop_lr", // 39
+		"sidingleft_t", "sidingleft_b", "sidingleft_tb", "sidingright_t", "sidingright_b", "sidingright_tb" // 45
 	};
 
 	public BlockAmber(int par1) {
@@ -127,17 +129,36 @@ public class BlockAmber extends Block {
 				if (nearby[5])return connectedGlass[4];
 				else return connectedGlass[16];
 			}
-			else if (!nearby[0] && nearby[1] && nearby[2] && nearby[3])return connectedGlass[5];
-			else if (nearby[0] && !nearby[1] && nearby[2] && nearby[3])return connectedGlass[6];
-			else if (nearby[0] && nearby[1] && nearby[2] && !nearby[3])return connectedGlass[7];
-			else if (nearby[0] && nearby[1] && !nearby[2] && nearby[3])return connectedGlass[8];
+			else if (!nearby[0] && nearby[1] && nearby[2] && nearby[3]){
+				if (!nearby[6] && !nearby[7])return connectedGlass[42];
+				else if (!nearby[7])return connectedGlass[41];
+				else if (!nearby[6])return connectedGlass[40];
+				return connectedGlass[5];
+			}
+			else if (nearby[0] && !nearby[1] && nearby[2] && nearby[3]){
+				if (!nearby[4] && !nearby[5])return connectedGlass[45];
+				else if (!nearby[5])return connectedGlass[44];
+				else if (!nearby[4])return connectedGlass[43];
+				else return connectedGlass[6];
+			}
+			else if (nearby[0] && nearby[1] && nearby[2] && !nearby[3]){
+				if (!nearby[4] && !nearby[6])return connectedGlass[36];
+				else if (!nearby[6])return connectedGlass[35];
+				else if (!nearby[4])return connectedGlass[34];
+				else return connectedGlass[7];
+			}
+			else if (nearby[0] && nearby[1] && !nearby[2] && nearby[3]){
+				if (!nearby[5] && !nearby[7])return connectedGlass[39];
+				else if (!nearby[7])return connectedGlass[38];
+				else if (!nearby[5])return connectedGlass[37];
+				else return connectedGlass[8];
+			}
 			else if (nearby[0] && nearby[1])return connectedGlass[9];
 			else if (nearby[2] && nearby[3])return connectedGlass[10];
 			else if (!nearby[0] && nearby[1] && !nearby[2] && !nearby[3])return connectedGlass[11];
 			else if (nearby[0] && !nearby[1] && !nearby[2] && !nearby[3])return connectedGlass[12];
 			else if (!nearby[0] && !nearby[1] && nearby[2] && !nearby[3])return connectedGlass[13];
 			else if (!nearby[0] && !nearby[1] && !nearby[2] && nearby[3])return connectedGlass[14];
-			
 		}
 		
 		return getIcon(side,meta);

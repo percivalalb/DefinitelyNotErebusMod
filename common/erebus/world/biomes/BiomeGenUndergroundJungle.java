@@ -1,7 +1,6 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
@@ -24,6 +23,8 @@ import erebus.entity.EntityFly;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
+import erebus.world.feature.WorldGenAmberGround;
+import erebus.world.feature.WorldGenAmberUmberstone;
 import erebus.world.feature.WorldGenBamboo;
 import erebus.world.feature.WorldGenErebusHugeTree;
 import erebus.world.feature.WorldGenErebusTrees;
@@ -87,6 +88,18 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			int j5 = z + getRandomXZOffset(rand);
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenPonds(Block.waterMoving.blockID, Block.blockClay.blockID, (rand.nextDouble() + 1.0D) * 2D)).generate(worldObj, rand, j2, l3, j5);
+		}
+		
+		if (rand.nextInt(5) == 0){
+			for(int attempt = 0; attempt < 4; attempt++){
+				if (new WorldGenAmberGround().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16))) break;
+			}
+		}
+		
+		if (rand.nextInt(3) == 0){
+			for(int attempt = 0; attempt < 3; attempt++){
+				if (new WorldGenAmberUmberstone().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16))) break;
+			}
 		}
 
 		if (rand.nextInt(1) == 0) {

@@ -1,7 +1,6 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
@@ -14,7 +13,6 @@ import erebus.ModBlocks;
 import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
 import erebus.entity.EntityFly;
-import erebus.world.feature.WorldGenAmber;
 import erebus.world.feature.WorldGenBigMushroomErebus;
 import erebus.world.feature.WorldGenErebusMinable;
 import erebus.world.feature.WorldGenRedGem1;
@@ -100,14 +98,6 @@ public class BiomeGenCavern extends BiomeGenBaseErebus {
 				int l3 = rand.nextInt(128);
 				int j5 = z + rand.nextInt(16) + 8;
 				(new WorldGenFlowers(Block.mushroomRed.blockID)).generate(worldObj, rand, j2, l3, j5);
-			}
-
-			for (int c = 10; c > 0; c--) {
-				int j2 = x + rand.nextInt(16) + 8;
-				int l3 = rand.nextInt(120);
-				int j5 = z + rand.nextInt(16) + 8;
-				if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == ModBlocks.umberstone.blockID)
-					(new WorldGenAmber()).generate(worldObj, rand, j2, l3, j5);
 			}
 
 			// Glowstone
@@ -264,14 +254,6 @@ public class BiomeGenCavern extends BiomeGenBaseErebus {
 			int l3 = rand.nextInt(128);
 			int j5 = z + rand.nextInt(16) + 8;
 			(new WorldGenFlowers(Block.mushroomRed.blockID)).generate(worldObj, rand, j2, l3, j5);
-		}
-
-		for (int c = 10; c > 0; c--) {
-			int j2 = x + rand.nextInt(16) + 8;
-			int l3 = rand.nextInt(120);
-			int j5 = z + rand.nextInt(16) + 8;
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == ModBlocks.umberstone.blockID)
-				(new WorldGenAmber()).generate(worldObj, rand, j2, l3, j5);
 		}
 
 		// Glowstone

@@ -27,6 +27,10 @@ import erebus.lib.Reference;
 public class AmbientMusicManager implements IScheduledTickHandler{
 	private static AmbientMusicManager instance;
 	
+	public static AmbientMusicManager getInstance(){
+		return instance;
+	}
+	
 	public static void register(){
 		instance = new AmbientMusicManager();
 		
@@ -43,7 +47,7 @@ public class AmbientMusicManager implements IScheduledTickHandler{
 	@ForgeSubscribe
 	public void onSound(SoundLoadEvent event) {
 		String[] ambientMusicList = new String[]{
-			"bugInTheSystem.ogg"
+			"bugInTheSystem.ogg", "feint_sleepless.ogg"
 		};
 		
 		instance.sndMan = event.manager;
@@ -68,11 +72,27 @@ public class AmbientMusicManager implements IScheduledTickHandler{
 			List<Entry<String,URL>> entries = new ArrayList<Entry<String,URL>>(poolAmbient.entrySet());
 			if (entries.size() == 0) return;
 			
-			Entry<String,URL> pick = entries.get(rand.nextInt(entries.size()));
-			sndMan.sndSystem.backgroundMusic("BgMusic", pick.getValue(), pick.getKey(), false);
-			sndMan.sndSystem.setVolume("BgMusic", Minecraft.getMinecraft().gameSettings.musicVolume);
-			sndMan.sndSystem.play("BgMusic");
+			play(entries.get(rand.nextInt(entries.size())));
 		}
+	}
+	
+	public Entry<String,URL> getEntry(String name){
+		name = "erebus:"+name;
+		
+		for(Entry<String,URL> entry:poolAmbient.entrySet()){
+			if (entry.getKey().equals(name)){
+				System.out.println("check "+entry.getKey()+" vs "+name);
+				return entry;
+			}
+		}
+		
+		return null;
+	}
+	
+	public void play(Entry<String,URL> entry){
+		sndMan.sndSystem.backgroundMusic("BgMusic", entry.getValue(), entry.getKey(), false);
+		sndMan.sndSystem.setVolume("BgMusic", Minecraft.getMinecraft().gameSettings.musicVolume);
+		sndMan.sndSystem.play("BgMusic");
 	}
 
 	@Override

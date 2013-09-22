@@ -25,7 +25,7 @@ public class EntityMoth extends EntityAmbientCreature {
 
 	public EntityMoth(World par1World) {
 		super(par1World);
-		setSize(0.9F, 0.4F);
+		setSize(1.8F, 0.5F);
 		setIsMothHanging(false);
 	}
 

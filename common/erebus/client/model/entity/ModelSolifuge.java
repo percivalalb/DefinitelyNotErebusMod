@@ -3,6 +3,7 @@ package erebus.client.model.entity;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
 
 public class ModelSolifuge extends ModelBase
 {
@@ -487,7 +488,32 @@ public class ModelSolifuge extends ModelBase
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
+		float cosz1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.3F * par2;
+		float cosz2 = MathHelper.cos(par1 * 1.0F) * 0.3F * par2;
 
+		float cozy1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.4F * par2;
+		float cozy2 = MathHelper.cos(par1 * 1.0F) * 0.4F * par2;
+
+		float cosxnz1 = MathHelper.cos(par1 / 3.0F + (float) Math.PI) * 0.1F * par2;
+		float cosxnz2 = MathHelper.cos(par1 / 3.0F + (float) Math.PI) * 0.05F * par2;
+
+		LBL1.rotateAngleZ = cosz1 - 0.3F;
+		LMBL1.rotateAngleZ = cosz2 - 0.3F;
+		LMFL1.rotateAngleZ = cosz1 - 0.3F;
+		LFL1.rotateAngleZ = cosz2 - 0.3F;
+		RBL1.rotateAngleZ = -cosz2 + 0.3F;
+		RMBL1.rotateAngleZ = -cosz1 + 0.3F;
+		RMFL1.rotateAngleZ = -cosz2 + 0.3F;
+		RFL1.rotateAngleZ = -cosz1 + 0.3F;
+
+		LBL1.rotateAngleY = cozy1 - 0.6981317F;
+		LMBL1.rotateAngleY = cozy2 - 0.2617994F;
+		LMFL1.rotateAngleY = cozy1 + 0.2617994F;
+		LFL1.rotateAngleY = cozy2 + 0.6981317F;
+		RBL1.rotateAngleY = -cozy2 - 2.443461F;
+		RMBL1.rotateAngleY = -cozy1 - 2.879793F;
+		RMFL1.rotateAngleY = -cozy2 + 2.879793F;
+		RFL1.rotateAngleY = -cozy1 + 2.443461F;
 	}
 
 }

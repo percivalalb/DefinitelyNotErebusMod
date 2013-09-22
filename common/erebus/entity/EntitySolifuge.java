@@ -13,12 +13,10 @@ import erebus.ModItems;
 
 public class EntitySolifuge extends EntityMob {
 	protected EntityLiving theEntity;
-	public boolean isCaptured;
 
 	public EntitySolifuge(World par1World) {
 
 		super(par1World);
-		stepHeight = 0.1F;
 		isImmuneToFire = true;
 		setSize(2.0F, 2.0F);
 	}
@@ -31,7 +29,7 @@ public class EntitySolifuge extends EntityMob {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.5D); // Movespeed
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(2.5D); // Movespeed
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D); // atkDmg
 		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange

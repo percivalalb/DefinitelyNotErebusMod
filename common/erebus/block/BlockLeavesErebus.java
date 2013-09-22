@@ -139,6 +139,12 @@ public class BlockLeavesErebus extends BlockLeaves {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side){
+		return true;
+	}
+
+	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}

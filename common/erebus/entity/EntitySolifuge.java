@@ -5,18 +5,17 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import erebus.ModItems;
 
-public class EntityScorpion extends EntityMob {
+public class EntitySolifuge extends EntityMob {
 	protected EntityLiving theEntity;
 	public boolean isCaptured;
 
-	public EntityScorpion(World par1World) {
+	public EntitySolifuge(World par1World) {
 
 		super(par1World);
 		stepHeight = 0.1F;
@@ -32,16 +31,15 @@ public class EntityScorpion extends EntityMob {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D); // Movespeed
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(30.0D); // MaxHealth
-		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D); // atkDmg
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.5D); // Movespeed
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
+		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D); // atkDmg
 		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
 	}
 
 	@Override
 	public void onUpdate() {
-		if (!worldObj.isRemote && riddenByEntity == null)
-			setIsInJaws(false);
+		super.onUpdate();
 	}
 
 	@Override
@@ -58,10 +56,10 @@ public class EntityScorpion extends EntityMob {
 	 * just to avoid crashes
 	 * 
 	 * @Override protected String getLivingSound() { return
-	 * "erebus:scorpionsound"; }
+	 * "erebus:solifugesound"; }
 	 * 
-	 * @Override protected String getHurtSound() { return "erebus:scorpionhurt";
-	 * }
+	 * @Override protected String getHurtSound() { return
+	 * "erebus:solifugenhurt"; }
 	 * 
 	 * @Override protected String getDeathSound() { return "erebus:squish"; }
 	 */
@@ -80,47 +78,6 @@ public class EntityScorpion extends EntityMob {
 	@Override
 	public boolean isOnLadder() {
 		return (isCollidedHorizontally);
-	}
-
-	@Override
-	public boolean canRiderInteract() {
-		return true;
-	}
-
-	@Override
-	public boolean shouldRiderSit() {
-		return false;
-	}
-
-	@Override
-	public void onCollideWithPlayer(EntityPlayer par1EntityPlayer) {
-		super.onCollideWithPlayer(par1EntityPlayer);
-		byte var2 = 0;
-		if (!worldObj.isRemote && par1EntityPlayer.boundingBox.maxY >= boundingBox.minY && par1EntityPlayer.boundingBox.minY <= boundingBox.maxY && !isCaptured) {
-			if (worldObj.difficultySetting > 1)
-				if (worldObj.difficultySetting == 2)
-					var2 = 7;
-				else if (worldObj.difficultySetting == 3)
-					var2 = 15;
-			if (var2 > 0)
-				par1EntityPlayer.addPotionEffect(new PotionEffect(Potion.weakness.id, var2 * 5, 0));
-			setIsInJaws(true);
-			par1EntityPlayer.mountEntity(this);
-			updateRiderPosition();
-		}
-	}
-
-	@Override
-	public void updateRiderPosition() {
-		double a = Math.toRadians(rotationYaw);
-		double offSetX = -Math.sin(a) * 0.75D;
-		double offSetZ = Math.cos(a) * 0.75D;
-		if (riddenByEntity != null)
-			riddenByEntity.setPosition(posX + offSetX, posY + 0.75D + riddenByEntity.getYOffset(), posZ + offSetZ);
-	}
-
-	public void setIsInJaws(boolean par1) {
-		isCaptured = par1;
 	}
 
 	@Override

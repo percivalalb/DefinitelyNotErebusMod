@@ -155,6 +155,7 @@ entity.Grasshopper - Erebus.name=Grasshopper
 entity.Locust - Erebus.name=Locust
 entity.Solifuge - Erebus.name=Solifuge
 entity.Moth - Erebus.name=Moth
+entity.Firebrat - Erebus.name=Firebrat
 
 #Other
 itemGroup.erebus.block=Erebus Blocks

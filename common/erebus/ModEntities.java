@@ -8,6 +8,7 @@ import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityBlackWidow;
 import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
+import erebus.entity.EntityFirebrat;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityGrasshopper;
 import erebus.entity.EntityLocust;
@@ -39,6 +40,7 @@ public class ModEntities {
 		registerEntity(EntityGrasshopper.class, "Grasshopper", EntityRegistry.findGlobalUniqueEntityId(), 0x06B900, 0x5FFF5F);
 		registerEntity(EntityLocust.class, "Locust", EntityRegistry.findGlobalUniqueEntityId(), 0x5FFF5F, 0x06B900);
 		registerEntity(EntityMoth.class, "Moth", EntityRegistry.findGlobalUniqueEntityId(), 0x00FFDD, 0xFBFFA8);
+		registerEntity(EntityFirebrat.class, "Firebrat", EntityRegistry.findGlobalUniqueEntityId(), 0xFF0000, 0xFF8800);
 		registerEntity(EntityBlackWidow.class, "BlackWidow", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 		EntityRegistry.addSpawn(EntityBlackWidow.class, 100, 5, 10, EnumCreatureType.monster, BiomeGenBase.hell);
 

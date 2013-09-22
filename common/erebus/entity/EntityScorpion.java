@@ -40,6 +40,7 @@ public class EntityScorpion extends EntityMob {
 
 	@Override
 	public void onUpdate() {
+		super.onUpdate();
 		if (!worldObj.isRemote && riddenByEntity == null)
 			setIsInJaws(false);
 	}

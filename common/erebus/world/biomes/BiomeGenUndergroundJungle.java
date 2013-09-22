@@ -1,6 +1,7 @@
 package erebus.world.biomes;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
@@ -17,8 +18,11 @@ import erebus.block.BlockLeavesErebus;
 import erebus.block.BlockLogErebus;
 import erebus.entity.EntityBeetle;
 import erebus.entity.EntityBeetleLarva;
+import erebus.entity.EntityBotFly;
+import erebus.entity.EntityCentipede;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityTarantula;
+import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
 import erebus.world.feature.WorldGenBamboo;
 import erebus.world.feature.WorldGenErebusHugeTree;
@@ -41,16 +45,18 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 		spawnableCreatureList.clear();
 		spawnableWaterCreatureList.clear();
 		spawnableCaveCreatureList.clear();
-		spawnableMonsterList.add(new SpawnListEntry(EntityBeetleLarva.class, 150, 1, 4));
-		spawnableMonsterList.add(new SpawnListEntry(EntityBeetle.class, 30, 1, 3));
+		spawnableMonsterList.add(new SpawnListEntry(EntityWasp.class, 30, 4, 8));
+		spawnableMonsterList.add(new SpawnListEntry(EntityCentipede.class, 10, 4, 8));
+		spawnableCaveCreatureList.add(new SpawnListEntry(EntityBotFly.class, 10, 4, 8));
+		spawnableCaveCreatureList.add(new SpawnListEntry(EntityVelvetWorm.class, 10, 2, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 35, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityCaveSpider.class, 10, 1, 4));
-		spawnableMonsterList.add(new SpawnListEntry(EntityTarantula.class, 5, 1, 4));
+		spawnableMonsterList.add(new SpawnListEntry(EntityTarantula.class, 5, 4, 8));
+		spawnableMonsterList.add(new SpawnListEntry(EntityBeetleLarva.class, 150, 1, 4));
+		spawnableMonsterList.add(new SpawnListEntry(EntityBeetle.class, 30, 1, 3));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityFly.class, 10, 8, 8));
-		spawnableMonsterList.add(new SpawnListEntry(EntityWasp.class, 30, 1, 4));
-
-		this.topBlock = (byte) Block.grass.blockID;
-		this.fillerBlock = (byte) Block.dirt.blockID;
+		topBlock = (byte) Block.grass.blockID;
+		fillerBlock = (byte) Block.dirt.blockID;
 	}
 
 	public int getRandomXZOffset(Random rand) {
@@ -79,9 +85,8 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenPonds(Block.waterMoving.blockID, Block.blockClay.blockID, (rand.nextDouble() + 1.0D) * 2D)).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
 		if (rand.nextInt(1) == 0) {
@@ -102,9 +107,8 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenQuickSand()).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
 		// Trees
@@ -114,72 +118,64 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenHugeTrees(true, 4 + rand.nextInt(40), 3, 3)).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenMossbarkTree()).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenTallJungleTree()).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenAsperTree()).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenTrees(true, 6, 3, 3, true)).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenErebusHugeTree(true, 20 + rand.nextInt(5), BlockLogErebus.dataMahogany, BlockLeavesErebus.dataMahoganyDecay, false, ModBlocks.logErebusGroup1.blockID, ModBlocks.leavesErebus.blockID)).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenErebusTrees(true, 5, BlockLogErebus.dataMahogany, BlockLeavesErebus.dataMahoganyDecay, false, ModBlocks.logErebusGroup1.blockID, ModBlocks.leavesErebus.blockID, ModBlocks.thorns.blockID)).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenEucalyptus(ModBlocks.logErebusGroup1.blockID, BlockLogErebus.dataEucalyptus/* 2 */, ModBlocks.leavesErebus.blockID, BlockLeavesErebus.dataEucalyptusDecay, 8 + rand.nextInt(4), 5, 8, Block.grass.blockID)).generate(worldObj, rand, j2, l3, j5);
-			} // TODO wrong metadata?
 		}
 
 		// Glowstone
@@ -201,63 +197,55 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenBigMushroom(0)).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
 		for (int c = 25; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenBigMushroom(1)).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
 		for (int var5 = 0; var5 < 2; ++var5) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenMelon()).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
-		if (rand.nextInt(5) == 0) {
+		if (rand.nextInt(5) == 0)
 			for (int yy = 100; yy > 20; yy--) {
 				int xx = x + 4 + rand.nextInt(8), zz = z + 4 + rand.nextInt(8);
-				if (worldObj.getBlockId(xx, yy, zz) == 0 && worldObj.getBlockId(xx, yy - 1, zz) == Block.grass.blockID) {
+				if (worldObj.getBlockId(xx, yy, zz) == 0 && worldObj.getBlockId(xx, yy - 1, zz) == Block.grass.blockID)
 					new WorldGenBamboo(16).generate(worldObj, rand, xx, yy, zz);
-				}
 			}
-		}
 
 		for (int c = 0; c < 150; c++) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenTallGrass(ModBlocks.fern.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
-		
+
 		for (int c = 0; c < 60; c++) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenTallGrass(ModBlocks.fiddlehead.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
 		for (int c = 0; c < 1000; c++) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenTallGrass(ModBlocks.erebusGrass.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
 		/** Generating jungle vines **/
@@ -266,34 +254,22 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			int posY3 = 6 + rand.nextInt(120);
 			int posZ3 = z + getRandomXZOffset(rand);
 			if (worldObj.getBlockId(posX3, posY3, posZ3) == 0) {
-				if (Block.isNormalCube(worldObj.getBlockId(posX3, posY3, posZ3 + 1))) {
-					for (int c = rand.nextInt(30); c > 0; c--) {
-						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0) {
+				if (Block.isNormalCube(worldObj.getBlockId(posX3, posY3, posZ3 + 1)))
+					for (int c = rand.nextInt(30); c > 0; c--)
+						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
 							worldObj.setBlock(posX3, posY3 - c, posZ3, Block.vine.blockID, 1, 3);
-						}
-					}
-				}
-				if (Block.isNormalCube(worldObj.getBlockId(posX3 - 1, posY3, posZ3))) {
-					for (int c = rand.nextInt(30); c > 0; c--) {
-						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0) {
+				if (Block.isNormalCube(worldObj.getBlockId(posX3 - 1, posY3, posZ3)))
+					for (int c = rand.nextInt(30); c > 0; c--)
+						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
 							worldObj.setBlock(posX3, posY3 - c, posZ3, Block.vine.blockID, 2, 3);
-						}
-					}
-				}
-				if (Block.isNormalCube(worldObj.getBlockId(posX3, posY3, posZ3 - 1))) {
-					for (int c = rand.nextInt(30); c > 0; c--) {
-						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0) {
+				if (Block.isNormalCube(worldObj.getBlockId(posX3, posY3, posZ3 - 1)))
+					for (int c = rand.nextInt(30); c > 0; c--)
+						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
 							worldObj.setBlock(posX3, posY3 - c, posZ3, Block.vine.blockID, 4, 3);
-						}
-					}
-				}
-				if (Block.isNormalCube(worldObj.getBlockId(posX3 + 1, posY3, posZ3))) {
-					for (int c = rand.nextInt(30); c > 0; c--) {
-						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0) {
+				if (Block.isNormalCube(worldObj.getBlockId(posX3 + 1, posY3, posZ3)))
+					for (int c = rand.nextInt(30); c > 0; c--)
+						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
 							worldObj.setBlock(posX3, posY3 - c, posZ3, Block.vine.blockID, 0, 3);
-						}
-					}
-				}
 			}
 		}
 
@@ -303,34 +279,22 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			int posY3 = 6 + rand.nextInt(120);
 			int posZ3 = z + getRandomXZOffset(rand);
 			if (worldObj.getBlockId(posX3, posY3, posZ3) == 0) {
-				if (Block.isNormalCube(worldObj.getBlockId(posX3, posY3, posZ3 + 1))) {
-					for (int c = rand.nextInt(30); c > 0; c--) {
-						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0) {
+				if (Block.isNormalCube(worldObj.getBlockId(posX3, posY3, posZ3 + 1)))
+					for (int c = rand.nextInt(30); c > 0; c--)
+						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
 							worldObj.setBlock(posX3, posY3 - c, posZ3, ModBlocks.thorns.blockID, 1, 3);
-						}
-					}
-				}
-				if (Block.isNormalCube(worldObj.getBlockId(posX3 - 1, posY3, posZ3))) {
-					for (int c = rand.nextInt(30); c > 0; c--) {
-						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0) {
+				if (Block.isNormalCube(worldObj.getBlockId(posX3 - 1, posY3, posZ3)))
+					for (int c = rand.nextInt(30); c > 0; c--)
+						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
 							worldObj.setBlock(posX3, posY3 - c, posZ3, ModBlocks.thorns.blockID, 2, 3);
-						}
-					}
-				}
-				if (Block.isNormalCube(worldObj.getBlockId(posX3, posY3, posZ3 - 1))) {
-					for (int c = rand.nextInt(30); c > 0; c--) {
-						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0) {
+				if (Block.isNormalCube(worldObj.getBlockId(posX3, posY3, posZ3 - 1)))
+					for (int c = rand.nextInt(30); c > 0; c--)
+						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
 							worldObj.setBlock(posX3, posY3 - c, posZ3, ModBlocks.thorns.blockID, 4, 3);
-						}
-					}
-				}
-				if (Block.isNormalCube(worldObj.getBlockId(posX3 + 1, posY3, posZ3))) {
-					for (int c = rand.nextInt(30); c > 0; c--) {
-						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0) {
+				if (Block.isNormalCube(worldObj.getBlockId(posX3 + 1, posY3, posZ3)))
+					for (int c = rand.nextInt(30); c > 0; c--)
+						if (worldObj.getBlockId(posX3, posY3 - c, posZ3) == 0)
 							worldObj.setBlock(posX3, posY3 - c, posZ3, ModBlocks.thorns.blockID, 0, 3);
-						}
-					}
-				}
 			}
 		}
 
@@ -338,9 +302,8 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenMelon()).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 
 		for (int var5 = 0; var5 < 10; ++var5) // 10
@@ -348,9 +311,8 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID) {
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenTurnips()).generate(worldObj, rand, j2, l3, j5);
-			}
 		}
 	}
 }

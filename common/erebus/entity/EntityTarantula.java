@@ -25,9 +25,9 @@ public class EntityTarantula extends EntitySpider {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.2D);
-		this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(5.0D);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.7D);
+		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(5.0D);
 	}
 
 	@Override
@@ -39,14 +39,13 @@ public class EntityTarantula extends EntitySpider {
 	public void onUpdate() {
 		super.onUpdate();
 
-		if (!this.worldObj.isRemote) {
-			this.setBesideClimbableBlock(this.isCollidedHorizontally);
-		}
+		if (!worldObj.isRemote)
+			setBesideClimbableBlock(isCollidedHorizontally);
 	}
 
 	@Override
 	public boolean isOnLadder() {
-		return this.isBesideClimbableBlock();
+		return isBesideClimbableBlock();
 	}
 
 	@Override
@@ -56,15 +55,14 @@ public class EntityTarantula extends EntitySpider {
 
 	@Override
 	public void setBesideClimbableBlock(boolean par1) {
-		byte var2 = this.dataWatcher.getWatchableObjectByte(16);
+		byte var2 = dataWatcher.getWatchableObjectByte(16);
 
-		if (par1) {
+		if (par1)
 			var2 = (byte) (var2 | 1);
-		} else {
+		else
 			var2 &= -2;
-		}
 
-		this.dataWatcher.updateObject(16, Byte.valueOf(var2));
+		dataWatcher.updateObject(16, Byte.valueOf(var2));
 	}
 
 	@Override
@@ -82,30 +80,26 @@ public class EntityTarantula extends EntitySpider {
 			if (par1Entity instanceof EntityLiving) {
 				byte var2 = 0;
 
-				if (this.worldObj.difficultySetting > 1 && rand.nextInt(19) == 0) {
-					if (this.worldObj.difficultySetting == 2) {
+				if (worldObj.difficultySetting > 1 && rand.nextInt(19) == 0)
+					if (worldObj.difficultySetting == 2)
 						var2 = 5;
-					} else if (this.worldObj.difficultySetting == 3) {
+					else if (worldObj.difficultySetting == 3)
 						var2 = 10;
-					}
-				}
 
-				if (var2 > 0) {
+				if (var2 > 0)
 					((EntityLiving) par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
-				}
 			}
 
 			return true;
-		} else {
+		} else
 			return false;
-		}
 	}
 
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
-		int chanceFiftyFifty = this.rand.nextInt(1) + 1;
+		int chanceFiftyFifty = rand.nextInt(1) + 1;
 
-		int chance40x40x20 = this.rand.nextInt(4);
+		int chance40x40x20 = rand.nextInt(4);
 		int stringDrop = 0;
 
 		switch (chance40x40x20) {
@@ -122,7 +116,7 @@ public class EntityTarantula extends EntitySpider {
 				break;
 		}
 
-		int chance20x60x20 = this.rand.nextInt(4);
+		int chance20x60x20 = rand.nextInt(4);
 		int legDrop = 0;
 
 		switch (chance20x60x20) {
@@ -139,15 +133,14 @@ public class EntityTarantula extends EntitySpider {
 				break;
 		}
 
-		this.dropItem(Item.silk.itemID, stringDrop + par2);
+		dropItem(Item.silk.itemID, stringDrop + par2);
 
-		if (this.isBurning()) {
-			this.entityDropItem(new ItemStack(ModItems.erebusFood, legDrop + par2, 5), 0.0F);
-		} else {
-			this.entityDropItem(new ItemStack(ModItems.erebusFood, legDrop + par2, 4), 0.0F);
-		}
+		if (isBurning())
+			entityDropItem(new ItemStack(ModItems.erebusFood, legDrop + par2, 5), 0.0F);
+		else
+			entityDropItem(new ItemStack(ModItems.erebusFood, legDrop + par2, 4), 0.0F);
 
-		this.dropItem(Item.spiderEye.itemID, chanceFiftyFifty + par2);
+		dropItem(Item.spiderEye.itemID, chanceFiftyFifty + par2);
 
 		/*
 		 * 50% chance for 1 Spider eye, 50% for two 40% chance for 1 String, 40%

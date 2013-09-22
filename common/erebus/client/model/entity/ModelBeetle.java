@@ -5,191 +5,285 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
-public class ModelBeetle extends ModelBase {
-	// fields
+public class ModelBeetle extends ModelBase
+{
+	//fields
 	ModelRenderer backbody;
 	ModelRenderer body;
 	ModelRenderer head;
 	ModelRenderer bum;
 	ModelRenderer head2;
-	ModelRenderer leg1;
-	ModelRenderer leg2;
-	ModelRenderer leg3;
-	ModelRenderer leg4;
-	ModelRenderer leg5;
-	ModelRenderer leg6;
+	ModelRenderer LBL1;
+	ModelRenderer LBL2;
+	ModelRenderer LBL3;
+	ModelRenderer LBL4;
+	ModelRenderer LFL1;
+	ModelRenderer LFL2;
+	ModelRenderer LFL3;
+	ModelRenderer LFL4;
+	ModelRenderer LML1;
+	ModelRenderer LML2;
+	ModelRenderer LML3;
+	ModelRenderer LML4;
+	ModelRenderer RFL1;
+	ModelRenderer RFL2;
+	ModelRenderer RFL3;
+	ModelRenderer RFL4;
+	ModelRenderer RML1;
+	ModelRenderer RML2;
+	ModelRenderer RML3;
+	ModelRenderer RML4;
+	ModelRenderer RBL1;
+	ModelRenderer RBL2;
+	ModelRenderer RBL3;
+	ModelRenderer RBL4;
 
-	// The Base Rotation around Y when still
-	float baseLeg1RotateY = 0.9250245F;
-	float baseLeg2RotateY = -baseLeg1RotateY;
-
-	float baseLeg3RotateY = 0;
-	float baseLeg4RotateY = -baseLeg3RotateY;
-
-	float baseLeg5RotateY = -baseLeg1RotateY;// -0.9599311F;
-	float baseLeg6RotateY = -baseLeg5RotateY;
-
-	// The Base Rotation around Z when still
-	float baseLeg1RotateZ = 0.3316126F;
-	float baseLeg2RotateZ = -baseLeg1RotateZ;
-
-	float baseLeg3RotateZ = 0.1516126F;
-	float baseLeg4RotateZ = -baseLeg3RotateZ;
-
-	float baseLeg5RotateZ = baseLeg1RotateZ;// 0.4270796F;
-	float baseLeg6RotateZ = -baseLeg5RotateZ;
-
-	// To put the entity in the centre
-	float centre = -5F;
-
-	public ModelBeetle() {
+	public ModelBeetle()
+	{
 		textureWidth = 128;
 		textureHeight = 128;
 
 		backbody = new ModelRenderer(this, 35, 0);
 		backbody.addBox(-7F, -4F, 0F, 14, 9, 17);
-		backbody.setRotationPoint(-1F, 15F, 0F + centre);
+		backbody.setRotationPoint(-1F, 15F, 0F);
 		backbody.setTextureSize(128, 128);
 		backbody.mirror = true;
 		setRotation(backbody, 0F, 0F, 0F);
 		body = new ModelRenderer(this, 0, 20);
 		body.addBox(-4F, -2F, -5F, 12, 8, 5);
-		body.setRotationPoint(-3F, 14F, 0F + centre);
+		body.setRotationPoint(-3F, 14F, 0F);
 		body.setTextureSize(128, 128);
 		body.mirror = true;
 		setRotation(body, 0F, 0F, 0F);
 		head = new ModelRenderer(this, 1, 10);
 		head.addBox(-2F, -1F, -2F, 6, 5, 3);
-		head.setRotationPoint(-2F, 15F, -6F + centre);
+		head.setRotationPoint(-2F, 15F, -6F);
 		head.setTextureSize(128, 128);
 		head.mirror = true;
 		setRotation(head, 0F, 0F, 0F);
 		bum = new ModelRenderer(this, 35, 27);
 		bum.addBox(-6F, -2F, 0F, 12, 6, 3);
-		bum.setRotationPoint(-1F, 15F, 17F + centre);
+		bum.setRotationPoint(-1F, 15F, 17F);
 		bum.setTextureSize(128, 128);
 		bum.mirror = true;
 		setRotation(bum, 0F, 0F, 0F);
 		head2 = new ModelRenderer(this, 2, 6);
 		head2.addBox(-5F, 1F, -5F, 12, 0, 4);
-		head2.setRotationPoint(-2F, 15F, -6F + centre);
+		head2.setRotationPoint(-2F, 15F, -6F);
 		head2.setTextureSize(128, 128);
 		head2.mirror = true;
 		setRotation(head2, 0F, 0F, 0F);
+		LBL1 = new ModelRenderer(this, 0, 95);
+		LBL1.addBox(-4F, -1F, -1F, 4, 2, 2);
+		LBL1.setRotationPoint(5F, 17F, 15F);
+		LBL1.setTextureSize(128, 128);
+		LBL1.mirror = true;
+		setRotation(LBL1, 0F, 2.617994F, -0.3490659F);
+		LBL2 = new ModelRenderer(this, 0, 88);
+		LBL2.addBox(-5F, 0F, -1F, 2, 4, 2);
+		// LBL2.setRotationPoint(5F, 17F, 15F);
+		LBL2.setTextureSize(128, 128);
+		LBL2.mirror = true;
+		setRotation(LBL2, 0F, 0F, 0.3490659F);
+		LBL3 = new ModelRenderer(this, 0, 82);
+		LBL3.addBox(-3.5F, 4.5F, -0.5F, 2, 4, 1);
+		// LBL3.setRotationPoint(5F, 17F, 15F);
+		LBL3.setTextureSize(128, 128);
+		LBL3.mirror = true;
+		setRotation(LBL3, 0F, 0F, 0.6981317F);
+		LBL4 = new ModelRenderer(this, 0, 76);
+		LBL4.addBox(-1.5F, 8F, -0.5F, 1, 4, 1);
+		// LBL4.setRotationPoint(5F, 17F, 15F);
+		LBL4.setTextureSize(128, 128);
+		LBL4.mirror = true;
+		setRotation(LBL4, 0F, 0F, 0.8726646F);
+		LFL1 = new ModelRenderer(this, 0, 95);
+		LFL1.addBox(-4F, -1F, -1F, 4, 2, 2);
+		LFL1.setRotationPoint(5F, 17F, 2F);
+		LFL1.setTextureSize(128, 128);
+		LFL1.mirror = true;
+		setRotation(LFL1, 0F, -2.617994F, -0.3490659F);
+		LFL2 = new ModelRenderer(this, 0, 88);
+		LFL2.addBox(-5F, 0F, -1F, 2, 4, 2);
+		// LFL2.setRotationPoint(5F, 17F, 2F);
+		LFL2.setTextureSize(128, 128);
+		LFL2.mirror = true;
+		setRotation(LFL2, 0F, 0F, 0.3490659F);
+		LFL3 = new ModelRenderer(this, 0, 82);
+		LFL3.addBox(-3.5F, 4.5F, -0.5F, 2, 4, 1);
+		// LFL3.setRotationPoint(5F, 17F, 2F);
+		LFL3.setTextureSize(128, 128);
+		LFL3.mirror = true;
+		setRotation(LFL3, 0F, 0F, 0.6981317F);
+		LFL4 = new ModelRenderer(this, 0, 76);
+		LFL4.addBox(-1.5F, 8F, -0.5F, 1, 4, 1);
+		// LFL4.setRotationPoint(5F, 17F, 2F);
+		LFL4.setTextureSize(128, 128);
+		LFL4.mirror = true;
+		setRotation(LFL4, 0F, 0F, 0.8726646F);
+		LML1 = new ModelRenderer(this, 0, 95);
+		LML1.addBox(-4F, -1F, -1F, 4, 2, 2);
+		LML1.setRotationPoint(5F, 17F, 8.5F);
+		LML1.setTextureSize(128, 128);
+		LML1.mirror = true;
+		setRotation(LML1, 0F, -3.141593F, -0.3490659F);
+		LML2 = new ModelRenderer(this, 0, 88);
+		LML2.addBox(-5F, 0F, -1F, 2, 4, 2);
+		// LML2.setRotationPoint(5F, 17F, 8.5F);
+		LML2.setTextureSize(128, 128);
+		LML2.mirror = true;
+		setRotation(LML2, 0F, 0F, 0.3490659F);
+		LML3 = new ModelRenderer(this, 0, 82);
+		LML3.addBox(-3.5F, 4.5F, -0.5F, 2, 4, 1);
+		// LML3.setRotationPoint(5F, 17F, 8.5F);
+		LML3.setTextureSize(128, 128);
+		LML3.mirror = true;
+		setRotation(LML3, 0F, 0F, 0.6981317F);
+		LML4 = new ModelRenderer(this, 0, 76);
+		LML4.addBox(-1.5F, 8F, -0.5F, 1, 4, 1);
+		// LML4.setRotationPoint(5F, 17F, 8.5F);
+		LML4.setTextureSize(128, 128);
+		LML4.mirror = true;
+		setRotation(LML4, 0F, 0F, 0.8726646F);
+		RFL1 = new ModelRenderer(this, 0, 95);
+		RFL1.addBox(-4F, -1F, -1F, 4, 2, 2);
+		RFL1.setRotationPoint(-7F, 17F, 2F);
+		RFL1.setTextureSize(128, 128);
+		RFL1.mirror = true;
+		setRotation(RFL1, 0F, -0.5235988F, 0.3490659F);
+		RFL2 = new ModelRenderer(this, 0, 88);
+		RFL2.addBox(-5F, 0F, -1F, 2, 4, 2);
+		// RFL2.setRotationPoint(-7F, 17F, 2F);
+		RFL2.setTextureSize(128, 128);
+		RFL2.mirror = true;
+		setRotation(RFL2, 0F, 0F, 0.3490659F);
+		RFL3 = new ModelRenderer(this, 0, 82);
+		RFL3.addBox(-3.5F, 4.5F, -0.5F, 2, 4, 1);
+		// RFL3.setRotationPoint(-7F, 17F, 2F);
+		RFL3.setTextureSize(128, 128);
+		RFL3.mirror = true;
+		setRotation(RFL3, 0F, 0F, 0.6981317F);
+		RFL4 = new ModelRenderer(this, 0, 76);
+		RFL4.addBox(-1.5F, 8F, -0.5F, 1, 4, 1);
+		// RFL4.setRotationPoint(-7F, 17F, 2F);
+		RFL4.setTextureSize(128, 128);
+		RFL4.mirror = true;
+		setRotation(RFL4, 0F, 0F, 0.8726646F);
+		RML1 = new ModelRenderer(this, 0, 95);
+		RML1.addBox(-4F, -1F, -1F, 4, 2, 2);
+		RML1.setRotationPoint(-7F, 17F, 8.5F);
+		RML1.setTextureSize(128, 128);
+		RML1.mirror = true;
+		setRotation(RML1, 0F, 0F, 0.3490659F);
+		RML2 = new ModelRenderer(this, 0, 88);
+		RML2.addBox(-5F, 0F, -1F, 2, 4, 2);
+		// RML2.setRotationPoint(-7F, 17F, 8.5F);
+		RML2.setTextureSize(128, 128);
+		RML2.mirror = true;
+		setRotation(RML2, 0F, 0F, 0.3490659F);
+		RML3 = new ModelRenderer(this, 0, 82);
+		RML3.addBox(-3.5F, 4.5F, -0.5F, 2, 4, 1);
+		// RML3.setRotationPoint(-7F, 17F, 8.5F);
+		RML3.setTextureSize(128, 128);
+		RML3.mirror = true;
+		setRotation(RML3, 0F, 0F, 0.6981317F);
+		RML4 = new ModelRenderer(this, 0, 76);
+		RML4.addBox(-1.5F, 8F, -0.5F, 1, 4, 1);
+		// RML4.setRotationPoint(-7F, 17F, 8.5F);
+		RML4.setTextureSize(128, 128);
+		RML4.mirror = true;
+		setRotation(RML4, 0F, 0F, 0.8726646F);
+		RBL1 = new ModelRenderer(this, 0, 95);
+		RBL1.addBox(-4F, -1F, -1F, 4, 2, 2);
+		RBL1.setRotationPoint(-7F, 17F, 15F);
+		RBL1.setTextureSize(128, 128);
+		RBL1.mirror = true;
+		setRotation(RBL1, 0F, 0F, 0.3490659F);
+		RBL2 = new ModelRenderer(this, 0, 88);
+		RBL2.addBox(-5F, 0F, -1F, 2, 4, 2);
+		// RBL2.setRotationPoint(-7F, 17F, 15F);
+		RBL2.setTextureSize(128, 128);
+		RBL2.mirror = true;
+		setRotation(RBL2, 0F, 0F, 0.3490659F);
+		RBL3 = new ModelRenderer(this, 0, 82);
+		RBL3.addBox(-3.5F, 4.5F, -0.5F, 2, 4, 1);
+		// RBL3.setRotationPoint(-7F, 17F, 15F);
+		RBL3.setTextureSize(128, 128);
+		RBL3.mirror = true;
+		setRotation(RBL3, 0F, 0F, 0.6981317F);
+		RBL4 = new ModelRenderer(this, 0, 76);
+		RBL4.addBox(-1.5F, 8F, -0.5F, 1, 4, 1);
+		// RBL4.setRotationPoint(-7F, 17F, 15F);
+		RBL4.setTextureSize(128, 128);
+		RBL4.mirror = true;
+		setRotation(RBL4, 0F, 0F, 0.8726646F);
 
-		// Front Legs
-		leg1 = new ModelRenderer(this, 0, 0);
-		leg1.addBox(0F, 0F, 0F, 11, 2, 2);
-		leg1.setRotationPoint(4F, 19F, -2F + centre);
-		leg1.setTextureSize(128, 128);
-		leg1.mirror = true;
-		setRotation(leg1, 0F, baseLeg1RotateY, baseLeg1RotateZ); // 0.9250245F,
-																	// 0.3316126F);
-		leg2 = new ModelRenderer(this, 0, 0);
-		leg2.addBox(-11F, 0F, 0F, 11, 2, 2);
-		leg2.setRotationPoint(-6F, 19F, -2F + centre);
-		leg2.setTextureSize(128, 128);
-		leg2.mirror = true;
-		setRotation(leg2, 0F, baseLeg2RotateY, baseLeg2RotateZ); // 1.9750245F,
-																	// 0.3316126F);
+		LFL1.addChild(LFL2);
+		LFL1.addChild(LFL3);
+		LFL1.addChild(LFL4);
 
-		// Middle Legs
-		leg3 = new ModelRenderer(this, 0, 0);
-		leg3.addBox(0F, 0F, 0F, 11, 2, 2);
-		leg3.setRotationPoint(5F, 19F, 2F + centre);
-		leg3.setTextureSize(128, 128);
-		leg3.mirror = true;
-		setRotation(leg3, 0F, baseLeg3RotateY, baseLeg3RotateZ); // 0.0698132F,
-																	// 0.3316126F);
-		leg4 = new ModelRenderer(this, 0, 0);
-		leg4.addBox(-11F, 0F, 0F, 11, 2, 2);
-		leg4.setRotationPoint(-7F, 19F, 2F + centre);
-		leg4.setTextureSize(128, 128);
-		leg4.mirror = true;
-		setRotation(leg4, 0F, baseLeg4RotateY, baseLeg4RotateZ); // 0F,
-																	// -0.2792527F);
+		LML1.addChild(LML2);
+		LML1.addChild(LML3);
+		LML1.addChild(LML4);
 
-		// Back Legs
-		leg5 = new ModelRenderer(this, 0, 0);
-		leg5.addBox(0F, -1F, 1F, 15, 2, 2);
-		leg5.setRotationPoint(5F, 20F, 6F + centre);
-		leg5.setTextureSize(128, 128);
-		leg5.mirror = true;
-		setRotation(leg5, 0F, baseLeg5RotateY, baseLeg5RotateZ); // -0.9599311F,
-																	// 0.1570796F);
-		leg6 = new ModelRenderer(this, 0, 0);
-		leg6.addBox(-15F, -1F, 1F, 15, 2, 2);
-		leg6.setRotationPoint(-7F, 20F, 6F + centre);
-		leg6.setTextureSize(128, 128);
-		leg6.mirror = true;
-		setRotation(leg6, 0F, baseLeg6RotateY, baseLeg6RotateZ); // -2.181662F,
-																	// 0.1570796F);
+		LBL1.addChild(LBL2);
+		LBL1.addChild(LBL3);
+		LBL1.addChild(LBL4);
+
+		RFL1.addChild(RFL2);
+		RFL1.addChild(RFL3);
+		RFL1.addChild(RFL4);
+
+		RML1.addChild(RML2);
+		RML1.addChild(RML3);
+		RML1.addChild(RML4);
+
+		RBL1.addChild(RBL2);
+		RBL1.addChild(RBL3);
+		RBL1.addChild(RBL4);
 	}
 
 	@Override
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		super.render(entity, f, f1, f2, f3, f4, f5);
-		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-		backbody.render(f5);
-		body.render(f5);
-		head.render(f5);
-		bum.render(f5);
-		head2.render(f5);
-		// Front Right leg
-		leg1.render(f5);
-		// Front Left leg
-		leg2.render(f5);
-		// Middle Right leg
-		leg3.render(f5);
-		// Middle Left Leg
-		leg4.render(f5);
-		// Back Right Leg?
-		leg5.render(f5);
-		// Back Left Leg?
-		leg6.render(f5);
+	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
+		super.render(par1Entity, par2, par3, par4, par5, par6, par7);
+		setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
+		backbody.render(par7);
+		body.render(par7);
+		head.render(par7);
+		bum.render(par7);
+		head2.render(par7);
+		LBL1.render(par7);
+		LFL1.render(par7);
+		LML1.render(par7);
+		RFL1.render(par7);
+		RML1.render(par7);
+		RBL1.render(par7);
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z) {
+	private void setRotation(ModelRenderer model, float x, float y, float z)
+	{
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
 
-	float legSpeed = 0.7662F;
-
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
-
-		float varY = MathHelper.sin(par1 * legSpeed) * 1.4F * par2;
-		float varY2 = MathHelper.sin(par1 * legSpeed) * 0.4F * par2;
-
-		// Beetles walk like this right?
-		this.leg1.rotateAngleY = baseLeg1RotateY + varY;
-		this.leg5.rotateAngleY = baseLeg5RotateY + varY2;
-
-		this.leg4.rotateAngleY = baseLeg4RotateY - varY;
-
-		// Left
-		this.leg2.rotateAngleY = baseLeg2RotateY + varY;
-		this.leg6.rotateAngleY = baseLeg6RotateY + varY2;
-
-		this.leg3.rotateAngleY = baseLeg3RotateY - varY;
-
-		float varZ = Math.abs(MathHelper.cos(par1 * legSpeed)) * 0.8F * par2;
-		float varZ2 = Math.abs(MathHelper.cos(par1 * legSpeed)) * 0.4F * par2;
-
-		// + is clockwise front front view
-		this.leg1.rotateAngleZ = baseLeg1RotateZ - varZ;
-		this.leg5.rotateAngleZ = baseLeg5RotateZ - varZ2;
-
-		this.leg4.rotateAngleZ = baseLeg4RotateZ + varZ;
-
-		// Left Legs are inverted
-		this.leg2.rotateAngleZ = baseLeg2RotateZ + varZ;
-		this.leg6.rotateAngleZ = baseLeg6RotateZ + varZ;
-
-		this.leg3.rotateAngleZ = baseLeg3RotateZ - varZ2;
+		float cos1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.5F * par2;
+		float cos2 = MathHelper.cos(par1 * 1.0F) * 0.5F * par2;
+		LBL1.rotateAngleX = cos1;
+		LML1.rotateAngleX = cos2;
+		LFL1.rotateAngleX = cos1;
+		RBL1.rotateAngleX = -cos2;
+		RML1.rotateAngleX = -cos1;
+		RFL1.rotateAngleX = -cos2;
+		LBL1.rotateAngleY = cos1 + 2.617994F;
+		LML1.rotateAngleY = cos2 - 3.142F;
+		LFL1.rotateAngleY = cos1 - 2.617994F;
+		RBL1.rotateAngleY = -cos2 + 0.3490659F;
+		RML1.rotateAngleY = -cos1;
+		RFL1.rotateAngleY = -cos2 - 0.3490659F;
 	}
 
 }

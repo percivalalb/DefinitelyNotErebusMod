@@ -5,12 +5,13 @@ import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
-import cpw.mods.fml.relauncher.SideOnly;
 import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.entity.EntityBeetle;
 
 @SideOnly(Side.CLIENT)
 public class RenderBeetle extends RenderLiving {
+	private static ResourceLocation Texture;
 	public RenderBeetle(ModelBase par1ModelBase, float par2) {
 		super(par1ModelBase, par2);
 	}
@@ -21,7 +22,7 @@ public class RenderBeetle extends RenderLiving {
 
 	@Override
 	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9) {
-		this.renderBeetle((EntityBeetle) par1EntityLiving, par2, par4, par6, par8, par9);
+		renderBeetle((EntityBeetle) par1EntityLiving, par2, par4, par6, par8, par9);
 	}
 
 	/**
@@ -34,31 +35,30 @@ public class RenderBeetle extends RenderLiving {
 	 */
 	@Override
 	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
-		this.renderBeetle((EntityBeetle) par1Entity, par2, par4, par6, par8, par9);
+		renderBeetle((EntityBeetle) par1Entity, par2, par4, par6, par8, par9);
 	}
-
-	private ResourceLocation resource1 = new ResourceLocation("erebus:textures/mob/Beetleblue.png");
-	private ResourceLocation resource2 = new ResourceLocation("erebus:textures/mob/Beetlebrown.png");
-	private ResourceLocation resource3 = new ResourceLocation("erebus:textures/mob/Beetlegreen.png");
-	private ResourceLocation resource4 = new ResourceLocation("erebus:textures/mob/Beetlered.png");
-	private ResourceLocation resource5 = new ResourceLocation("erebus:textures/mob/Beetletan.png");
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		EntityBeetle beetle = (EntityBeetle) entity;
-		switch (beetle.skin) {
-			case 0:
-				return resource1;
-			case 1:
-				return resource2;
-			case 2:
-				return resource3;
-			case 3:
-				return resource4;
-			case 4:
-				return resource5;
+		if (beetle.skin > 0 && beetle.skin <= 10) {
+			Texture = new ResourceLocation("erebus:textures/mob/Beetleblue.png");;
 		}
-
-		return resource1;
+		if (beetle.skin > 10 && beetle.skin <= 20) {
+			Texture = new ResourceLocation("erebus:textures/mob/Beetlebrown.png");;
+		}
+		if (beetle.skin > 20 && beetle.skin <= 30) {
+			Texture = new ResourceLocation("erebus:textures/mob/Beetlegreen.png");;
+		}
+		if (beetle.skin > 30 && beetle.skin <= 40) {
+			Texture = new ResourceLocation("erebus:textures/mob/Beetlered.png");;
+		}
+		if (beetle.skin > 40 && beetle.skin <= 50) {
+			Texture = new ResourceLocation("erebus:textures/mob/Beetletan.png");;
+		}
+		if (beetle.skin == 0) {
+			Texture = new ResourceLocation("erebus:textures/mob/Beetlerarespawn.png");;
+		}
+		return Texture;
 	}
 }

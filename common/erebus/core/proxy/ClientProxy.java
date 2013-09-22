@@ -31,6 +31,7 @@ import erebus.client.model.entity.ModelGrasshopper;
 import erebus.client.model.entity.ModelLocust;
 import erebus.client.model.entity.ModelMosquito;
 import erebus.client.model.entity.ModelScorpion;
+import erebus.client.model.entity.ModelSolifuge;
 import erebus.client.model.entity.ModelTarantula;
 import erebus.client.model.entity.ModelVelvetWorm;
 import erebus.client.model.entity.ModelWasp;
@@ -44,6 +45,7 @@ import erebus.client.render.entity.RenderGrasshopper;
 import erebus.client.render.entity.RenderLocust;
 import erebus.client.render.entity.RenderMosquito;
 import erebus.client.render.entity.RenderScorpion;
+import erebus.client.render.entity.RenderSolifuge;
 import erebus.client.render.entity.RenderTarantula;
 import erebus.client.render.entity.RenderVelvetWorm;
 import erebus.client.render.entity.RenderWasp;
@@ -65,6 +67,7 @@ import erebus.entity.EntityGrasshopper;
 import erebus.entity.EntityLocust;
 import erebus.entity.EntityMosquito;
 import erebus.entity.EntityScorpion;
+import erebus.entity.EntitySolifuge;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
@@ -98,6 +101,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityScorpion.class, new RenderScorpion(new ModelScorpion(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrasshopper.class, new RenderGrasshopper(new ModelGrasshopper(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityLocust.class, new RenderLocust(new ModelLocust(), 0.3F));
+		RenderingRegistry.registerEntityRenderingHandler(EntitySolifuge.class, new RenderSolifuge(new ModelSolifuge(), 0.3F));
 
 		// Special Renderer
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHollowLog.class, new TileEntityRenderHollowLog());

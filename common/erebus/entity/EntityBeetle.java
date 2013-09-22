@@ -16,16 +16,16 @@ import erebus.ModItems;
 
 public class EntityBeetle extends EntityUndergroundAnimal {
 
-	public int skin = rand.nextInt(4);
+	public int skin = rand.nextInt(51);
 
 	public EntityBeetle(World par1World) {
 		super(par1World);
 		setSize(0.9F, 0.9F);
 		getNavigator().setAvoidsWater(true);
 		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(1, new EntityAIPanic(this, 0.38F));
-		tasks.addTask(3, new EntityAITempt(this, 0.25F, Item.wheat.itemID, false));
-		tasks.addTask(5, new EntityAIWander(this, 0.2F));
+		tasks.addTask(1, new EntityAIPanic(this, 0.6D));
+		tasks.addTask(3, new EntityAITempt(this, 0.5D, Item.wheat.itemID, false));
+		tasks.addTask(5, new EntityAIWander(this, 0.5D));
 		tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		tasks.addTask(7, new EntityAILookIdle(this));
 	}
@@ -39,7 +39,7 @@ public class EntityBeetle extends EntityUndergroundAnimal {
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D);
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.2D);
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.5D);
 	}
 
 	@Override

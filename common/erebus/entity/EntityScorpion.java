@@ -30,13 +30,16 @@ public class EntityScorpion extends EntityMob {
 	}
 
 	@Override
-	public void onUpdate() {
-		super.onUpdate();
+	protected void applyEntityAttributes() {
+		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D); // Movespeed
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(30.0D); // MaxHealth
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D); // atkDmg
 		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
+	}
 
+	@Override
+	public void onUpdate() {
 		if (!worldObj.isRemote && riddenByEntity == null)
 			setIsInJaws(false);
 	}

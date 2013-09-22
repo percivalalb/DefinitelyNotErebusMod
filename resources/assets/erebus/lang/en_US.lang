@@ -153,6 +153,7 @@ entity.BlackWidow - Erebus.name=Black Widow
 entity.Scorpion - Erebus.name=Scorpion
 entity.Grasshopper - Erebus.name=Grasshopper
 entity.Locust - Erebus.name=Locust
+entity.Solifuge - Erebus.name=Solifuge
 
 #Other
 itemGroup.erebus.block=Erebus Blocks

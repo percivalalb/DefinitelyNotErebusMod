@@ -46,6 +46,11 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	}
 
 	@Override
+	public boolean getCanSpawnHere() {
+		return super.getCanSpawnHere();
+	}
+
+	@Override
 	protected Entity findPlayerToAttack() {
 		EntityPlayer var1 = worldObj.getClosestVulnerablePlayerToEntity(this, 16.0D);
 		return var1 != null && canEntityBeSeen(var1) ? var1 : null;
@@ -63,7 +68,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 
 				for (int j = 0; j < preys.length; j++)
 					if (entity.getClass() == preys[j])
-						return canEntityBeSeen(entity) ? entity : null;
+						return entity;
 			}
 		}
 
@@ -102,11 +107,6 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	@Override
 	public boolean isOnLadder() {
 		return (isCollidedHorizontally);
-	}
-
-	@Override
-	protected boolean canDespawn() {
-		return false;
 	}
 
 	@Override

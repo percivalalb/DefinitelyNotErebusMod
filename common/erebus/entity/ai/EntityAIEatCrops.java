@@ -108,7 +108,7 @@ public class EntityAIEatCrops extends EntityAIBase {
 				EntityLocust entityLocust = new EntityLocust(theEntity.worldObj);
 				entityLocust.setPosition(PlantX, PlantY + 1, PlantZ);
 				theEntity.worldObj.spawnEntityInWorld(entityLocust);
-				theEntity.worldObj.playSoundAtEntity(entityLocust, "eni:locustspawn", 1.0F, 1.0F);
+				theEntity.worldObj.playSoundAtEntity(entityLocust, "erebus:locustspawn", 1.0F, 1.0F);
 			}
 		}
 		super.updateTask();
@@ -129,7 +129,7 @@ public class EntityAIEatCrops extends EntityAIBase {
 						}
 		return false;
 	}
-	
+
 	private boolean isPlant(int blockID){
 		return blockID == Block.tallGrass.blockID || blockID == ModBlocks.erebusGrass.blockID || blockID == Block.crops.blockID;
 	}

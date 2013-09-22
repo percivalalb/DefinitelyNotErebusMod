@@ -5,7 +5,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -40,6 +39,11 @@ public class EntityWasp extends EntityMob {
 	}
 
 	@Override
+	public boolean getCanSpawnHere() {
+		return super.getCanSpawnHere();
+	}
+
+	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return EnumCreatureAttribute.ARTHROPOD;
 	}
@@ -71,74 +75,69 @@ public class EntityWasp extends EntityMob {
 	protected void dropFewItems(boolean par1, int par2) {
 
 		entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 10), 0.0F);
-		switch (rand.nextInt(2)) {
-			case 0:
-				entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3) + 1, 0), 0.0F);
-			case 1:
-				entityDropItem(new ItemStack(Item.dyePowder, rand.nextInt(2) + 1, 11), 0.0F);
-		}
+		entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3) + 1, 0), 0.0F);
 	}
 
-	@Override
-	protected void dropRareDrop(int par1) {
-		dropItem(ModItems.waspSwordID, 1);
+@Override
+protected void dropRareDrop(int par1) {
+	dropItem(ModItems.waspSwordID, 1);
+}
+
+public boolean isFlying() {
+	return !onGround;
+}
+
+@Override
+public boolean isOnLadder() {
+	return isCollidedHorizontally;
+}
+
+@Override
+public void onUpdate() {
+	if (!isFlying())
+		wingFloat = 0.0F;
+	if (isFlying())
+		wingFloat = mathWings.swing(4.0F, 0.1F);
+	super.onUpdate();
+}
+
+@Override
+public void onLivingUpdate() {
+	if (!worldObj.isRemote) {
+		heightOffset = (0.5F + (float) rand.nextGaussian() * 5.0F);
+		if ((getEntityToAttack() != null) && (getEntityToAttack().posY + getEntityToAttack().getEyeHeight() > posY + getEyeHeight() + heightOffset))
+			motionY += (0.350000011920929D - motionY) * 0.350000011920929D;
 	}
+	if ((!onGround) && (motionY < 0.0D))
+		motionY *= 0.5D;
+	super.onLivingUpdate();
+}
 
-	public boolean isFlying() {
-		return !onGround;
-	}
+@Override
+public boolean attackEntityAsMob(Entity par1Entity) {
+	if (super.attackEntityAsMob(par1Entity)) {
+		if ((par1Entity instanceof EntityLivingBase)) {
+			byte var2 = 0;
 
-	@Override
-	public boolean isOnLadder() {
-		return isCollidedHorizontally;
-	}
+			if (worldObj.difficultySetting > 1)
+				if (worldObj.difficultySetting == 2)
+					var2 = 7;
+				else if (worldObj.difficultySetting == 3)
+					var2 = 15;
 
-	@Override
-	public void onUpdate() {
-		if (!isFlying())
-			wingFloat = 0.0F;
-		if (isFlying())
-			wingFloat = mathWings.swing(4.0F, 0.1F);
-		super.onUpdate();
-	}
-
-	@Override
-	public void onLivingUpdate() {
-		if (!worldObj.isRemote) {
-			heightOffset = (0.5F + (float) rand.nextGaussian() * 5.0F);
-			if ((getEntityToAttack() != null) && (getEntityToAttack().posY + getEntityToAttack().getEyeHeight() > posY + getEyeHeight() + heightOffset))
-				motionY += (0.350000011920929D - motionY) * 0.350000011920929D;
-		}
-		if ((!onGround) && (motionY < 0.0D))
-			motionY *= 0.5D;
-		super.onLivingUpdate();
-	}
-
-	@Override
-	public boolean attackEntityAsMob(Entity par1Entity) {
-		if (super.attackEntityAsMob(par1Entity)) {
-			if ((par1Entity instanceof EntityLivingBase)) {
-				byte var2 = 0;
-
-				if (worldObj.difficultySetting > 1)
-					if (worldObj.difficultySetting == 2)
-						var2 = 7;
-					else if (worldObj.difficultySetting == 3)
-						var2 = 15;
-
-				if (var2 > 0)
-					((EntityLivingBase) par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
-			}
-
-			return true;
+			if (var2 > 0)
+				((EntityLivingBase) par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
 		}
 
-		return false;
+		return true;
 	}
 
-	@Override
-	protected void attackEntity(Entity par1Entity, float par2) {
-		if ((par2 < 2.0F) && (par1Entity.boundingBox.maxY > boundingBox.minY) && (par1Entity.boundingBox.minY < boundingBox.maxY))
-			attackEntityAsMob(par1Entity);
-	}
+	return false;
+}
+
+@Override
+protected void attackEntity(Entity par1Entity, float par2) {
+	if ((par2 < 2.0F) && (par1Entity.boundingBox.maxY > boundingBox.minY) && (par1Entity.boundingBox.minY < boundingBox.maxY))
+		attackEntityAsMob(par1Entity);
+}
 }

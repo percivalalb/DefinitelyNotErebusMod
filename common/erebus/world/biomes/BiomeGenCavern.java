@@ -27,11 +27,12 @@ public class BiomeGenCavern extends BiomeGenBaseErebus {
 		spawnableCreatureList.clear();
 		spawnableWaterCreatureList.clear();
 		spawnableCaveCreatureList.clear();
-		spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 35, 1, 4));
-		spawnableMonsterList.add(new SpawnListEntry(EntityCaveSpider.class, 10, 1, 4));
+		spawnableMonsterList.add(new SpawnListEntry(EntityCentipede.class, 30, 1, 8));
+		spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 100, 1, 4));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityBotFly.class, 10, 4, 8));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityFly.class, 10, 8, 8));
-		spawnableMonsterList.add(new SpawnListEntry(EntityCentipede.class, 10, 4, 8));
+		spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 35, 1, 4));
+		spawnableMonsterList.add(new SpawnListEntry(EntityCaveSpider.class, 10, 1, 4));
 		topBlock = (byte) ModBlocks.umberstone.blockID;
 		fillerBlock = (byte) ModBlocks.umberstone.blockID;
 	}

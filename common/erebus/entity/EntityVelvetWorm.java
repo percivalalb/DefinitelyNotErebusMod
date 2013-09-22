@@ -70,6 +70,11 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob {
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(getAttackStrength()); // atkDmg
 	}
 
+	@Override
+	public boolean getCanSpawnHere() {
+		return super.getCanSpawnHere();
+	}
+
 	/**
 	 * Called to update the entity's position/logic.
 	 */
@@ -84,14 +89,6 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob {
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
 		return EnumCreatureAttribute.ARTHROPOD;
-	}
-
-	/**
-	 * Determines if an entity can be despawned, used on idle far away entities
-	 */
-	@Override
-	protected boolean canDespawn() {
-		return false;
 	}
 
 	// Ten percent change to get the first else take the other

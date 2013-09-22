@@ -65,6 +65,11 @@ public class EntityGrasshopper extends EntityMob
 	}
 
 	@Override
+	public boolean getCanSpawnHere() {
+		return super.getCanSpawnHere();
+	}
+
+	@Override
 	public EnumCreatureAttribute getCreatureAttribute()
 	{
 		return EnumCreatureAttribute.ARTHROPOD;
@@ -99,16 +104,6 @@ public class EntityGrasshopper extends EntityMob
 			entityDropItem(new ItemStack(ModItems.erebusFood, 1, 3), 0.0F);
 		else
 			entityDropItem(new ItemStack(ModItems.erebusFood, 1, 2), 0.0F);
-	}
-
-	@Override
-	public boolean getCanSpawnHere()
-	{
-		float f1 = getBrightness(1.0F);
-
-		if (f1 > 0.5F)
-			return true;
-		return super.getCanSpawnHere();
 	}
 
 	public boolean randJump()

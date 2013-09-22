@@ -24,13 +24,13 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 		spawnableCreatureList.clear();
 		spawnableWaterCreatureList.clear();
 		spawnableCaveCreatureList.clear();
-		spawnableMonsterList.add(new SpawnListEntry(EntityScorpion.class, 10, 4, 8));
-		spawnableMonsterList.add(new SpawnListEntry(EntityCentipede.class, 10, 4, 8));
+		spawnableMonsterList.add(new SpawnListEntry(EntityScorpion.class, 30, 1, 8));
+		spawnableMonsterList.add(new SpawnListEntry(EntityCentipede.class, 30, 1, 8));
 		spawnableMonsterList.add(new SpawnListEntry(EntityBlackWidow.class, 5, 1, 1));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityBotFly.class, 10, 4, 8));
+		spawnableCaveCreatureList.add(new SpawnListEntry(EntityFly.class, 10, 8, 8));
 		spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 35, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityCaveSpider.class, 10, 1, 4));
-		spawnableCaveCreatureList.add(new SpawnListEntry(EntityFly.class, 10, 8, 8));
 		topBlock = (byte) Block.sand.blockID;
 		fillerBlock = (byte) Block.sandStone.blockID;
 	}

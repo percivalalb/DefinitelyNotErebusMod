@@ -31,6 +31,11 @@ public class EntityTarantula extends EntitySpider {
 	}
 
 	@Override
+	public boolean getCanSpawnHere() {
+		return super.getCanSpawnHere();
+	}
+
+	@Override
 	public int getTotalArmorValue() {
 		return 4;
 	}
@@ -63,11 +68,6 @@ public class EntityTarantula extends EntitySpider {
 			var2 &= -2;
 
 		dataWatcher.updateObject(16, Byte.valueOf(var2));
-	}
-
-	@Override
-	protected boolean canDespawn() {
-		return false;
 	}
 
 	public int skin = rand.nextInt(99);

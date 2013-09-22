@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.item.ItemStack;
@@ -18,11 +19,6 @@ import erebus.ModItems;
 import erebus.client.render.entity.AnimationMathHelper;
 
 public class EntityBotFly extends EntityMob {
-	/**
-	 * randomly selected ChunkCoordinates in a 7x6x7 box around the BotFly (y
-	 * offset -2 to 4) towards which it will fly. upon getting close a new
-	 * target will be selected
-	 */
 	private ChunkCoordinates currentFlightTarget;
 	private float heightOffset = 0.5F;
 	public float wingFloat;
@@ -49,41 +45,31 @@ public class EntityBotFly extends EntityMob {
 		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
 	}
 
-	/**
-	 * Returns the volume for the sounds this mob makes.
-	 */
+	@Override
+	public EnumCreatureAttribute getCreatureAttribute() {
+		return EnumCreatureAttribute.ARTHROPOD;
+	}
+
 	@Override
 	protected float getSoundVolume() {
 		return 0.1F;
 	}
 
-	/**
-	 * Gets the pitch of living sounds in living entities.
-	 */
 	@Override
 	protected float getSoundPitch() {
 		return super.getSoundPitch() * 0.95F;
 	}
 
-	/**
-	 * Returns the sound this mob makes while it's alive.
-	 */
 	@Override
 	protected String getLivingSound() {
 		return getIsFlyHanging() && rand.nextInt(4) != 0 ? null : "erebus:FlySound";
 	}
 
-	/**
-	 * Returns the sound this mob makes when it is hurt.
-	 */
 	@Override
 	protected String getHurtSound() {
 		return "erebus:FlyHurt";
 	}
 
-	/**
-	 * Returns the sound this mob makes on death.
-	 */
 	@Override
 	protected String getDeathSound() {
 		return "erebus:squish";
@@ -111,17 +97,11 @@ public class EntityBotFly extends EntityMob {
 			dataWatcher.updateObject(16, Byte.valueOf((byte) (var2 & -2)));
 	}
 
-	/**
-	 * Returns true if the newer Entity AI code should be run
-	 */
 	@Override
 	protected boolean isAIEnabled() {
 		return false;
 	}
 
-	/**
-	 * Called to update the entity's position/logic.
-	 */
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
@@ -195,43 +175,24 @@ public class EntityBotFly extends EntityMob {
 		}
 	}
 
-	/**
-	 * returns if this entity triggers Block.onEntityWalking on the blocks they
-	 * walk on. used for spiders and wolves to prevent them from trampling crops
-	 */
 	@Override
 	protected boolean canTriggerWalking() {
 		return false;
 	}
 
-	/**
-	 * Called when the mob is falling. Calculates and applies fall damage.
-	 */
 	@Override
 	protected void fall(float par1) {
 	}
 
-	/**
-	 * Takes in the distance the entity has fallen this tick and whether its on
-	 * the ground to update the fall distance and deal fall damage if landing on
-	 * the ground. Args: distanceFallenThisTick, onGround
-	 */
 	@Override
 	protected void updateFallState(double par1, boolean par3) {
 	}
 
-	/**
-	 * Return whether this entity should NOT trigger a pressure plate or a
-	 * tripwire.
-	 */
 	@Override
 	public boolean doesEntityNotTriggerPressurePlate() {
 		return true;
 	}
 
-	/**
-	 * Called when the entity is attacked.
-	 */
 	@Override
 	public boolean attackEntityFrom(DamageSource par1DamageSource, float par2) {
 		if (isEntityInvulnerable())
@@ -244,28 +205,18 @@ public class EntityBotFly extends EntityMob {
 		}
 	}
 
-	/**
-	 * (abstract) Protected helper method to read subclass entity data from NBT.
-	 */
 	@Override
 	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
 		super.readEntityFromNBT(par1NBTTagCompound);
 		dataWatcher.updateObject(16, Byte.valueOf(par1NBTTagCompound.getByte("BotFly")));
 	}
 
-	/**
-	 * (abstract) Protected helper method to write subclass entity data to NBT.
-	 */
 	@Override
 	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
 		super.writeEntityToNBT(par1NBTTagCompound);
 		par1NBTTagCompound.setByte("BotFly", dataWatcher.getWatchableObjectByte(16));
 	}
 
-	/**
-	 * Checks if the entity's current position is a valid location to spawn this
-	 * entity.
-	 */
 	@Override
 	public boolean getCanSpawnHere() {
 		int var1 = MathHelper.floor_double(boundingBox.minY);

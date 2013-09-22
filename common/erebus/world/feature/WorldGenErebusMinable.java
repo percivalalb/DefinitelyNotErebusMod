@@ -37,13 +37,13 @@ public class WorldGenErebusMinable extends WorldGenerator {
 		double d4 = (double) (y + rand.nextInt(3) - 2);
 		double d5 = (double) (y + rand.nextInt(3) - 2);
 
-		for (int l = 0; l <= this.numberOfBlocks; ++l) {
-			double d6 = d0 + (d1 - d0) * (double) l / (double) this.numberOfBlocks;
-			double d7 = d4 + (d5 - d4) * (double) l / (double) this.numberOfBlocks;
-			double d8 = d2 + (d3 - d2) * (double) l / (double) this.numberOfBlocks;
+		for (int attempt = 0, placed = 0; attempt <= numberOfBlocks*2 && placed <= numberOfBlocks; ++attempt) {
+			double d6 = d0 + (d1 - d0) * (double) placed / (double) this.numberOfBlocks;
+			double d7 = d4 + (d5 - d4) * (double) placed / (double) this.numberOfBlocks;
+			double d8 = d2 + (d3 - d2) * (double) placed / (double) this.numberOfBlocks;
 			double d9 = rand.nextDouble() * (double) this.numberOfBlocks / 16.0D;
-			double d10 = (double) (MathHelper.sin((float) l * (float) Math.PI / (float) this.numberOfBlocks) + 1.0F) * d9 + 1.0D;
-			double d11 = (double) (MathHelper.sin((float) l * (float) Math.PI / (float) this.numberOfBlocks) + 1.0F) * d9 + 1.0D;
+			double d10 = (double) (MathHelper.sin((float) placed * (float) Math.PI / (float) this.numberOfBlocks) + 1.0F) * d9 + 1.0D;
+			double d11 = (double) (MathHelper.sin((float) placed * (float) Math.PI / (float) this.numberOfBlocks) + 1.0F) * d9 + 1.0D;
 			int i1 = MathHelper.floor_double(d6 - d10 / 2.0D);
 			int j1 = MathHelper.floor_double(d7 - d11 / 2.0D);
 			int k1 = MathHelper.floor_double(d8 - d10 / 2.0D);
@@ -65,6 +65,7 @@ public class WorldGenErebusMinable extends WorldGenerator {
 								Block block = Block.blocksList[world.getBlockId(k2, l2, i3)];
 								if (d12 * d12 + d13 * d13 + d14 * d14 < 1.0D && (block != null && block.isGenMineableReplaceable(world, k2, l2, i3, blockToReplace))) {
 									world.setBlock(k2, l2, i3, this.minableBlockId, minableBlockMeta, 2);
+									++placed;
 								}
 							}
 						}

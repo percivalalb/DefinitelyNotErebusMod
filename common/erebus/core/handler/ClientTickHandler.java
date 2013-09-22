@@ -1,6 +1,8 @@
 package erebus.core.handler;
 
+import java.net.URL;
 import java.util.EnumSet;
+import java.util.Map.Entry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,6 +11,8 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
+import erebus.ErebusMod;
+import erebus.client.sound.AmbientMusicManager;
 import erebus.core.teleport.TeleportClient;
 
 public class ClientTickHandler implements ITickHandler {
@@ -62,7 +66,7 @@ public class ClientTickHandler implements ITickHandler {
 
 	@Override
 	public String getLabel() {
-		return null;
+		return "Erebus_ClientTickHandler";
 	}
 
 	public void onRenderTick() {

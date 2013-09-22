@@ -35,7 +35,7 @@ public class TeleportServer {
 			if (this.timeInPortal >= 1.0F) {
 				this.timeInPortal = 1.0F;
 				this.timeUntilPortal = 10;
-				PacketDispatcher.sendPacketToPlayer(PacketHandler.buildPacket(0), (Player) player);
+				PacketDispatcher.sendPacketToPlayer(PacketHandler.buildPacket(0, player.dimension!=ErebusMod.erebusDimensionID), (Player) player);
 
 				if (player.dimension == (byte) ErebusMod.erebusDimensionID) {
 					player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, TeleporterErebus.TELEPORTER_TO_OVERWORLD);

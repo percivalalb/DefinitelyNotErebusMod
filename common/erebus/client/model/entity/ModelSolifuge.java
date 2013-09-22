@@ -15,10 +15,10 @@ public class ModelSolifuge extends ModelBase
 	ModelRenderer REye;
 	ModelRenderer LEye;
 	ModelRenderer Thorax;
-	ModelRenderer Rmand1;
-	ModelRenderer Rmand2;
-	ModelRenderer Lmand1;
-	ModelRenderer Lmand2;
+	ModelRenderer RMand1;
+	ModelRenderer RMand2;
+	ModelRenderer LMand1;
+	ModelRenderer LMand2;
 	ModelRenderer Ab1;
 	ModelRenderer Ab2;
 	ModelRenderer Ab3;
@@ -109,30 +109,30 @@ public class ModelSolifuge extends ModelBase
 		Thorax.setTextureSize(64, 128);
 		Thorax.mirror = true;
 		setRotation(Thorax, 0F, 0F, 0F);
-		Rmand1 = new ModelRenderer(this, 33, 13);
-		Rmand1.addBox(-3.5F, -2.5F, -9.5F, 3, 3, 4);
-		Rmand1.setRotationPoint(0F, 17F, 0F);
-		Rmand1.setTextureSize(64, 128);
-		Rmand1.mirror = true;
-		setRotation(Rmand1, 0.3490659F, 0F, 0F);
-		Rmand2 = new ModelRenderer(this, 40, 7);
-		Rmand2.addBox(-5F, -1.5F, -11F, 1, 2, 3);
-		Rmand2.setRotationPoint(0F, 17F, 0F);
-		Rmand2.setTextureSize(64, 128);
-		Rmand2.mirror = true;
-		setRotation(Rmand2, 0.3490659F, -0.2617994F, 0F);
-		Lmand1 = new ModelRenderer(this, 17, 13);
-		Lmand1.addBox(0.5F, -2.5F, -9.5F, 3, 3, 4);
-		Lmand1.setRotationPoint(0F, 17F, 0F);
-		Lmand1.setTextureSize(64, 128);
-		Lmand1.mirror = true;
-		setRotation(Lmand1, 0.3490659F, 0F, 0F);
-		Lmand2 = new ModelRenderer(this, 16, 7);
-		Lmand2.addBox(4F, -1.5F, -11F, 1, 2, 3);
-		Lmand2.setRotationPoint(0F, 17F, 0F);
-		Lmand2.setTextureSize(64, 128);
-		Lmand2.mirror = true;
-		setRotation(Lmand2, 0.3490659F, 0.2617994F, 0F);
+		RMand1 = new ModelRenderer(this, 33, 13);
+		RMand1.addBox(-3.5F, -2.5F, -9.5F, 3, 3, 4);
+		RMand1.setRotationPoint(0F, 17F, 0F);
+		RMand1.setTextureSize(64, 128);
+		RMand1.mirror = true;
+		setRotation(RMand1, 0.3490659F, 0F, 0F);
+		RMand2 = new ModelRenderer(this, 40, 7);
+		RMand2.addBox(-5F, -1.5F, -11F, 1, 2, 3);
+		RMand2.setRotationPoint(0F, 17F, 0F);
+		RMand2.setTextureSize(64, 128);
+		RMand2.mirror = true;
+		setRotation(RMand2, 0.3490659F, -0.2617994F, 0F);
+		LMand1 = new ModelRenderer(this, 17, 13);
+		LMand1.addBox(0.5F, -2.5F, -9.5F, 3, 3, 4);
+		LMand1.setRotationPoint(0F, 17F, 0F);
+		LMand1.setTextureSize(64, 128);
+		LMand1.mirror = true;
+		setRotation(LMand1, 0.3490659F, 0F, 0F);
+		LMand2 = new ModelRenderer(this, 16, 7);
+		LMand2.addBox(4F, -1.5F, -11F, 1, 2, 3);
+		LMand2.setRotationPoint(0F, 17F, 0F);
+		LMand2.setTextureSize(64, 128);
+		LMand2.mirror = true;
+		setRotation(LMand2, 0.3490659F, 0.2617994F, 0F);
 		Ab1 = new ModelRenderer(this, 20, 61);
 		Ab1.addBox(-4F, -1.5F, 7.5F, 8, 5, 4);
 		Ab1.setRotationPoint(0F, 16F, 4F);
@@ -356,17 +356,17 @@ public class ModelSolifuge extends ModelBase
 		ClawR1.mirror = true;
 		setRotation(ClawR1, 0F, -1.047198F, 0F);
 		ClawR2 = new ModelRenderer(this, 49, 16);
-		ClawR2.addBox(-2F, -10F, -7F, 2, 7, 2);
-		ClawR2.setRotationPoint(-2F, 18F, -2F);
+		ClawR2.addBox(-1F, -11F, -8F, 2, 7, 2);
+		// ClawR2.setRotationPoint(-2F, 18F, 0F);
 		ClawR2.setTextureSize(64, 128);
 		ClawR2.mirror = true;
-		setRotation(ClawR2, 0.5235988F, 0.5235988F, 0F);
+		setRotation(ClawR2, 0.5235988F, 1.5707968F, 0F);
 		ClawR3 = new ModelRenderer(this, 44, 26);
-		ClawR3.addBox(-18F, -6F, 0.5F, 8, 1, 1);
-		ClawR3.setRotationPoint(-2F, 18F, -2F);
+		ClawR3.addBox(-19F, -6F, -0.5F, 8, 1, 1);
+		// ClawR3.setRotationPoint(-2F, 18F, 0F);
 		ClawR3.setTextureSize(64, 128);
 		ClawR3.mirror = true;
-		setRotation(ClawR3, 0F, -1.047198F, 0F);
+		setRotation(ClawR3, 0F, 0F, 0F);
 		ClawL1 = new ModelRenderer(this, 0, 29);
 		ClawL1.addBox(-9F, -1F, -1F, 9, 2, 2);
 		ClawL1.setRotationPoint(2F, 18F, 0F);
@@ -374,49 +374,47 @@ public class ModelSolifuge extends ModelBase
 		ClawL1.mirror = true;
 		setRotation(ClawL1, 0F, -2.094395F, 0F);
 		ClawL2 = new ModelRenderer(this, 7, 16);
-		ClawL2.addBox(0F, -10F, -7F, 2, 7, 2);
-		ClawL2.setRotationPoint(2F, 18F, -2F);
+		ClawL2.addBox(-1F, -11F, -8F, 2, 7, 2);
+		// ClawL2.setRotationPoint(2F, 18F, -2F);
 		ClawL2.setTextureSize(64, 128);
 		ClawL2.mirror = true;
-		setRotation(ClawL2, 0.5235988F, -0.5235988F, 0F);
+		setRotation(ClawL2, 0.5235988F, 1.5707962F, 0F);
 		ClawL3 = new ModelRenderer(this, 2, 26);
-		ClawL3.addBox(-18F, -6F, -2.5F, 8, 1, 1);
-		ClawL3.setRotationPoint(1F, 18F, -2F);
+		ClawL3.addBox(-19F, -6F, -0.5F, 8, 1, 1);
+		// ClawL3.setRotationPoint(1F, 18F, -2F);
 		ClawL3.setTextureSize(64, 128);
 		ClawL3.mirror = true;
-		setRotation(ClawL3, 0F, -2.094395F, 0F);
+		setRotation(ClawL3, 0F, 0F, 0F);
 
 		LFL1.addChild(LFL2);
 		LFL1.addChild(LFL3);
 		LFL1.addChild(LFL4);
-
 		LMFL1.addChild(LMFL2);
 		LMFL1.addChild(LMFL3);
 		LMFL1.addChild(LMFL4);
-
 		LMBL1.addChild(LMBL2);
 		LMBL1.addChild(LMBL3);
 		LMBL1.addChild(LMBL4);
-
 		LBL1.addChild(LBL2);
 		LBL1.addChild(LBL3);
 		LBL1.addChild(LBL4);
-
 		RFL1.addChild(RFL2);
 		RFL1.addChild(RFL3);
 		RFL1.addChild(RFL4);
-
 		RMFL1.addChild(RMFL2);
 		RMFL1.addChild(RMFL3);
 		RMFL1.addChild(RMFL4);
-
 		RMBL1.addChild(RMBL2);
 		RMBL1.addChild(RMBL3);
 		RMBL1.addChild(RMBL4);
-
 		RBL1.addChild(RBL2);
 		RBL1.addChild(RBL3);
 		RBL1.addChild(RBL4);
+		ClawR1.addChild(ClawR2);
+		ClawR1.addChild(ClawR3);
+		ClawL1.addChild(ClawL2);
+		ClawL1.addChild(ClawL3);
+
 	}
 
 	@Override
@@ -430,52 +428,24 @@ public class ModelSolifuge extends ModelBase
 		REye.render(par7);
 		LEye.render(par7);
 		Thorax.render(par7);
-		Rmand1.render(par7);
-		Rmand2.render(par7);
-		Lmand1.render(par7);
-		Lmand2.render(par7);
+		RMand1.render(par7);
+		RMand2.render(par7);
+		LMand1.render(par7);
+		LMand2.render(par7);
 		Ab1.render(par7);
 		Ab2.render(par7);
 		Ab3.render(par7);
 		Ab4.render(par7);
 		RBL1.render(par7);
-		// RBL2.render(par7);
-		// RBL3.render(par7);
-		// RBL4.render(par7);
 		LBL1.render(par7);
-		// LBL2.render(par7);
-		// LBL3.render(par7);
-		// LBL4.render(par7);
 		RMBL1.render(par7);
-		// RMBL2.render(par7);
-		// RMBL3.render(par7);
-		// RMBL4.render(par7);
 		LMBL1.render(par7);
-		// LMBL2.render(par7);
-		// LMBL3.render(par7);
-		// LMBL4.render(par7);
 		RMFL1.render(par7);
-		// RMFL2.render(par7);
-		// RMFL3.render(par7);
-		// RMFL4.render(par7);
 		LMFL1.render(par7);
-		// LMFL2.render(par7);
-		// LMFL3.render(par7);
-		// LMFL4.render(par7);
 		RFL1.render(par7);
-		// RFL2.render(par7);
-		// RFL3.render(par7);
-		// RFL4.render(par7);
 		LFL1.render(par7);
-		// LFL2.render(par7);
-		// LFL3.render(par7);
-		// LFL4.render(par7);
 		ClawR1.render(par7);
-		ClawR2.render(par7);
-		ClawR3.render(par7);
 		ClawL1.render(par7);
-		ClawL2.render(par7);
-		ClawL3.render(par7);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z)
@@ -490,13 +460,9 @@ public class ModelSolifuge extends ModelBase
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
 		float cosz1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.3F * par2;
 		float cosz2 = MathHelper.cos(par1 * 1.0F) * 0.3F * par2;
-
 		float cozy1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.4F * par2;
 		float cozy2 = MathHelper.cos(par1 * 1.0F) * 0.4F * par2;
-
-		float cosxnz1 = MathHelper.cos(par1 / 3.0F + (float) Math.PI) * 0.1F * par2;
-		float cosxnz2 = MathHelper.cos(par1 / 3.0F + (float) Math.PI) * 0.05F * par2;
-
+		float cosxnz1 = MathHelper.cos(par1 * 0.5F + (float) Math.PI) * 0.3F * par2;
 		LBL1.rotateAngleZ = cosz1 - 0.3F;
 		LMBL1.rotateAngleZ = cosz2 - 0.3F;
 		LMFL1.rotateAngleZ = cosz1 - 0.3F;
@@ -505,7 +471,6 @@ public class ModelSolifuge extends ModelBase
 		RMBL1.rotateAngleZ = -cosz1 + 0.3F;
 		RMFL1.rotateAngleZ = -cosz2 + 0.3F;
 		RFL1.rotateAngleZ = -cosz1 + 0.3F;
-
 		LBL1.rotateAngleY = cozy1 - 0.6981317F;
 		LMBL1.rotateAngleY = cozy2 - 0.2617994F;
 		LMFL1.rotateAngleY = cozy1 + 0.2617994F;
@@ -514,6 +479,14 @@ public class ModelSolifuge extends ModelBase
 		RMBL1.rotateAngleY = -cozy1 - 2.879793F;
 		RMFL1.rotateAngleY = -cozy2 + 2.879793F;
 		RFL1.rotateAngleY = -cozy1 + 2.443461F;
+		ClawR1.rotateAngleX = -cosxnz1;
+		ClawR1.rotateAngleZ = cosxnz1;
+		ClawL1.rotateAngleX = -cosxnz1;
+		ClawL1.rotateAngleZ = cosxnz1;
+		RMand1.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2;
+		RMand2.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2 - 0.2617994F;
+		LMand1.rotateAngleY = -MathHelper.cos(par1 * 0.5F + (float) Math.PI) * 0.2F * par2;
+		LMand2.rotateAngleY = -MathHelper.cos(par1 * 0.5F + (float) Math.PI) * 0.2F * par2 + 0.2617994F;
 	}
 
 }

@@ -1,6 +1,7 @@
 package erebus.world.biomes;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
@@ -14,6 +15,7 @@ import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityScorpion;
+import erebus.entity.EntitySolifuge;
 import erebus.world.feature.trees.WorldGenScorchedTree;
 
 public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
@@ -24,6 +26,7 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 		spawnableWaterCreatureList.clear();
 		spawnableCaveCreatureList.clear();
 		spawnableMonsterList.add(new SpawnListEntry(EntityScorpion.class, 30, 1, 8));
+		spawnableMonsterList.add(new SpawnListEntry(EntitySolifuge.class, 30, 1, 8));
 		spawnableMonsterList.add(new SpawnListEntry(EntityCentipede.class, 30, 1, 8));
 		spawnableMonsterList.add(new SpawnListEntry(EntityBlackWidow.class, 5, 1, 1));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityBotFly.class, 10, 4, 8));

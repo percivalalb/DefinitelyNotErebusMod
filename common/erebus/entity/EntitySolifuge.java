@@ -50,19 +50,32 @@ public class EntitySolifuge extends EntityMob {
 		return EnumCreatureAttribute.ARTHROPOD;
 	}
 
-	/*
-	 * just to avoid crashes
-	 * 
-	 * @Override protected String getLivingSound() { return
-	 * "erebus:solifugesound"; }
-	 * 
-	 * @Override protected String getHurtSound() { return
-	 * "erebus:solifugenhurt"; }
-	 * 
-	 * @Override protected String getDeathSound() { return "erebus:squish"; }
-	 */
-	protected void getStepSound(int par1, int par2, int par3, int par4) {
-		worldObj.playSoundAtEntity(this, "mob.zombie.wood", 0.15F, 1.0F);
+	@Override
+	protected void fall(float par1) {
+	}
+
+	@Override
+	public void setInWeb() {
+	}
+
+	@Override
+	protected String getLivingSound() {
+		return "mob.spider.say";
+	}
+
+	@Override
+	protected String getHurtSound() {
+		return "mob.spider.say";
+	}
+
+	@Override
+	protected String getDeathSound() {
+		return "mob.spider.death";
+	}
+
+	@Override
+	protected void playStepSound(int par1, int par2, int par3, int par4) {
+		playSound("mob.spider.step", 0.15F, 1.0F);
 	}
 
 	@Override

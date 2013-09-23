@@ -140,7 +140,9 @@ public class ChunkProviderErebus implements IChunkProvider {
 		biomesForGeneration = worldObj.getWorldChunkManager().loadBlockGeneratorData(biomesForGeneration, x * 16, z * 16, 16, 16);
 		generateTerrain(x, z, blocks);
 		replaceBlocksForBiome(x, z, blocks, biomesForGeneration);
+		
 		netherCaveGenerator.generate(this, worldObj, x, z, blocks);
+		//ravineGenerator.generate(this, worldObj, x, z, blocks); << requires custom generator - not deep enough!
 
 		Chunk chunk = new Chunk(worldObj, blocks, x, z);
 		byte[] biomeArrayReference = chunk.getBiomeArray();

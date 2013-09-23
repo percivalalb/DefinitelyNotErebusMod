@@ -25,7 +25,6 @@ public class ConfigurationHandler {
 		ModBlocks.portalErebusID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Erebus Portal", idGen.getNextBlockID()).getInt();
 
 		ModBlocks.umberstoneID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Umberstone", 255, "Umberstone Block ID must be below 256").getInt();
-		ModBlocks.umbercobbleStairsID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Umbercobble Stairs", idGen.getNextBlockID()).getInt();
 		ModBlocks.umberOreBlockID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of the Umberstone Ores", idGen.getNextBlockID()).getInt();
 		ModBlocks.oreFossilID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Fossil Ore", idGen.getNextBlockID()).getInt();
 		ModBlocks.redGemID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Red Gem", idGen.getNextBlockID()).getInt();
@@ -37,16 +36,8 @@ public class ConfigurationHandler {
 		ModBlocks.planksErebusID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Planks", idGen.getNextBlockID()).getInt();
 		ModBlocks.leavesErebusID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Leaves", idGen.getNextBlockID()).getInt();
 		ModBlocks.erebusSaplingID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Erebus Saplings", idGen.getNextBlockID()).getInt();
-		ModBlocks.stairsAcaciaID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Acacia Stairs", idGen.getNextBlockID()).getInt();
-		ModBlocks.stairsEucalyptusID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Eucalyptus Stairs", idGen.getNextBlockID()).getInt();
-		ModBlocks.stairsMahoganyID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Mahogany Stairs", idGen.getNextBlockID()).getInt();
-		ModBlocks.stairsBaobabID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Baobab Stairs", idGen.getNextBlockID()).getInt();
-		ModBlocks.stairsMossbarkID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Mossbark Stairs", idGen.getNextBlockID()).getInt();
-		ModBlocks.stairsPinkID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Pink Stairs", idGen.getNextBlockID()).getInt();
-		ModBlocks.stairsScorchedID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Scorched Stairs", idGen.getNextBlockID()).getInt();
-		ModBlocks.stairsAsperID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Asper Stairs", idGen.getNextBlockID()).getInt();
 		ModBlocks.hollowLogAcaciaID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Hollow Log", idGen.getNextBlockID()).getInt();
-
+		
 		ModBlocks.erebusGrassID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Erebus Grass", idGen.getNextBlockID()).getInt();
 		ModBlocks.thornsID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Thorns", idGen.getNextBlockID()).getInt();
 		ModBlocks.fernID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Ferns", idGen.getNextBlockID()).getInt();
@@ -56,13 +47,25 @@ public class ConfigurationHandler {
 		ModBlocks.blockSilkID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Silk", idGen.getNextBlockID()).getInt();
 		ModBlocks.mirBrickID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Mirbrick", idGen.getNextBlockID()).getInt();
 		ModBlocks.petrifiedWoodPlanksID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Petrified Wood Planks", idGen.getNextBlockID()).getInt();
-		ModBlocks.petrifiedWoodStairsID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Petrified Wood Stairs", idGen.getNextBlockID()).getInt();
 		ModBlocks.petrifiedCraftingTableID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Petrified Crafting Table", idGen.getNextBlockID()).getInt();
 		ModBlocks.bambooCrateID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Bamboo Crate", idGen.getNextBlockID()).getInt();
 		ModBlocks.umberFurnaceID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Umber Furnace ON", idGen.getNextBlockID()).getInt();
 		ModBlocks.umberFurnace_onID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Umebr Furnace OFF", idGen.getNextBlockID()).getInt();
 		ModBlocks.umberPaverID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Umebrpaver", idGen.getNextBlockID()).getInt();
 
+		ModBlocks.umbercobbleStairsID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Umbercobble Stairs", idGen.getNextBlockID()).getInt();
+		ModBlocks.stairsAcaciaID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Acacia Stairs", idGen.getNextBlockID()).getInt();
+		ModBlocks.stairsEucalyptusID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Eucalyptus Stairs", idGen.getNextBlockID()).getInt();
+		ModBlocks.stairsMahoganyID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Mahogany Stairs", idGen.getNextBlockID()).getInt();
+		ModBlocks.stairsBaobabID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Baobab Stairs", idGen.getNextBlockID()).getInt();
+		ModBlocks.stairsMossbarkID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Mossbark Stairs", idGen.getNextBlockID()).getInt();
+		ModBlocks.stairsPinkID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Pink Stairs", idGen.getNextBlockID()).getInt();
+		ModBlocks.stairsScorchedID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Scorched Stairs", idGen.getNextBlockID()).getInt();
+		ModBlocks.stairsAsperID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Asper Stairs", idGen.getNextBlockID()).getInt();
+		ModBlocks.petrifiedWoodStairsID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Petrified Wood Stairs", idGen.getNextBlockID()).getInt();
+		
+		ModBlocks.wallErebusID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Wall", idGen.getNextBlockID()).getInt();
+		
 		ModBlocks.spiderSpawnerID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Spider Spawners", idGen.getNextBlockID()).getInt();
 		ModBlocks.caveSpiderSpawnerID = config.get(Configuration.CATEGORY_BLOCK, "Block ID of Cave Spider Spawners", idGen.getNextBlockID()).getInt();
 

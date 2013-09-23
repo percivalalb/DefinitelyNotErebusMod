@@ -80,10 +80,7 @@ public class AmbientMusicManager implements IScheduledTickHandler{
 		name = "erebus:"+name;
 		
 		for(Entry<String,URL> entry:poolAmbient.entrySet()){
-			if (entry.getKey().equals(name)){
-				System.out.println("check "+entry.getKey()+" vs "+name);
-				return entry;
-			}
+			if (entry.getKey().equals(name)) return entry;
 		}
 		
 		return null;

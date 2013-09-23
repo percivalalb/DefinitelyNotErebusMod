@@ -101,7 +101,7 @@ public class WorldProviderErebus extends WorldProvider {
 
 	@Override
 	public IChunkProvider createChunkGenerator() {
-		return new ChunkProviderUndergroundJungle(this.worldObj, this.worldObj.getSeed());
+		return new ChunkProviderErebus(this.worldObj, this.worldObj.getSeed());
 	}
 
 	@Override

@@ -55,6 +55,11 @@ public class BlockAmber extends Block {
 	}
 	
 	@Override
+	public int damageDropped(int meta){
+		return meta;
+	}
+	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getBlockTexture(IBlockAccess world, int x, int y, int z, int side){
 		int meta = world.getBlockMetadata(x,y,z);

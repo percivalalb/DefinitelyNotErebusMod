@@ -282,7 +282,7 @@ public class ChunkProviderErebus implements IChunkProvider {
 				for (int yInChunk = 127; yInChunk >= 0; --yInChunk) {
 					int var17 = (zInChunk * 16 + xInChunk) * 128 + yInChunk;
 
-					if (yInChunk <= 0 + rand.nextInt(5))
+					if (yInChunk <= 0 + rand.nextInt(5) ||yInChunk >= 127 - rand.nextInt(5))
 						blocks[var17] = (byte) Block.bedrock.blockID;
 					else {
 						byte var18 = blocks[var17];

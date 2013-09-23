@@ -1,5 +1,7 @@
 package erebus;
 
+import java.io.File;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
@@ -78,7 +80,7 @@ public class ErebusMod {
 	public void preInitServer(FMLPreInitializationEvent event) {
 		LogHelper.init();
 
-		ConfigurationHandler.loadConfig(event);
+		ConfigurationHandler.loadConfig(new File(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + Reference.MOD_ID + ".cfg"));
 
 		if (shouldDoVersionCheck) {
 			VersionHelper.execute();

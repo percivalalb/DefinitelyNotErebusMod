@@ -1,14 +1,15 @@
 package erebus.core.handler;
 
+import java.io.File;
 import java.util.logging.Level;
 
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import erebus.ErebusMod;
 import erebus.ModBiomes;
 import erebus.ModBlocks;
 import erebus.ModItems;
+import erebus.block.BlockUmberstone;
 import erebus.utils.IdGenerator;
 
 public class ConfigurationHandler {
@@ -24,9 +25,8 @@ public class ConfigurationHandler {
 		return config.getItem(name, idGen.getNextItemID()).getInt(idGen.getLastItemID());
 	}
 
-	public static void loadConfig(FMLPreInitializationEvent event) {
-
-		config = new Configuration(event.getSuggestedConfigurationFile());
+	public static void loadConfig(File configFile) {
+		config = new Configuration(configFile);
 
 		try {
 			config.load();
@@ -65,7 +65,9 @@ public class ConfigurationHandler {
 			ModBlocks.umberFurnace_onID = configBlock("Block ID of Umebr Furnace OFF");
 			ModBlocks.umberPaverID = configBlock("Block ID of Umebrpaver");
 
-			ModBlocks.umbercobbleStairsID = configBlock("Block ID of Umbercobble Stairs");
+			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];
+			for (int i = 0; i < ModBlocks.umbercobbleStairsID.length; i++)
+				ModBlocks.umbercobbleStairsID[i] = configBlock("Block ID of Umbercobble Stairs " + i);
 			ModBlocks.stairsAcaciaID = configBlock("Block ID of Acacia Stairs");
 			ModBlocks.stairsEucalyptusID = configBlock("Block ID of Eucalyptus Stairs");
 			ModBlocks.stairsMahoganyID = configBlock("Block ID of Mahogany Stairs");
@@ -133,5 +135,4 @@ public class ConfigurationHandler {
 			config.save();
 		}
 	}
-
 }

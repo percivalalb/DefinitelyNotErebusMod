@@ -15,6 +15,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockErebusOreExtras extends Block {
 
 	private final String[] types = { "oreAluminiumU", "oreCopperU", "oreLeadU", "oreSilverU", "oreTinU" };
+	public static final byte dataAluminium = 0, dataCopper = 1, dataLead = 2, dataSilver = 3, dataTin = 4;
+	
 	@SideOnly(Side.CLIENT)
 	private Icon[] blockIcon;
 

@@ -67,7 +67,7 @@ public class BlockRedGem extends Block {
 	@Override
 	public int quantityDropped(int meta, int fortune, Random random) {
 		if (meta == 0) {
-			return 2 + random.nextInt(3);
+			return 1 + random.nextInt(2 + fortune);
 		}
 		return 1;
 	}

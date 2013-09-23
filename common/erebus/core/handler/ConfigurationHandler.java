@@ -9,6 +9,7 @@ import erebus.ErebusMod;
 import erebus.ModBiomes;
 import erebus.ModBlocks;
 import erebus.ModItems;
+import erebus.block.BlockPlanksErebus;
 import erebus.block.BlockUmberstone;
 import erebus.utils.IdGenerator;
 
@@ -68,14 +69,9 @@ public class ConfigurationHandler {
 			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];
 			for (int i = 0; i < ModBlocks.umbercobbleStairsID.length; i++)
 				ModBlocks.umbercobbleStairsID[i] = configBlock("Block ID of Umbercobble Stairs " + i);
-			ModBlocks.stairsAcaciaID = configBlock("Block ID of Acacia Stairs");
-			ModBlocks.stairsEucalyptusID = configBlock("Block ID of Eucalyptus Stairs");
-			ModBlocks.stairsMahoganyID = configBlock("Block ID of Mahogany Stairs");
-			ModBlocks.stairsBaobabID = configBlock("Block ID of Baobab Stairs");
-			ModBlocks.stairsMossbarkID = configBlock("Block ID of Mossbark Stairs");
-			ModBlocks.stairsPinkID = configBlock("Block ID of Pink Stairs");
-			ModBlocks.stairsScorchedID = configBlock("Block ID of Scorched Stairs");
-			ModBlocks.stairsAsperID = configBlock("Block ID of Asper Stairs");
+			ModBlocks.stairsAcaciaID = new int[BlockPlanksErebus.plankTypes.length];
+			for (int i = 0; i < ModBlocks.stairsAcaciaID.length; i++)
+				ModBlocks.stairsAcaciaID[i] = configBlock("Block ID of Plank Stairs " + i);
 			ModBlocks.petrifiedWoodStairsID = configBlock("Block ID of Petrified Wood Stairs");
 
 			ModBlocks.wallErebusID = configBlock("Block ID of Wall");

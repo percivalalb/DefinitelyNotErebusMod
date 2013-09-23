@@ -8,15 +8,15 @@ import org.lwjgl.opengl.GL11;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.inventory.ContainerBambooCrate;
-import erebus.tileentity.TileEntityBamboo;
+import erebus.tileentity.TileEntityBambooCrate;
 
 @SideOnly(Side.CLIENT)
 public class GuiBambooCrate extends GuiContainer {
 
 	private static final ResourceLocation GUI_BAMBOO_CRATE = new ResourceLocation("erebus:textures/gui/bambooCrate.png");
-	private TileEntityBamboo bambooCrateInventory;
+	private TileEntityBambooCrate bambooCrateInventory;
 
-	public GuiBambooCrate(InventoryPlayer par1InventoryPlayer, TileEntityBamboo par2TileEntityBambooCrate) {
+	public GuiBambooCrate(InventoryPlayer par1InventoryPlayer, TileEntityBambooCrate par2TileEntityBambooCrate) {
 		super(new ContainerBambooCrate(par1InventoryPlayer, par2TileEntityBambooCrate));
 		this.bambooCrateInventory = par2TileEntityBambooCrate;
 		this.allowUserInput = false;

@@ -13,23 +13,23 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.inventory.ContainerColossalCrate;
 import erebus.network.PacketHandler;
-import erebus.tileentity.TileEntityBamboo;
+import erebus.tileentity.TileEntityBambooCrate;
 
 @SideOnly(Side.CLIENT)
 public class GuiColossalCrate extends GuiContainer {
 
 	public static final boolean hasInventoryTweaks = Loader.isModLoaded("inventorytweaks");
 	private static final ResourceLocation GUI_BAMBOO_CRATE = new ResourceLocation("erebus:textures/gui/collosalcrate.png");
-	public TileEntityBamboo crate1;
-	public TileEntityBamboo crate2;
-	public TileEntityBamboo crate3;
-	public TileEntityBamboo crate4;
-	public TileEntityBamboo crate5;
-	public TileEntityBamboo crate6;
-	public TileEntityBamboo crate7;
-	public TileEntityBamboo crate8;
+	public TileEntityBambooCrate crate1;
+	public TileEntityBambooCrate crate2;
+	public TileEntityBambooCrate crate3;
+	public TileEntityBambooCrate crate4;
+	public TileEntityBambooCrate crate5;
+	public TileEntityBambooCrate crate6;
+	public TileEntityBambooCrate crate7;
+	public TileEntityBambooCrate crate8;
 
-	public GuiColossalCrate(InventoryPlayer par1InventoryPlayer, List<TileEntityBamboo> list) {
+	public GuiColossalCrate(InventoryPlayer par1InventoryPlayer, List<TileEntityBambooCrate> list) {
 		super(new ContainerColossalCrate(par1InventoryPlayer, list));
 		this.crate1 = list.get(0);
 		this.crate2 = list.get(1);

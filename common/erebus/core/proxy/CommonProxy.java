@@ -23,7 +23,7 @@ import erebus.inventory.ContainerBambooCrate;
 import erebus.inventory.ContainerColossalCrate;
 import erebus.inventory.ContainerPetrifiedCraftingTable;
 import erebus.inventory.ContainerUmberFurnace;
-import erebus.tileentity.TileEntityBamboo;
+import erebus.tileentity.TileEntityBambooCrate;
 import erebus.tileentity.TileEntityHollowLog;
 import erebus.tileentity.TileEntitySpawner;
 import erebus.tileentity.TileEntityUmberFurnace;
@@ -46,7 +46,7 @@ public class CommonProxy implements IGuiHandler {
 		// Why the fancy names? No one will be reading those
 		GameRegistry.registerTileEntity(TileEntitySpawner.class, "TILE ENTITY SPAWNER MWAHAHAHAHAA SHHDSAIUSDSAG 42");
 		GameRegistry.registerTileEntity(TileEntityHollowLog.class, "Hollow Log (Erebus)");
-		GameRegistry.registerTileEntity(TileEntityBamboo.class, "Bamboo Crate (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityBambooCrate.class, "Bamboo Crate (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityUmberFurnace.class, "Umber Furnace (Erebus)");
 	}
 
@@ -58,13 +58,13 @@ public class CommonProxy implements IGuiHandler {
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		if (ID == GUI_ID_BAMBOO_CRATE) {
 			TileEntity tileentity = world.getBlockTileEntity(x, y, z);
-			if (tileentity instanceof TileEntityBamboo)
-				return new ContainerBambooCrate(player.inventory, (TileEntityBamboo) tileentity);
+			if (tileentity instanceof TileEntityBambooCrate)
+				return new ContainerBambooCrate(player.inventory, (TileEntityBambooCrate) tileentity);
 		}
 
 		else if (ID == GUI_ID_COLOSSAL_CRATE) {
 			TileEntity tileentity = world.getBlockTileEntity(x, y, z);
-			if (tileentity instanceof TileEntityBamboo) {
+			if (tileentity instanceof TileEntityBambooCrate) {
 				BlockBambooCrate crate = (BlockBambooCrate) ModBlocks.bambooCrate;
 				if (world.getBlockId(x, y - 1, z) == crate.blockID)
 					y--;
@@ -73,10 +73,10 @@ public class CommonProxy implements IGuiHandler {
 				if (world.getBlockId(x, y, z - 1) == crate.blockID)
 					z--;
 				if (crate.squareCrate(world, x, y, z)) {
-					List<TileEntityBamboo> list = new ArrayList<TileEntityBamboo>();
+					List<TileEntityBambooCrate> list = new ArrayList<TileEntityBambooCrate>();
 					int[][] places = new int[][] { { 1, 0, 0 }, { 1, 0, 1 }, { 0, 0, 1 }, { 1, 1, 0 }, { 1, 1, 1 }, { 0, 1, 1 }, { 0, 1, 0 }, { 0, 0, 0 } };
 					for (int[] place : places) {
-						TileEntityBamboo tilecrate = (TileEntityBamboo) world.getBlockTileEntity(x + place[0], y + place[1], z + place[2]);
+						TileEntityBambooCrate tilecrate = (TileEntityBambooCrate) world.getBlockTileEntity(x + place[0], y + place[1], z + place[2]);
 						list.add(tilecrate);
 					}
 					return new ContainerColossalCrate(player.inventory, list);
@@ -100,13 +100,13 @@ public class CommonProxy implements IGuiHandler {
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		if (ID == GUI_ID_BAMBOO_CRATE) {
 			TileEntity tileentity = world.getBlockTileEntity(x, y, z);
-			if (tileentity instanceof TileEntityBamboo)
-				return new GuiBambooCrate(player.inventory, (TileEntityBamboo) tileentity);
+			if (tileentity instanceof TileEntityBambooCrate)
+				return new GuiBambooCrate(player.inventory, (TileEntityBambooCrate) tileentity);
 		}
 
 		else if (ID == GUI_ID_COLOSSAL_CRATE) {
 			TileEntity tileentity = world.getBlockTileEntity(x, y, z);
-			if (tileentity instanceof TileEntityBamboo) {
+			if (tileentity instanceof TileEntityBambooCrate) {
 				BlockBambooCrate crate = (BlockBambooCrate) ModBlocks.bambooCrate;
 				if (world.getBlockId(x, y - 1, z) == crate.blockID)
 					y--;
@@ -115,10 +115,10 @@ public class CommonProxy implements IGuiHandler {
 				if (world.getBlockId(x, y, z - 1) == crate.blockID)
 					z--;
 				if (crate.squareCrate(world, x, y, z)) {
-					List<TileEntityBamboo> list = new ArrayList<TileEntityBamboo>();
+					List<TileEntityBambooCrate> list = new ArrayList<TileEntityBambooCrate>();
 					int[][] places = new int[][] { { 1, 0, 0 }, { 1, 0, 1 }, { 0, 0, 1 }, { 1, 1, 0 }, { 1, 1, 1 }, { 0, 1, 1 }, { 0, 1, 0 }, { 0, 0, 0 } };
 					for (int[] place : places) {
-						TileEntityBamboo tilecrate = (TileEntityBamboo) world.getBlockTileEntity(x + place[0], y + place[1], z + place[2]);
+						TileEntityBambooCrate tilecrate = (TileEntityBambooCrate) world.getBlockTileEntity(x + place[0], y + place[1], z + place[2]);
 						list.add(tilecrate);
 					}
 					return new GuiColossalCrate(player.inventory, list);

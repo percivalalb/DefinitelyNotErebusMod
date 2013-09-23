@@ -26,4 +26,12 @@ public class IdGenerator {
 	public int getNextBlockID() {
 		return currentBlockID++;
 	}
+
+	public int getLastItemID() {
+		return currentItemID;
+	}
+
+	public int getLastBlockID() {
+		return currentBlockID;
+	}
 }

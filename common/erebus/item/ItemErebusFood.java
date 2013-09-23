@@ -4,6 +4,7 @@ import java.util.List;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -91,7 +92,13 @@ public class ItemErebusFood extends ItemFood {
 		--stack.stackSize;
 		player.getFoodStats().addStats(getHealAmount(stack, world, player), getSaturationModifier(stack, world, player));
 		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		this.onFoodEaten(stack, world, player);
+		onFoodEaten(stack, world, player);
+		
+		if (stack.getItemDamage() == 6){
+		    if (stack.stackSize == 0)return new ItemStack(Item.bowlEmpty);
+		    else player.inventory.addItemStackToInventory(new ItemStack(Item.bowlEmpty));
+		}
+		
 		return stack;
 	}
 

@@ -190,7 +190,6 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenEucalyptus(ModBlocks.logErebusGroup1.blockID, BlockLogErebus.dataEucalyptus/* 2 */, ModBlocks.leavesErebus.blockID, BlockLeavesErebus.dataEucalyptusDecay, 8 + rand.nextInt(4), 5, 8, Block.grass.blockID)).generate(worldObj, rand, j2, l3, j5);
 		}
 
-		// Glowstone
 		for (int c = 10; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(128);
@@ -229,11 +228,11 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenMelon()).generate(worldObj, rand, j2, l3, j5);
 		}
 
-		if (rand.nextInt(5) == 0)
+		if (rand.nextInt(8) == 0)
 			for (int yy = 100; yy > 20; yy--) {
 				int xx = x + 4 + rand.nextInt(8), zz = z + 4 + rand.nextInt(8);
 				if (worldObj.getBlockId(xx, yy, zz) == 0 && worldObj.getBlockId(xx, yy - 1, zz) == Block.grass.blockID)
-					new WorldGenBamboo(16).generate(worldObj, rand, xx, yy, zz);
+					if (new WorldGenBamboo(13).generate(worldObj, rand, xx, yy, zz))break;
 			}
 
 		for (int c = 0; c < 150; c++) {

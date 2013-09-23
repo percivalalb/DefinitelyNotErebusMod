@@ -30,31 +30,31 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 	public void generateDefault(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) {
 		boolean extraOres = ErebusMod.activateExtraOres;
 		
-		for (int a = 0; a < (extraOres ? 16 : 18); ++a) {
-			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataCoal, 12, worldObj, rand, x, z, 16, 112, 3);
+		for (int a = 0; a < (extraOres ? 14 : 16); ++a) {
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataCoal, 14, worldObj, rand, x, z, 16, 112, 3);
 		}
 
-		for (int a = 0; a < (extraOres ? 18 : 20); ++a) {
-			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataIron, 8, worldObj, rand, x, z, 16, 112, 3);
+		for (int a = 0; a < (extraOres ? 15 : 17); ++a) {
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataIron, 10, worldObj, rand, x, z, 16, 112, 3);
 		}
 
-		for (int a = 0; a < (extraOres ? 6 : 7); ++a) {
-			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataGold, 8, worldObj, rand, x, z, 16, 112, 3);
+		for (int a = 0; a < (extraOres ? 5 : 6); ++a) {
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataGold, 7, worldObj, rand, x, z, 16, 112, 3);
 		}
 
 		for (int a = 0; a < 3; ++a) {
 			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataLapis, 6, worldObj, rand, x, z, 16, 112, 2);
 		}
 
-		for (int a = 0; a < (extraOres ? 12 : 13); ++a) {
+		for (int a = 0; a < 4; ++a) {
 			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataDiamond, 1, worldObj, rand, x, z, 16, 112, 2);
 		}
 
-		for (int a = 0; a < 5; ++a) {
+		for (int a = 0; a < 3; ++a) {
 			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataJade, 4, worldObj, rand, x, z, 16, 112, 2);
 		}
 		
-		for (int a = 0; a < 9; ++a) {
+		for (int a = 0; a < (extraOres ? 6 : 7); ++a) {
 			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataPetrifiedWood, 9, worldObj, rand, x, z, 16, 112, 2);
 		}
 
@@ -70,7 +70,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 			}
 			
 			for (int a = 0; a < 13; ++a) {
-				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataCopper, 7, worldObj, rand, x, z, 16, 112, 2);
+				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataCopper, 7, worldObj, rand, x, z, 16, 112, 3);
 			}
 			
 			for (int a = 0; a < 7; ++a) {
@@ -78,7 +78,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 			}
 			
 			for (int a = 0; a < 8; ++a) {
-				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataSilver, 9, worldObj, rand, x, z, 16, 112, 2);
+				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataSilver, 9, worldObj, rand, x, z, 16, 112, 3);
 			}
 			
 			for (int a = 0; a < 8; ++a) {

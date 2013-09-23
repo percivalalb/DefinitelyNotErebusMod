@@ -107,6 +107,9 @@ public class ModBlocks {
 	public static Block spiderSpawner;     				public static int spiderSpawnerID;
 	public static Block caveSpiderSpawner;    			public static int caveSpiderSpawnerID;
 
+	// MISC
+	public static Block insectRepellent;
+	public static int insectRepellentID;
 	public static void init() {
 		// Block declaration: constructor, hardness, resistance, light value, light opacity, step sound, creative tab, unlocalized name, texture name
 		// FIXME Remove the creative tab before release!!!

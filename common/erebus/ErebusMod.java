@@ -96,7 +96,7 @@ public class ErebusMod {
 
 		DimensionManager.registerProviderType(erebusDimensionID, WorldProviderErebus.class, true);
 		DimensionManager.registerDimension(erebusDimensionID, erebusDimensionID);
-		AddonManager.runFMLPre(ConfigurationHandler.configurationFile);
+		AddonManager.runFMLPre(ConfigurationHandler.config);
 	}
 
 	@EventHandler
@@ -111,11 +111,11 @@ public class ErebusMod {
 		MinecraftForge.EVENT_BUS.register(ModItems.jumpBoots);
 
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
-		AddonManager.runFMLInit(ConfigurationHandler.configurationFile);
+		AddonManager.runFMLInit(ConfigurationHandler.config);
 	}
 
 	@EventHandler
 	public void postLoad(FMLPostInitializationEvent event) {
-		AddonManager.runRegisteredAddons(ConfigurationHandler.configurationFile);
+		AddonManager.runRegisteredAddons(ConfigurationHandler.config);
 	}
 }

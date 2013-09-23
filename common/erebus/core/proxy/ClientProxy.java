@@ -55,6 +55,7 @@ import erebus.client.render.entity.RenderVelvetWorm;
 import erebus.client.render.entity.RenderWasp;
 import erebus.client.render.item.BambooItemRenderer;
 import erebus.client.render.item.HollowLogItemRenderer;
+import erebus.client.render.item.ItemUmberFurnaceRenderer;
 import erebus.client.render.item.WaspSwordItemRenderer;
 import erebus.client.render.tileentity.TileEntityRenderBamboo;
 import erebus.client.render.tileentity.TileEntityRenderHollowLog;
@@ -78,7 +79,7 @@ import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
 import erebus.network.packet.PacketParticle;
-import erebus.tileentity.TileEntityBamboo;
+import erebus.tileentity.TileEntityBambooCrate;
 import erebus.tileentity.TileEntityHollowLog;
 import erebus.tileentity.TileEntitySpawner;
 
@@ -111,15 +112,15 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityMoth.class, new RenderMoth(new ModelMoth(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityFirebrat.class, new RenderFirebrat(new ModelFirebrat(), 0.3F));
 
-
 		// Special Renderer
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHollowLog.class, new TileEntityRenderHollowLog());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBamboo.class, new TileEntityRenderBamboo());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBambooCrate.class, new TileEntityRenderBamboo());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpawner.class, new TileEntitySpawnerRender());
 
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.hollowLogAcacia.blockID, new HollowLogItemRenderer(TileEntityRenderHollowLog.hollowLogResource));
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooCrate.blockID, new BambooItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.waspSword.itemID, new WaspSwordItemRenderer());
+		MinecraftForgeClient.registerItemRenderer(ModBlocks.umberFurnace.blockID, new ItemUmberFurnaceRenderer());
 	}
 
 	@Override
@@ -142,8 +143,7 @@ public class ClientProxy extends CommonProxy {
 				return;
 
 			for (int countparticles = 0; countparticles <= 50; ++countparticles)
-				eff.addEffect(new EntityDiggingFX(player.worldObj, woodX + 0.5D + (e.getRNG().nextDouble() - 0.5D) * e.width, woodY + 0.2D + e.getRNG().nextDouble() * e.height - e.yOffset, woodZ + 0.5D + (e.getRNG().nextDouble() - 0.5D) * e.width, e.getRNG()
-				.nextGaussian() * 0.5D, e.getRNG().nextGaussian() * 0.01D, e.getRNG().nextGaussian() * 0.5D, block, blockMeta));
+				eff.addEffect(new EntityDiggingFX(player.worldObj, woodX + 0.5D + (e.getRNG().nextDouble() - 0.5D) * e.width, woodY + 0.2D + e.getRNG().nextDouble() * e.height - e.yOffset, woodZ + 0.5D + (e.getRNG().nextDouble() - 0.5D) * e.width, e.getRNG().nextGaussian() * 0.5D, e.getRNG().nextGaussian() * 0.01D, e.getRNG().nextGaussian() * 0.5D, block, blockMeta));
 		}
 	}
 }

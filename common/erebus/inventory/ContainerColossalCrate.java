@@ -4,48 +4,40 @@ import invtweaks.api.container.ChestContainer;
 
 import java.util.List;
 
-import erebus.tileentity.TileEntityBamboo;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import erebus.tileentity.TileEntityBambooCrate;
 
 @ChestContainer(rowSize = 12, isLargeChest = false)
 public class ContainerColossalCrate extends Container {
-	private InventoryPlayer playerInventory;
-	public TileEntityBamboo crate1;
-	public TileEntityBamboo crate2;
-	public TileEntityBamboo crate3;
-	public TileEntityBamboo crate4;
-	public TileEntityBamboo crate5;
-	public TileEntityBamboo crate6;
-	public TileEntityBamboo crate7;
-	public TileEntityBamboo crate8;
-	public List<TileEntityBamboo> crateList;
+	private final InventoryPlayer playerInventory;
+	public TileEntityBambooCrate crate1;
+	public TileEntityBambooCrate crate2;
+	public TileEntityBambooCrate crate3;
+	public TileEntityBambooCrate crate4;
+	public TileEntityBambooCrate crate5;
+	public TileEntityBambooCrate crate6;
+	public TileEntityBambooCrate crate7;
+	public TileEntityBambooCrate crate8;
+	public List<TileEntityBambooCrate> crateList;
 
 	public int page = 1;
 
-	public ContainerColossalCrate(InventoryPlayer par1InventoryPlayer, List<TileEntityBamboo> list) {
-		this.playerInventory = par1InventoryPlayer;
-		this.crate1 = list.get(0);
-		this.crate2 = list.get(1);
-		this.crate3 = list.get(2);
-		this.crate4 = list.get(3);
-		this.crate5 = list.get(4);
-		this.crate6 = list.get(5);
-		this.crate7 = list.get(6);
-		this.crate8 = list.get(7);
-		this.crateList = list;
-		crate1.openChest();
-		crate2.openChest();
-		crate3.openChest();
-		crate4.openChest();
-		crate5.openChest();
-		crate6.openChest();
-		crate7.openChest();
-		crate8.openChest();
-		this.addSlots();
+	public ContainerColossalCrate(InventoryPlayer par1InventoryPlayer, List<TileEntityBambooCrate> list) {
+		playerInventory = par1InventoryPlayer;
+		crate1 = list.get(0);
+		crate2 = list.get(1);
+		crate3 = list.get(2);
+		crate4 = list.get(3);
+		crate5 = list.get(4);
+		crate6 = list.get(5);
+		crate7 = list.get(6);
+		crate8 = list.get(7);
+		crateList = list;
+		addSlots();
 	}
 
 	public void addSlots() {
@@ -54,18 +46,15 @@ public class ContainerColossalCrate extends Container {
 		int slotNo = page * 72 - 72;
 		for (j = slotNo; j < slotNo + 72; ++j) {
 			int crateNo = getCrateNumberFromSlotNo(j);
-			this.addSlotToContainer(new Slot(crateList.get(crateNo), getSlotIDFromSlotNo(j), getSlotXFromSlotNo(j), getSlotYFromSlotNo(j)));
+			addSlotToContainer(new Slot(crateList.get(crateNo), getSlotIDFromSlotNo(j), getSlotXFromSlotNo(j), getSlotYFromSlotNo(j)));
 		}
 
-		for (j = 0; j < 3; ++j) {
-			for (k = 0; k < 9; ++k) {
-				this.addSlotToContainer(new Slot(playerInventory, k + j * 9 + 9, 35 + k * 18, 138 + j * 18));
-			}
-		}
+		for (j = 0; j < 3; ++j)
+			for (k = 0; k < 9; ++k)
+				addSlotToContainer(new Slot(playerInventory, k + j * 9 + 9, 35 + k * 18, 138 + j * 18));
 
-		for (j = 0; j < 9; ++j) {
-			this.addSlotToContainer(new Slot(playerInventory, j, 35 + j * 18, 196));
-		}
+		for (j = 0; j < 9; ++j)
+			addSlotToContainer(new Slot(playerInventory, j, 35 + j * 18, 196));
 	}
 
 	public void changePage(int i) {
@@ -73,58 +62,39 @@ public class ContainerColossalCrate extends Container {
 			i += 3;
 		while (i > 3)
 			i -= 3;
-		this.page = i;
-		this.inventorySlots.clear();
-		this.inventoryItemStacks.clear();
-		this.addSlots();
+		page = i;
+		inventorySlots.clear();
+		inventoryItemStacks.clear();
+		addSlots();
 	}
 
 	@Override
 	public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
-		if (par1EntityPlayer.worldObj.getWorldTime() % 5 == 0) {
-			return this.crate1.isUseableByPlayer(par1EntityPlayer, true);
-		}
-		return true;
+		return crate1.isUseableByPlayer(par1EntityPlayer);
 	}
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
 		ItemStack itemstack = null;
-		Slot slot = (Slot) this.inventorySlots.get(par2);
+		Slot slot = (Slot) inventorySlots.get(par2);
 
 		if (slot != null && slot.getHasStack()) {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
 
 			if (par2 < 72) {
-				if (!this.mergeItemStack(itemstack1, 72, this.inventorySlots.size(), true)) {
+				if (!mergeItemStack(itemstack1, 72, inventorySlots.size(), true))
 					return null;
-				}
-			} else if (!this.mergeItemStack(itemstack1, 0, 72, false)) {
+			} else if (!mergeItemStack(itemstack1, 0, 72, false))
 				return null;
-			}
 
-			if (itemstack1.stackSize == 0) {
+			if (itemstack1.stackSize == 0)
 				slot.putStack((ItemStack) null);
-			} else {
+			else
 				slot.onSlotChanged();
-			}
 		}
 
 		return itemstack;
-	}
-
-	@Override
-	public void onContainerClosed(EntityPlayer par1EntityPlayer) {
-		super.onContainerClosed(par1EntityPlayer);
-		crate1.closeChest();
-		crate2.closeChest();
-		crate3.closeChest();
-		crate4.closeChest();
-		crate5.closeChest();
-		crate6.closeChest();
-		crate7.closeChest();
-		crate8.closeChest();
 	}
 
 	public int getCrateNumberFromSlotNo(int slot) {

@@ -79,7 +79,7 @@ import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
 import erebus.network.packet.PacketParticle;
-import erebus.tileentity.TileEntityBamboo;
+import erebus.tileentity.TileEntityBambooCrate;
 import erebus.tileentity.TileEntityHollowLog;
 import erebus.tileentity.TileEntitySpawner;
 
@@ -114,7 +114,7 @@ public class ClientProxy extends CommonProxy {
 
 		// Special Renderer
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHollowLog.class, new TileEntityRenderHollowLog());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBamboo.class, new TileEntityRenderBamboo());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBambooCrate.class, new TileEntityRenderBamboo());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpawner.class, new TileEntitySpawnerRender());
 
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.hollowLogAcacia.blockID, new HollowLogItemRenderer(TileEntityRenderHollowLog.hollowLogResource));

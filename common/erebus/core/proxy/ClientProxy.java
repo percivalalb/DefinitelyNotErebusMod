@@ -27,9 +27,11 @@ import erebus.client.model.entity.ModelBeetleLarva;
 import erebus.client.model.entity.ModelBlackWidow;
 import erebus.client.model.entity.ModelBotFly;
 import erebus.client.model.entity.ModelCentipede;
+import erebus.client.model.entity.ModelFirebrat;
 import erebus.client.model.entity.ModelGrasshopper;
 import erebus.client.model.entity.ModelLocust;
 import erebus.client.model.entity.ModelMosquito;
+import erebus.client.model.entity.ModelMoth;
 import erebus.client.model.entity.ModelScorpion;
 import erebus.client.model.entity.ModelSolifuge;
 import erebus.client.model.entity.ModelTarantula;
@@ -40,10 +42,12 @@ import erebus.client.render.entity.RenderBeetleLarva;
 import erebus.client.render.entity.RenderBlackWidow;
 import erebus.client.render.entity.RenderBotFly;
 import erebus.client.render.entity.RenderCentipede;
+import erebus.client.render.entity.RenderFirebrat;
 import erebus.client.render.entity.RenderFly;
 import erebus.client.render.entity.RenderGrasshopper;
 import erebus.client.render.entity.RenderLocust;
 import erebus.client.render.entity.RenderMosquito;
+import erebus.client.render.entity.RenderMoth;
 import erebus.client.render.entity.RenderScorpion;
 import erebus.client.render.entity.RenderSolifuge;
 import erebus.client.render.entity.RenderTarantula;
@@ -62,10 +66,12 @@ import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityBlackWidow;
 import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
+import erebus.entity.EntityFirebrat;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityGrasshopper;
 import erebus.entity.EntityLocust;
 import erebus.entity.EntityMosquito;
+import erebus.entity.EntityMoth;
 import erebus.entity.EntityScorpion;
 import erebus.entity.EntitySolifuge;
 import erebus.entity.EntityTarantula;
@@ -102,6 +108,9 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityGrasshopper.class, new RenderGrasshopper(new ModelGrasshopper(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityLocust.class, new RenderLocust(new ModelLocust(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntitySolifuge.class, new RenderSolifuge(new ModelSolifuge(), 0.3F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityMoth.class, new RenderMoth(new ModelMoth(), 0.3F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityFirebrat.class, new RenderFirebrat(new ModelFirebrat(), 0.3F));
+
 
 		// Special Renderer
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHollowLog.class, new TileEntityRenderHollowLog());

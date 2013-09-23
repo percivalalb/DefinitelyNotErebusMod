@@ -91,14 +91,7 @@ public class ModBlocks {
 
 	// STAIRS, SLABS, WALLS
 	public static Block[] umbercobbleStairs;			public static int[] umbercobbleStairsID;
-	public static Block stairsAcacia;     				public static int stairsAcaciaID;
-	public static Block stairsEucalyptus;    			public static int stairsEucalyptusID;
-	public static Block stairsMahogany;     			public static int stairsMahoganyID;
-	public static Block stairsBaobab;  		  			public static int stairsBaobabID;
-	public static Block stairsMossbark;    				public static int stairsMossbarkID;
-	public static Block stairsPink;     				public static int stairsPinkID;
-	public static Block stairsScorched;  		  		public static int stairsScorchedID;
-	public static Block stairsAsper;	  		  		public static int stairsAsperID;
+	public static Block[] stairsAcacia;     			public static int[] stairsAcaciaID;
 	public static Block petrifiedWoodStairs;  		  	public static int petrifiedWoodStairsID;
 
 	public static Block wallErebus;						public static int wallErebusID;
@@ -147,15 +140,10 @@ public class ModBlocks {
 
 		umbercobbleStairs = new Block[BlockUmberstone.iconPaths.length];
 		for (int i = 0; i < umbercobbleStairs.length; i++)
-			umbercobbleStairs[i] = new BlockStairsErebus(umbercobbleStairsID[i], umberstone, i).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("umbercobbleStairs");
-		stairsAcacia = new BlockStairsErebus(stairsAcaciaID, planksErebus, BlockPlanksErebus.dataAcacia).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsAcacia");
-		stairsEucalyptus = new BlockStairsErebus(stairsEucalyptusID, planksErebus, BlockPlanksErebus.dataEucalyptus).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsEucalyptus");
-		stairsMahogany = new BlockStairsErebus(stairsMahoganyID, planksErebus, BlockPlanksErebus.dataMahogany).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsMahogany");
-		stairsBaobab = new BlockStairsErebus(stairsBaobabID, planksErebus, BlockPlanksErebus.dataBaobab).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsBaobab");
-		stairsMossbark = new BlockStairsErebus(stairsMossbarkID, planksErebus, BlockPlanksErebus.dataMossbark).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsMossbark");
-		stairsPink = new BlockStairsErebus(stairsPinkID, planksErebus, BlockPlanksErebus.dataPink).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsPink");
-		stairsScorched = new BlockStairsErebus(stairsScorchedID, planksErebus, BlockPlanksErebus.dataScorched).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsScorched");
-		stairsAsper = new BlockStairsErebus(stairsAsperID, planksErebus, BlockPlanksErebus.dataAsper).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsAsper");
+			umbercobbleStairs[i] = new BlockStairsErebus(umbercobbleStairsID[i], umberstone, i).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("umbercobbleStairs" + i);
+		stairsAcacia = new Block[BlockPlanksErebus.plankTypes.length];
+		for(int i = 0; i < BlockPlanksErebus.plankTypes.length; i++)
+			stairsAcacia[i] = new BlockStairsErebus(stairsAcaciaID[i], planksErebus, i).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsPlanks" + i);
 		petrifiedWoodStairs = new BlockStairsErebus(petrifiedWoodStairsID, petrifiedWoodPlanks, 0).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("petrifiedWoodStairs");
 
 		wallErebus = new BlockWallErebus(wallErebusID, umberstone).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("wallErebus");
@@ -203,15 +191,8 @@ public class ModBlocks {
 
 		for (int i = 0; i < umbercobbleStairs.length; i++)
 			GameRegistry.registerBlock(umbercobbleStairs[i], "erebus.umbercobbleStairs" + i);
-
-		GameRegistry.registerBlock(stairsAcacia, "erebus.stairsAcacia");
-		GameRegistry.registerBlock(stairsEucalyptus, "erebus.stairsEucalyptus");
-		GameRegistry.registerBlock(stairsMahogany, "erebus.stairsMahogany");
-		GameRegistry.registerBlock(stairsBaobab, "erebus.stairsBaobab");
-		GameRegistry.registerBlock(stairsMossbark, "erebus.stairsMossbark");
-		GameRegistry.registerBlock(stairsPink, "erebus.stairsPink");
-		GameRegistry.registerBlock(stairsScorched, "erebus.stairsScorched");
-		GameRegistry.registerBlock(stairsAsper, "erebus.stairsAsper");
+		for (int i = 0; i < stairsAcacia.length; i++)
+			GameRegistry.registerBlock(stairsAcacia[i], "erebus.stairsAcacia" + i);
 		GameRegistry.registerBlock(petrifiedWoodStairs, "erebus.petrifiedWoodStairs");
 
 		GameRegistry.registerBlock(wallErebus, ItemBlockWallErebus.class, "erebus.wallErebus");

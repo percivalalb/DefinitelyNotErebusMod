@@ -51,8 +51,6 @@ import erebus.tileentity.TileEntityHollowLog;
  */
 public class ModBlocks {
 
-	// TELL DAVE TO CHECK HIS CODE BEFORE SYNCING. I THINK I DELETE SOMETHING HE MADE.
-
 	// PORTAL
 	public static BlockPortalErebus portalErebus;		public static int portalErebusID;
 

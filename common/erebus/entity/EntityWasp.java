@@ -20,6 +20,7 @@ public class EntityWasp extends EntityMob {
 	public float wingFloat;
 	AnimationMathHelper mathWings = new AnimationMathHelper();
 	Class[] preys = { EntityGrasshopper.class, EntityBeetleLarva.class };
+
 	public EntityWasp(World par1World) {
 		super(par1World);
 		setSize(2.0F, 2.0F);

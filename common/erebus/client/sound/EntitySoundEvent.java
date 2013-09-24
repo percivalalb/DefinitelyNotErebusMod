@@ -22,7 +22,6 @@ public class EntitySoundEvent {
 			event.manager.addSound("erebus:webslingthrow.ogg");
 			event.manager.addSound("erebus:webslingsplat.ogg");
 
-
 			// Centipede
 			event.manager.addSound("erebus:CentipedeSound.ogg");
 			event.manager.addSound("erebus:CentipedeHurt.ogg");

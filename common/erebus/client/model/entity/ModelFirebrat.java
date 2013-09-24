@@ -8,8 +8,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ModelFirebrat extends ModelBase
-{
+public class ModelFirebrat extends ModelBase {
 	private final ModelRenderer[] firebratBodyParts = new ModelRenderer[7];
 
 	private final ModelRenderer[] firebratWings;
@@ -19,12 +18,10 @@ public class ModelFirebrat extends ModelBase
 
 	private static final int[][] firebratTexturePositions = new int[][] { { 0, 0 }, { 0, 4 }, { 0, 9 }, { 0, 16 }, { 0, 22 }, { 11, 0 }, { 13, 4 } };
 
-	public ModelFirebrat()
-	{
+	public ModelFirebrat() {
 		float f = -3.5F;
 
-		for (int i = 0; i < firebratBodyParts.length; ++i)
-		{
+		for (int i = 0; i < firebratBodyParts.length; ++i) {
 			firebratBodyParts[i] = new ModelRenderer(this, firebratTexturePositions[i][0], firebratTexturePositions[i][1]);
 			firebratBodyParts[i].addBox(firebratBoxLength[i][0] * -0.5F, 0.0F, firebratBoxLength[i][2] * -0.5F, firebratBoxLength[i][0], firebratBoxLength[i][1], firebratBoxLength[i][2]);
 			firebratBodyParts[i].setRotationPoint(0.0F, 24 - firebratBoxLength[i][1], f);
@@ -50,8 +47,7 @@ public class ModelFirebrat extends ModelBase
 	 * Sets the models various rotation angles then renders the model.
 	 */
 	@Override
-	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
-	{
+	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
 		setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
 		int i;
 
@@ -63,10 +59,8 @@ public class ModelFirebrat extends ModelBase
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
-	{
-		for (int i = 0; i < firebratBodyParts.length; ++i)
-		{
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
+		for (int i = 0; i < firebratBodyParts.length; ++i) {
 			firebratBodyParts[i].rotateAngleY = MathHelper.cos(par3 * 0.9F + i * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + Math.abs(i - 2));
 			firebratBodyParts[i].rotationPointX = MathHelper.sin(par3 * 0.9F + i * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * Math.abs(i - 2);
 		}

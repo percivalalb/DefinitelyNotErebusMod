@@ -5,9 +5,8 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
-public class ModelSolifuge extends ModelBase
-{
-	//fields
+public class ModelSolifuge extends ModelBase {
+	// fields
 	ModelRenderer HeadMain;
 	ModelRenderer HeadTop;
 	ModelRenderer HeadFront;
@@ -62,8 +61,7 @@ public class ModelSolifuge extends ModelBase
 	ModelRenderer ClawL2;
 	ModelRenderer ClawL3;
 
-	public ModelSolifuge()
-	{
+	public ModelSolifuge() {
 		textureWidth = 64;
 		textureHeight = 128;
 
@@ -448,8 +446,7 @@ public class ModelSolifuge extends ModelBase
 		ClawL1.render(par7);
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;

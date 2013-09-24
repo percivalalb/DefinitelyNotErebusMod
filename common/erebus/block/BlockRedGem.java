@@ -61,7 +61,7 @@ public class BlockRedGem extends Block {
 	// Data about the item that drops when broken
 	@Override
 	public int damageDropped(int meta) {
-		return (meta == 1 || meta == 2)?1:ItemErebusMaterial.dataRedGem;
+		return (meta == 1 || meta == 2) ? 1 : ItemErebusMaterial.dataRedGem;
 	}
 
 	@Override

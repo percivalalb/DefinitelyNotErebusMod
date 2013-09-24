@@ -21,7 +21,7 @@ public class ItemErebusMaterial extends Item {
 	 **/
 	public static final String[] iconPaths = new String[] { "plateExo", "jade", "shardBone", "bamboo", "compoundEyes", "compoundLens", "flyWing", "itemPetrifiedWood", "biovelocity", "elasticFibre", "waspSting", "bambooShoot", "redGem" };
 	public static final short dataExoPlate = 0, dataJade = 1, dataBoneShard = 2, dataBamboo = 3, dataCompoundEyes = 4, dataCompoundLens = 5, dataFlyWing = 6, dataPetrifiedWood = 7, dataBioVelocity = 8, dataElasticFibre = 9, dataWaspString = 10, dataBambooShoot = 11, dataRedGem = 12;
-	
+
 	@SideOnly(Side.CLIENT)
 	public static Icon[] icons;
 
@@ -50,7 +50,7 @@ public class ItemErebusMaterial extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		for(int a=0; a<iconPaths.length; a++){
+		for (int a = 0; a < iconPaths.length; a++) {
 			par3List.add(new ItemStack(par1, 1, a));
 		}
 	}

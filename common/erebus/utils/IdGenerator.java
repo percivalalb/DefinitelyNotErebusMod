@@ -1,6 +1,5 @@
 package erebus.utils;
 
-
 /**
  * Erebus
  * 

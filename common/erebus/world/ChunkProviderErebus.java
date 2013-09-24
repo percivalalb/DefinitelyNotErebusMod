@@ -40,7 +40,7 @@ public class ChunkProviderErebus implements IChunkProvider {
 	private double[] noiseData3;
 	private double[] noiseData4;
 	private double[] noiseData5;
-	
+
 	private BiomeGenBase[] biomesForGeneration;
 
 	private final MapGenBase netherCaveGenerator;
@@ -48,9 +48,9 @@ public class ChunkProviderErebus implements IChunkProvider {
 
 	public ChunkProviderErebus(World world, long seed) {
 		worldObj = world;
-		
+
 		rand = new Random(seed);
-		
+
 		netherNoiseGen1 = new NoiseGeneratorOctaves(rand, 16);
 		netherNoiseGen2 = new NoiseGeneratorOctaves(rand, 16);
 		netherNoiseGen3 = new NoiseGeneratorOctaves(rand, 8);
@@ -58,11 +58,11 @@ public class ChunkProviderErebus implements IChunkProvider {
 		netherNoiseGen6 = new NoiseGeneratorOctaves(rand, 10);
 		netherNoiseGen7 = new NoiseGeneratorOctaves(rand, 16);
 		stoneNoise = new double[256];
-		
+
 		netherCaveGenerator = new MapGenCavesHell();
 		ravineGenerator = new MapGenRavine();
 	}
-	
+
 	public void generateTerrain(int x, int z, byte[] blocks) {
 		byte byte0 = 4;
 		byte byte1 = 32;
@@ -140,9 +140,10 @@ public class ChunkProviderErebus implements IChunkProvider {
 		biomesForGeneration = worldObj.getWorldChunkManager().loadBlockGeneratorData(biomesForGeneration, x * 16, z * 16, 16, 16);
 		generateTerrain(x, z, blocks);
 		replaceBlocksForBiome(x, z, blocks, biomesForGeneration);
-		
+
 		netherCaveGenerator.generate(this, worldObj, x, z, blocks);
-		//ravineGenerator.generate(this, worldObj, x, z, blocks); << requires custom generator - not deep enough!
+		// ravineGenerator.generate(this, worldObj, x, z, blocks); << requires
+		// custom generator - not deep enough!
 
 		Chunk chunk = new Chunk(worldObj, blocks, x, z);
 		byte[] biomeArrayReference = chunk.getBiomeArray();
@@ -150,7 +151,7 @@ public class ChunkProviderErebus implements IChunkProvider {
 		for (int k = 0; k < biomeArrayReference.length; ++k) {
 			biomeArrayReference[k] = (byte) biomesForGeneration[k].biomeID;
 		}
-		
+
 		chunk.generateSkylightMap();
 		chunk.resetRelightChecks();
 		return chunk;
@@ -159,7 +160,7 @@ public class ChunkProviderErebus implements IChunkProvider {
 	private double[] initializeNoiseField(double[] par1ArrayOfDouble, int x, int y, int z, int sizeX, int sizeY, int sizeZ) {
 		if (par1ArrayOfDouble == null)
 			par1ArrayOfDouble = new double[sizeX * sizeY * sizeZ];
-		
+
 		double d = 684.41200000000003D;
 		double d1 = 2053.2359999999999D;
 		noiseData4 = netherNoiseGen6.generateNoiseOctaves(noiseData4, x, y, z, sizeX, 1, sizeZ, 1.0D, 0.0D, 1.0D);
@@ -259,7 +260,7 @@ public class ChunkProviderErebus implements IChunkProvider {
 
 		return par1ArrayOfDouble;
 	}
-	
+
 	public void replaceBlocksForBiome(int x, int z, byte[] blocks, BiomeGenBase[] biomes) {
 		ChunkProviderEvent.ReplaceBiomeBlocks event = new ChunkProviderEvent.ReplaceBiomeBlocks(this, x, z, blocks, biomes);
 		MinecraftForge.EVENT_BUS.post(event);
@@ -282,7 +283,7 @@ public class ChunkProviderErebus implements IChunkProvider {
 				for (int yInChunk = 127; yInChunk >= 0; --yInChunk) {
 					int var17 = (zInChunk * 16 + xInChunk) * 128 + yInChunk;
 
-					if (yInChunk <= 0 + rand.nextInt(5) ||yInChunk >= 127 - rand.nextInt(5))
+					if (yInChunk <= 0 + rand.nextInt(5) || yInChunk >= 127 - rand.nextInt(5))
 						blocks[var17] = (byte) Block.bedrock.blockID;
 					else {
 						byte var18 = blocks[var17];
@@ -333,14 +334,15 @@ public class ChunkProviderErebus implements IChunkProvider {
 	@Override
 	public void populate(IChunkProvider chunkProvider, int x, int z) {
 		BlockSand.fallInstantly = true;
-		// this.genSpiderTunnels.generateStructuresInChunk(this.worldObj, this.hellRNG, x, z);
+		// this.genSpiderTunnels.generateStructuresInChunk(this.worldObj,
+		// this.hellRNG, x, z);
 
 		int worldCoordX = x * 16;
 		int worldCoordZ = z * 16;
 
 		BiomeGenBase b = worldObj.getBiomeGenForCoords(worldCoordX, worldCoordZ);
 		if (b instanceof BiomeGenBaseErebus) {
-			BiomeGenBaseErebus biome = (BiomeGenBaseErebus)b;
+			BiomeGenBaseErebus biome = (BiomeGenBaseErebus) b;
 			biome.generateTerrain(worldObj, rand, chunkProvider, worldCoordX, worldCoordZ);
 			biome.generateDefault(worldObj, rand, chunkProvider, worldCoordX, worldCoordZ);
 		}
@@ -351,7 +353,7 @@ public class ChunkProviderErebus implements IChunkProvider {
 
 		BlockSand.fallInstantly = false;
 	}
-	
+
 	@Override
 	public void recreateStructures(int x, int z) {
 	}
@@ -360,7 +362,7 @@ public class ChunkProviderErebus implements IChunkProvider {
 	public ChunkPosition findClosestStructure(World world, String structureIdentifier, int x, int y, int z) {
 		return null;
 	}
-	
+
 	@Override
 	public List getPossibleCreatures(EnumCreatureType creatureType, int x, int y, int z) {
 		BiomeGenBase biome = worldObj.getBiomeGenForCoords(x, z);
@@ -371,13 +373,12 @@ public class ChunkProviderErebus implements IChunkProvider {
 	public String makeString() {
 		return "ErebusRandomLevelSource";
 	}
-	
+
 	/*
-	 * ====================================
-	 * Stuff that isn't necessary to change
+	 * ==================================== Stuff that isn't necessary to change
 	 * ====================================
 	 */
-	
+
 	@Override
 	public boolean chunkExists(int x, int z) {
 		return true;

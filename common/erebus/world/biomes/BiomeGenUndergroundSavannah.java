@@ -101,11 +101,13 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 		}
 
 		if (rand.nextInt(6) == 0)
-			for(int attempt = 0; attempt < 6; attempt++)
-				if (new WorldGenAmberGround().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16))) break;
+			for (int attempt = 0; attempt < 6; attempt++)
+				if (new WorldGenAmberGround().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16)))
+					break;
 
 		if (rand.nextInt(3) == 0)
-			for(int attempt = 0; attempt < 5; attempt++)
-				if (new WorldGenAmberUmberstone().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16))) break;
+			for (int attempt = 0; attempt < 5; attempt++)
+				if (new WorldGenAmberUmberstone().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16)))
+					break;
 	}
 }

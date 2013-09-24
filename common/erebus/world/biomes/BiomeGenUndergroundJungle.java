@@ -94,12 +94,14 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 		}
 
 		if (rand.nextInt(5) == 0)
-			for(int attempt = 0; attempt < 4; attempt++)
-				if (new WorldGenAmberGround().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16))) break;
+			for (int attempt = 0; attempt < 4; attempt++)
+				if (new WorldGenAmberGround().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16)))
+					break;
 
 		if (rand.nextInt(3) == 0)
-			for(int attempt = 0; attempt < 3; attempt++)
-				if (new WorldGenAmberUmberstone().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16))) break;
+			for (int attempt = 0; attempt < 3; attempt++)
+				if (new WorldGenAmberUmberstone().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16)))
+					break;
 
 		if (rand.nextInt(1) == 0) {
 			int i2 = x + getRandomXZOffset(rand);
@@ -232,7 +234,8 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			for (int yy = 100; yy > 20; yy--) {
 				int xx = x + 4 + rand.nextInt(8), zz = z + 4 + rand.nextInt(8);
 				if (worldObj.getBlockId(xx, yy, zz) == 0 && worldObj.getBlockId(xx, yy - 1, zz) == Block.grass.blockID)
-					if (new WorldGenBamboo(13).generate(worldObj, rand, xx, yy, zz))break;
+					if (new WorldGenBamboo(13).generate(worldObj, rand, xx, yy, zz))
+						break;
 			}
 
 		for (int c = 0; c < 150; c++) {

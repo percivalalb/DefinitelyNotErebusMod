@@ -77,8 +77,8 @@ public class EntityAIEatCrops extends EntityAIBase {
 		// can
 		// snap
 		if (theEntity.getNavigator().noPath())
-			if(!((EntityGrasshopper) theEntity).isEating)
-				theEntity.getMoveHelper().setMoveTo(PlantX+0.5D, PlantY, PlantZ+0.5D, moveSpeed);
+			if (!((EntityGrasshopper) theEntity).isEating)
+				theEntity.getMoveHelper().setMoveTo(PlantX + 0.5D, PlantY, PlantZ + 0.5D, moveSpeed);
 		ticksSpent++;
 		if (theEntity.boundingBox.maxY >= blockbounds.minY && theEntity.boundingBox.minY <= blockbounds.maxY && theEntity.boundingBox.maxX >= blockbounds.minX && theEntity.boundingBox.minX <= blockbounds.maxX && theEntity.boundingBox.maxZ >= blockbounds.minZ &&
 		theEntity.boundingBox.minZ <= blockbounds.maxZ && ticksSpent < maxTicks) {
@@ -117,20 +117,19 @@ public class EntityAIEatCrops extends EntityAIBase {
 	private boolean findClosestPlant(int maxDistance) {// returns whether or not
 		// Plant was found
 		for (int currentCheckDistance = 1; currentCheckDistance < maxDistance; currentCheckDistance++)
-			for(int x = -currentCheckDistance; x<currentCheckDistance;x++)
-				for(int y = -currentCheckDistance; y<currentCheckDistance; y++)
-					for(int z = -currentCheckDistance; z<currentCheckDistance; z++)
-						if(isPlant(theEntity.worldObj.getBlockId((int)theEntity.posX+x, (int)theEntity.posY+y, (int)theEntity.posZ+z)))
-						{
-							PlantX = (int)theEntity.posX+x;
-							PlantY = (int)theEntity.posY+y;
-							PlantZ = (int)theEntity.posZ+z;
+			for (int x = -currentCheckDistance; x < currentCheckDistance; x++)
+				for (int y = -currentCheckDistance; y < currentCheckDistance; y++)
+					for (int z = -currentCheckDistance; z < currentCheckDistance; z++)
+						if (isPlant(theEntity.worldObj.getBlockId((int) theEntity.posX + x, (int) theEntity.posY + y, (int) theEntity.posZ + z))) {
+							PlantX = (int) theEntity.posX + x;
+							PlantY = (int) theEntity.posY + y;
+							PlantZ = (int) theEntity.posZ + z;
 							return true;
 						}
 		return false;
 	}
 
-	private boolean isPlant(int blockID){
+	private boolean isPlant(int blockID) {
 		return blockID == Block.tallGrass.blockID || blockID == ModBlocks.erebusGrass.blockID || blockID == Block.crops.blockID;
 	}
 
@@ -138,4 +137,3 @@ public class EntityAIEatCrops extends EntityAIBase {
 		return AxisAlignedBB.getAABBPool().getAABB((PlantX), (PlantY), (PlantZ), PlantX + 1.0D, PlantY + 1.0D, PlantZ + 1.0D);
 	}
 }
-

@@ -12,7 +12,8 @@ import erebus.entity.EntityBeetleLarva;
 public class EntityAIEatWoodenItem extends EntityAIBase {
 	private final int diffEaten = 0;// 0-peaceful,1-easy,2-med,3-hard
 	private final int maxTicks = 240;// approx 30 tick/sec +- processing delays
-	private final int maxDToWood = 8;// this variable has a childish name. he-he.
+	private final int maxDToWood = 8;// this variable has a childish name.
+										// he-he.
 	protected EntityLiving theEntity;
 	protected double entityPosX;
 	protected double entityPosY;

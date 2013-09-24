@@ -5,8 +5,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import cpw.mods.fml.common.network.PacketDispatcher;
 import erebus.ErebusMod;
 import erebus.ModBlocks;
+import erebus.network.PacketHandler;
+import erebus.network.packet.PacketParticle;
 
 public class ItemSprayCan extends Item {
 	public ItemSprayCan(int id) {
@@ -20,17 +23,18 @@ public class ItemSprayCan extends Item {
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		if (par7 != 1)
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+		if (side != 1)
 			return false;
-		else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack)) {
-			int i1 = par3World.getBlockId(par4, par5, par6);
+		else if (player.canPlayerEdit(x, y, z, side, stack) && player.canPlayerEdit(x, y + 1, z, side, stack)) {
+			int i1 = world.getBlockId(x, y, z);
 			Block block = Block.blocksList[i1];
 			int i2 = ModBlocks.insectRepellentID;
-			if (block != null && par3World.doesBlockHaveSolidTopSurface(par4, par5, par6) && i1 != i2) {
-				par3World.setBlock(par4, par5 + 1, par6, i2);
-				--par1ItemStack.stackSize;
-				par3World.playSoundEffect(par4, par5 + 1, par6, getSprayCanSound(), 1.0F, 1.0F);
+			if (block != null && world.doesBlockHaveSolidTopSurface(x, y, z) && i1 != i2) {
+				world.setBlock(x, y + 1, z, i2);
+				PacketDispatcher.sendPacketToAllAround(x, y, z, 64D, world.provider.dimensionId, PacketHandler.buildPacket(2, PacketParticle.SPRAY_CAN));
+				--stack.stackSize;
+				world.playSoundEffect(x, y + 1, z, getSprayCanSound(), 1.0F, 1.0F);
 				return true;
 			} else
 				return false;

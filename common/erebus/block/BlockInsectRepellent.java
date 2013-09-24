@@ -6,28 +6,26 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
 import erebus.client.fx.EntityRepellent;
 
 public class BlockInsectRepellent extends Block {
-	public BlockInsectRepellent(int id, Material material) {
 
+
+	public BlockInsectRepellent(int id, Material material) {
 		super(id, Material.air);
-		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
 		setTickRandomly(true);
+		setTextureName("erebus:blockInsectRepellent");
+		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
 	}
 
 	@Override
@@ -66,7 +64,6 @@ public class BlockInsectRepellent extends Block {
 
 	@Override
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random) {
-
 		sparkle(par1World, par2, par3, par4);
 	}
 
@@ -112,23 +109,6 @@ public class BlockInsectRepellent extends Block {
 				par5Entity.addVelocity(MathHelper.sin(par5Entity.rotationYaw * 3.141593F / 180.0F) * Knockback * 0.1F, 0.1D, MathHelper.cos(par5Entity.rotationYaw * 3.141593F / 180.0F) * Knockback * 0.1F);
 				par5Entity.worldObj.playSoundAtEntity(par5Entity, "damage.fallbig", 1.0F, 1.0F);
 			}
-	}
-
-	@SideOnly(Side.CLIENT)
-	private Icon a;
-	@SideOnly(Side.CLIENT)
-	private Icon b;
-
-	@Override
-	public Icon getIcon(int par1, int par2) {
-		return par1 == 0 ? b : (par1 == 1 ? a : blockIcon);
-	}
-
-	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
-		blockIcon = par1IconRegister.registerIcon("erebus:blockInsectRepellent");// Side
-		a = par1IconRegister.registerIcon("erebus:blockInsectRepellent");// Top
-
 	}
 
 	@ForgeSubscribe

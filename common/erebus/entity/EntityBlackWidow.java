@@ -21,12 +21,12 @@ import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 
 public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpawnData {
 	private int shouldDo;
-	public float size = 0.4F + rand.nextFloat();
+	public float WidowSize = 0.4F + rand.nextFloat();
 	Class[] preys = { EntityFly.class, EntityBotFly.class };
 
 	public EntityBlackWidow(World par1World) {
 		super(par1World);
-		setSize(size * 2.0F, size);
+		setSize(WidowSize * 2.0F, WidowSize);
 		isImmuneToFire = true;
 	}
 
@@ -39,9 +39,9 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.75D); // Movespeed
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D); // atkDmg
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.75D); // Movespeed
 		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
 	}
 
@@ -56,28 +56,35 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 		return var1 != null && canEntityBeSeen(var1) ? var1 : null;
 	}
 
-	// find enemies other than players to attack. uses preys array
 	protected Entity findEnemyToAttack() {
 		List list = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.expand(10D, 10D, 10D));
-
 		for (int i = 0; i < list.size(); i++) {
 			Entity entity = (Entity) list.get(i);
 			if (entity != null) {
 				if (!(entity instanceof EntityLivingBase))
 					continue;
-
 				for (int j = 0; j < preys.length; j++)
 					if (entity.getClass() == preys[j])
 						return entity;
 			}
 		}
-
 		return null;
 	}
 
 	@Override
 	public void onUpdate() {
-		// find enemies
+		if (!worldObj.isRemote && WidowSize <= 0.7F) {
+			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(15.0D); // MaxHealth
+			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D); // atkDmg
+		}
+		if (!worldObj.isRemote && WidowSize > 0.7F && WidowSize <= 1.0F) {
+			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D); // MaxHealth
+			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.5D); // atkDmg
+		}
+		if (!worldObj.isRemote && WidowSize > 1.0F) {
+			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
+			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D); // atkDmg
+		}
 		if (findPlayerToAttack() != null)
 			entityToAttack = findPlayerToAttack();
 		else if (findEnemyToAttack() != null)
@@ -161,9 +168,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 					attackTime = 100;
 					shouldDo = 0;
 				}
-
-				if (shouldDo > 1 && size > 0.7F) {
-
+				if (shouldDo > 1 && WidowSize > 0.7F && par1Entity instanceof EntityPlayer) {
 					worldObj.playSoundAtEntity(this, getWebSlingThrowSound(), 1.0F, 1.0F);
 					for (int var10 = 0; var10 < 1; ++var10) {
 						EntityWebSling var11 = new EntityWebSling(worldObj, this);
@@ -171,7 +176,6 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 						worldObj.spawnEntityInWorld(var11);
 					}
 				}
-
 			}
 	}
 
@@ -199,7 +203,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	@Override
 	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
 		super.writeEntityToNBT(par1NBTTagCompound);
-		par1NBTTagCompound.setFloat("WidowSize", size);
+		par1NBTTagCompound.setFloat("WidowSize", WidowSize);
 
 	}
 
@@ -211,7 +215,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	}
 
 	protected void setWidowSize(float par1) {
-		size = par1;
+		WidowSize = par1;
 		dataWatcher.updateObject(16, Byte.valueOf((byte) 1));
 		worldObj.setEntityState(this, (byte) 16);
 	}
@@ -220,11 +224,11 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	// handling - thanks Forge!
 	@Override
 	public void writeSpawnData(ByteArrayDataOutput data) {
-		data.writeFloat(size);
+		data.writeFloat(WidowSize);
 	}
 
 	@Override
 	public void readSpawnData(ByteArrayDataInput data) {
-		size = data.readFloat();
+		WidowSize = data.readFloat();
 	}
 }

@@ -26,6 +26,7 @@ import erebus.item.ItemMetalIngots;
 import erebus.item.ItemPaxel;
 import erebus.item.ItemPortalActivator;
 import erebus.item.ItemSprintLeggings;
+import erebus.item.ItemSprayCan;
 
 /**
  * @author ProPercivalalb
@@ -57,6 +58,8 @@ public class ModItems {
 	public static Item metalIngot;						public static int metalIngotID;
 	public static Item jumpBoots;						public static int jumpBootsID;
 	public static Item sprintLeggings;					public static int sprintLeggingsID;
+	public static Item sprayCan;
+	public static int sprayCanID;
 
 	public static void init() {
 		// constructor, set full 3D, creative tab, unlocalized name, texture name
@@ -86,7 +89,7 @@ public class ModItems {
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
 		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorEXOSKELETON, 3).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
 		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorEXOSKELETON, 2).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
-
+		sprayCan = new ItemSprayCan(sprayCanID).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("sprayCan").setTextureName("erebus:sprayCan");
 		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("waspSword");
 		if(ErebusMod.activateExtraOres)
 			metalIngot = new ItemMetalIngots(metalIngotID).setCreativeTab(ErebusMod.tabErebusItem);
@@ -121,7 +124,7 @@ public class ModItems {
 		GameRegistry.registerItem(compoundGoggles, "erebus.compoundGoggles");
 		GameRegistry.registerItem(jumpBoots, "erebus.jumpBoots");
 		GameRegistry.registerItem(sprintLeggings, "erebus.sprintLeggings");
-		GameRegistry.registerItem(waspSword, "erebus.waspSword");
+		GameRegistry.registerItem(sprayCan, "erebus.sprayCan");
 		if(ErebusMod.activateExtraOres)
 			GameRegistry.registerItem(metalIngot, "erebus.metalIngot");
 	}

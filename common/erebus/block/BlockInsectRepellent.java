@@ -25,6 +25,7 @@ public class BlockInsectRepellent extends Block {
 		super(id, Material.air);
 		setTickRandomly(true);
 		setTextureName("erebus:blockInsectRepellent");
+		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
 	}
 
 	@Override

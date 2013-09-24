@@ -10,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.event.Event.Result;
@@ -20,12 +21,15 @@ import erebus.client.fx.EntityRepellent;
 
 public class BlockInsectRepellent extends Block {
 
-
 	public BlockInsectRepellent(int id, Material material) {
 		super(id, Material.air);
 		setTickRandomly(true);
 		setTextureName("erebus:blockInsectRepellent");
-		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
+	}
+
+	@Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
+		return null;
 	}
 
 	@Override

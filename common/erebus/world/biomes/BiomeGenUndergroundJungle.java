@@ -228,14 +228,14 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenMelon()).generate(worldObj, rand, j2, l3, j5);
 		}
 
-		if (rand.nextInt(8) == 0)
+		if (rand.nextInt(10) == 0)
 			for (int yy = 100; yy > 20; yy--) {
 				int xx = x + 4 + rand.nextInt(8), zz = z + 4 + rand.nextInt(8);
 				if (worldObj.getBlockId(xx, yy, zz) == 0 && worldObj.getBlockId(xx, yy - 1, zz) == Block.grass.blockID)
 					if (new WorldGenBamboo(13).generate(worldObj, rand, xx, yy, zz))break;
 			}
 
-		for (int c = 0; c < 150; c++) {
+		for (int c = 0; c < 45; c++) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
@@ -243,7 +243,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenTallGrass(ModBlocks.fern.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
 		}
 
-		for (int c = 0; c < 60; c++) {
+		for (int c = 0; c < 20; c++) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
@@ -309,21 +309,23 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			}
 		}
 
-		for (int var5 = 0; var5 < 5; ++var5) {
-			int j2 = x + getRandomXZOffset(rand);
-			int l3 = rand.nextInt(120);
-			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
-				(new WorldGenMelon()).generate(worldObj, rand, j2, l3, j5);
+		if (rand.nextInt(3) == 0){
+			for (int var5 = 0; var5 < 6; ++var5) {
+				int j2 = x + getRandomXZOffset(rand);
+				int l3 = rand.nextInt(120);
+				int j5 = z + getRandomXZOffset(rand);
+				if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
+					(new WorldGenTurnips()).generate(worldObj, rand, j2, l3, j5);
+			}
 		}
-
-		for (int var5 = 0; var5 < 10; ++var5) // 10
-		{
-			int j2 = x + getRandomXZOffset(rand);
-			int l3 = rand.nextInt(120);
-			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
-				(new WorldGenTurnips()).generate(worldObj, rand, j2, l3, j5);
+		else if (rand.nextInt(2) == 0) {
+			for (int var5 = 0; var5 < 3; ++var5) {
+				int j2 = x + getRandomXZOffset(rand);
+				int l3 = rand.nextInt(120);
+				int j5 = z + getRandomXZOffset(rand);
+				if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
+					(new WorldGenMelon()).generate(worldObj, rand, j2, l3, j5);
+			}
 		}
 	}
 }

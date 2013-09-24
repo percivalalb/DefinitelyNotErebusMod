@@ -13,7 +13,6 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCavesHell;
-import net.minecraft.world.gen.MapGenRavine;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.Event.Result;
@@ -21,6 +20,7 @@ import net.minecraftforge.event.terraingen.ChunkProviderEvent;
 import erebus.ModBlocks;
 import erebus.world.biomes.BiomeGenBaseErebus;
 import erebus.world.feature.WorldGenSpiderDungeons;
+import erebus.world.structure.MapGenErebusRavine;
 
 public class ChunkProviderErebus implements IChunkProvider {
 	private final World worldObj;
@@ -60,7 +60,7 @@ public class ChunkProviderErebus implements IChunkProvider {
 		stoneNoise = new double[256];
 		
 		netherCaveGenerator = new MapGenCavesHell();
-		ravineGenerator = new MapGenRavine();
+		ravineGenerator = new MapGenErebusRavine();
 	}
 	
 	public void generateTerrain(int x, int z, byte[] blocks) {
@@ -142,7 +142,7 @@ public class ChunkProviderErebus implements IChunkProvider {
 		replaceBlocksForBiome(x, z, blocks, biomesForGeneration);
 		
 		netherCaveGenerator.generate(this, worldObj, x, z, blocks);
-		//ravineGenerator.generate(this, worldObj, x, z, blocks); << requires custom generator - not deep enough!
+		ravineGenerator.generate(this, worldObj, x, z, blocks);
 
 		Chunk chunk = new Chunk(worldObj, blocks, x, z);
 		byte[] biomeArrayReference = chunk.getBiomeArray();

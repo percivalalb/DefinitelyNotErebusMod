@@ -69,7 +69,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 					new WorldGenSavannaRock().generate(worldObj, rand, xx, yy, zz);
 			}
 
-		if (rand.nextInt(25) == 0)
+		if (rand.nextInt(26) == 0)
 			for (int yy = 100; yy > 20; yy--) {
 				int xx = x + 4 + rand.nextInt(8), zz = z + 4 + rand.nextInt(8);
 				if (worldObj.getBlockId(xx, yy, zz) == 0 && worldObj.getBlockId(xx, yy - 1, zz) == Block.grass.blockID)

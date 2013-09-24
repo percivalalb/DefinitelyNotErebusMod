@@ -96,6 +96,7 @@ blockUmberpaver_item_1.name=Mossy Umberpaver
 blockUmberpaver_item_2.name=Webbed Umberpaver
 tile.umberFurnaceOFF.name=Umber Furnace
 tile.erebusFiddlehead.name=Fiddlehead
+tile.insectRepellent.name=Insect Repellent Block
 
 #Items
 item.helmetExo.name=Exoskeleton Helmet
@@ -146,6 +147,7 @@ item.metalIngot0.name=Copper Ingot
 item.metalIngot1.name=Lead Ingot
 item.metalIngot2.name=Silver Ingot
 item.metalIngot3.name=Tin Ingot
+item.sprayCan.name=Insect Repellent
 
 #Entities
 entity.BeetleLarva - Erebus.name=Beetle Larva

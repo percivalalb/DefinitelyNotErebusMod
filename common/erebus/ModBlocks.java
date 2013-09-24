@@ -12,6 +12,7 @@ import erebus.block.BlockErebusOreExtras;
 import erebus.block.BlockFern;
 import erebus.block.BlockFiddlehead;
 import erebus.block.BlockHollowLog;
+import erebus.block.BlockInsectRepellent;
 import erebus.block.BlockLeavesErebus;
 import erebus.block.BlockLogErebus;
 import erebus.block.BlockOreFossil;
@@ -148,6 +149,8 @@ public class ModBlocks {
 
 		wallErebus = new BlockWallErebus(wallErebusID, umberstone).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("wallErebus");
 
+		insectRepellent = new BlockInsectRepellent(insectRepellentID, Material.air).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("insectRepellent");
+
 		// Left a couple of comments on the TileEntitySpawner class to help you guys out since I won't be here this weekend
 		// Create them using any mob, just pass in the name as it shows in the mob's class.
 		// <3 Love you guys in the face. <3
@@ -196,6 +199,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(petrifiedWoodStairs, "erebus.petrifiedWoodStairs");
 
 		GameRegistry.registerBlock(wallErebus, ItemBlockWallErebus.class, "erebus.wallErebus");
+		GameRegistry.registerBlock(insectRepellent, "erebus.blockInsectRepellent");
 
 		GameRegistry.registerBlock(spiderSpawner, "erebus.spiderSpawner");
 		GameRegistry.registerBlock(caveSpiderSpawner, "erebus.caveSpiderSpawner");

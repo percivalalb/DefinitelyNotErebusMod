@@ -80,6 +80,8 @@ public class ConfigurationHandler {
 			ModBlocks.caveSpiderSpawnerID = configBlock("Block ID of Cave Spider Spawners");
 
 			ModBlocks.erebusOreExtraID = configBlock("Block ID of Extra Erebus Ores");
+
+			ModBlocks.insectRepellentID = configBlock("Block ID of Insect Repellent Block");
 			/*
 			 * Items
 			 */
@@ -109,7 +111,7 @@ public class ConfigurationHandler {
 			ModItems.metalIngotID = configItem("Item ID of Metal Ingots");
 			ModItems.jumpBootsID = configItem("Item ID of Jump Boots");
 			ModItems.sprintLeggingsID = configItem("Item ID of Sprint Leggings");
-
+			ModItems.sprayCanID = configItem("Item ID of Insect Repellent");
 			/*
 			 * Biomes & misc
 			 */

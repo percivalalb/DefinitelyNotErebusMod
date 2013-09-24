@@ -6,15 +6,19 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import net.minecraftforge.event.Event.Result;
+import net.minecraftforge.event.ForgeSubscribe;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ModBlocks;
 import erebus.client.fx.EntityRepellent;
 
 public class BlockInsectRepellent extends Block
@@ -22,7 +26,6 @@ public class BlockInsectRepellent extends Block
 	public BlockInsectRepellent(int id, Material material) {
 
 		super(id, Material.air);
-		setCreativeTab(CreativeTabs.tabBlock);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
 		setTickRandomly(true);
 	}
@@ -111,7 +114,7 @@ public class BlockInsectRepellent extends Block
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
 	{
 		if(!par1World.isRemote && par5Entity instanceof EntityLiving)
-			if (par5Entity.worldObj.getBlockId(par2, par3 , par4) == InsectRepellent.InsectRepellent.blockID
+			if (par5Entity.worldObj.getBlockId(par2, par3, par4) == ModBlocks.insectRepellentID
 			&& ((EntityLiving) par5Entity).getCreatureAttribute().equals(EnumCreatureAttribute.ARTHROPOD))
 			{
 				int Knockback = 1;
@@ -133,9 +136,17 @@ public class BlockInsectRepellent extends Block
 	@Override
 	public void registerIcons(IconRegister par1IconRegister)
 	{
-		blockIcon = par1IconRegister.registerIcon("erebus:BlockInsectRepellent");//Side
-		a = par1IconRegister.registerIcon("erebus:BlockInsectRepellent");//Top
+		blockIcon = par1IconRegister.registerIcon("erebus:blockInsectRepellent");// Side
+		a = par1IconRegister.registerIcon("erebus:blockInsectRepellent");// Top
 
+	}
+
+	@ForgeSubscribe
+	public void onArthropodSpawn(LivingSpawnEvent.CheckSpawn par1) {
+		if (par1.entity instanceof EntityLivingBase)
+			if (par1.entity.worldObj.getBlockId((int) par1.x, (int) par1.y, (int) par1.z) == ModBlocks.insectRepellentID)
+				if (((EntityLivingBase) par1.entity).getCreatureAttribute().equals(EnumCreatureAttribute.ARTHROPOD))
+					par1.setResult(Result.DENY);
 	}
 }
 

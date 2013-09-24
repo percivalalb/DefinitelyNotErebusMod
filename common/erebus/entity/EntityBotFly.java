@@ -41,7 +41,7 @@ public class EntityBotFly extends EntityMob {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(15.0D);
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.3D);
-		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D); // atkDmg
+		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D); // atkDmg
 		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
 	}
 
@@ -119,8 +119,8 @@ public class EntityBotFly extends EntityMob {
 	@Override
 	public void onLivingUpdate() {
 		if (!worldObj.isRemote) {
-			heightOffset = (0.5F + (float) rand.nextGaussian() * 5.0F);
-			if ((getEntityToAttack() != null) && (getEntityToAttack().posY + getEntityToAttack().getEyeHeight() > posY + getEyeHeight() + heightOffset)) {
+			heightOffset = 0.5F + (float) rand.nextGaussian() * 5.0F;
+			if (getEntityToAttack() != null && getEntityToAttack().posY + getEntityToAttack().getEyeHeight() > posY + getEyeHeight() + heightOffset) {
 				double var1 = getEntityToAttack().posX + 0.5D - posX;
 				double var3 = getEntityToAttack().posY + 1.D - posY;
 				double var5 = getEntityToAttack().posZ + 0.5D - posZ;
@@ -251,7 +251,7 @@ public class EntityBotFly extends EntityMob {
 	@Override
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if (super.attackEntityAsMob(par1Entity)) {
-			if ((par1Entity instanceof EntityLivingBase)) {
+			if (par1Entity instanceof EntityLivingBase) {
 				byte var2 = 0;
 
 				if (worldObj.difficultySetting > 1)
@@ -272,7 +272,7 @@ public class EntityBotFly extends EntityMob {
 
 	@Override
 	protected void attackEntity(Entity par1Entity, float par2) {
-		if ((par2 < 2.0F) && (par1Entity.boundingBox.maxY > boundingBox.minY) && (par1Entity.boundingBox.minY < boundingBox.maxY))
+		if (par2 < 2.0F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY)
 			attackEntityAsMob(par1Entity);
 	}
 }

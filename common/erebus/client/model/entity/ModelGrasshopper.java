@@ -1,13 +1,10 @@
 package erebus.client.model.entity;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import erebus.entity.EntityGrasshopper;
-
 public class ModelGrasshopper extends ModelBase {
-	// fields
 	ModelRenderer LAnt;
 	ModelRenderer RAnt;
 	ModelRenderer LEye;
@@ -54,7 +51,6 @@ public class ModelGrasshopper extends ModelBase {
 	public ModelGrasshopper() {
 		textureWidth = 64;
 		textureHeight = 64;
-
 		LAnt = new ModelRenderer(this, 0, 0);
 		LAnt.addBox(1.5F, -10.5F, -4F, 1, 7, 1);
 		LAnt.setRotationPoint(0F, 16F, -9F);
@@ -367,68 +363,46 @@ public class ModelGrasshopper extends ModelBase {
 
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
-		this.Head1.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.Head2.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.Head3.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.HeadLBot.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.HeadRBot.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.HeadCBot.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.RAnt.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.LAnt.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.LEye.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.REye.rotateAngleY = par4 / (180F / (float) Math.PI);
-
-		this.Head1.rotateAngleX = par5 / (180F / (float) Math.PI) - 0.1745329F;
-		this.Head2.rotateAngleX = par5 / (180F / (float) Math.PI) - 0.1745329F;
-		this.Head3.rotateAngleX = par5 / (180F / (float) Math.PI) - 0.1745329F;
-		this.HeadLBot.rotateAngleX = par5 / (180F / (float) Math.PI) - 0.1745329F;
-		this.HeadRBot.rotateAngleX = par5 / (180F / (float) Math.PI) - 0.1745329F;
-		this.HeadCBot.rotateAngleX = par5 / (180F / (float) Math.PI) - 0.1745329F;
-		this.RAnt.rotateAngleX = par5 / (180F / (float) Math.PI) + 0.1745329F;
-		this.LAnt.rotateAngleX = par5 / (180F / (float) Math.PI) + 0.1745329F;
-		this.LEye.rotateAngleX = par5 / (180F / (float) Math.PI) - 0.1745329F;
-		this.REye.rotateAngleX = par5 / (180F / (float) Math.PI) - 0.1745329F;
-
-		// Minus
-		// this.LBL1.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float)Math.PI)
-		// * 0.7F * par2 -0.5235988F;
-		// this.LBL2.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float)Math.PI)
-		// * 0.7F * par2 -0.5235988F;
-		// this.LBL3.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float)Math.PI)
-		// * 0.7F * par2 -0.5235988F;
-		// this.LBL4.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float)Math.PI)
-		// * 0.7F * par2;
-		// this.LBL5.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float)Math.PI)
-		// * 0.7F * par2-0.6981317F;
-		// this.LBL6.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float)Math.PI)
-		// * 0.7F * par2-0.5235988F;
-
-		this.LML1.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-		this.LML2.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-		this.LML3.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-		this.LML4.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-		this.LFL1.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-		this.LFL2.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-		this.LFL3.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-		this.LFL4.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-
-		// Plus
-		// this.RBL3.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2
-		// -0.5235988F;
-		// this.RBL4.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-		// this.RBL5.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F *
-		// par2-0.6981317F;
-		// this.RBL6.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F *
-		// par2-0.5235988F;
-
-		this.RML1.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-		this.RML2.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-		this.RML3.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-		this.RML4.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-		this.RFL1.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-		this.RFL2.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-		this.RFL3.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-		this.RFL4.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
+		float heady = par4 / (180F / (float) Math.PI);
+		float headx = par5 / (180F / (float) Math.PI);
+		float legx1 = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
+		float legx2 = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
+		Head1.rotateAngleY = heady;
+		Head2.rotateAngleY = heady;
+		Head3.rotateAngleY = heady;
+		HeadLBot.rotateAngleY = heady;
+		HeadRBot.rotateAngleY = heady;
+		HeadCBot.rotateAngleY = heady;
+		RAnt.rotateAngleY = heady;
+		LAnt.rotateAngleY = heady;
+		LEye.rotateAngleY = heady;
+		REye.rotateAngleY = heady;
+		Head1.rotateAngleX = headx - 0.1745329F;
+		Head2.rotateAngleX = headx - 0.1745329F;
+		Head3.rotateAngleX = headx - 0.1745329F;
+		HeadLBot.rotateAngleX = headx - 0.1745329F;
+		HeadRBot.rotateAngleX = headx - 0.1745329F;
+		HeadCBot.rotateAngleX = headx - 0.1745329F;
+		RAnt.rotateAngleX = headx + 0.1745329F;
+		LAnt.rotateAngleX = headx + 0.1745329F;
+		LEye.rotateAngleX = headx - 0.1745329F;
+		REye.rotateAngleX = headx - 0.1745329F;
+		LML1.rotateAngleX = legx1;
+		LML2.rotateAngleX = legx1;
+		LML3.rotateAngleX = legx1;
+		LML4.rotateAngleX = legx1;
+		LFL1.rotateAngleX = legx2;
+		LFL2.rotateAngleX = legx2;
+		LFL3.rotateAngleX = legx2;
+		LFL4.rotateAngleX = legx2;
+		RML1.rotateAngleX = legx2;
+		RML2.rotateAngleX = legx2;
+		RML3.rotateAngleX = legx2;
+		RML4.rotateAngleX = legx2;
+		RFL1.rotateAngleX = legx1;
+		RFL2.rotateAngleX = legx1;
+		RFL3.rotateAngleX = legx1;
+		RFL4.rotateAngleX = legx1;
 		EntityGrasshopper var8 = (EntityGrasshopper) par7Entity;
 		if (!var8.onGround) {
 			LBL4.setRotationPoint(2F, 22.0F, 14F);
@@ -437,61 +411,54 @@ public class ModelGrasshopper extends ModelBase {
 			RBL4.setRotationPoint(-2F, 22.5F, 14F);
 			RBL5.setRotationPoint(-2F, 22.5F, 14F);
 			RBL6.setRotationPoint(-2F, 21.0F, 14F);
-
-			this.LBL1.rotateAngleX = -1.0F;
-			this.LBL2.rotateAngleX = -1.0F;
-			this.LBL3.rotateAngleX = -1.0F;
-			this.LBL4.rotateAngleX = 0.8F;
-			this.LBL5.rotateAngleX = 0.0F;
-			this.LBL6.rotateAngleX = 0.0F;
-
-			this.RBL1.rotateAngleX = -1.0F;
-			this.RBL2.rotateAngleX = -1.0F;
-			this.RBL3.rotateAngleX = -1.0F;
-			this.RBL4.rotateAngleX = 0.8F;
-			this.RBL5.rotateAngleX = 0.0F;
-			this.RBL6.rotateAngleX = 0.0F;
-
-			this.LFL1.rotateAngleX = -0.6F;
-			this.LFL2.rotateAngleX = -0.6F;
-			this.LFL3.rotateAngleX = -0.6F;
-			this.LFL4.rotateAngleX = -0.6F;
-			this.RFL1.rotateAngleX = -0.6F;
-			this.RFL2.rotateAngleX = -0.6F;
-			this.RFL3.rotateAngleX = -0.6F;
-			this.RFL4.rotateAngleX = -0.6F;
-			this.LML1.rotateAngleX = 0.6F;
-			this.LML2.rotateAngleX = 0.6F;
-			this.LML3.rotateAngleX = 0.6F;
-			this.LML4.rotateAngleX = 0.6F;
-			this.RML1.rotateAngleX = 0.6F;
-			this.RML2.rotateAngleX = 0.6F;
-			this.RML3.rotateAngleX = 0.6F;
-			this.RML4.rotateAngleX = 0.6F;
+			LBL1.rotateAngleX = -1.0F;
+			LBL2.rotateAngleX = -1.0F;
+			LBL3.rotateAngleX = -1.0F;
+			LBL4.rotateAngleX = 0.8F;
+			LBL5.rotateAngleX = 0.0F;
+			LBL6.rotateAngleX = 0.0F;
+			RBL1.rotateAngleX = -1.0F;
+			RBL2.rotateAngleX = -1.0F;
+			RBL3.rotateAngleX = -1.0F;
+			RBL4.rotateAngleX = 0.8F;
+			RBL5.rotateAngleX = 0.0F;
+			RBL6.rotateAngleX = 0.0F;
+			LFL1.rotateAngleX = -0.6F;
+			LFL2.rotateAngleX = -0.6F;
+			LFL3.rotateAngleX = -0.6F;
+			LFL4.rotateAngleX = -0.6F;
+			RFL1.rotateAngleX = -0.6F;
+			RFL2.rotateAngleX = -0.6F;
+			RFL3.rotateAngleX = -0.6F;
+			RFL4.rotateAngleX = -0.6F;
+			LML1.rotateAngleX = 0.6F;
+			LML2.rotateAngleX = 0.6F;
+			LML3.rotateAngleX = 0.6F;
+			LML4.rotateAngleX = 0.6F;
+			RML1.rotateAngleX = 0.6F;
+			RML2.rotateAngleX = 0.6F;
+			RML3.rotateAngleX = 0.6F;
+			RML4.rotateAngleX = 0.6F;
 		}
 		if (var8.onGround) {
 			LBL4.setRotationPoint(2F, 18F, 3F);
 			LBL5.setRotationPoint(2F, 18F, 3F);
 			LBL6.setRotationPoint(2F, 18F, 3F);
-
 			RBL4.setRotationPoint(-2F, 18F, 3F);
 			RBL5.setRotationPoint(-2F, 18F, 3F);
 			RBL6.setRotationPoint(-2F, 18F, 3F);
-
-			this.LBL1.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 - 0.5235988F;
-			this.LBL2.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 - 0.5235988F;
-			this.LBL3.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 - 0.5235988F;
-			this.LBL4.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-			this.LBL5.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 - 0.6981317F;
-			this.LBL6.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 - 0.5235988F;
-
-			this.RBL1.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.5235988F;
-			this.RBL2.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.5235988F;
-			this.RBL3.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.5235988F;
-			this.RBL4.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-			this.RBL5.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.6981317F;
-			this.RBL6.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.5235988F;
+			LBL1.rotateAngleX = legx2 - 0.5235988F;
+			LBL2.rotateAngleX = legx2 - 0.5235988F;
+			LBL3.rotateAngleX = legx2 - 0.5235988F;
+			LBL4.rotateAngleX = legx2;
+			LBL5.rotateAngleX = legx2 - 0.6981317F;
+			LBL6.rotateAngleX = legx2 - 0.5235988F;
+			RBL1.rotateAngleX = legx1 - 0.5235988F;
+			RBL2.rotateAngleX = legx1 - 0.5235988F;
+			RBL3.rotateAngleX = legx1 - 0.5235988F;
+			RBL4.rotateAngleX = legx1;
+			RBL5.rotateAngleX = legx1 - 0.6981317F;
+			RBL6.rotateAngleX = legx1 - 0.5235988F;
 		}
-
 	}
 }

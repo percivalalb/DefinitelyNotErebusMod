@@ -10,7 +10,6 @@ import org.lwjgl.opengl.GL11;
 import erebus.entity.EntityWasp;
 
 public class ModelWasp extends ModelBase {
-	// fields
 	ModelRenderer Thx;
 	ModelRenderer ThxS;
 	ModelRenderer ThxTop;
@@ -449,20 +448,17 @@ public class ModelWasp extends ModelBase {
 		Sting.render(par7);
 		ThxRW.render(par7);
 		ThxLW.render(par7);
-
 		GL11.glPushMatrix();
 		GL11.glEnable(3042);
 		float transparency = 0.6F;
 		GL11.glBlendFunc(770, 771);
 		GL11.glColor4f(0.8F, 0.8F, 0.8F, transparency);
-
-		this.RWingBack.render(par7);
-		this.RWingMid.render(par7);
-		this.RWingFront.render(par7);
-		this.LWingBack.render(par7);
-		this.LWingMid.render(par7);
-		this.LWingFront.render(par7);
-
+		RWingBack.render(par7);
+		RWingMid.render(par7);
+		RWingFront.render(par7);
+		LWingBack.render(par7);
+		LWingMid.render(par7);
+		LWingFront.render(par7);
 		GL11.glDisable(3042);
 		GL11.glPopMatrix();
 	}
@@ -476,132 +472,124 @@ public class ModelWasp extends ModelBase {
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
-		this.HeadA.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.HeadB.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.HeadC.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.AntLS.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.AntLE.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.AntRS.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.AntRE.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.Eyes.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.RMandibleA.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.RMandibleB.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.LMandibleA.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.LMandibleB.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.HeadA.rotateAngleX = par5 / (180F / (float) Math.PI) - 1.0F;
-		this.HeadB.rotateAngleX = par5 / (180F / (float) Math.PI) - 1.0F;
-		this.HeadC.rotateAngleX = par5 / (180F / (float) Math.PI) - 1.0F;
-		this.AntLS.rotateAngleX = par5 / (180F / (float) Math.PI) - 1.0F;
-		this.AntLE.rotateAngleX = par5 / (180F / (float) Math.PI) - 1.0F;
-		this.AntRS.rotateAngleX = par5 / (180F / (float) Math.PI) - 1.0F;
-		this.AntRE.rotateAngleX = par5 / (180F / (float) Math.PI) - 1.0F;
-		this.Eyes.rotateAngleX = par5 / (180F / (float) Math.PI) - 1.0F;
-		this.RMandibleA.rotateAngleX = par5 / (180F / (float) Math.PI) - 1.0F;
-		this.RMandibleB.rotateAngleX = par5 / (180F / (float) Math.PI) - 1.0F;
-		this.LMandibleA.rotateAngleX = par5 / (180F / (float) Math.PI) - 1.0F;
-		this.LMandibleB.rotateAngleX = par5 / (180F / (float) Math.PI) - 1.0F;
-
+		float heady = par4 / (180F / (float) Math.PI);
+		float headx = par5 / (180F / (float) Math.PI) - 1.0F;
+		HeadA.rotateAngleY = heady;
+		HeadB.rotateAngleY = heady;
+		HeadC.rotateAngleY = heady;
+		AntLS.rotateAngleY = heady;
+		AntLE.rotateAngleY = heady;
+		AntRS.rotateAngleY = heady;
+		AntRE.rotateAngleY = heady;
+		Eyes.rotateAngleY = heady;
+		RMandibleA.rotateAngleY = heady;
+		RMandibleB.rotateAngleY = heady;
+		LMandibleA.rotateAngleY = heady;
+		LMandibleB.rotateAngleY = heady;
+		HeadA.rotateAngleX = headx;
+		HeadB.rotateAngleX = headx;
+		HeadC.rotateAngleX = headx;
+		AntLS.rotateAngleX = headx;
+		AntLE.rotateAngleX = headx;
+		AntRS.rotateAngleX = headx;
+		AntRE.rotateAngleX = headx;
+		Eyes.rotateAngleX = headx;
+		RMandibleA.rotateAngleX = headx;
+		RMandibleB.rotateAngleX = headx;
+		LMandibleA.rotateAngleX = headx;
+		LMandibleB.rotateAngleX = headx;
 		EntityWasp var8 = (EntityWasp) par7Entity;
 		if (var8.onGround)
-
 		{
-			this.LBLA.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 + 0.25F;
-			this.LBLB.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 + 0.25F;
-			this.LBLC.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 + 0.5F;
-			this.LBLD.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 + 0.61F;
-			this.LMLA.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-			this.LMLB.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-			this.LMLC.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-			this.LMLD.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-			this.LFLA.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 - 0.25F;
-			this.LFLB.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 - 0.25F;
-			this.LFLC.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 - 0.5F;
-			this.LFLD.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 - 0.64F;
-			this.RBLA.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 + 0.25F;
-			this.RBLB.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 + 0.25F;
-			this.RBLC.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 + 0.5F;
-			this.RBLD.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 + 0.61F;
-			this.RMLA.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-			this.RMLB.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-			this.RMLC.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-			this.RMLD.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-			this.RFLA.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.25F;
-			this.RFLB.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.25F;
-			this.RFLC.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.5F;
-			this.RFLD.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.64F;
-
-			this.RWingBack.rotateAngleY = -0.25F;
-			this.RWingMid.rotateAngleY = -0.25F;
-			this.RWingFront.rotateAngleY = -0.25F;
-			this.LWingBack.rotateAngleY = 0.25F;
-			this.LWingMid.rotateAngleY = 0.25F;
-			this.LWingFront.rotateAngleY = 0.25F;
-
-			this.RWingBack.rotateAngleX = 0F;
-			this.RWingMid.rotateAngleX = 0F;
-			this.RWingFront.rotateAngleX = 0F;
-			this.LWingBack.rotateAngleX = 0F;
-			this.LWingMid.rotateAngleX = 0F;
-			this.LWingFront.rotateAngleX = 0F;
-
-			this.Ab.rotateAngleX = -0.2F;
-			this.AbF.rotateAngleX = -0.2F;
-			this.AbSide.rotateAngleX = -0.2F;
-			this.AbTop.rotateAngleX = -0.2F;
-			this.AbBack.rotateAngleX = -0.2F;
-			this.Sting.rotateAngleX = -0.2F;
-
+			float legx1 = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
+			float legx2 = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
+			LBLA.rotateAngleX = legx1 + 0.25F;
+			LBLB.rotateAngleX = legx1 + 0.25F;
+			LBLC.rotateAngleX = legx1 + 0.5F;
+			LBLD.rotateAngleX = legx1 + 0.61F;
+			LMLA.rotateAngleX = legx2;
+			LMLB.rotateAngleX = legx2;
+			LMLC.rotateAngleX = legx2;
+			LMLD.rotateAngleX = legx2;
+			LFLA.rotateAngleX = legx1 - 0.25F;
+			LFLB.rotateAngleX = legx1 - 0.25F;
+			LFLC.rotateAngleX = legx1 - 0.5F;
+			LFLD.rotateAngleX = legx1 - 0.64F;
+			RBLA.rotateAngleX = legx2 + 0.25F;
+			RBLB.rotateAngleX = legx2 + 0.25F;
+			RBLC.rotateAngleX = legx2 + 0.5F;
+			RBLD.rotateAngleX = legx2 + 0.61F;
+			RMLA.rotateAngleX = legx1;
+			RMLB.rotateAngleX = legx1;
+			RMLC.rotateAngleX = legx1;
+			RMLD.rotateAngleX = legx1;
+			RFLA.rotateAngleX = legx2 - 0.25F;
+			RFLB.rotateAngleX = legx2 - 0.25F;
+			RFLC.rotateAngleX = legx2 - 0.5F;
+			RFLD.rotateAngleX = legx2 - 0.64F;
+			RWingBack.rotateAngleY = -0.25F;
+			RWingMid.rotateAngleY = -0.25F;
+			RWingFront.rotateAngleY = -0.25F;
+			LWingBack.rotateAngleY = 0.25F;
+			LWingMid.rotateAngleY = 0.25F;
+			LWingFront.rotateAngleY = 0.25F;
+			RWingBack.rotateAngleX = 0F;
+			RWingMid.rotateAngleX = 0F;
+			RWingFront.rotateAngleX = 0F;
+			LWingBack.rotateAngleX = 0F;
+			LWingMid.rotateAngleX = 0F;
+			LWingFront.rotateAngleX = 0F;
+			Ab.rotateAngleX = -0.2F;
+			AbF.rotateAngleX = -0.2F;
+			AbSide.rotateAngleX = -0.2F;
+			AbTop.rotateAngleX = -0.2F;
+			AbBack.rotateAngleX = -0.2F;
+			Sting.rotateAngleX = -0.2F;
 		}
-
 		if (var8.isFlying())
-
 		{
-
-			this.LBLA.rotateAngleX = +0.25F;
-			this.LBLB.rotateAngleX = +0.25F;
-			this.LBLC.rotateAngleX = +0.5F;
-			this.LBLD.rotateAngleX = +0.61F;
-			this.LMLA.rotateAngleX = 0F;
-			this.LMLB.rotateAngleX = 0F;
-			this.LMLC.rotateAngleX = 0F;
-			this.LMLD.rotateAngleX = 0F;
-			this.LFLA.rotateAngleX = -0.25F;
-			this.LFLB.rotateAngleX = -0.25F;
-			this.LFLC.rotateAngleX = -0.5F;
-			this.LFLD.rotateAngleX = -0.64F;
-			this.RBLA.rotateAngleX = +0.25F;
-			this.RBLB.rotateAngleX = +0.25F;
-			this.RBLC.rotateAngleX = +0.5F;
-			this.RBLD.rotateAngleX = +0.61F;
-			this.RMLA.rotateAngleX = 0F;
-			this.RMLB.rotateAngleX = 0F;
-			this.RMLC.rotateAngleX = 0F;
-			this.RMLD.rotateAngleX = 0F;
-			this.RFLA.rotateAngleX = -0.25F;
-			this.RFLB.rotateAngleX = -0.25F;
-			this.RFLC.rotateAngleX = -0.5F;
-			this.RFLD.rotateAngleX = -0.64F;
-
-			this.RWingBack.rotateAngleY = -1.5F;
-			this.RWingMid.rotateAngleY = -1.5F;
-			this.RWingFront.rotateAngleY = -1.5F;
-			this.LWingBack.rotateAngleY = 1.5F;
-			this.LWingMid.rotateAngleY = 1.5F;
-			this.LWingFront.rotateAngleY = 1.5F;
-
-			this.RWingBack.rotateAngleX = var8.wingFloat;
-			this.RWingMid.rotateAngleX = var8.wingFloat;
-			this.RWingFront.rotateAngleX = var8.wingFloat;
-			this.LWingBack.rotateAngleX = var8.wingFloat;
-			this.LWingMid.rotateAngleX = var8.wingFloat;
-			this.LWingFront.rotateAngleX = var8.wingFloat;
-
-			this.Ab.rotateAngleX = -0.8F;
-			this.AbF.rotateAngleX = -0.8F;
-			this.AbSide.rotateAngleX = -0.8F;
-			this.AbTop.rotateAngleX = -0.8F;
-			this.AbBack.rotateAngleX = -0.8F;
-			this.Sting.rotateAngleX = -0.8F;
+			LBLA.rotateAngleX = +0.25F;
+			LBLB.rotateAngleX = +0.25F;
+			LBLC.rotateAngleX = +0.5F;
+			LBLD.rotateAngleX = +0.61F;
+			LMLA.rotateAngleX = 0F;
+			LMLB.rotateAngleX = 0F;
+			LMLC.rotateAngleX = 0F;
+			LMLD.rotateAngleX = 0F;
+			LFLA.rotateAngleX = -0.25F;
+			LFLB.rotateAngleX = -0.25F;
+			LFLC.rotateAngleX = -0.5F;
+			LFLD.rotateAngleX = -0.64F;
+			RBLA.rotateAngleX = +0.25F;
+			RBLB.rotateAngleX = +0.25F;
+			RBLC.rotateAngleX = +0.5F;
+			RBLD.rotateAngleX = +0.61F;
+			RMLA.rotateAngleX = 0F;
+			RMLB.rotateAngleX = 0F;
+			RMLC.rotateAngleX = 0F;
+			RMLD.rotateAngleX = 0F;
+			RFLA.rotateAngleX = -0.25F;
+			RFLB.rotateAngleX = -0.25F;
+			RFLC.rotateAngleX = -0.5F;
+			RFLD.rotateAngleX = -0.64F;
+			RWingBack.rotateAngleY = -1.5F;
+			RWingMid.rotateAngleY = -1.5F;
+			RWingFront.rotateAngleY = -1.5F;
+			LWingBack.rotateAngleY = 1.5F;
+			LWingMid.rotateAngleY = 1.5F;
+			LWingFront.rotateAngleY = 1.5F;
+			RWingBack.rotateAngleX = var8.wingFloat;
+			RWingMid.rotateAngleX = var8.wingFloat;
+			RWingFront.rotateAngleX = var8.wingFloat;
+			LWingBack.rotateAngleX = var8.wingFloat;
+			LWingMid.rotateAngleX = var8.wingFloat;
+			LWingFront.rotateAngleX = var8.wingFloat;
+			Ab.rotateAngleX = -0.8F;
+			AbF.rotateAngleX = -0.8F;
+			AbSide.rotateAngleX = -0.8F;
+			AbTop.rotateAngleX = -0.8F;
+			AbBack.rotateAngleX = -0.8F;
+			Sting.rotateAngleX = -0.8F;
 		}
 	}
 }

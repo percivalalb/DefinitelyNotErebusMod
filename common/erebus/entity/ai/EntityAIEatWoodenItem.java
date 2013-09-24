@@ -13,7 +13,7 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 	private final int diffEaten = 0;// 0-peaceful,1-easy,2-med,3-hard
 	private final int maxTicks = 240;// approx 30 tick/sec +- processing delays
 	private final int maxDToWood = 8;// this variable has a childish name.
-										// he-he.
+	// he-he.
 	protected EntityLiving theEntity;
 	protected double entityPosX;
 	protected double entityPosY;
@@ -29,9 +29,6 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 		setMutexBits(3);
 	}
 
-	/**
-	 * Returns whether the EntityAIBase should begin execution.
-	 */
 	@Override
 	public boolean shouldExecute() {
 		if (theEntity.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing")) {
@@ -45,17 +42,11 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 			return false;
 	}
 
-	/**
-	 * Execute a one shot task or start executing a continuous task
-	 */
 	@Override
 	public void startExecuting() {
 		super.startExecuting();
 	}
 
-	/**
-	 * Returns whether an in-progress EntityAIBase should continue executing
-	 */
 	@Override
 	public boolean continueExecuting() {
 		return isBlockEdible(WoodX, WoodY, WoodZ) || !theEntity.getNavigator().noPath();
@@ -94,9 +85,7 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 		super.updateTask();
 	}
 
-	private boolean findClosestWood(int maxDistance) {// returns whether or not
-		// Wood was found
-		// (he-he! he said wood)
+	private boolean findClosestWood(int maxDistance) {
 		for (int currentCheckDistance = 1; currentCheckDistance < maxDistance; currentCheckDistance++)
 			for (int x = -currentCheckDistance; x <= currentCheckDistance; x++)
 				for (int y = -currentCheckDistance; y <= currentCheckDistance; y++)

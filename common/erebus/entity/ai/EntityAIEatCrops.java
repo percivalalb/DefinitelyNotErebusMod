@@ -11,7 +11,7 @@ import erebus.entity.EntityLocust;
 public class EntityAIEatCrops extends EntityAIBase {
 	private final int diffEaten = 0;// 0-peaceful,1-easy,2-med,3-hard
 	private final int maxTicks = 240;// approx 30 tick/sec +- processing delays
-	private final int maxDistance = 16;// higher numbers increase load
+	private final int maxDistance = 8;// higher numbers increase load
 	protected EntityLiving theEntity;
 	protected double entityPosX;
 	protected double entityPosY;
@@ -95,15 +95,15 @@ public class EntityAIEatCrops extends EntityAIBase {
 			theEntity.worldObj.destroyBlock(PlantX, PlantY, PlantZ, false);
 			((EntityGrasshopper) theEntity).setMoveTasks(true);
 			((EntityGrasshopper) theEntity).setCanJump(true);
-			if (reproCap < 2) {
+			if (reproCap == 4 || reproCap == 8) {
 				EntityGrasshopper entityGrasshopper = new EntityGrasshopper(theEntity.worldObj);
 				entityGrasshopper.setPosition(PlantX, PlantY + 1, PlantZ);
 				theEntity.worldObj.spawnEntityInWorld(entityGrasshopper);
 			}
 			ticksSpent = 0;
-			if (reproCap < 3)
+			if (reproCap < 12)
 				reproCap++;
-			if (reproCap == 3) {
+			if (reproCap == 12) {
 				theEntity.setDead();
 				EntityLocust entityLocust = new EntityLocust(theEntity.worldObj);
 				entityLocust.setPosition(PlantX, PlantY + 1, PlantZ);

@@ -49,6 +49,9 @@ public class EntitySoundEvent {
 			event.manager.addSound("erebus:locustsound.ogg");
 			event.manager.addSound("erebus:locusthurt.ogg");
 			event.manager.addSound("erebus:locustspawn.ogg");
+
+			// Insect Repellent
+			event.manager.addSound("erebus:SprayCanSound.ogg");
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println("Erebus had a problem loading its sounds. Please report it to the authors.");

@@ -90,7 +90,7 @@ public class ModBlocks {
 
 	// STAIRS, SLABS, WALLS
 	public static Block[] umbercobbleStairs;			public static int[] umbercobbleStairsID;
-	public static Block[] stairsAcacia;     			public static int[] stairsAcaciaID;
+	public static Block[] plankStairs;     				public static int[] plankStairsID;
 	public static Block petrifiedWoodStairs;  		  	public static int petrifiedWoodStairsID;
 
 	public static Block wallErebus;						public static int wallErebusID;
@@ -136,22 +136,19 @@ public class ModBlocks {
 		umberFurnace = new BlockUmberFurnace(umberFurnaceID, false).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("umberFurnaceOFF");
 		umberFurnace_on = new BlockUmberFurnace(umberFurnace_onID, true).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberFurnaceON");
 		umberPaver = new BlockUmberPaver(umberPaverID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("umberPaver");
-
+		insectRepellent = new BlockInsectRepellent(insectRepellentID, Material.air).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("insectRepellent");
+		
 		umbercobbleStairs = new Block[BlockUmberstone.iconPaths.length];
-		for (int i = 0; i < umbercobbleStairs.length; i++)
+		for (int i = 0; i < umbercobbleStairs.length; i++) {
 			umbercobbleStairs[i] = new BlockStairsErebus(umbercobbleStairsID[i], umberstone, i).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("umbercobbleStairs" + i);
-		stairsAcacia = new Block[BlockPlanksErebus.plankTypes.length];
-		for(int i = 0; i < BlockPlanksErebus.plankTypes.length; i++)
-			stairsAcacia[i] = new BlockStairsErebus(stairsAcaciaID[i], planksErebus, i).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsPlanks" + i);
+		}
+		plankStairs = new Block[BlockPlanksErebus.plankTypes.length];
+		for(int i = 0; i < BlockPlanksErebus.plankTypes.length; i++) {
+			plankStairs[i] = new BlockStairsErebus(plankStairsID[i], planksErebus, i).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsPlanks" + i);
+		}
 		petrifiedWoodStairs = new BlockStairsErebus(petrifiedWoodStairsID, petrifiedWoodPlanks, 0).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("petrifiedWoodStairs");
-
 		wallErebus = new BlockWallErebus(wallErebusID, umberstone).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("wallErebus");
 
-		insectRepellent = new BlockInsectRepellent(insectRepellentID, Material.air).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("insectRepellent");
-
-		// Left a couple of comments on the TileEntitySpawner class to help you guys out since I won't be here this weekend
-		// Create them using any mob, just pass in the name as it shows in the mob's class.
-		// <3 Love you guys in the face. <3
 		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, "Spider").setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner");
 		caveSpiderSpawner = new BlockSpiderSpawner(caveSpiderSpawnerID, "CaveSpider").setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner");
 
@@ -190,10 +187,12 @@ public class ModBlocks {
 		GameRegistry.registerBlock(umberFurnace_on, "erebus.umberFurnaceOn");
 		GameRegistry.registerBlock(umberPaver, ItemBlockUmberpaver.class, "erebus.umberpaver");
 
-		for (int i = 0; i < umbercobbleStairs.length; i++)
+		for (int i = 0; i < umbercobbleStairs.length; i++) {
 			GameRegistry.registerBlock(umbercobbleStairs[i], "erebus.umbercobbleStairs" + i);
-		for (int i = 0; i < stairsAcacia.length; i++)
-			GameRegistry.registerBlock(stairsAcacia[i], "erebus.stairsAcacia" + i);
+		}
+		for (int i = 0; i < plankStairs.length; i++) {
+			GameRegistry.registerBlock(plankStairs[i], "erebus.stairsAcacia" + i);
+		}
 		GameRegistry.registerBlock(petrifiedWoodStairs, "erebus.petrifiedWoodStairs");
 
 		GameRegistry.registerBlock(wallErebus, ItemBlockWallErebus.class, "erebus.wallErebus");

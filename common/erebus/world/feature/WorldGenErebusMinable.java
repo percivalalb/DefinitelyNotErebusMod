@@ -38,7 +38,7 @@ public class WorldGenErebusMinable extends WorldGenerator {
 		double d5 = (double) (y + rand.nextInt(3) - 2);
 
 		int realNumberOfBlocks = numberOfBlocks;
-		numberOfBlocks = (int) Math.ceil((float) numberOfBlocks * 1.45F);
+		numberOfBlocks = (int) Math.ceil((float) numberOfBlocks * (1.15F + rand.nextFloat() * 0.25F));
 
 		for (int attempt = 0, placed = 0; attempt <= numberOfBlocks && placed <= realNumberOfBlocks; ++attempt) {
 			double d6 = d0 + (d1 - d0) * (double) placed / (double) this.numberOfBlocks;

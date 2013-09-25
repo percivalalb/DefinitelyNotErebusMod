@@ -22,7 +22,7 @@ public class ItemErebusFood extends ItemFood {
 	 **/
 	public static final String[] iconPaths = new String[] { "larvaRaw", "beetleLarvaCooked", "grasshopperLegRaw", "grasshopperLegCooked", "legTarantula", "legTarantulaCooked", "bambooSoup" };
 	public static final short dataLarvaRaw = 0, dataLarvaCooked = 1, dataGrasshopperLegRaw = 2, dataGrasshopperLegCooked = 3, dataLegTarantula = 4, dataLegTarantulaCooked = 5, dataBambooSoup = 6;
-	
+
 	@SideOnly(Side.CLIENT)
 	public static Icon[] icons;
 
@@ -93,12 +93,14 @@ public class ItemErebusFood extends ItemFood {
 		player.getFoodStats().addStats(getHealAmount(stack, world, player), getSaturationModifier(stack, world, player));
 		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 		onFoodEaten(stack, world, player);
-		
-		if (stack.getItemDamage() == 6){
-		    if (stack.stackSize == 0)return new ItemStack(Item.bowlEmpty);
-		    else player.inventory.addItemStackToInventory(new ItemStack(Item.bowlEmpty));
+
+		if (stack.getItemDamage() == 6) {
+			if (stack.stackSize == 0)
+				return new ItemStack(Item.bowlEmpty);
+			else
+				player.inventory.addItemStackToInventory(new ItemStack(Item.bowlEmpty));
 		}
-		
+
 		return stack;
 	}
 
@@ -129,7 +131,7 @@ public class ItemErebusFood extends ItemFood {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		for(int a=0; a<iconPaths.length; a++){
+		for (int a = 0; a < iconPaths.length; a++) {
 			par3List.add(new ItemStack(par1, 1, a));
 		}
 	}

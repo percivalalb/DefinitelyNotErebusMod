@@ -12,6 +12,7 @@ import erebus.entity.EntityBeetle;
 @SideOnly(Side.CLIENT)
 public class RenderBeetle extends RenderLiving {
 	private static ResourceLocation Texture;
+
 	public RenderBeetle(ModelBase par1ModelBase, float par2) {
 		super(par1ModelBase, par2);
 	}

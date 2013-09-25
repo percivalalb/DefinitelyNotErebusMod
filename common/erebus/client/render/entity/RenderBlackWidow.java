@@ -5,7 +5,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
+
 import erebus.client.model.entity.ModelBlackWidow;
 import erebus.entity.EntityBlackWidow;
 
@@ -25,12 +27,12 @@ public class RenderBlackWidow extends RenderLiving {
 
 	@Override
 	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9) {
-		this.renderBlackWidow((EntityBlackWidow) par1EntityLiving, par2, par4, par6, par8, par9);
+		renderBlackWidow((EntityBlackWidow) par1EntityLiving, par2, par4, par6, par8, par9);
 	}
 
 	@Override
 	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
-		this.renderBlackWidow((EntityBlackWidow) par1Entity, par2, par4, par6, par8, par9);
+		renderBlackWidow((EntityBlackWidow) par1Entity, par2, par4, par6, par8, par9);
 	}
 
 	@Override
@@ -39,9 +41,9 @@ public class RenderBlackWidow extends RenderLiving {
 	}
 
 	protected void scaleBlackWidow(EntityBlackWidow entityBlackWidow, float f) {
-		EntityBlackWidow var8 = (EntityBlackWidow) entityBlackWidow;
-		float f1 = var8.size;
-		this.shadowSize = f1;
+		EntityBlackWidow var8 = entityBlackWidow;
+		float f1 = var8.WidowSize;
+		shadowSize = f1;
 		GL11.glScalef(f1, f1, f1);
 	}
 

@@ -27,9 +27,9 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob {
 		super(par1World);
 		// this.moveSpeed = 0.8F;
 		setSize(1.35F, 1.0F/*
-		 * Never put lower than 1.0F else it would be
-		 * nervous to hit
-		 */);
+							 * Never put lower than 1.0F else it would be
+							 * nervous to hit
+							 */);
 		getNavigator().setAvoidsWater(false);
 		experienceValue = 15;
 		fireResistance = 10;

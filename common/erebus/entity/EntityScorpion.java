@@ -11,10 +11,13 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import erebus.ModItems;
+import erebus.client.render.entity.AnimationMathHelper;
 
 public class EntityScorpion extends EntityMob {
 	protected EntityLiving theEntity;
 	public boolean isCaptured;
+	public float wingFloat;
+	AnimationMathHelper mathWings = new AnimationMathHelper();
 
 	public EntityScorpion(World par1World) {
 
@@ -43,6 +46,8 @@ public class EntityScorpion extends EntityMob {
 		super.onUpdate();
 		if (!worldObj.isRemote && riddenByEntity == null)
 			setIsInJaws(false);
+		if (!worldObj.isRemote && riddenByEntity != null)
+			updateRiderPosition();
 	}
 
 	@Override
@@ -96,19 +101,19 @@ public class EntityScorpion extends EntityMob {
 	@Override
 	public void onCollideWithPlayer(EntityPlayer par1EntityPlayer) {
 		super.onCollideWithPlayer(par1EntityPlayer);
-		byte var2 = 0;
-		if (!worldObj.isRemote && par1EntityPlayer.boundingBox.maxY >= boundingBox.minY && par1EntityPlayer.boundingBox.minY <= boundingBox.maxY && !isCaptured) {
+		byte var2 = 1;
+		if (!worldObj.isRemote && par1EntityPlayer.boundingBox.maxY >= boundingBox.minY && par1EntityPlayer.boundingBox.minY <= boundingBox.maxY && !isCaptured)
 			if (worldObj.difficultySetting > 1)
 				if (worldObj.difficultySetting == 2)
 					var2 = 7;
 				else if (worldObj.difficultySetting == 3)
 					var2 = 15;
-			if (var2 > 0)
-				par1EntityPlayer.addPotionEffect(new PotionEffect(Potion.weakness.id, var2 * 5, 0));
-			setIsInJaws(true);
+		if (var2 > 0 && rand.nextInt(200) == 0)
+			par1EntityPlayer.addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 5, 0));
+		wingFloat = mathWings.swing(1.0F, 0.2F);
+		setIsInJaws(true);
+		if (!worldObj.isRemote && riddenByEntity == null)
 			par1EntityPlayer.mountEntity(this);
-			updateRiderPosition();
-		}
 	}
 
 	@Override
@@ -133,19 +138,6 @@ public class EntityScorpion extends EntityMob {
 
 	@Override
 	public boolean attackEntityAsMob(Entity par1Entity) {
-		if (super.attackEntityAsMob(par1Entity)) {
-			if (par1Entity instanceof EntityLiving) {
-				byte var2 = 0;
-				if (worldObj.difficultySetting > 1)
-					if (worldObj.difficultySetting == 2)
-						var2 = 7;
-					else if (worldObj.difficultySetting == 3)
-						var2 = 15;
-				if (var2 > 0)
-					((EntityLiving) par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
-			}
-			return true;
-		} else
-			return false;
+		return super.attackEntityAsMob(par1Entity);
 	}
 }

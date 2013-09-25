@@ -13,8 +13,7 @@ import erebus.entity.EntityGrasshopper;
 
 public class RenderGrasshopper extends RenderLiving {
 	protected ModelGrasshopper model;
-	private static final ResourceLocation Texture = new ResourceLocation(
-			"erebus:textures/mob/ModelGrasshopper.png");
+	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelGrasshopper.png");
 
 	public RenderGrasshopper(ModelGrasshopper par1ModelBase, float par2) {
 		super(par1ModelBase, par2);
@@ -22,24 +21,18 @@ public class RenderGrasshopper extends RenderLiving {
 
 	}
 
-	public void renderGrasshopper(EntityGrasshopper par1EntityGrasshopper,
-			double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(par1EntityGrasshopper, par2, par4, par6, par8,
-				par9);
+	public void renderGrasshopper(EntityGrasshopper par1EntityGrasshopper, double par2, double par4, double par6, float par8, float par9) {
+		super.doRenderLiving(par1EntityGrasshopper, par2, par4, par6, par8, par9);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving par1EntityLiving, double par2,
-			double par4, double par6, float par8, float par9) {
-		this.renderGrasshopper((EntityGrasshopper) par1EntityLiving, par2,
-				par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9) {
+		this.renderGrasshopper((EntityGrasshopper) par1EntityLiving, par2, par4, par6, par8, par9);
 	}
 
 	@Override
-	public void doRender(Entity par1Entity, double par2, double par4,
-			double par6, float par8, float par9) {
-		this.renderGrasshopper((EntityGrasshopper) par1Entity, par2, par4,
-				par6, par8, par9);
+	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+		this.renderGrasshopper((EntityGrasshopper) par1Entity, par2, par4, par6, par8, par9);
 	}
 
 	@Override

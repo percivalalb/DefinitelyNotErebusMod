@@ -3,9 +3,9 @@ package erebus.block;
 import java.util.Random;
 import net.minecraft.item.Item;
 
-public class BlockSpiderSpawner extends BlockSpawner{
-	public BlockSpiderSpawner(int id, String mobName){
-		super(id,mobName);
+public class BlockSpiderSpawner extends BlockSpawner {
+	public BlockSpiderSpawner(int id, String mobName) {
+		super(id, mobName);
 	}
 
 	@Override

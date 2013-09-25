@@ -1,5 +1,6 @@
 package erebus.world.biomes;
 
+
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -41,6 +42,7 @@ import erebus.world.feature.trees.WorldGenAsperTree;
 import erebus.world.feature.trees.WorldGenMossbarkTree;
 import erebus.world.feature.trees.WorldGenTallJungleTree;
 
+
 public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 	public BiomeGenUndergroundJungle(int par1) {
 		super(par1);
@@ -63,9 +65,11 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 		fillerBlock = (byte) Block.dirt.blockID;
 	}
 
+
 	public int getRandomXZOffset(Random rand) {
 		return rand.nextInt(16);
 	}
+
 
 	@Override
 	public void generateTerrain(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) {
@@ -84,6 +88,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 		 * }
 		 */
 
+
 		/** Generating lakes first to avoid complications **/
 		for (int c = 20; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
@@ -93,13 +98,16 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenPonds(Block.waterMoving.blockID, Block.blockClay.blockID, (rand.nextDouble() + 1.0D) * 2D)).generate(worldObj, rand, j2, l3, j5);
 		}
 
+
 		if (rand.nextInt(5) == 0)
-			for(int attempt = 0; attempt < 4; attempt++)
-				if (new WorldGenAmberGround().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16))) break;
+			for (int attempt = 0; attempt < 4; attempt++)
+				if (new WorldGenAmberGround().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16)))
+					break;
 
 		if (rand.nextInt(3) == 0)
-			for(int attempt = 0; attempt < 3; attempt++)
-				if (new WorldGenAmberUmberstone().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16))) break;
+			for (int attempt = 0; attempt < 3; attempt++)
+				if (new WorldGenAmberUmberstone().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16)))
+					break;
 
 		if (rand.nextInt(1) == 0) {
 			int i2 = x + getRandomXZOffset(rand);
@@ -108,12 +116,14 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			(new WorldGenFlowers(Block.mushroomBrown.blockID)).generate(worldObj, rand, i2, k3, i5);
 		}
 
+
 		if (rand.nextInt(1) == 0) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(128);
 			int j5 = z + getRandomXZOffset(rand);
 			(new WorldGenFlowers(Block.mushroomRed.blockID)).generate(worldObj, rand, j2, l3, j5);
 		}
+
 
 		for (int c = 10; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
@@ -122,6 +132,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenQuickSand()).generate(worldObj, rand, j2, l3, j5);
 		}
+
 
 		// Trees
 		// TODO clean up and make it more efficient? 300 cycles per tree seems a
@@ -134,6 +145,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenHugeTrees(true, 4 + rand.nextInt(40), 3, 3)).generate(worldObj, rand, j2, l3, j5);
 		}
 
+
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
@@ -141,6 +153,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenMossbarkTree()).generate(worldObj, rand, j2, l3, j5);
 		}
+
 
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
@@ -150,6 +163,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenTallJungleTree()).generate(worldObj, rand, j2, l3, j5);
 		}
 
+
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
@@ -157,6 +171,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenAsperTree()).generate(worldObj, rand, j2, l3, j5);
 		}
+
 
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
@@ -166,6 +181,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenTrees(true, 6, 3, 3, true)).generate(worldObj, rand, j2, l3, j5);
 		}
 
+
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
@@ -173,6 +189,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenErebusHugeTree(true, 20 + rand.nextInt(5), BlockLogErebus.dataMahogany, BlockLeavesErebus.dataMahoganyDecay, false, ModBlocks.logErebusGroup1.blockID, ModBlocks.leavesErebus.blockID)).generate(worldObj, rand, j2, l3, j5);
 		}
+
 
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
@@ -182,6 +199,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenErebusTrees(true, 5, BlockLogErebus.dataMahogany, BlockLeavesErebus.dataMahoganyDecay, false, ModBlocks.logErebusGroup1.blockID, ModBlocks.leavesErebus.blockID, ModBlocks.thorns.blockID)).generate(worldObj, rand, j2, l3, j5);
 		}
 
+
 		for (int c = 300; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
@@ -190,6 +208,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenEucalyptus(ModBlocks.logErebusGroup1.blockID, BlockLogErebus.dataEucalyptus/* 2 */, ModBlocks.leavesErebus.blockID, BlockLeavesErebus.dataEucalyptusDecay, 8 + rand.nextInt(4), 5, 8, Block.grass.blockID)).generate(worldObj, rand, j2, l3, j5);
 		}
 
+
 		for (int c = 10; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(128);
@@ -197,12 +216,14 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			(new WorldGenRedGem1()).generate(worldObj, rand, j2, l3, j5);
 		}
 
+
 		for (int c = 10; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(128);
 			int j5 = z + getRandomXZOffset(rand);
 			(new WorldGenRedGem2()).generate(worldObj, rand, j2, l3, j5);
 		}
+
 
 		for (int c = 15; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
@@ -212,6 +233,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenBigMushroom(0)).generate(worldObj, rand, j2, l3, j5);
 		}
 
+
 		for (int c = 25; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
@@ -219,6 +241,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenBigMushroom(1)).generate(worldObj, rand, j2, l3, j5);
 		}
+
 
 		for (int var5 = 0; var5 < 2; ++var5) {
 			int j2 = x + getRandomXZOffset(rand);
@@ -228,14 +251,15 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenMelon()).generate(worldObj, rand, j2, l3, j5);
 		}
 
-		if (rand.nextInt(8) == 0)
+		if (rand.nextInt(10) == 0)
 			for (int yy = 100; yy > 20; yy--) {
 				int xx = x + 4 + rand.nextInt(8), zz = z + 4 + rand.nextInt(8);
 				if (worldObj.getBlockId(xx, yy, zz) == 0 && worldObj.getBlockId(xx, yy - 1, zz) == Block.grass.blockID)
-					if (new WorldGenBamboo(13).generate(worldObj, rand, xx, yy, zz))break;
+					if (new WorldGenBamboo(13).generate(worldObj, rand, xx, yy, zz))
+						break;
 			}
 
-		for (int c = 0; c < 150; c++) {
+		for (int c = 0; c < 45; c++) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
@@ -243,13 +267,14 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				(new WorldGenTallGrass(ModBlocks.fern.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
 		}
 
-		for (int c = 0; c < 60; c++) {
+		for (int c = 0; c < 20; c++) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = rand.nextInt(120);
 			int j5 = z + getRandomXZOffset(rand);
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenTallGrass(ModBlocks.fiddlehead.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
 		}
+
 
 		for (int c = 0; c < 1000; c++) {
 			int j2 = x + getRandomXZOffset(rand);
@@ -258,6 +283,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenTallGrass(ModBlocks.erebusGrass.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
 		}
+
 
 		/** Generating jungle vines **/
 		for (int i1 = 0; i1 < 250; i1++) {
@@ -284,6 +310,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			}
 		}
 
+
 		/** Generating thorns **/
 		for (int i1 = 0; i1 < 250; i1++) {
 			int posX3 = x + getRandomXZOffset(rand);
@@ -309,21 +336,22 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			}
 		}
 
-		for (int var5 = 0; var5 < 5; ++var5) {
-			int j2 = x + getRandomXZOffset(rand);
-			int l3 = rand.nextInt(120);
-			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
-				(new WorldGenMelon()).generate(worldObj, rand, j2, l3, j5);
-		}
-
-		for (int var5 = 0; var5 < 10; ++var5) // 10
-		{
-			int j2 = x + getRandomXZOffset(rand);
-			int l3 = rand.nextInt(120);
-			int j5 = z + getRandomXZOffset(rand);
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
-				(new WorldGenTurnips()).generate(worldObj, rand, j2, l3, j5);
-		}
+		if (rand.nextInt(3) == 0)
+			for (int var5 = 0; var5 < 6; ++var5) {
+				int j2 = x + getRandomXZOffset(rand);
+				int l3 = rand.nextInt(120);
+				int j5 = z + getRandomXZOffset(rand);
+				if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
+					(new WorldGenTurnips()).generate(worldObj, rand, j2, l3, j5);
+			}
+		else if (rand.nextInt(2) == 0)
+			for (int var5 = 0; var5 < 3; ++var5) {
+				int j2 = x + getRandomXZOffset(rand);
+				int l3 = rand.nextInt(120);
+				int j5 = z + getRandomXZOffset(rand);
+				if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
+					(new WorldGenMelon()).generate(worldObj, rand, j2, l3, j5);
+			}
 	}
 }
+

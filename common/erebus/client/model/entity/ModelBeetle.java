@@ -5,9 +5,8 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
-public class ModelBeetle extends ModelBase
-{
-	//fields
+public class ModelBeetle extends ModelBase {
+	// fields
 	ModelRenderer backbody;
 	ModelRenderer body;
 	ModelRenderer head;
@@ -38,8 +37,7 @@ public class ModelBeetle extends ModelBase
 	ModelRenderer RBL3;
 	ModelRenderer RBL4;
 
-	public ModelBeetle()
-	{
+	public ModelBeetle() {
 		textureWidth = 128;
 		textureHeight = 128;
 
@@ -260,8 +258,7 @@ public class ModelBeetle extends ModelBase
 		RBL1.render(par7);
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;

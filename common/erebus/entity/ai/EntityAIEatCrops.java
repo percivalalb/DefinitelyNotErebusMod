@@ -11,7 +11,7 @@ import erebus.entity.EntityLocust;
 public class EntityAIEatCrops extends EntityAIBase {
 	private final int diffEaten = 0;// 0-peaceful,1-easy,2-med,3-hard
 	private final int maxTicks = 240;// approx 30 tick/sec +- processing delays
-	private final int maxDistance = 16;// higher numbers increase load
+	private final int maxDistance = 8;// higher numbers increase load
 	protected EntityLiving theEntity;
 	protected double entityPosX;
 	protected double entityPosY;
@@ -29,9 +29,6 @@ public class EntityAIEatCrops extends EntityAIBase {
 		setMutexBits(1);
 	}
 
-	/**
-	 * Returns whether the EntityAIBase should begin execution.
-	 */
 	@Override
 	public boolean shouldExecute() {
 		if (theEntity.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing")) {
@@ -45,65 +42,45 @@ public class EntityAIEatCrops extends EntityAIBase {
 			return false;
 	}
 
-	/**
-	 * Execute a one shot task or start executing a continuous task
-	 */
 	@Override
 	public void startExecuting() {
 		super.startExecuting();
 	}
 
-	/**
-	 * Returns whether an in-progress EntityAIBase should continue executing
-	 */
 	@Override
 	public boolean continueExecuting() {
 		return (theEntity.worldObj.getBlockId(PlantX, PlantY, PlantZ) != Block.tallGrass.blockID) ? false : !theEntity.getNavigator().noPath() || (theEntity.worldObj.getBlockId(PlantX, PlantY, PlantZ) != Block.crops.blockID) ? false : !theEntity.getNavigator().noPath();
 	}
 
-	/**
-	 * Updates the task
-	 */
 	@Override
 	public void updateTask() {
 		AxisAlignedBB blockbounds = getBlockAABB(PlantX, PlantY, PlantZ);
-		theEntity.getLookHelper().setLookPosition(PlantX, PlantY, PlantZ, 50.0F, 8.0F);// last
-		// two
-		// params
-		// are
-		// how
-		// quickly
-		// look
-		// can
-		// snap
+		theEntity.getLookHelper().setLookPosition(PlantX + 0.5D, PlantY + 0.5D, PlantZ + 0.5D, 50.0F, 8.0F);
 		if (theEntity.getNavigator().noPath())
-			if(!((EntityGrasshopper) theEntity).isEating)
-				theEntity.getMoveHelper().setMoveTo(PlantX+0.5D, PlantY, PlantZ+0.5D, moveSpeed);
+			if (!((EntityGrasshopper) theEntity).isEating)
+				theEntity.getMoveHelper().setMoveTo(PlantX + 0.5D, PlantY, PlantZ + 0.5D, moveSpeed);
 		ticksSpent++;
 		if (theEntity.boundingBox.maxY >= blockbounds.minY && theEntity.boundingBox.minY <= blockbounds.maxY && theEntity.boundingBox.maxX >= blockbounds.minX && theEntity.boundingBox.minX <= blockbounds.maxX && theEntity.boundingBox.maxZ >= blockbounds.minZ &&
 		theEntity.boundingBox.minZ <= blockbounds.maxZ && ticksSpent < maxTicks) {
 			((EntityGrasshopper) theEntity).setCanJump(false);
 			((EntityGrasshopper) theEntity).setMoveTasks(false);
-			// System.out.println("Eating");
 			((EntityGrasshopper) theEntity).setIsEating(true);
 			((EntityGrasshopper) theEntity).munchBlock();
-			// ((EntityGrasshopper) this.theEntity).setPositionAndUpdate(PlantX,
-			// PlantY, PlantZ);
 		} else
 			((EntityGrasshopper) theEntity).setIsEating(false);
 		if (ticksSpent >= maxTicks && theEntity.worldObj.difficultySetting >= diffEaten && theEntity.boundingBox.maxY >= blockbounds.minY && theEntity.boundingBox.minY <= blockbounds.maxY) {
 			theEntity.worldObj.destroyBlock(PlantX, PlantY, PlantZ, false);
 			((EntityGrasshopper) theEntity).setMoveTasks(true);
 			((EntityGrasshopper) theEntity).setCanJump(true);
-			if (reproCap < 2) {
+			if (reproCap == 6) {
 				EntityGrasshopper entityGrasshopper = new EntityGrasshopper(theEntity.worldObj);
 				entityGrasshopper.setPosition(PlantX, PlantY + 1, PlantZ);
 				theEntity.worldObj.spawnEntityInWorld(entityGrasshopper);
 			}
 			ticksSpent = 0;
-			if (reproCap < 3)
+			if (reproCap < 12)
 				reproCap++;
-			if (reproCap == 3) {
+			if (reproCap == 12) {
 				theEntity.setDead();
 				EntityLocust entityLocust = new EntityLocust(theEntity.worldObj);
 				entityLocust.setPosition(PlantX, PlantY + 1, PlantZ);
@@ -114,28 +91,25 @@ public class EntityAIEatCrops extends EntityAIBase {
 		super.updateTask();
 	}
 
-	private boolean findClosestPlant(int maxDistance) {// returns whether or not
-		// Plant was found
+	private boolean findClosestPlant(int maxDistance) {
 		for (int currentCheckDistance = 1; currentCheckDistance < maxDistance; currentCheckDistance++)
-			for(int x = -currentCheckDistance; x<currentCheckDistance;x++)
-				for(int y = -currentCheckDistance; y<currentCheckDistance; y++)
-					for(int z = -currentCheckDistance; z<currentCheckDistance; z++)
-						if(isPlant(theEntity.worldObj.getBlockId((int)theEntity.posX+x, (int)theEntity.posY+y, (int)theEntity.posZ+z)))
-						{
-							PlantX = (int)theEntity.posX+x;
-							PlantY = (int)theEntity.posY+y;
-							PlantZ = (int)theEntity.posZ+z;
+			for (int x = -currentCheckDistance; x < currentCheckDistance; x++)
+				for (int y = -currentCheckDistance; y < currentCheckDistance; y++)
+					for (int z = -currentCheckDistance; z < currentCheckDistance; z++)
+						if (isPlant(theEntity.worldObj.getBlockId((int) theEntity.posX + x, (int) theEntity.posY + y, (int) theEntity.posZ + z))) {
+							PlantX = (int) theEntity.posX + x;
+							PlantY = (int) theEntity.posY + y;
+							PlantZ = (int) theEntity.posZ + z;
 							return true;
 						}
 		return false;
 	}
 
-	private boolean isPlant(int blockID){
-		return blockID == Block.tallGrass.blockID || blockID == ModBlocks.erebusGrass.blockID || blockID == Block.crops.blockID;
+	private boolean isPlant(int blockID) {
+		return blockID == Block.tallGrass.blockID || blockID == ModBlocks.erebusGrass.blockID || blockID == ModBlocks.blockTurnip.blockID || blockID == Block.crops.blockID;
 	}
 
 	protected AxisAlignedBB getBlockAABB(int par1, int par2, int par3) {
 		return AxisAlignedBB.getAABBPool().getAABB((PlantX), (PlantY), (PlantZ), PlantX + 1.0D, PlantY + 1.0D, PlantZ + 1.0D);
 	}
 }
-

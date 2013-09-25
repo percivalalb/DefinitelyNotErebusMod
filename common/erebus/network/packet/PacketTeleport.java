@@ -21,10 +21,11 @@ public class PacketTeleport implements IPacket {
 		TeleportClient.prevTimeInPortal = 0;
 		TeleportClient.inPortal = false;
 		TeleportClient.timeUntilPortal = 20;
-		
-		if (data.readBoolean()){
-			Entry<String,URL> entry = AmbientMusicManager.getInstance().getEntry("feint_sleepless.ogg");
-			if (entry != null)AmbientMusicManager.getInstance().play(entry);
+
+		if (data.readBoolean()) {
+			Entry<String, URL> entry = AmbientMusicManager.getInstance().getEntry("feint_sleepless.ogg");
+			if (entry != null)
+				AmbientMusicManager.getInstance().play(entry);
 		}
 	}
 }

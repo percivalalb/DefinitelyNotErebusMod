@@ -24,76 +24,79 @@ import erebus.core.helper.LogHelper;
 import erebus.lib.Reference;
 
 @SideOnly(Side.CLIENT)
-public class AmbientMusicManager implements IScheduledTickHandler{
+public class AmbientMusicManager implements IScheduledTickHandler {
 	private static AmbientMusicManager instance;
-	
-	public static AmbientMusicManager getInstance(){
+
+	public static AmbientMusicManager getInstance() {
 		return instance;
 	}
-	
-	public static void register(){
+
+	public static void register() {
 		instance = new AmbientMusicManager();
-		
+
 		MinecraftForge.EVENT_BUS.register(instance);
-		TickRegistry.registerScheduledTickHandler(instance,Side.CLIENT);
+		TickRegistry.registerScheduledTickHandler(instance, Side.CLIENT);
 	}
-	
+
 	private SoundManager sndMan;
 	private Random rand = new Random();
-	private Map<String,URL> poolAmbient = new HashMap<String,URL>();
-	
-	private AmbientMusicManager(){}
-	
+	private Map<String, URL> poolAmbient = new HashMap<String, URL>();
+
+	private AmbientMusicManager() {
+	}
+
 	@ForgeSubscribe
 	public void onSound(SoundLoadEvent event) {
-		String[] ambientMusicList = new String[]{
-			"bugInTheSystem.ogg", "feint_sleepless.ogg"
-		};
-		
+		String[] ambientMusicList = new String[] { "bugInTheSystem.ogg", "feint_sleepless.ogg" };
+
 		instance.sndMan = event.manager;
-		
+
 		int loaded = 0;
 		URL track;
-		
-		for(String ambient:ambientMusicList){
-			track=getClass().getResource("/assets/erebus/music/ambient_"+ambient);
-			if (track==null)continue;
-			
-			poolAmbient.put("erebus:"+ambient,track);
+
+		for (String ambient : ambientMusicList) {
+			track = getClass().getResource("/assets/erebus/music/ambient_" + ambient);
+			if (track == null)
+				continue;
+
+			poolAmbient.put("erebus:" + ambient, track);
 			++loaded;
 		}
-		
-		LogHelper.logInfo("Loaded "+loaded+" music track(s).");
+
+		LogHelper.logInfo("Loaded " + loaded + " music track(s).");
 	}
 
 	@Override
-	public void tickStart(EnumSet<TickType> type, Object...tickData){
-		if (!sndMan.sndSystem.playing("BgMusic") && rand.nextInt(15) == 0 && ((EntityPlayer)tickData[0]).dimension == ErebusMod.erebusDimensionID){
-			List<Entry<String,URL>> entries = new ArrayList<Entry<String,URL>>(poolAmbient.entrySet());
-			if (entries.size() == 0) return;
-			
+	public void tickStart(EnumSet<TickType> type, Object... tickData) {
+		if (!sndMan.sndSystem.playing("BgMusic") && rand.nextInt(15) == 0 && ((EntityPlayer) tickData[0]).dimension == ErebusMod.erebusDimensionID) {
+			List<Entry<String, URL>> entries = new ArrayList<Entry<String, URL>>(poolAmbient.entrySet());
+			if (entries.size() == 0)
+				return;
+
 			play(entries.get(rand.nextInt(entries.size())));
 		}
 	}
-	
-	public Entry<String,URL> getEntry(String name){
-		name = "erebus:"+name;
-		
-		for(Entry<String,URL> entry:poolAmbient.entrySet()){
-			if (entry.getKey().equals(name)) return entry;
+
+	public Entry<String, URL> getEntry(String name) {
+		name = "erebus:" + name;
+
+		for (Entry<String, URL> entry : poolAmbient.entrySet()) {
+			if (entry.getKey().equals(name))
+				return entry;
 		}
-		
+
 		return null;
 	}
-	
-	public void play(Entry<String,URL> entry){
+
+	public void play(Entry<String, URL> entry) {
 		sndMan.sndSystem.backgroundMusic("BgMusic", entry.getValue(), entry.getKey(), false);
 		sndMan.sndSystem.setVolume("BgMusic", Minecraft.getMinecraft().gameSettings.musicVolume);
 		sndMan.sndSystem.play("BgMusic");
 	}
 
 	@Override
-	public void tickEnd(EnumSet<TickType> type, Object...tickData){}
+	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
+	}
 
 	@Override
 	public EnumSet<TickType> ticks() {
@@ -106,7 +109,7 @@ public class AmbientMusicManager implements IScheduledTickHandler{
 	}
 
 	@Override
-	public int nextTickSpacing(){
+	public int nextTickSpacing() {
 		return 200;
 	}
 }

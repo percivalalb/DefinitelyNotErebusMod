@@ -1,5 +1,6 @@
 package erebus.world.biomes;
 
+
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -27,6 +28,7 @@ import erebus.world.feature.WorldGenSavannaRock;
 import erebus.world.feature.trees.WorldGenAsperTree;
 import erebus.world.feature.trees.WorldGenSavannaTree;
 
+
 public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 	public BiomeGenUndergroundSavannah(int par1) {
 		super(par1);
@@ -34,6 +36,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 		spawnableCreatureList.clear();
 		spawnableWaterCreatureList.clear();
 		spawnableCaveCreatureList.clear();
+
 
 		spawnableMonsterList.add(new SpawnListEntry(EntityCentipede.class, 10, 4, 8));
 		spawnableMonsterList.add(new SpawnListEntry(EntityScorpion.class, 10, 4, 8));
@@ -50,6 +53,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 		fillerBlock = (byte) Block.dirt.blockID;
 	}
 
+
 	@Override
 	public void generateTerrain(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) {
 		for (int c = 75; c > 0; c--) {
@@ -62,6 +66,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 			}
 		}
 
+
 		if (rand.nextInt(3) == 0)
 			for (int yy = 100; yy > 20; yy--) {
 				int xx = x + 4 + rand.nextInt(8), zz = z + 4 + rand.nextInt(8);
@@ -69,7 +74,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 					new WorldGenSavannaRock().generate(worldObj, rand, xx, yy, zz);
 			}
 
-		if (rand.nextInt(25) == 0)
+		if (rand.nextInt(26) == 0)
 			for (int yy = 100; yy > 20; yy--) {
 				int xx = x + 4 + rand.nextInt(8), zz = z + 4 + rand.nextInt(8);
 				if (worldObj.getBlockId(xx, yy, zz) == 0 && worldObj.getBlockId(xx, yy - 1, zz) == Block.grass.blockID)
@@ -84,6 +89,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 					(new WorldGenAsperTree()).generate(worldObj, rand, j2, l3, j5);
 			}
 
+
 		for (int c = 0; c < 200; c++) {
 			int j2 = x + rand.nextInt(16) + 8;
 			int l3 = rand.nextInt(120);
@@ -91,6 +97,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				(new WorldGenTallGrass(ModBlocks.erebusGrass.blockID, 1)).generate(worldObj, rand, j2, l3, j5);
 		}
+
 
 		for (int c = 0; c < 50; c++) {
 			int j2 = x + rand.nextInt(16) + 8;
@@ -100,12 +107,16 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 				(new WorldGenRottenAcacia()).generate(worldObj, rand, j2, l3, j5);
 		}
 
+
 		if (rand.nextInt(6) == 0)
-			for(int attempt = 0; attempt < 6; attempt++)
-				if (new WorldGenAmberGround().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16))) break;
+			for (int attempt = 0; attempt < 6; attempt++)
+				if (new WorldGenAmberGround().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16)))
+					break;
 
 		if (rand.nextInt(3) == 0)
-			for(int attempt = 0; attempt < 5; attempt++)
-				if (new WorldGenAmberUmberstone().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16))) break;
+			for (int attempt = 0; attempt < 5; attempt++)
+				if (new WorldGenAmberUmberstone().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16)))
+					break;
 	}
 }
+

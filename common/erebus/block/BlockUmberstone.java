@@ -46,7 +46,7 @@ public class BlockUmberstone extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		for(int a=0; a<icons.length; a++){
+		for (int a = 0; a < icons.length; a++) {
 			par3List.add(new ItemStack(par1, 1, a));
 		}
 	}

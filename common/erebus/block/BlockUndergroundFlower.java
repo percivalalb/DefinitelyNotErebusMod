@@ -67,6 +67,7 @@ public class BlockUndergroundFlower extends Block implements IPlantable {
 	public boolean isOpaqueCube() {
 		return false;
 	}
+
 	@Override
 	public boolean renderAsNormalBlock() {
 		return false;

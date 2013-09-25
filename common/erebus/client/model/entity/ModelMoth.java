@@ -5,9 +5,8 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import erebus.entity.EntityMoth;
 
-public class ModelMoth extends ModelBase
-{
-	//fields
+public class ModelMoth extends ModelBase {
+	// fields
 	ModelRenderer body;
 	ModelRenderer head;
 	ModelRenderer rearend;
@@ -15,8 +14,7 @@ public class ModelMoth extends ModelBase
 	ModelRenderer rightwing;
 	ModelRenderer leftwing;
 
-	public ModelMoth()
-	{
+	public ModelMoth() {
 		textureWidth = 128;
 		textureHeight = 128;
 
@@ -45,13 +43,13 @@ public class ModelMoth extends ModelBase
 		head2.mirror = true;
 		setRotation(head2, -0.2602503F, 0F, 0F);
 		rightwing = new ModelRenderer(this, -28, 30);
-		rightwing.addBox(-32F, 0F, -15F, 33, 1, 37);
+		rightwing.addBox(-32F, 0F, -15F, 33, 0, 37);
 		rightwing.setRotationPoint(-4F, 4F, 3F);
 		rightwing.setTextureSize(128, 128);
 		rightwing.mirror = true;
 		setRotation(rightwing, 0F, 0F, 0F);
 		leftwing = new ModelRenderer(this, -28, 70);
-		leftwing.addBox(0F, 0F, -15F, 33, 1, 37);
+		leftwing.addBox(0F, 0F, -15F, 33, 0, 37);
 		leftwing.setRotationPoint(4F, 4F, 3F);
 		leftwing.setTextureSize(128, 128);
 		leftwing.mirror = true;
@@ -70,8 +68,7 @@ public class ModelMoth extends ModelBase
 		leftwing.render(par7);
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;

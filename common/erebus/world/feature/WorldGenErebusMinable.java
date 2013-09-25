@@ -36,10 +36,11 @@ public class WorldGenErebusMinable extends WorldGenerator {
 		double d3 = (double) ((float) (z + 8) - MathHelper.cos(f) * (float) this.numberOfBlocks / 8.0F);
 		double d4 = (double) (y + rand.nextInt(3) - 2);
 		double d5 = (double) (y + rand.nextInt(3) - 2);
-		
+
 		int realNumberOfBlocks = numberOfBlocks;
-		if (numberOfBlocks <= 3) numberOfBlocks = 4;
-		numberOfBlocks = (int)Math.ceil((float)numberOfBlocks * 1.65F);
+		if (numberOfBlocks <= 3)
+			numberOfBlocks = 4;
+		numberOfBlocks = (int) Math.ceil((float) numberOfBlocks * 1.65F);
 
 		for (int attempt = 0, placed = 0; attempt <= numberOfBlocks && placed <= realNumberOfBlocks; ++attempt) {
 			double d6 = d0 + (d1 - d0) * (double) placed / (double) this.numberOfBlocks;
@@ -68,7 +69,8 @@ public class WorldGenErebusMinable extends WorldGenerator {
 
 								Block block = Block.blocksList[world.getBlockId(k2, l2, i3)];
 								if (d12 * d12 + d13 * d13 + d14 * d14 < 1.0D && (block != null && block.isGenMineableReplaceable(world, k2, l2, i3, blockToReplace))) {
-									if (realNumberOfBlocks == 1)System.out.println("test "+k2+","+l2+","+i3);
+									if (realNumberOfBlocks == 1)
+										System.out.println("test " + k2 + "," + l2 + "," + i3);
 									world.setBlock(k2, l2, i3, this.minableBlockId, minableBlockMeta, 2);
 									++placed;
 								}

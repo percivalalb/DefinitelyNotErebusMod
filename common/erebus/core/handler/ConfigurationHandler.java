@@ -1,14 +1,16 @@
 package erebus.core.handler;
 
+import java.io.File;
 import java.util.logging.Level;
 
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import erebus.ErebusMod;
 import erebus.ModBiomes;
 import erebus.ModBlocks;
 import erebus.ModItems;
+import erebus.block.BlockPlanksErebus;
+import erebus.block.BlockUmberstone;
 import erebus.utils.IdGenerator;
 
 public class ConfigurationHandler {
@@ -24,9 +26,8 @@ public class ConfigurationHandler {
 		return config.getItem(name, idGen.getNextItemID()).getInt(idGen.getLastItemID());
 	}
 
-	public static void loadConfig(FMLPreInitializationEvent event) {
-
-		config = new Configuration(event.getSuggestedConfigurationFile());
+	public static void loadConfig(File configFile) {
+		config = new Configuration(configFile);
 
 		try {
 			config.load();
@@ -65,15 +66,12 @@ public class ConfigurationHandler {
 			ModBlocks.umberFurnace_onID = configBlock("Block ID of Umebr Furnace OFF");
 			ModBlocks.umberPaverID = configBlock("Block ID of Umebrpaver");
 
-			ModBlocks.umbercobbleStairsID = configBlock("Block ID of Umbercobble Stairs");
-			ModBlocks.stairsAcaciaID = configBlock("Block ID of Acacia Stairs");
-			ModBlocks.stairsEucalyptusID = configBlock("Block ID of Eucalyptus Stairs");
-			ModBlocks.stairsMahoganyID = configBlock("Block ID of Mahogany Stairs");
-			ModBlocks.stairsBaobabID = configBlock("Block ID of Baobab Stairs");
-			ModBlocks.stairsMossbarkID = configBlock("Block ID of Mossbark Stairs");
-			ModBlocks.stairsPinkID = configBlock("Block ID of Pink Stairs");
-			ModBlocks.stairsScorchedID = configBlock("Block ID of Scorched Stairs");
-			ModBlocks.stairsAsperID = configBlock("Block ID of Asper Stairs");
+			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];
+			for (int i = 0; i < ModBlocks.umbercobbleStairsID.length; i++)
+				ModBlocks.umbercobbleStairsID[i] = configBlock("Block ID of Umbercobble Stairs " + i);
+			ModBlocks.stairsAcaciaID = new int[BlockPlanksErebus.plankTypes.length];
+			for (int i = 0; i < ModBlocks.stairsAcaciaID.length; i++)
+				ModBlocks.stairsAcaciaID[i] = configBlock("Block ID of Plank Stairs " + i);
 			ModBlocks.petrifiedWoodStairsID = configBlock("Block ID of Petrified Wood Stairs");
 
 			ModBlocks.wallErebusID = configBlock("Block ID of Wall");
@@ -82,6 +80,8 @@ public class ConfigurationHandler {
 			ModBlocks.caveSpiderSpawnerID = configBlock("Block ID of Cave Spider Spawners");
 
 			ModBlocks.erebusOreExtraID = configBlock("Block ID of Extra Erebus Ores");
+
+			ModBlocks.insectRepellentID = configBlock("Block ID of Insect Repellent Block");
 			/*
 			 * Items
 			 */
@@ -111,7 +111,7 @@ public class ConfigurationHandler {
 			ModItems.metalIngotID = configItem("Item ID of Metal Ingots");
 			ModItems.jumpBootsID = configItem("Item ID of Jump Boots");
 			ModItems.sprintLeggingsID = configItem("Item ID of Sprint Leggings");
-
+			ModItems.sprayCanID = configItem("Item ID of Insect Repellent");
 			/*
 			 * Biomes & misc
 			 */
@@ -123,7 +123,6 @@ public class ConfigurationHandler {
 			ErebusMod.erebusDimensionID = config.get(Configuration.CATEGORY_GENERAL, "Dimension ID of The Erebus", 66, "There doesn't appear to be a limit on dimension IDs, but try to keep it low").getInt(66);
 			ErebusMod.activateExtraOres = config.get(Configuration.CATEGORY_GENERAL, "Should generate copper, lead, silver and tin?", false).getBoolean(false);
 			ErebusMod.beetleLarvaEating = (byte) config.get(Configuration.CATEGORY_GENERAL, "Beetle larva eating settings", 0, "0 = only wooden blocks except tile entities & logs, 1 = only wooden blocks except logs, 2 = anything").getInt(0);
-			ErebusMod.grasshopperEating = (byte) config.get(Configuration.CATEGORY_GENERAL, "Grasshopper eating settings", 0, "dunno").getInt(0);
 			ErebusMod.shouldDoVersionCheck = config.get(Configuration.CATEGORY_GENERAL, "Should do version check?", true).getBoolean(true);
 
 		} catch (Exception e) {
@@ -133,5 +132,4 @@ public class ConfigurationHandler {
 			config.save();
 		}
 	}
-
 }

@@ -43,22 +43,22 @@ public class RenderBeetle extends RenderLiving {
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		EntityBeetle beetle = (EntityBeetle) entity;
 		if (beetle.skin > 0 && beetle.skin <= 10) {
-			Texture = new ResourceLocation("erebus:textures/mob/Beetleblue.png");;
+			Texture = new ResourceLocation("erebus:textures/mob/Beetleblue.png");
 		}
 		if (beetle.skin > 10 && beetle.skin <= 20) {
-			Texture = new ResourceLocation("erebus:textures/mob/Beetlebrown.png");;
+			Texture = new ResourceLocation("erebus:textures/mob/Beetlebrown.png");
 		}
 		if (beetle.skin > 20 && beetle.skin <= 30) {
-			Texture = new ResourceLocation("erebus:textures/mob/Beetlegreen.png");;
+			Texture = new ResourceLocation("erebus:textures/mob/Beetlegreen.png");
 		}
 		if (beetle.skin > 30 && beetle.skin <= 40) {
-			Texture = new ResourceLocation("erebus:textures/mob/Beetlered.png");;
+			Texture = new ResourceLocation("erebus:textures/mob/Beetlered.png");
 		}
 		if (beetle.skin > 40 && beetle.skin <= 50) {
-			Texture = new ResourceLocation("erebus:textures/mob/Beetletan.png");;
+			Texture = new ResourceLocation("erebus:textures/mob/Beetletan.png");
 		}
 		if (beetle.skin == 0) {
-			Texture = new ResourceLocation("erebus:textures/mob/Beetlerarespawn.png");;
+			Texture = new ResourceLocation("erebus:textures/mob/Beetlerarespawn.png");
 		}
 		return Texture;
 	}

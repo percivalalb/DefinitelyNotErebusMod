@@ -65,15 +65,17 @@ public class ConfigurationHandler {
 			ModBlocks.umberFurnaceID = configBlock("Block ID of Umber Furnace ON");
 			ModBlocks.umberFurnace_onID = configBlock("Block ID of Umebr Furnace OFF");
 			ModBlocks.umberPaverID = configBlock("Block ID of Umebrpaver");
+			ModBlocks.insectRepellentID = configBlock("Block ID of Insect Repellent Block");
 
 			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];
-			for (int i = 0; i < ModBlocks.umbercobbleStairsID.length; i++)
+			for (int i = 0; i < ModBlocks.umbercobbleStairsID.length; i++) {
 				ModBlocks.umbercobbleStairsID[i] = configBlock("Block ID of Umbercobble Stairs " + i);
-			ModBlocks.stairsAcaciaID = new int[BlockPlanksErebus.plankTypes.length];
-			for (int i = 0; i < ModBlocks.stairsAcaciaID.length; i++)
-				ModBlocks.stairsAcaciaID[i] = configBlock("Block ID of Plank Stairs " + i);
+			}
+			ModBlocks.plankStairsID = new int[BlockPlanksErebus.plankTypes.length];
+			for (int i = 0; i < ModBlocks.plankStairsID.length; i++) {
+				ModBlocks.plankStairsID[i] = configBlock("Block ID of Plank Stairs " + i);
+			}
 			ModBlocks.petrifiedWoodStairsID = configBlock("Block ID of Petrified Wood Stairs");
-
 			ModBlocks.wallErebusID = configBlock("Block ID of Wall");
 
 			ModBlocks.spiderSpawnerID = configBlock("Block ID of Spider Spawners");
@@ -81,7 +83,6 @@ public class ConfigurationHandler {
 
 			ModBlocks.erebusOreExtraID = configBlock("Block ID of Extra Erebus Ores");
 
-			ModBlocks.insectRepellentID = configBlock("Block ID of Insect Repellent Block");
 			/*
 			 * Items
 			 */

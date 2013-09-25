@@ -30,11 +30,11 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 	public void generateDefault(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) {
 		boolean extraOres = ErebusMod.activateExtraOres;
 
-		for (int a = 0; a < (extraOres ? 12 : 14); ++a) {
+		for (int a = 0; a < (extraOres ? 8 : 10); ++a) {
 			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataCoal, 11 + rand.nextInt(4), worldObj, rand, x, z, 6, 112, 3);
 		}
 
-		for (int a = 0; a < (extraOres ? 13 : 15); ++a) {
+		for (int a = 0; a < (extraOres ? 9 : 11); ++a) {
 			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataIron, 9 + rand.nextInt(3), worldObj, rand, x, z, 6, 112, 3);
 		}
 
@@ -50,7 +50,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataEmerald, 3, worldObj, rand, x, z, 6, 112, 1);
 		}
 
-		for (int a = 0; a < 3 + rand.nextInt(2); ++a) {
+		for (int a = 0; a < 2 + rand.nextInt(2); ++a) {
 			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataDiamond, 1, worldObj, rand, x, z, 6, 112, 1);
 		}
 
@@ -94,7 +94,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 	private static final byte[] checkX = new byte[] { -1, -1, 1, 1, 0, 0 }, checkY = new byte[] { 0, 0, 0, 0, -1, 1 }, checkZ = new byte[] { -1, 1, -1, 1, 0, 0 };
 
 	private void generateOreCluster(Block oreBlock, int oreMeta, int oreNumber, World world, Random rand, int x, int z, int minY, int maxY, int checkArea) {
-		for (int xx, yy, zz, attempt = 0; attempt < 25; attempt++) {
+		for (int xx, yy, zz, attempt = 0; attempt < 12; attempt++) {
 			xx = x + 2 + rand.nextInt(12);
 			zz = z + 2 + rand.nextInt(12);
 			yy = minY + rand.nextInt(Math.max(1, 1 + maxY - minY));

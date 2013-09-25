@@ -604,14 +604,14 @@ public class ModelScorpion extends ModelBase {
 		Sting2.rotateAngleZ = -cosxnz1;
 		// rotateAngleX for tail sting
 		EntityScorpion var8 = (EntityScorpion) par7Entity;
-		Tail1.rotateAngleX = var8.wingFloat;
-		Tail2.rotateAngleX = var8.wingFloat + 0.8726646F;
-		Tail3.rotateAngleX = var8.wingFloat + 1.22173F;
-		Tail4.rotateAngleX = var8.wingFloat + 1.570796F;
-		Tail5.rotateAngleX = var8.wingFloat + 1.919862F;
-		Tail6.rotateAngleX = var8.wingFloat + 2.268928F;
-		Sting1.rotateAngleX = var8.wingFloat + 2.617994F;
-		Sting2.rotateAngleX = var8.wingFloat + 1.570796F;
+		Tail1.rotateAngleX = var8.stingticks;
+		Tail2.rotateAngleX = var8.stingticks + 0.8726646F;
+		Tail3.rotateAngleX = var8.stingticks + 1.22173F;
+		Tail4.rotateAngleX = var8.stingticks + 1.570796F;
+		Tail5.rotateAngleX = var8.stingticks + 1.919862F;
+		Tail6.rotateAngleX = var8.stingticks + 2.268928F;
+		Sting1.rotateAngleX = var8.stingticks + 2.617994F;
+		Sting2.rotateAngleX = var8.stingticks + 1.570796F;
 
 
 		RMand.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2 + 1.570796F;

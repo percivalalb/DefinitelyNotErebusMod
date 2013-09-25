@@ -1,13 +1,22 @@
 package erebus.block;
 
+import static net.minecraftforge.common.ForgeDirection.DOWN;
+import static net.minecraftforge.common.ForgeDirection.UP;
 import java.util.List;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFarmland;
+import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.block.BlockHopper;
+import net.minecraft.block.BlockPoweredOre;
+import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -29,6 +38,11 @@ public class BlockAmber extends Block {
 
 	public BlockAmber(int par1) {
 		super(par1, Material.rock);
+	}
+	
+	@Override
+	public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side) {
+		return world.getBlockMetadata(x, y, z)==2;
 	}
 
 	@SideOnly(Side.CLIENT)

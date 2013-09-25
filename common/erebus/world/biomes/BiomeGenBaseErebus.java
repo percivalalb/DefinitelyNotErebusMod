@@ -31,58 +31,62 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 		boolean extraOres = ErebusMod.activateExtraOres;
 
 		for (int a = 0; a < (extraOres ? 12 : 14); ++a) {
-			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataCoal, 11 + rand.nextInt(4), worldObj, rand, x, z, 16, 112, 3);
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataCoal, 11 + rand.nextInt(4), worldObj, rand, x, z, 6, 112, 3);
 		}
 
 		for (int a = 0; a < (extraOres ? 13 : 15); ++a) {
-			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataIron, 9 + rand.nextInt(3), worldObj, rand, x, z, 16, 112, 3);
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataIron, 9 + rand.nextInt(3), worldObj, rand, x, z, 6, 112, 3);
 		}
 
 		for (int a = 0; a < (extraOres ? 4 : 5); ++a) {
-			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataGold, 7, worldObj, rand, x, z, 16, 112, 3);
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataGold, 7, worldObj, rand, x, z, 6, 112, 3);
 		}
 
 		for (int a = 0; a < 3; ++a) {
-			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataLapis, 6, worldObj, rand, x, z, 16, 112, 2);
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataLapis, 6, worldObj, rand, x, z, 6, 112, 2);
+		}
+		
+		for (int a = 0; a < 2 + rand.nextInt(3); ++a) {
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataEmerald, 3, worldObj, rand, x, z, 6, 112, 1);
 		}
 
 		for (int a = 0; a < 3 + rand.nextInt(2); ++a) {
-			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataDiamond, 1, worldObj, rand, x, z, 16, 112, 1);
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataDiamond, 1, worldObj, rand, x, z, 6, 112, 1);
 		}
 
 		for (int a = 0; a < 1 + rand.nextInt(3); ++a) {
-			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataJade, 4, worldObj, rand, x, z, 16, 112, 2);
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataJade, 4, worldObj, rand, x, z, 6, 112, 2);
 		}
 
 		for (int a = 0; a < (extraOres ? 5 : 6); ++a) {
-			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataPetrifiedWood, 5 + rand.nextInt(3), worldObj, rand, x, z, 16, 112, 2);
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataPetrifiedWood, 5 + rand.nextInt(3), worldObj, rand, x, z, 6, 112, 2);
 		}
 
 		if (rand.nextInt(4) == 0) {
-			for (int a = 0; a < 5; ++a) {
-				generateOreCluster(ModBlocks.oreFossil, 3, 14, worldObj, rand, x, z, 16, 112, 3);
+			for (int a = 0; a < 4; ++a) {
+				generateOreCluster(ModBlocks.oreFossil, 3, 14, worldObj, rand, x, z, 36, 112, 3);
 			}
 		}
 
 		if (extraOres) {
 			for (int a = 0; a < 4; ++a) {
-				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataAluminium, 4, worldObj, rand, x, z, 16, 112, 2);
+				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataAluminium, 4, worldObj, rand, x, z, 6, 112, 2);
 			}
 
 			for (int a = 0; a < 9 + rand.nextInt(3); ++a) {
-				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataCopper, 7 + rand.nextInt(3), worldObj, rand, x, z, 16, 112, 3);
+				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataCopper, 7 + rand.nextInt(3), worldObj, rand, x, z, 6, 112, 3);
 			}
 
 			for (int a = 0; a < 5; ++a) {
-				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataLead, 5, worldObj, rand, x, z, 16, 112, 2);
+				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataLead, 5, worldObj, rand, x, z, 6, 112, 2);
 			}
 
 			for (int a = 0; a < 7; ++a) {
-				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataSilver, 8 + rand.nextInt(3), worldObj, rand, x, z, 16, 112, 3);
+				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataSilver, 8 + rand.nextInt(3), worldObj, rand, x, z, 6, 112, 3);
 			}
 
 			for (int a = 0; a < 3 + rand.nextInt(3); ++a) {
-				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataTin, 5 + rand.nextInt(2), worldObj, rand, x, z, 16, 112, 2);
+				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataTin, 5 + rand.nextInt(2), worldObj, rand, x, z, 6, 112, 2);
 			}
 		}
 	}

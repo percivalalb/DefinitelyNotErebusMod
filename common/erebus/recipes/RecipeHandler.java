@@ -12,6 +12,7 @@ import erebus.ModBlocks;
 import erebus.ModItems;
 import erebus.block.BlockLogErebus;
 import erebus.block.BlockPlanksErebus;
+import erebus.block.BlockSlabPlanksErebus;
 import erebus.item.ItemErebusFood;
 import erebus.item.ItemErebusMaterial;
 
@@ -56,6 +57,19 @@ public class RecipeHandler {
 		}
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedWoodStairs, 4), new Object[] { "#  ", "## ", "###", '#', new ItemStack(ModBlocks.petrifiedWoodPlanks, 1, 0) });
 
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.stoneSlabs[0], 6, 0), new Object[] { "###", '#', new ItemStack(ModBlocks.umberstone, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.stoneSlabs[0], 6, 1), new Object[] { "###", '#', new ItemStack(ModBlocks.umberstone, 1, 1) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.stoneSlabs[0], 6, 2), new Object[] { "###", '#', new ItemStack(ModBlocks.umberstone, 1, 2) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.stoneSlabs[0], 6, 3), new Object[] { "###", '#', new ItemStack(ModBlocks.umberstone, 1, 3) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.stoneSlabs[0], 6, 4), new Object[] { "###", '#', new ItemStack(ModBlocks.umberstone, 1, 4) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.stoneSlabs[0], 6, 5), new Object[] { "###", '#', new ItemStack(ModBlocks.umberPaver, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.stoneSlabs[0], 6, 6), new Object[] { "###", '#', new ItemStack(ModBlocks.umberPaver, 1, 1) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.stoneSlabs[0], 6, 7), new Object[] { "###", '#', new ItemStack(ModBlocks.umberPaver, 1, 2) });
+		
+		for (int i = 0; i < BlockSlabPlanksErebus.slabTypes.length; i++) {
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.plankSlabs[0], 6, i), new Object[] { "###", '#', new ItemStack(ModBlocks.planksErebus, 1, i) });
+		}
+		
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.wallErebus, 6, 0), new Object[] { "###", "###", '#', new ItemStack(ModBlocks.umberstone, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.wallErebus, 6, 1), new Object[] { "###", "###", '#', new ItemStack(ModBlocks.umberstone, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.wallErebus, 6, 2), new Object[] { "###", "###", '#', new ItemStack(ModBlocks.umberstone, 1, 2) });

@@ -43,14 +43,17 @@ public class CommonProxy implements IGuiHandler {
 	}
 
 	public void registerTileEntities() {
-		// Why the fancy names? No one will be reading those
-		GameRegistry.registerTileEntity(TileEntitySpawner.class, "TILE ENTITY SPAWNER MWAHAHAHAHAA SHHDSAIUSDSAG 42");
+		GameRegistry.registerTileEntity(TileEntitySpawner.class, "Custom Spawner (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityHollowLog.class, "Hollow Log (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityBambooCrate.class, "Bamboo Crate (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityUmberFurnace.class, "Umber Furnace (Erebus)");
 	}
 
 	public void handleParticlePacket(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data) {
+		// Unused server side. -- see ClientProxy for implementation
+	}
+	
+	public void spawnCustomParticle(String particleName, World world, double x, double y, double z, double vecX, double vecY, double vecZ) {
 		// Unused server side. -- see ClientProxy for implementation
 	}
 

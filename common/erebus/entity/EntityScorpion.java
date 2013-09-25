@@ -18,7 +18,9 @@ public class EntityScorpion extends EntityMob {
 	public boolean isCaptured;
 	public float wingFloat;
 	AnimationMathHelper mathWings = new AnimationMathHelper();
-
+	private boolean sting;
+	private boolean poisoned;
+	public static float stingticks;
 	public EntityScorpion(World par1World) {
 
 		super(par1World);
@@ -44,10 +46,35 @@ public class EntityScorpion extends EntityMob {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote && riddenByEntity == null)
+
+		if (!worldObj.isRemote && riddenByEntity == null) {
 			setIsInJaws(false);
-		if (!worldObj.isRemote && riddenByEntity != null)
+			setisStinging(false);
+		}
+		if (!worldObj.isRemote && riddenByEntity != null) {
 			updateRiderPosition();
+			setIsInJaws(true);
+		}
+		if (sting && stingticks < 0.64F)
+		{
+			//wingFloat = mathWings.swing(1.0F, 0.4F);
+			stingticks = stingticks + 0.16F;
+			if (stingticks >= 0.64F) {
+				setHasBeenStung(true);
+				setisStinging(false);
+			}
+		}
+		if (!sting && stingticks > 0F && poisoned) {
+			stingticks = stingticks - 0.16F;
+			if (stingticks <= 0.0F)
+				setHasBeenStung(false);
+		}
+	}
+
+
+
+	private void setHasBeenStung(boolean par1) {
+		poisoned = par1;
 	}
 
 	@Override
@@ -108,12 +135,18 @@ public class EntityScorpion extends EntityMob {
 					var2 = 7;
 				else if (worldObj.difficultySetting == 3)
 					var2 = 15;
-		if (var2 > 0 && rand.nextInt(200) == 0)
+		if (var2 > 0 && rand.nextInt(200) == 0) {
 			par1EntityPlayer.addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 5, 0));
-		wingFloat = mathWings.swing(1.0F, 0.2F);
-		setIsInJaws(true);
+			setisStinging(true);
+		}
+
 		if (!worldObj.isRemote && riddenByEntity == null)
 			par1EntityPlayer.mountEntity(this);
+	}
+
+	private void setisStinging(boolean par1) {
+		sting = par1;
+
 	}
 
 	@Override
@@ -122,7 +155,8 @@ public class EntityScorpion extends EntityMob {
 		double offSetX = -Math.sin(a) * 0.75D;
 		double offSetZ = Math.cos(a) * 0.75D;
 		if (riddenByEntity != null)
-			riddenByEntity.setPosition(posX + offSetX, posY + 0.75D + riddenByEntity.getYOffset(), posZ + offSetZ);
+			riddenByEntity.setPosition(posX + offSetX, posY + 0.75D
+					+ riddenByEntity.getYOffset(), posZ + offSetZ);
 	}
 
 	public void setIsInJaws(boolean par1) {

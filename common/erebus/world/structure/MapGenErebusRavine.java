@@ -8,6 +8,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.MapGenBase;
+import erebus.ModBiomes;
 import erebus.ModBlocks;
 
 public class MapGenErebusRavine extends MapGenBase {
@@ -199,7 +200,7 @@ public class MapGenErebusRavine extends MapGenBase {
 		int block = blocks[index];
 
 		if (block == ModBlocks.umberstone.blockID || block == filler || block == top || true)
-			if (y < 10)
+			if (y < 10 && biome.biomeID == ModBiomes.desertID)
 				blocks[index] = (byte) Block.lavaMoving.blockID;
 			else {
 				blocks[index] = 0;

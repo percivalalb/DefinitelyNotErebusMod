@@ -1,11 +1,8 @@
 package erebus.block;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityFX;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -17,7 +14,6 @@ import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import erebus.ModBlocks;
-import erebus.client.fx.EntityRepellent;
 
 public class BlockInsectRepellent extends Block {
 
@@ -100,8 +96,9 @@ public class BlockInsectRepellent extends Block {
 				d1 = par2 + 0 - d0;
 
 			if (d1 < par2 || d1 > par2 + 1 || d2 < 0.0D || d2 > par3 + 1 || d3 < par4 || d3 > par4 + 1) {
-				EntityFX repellent = new EntityRepellent(par1World, d1, d2, d3, 0.0F, 0.0F, 0.0F);
-				Minecraft.getMinecraft().effectRenderer.addEffect(repellent);
+				//EntityFX repellent = new EntityRepellent(par1World, d1, d2, d3, 0.0F, 0.0F, 0.0F);
+				//Minecraft.getMinecraft().effectRenderer.addEffect(repellent);
+				// TODO - this crashes the server on startup!!!
 			}
 		}
 	}

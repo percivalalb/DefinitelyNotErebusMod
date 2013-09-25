@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import erebus.ErebusMod;
 import erebus.ModBlocks;
 
 public class BlockInsectRepellent extends Block {
@@ -64,41 +65,35 @@ public class BlockInsectRepellent extends Block {
 	}
 
 	@Override
-	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random) {
-		sparkle(par1World, par2, par3, par4);
-	}
-
-	private void sparkle(World par1World, int par2, int par3, int par4) {
-		Random random = par1World.rand;
+	public void randomDisplayTick(World world, int x, int y, int z, Random par5Random) {
+		Random random = world.rand;
 		double d0 = 0.0625D;
 
 		for (int l = 0; l < 6; ++l) {
-			double d1 = par2 + random.nextFloat();
-			double d2 = par3 + random.nextFloat();
-			double d3 = par4 + random.nextFloat();
+			double particleX = x + random.nextFloat();
+			double particleY = y + random.nextFloat();
+			double particleZ = z + random.nextFloat();
 
-			if (l == 0 && !par1World.isBlockOpaqueCube(par2, par3 + 1, par4))
-				d2 = par3 + 1 + d0;
+			if (l == 0 && !world.isBlockOpaqueCube(x, y + 1, z))
+				particleY = y + 1 + d0;
 
-			if (l == 1 && !par1World.isBlockOpaqueCube(par2, par3 - 1, par4))
-				d2 = par3 + 0 - d0;
+			if (l == 1 && !world.isBlockOpaqueCube(x, y - 1, z))
+				particleY = y + 0 - d0;
 
-			if (l == 2 && !par1World.isBlockOpaqueCube(par2, par3, par4 + 1))
-				d3 = par4 + 1 + d0;
+			if (l == 2 && !world.isBlockOpaqueCube(x, y, z + 1))
+				particleZ = z + 1 + d0;
 
-			if (l == 3 && !par1World.isBlockOpaqueCube(par2, par3, par4 - 1))
-				d3 = par4 + 0 - d0;
+			if (l == 3 && !world.isBlockOpaqueCube(x, y, z - 1))
+				particleZ = z + 0 - d0;
 
-			if (l == 4 && !par1World.isBlockOpaqueCube(par2 + 1, par3, par4))
-				d1 = par2 + 1 + d0;
+			if (l == 4 && !world.isBlockOpaqueCube(x + 1, y, z))
+				particleX = x + 1 + d0;
 
-			if (l == 5 && !par1World.isBlockOpaqueCube(par2 - 1, par3, par4))
-				d1 = par2 + 0 - d0;
+			if (l == 5 && !world.isBlockOpaqueCube(x - 1, y, z))
+				particleX = x + 0 - d0;
 
-			if (d1 < par2 || d1 > par2 + 1 || d2 < 0.0D || d2 > par3 + 1 || d3 < par4 || d3 > par4 + 1) {
-				//EntityFX repellent = new EntityRepellent(par1World, d1, d2, d3, 0.0F, 0.0F, 0.0F);
-				//Minecraft.getMinecraft().effectRenderer.addEffect(repellent);
-				// TODO - this crashes the server on startup!!!
+			if (particleX < x || particleX > x + 1 || particleY < 0.0D || particleY > y + 1 || particleZ < z || particleZ > z + 1) {
+				ErebusMod.proxy.spawnCustomParticle("repellent",world,particleX,particleY,particleZ,0D,0D,0D);
 			}
 		}
 	}

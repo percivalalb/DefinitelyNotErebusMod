@@ -23,6 +23,8 @@ import erebus.block.BlockQuickSand;
 import erebus.block.BlockRedGem;
 import erebus.block.BlockSaplingErebus;
 import erebus.block.BlockSilk;
+import erebus.block.BlockSlabPlanksErebus;
+import erebus.block.BlockSlabStoneErebus;
 import erebus.block.BlockSpiderSpawner;
 import erebus.block.BlockStairsErebus;
 import erebus.block.BlockThorns;
@@ -39,6 +41,8 @@ import erebus.item.block.ItemBlockLogErebus1;
 import erebus.item.block.ItemBlockLogErebus2;
 import erebus.item.block.ItemBlockPlanksErebus;
 import erebus.item.block.ItemBlockRedGem;
+import erebus.item.block.ItemBlockSlabPlanksErebus;
+import erebus.item.block.ItemBlockSlabStoneErebus;
 import erebus.item.block.ItemBlockUmberOre;
 import erebus.item.block.ItemBlockUmberStone;
 import erebus.item.block.ItemBlockUmberpaver;
@@ -87,25 +91,23 @@ public class ModBlocks {
 	public static Block umberFurnace;					public static int umberFurnaceID;
 	public static Block umberFurnace_on;				public static int umberFurnace_onID;
 	public static Block umberPaver;						public static int umberPaverID;
+	public static Block insectRepellent;				public static int insectRepellentID;
 
 	// STAIRS, SLABS, WALLS
 	public static Block[] umbercobbleStairs;			public static int[] umbercobbleStairsID;
 	public static Block[] plankStairs;     				public static int[] plankStairsID;
 	public static Block petrifiedWoodStairs;  		  	public static int petrifiedWoodStairsID;
-
+	public static Block[] stoneSlabs;					public static int[] stoneSlabsID;
+	public static Block[] plankSlabs;					public static int[] plankSlabsID;
 	public static Block wallErebus;						public static int wallErebusID;
 
 	// DUNGEONS
 	public static Block spiderSpawner;     				public static int spiderSpawnerID;
 	public static Block caveSpiderSpawner;    			public static int caveSpiderSpawnerID;
 
-	// MISC
-	public static Block insectRepellent;
-	public static int insectRepellentID;
 	public static void init() {
 		// Block declaration: constructor, hardness, resistance, light value, light opacity, step sound, creative tab, unlocalized name, texture name
-		// FIXME Remove the creative tab before release!!!
-		portalErebus = (BlockPortalErebus) new BlockPortalErebus(portalErebusID, 221).setHardness(-1F).setLightValue(1.0F).setStepSound(Block.soundGlassFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("portalErebus");
+		portalErebus = (BlockPortalErebus) new BlockPortalErebus(portalErebusID, 221).setHardness(-1F).setLightValue(1.0F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("portalErebus");
 
 		umberstone = new BlockUmberstone(umberstoneID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("umberstone");
 		umberOreBlock = new BlockErebusOre(umberOreBlockID).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("oreBlockU");
@@ -147,6 +149,14 @@ public class ModBlocks {
 			plankStairs[i] = new BlockStairsErebus(plankStairsID[i], planksErebus, i).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsPlanks" + i);
 		}
 		petrifiedWoodStairs = new BlockStairsErebus(petrifiedWoodStairsID, petrifiedWoodPlanks, 0).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("petrifiedWoodStairs");
+		stoneSlabs = new Block[2];
+		for (int i = 0; i < 2; i ++) {
+			stoneSlabs[i] = (new BlockSlabStoneErebus(stoneSlabsID[i], i == 1)).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("slabStoneErebus");
+		}
+		plankSlabs = new Block[2];
+		for (int i = 0; i < 2; i ++) {
+			plankSlabs[i] = (new BlockSlabPlanksErebus(plankSlabsID[i], i == 1)).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundWoodFootstep).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("slabPlanksErebus");
+		}
 		wallErebus = new BlockWallErebus(wallErebusID, umberstone).setCreativeTab(ErebusMod.tabErebusBlock).setUnlocalizedName("wallErebus");
 
 		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, "Spider").setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner");
@@ -191,7 +201,13 @@ public class ModBlocks {
 			GameRegistry.registerBlock(umbercobbleStairs[i], "erebus.umbercobbleStairs" + i);
 		}
 		for (int i = 0; i < plankStairs.length; i++) {
-			GameRegistry.registerBlock(plankStairs[i], "erebus.stairsAcacia" + i);
+			GameRegistry.registerBlock(plankStairs[i], "erebus.plankStairs" + i);
+		}
+		for (int i = 0; i < stoneSlabs.length; i++) {
+			GameRegistry.registerBlock(stoneSlabs[i], ItemBlockSlabStoneErebus.class, "erebus.slabStone" + i);
+		}
+		for (int i = 0; i < plankSlabs.length; i++) {
+			GameRegistry.registerBlock(plankSlabs[i], ItemBlockSlabPlanksErebus.class, "erebus.slabPlanks" + i);
 		}
 		GameRegistry.registerBlock(petrifiedWoodStairs, "erebus.petrifiedWoodStairs");
 
@@ -209,6 +225,12 @@ public class ModBlocks {
 		MinecraftForge.setBlockHarvestLevel(caveSpiderSpawner, 0, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(umberstone, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(umberPaver, "pickaxe", 0);
+		for (int i = 0; i < stoneSlabs.length; i++) {
+			MinecraftForge.setBlockHarvestLevel(stoneSlabs[i], "pickaxe", 0);
+		}
+		for (int i = 0; i < plankSlabs.length; i++) {
+			MinecraftForge.setBlockHarvestLevel(plankSlabs[i], "axe", 0);
+		}
 		MinecraftForge.setBlockHarvestLevel(wallErebus, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 0, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(umberOreBlock, 1, "pickaxe", 1);

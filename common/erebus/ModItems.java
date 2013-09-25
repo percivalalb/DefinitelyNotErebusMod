@@ -32,17 +32,17 @@ import erebus.item.ItemSprayCan;
  * @author ProPercivalalb
  */
 public class ModItems {
-	public static Item erebusFood;						public static int erebusFoodID;
-	public static Item erebusMaterials;  				public static int erebusMaterialsID;
-	public static Item bamBucket;						public static int bamBucketID;
-	public static Item exoskeletonHelmet;				public static int exoskeletonHelmetID;
-	public static Item exoskeletonBody;					public static int exoskeletonBodyID;
-	public static Item exoskeletonLegs;					public static int exoskeletonLegsID;
-	public static Item exoskeletonBoots;				public static int exoskeletonBootsID;
+	
+	// BASIC MATERIALS
 	public static Item portalActivator;					public static int portalActivatorID;
-	public static Item fossilClub;						public static int fossilClubID;
-	public static Item maxSpeedBow;						public static int maxSpeedBowID;
+	public static Item erebusMaterials;  				public static int erebusMaterialsID;
+	public static Item erebusFood;						public static int erebusFoodID;
+	public static Item metalIngot;						public static int metalIngotID;
+	public static Item bamBucket;						public static int bamBucketID;
 	public static Item turnip;							public static int turnipID;
+	public static Item sprayCan;						public static int sprayCanID;
+	
+	// JADE STUFF
 	public static Item jadeHelmet;						public static int jadeHelmetID;
 	public static Item jadeBody;						public static int jadeBodyID;
 	public static Item jadeLegs;						public static int jadeLegsID;
@@ -53,29 +53,36 @@ public class ModItems {
 	public static Item jadeShovel;						public static int jadeShovelID;
 	public static Item jadePaxel;						public static int jadePaxelID;
 	public static Item jadeHoe;							public static int jadeHoeID;
-	public static Item compoundGoggles;                 public static int compoundGogglesID;
+	
+	// EXOSKELETON STUFF
+	public static Item exoskeletonHelmet;				public static int exoskeletonHelmetID;
+	public static Item exoskeletonBody;					public static int exoskeletonBodyID;
+	public static Item exoskeletonLegs;					public static int exoskeletonLegsID;
+	public static Item exoskeletonBoots;				public static int exoskeletonBootsID;
+	
+	// MISC WEAPONS
+	public static Item fossilClub;						public static int fossilClubID;
 	public static Item waspSword;						public static int waspSwordID;
-	public static Item metalIngot;						public static int metalIngotID;
-	public static Item jumpBoots;						public static int jumpBootsID;
+	public static Item maxSpeedBow;						public static int maxSpeedBowID;
+	
+	// MISC ARMOR
+	public static Item compoundGoggles;                 public static int compoundGogglesID;
 	public static Item sprintLeggings;					public static int sprintLeggingsID;
-	public static Item sprayCan;
-	public static int sprayCanID;
+	public static Item jumpBoots;						public static int jumpBootsID;
 
 	public static void init() {
 		// constructor, set full 3D, creative tab, unlocalized name, texture name
-
-		exoskeletonHelmet = new ItemExoskeletonArmor(exoskeletonHelmetID, 0).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("helmetExo").setTextureName("erebus:helmetExo");
-		exoskeletonBody = new ItemExoskeletonArmor(exoskeletonBodyID, 1).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("chestplateExo").setTextureName("erebus:chestplateExo");
-		exoskeletonLegs = new ItemExoskeletonArmor(exoskeletonLegsID, 2).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("leggingsExo").setTextureName("erebus:leggingsExo");
-		exoskeletonBoots = new ItemExoskeletonArmor(exoskeletonBootsID, 3).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("bootsExo").setTextureName("erebus:bootsExo");
+		
+		portalActivator = (new ItemPortalActivator(portalActivatorID)).setCreativeTab(ErebusMod.tabErebusItem).setUnlocalizedName("portalActivator").setTextureName("erebus:portalActivator");
 		erebusMaterials = new ItemErebusMaterial(erebusMaterialsID).setUnlocalizedName("erebusMaterials").setCreativeTab(ErebusMod.tabErebusItem);
 		erebusFood = new ItemErebusFood(erebusFoodID).setCreativeTab(ErebusMod.tabErebusItem).setUnlocalizedName("erebusFood");
+		if (ErebusMod.activateExtraOres) {
+			metalIngot = new ItemMetalIngots(metalIngotID).setCreativeTab(ErebusMod.tabErebusItem);
+		}
 		bamBucket = new ItemBambucket(bamBucketID).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("bamBucket");
-
-		portalActivator = (new ItemPortalActivator(portalActivatorID)).setCreativeTab(ErebusMod.tabErebusItem).setUnlocalizedName("portalActivator").setTextureName("erebus:portalActivator");
-		fossilClub = (new ItemCavemanClub(fossilClubID, ErebusMod.toolCAVEMANCLUB)).setFull3D().setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("clubBone").setTextureName("erebus:clubBone");
-		maxSpeedBow = (new ItemMaxSpeedBow(maxSpeedBowID, 301, 5)).setUnlocalizedName("maxSpeedBow").setCreativeTab(ErebusMod.tabErebusGear).setTextureName("erebus:maxSpeedBow");
 		turnip = (new ItemSeedFood(turnipID, 4, 0.6F, ModBlocks.blockTurnip.blockID, Block.tilledField.blockID)).setCreativeTab(ErebusMod.tabErebusItem).setUnlocalizedName("turnips").setTextureName("erebus:turnips");
+		sprayCan = new ItemSprayCan(sprayCanID).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("sprayCan").setTextureName("erebus:sprayCan");
+		
 		jadeHelmet = new ItemJadeArmor(jadeHelmetID, 0).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("helmetJade").setTextureName("erebus:helmetJade");
 		jadeBody = new ItemJadeArmor(jadeBodyID, 1).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("chestplateJade").setTextureName("erebus:chestplateJade");
 		jadeLegs = new ItemJadeArmor(jadeLegsID, 2).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("leggingsJade").setTextureName("erebus:leggingsJade");
@@ -85,32 +92,37 @@ public class ModItems {
 		jadeAxe = new ItemAxe(jadeAxeID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("axeJade").setTextureName("erebus:axeJade");
 		jadeShovel = new ItemSpade(jadeShovelID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("shovelJade").setTextureName("erebus:shovelJade");
 		jadePaxel = new ItemPaxel(jadePaxelID, ErebusMod.toolJADEPAXEL).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("paxelJade").setTextureName("erebus:paxelJade");
-		jadeHoe = new ItemHoe(jadeHoeID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("hoeJade").setTextureName("erebus:hoeJade");
-		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
-		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorEXOSKELETON, 3).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
-		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorEXOSKELETON, 2).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
-		sprayCan = new ItemSprayCan(sprayCanID).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("sprayCan").setTextureName("erebus:sprayCan");
+		jadeHoe = new ItemHoe(jadeHoeID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("hoeJade").setTextureName("erebus:hoeJade");		
+		
+		exoskeletonHelmet = new ItemExoskeletonArmor(exoskeletonHelmetID, 0).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("helmetExo").setTextureName("erebus:helmetExo");
+		exoskeletonBody = new ItemExoskeletonArmor(exoskeletonBodyID, 1).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("chestplateExo").setTextureName("erebus:chestplateExo");
+		exoskeletonLegs = new ItemExoskeletonArmor(exoskeletonLegsID, 2).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("leggingsExo").setTextureName("erebus:leggingsExo");
+		exoskeletonBoots = new ItemExoskeletonArmor(exoskeletonBootsID, 3).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("bootsExo").setTextureName("erebus:bootsExo");
+		
+		fossilClub = (new ItemCavemanClub(fossilClubID, ErebusMod.toolCAVEMANCLUB)).setFull3D().setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("clubBone").setTextureName("erebus:clubBone");
 		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("waspSword");
-		if(ErebusMod.activateExtraOres)
-			metalIngot = new ItemMetalIngots(metalIngotID).setCreativeTab(ErebusMod.tabErebusItem);
+		maxSpeedBow = (new ItemMaxSpeedBow(maxSpeedBowID, 301, 5)).setUnlocalizedName("maxSpeedBow").setCreativeTab(ErebusMod.tabErebusGear).setTextureName("erebus:maxSpeedBow");
+		
+		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
+		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorEXOSKELETON, 2).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
+		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorEXOSKELETON, 3).setCreativeTab(ErebusMod.tabErebusGear).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
 
 		//Tools classes
 		MinecraftForge.setToolClass(jadeAxe, "axe", 2);
 		MinecraftForge.setToolClass(jadePickaxe, "pickaxe", 2);
 		MinecraftForge.setToolClass(jadeShovel, "shovel", 2);
 
-		GameRegistry.registerItem(exoskeletonHelmet, "erebus.helmetExo");
-		GameRegistry.registerItem(exoskeletonBody, "erebus.chestplateExo");
-		GameRegistry.registerItem(exoskeletonLegs, "erebus.leggingsExo");
-		GameRegistry.registerItem(exoskeletonBoots, "erebus.bootsExo");
+		GameRegistry.registerItem(portalActivator, "erebus.portalActivator");
 		GameRegistry.registerItem(erebusMaterials, "erebus.erebusMaterials");
 		GameRegistry.registerItem(erebusFood, "erebus.erebusFood");
+		if(ErebusMod.activateExtraOres) {
+			GameRegistry.registerItem(metalIngot, "erebus.metalIngot");
+		}
 		GameRegistry.registerItem(bamBucket, "erebus.bamBucket");
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.WATER, new ItemStack(bamBucket,1,1), new ItemStack(bamBucket,1,0));
-		GameRegistry.registerItem(portalActivator, "erebus.portalActivator");
-		GameRegistry.registerItem(fossilClub, "erebus.clubBone");
-		GameRegistry.registerItem(maxSpeedBow, "erebus.maxSpeedBow");
 		GameRegistry.registerItem(turnip, "erebus.turnips");
+		GameRegistry.registerItem(sprayCan, "erebus.sprayCan");
+		
 		GameRegistry.registerItem(jadeHelmet, "erebus.helmetJade");
 		GameRegistry.registerItem(jadeBody, "erebus.chestplateJade");
 		GameRegistry.registerItem(jadeLegs, "erebus.leggingsJade");
@@ -121,11 +133,18 @@ public class ModItems {
 		GameRegistry.registerItem(jadeShovel, "erebus.shovelJade");
 		GameRegistry.registerItem(jadePaxel, "erebus.paxelJade");
 		GameRegistry.registerItem(jadeHoe, "erebus.hoeJade");
+		
+		GameRegistry.registerItem(exoskeletonHelmet, "erebus.helmetExo");
+		GameRegistry.registerItem(exoskeletonBody, "erebus.chestplateExo");
+		GameRegistry.registerItem(exoskeletonLegs, "erebus.leggingsExo");
+		GameRegistry.registerItem(exoskeletonBoots, "erebus.bootsExo");
+
+		GameRegistry.registerItem(fossilClub, "erebus.clubBone");
+		GameRegistry.registerItem(waspSword, "erebus.waspSword");
+		GameRegistry.registerItem(maxSpeedBow, "erebus.maxSpeedBow");
+		
 		GameRegistry.registerItem(compoundGoggles, "erebus.compoundGoggles");
-		GameRegistry.registerItem(jumpBoots, "erebus.jumpBoots");
 		GameRegistry.registerItem(sprintLeggings, "erebus.sprintLeggings");
-		GameRegistry.registerItem(sprayCan, "erebus.sprayCan");
-		if(ErebusMod.activateExtraOres)
-			GameRegistry.registerItem(metalIngot, "erebus.metalIngot");
+		GameRegistry.registerItem(jumpBoots, "erebus.jumpBoots");
 	}
 }

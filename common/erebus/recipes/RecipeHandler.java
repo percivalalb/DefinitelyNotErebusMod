@@ -48,10 +48,12 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedCraftingTable), new Object[] { "xx", "xx", 'x', ModBlocks.petrifiedWoodPlanks });
 
 		// Stairs, slabs, walls
-		for (int i = 0; i < ModBlocks.umbercobbleStairs.length; i++)
+		for (int i = 0; i < ModBlocks.umbercobbleStairs.length; i++) {
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.umbercobbleStairs[i], 4), new Object[] { "#  ", "## ", "###", '#', new ItemStack(ModBlocks.umberstone, 1, i) });
-		for (int i = 0; i < ModBlocks.stairsAcacia.length; i++)
-			GameRegistry.addRecipe(new ItemStack(ModBlocks.stairsAcacia[i], 4), new Object[] { "#  ", "## ", "###", '#', new ItemStack(ModBlocks.planksErebus, 1, i) });
+		}
+		for (int i = 0; i < ModBlocks.plankStairs.length; i++) {
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.plankStairs[i], 4), new Object[] { "#  ", "## ", "###", '#', new ItemStack(ModBlocks.planksErebus, 1, i) });
+		}
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedWoodStairs, 4), new Object[] { "#  ", "## ", "###", '#', new ItemStack(ModBlocks.petrifiedWoodPlanks, 1, 0) });
 
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.wallErebus, 6, 0), new Object[] { "###", "###", '#', new ItemStack(ModBlocks.umberstone, 1, 0) });

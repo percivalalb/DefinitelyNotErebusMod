@@ -2,6 +2,7 @@ package erebus;
 
 import java.io.File;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
@@ -50,6 +51,8 @@ public class ErebusMod {
 
 	@Instance(Reference.MOD_ID)
 	public static ErebusMod instance;
+
+	public static EntityRendererErebus renderer = new EntityRendererErebus(Minecraft.getMinecraft());
 
 	public static EnumArmorMaterial armorEXOSKELETON = EnumHelper.addArmorMaterial("EXOSKELETON", 11, new int[] { 2, 4, 3, 2 }, 15);
 	public static EnumArmorMaterial armorJADE = EnumHelper.addArmorMaterial("JADE", 24, new int[] { 3, 7, 5, 2 }, 15);
@@ -119,5 +122,6 @@ public class ErebusMod {
 	@EventHandler
 	public void postLoad(FMLPostInitializationEvent event) {
 		AddonManager.runRegisteredAddons(ConfigurationHandler.config);
+		Minecraft.getMinecraft().entityRenderer = renderer;
 	}
 }

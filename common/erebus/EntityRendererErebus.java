@@ -19,7 +19,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
- * @author chylex
+ * @author Mr. Jesus Darwin
  */
 
 @SideOnly(Side.CLIENT)

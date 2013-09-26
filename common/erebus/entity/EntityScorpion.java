@@ -128,7 +128,7 @@ public class EntityScorpion extends EntityMob {
 	@Override
 	public void onCollideWithPlayer(EntityPlayer par1EntityPlayer) {
 		super.onCollideWithPlayer(par1EntityPlayer);
-		byte var2 = 1;
+		byte var2 = 0;
 		if (!worldObj.isRemote && par1EntityPlayer.boundingBox.maxY >= boundingBox.minY && par1EntityPlayer.boundingBox.minY <= boundingBox.maxY && !isCaptured)
 			if (worldObj.difficultySetting > 1)
 				if (worldObj.difficultySetting == 2)

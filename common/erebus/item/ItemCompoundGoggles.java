@@ -12,7 +12,7 @@ import erebus.ErebusMod;
 import erebus.ModItems;
 
 /**
- * @author David. not Jesus
+ * @author Everyone involved
  */
 
 public class ItemCompoundGoggles extends ItemArmor {

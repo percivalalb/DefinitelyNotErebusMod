@@ -35,14 +35,20 @@ public class ItemCompoundGoggles extends ItemArmor {
 		ItemStack is = player.inventory.armorInventory[3];
 		if (is != null && is.itemID == itemID)
 			ErebusMod.renderer.hasNightVisionEffect = true;
+		if (Minecraft.getMinecraft().entityRenderer != ErebusMod.renderer) {
+			System.out.println("call");
+			Minecraft.getMinecraft().entityRenderer = ErebusMod.renderer;
+		}
 	}
 
 	@Override
-	public void onUpdate(ItemStack par1ItemStack, World par2World, Entity par3Entity, int par4, boolean par5) {
+	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5) {
 		EntityClientPlayerMP minecraft = Minecraft.getMinecraft().thePlayer;
 		EntityPlayer player = minecraft;
 		ItemStack is = player.inventory.armorInventory[3];
 		if (is == null || is.itemID != itemID)
 			ErebusMod.renderer.hasNightVisionEffect = false;
+		if (Minecraft.getMinecraft().entityRenderer != ErebusMod.renderer)
+			Minecraft.getMinecraft().entityRenderer = ErebusMod.renderer;
 	}
 }

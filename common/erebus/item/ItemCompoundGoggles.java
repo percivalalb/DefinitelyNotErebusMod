@@ -12,8 +12,9 @@ import erebus.ErebusMod;
 import erebus.ModItems;
 
 /**
- * @author David
+ * @author David. not Jesus
  */
+
 public class ItemCompoundGoggles extends ItemArmor {
 
 	public ItemCompoundGoggles(int i, EnumArmorMaterial enumarmormaterial, int j, int k) {

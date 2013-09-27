@@ -1,4 +1,4 @@
-package erebus;
+package erebus.client.render;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -25,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class EntityRendererErebus extends EntityRenderer {
 
-	public static boolean hasNightVisionEffect = false;
+	public boolean hasNightVisionEffect = false;
 
 	public EntityRendererErebus() {
 		super(Minecraft.getMinecraft());

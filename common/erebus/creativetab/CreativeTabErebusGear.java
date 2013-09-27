@@ -1,17 +1,13 @@
 package erebus.creativetab;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 
-/**
- * @author ProPercivalalb
- */
-public class CreativeTabErebusGear extends CreativeTabs {
-	public CreativeTabErebusGear(int par1, String par2Str) {
-		super(par1, par2Str);
+public class CreativeTabErebusGear extends CreativeTabErebus {
+	public CreativeTabErebusGear(String name) {
+		super(name);
 	}
 
 	@Override

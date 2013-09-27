@@ -8,7 +8,7 @@ public class Reference {
 	/* General Mod related constants */
 	public static final String MOD_ID = "Erebus";
 	public static final String MOD_NAME = "Erebus";
-	public static final String MOD_VERSION = "v0.1.0 for MC 1.6.2";
+	public static final String MOD_VERSION = "v0.1.0";
 	public static final int RAW_VERSION_NUMBER = 10;
 	public static String LATEST_VERSION;
 	public static final String MOD_DEPENDENCIES = "required-after:Forge@[9.10.1.849,)";

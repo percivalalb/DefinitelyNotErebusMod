@@ -1,7 +1,6 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
@@ -17,6 +16,7 @@ import erebus.entity.EntityFirebrat;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityScorpion;
 import erebus.entity.EntitySolifuge;
+import erebus.world.feature.WorldGenAntlionLair;
 import erebus.world.feature.trees.WorldGenScorchedTree;
 
 public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
@@ -72,6 +72,13 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 				(new WorldGenScorchedTree()).generate(worldObj, rand, j2, l3, j5);
 				if (rand.nextInt(4) != 0)
 					break;
+			}
+		}
+		
+		if (rand.nextInt(40) == 0){
+			for(int attempt = 0; attempt < 15; attempt++){
+				int xx = x + 4 + rand.nextInt(8), yy = rand.nextInt(40), zz = z + 4 + rand.nextInt(8);
+				if (new WorldGenAntlionLair().generate(worldObj,rand,xx,yy,zz)) break;
 			}
 		}
 	}

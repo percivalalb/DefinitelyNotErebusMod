@@ -499,8 +499,7 @@ public class ModelWasp extends ModelBase {
 		LMandibleA.rotateAngleX = headx;
 		LMandibleB.rotateAngleX = headx;
 		EntityWasp var8 = (EntityWasp) par7Entity;
-		if (var8.onGround)
-		{
+		if (var8.onGround) {
 			float legx1 = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
 			float legx2 = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
 			LBLA.rotateAngleX = legx1 + 0.25F;
@@ -546,8 +545,7 @@ public class ModelWasp extends ModelBase {
 			AbBack.rotateAngleX = -0.2F;
 			Sting.rotateAngleX = -0.2F;
 		}
-		if (var8.isFlying())
-		{
+		if (var8.isFlying()) {
 			LBLA.rotateAngleX = +0.25F;
 			LBLB.rotateAngleX = +0.25F;
 			LBLC.rotateAngleX = +0.5F;

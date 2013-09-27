@@ -32,10 +32,10 @@ public class BlockAmber extends Block {
 	public BlockAmber(int par1) {
 		super(par1, Material.rock);
 	}
-	
+
 	@Override
 	public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side) {
-		return world.getBlockMetadata(x, y, z)==2;
+		return world.getBlockMetadata(x, y, z) == 2;
 	}
 
 	@SideOnly(Side.CLIENT)

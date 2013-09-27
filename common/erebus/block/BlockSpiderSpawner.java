@@ -1,9 +1,11 @@
 package erebus.block;
 
 import java.util.Random;
+
 import net.minecraft.item.Item;
 
 public class BlockSpiderSpawner extends BlockSpawner {
+
 	public BlockSpiderSpawner(int id, String mobName) {
 		super(id, mobName);
 	}
@@ -13,9 +15,6 @@ public class BlockSpiderSpawner extends BlockSpawner {
 		return Item.silk.itemID;
 	}
 
-	/**
-	 * Returns the quantity of items to drop on block destruction.
-	 */
 	@Override
 	public int quantityDropped(Random par1Random) {
 		return par1Random.nextInt(3);

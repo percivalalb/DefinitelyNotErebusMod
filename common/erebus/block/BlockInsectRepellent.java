@@ -93,7 +93,7 @@ public class BlockInsectRepellent extends Block {
 				particleX = x + 0 - d0;
 
 			if (particleX < x || particleX > x + 1 || particleY < 0.0D || particleY > y + 1 || particleZ < z || particleZ > z + 1) {
-				ErebusMod.proxy.spawnCustomParticle("repellent",world,particleX,particleY,particleZ,0D,0D,0D);
+				ErebusMod.proxy.spawnCustomParticle("repellent", world, particleX, particleY, particleZ, 0D, 0D, 0D);
 			}
 		}
 	}

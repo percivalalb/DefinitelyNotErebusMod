@@ -22,8 +22,8 @@ import erebus.core.teleport.TeleportClient;
 
 public class BlockPortalErebus extends BlockBreakable {
 
-	public BlockPortalErebus(int i, int j) {
-		super(i, "erebus:portalErebus", Material.portal, false);
+	public BlockPortalErebus(int id) {
+		super(id, "erebus:portalErebus", Material.portal, false);
 	}
 
 	@Override
@@ -73,39 +73,35 @@ public class BlockPortalErebus extends BlockBreakable {
 		byte b0 = 0;
 		byte b1 = 1;
 
-		if (par1World.getBlockId(par2 - 1, par3, par4) == this.blockID || par1World.getBlockId(par2 + 1, par3, par4) == this.blockID) {
+		if (par1World.getBlockId(par2 - 1, par3, par4) == blockID || par1World.getBlockId(par2 + 1, par3, par4) == blockID) {
 			b0 = 1;
 			b1 = 0;
 		}
 
 		int i1;
 
-		for (i1 = par3; par1World.getBlockId(par2, i1 - 1, par4) == this.blockID; --i1) {
+		for (i1 = par3; par1World.getBlockId(par2, i1 - 1, par4) == blockID; --i1) {
 		}
 
-		if (par1World.getBlockId(par2, i1 - 1, par4) != Block.stoneBrick.blockID) {
+		if (par1World.getBlockId(par2, i1 - 1, par4) != Block.stoneBrick.blockID)
 			par1World.setBlockToAir(par2, par3, par4);
-		} else {
+		else {
 			int j1;
 
-			for (j1 = 1; j1 < 4 && par1World.getBlockId(par2, i1 + j1, par4) == this.blockID; ++j1) {
+			for (j1 = 1; j1 < 4 && par1World.getBlockId(par2, i1 + j1, par4) == blockID; ++j1) {
 			}
 
 			if (j1 == 3 && par1World.getBlockId(par2, i1 + j1, par4) == Block.stoneBrick.blockID) {
-				boolean flag = par1World.getBlockId(par2 - 1, par3, par4) == this.blockID || par1World.getBlockId(par2 + 1, par3, par4) == this.blockID;
-				boolean flag1 = par1World.getBlockId(par2, par3, par4 - 1) == this.blockID || par1World.getBlockId(par2, par3, par4 + 1) == this.blockID;
+				boolean flag = par1World.getBlockId(par2 - 1, par3, par4) == blockID || par1World.getBlockId(par2 + 1, par3, par4) == blockID;
+				boolean flag1 = par1World.getBlockId(par2, par3, par4 - 1) == blockID || par1World.getBlockId(par2, par3, par4 + 1) == blockID;
 
-				if (flag && flag1) {
+				if (flag && flag1)
 					par1World.setBlockToAir(par2, par3, par4);
-				} else {
-					if ((par1World.getBlockId(par2 + b0, par3, par4 + b1) != Block.stoneBrick.blockID || par1World.getBlockId(par2 - b0, par3, par4 - b1) != this.blockID) &&
-					(par1World.getBlockId(par2 - b0, par3, par4 - b1) != Block.stoneBrick.blockID || par1World.getBlockId(par2 + b0, par3, par4 + b1) != this.blockID)) {
-						par1World.setBlockToAir(par2, par3, par4);
-					}
-				}
-			} else {
+				else if ((par1World.getBlockId(par2 + b0, par3, par4 + b1) != Block.stoneBrick.blockID || par1World.getBlockId(par2 - b0, par3, par4 - b1) != blockID) &&
+				(par1World.getBlockId(par2 - b0, par3, par4 - b1) != Block.stoneBrick.blockID || par1World.getBlockId(par2 + b0, par3, par4 + b1) != blockID))
+					par1World.setBlockToAir(par2, par3, par4);
+			} else
 				par1World.setBlockToAir(par2, par3, par4);
-			}
 		}
 	}
 
@@ -113,17 +109,15 @@ public class BlockPortalErebus extends BlockBreakable {
 		byte b0 = 0;
 		byte b1 = 0;
 
-		if (par1World.getBlockId(par2 - 1, par3, par4) == Block.stoneBrick.blockID || par1World.getBlockId(par2 + 1, par3, par4) == Block.stoneBrick.blockID) {
+		if (par1World.getBlockId(par2 - 1, par3, par4) == Block.stoneBrick.blockID || par1World.getBlockId(par2 + 1, par3, par4) == Block.stoneBrick.blockID)
 			b0 = 1;
-		}
 
-		if (par1World.getBlockId(par2, par3, par4 - 1) == Block.stoneBrick.blockID || par1World.getBlockId(par2, par3, par4 + 1) == Block.stoneBrick.blockID) {
+		if (par1World.getBlockId(par2, par3, par4 - 1) == Block.stoneBrick.blockID || par1World.getBlockId(par2, par3, par4 + 1) == Block.stoneBrick.blockID)
 			b1 = 1;
-		}
 
-		if (b0 == b1) {
+		if (b0 == b1)
 			return false;
-		} else {
+		else {
 			if (par1World.getBlockId(par2 - b0, par3, par4 - b1) == 0) {
 				par2 -= b0;
 				par4 -= b1;
@@ -132,7 +126,7 @@ public class BlockPortalErebus extends BlockBreakable {
 			int l;
 			int i1;
 
-			for (l = -1; l <= 2; ++l) {
+			for (l = -1; l <= 2; ++l)
 				for (i1 = -1; i1 <= 3; ++i1) {
 					boolean flag = l == -1 || l == 2 || i1 == -1 || i1 == 3;
 
@@ -140,21 +134,16 @@ public class BlockPortalErebus extends BlockBreakable {
 						int j1 = par1World.getBlockId(par2 + b0 * l, par3 + i1, par4 + b1 * l);
 
 						if (flag) {
-							if (j1 != Block.stoneBrick.blockID) {
+							if (j1 != Block.stoneBrick.blockID)
 								return false;
-							}
-						} else if (j1 != 0 && j1 != Block.fire.blockID) {
+						} else if (j1 != 0 && j1 != Block.fire.blockID)
 							return false;
-						}
 					}
 				}
-			}
 
-			for (l = 0; l < 2; ++l) {
-				for (i1 = 0; i1 < 3; ++i1) {
+			for (l = 0; l < 2; ++l)
+				for (i1 = 0; i1 < 3; ++i1)
 					par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, ModBlocks.portalErebus.blockID, 0, 2);
-				}
-			}
 
 			return true;
 		}
@@ -163,9 +152,9 @@ public class BlockPortalErebus extends BlockBreakable {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int i, int j, int k, int l) {
-		if (iblockaccess.getBlockId(i, j, k) == blockID) {
+		if (iblockaccess.getBlockId(i, j, k) == blockID)
 			return false;
-		} else {
+		else {
 			boolean flag = iblockaccess.getBlockId(i - 1, j, k) == blockID && iblockaccess.getBlockId(i - 2, j, k) != blockID;
 			boolean flag1 = iblockaccess.getBlockId(i + 1, j, k) == blockID && iblockaccess.getBlockId(i + 2, j, k) != blockID;
 			boolean flag2 = iblockaccess.getBlockId(i, j, k - 1) == blockID && iblockaccess.getBlockId(i, j, k - 2) != blockID;

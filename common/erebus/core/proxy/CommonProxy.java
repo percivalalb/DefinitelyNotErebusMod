@@ -35,9 +35,6 @@ public class CommonProxy implements IGuiHandler {
 	public static final int GUI_ID_PETRIFIED_CRAFT = 3;
 	public static final int GUI_ID_UMBER_FURNACE = 4;
 
-	/**
-	 * Client side only register stuff...
-	 */
 	public void registerRenderInformation() {
 		// Unused server side. -- see ClientProxy for implementation
 	}
@@ -52,7 +49,7 @@ public class CommonProxy implements IGuiHandler {
 	public void handleParticlePacket(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data) {
 		// Unused server side. -- see ClientProxy for implementation
 	}
-	
+
 	public void spawnCustomParticle(String particleName, World world, double x, double y, double z, double vecX, double vecY, double vecZ) {
 		// Unused server side. -- see ClientProxy for implementation
 	}

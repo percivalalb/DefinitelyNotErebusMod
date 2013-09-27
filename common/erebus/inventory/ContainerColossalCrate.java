@@ -13,6 +13,7 @@ import erebus.tileentity.TileEntityBambooCrate;
 
 @ChestContainer(rowSize = 12, isLargeChest = false)
 public class ContainerColossalCrate extends Container {
+
 	private final InventoryPlayer playerInventory;
 	public TileEntityBambooCrate crate1;
 	public TileEntityBambooCrate crate2;

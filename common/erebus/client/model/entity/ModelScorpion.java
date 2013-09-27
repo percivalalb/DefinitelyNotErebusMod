@@ -613,7 +613,6 @@ public class ModelScorpion extends ModelBase {
 		Sting1.rotateAngleX = var8.stingticks + 2.617994F;
 		Sting2.rotateAngleX = var8.stingticks + 1.570796F;
 
-
 		RMand.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2 + 1.570796F;
 		LMand.rotateAngleY = -MathHelper.cos(par1 * 0.5F + (float) Math.PI) * 0.2F * par2 + 1.570796F;
 	}

@@ -21,6 +21,7 @@ public class EntityScorpion extends EntityMob {
 	private boolean sting;
 	private boolean poisoned;
 	public static float stingticks;
+
 	public EntityScorpion(World par1World) {
 
 		super(par1World);
@@ -55,9 +56,8 @@ public class EntityScorpion extends EntityMob {
 			updateRiderPosition();
 			setIsInJaws(true);
 		}
-		if (sting && stingticks < 0.64F)
-		{
-			//wingFloat = mathWings.swing(1.0F, 0.4F);
+		if (sting && stingticks < 0.64F) {
+			// wingFloat = mathWings.swing(1.0F, 0.4F);
 			stingticks = stingticks + 0.16F;
 			if (stingticks >= 0.64F) {
 				setHasBeenStung(true);
@@ -70,8 +70,6 @@ public class EntityScorpion extends EntityMob {
 				setHasBeenStung(false);
 		}
 	}
-
-
 
 	private void setHasBeenStung(boolean par1) {
 		poisoned = par1;
@@ -155,8 +153,7 @@ public class EntityScorpion extends EntityMob {
 		double offSetX = -Math.sin(a) * 0.75D;
 		double offSetZ = Math.cos(a) * 0.75D;
 		if (riddenByEntity != null)
-			riddenByEntity.setPosition(posX + offSetX, posY + 0.75D
-					+ riddenByEntity.getYOffset(), posZ + offSetZ);
+			riddenByEntity.setPosition(posX + offSetX, posY + 0.75D + riddenByEntity.getYOffset(), posZ + offSetZ);
 	}
 
 	public void setIsInJaws(boolean par1) {

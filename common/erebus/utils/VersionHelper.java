@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import net.minecraft.util.EnumChatFormatting;
 import cpw.mods.fml.common.FMLLog;
 import erebus.lib.Reference;
@@ -139,7 +140,6 @@ public class VersionHelper implements Runnable {
 	}
 
 	public static void execute() {
-
 		new Thread(instance).start();
 	}
 }

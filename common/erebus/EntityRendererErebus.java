@@ -27,8 +27,8 @@ public class EntityRendererErebus extends EntityRenderer {
 
 	public static boolean hasNightVisionEffect = false;
 
-	public EntityRendererErebus(Minecraft mc) {
-		super(mc);
+	public EntityRendererErebus() {
+		super(Minecraft.getMinecraft());
 	}
 
 	@Override

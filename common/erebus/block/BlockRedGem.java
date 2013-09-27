@@ -2,6 +2,7 @@ package erebus.block;
 
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -22,10 +23,6 @@ import erebus.item.ItemErebusMaterial;
  */
 public class BlockRedGem extends Block {
 
-	/**
-	 * The icon path, not including "erebus:" as it is joined when registering
-	 * icon
-	 **/
 	public static final String[] iconPaths = new String[] { "redgem", "redlamp_on", "redlamp_off" };
 	@SideOnly(Side.CLIENT)
 	public static Icon[] icons;
@@ -39,9 +36,8 @@ public class BlockRedGem extends Block {
 		icons = new Icon[iconPaths.length];
 
 		int i = 0;
-		for (String path : iconPaths) {
+		for (String path : iconPaths)
 			icons[i++] = iconRegister.registerIcon("erebus:" + path);
-		}
 	}
 
 	@Override
@@ -61,14 +57,13 @@ public class BlockRedGem extends Block {
 	// Data about the item that drops when broken
 	@Override
 	public int damageDropped(int meta) {
-		return (meta == 1 || meta == 2) ? 1 : ItemErebusMaterial.dataRedGem;
+		return meta == 1 || meta == 2 ? 1 : ItemErebusMaterial.dataRedGem;
 	}
 
 	@Override
 	public int quantityDropped(int meta, int fortune, Random random) {
-		if (meta == 0) {
+		if (meta == 0)
 			return 1 + random.nextInt(2 + fortune);
-		}
 		return 1;
 	}
 
@@ -77,10 +72,6 @@ public class BlockRedGem extends Block {
 		return meta == 0 ? ModItems.erebusMaterials.itemID : blockID;
 	}
 
-	/**
-	 * Used to decide what damage to pass to the stack when using the pick block
-	 * button.
-	 */
 	@Override
 	public int getDamageValue(World world, int x, int y, int z) {
 		int realMeta = world.getBlockMetadata(x, y, z);
@@ -98,42 +89,36 @@ public class BlockRedGem extends Block {
 	@Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z) {
 		int meta = world.getBlockMetadata(x, y, z);
-		if (meta == 0 || meta == 1) {
+		if (meta == 0 || meta == 1)
 			return 15;
-		}
 		return 0;
 	}
 
 	@Override
 	public void onBlockAdded(World par1World, int par2, int par3, int par4) {
 		int meta = par1World.getBlockMetadata(par2, par3, par4);
-		if (!par1World.isRemote && (meta == 1 || meta == 2)) {
-			if (meta == 2 && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
-				par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, 4);
-			} else if (meta != 2 && par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
-				par1World.setBlock(par2, par3, par4, this.blockID, 2, 2);
-			}
-		}
+		if (!par1World.isRemote && (meta == 1 || meta == 2))
+			if (meta == 2 && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4))
+				par1World.scheduleBlockUpdate(par2, par3, par4, blockID, 4);
+			else if (meta != 2 && par1World.isBlockIndirectlyGettingPowered(par2, par3, par4))
+				par1World.setBlock(par2, par3, par4, blockID, 2, 2);
 	}
 
 	@Override
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
 		int meta = par1World.getBlockMetadata(par2, par3, par4);
-		if (!par1World.isRemote && (meta == 1 || meta == 2)) {
-			if (meta == 2 && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
-				par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, 4);
-			} else if (meta != 2 && par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
-				par1World.setBlock(par2, par3, par4, this.blockID, meta + 1, 2);
-			}
-		}
+		if (!par1World.isRemote && (meta == 1 || meta == 2))
+			if (meta == 2 && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4))
+				par1World.scheduleBlockUpdate(par2, par3, par4, blockID, 4);
+			else if (meta != 2 && par1World.isBlockIndirectlyGettingPowered(par2, par3, par4))
+				par1World.setBlock(par2, par3, par4, blockID, meta + 1, 2);
 	}
 
 	@Override
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		int meta = par1World.getBlockMetadata(par2, par3, par4);
-		if (!par1World.isRemote && (meta == 1 || meta == 2) && meta == 2 && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4)) {
-			par1World.setBlock(par2, par3, par4, this.blockID, 1, 2);
-		}
+		if (!par1World.isRemote && (meta == 1 || meta == 2) && meta == 2 && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4))
+			par1World.setBlock(par2, par3, par4, blockID, 1, 2);
 	}
 
 	@Override

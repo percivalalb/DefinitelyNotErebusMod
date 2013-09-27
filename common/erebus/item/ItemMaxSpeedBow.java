@@ -1,7 +1,6 @@
 package erebus.item;
 
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,10 +28,9 @@ public class ItemMaxSpeedBow extends Item {
 	public ItemMaxSpeedBow(int par1, int par2, int par3) {
 		super(par1);
 		// this.setIconCoord(0, 9);
-		this.maxStackSize = 1;
-		this.setMaxDamage(par2);
-		this.weaponEnchantibility = par3;
-		this.setCreativeTab(CreativeTabs.tabCombat);
+		maxStackSize = 1;
+		setMaxDamage(par2);
+		weaponEnchantibility = par3;
 	}
 
 	/**

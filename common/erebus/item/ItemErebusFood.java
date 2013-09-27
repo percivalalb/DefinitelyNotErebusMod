@@ -28,8 +28,9 @@ public class ItemErebusFood extends ItemFood {
 
 	public ItemErebusFood(int id) {
 		super(id, 3, 0.5F, false);
-		this.setHasSubtypes(true);
-		this.setMaxDamage(0);
+		setCreativeTab(null);
+		setHasSubtypes(true);
+		setMaxDamage(0);
 	}
 
 	public int getHealAmount(ItemStack stack, World world, EntityPlayer player) {

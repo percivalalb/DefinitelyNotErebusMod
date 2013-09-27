@@ -1,19 +1,10 @@
 package erebus.item;
 
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) braces deadcode 
-
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import erebus.ModBlocks;
-
-// Referenced classes of package net.minecraft.src:
-//            Item, World, mod_IceMod, BlockBlueFire, 
-//            ItemStack, EntityPlayer
 
 public class ItemPortalActivator extends Item {
 
@@ -22,7 +13,6 @@ public class ItemPortalActivator extends Item {
 		maxStackSize = 1;
 		setMaxDamage(64);
 		setFull3D();
-		this.setCreativeTab(CreativeTabs.tabMaterials);
 	}
 
 	/**

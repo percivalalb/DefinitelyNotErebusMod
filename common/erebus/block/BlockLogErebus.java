@@ -24,6 +24,7 @@ public class BlockLogErebus extends BlockLog {
 	public BlockLogErebus(int id, int logGroup) {
 		super(id);
 		this.logGroup = (byte) logGroup;
+		setCreativeTab(null);
 	}
 
 	@Override

@@ -26,6 +26,7 @@ public class ItemExoskeletonArmor extends ItemArmor {
 	 */
 	public ItemExoskeletonArmor(int id, int armorType) {
 		super(id, ErebusMod.armorEXOSKELETON, 2, armorType);
+		setCreativeTab(null);
 	}
 
 	/**

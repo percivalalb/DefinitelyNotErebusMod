@@ -26,6 +26,7 @@ public class ItemJadeArmor extends ItemArmor {
 	 */
 	public ItemJadeArmor(int id, int armorType) {
 		super(id, ErebusMod.armorJADE, 2, armorType);
+		setCreativeTab(null);
 	}
 
 	/**

@@ -26,6 +26,7 @@ public class BlockLeavesErebus extends BlockLeaves {
 
 	public BlockLeavesErebus(int id) {
 		super(id);
+		setCreativeTab(null);
 	}
 
 	@Override

@@ -1,9 +1,6 @@
 package erebus;
 
 import java.io.File;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraftforge.common.DimensionManager;
@@ -29,6 +26,7 @@ import erebus.core.handler.ConnectionTeleportHandler;
 import erebus.core.handler.VersionCheckTickHandler;
 import erebus.core.helper.LogHelper;
 import erebus.core.proxy.CommonProxy;
+import erebus.creativetab.CreativeTabErebus;
 import erebus.creativetab.CreativeTabErebusBlock;
 import erebus.creativetab.CreativeTabErebusGear;
 import erebus.creativetab.CreativeTabErebusItem;
@@ -49,17 +47,15 @@ public class ErebusMod {
 	@Instance(Reference.MOD_ID)
 	public static ErebusMod instance;
 
-	public static EntityRendererErebus renderer = new EntityRendererErebus();
-
 	public static EnumArmorMaterial armorEXOSKELETON = EnumHelper.addArmorMaterial("EXOSKELETON", 11, new int[] { 2, 4, 3, 2 }, 15);
 	public static EnumArmorMaterial armorJADE = EnumHelper.addArmorMaterial("JADE", 24, new int[] { 3, 7, 5, 2 }, 15);
 	public static EnumToolMaterial toolJADE = EnumHelper.addToolMaterial("JADE", 2, 863, 10.0F, 2.0F, 18);
 	public static EnumToolMaterial toolJADEPAXEL = EnumHelper.addToolMaterial("JADEPAXEL", 2, 1079, 8.0F, 4.0F, 14);
 	public static EnumToolMaterial toolCAVEMANCLUB = EnumHelper.addToolMaterial("CAVEMANCLUB", 0, 131, 4.0F, 2.0F, 12);
 
-	public static CreativeTabs tabErebusBlock = new CreativeTabErebusBlock(CreativeTabs.getNextID(), "erebus.block");
-	public static CreativeTabs tabErebusItem = new CreativeTabErebusItem(CreativeTabs.getNextID(), "erebus.item");
-	public static CreativeTabs tabErebusGear = new CreativeTabErebusGear(CreativeTabs.getNextID(), "erebus.gear");
+	public static CreativeTabErebus tabErebusBlock = new CreativeTabErebusBlock("erebus.block");
+	public static CreativeTabErebus tabErebusItem = new CreativeTabErebusItem("erebus.item");
+	public static CreativeTabErebus tabErebusGear = new CreativeTabErebusGear("erebus.gear");
 
 	public static int erebusDimensionID;
 	public static boolean activateExtraOres = false;
@@ -115,6 +111,6 @@ public class ErebusMod {
 
 	@EventHandler
 	public void postLoad(FMLPostInitializationEvent event) {
-		Minecraft.getMinecraft().entityRenderer = renderer;
+		proxy.postLoad();
 	}
 }

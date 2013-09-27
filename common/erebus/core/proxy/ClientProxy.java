@@ -14,9 +14,7 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
-
 import com.google.common.io.ByteArrayDataInput;
-
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
@@ -39,6 +37,7 @@ import erebus.client.model.entity.ModelSolifuge;
 import erebus.client.model.entity.ModelTarantula;
 import erebus.client.model.entity.ModelVelvetWorm;
 import erebus.client.model.entity.ModelWasp;
+import erebus.client.render.EntityRendererErebus;
 import erebus.client.render.entity.RenderBeetle;
 import erebus.client.render.entity.RenderBeetleLarva;
 import erebus.client.render.entity.RenderBlackWidow;
@@ -86,6 +85,7 @@ import erebus.tileentity.TileEntityHollowLog;
 import erebus.tileentity.TileEntitySpawner;
 
 public class ClientProxy extends CommonProxy {
+	public static EntityRendererErebus renderer;
 
 	@Override
 	public void registerRenderInformation() {
@@ -120,6 +120,20 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooCrate.blockID, new BambooItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.waspSword.itemID, new WaspSwordItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.umberFurnace.blockID, new ItemUmberFurnaceRenderer());
+	}
+	
+	@Override
+	public void postLoad() {
+		Minecraft.getMinecraft().entityRenderer = renderer = new EntityRendererErebus();
+	}
+	
+	@Override
+	public void setClientNightVision(boolean enable){
+		renderer.hasNightVisionEffect = enable;
+		
+		if (Minecraft.getMinecraft().entityRenderer != renderer) {
+			Minecraft.getMinecraft().entityRenderer = renderer;
+		}
 	}
 
 	@Override

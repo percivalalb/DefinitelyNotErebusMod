@@ -8,6 +8,7 @@ import net.minecraft.item.ItemSword;
 public class ItemCavemanClub extends ItemSword {
 	public ItemCavemanClub(int id, EnumToolMaterial material) {
 		super(id, material);
+		setCreativeTab(null);
 	}
 
 	@Override

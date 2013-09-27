@@ -39,9 +39,7 @@ import erebus.recipes.RecipeHandler;
 import erebus.utils.VersionHelper;
 import erebus.world.WorldProviderErebus;
 
-/**
- * @author ProPercivalalb, Dylan4Ever, (Others PUT NAMES HERE)
- */
+
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, dependencies = Reference.MOD_DEPENDENCIES)
 @NetworkMod(channels = { Reference.CHANNEL }, clientSideRequired = true, serverSideRequired = true, packetHandler = PacketHandler.class)
 public class ErebusMod {
@@ -52,7 +50,7 @@ public class ErebusMod {
 	@Instance(Reference.MOD_ID)
 	public static ErebusMod instance;
 
-	public static EntityRendererErebus renderer = new EntityRendererErebus(Minecraft.getMinecraft());
+	public static EntityRendererErebus renderer = new EntityRendererErebus();
 
 	public static EnumArmorMaterial armorEXOSKELETON = EnumHelper.addArmorMaterial("EXOSKELETON", 11, new int[] { 2, 4, 3, 2 }, 15);
 	public static EnumArmorMaterial armorJADE = EnumHelper.addArmorMaterial("JADE", 24, new int[] { 3, 7, 5, 2 }, 15);

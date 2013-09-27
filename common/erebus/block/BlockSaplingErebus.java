@@ -2,6 +2,7 @@ package erebus.block;
 
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -35,26 +36,22 @@ public class BlockSaplingErebus extends BlockSapling {
 	public BlockSaplingErebus(int id) {
 		super(id);
 		float var3 = 0.4F;
-		this.setBlockBounds(0.5F - var3, 0.0F, 0.5F - var3, 0.5F + var3, var3 * 2.0F, 0.5F + var3);
+		setBlockBounds(0.5F - var3, 0.0F, 0.5F - var3, 0.5F + var3, var3 * 2.0F, 0.5F + var3);
 	}
 
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z) {
 		Block soil = blocksList[world.getBlockId(x, y - 1, z)];
-		return (soil != null && soil.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this));
+		return soil != null && soil.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this);
 	}
 
-	/**
-	 * Ticks the block if it's been scheduled
-	 */
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand) {
 		if (!world.isRemote) {
 			super.updateTick(world, x, y, z, rand);
 
-			if (world.getBlockLightValue(x, y + 1, z) >= 9 && rand.nextInt(7) == 0) {
-				this.growTree(world, x, y, z, rand);
-			}
+			if (world.getBlockLightValue(x, y + 1, z) >= 9 && rand.nextInt(7) == 0)
+				growTree(world, x, y, z, rand);
 		}
 	}
 
@@ -62,9 +59,6 @@ public class BlockSaplingErebus extends BlockSapling {
 	public void markOrGrowMarked(World world, int x, int y, int z, Random rand) {
 	}
 
-	/**
-	 * Attempts to grow a sapling into a tree
-	 */
 	@Override
 	public void growTree(World world, int x, int y, int z, Random rand) {
 		if (!TerrainGen.saplingGrowTree(world, rand, x, y, z))
@@ -76,30 +70,26 @@ public class BlockSaplingErebus extends BlockSapling {
 		int var9 = 0;
 		boolean var10 = false;
 
-		if (meta == dataEucalyptus) {
+		if (meta == dataEucalyptus)
 			worldGen = new WorldGenEucalyptus(ModBlocks.logErebusGroup1.blockID, BlockLogErebus.dataEucalyptus, ModBlocks.leavesErebus.blockID, BlockLeavesErebus.dataEucalyptusDecay, 8 + rand.nextInt(4), 5, 8, Block.grass.blockID);
-		} else if (meta == dataMahogany) {
+		else if (meta == dataMahogany)
 			worldGen = new WorldGenSavannaTree(world.rand.nextInt(3));
-		} else if (meta == dataMossbark) {
+		else if (meta == dataMossbark)
 			worldGen = new WorldGenMossbarkTree();
-		} else if (meta == dataAsper) {
+		else if (meta == dataAsper)
 			worldGen = new WorldGenAsperTree();
-		} else if (meta == dataAcacia) {
+		else if (meta == dataAcacia)
 			for (var8 = 0; var8 >= -1; --var8) {
-				for (var9 = 0; var9 >= -1; --var9) {
+				for (var9 = 0; var9 >= -1; --var9)
 					if (isSameSapling(world, x + var8, y, z + var9, 0) && isSameSapling(world, x + var8 + 1, y, z + var9, 0) && isSameSapling(world, x + var8, y, z + var9 + 1, 0) && isSameSapling(world, x + var8 + 1, y, z + var9 + 1, 0)) {
 						worldGen = new WorldGenErebusHugeTree(true, 20 + rand.nextInt(5), BlockLogErebus.dataMahogany, BlockLeavesErebus.dataMahoganyDecay, true, ModBlocks.logErebusGroup1.blockID, ModBlocks.leavesErebus.blockID);
 						var10 = true;
 						break;
 					}
-				}
 
-				if (worldGen != null) {
+				if (worldGen != null)
 					break;
-				}
 			}
-
-		}
 
 		if (worldGen == null) {
 			var9 = 0;
@@ -112,34 +102,24 @@ public class BlockSaplingErebus extends BlockSapling {
 			world.setBlock(x + var8 + 1, y, z + var9, 0);
 			world.setBlock(x + var8, y, z + var9 + 1, 0);
 			world.setBlock(x + var8 + 1, y, z + var9 + 1, 0);
-		} else {
+		} else
 			world.setBlock(x, y, z, 0);
-		}
 
-		if (!worldGen.generate(world, rand, x + var8, y, z + var9)) {
+		if (!worldGen.generate(world, rand, x + var8, y, z + var9))
 			if (var10) {
-				world.setBlock(x + var8, y, z + var9, this.blockID, meta, 3);
-				world.setBlock(x + var8 + 1, y, z + var9, this.blockID, meta, 3);
-				world.setBlock(x + var8, y, z + var9 + 1, this.blockID, meta, 3);
-				world.setBlock(x + var8 + 1, y, z + var9 + 1, this.blockID, meta, 3);
-			} else {
-				world.setBlock(x, y, z, this.blockID, meta, 3);
-			}
-		}
+				world.setBlock(x + var8, y, z + var9, blockID, meta, 3);
+				world.setBlock(x + var8 + 1, y, z + var9, blockID, meta, 3);
+				world.setBlock(x + var8, y, z + var9 + 1, blockID, meta, 3);
+				world.setBlock(x + var8 + 1, y, z + var9 + 1, blockID, meta, 3);
+			} else
+				world.setBlock(x, y, z, blockID, meta, 3);
 	}
 
-	/**
-	 * Determines if the same sapling is present at the given location.
-	 */
 	@Override
 	public boolean isSameSapling(World world, int x, int y, int z, int meta) {
-		return world.getBlockId(x, y, z) == this.blockID && (world.getBlockMetadata(x, y, z)) == meta;
+		return world.getBlockId(x, y, z) == blockID && world.getBlockMetadata(x, y, z) == meta;
 	}
 
-	/**
-	 * Determines the damage on the item the block drops. Used in cloth and
-	 * wood.
-	 */
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int meta) {
@@ -154,9 +134,8 @@ public class BlockSaplingErebus extends BlockSapling {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int id, CreativeTabs creativeTabs, List list) {
-		for (int a = 0; a < iconArray.length; a++) {
+		for (int a = 0; a < iconArray.length; a++)
 			list.add(new ItemStack(id, 1, a));
-		}
 	}
 
 	@Override
@@ -164,9 +143,8 @@ public class BlockSaplingErebus extends BlockSapling {
 	public void registerIcons(IconRegister par1IconRegister) {
 		iconArray = new Icon[saplingTypes.length];
 
-		for (int i = 0; i < iconArray.length; i++) {
+		for (int i = 0; i < iconArray.length; i++)
 			iconArray[i] = par1IconRegister.registerIcon("erebus:sapling_" + saplingTypes[i]);
-		}
 	}
 
 	@ForgeSubscribe

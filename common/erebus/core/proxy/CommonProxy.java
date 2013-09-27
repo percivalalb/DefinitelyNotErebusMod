@@ -35,9 +35,6 @@ public class CommonProxy implements IGuiHandler {
 	public static final int GUI_ID_PETRIFIED_CRAFT = 3;
 	public static final int GUI_ID_UMBER_FURNACE = 4;
 
-	/**
-	 * Client side only register stuff...
-	 */
 	public void registerRenderInformation() {
 		// Unused server side. -- see ClientProxy for implementation
 	}

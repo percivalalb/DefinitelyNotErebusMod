@@ -18,10 +18,6 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 public class BlockUmberstone extends Block {
 
-	/**
-	 * The icon path, not including "erebus:" as it is joined when registering
-	 * icon
-	 **/
 	public static final String[] iconPaths = new String[] { "Umberstone", "cobbleUmber", "cobbleUmberMossy", "cobbleUmberWebbed", "umberstoneBricks" };
 	public static final Icon[] icons = new Icon[iconPaths.length];
 
@@ -46,9 +42,8 @@ public class BlockUmberstone extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		for (int a = 0; a < icons.length; a++) {
+		for (int a = 0; a < icons.length; a++)
 			par3List.add(new ItemStack(par1, 1, a));
-		}
 	}
 
 	@Override
@@ -69,10 +64,6 @@ public class BlockUmberstone extends Block {
 		return blockID;
 	}
 
-	/**
-	 * Used to decide what damage to pass to the stack when using the pick block
-	 * button.
-	 */
 	@Override
 	public int getDamageValue(World world, int x, int y, int z) {
 		return world.getBlockMetadata(x, y, z);

@@ -2,6 +2,7 @@ package erebus.block;
 
 import java.util.ArrayList;
 import java.util.Random;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
@@ -20,11 +21,11 @@ public class BlockFern extends BlockUndergroundFlower implements IShearable {
 
 	@Override
 	public int idDropped(int meta, Random rand, int fortune) {
-		if (rand.nextInt(16) == 0) {
+		if (rand.nextInt(16) == 0)
 			return Item.seeds.itemID;
-		} else if (rand.nextInt(15) == 0) {
+		else if (rand.nextInt(15) == 0)
 			return Item.melonSeeds.itemID;
-		} else
+		else
 			return 0;
 	}
 

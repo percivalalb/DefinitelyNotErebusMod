@@ -14,8 +14,9 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
+
 import com.google.common.io.ByteArrayDataInput;
-import cpw.mods.fml.client.FMLClientHandler;
+
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
@@ -86,9 +87,6 @@ import erebus.tileentity.TileEntitySpawner;
 
 public class ClientProxy extends CommonProxy {
 
-	public static Minecraft mc = FMLClientHandler.instance().getClient();
-	public Item item;
-
 	@Override
 	public void registerRenderInformation() {
 
@@ -154,9 +152,8 @@ public class ClientProxy extends CommonProxy {
 	public void spawnCustomParticle(String particleName, World world, double x, double y, double z, double vecX, double vecY, double vecZ) {
 		EntityFX fx = null;
 		
-		if (particleName.equals("repellent")) {
+		if (particleName.equals("repellent"))
 			fx = new EntityRepellentFX(world, x, y, z, 0.0F, 0.0F, 0.0F);
-		}
 		
 		if (fx != null)Minecraft.getMinecraft().effectRenderer.addEffect(fx);
 	}

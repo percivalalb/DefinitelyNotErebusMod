@@ -23,7 +23,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.sound.AmbientMusicManager;
 import erebus.client.sound.EntitySoundEvent;
-import erebus.core.addon.AddonManager;
 import erebus.core.handler.CommonTickHandler;
 import erebus.core.handler.ConfigurationHandler;
 import erebus.core.handler.ConnectionTeleportHandler;
@@ -35,6 +34,7 @@ import erebus.creativetab.CreativeTabErebusGear;
 import erebus.creativetab.CreativeTabErebusItem;
 import erebus.lib.Reference;
 import erebus.network.PacketHandler;
+import erebus.recipes.BCFacadeManager;
 import erebus.recipes.RecipeHandler;
 import erebus.utils.VersionHelper;
 import erebus.world.WorldProviderErebus;
@@ -93,14 +93,11 @@ public class ErebusMod {
 		ModItems.init();
 		ModEntities.init();
 
-		AddonManager.registerAddons();
-
 		NetworkRegistry.instance().registerConnectionHandler(packeterebushandler);
 		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
 
 		DimensionManager.registerProviderType(erebusDimensionID, WorldProviderErebus.class, true);
 		DimensionManager.registerDimension(erebusDimensionID, erebusDimensionID);
-		AddonManager.runFMLPre(ConfigurationHandler.config);
 	}
 
 	@EventHandler
@@ -116,12 +113,11 @@ public class ErebusMod {
 		MinecraftForge.EVENT_BUS.register(ModItems.jumpBoots);
 
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
-		AddonManager.runFMLInit(ConfigurationHandler.config);
+		BCFacadeManager.registerFacades();
 	}
 
 	@EventHandler
 	public void postLoad(FMLPostInitializationEvent event) {
-		AddonManager.runRegisteredAddons(ConfigurationHandler.config);
 		Minecraft.getMinecraft().entityRenderer = renderer;
 	}
 }

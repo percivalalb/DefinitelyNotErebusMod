@@ -34,7 +34,7 @@ public class ConfigurationHandler {
 			ModBlocks.quickSandID = config.getBlock("Block ID of Quick Sand", 2505).getInt(2505);
 			ModBlocks.erebusOreExtraID = config.getBlock("Block ID of Extra Erebus Ores", 2506).getInt(2506);
 			// available: 2507-2512
-			
+
 			ModBlocks.logErebusGroup1ID = config.getBlock("Block ID of Log - group 1", 2513).getInt(2513);
 			ModBlocks.logErebusGroup2ID = config.getBlock("Block ID of Log - group 2", 2514).getInt(2514);
 			ModBlocks.planksErebusID = config.getBlock("Block ID of Planks", 2515).getInt(2515);
@@ -42,14 +42,14 @@ public class ConfigurationHandler {
 			ModBlocks.erebusSaplingID = config.getBlock("Block ID of Erebus Saplings", 2517).getInt(2517);
 			ModBlocks.hollowLogAcaciaID = config.getBlock("Block ID of Hollow Log", 2518).getInt(2518);
 			// available: 2519-2525
-			
+
 			ModBlocks.erebusGrassID = config.getBlock("Block ID of Erebus Grass", 2525).getInt(2525);
 			ModBlocks.thornsID = config.getBlock("Block ID of Thorns", 2526).getInt(2526);
 			ModBlocks.fernID = config.getBlock("Block ID of Ferns", 2527).getInt(2527);
 			ModBlocks.fiddleheadID = config.getBlock("Block ID of Fiddlehead", 2528).getInt(2528);
 			ModBlocks.blockTurnipID = config.getBlock("Block ID of Turnips", 2529).getInt(2529);
 			// available: 2530-2540
-			
+
 			ModBlocks.blockSilkID = config.getBlock("Block ID of Silk", 2541).getInt(2541);
 			ModBlocks.mirBrickID = config.getBlock("Block ID of Mirbrick", 2542).getInt(2542);
 			ModBlocks.petrifiedWoodPlanksID = config.getBlock("Block ID of Petrified Wood Planks", 2543).getInt(2543);
@@ -60,8 +60,8 @@ public class ConfigurationHandler {
 			ModBlocks.umberPaverID = config.getBlock("Block ID of Umebrpaver", 2548).getInt(2548);
 			ModBlocks.insectRepellentID = config.getBlock("Block ID of Insect Repellent Block", 2549).getInt(2549);
 			// available: 2550-2564
-			
-			int id=2565;
+
+			int id = 2565;
 			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];
 			for (int i = 0; i < ModBlocks.umbercobbleStairsID.length; i++) {
 				ModBlocks.umbercobbleStairsID[i] = config.getBlock("Block ID of Umbercobble Stairs " + i, id).getInt(id++);
@@ -82,7 +82,7 @@ public class ConfigurationHandler {
 			}
 			ModBlocks.wallErebusID = config.getBlock("Block ID of Wall", 2595).getInt(2595);
 			// available: 2596-2605
-			
+
 			ModBlocks.spiderSpawnerID = config.getBlock("Block ID of Spider Spawners", 2606).getInt(2606);
 			ModBlocks.caveSpiderSpawnerID = config.getBlock("Block ID of Cave Spider Spawners", 2607).getInt(2607);
 
@@ -97,7 +97,7 @@ public class ConfigurationHandler {
 			ModItems.turnipID = config.getItem("Item ID of Turnips", 9711).getInt(9711);
 			ModItems.sprayCanID = config.getItem("Item ID of Insect Repellent", 9712).getInt(9712);
 			// available: 9713-9725
-			
+
 			ModItems.jadeHelmetID = config.getItem("Item ID of Jade Helmet", 9726).getInt(9726);
 			ModItems.jadeBodyID = config.getItem("Item ID of Jade Chestplate", 9727).getInt(9727);
 			ModItems.jadeLegsID = config.getItem("Item ID of Jade Leggings", 9728).getInt(9728);
@@ -109,22 +109,22 @@ public class ConfigurationHandler {
 			ModItems.jadePaxelID = config.getItem("Item ID of Jade Paxel", 9734).getInt(9734);
 			ModItems.jadeHoeID = config.getItem("Item ID of Jade Hoe", 9735).getInt(9735);
 			// available: 9736-9740
-			
+
 			ModItems.exoskeletonHelmetID = config.getItem("Item ID of Exoskeleton Helmet", 9741).getInt(9741);
 			ModItems.exoskeletonBodyID = config.getItem("Item ID of Exoskeleton Chestplate", 9742).getInt(9742);
 			ModItems.exoskeletonLegsID = config.getItem("Item ID of Exoskeleton Leggings", 9743).getInt(9743);
 			ModItems.exoskeletonBootsID = config.getItem("Item ID of Exoskeleton Boots", 9744).getInt(9744);
 			// available: 9745-9754
-			
+
 			ModItems.fossilClubID = config.getItem("Item ID of Caveman's Club", 9755).getInt(9755);
 			ModItems.waspSwordID = config.getItem("Item ID of Wasp Sword", 9756).getInt(9756);
 			ModItems.maxSpeedBowID = config.getItem("Item ID of MaxSpeed Bow", 9757).getInt(9757);
 			// available: 9758-9770
-			
+
 			ModItems.compoundGogglesID = config.getItem("Item ID of Compound Goggles", 9771).getInt(9771);
 			ModItems.sprintLeggingsID = config.getItem("Item ID of Sprint Leggings", 9772).getInt(9772);
 			ModItems.jumpBootsID = config.getItem("Item ID of Jump Boots", 9773).getInt(9773);
-			
+
 			/*
 			 * Biomes & misc
 			 */

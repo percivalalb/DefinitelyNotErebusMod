@@ -1,6 +1,5 @@
 package erebus.world.structure;
 
-
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -210,4 +209,3 @@ public class MapGenErebusRavine extends MapGenBase {
 			}
 	}
 }
-

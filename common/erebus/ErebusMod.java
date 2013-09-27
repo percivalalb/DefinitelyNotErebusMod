@@ -39,7 +39,6 @@ import erebus.recipes.RecipeHandler;
 import erebus.utils.VersionHelper;
 import erebus.world.WorldProviderErebus;
 
-
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, dependencies = Reference.MOD_DEPENDENCIES)
 @NetworkMod(channels = { Reference.CHANNEL }, clientSideRequired = true, serverSideRequired = true, packetHandler = PacketHandler.class)
 public class ErebusMod {

@@ -178,17 +178,17 @@ public class BlockThorns extends Block implements IShearable {
 			int k1;
 			label138:
 
-				for (i1 = par2 - b0; i1 <= par2 + b0; ++i1)
-					for (j1 = par4 - b0; j1 <= par4 + b0; ++j1)
-						for (k1 = par3 - 1; k1 <= par3 + 1; ++k1)
-							if (par1World.getBlockId(i1, k1, j1) == blockID) {
-								--l;
+			for (i1 = par2 - b0; i1 <= par2 + b0; ++i1)
+				for (j1 = par4 - b0; j1 <= par4 + b0; ++j1)
+					for (k1 = par3 - 1; k1 <= par3 + 1; ++k1)
+						if (par1World.getBlockId(i1, k1, j1) == blockID) {
+							--l;
 
-								if (l <= 0) {
-									flag = true;
-									break label138;
-								}
+							if (l <= 0) {
+								flag = true;
+								break label138;
 							}
+						}
 
 			i1 = par1World.getBlockMetadata(par2, par3, par4);
 			j1 = par1World.rand.nextInt(6);
@@ -231,11 +231,9 @@ public class BlockThorns extends Block implements IShearable {
 							par1World.setBlock(par2 + Direction.offsetX[k1], par3, par4 + Direction.offsetZ[k1], blockID, 1 << i2, 2);
 						else if ((i1 & 1 << j2) != 0 && canBePlacedOn(par1World.getBlockId(par2 + Direction.offsetX[k1] + Direction.offsetX[j2], par3, par4 + Direction.offsetZ[k1] + Direction.offsetZ[j2])))
 							par1World.setBlock(par2 + Direction.offsetX[k1], par3, par4 + Direction.offsetZ[k1], blockID, 1 << j2, 2);
-						else if ((i1 & 1 << i2) != 0 && par1World.isAirBlock(par2 + Direction.offsetX[k1] + Direction.offsetX[i2], par3, par4 + Direction.offsetZ[k1] + Direction.offsetZ[i2]) &&
-						canBePlacedOn(par1World.getBlockId(par2 + Direction.offsetX[i2], par3, par4 + Direction.offsetZ[i2])))
+						else if ((i1 & 1 << i2) != 0 && par1World.isAirBlock(par2 + Direction.offsetX[k1] + Direction.offsetX[i2], par3, par4 + Direction.offsetZ[k1] + Direction.offsetZ[i2]) && canBePlacedOn(par1World.getBlockId(par2 + Direction.offsetX[i2], par3, par4 + Direction.offsetZ[i2])))
 							par1World.setBlock(par2 + Direction.offsetX[k1] + Direction.offsetX[i2], par3, par4 + Direction.offsetZ[k1] + Direction.offsetZ[i2], blockID, 1 << (k1 + 2 & 3), 2);
-						else if ((i1 & 1 << j2) != 0 && par1World.isAirBlock(par2 + Direction.offsetX[k1] + Direction.offsetX[j2], par3, par4 + Direction.offsetZ[k1] + Direction.offsetZ[j2]) &&
-						canBePlacedOn(par1World.getBlockId(par2 + Direction.offsetX[j2], par3, par4 + Direction.offsetZ[j2])))
+						else if ((i1 & 1 << j2) != 0 && par1World.isAirBlock(par2 + Direction.offsetX[k1] + Direction.offsetX[j2], par3, par4 + Direction.offsetZ[k1] + Direction.offsetZ[j2]) && canBePlacedOn(par1World.getBlockId(par2 + Direction.offsetX[j2], par3, par4 + Direction.offsetZ[j2])))
 							par1World.setBlock(par2 + Direction.offsetX[k1] + Direction.offsetX[j2], par3, par4 + Direction.offsetZ[k1] + Direction.offsetZ[j2], blockID, 1 << (k1 + 2 & 3), 2);
 						else if (canBePlacedOn(par1World.getBlockId(par2 + Direction.offsetX[k1], par3 + 1, par4 + Direction.offsetZ[k1])))
 							par1World.setBlock(par2 + Direction.offsetX[k1], par3, par4 + Direction.offsetZ[k1], blockID, 0, 2);

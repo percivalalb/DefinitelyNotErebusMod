@@ -45,18 +45,18 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 		for (int a = 0; a < 3; ++a) {
 			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataLapis, 6, worldObj, rand, x, z, 6, 112, 2);
 		}
-		
+
 		for (int a = 0; a < 1 + rand.nextInt(3); ++a) {
 			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataEmerald, 3, worldObj, rand, x, z, 6, 112, 1);
 		}
-		
-		if (rand.nextInt(3) != 0){
+
+		if (rand.nextInt(3) != 0) {
 			for (int a = 0; a < 2 + rand.nextInt(2); ++a) {
 				generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataDiamond, 1, worldObj, rand, x, z, 6, 112, 1);
 			}
 		}
 
-		if (rand.nextInt(2) == 0){
+		if (rand.nextInt(2) == 0) {
 			for (int a = 0; a < 1 + rand.nextInt(3); ++a) {
 				generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataJade, 4, worldObj, rand, x, z, 6, 112, 2);
 			}
@@ -111,10 +111,11 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 					testZ = z;
 
 				if (world.isAirBlock(testX, testY, testZ)) {
-					if (oreNumber == 1){
-						if (world.getBlockId(xx,yy,zz) == ModBlocks.umberstone.blockID) world.setBlock(xx, yy, zz, oreBlock.blockID, oreMeta, 2);
-					}
-					else new WorldGenErebusMinable(oreBlock.blockID, oreMeta, oreNumber).generate(world, rand, xx, yy, zz);
+					if (oreNumber == 1) {
+						if (world.getBlockId(xx, yy, zz) == ModBlocks.umberstone.blockID)
+							world.setBlock(xx, yy, zz, oreBlock.blockID, oreMeta, 2);
+					} else
+						new WorldGenErebusMinable(oreBlock.blockID, oreMeta, oreNumber).generate(world, rand, xx, yy, zz);
 					return;
 				}
 			}

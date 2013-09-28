@@ -63,7 +63,6 @@ public class ModItems {
 	public static Item fossilClub;						public static int fossilClubID;
 	public static Item waspSword;						public static int waspSwordID;
 	public static Item maxSpeedBow;						public static int maxSpeedBowID;
-	public static Item specialPickaxe;					public static int specialPickaxeID;
 
 	// MISC ARMOR
 	public static Item compoundGoggles;                 public static int compoundGogglesID;
@@ -102,7 +101,7 @@ public class ModItems {
 
 		fossilClub = new ItemCavemanClub(fossilClubID, ErebusMod.toolCAVEMANCLUB).setFull3D().setUnlocalizedName("clubBone").setTextureName("erebus:clubBone");
 		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setCreativeTab(null).setUnlocalizedName("waspSword");
-		maxSpeedBow = new ItemMaxSpeedBow(maxSpeedBowID, 301, 5).setUnlocalizedName("maxSpeedBow").setTextureName("erebus:maxSpeedBow");
+		maxSpeedBow = new ItemMaxSpeedBow(maxSpeedBowID).setUnlocalizedName("maxSpeedBow").setTextureName("erebus:maxSpeedBow");
 
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
 		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorEXOSKELETON, 2).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");

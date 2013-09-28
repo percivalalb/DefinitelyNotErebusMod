@@ -19,46 +19,32 @@ import com.google.common.io.ByteArrayDataOutput;
 
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 
-public class EntityAntlion extends EntityMob implements
-IEntityAdditionalSpawnData {
-	public boolean isBoss;
-	public EntityAntlion(World par1World) {
-		super(par1World);
+public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnData {
+	private boolean areAttributesSetup = false;
+	
+	public EntityAntlion(World world) {
+		super(world);
 		isImmuneToFire=true;
-		if (!isBoss)
-			setSize(1.5F, 0.6F);
-		if (isBoss)
-			setSize(3.0F, 1.2F);
+		experienceValue=17;
 	}
 
 	@Override
 	protected void entityInit(){
 		super.entityInit();
-		dataWatcher.addObject(16, new Byte((byte) 0));
+		dataWatcher.addObject(16, new Byte((byte)0));
+		setIsBoss(false);
 	}
 
 	@Override
 	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
-		if (!isBoss) {
-			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D); // Movespeed
-			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
-			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D); // atkDmg
-			getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
-			getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(0.5D); // knockback
-		}
-		if (isBoss) {
-			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D); // Movespeed
-			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50.0D); // MaxHealth
-			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D); // atkDmg
-			getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(6.0D); // followRange
-			getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(1.0D); // knockback
-		}
+		areAttributesSetup = true;
+		updateBossAttributes();
 	}
 
 	@Override
 	public int getTotalArmorValue(){
-		if(isBoss)return 15;
+		if (isBoss())return 15;
 		else return 8;
 	}
 
@@ -112,9 +98,16 @@ IEntityAdditionalSpawnData {
 
 	@Override
 	public void onUpdate(){
-		super.onUpdate();
+		if (isBoss()){ // a hack to keep boss antlions alive even on peaceful
+			int difficulty=worldObj.difficultySetting;
+			if (difficulty==0)worldObj.difficultySetting=1;
+			super.onUpdate();
+			worldObj.difficultySetting=difficulty;
+		}
+		else super.onUpdate();
+		
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D);
-		if (!worldObj.isRemote&&entityToAttack==null&&isOnSand()&&(!isBoss)) yOffset=-1;
+		if (!worldObj.isRemote&&entityToAttack==null&&isOnSand()&&(!isBoss())) yOffset=-1;
 		else yOffset=0;
 	}
 
@@ -139,8 +132,8 @@ IEntityAdditionalSpawnData {
 				if (worldObj.difficultySetting>1)
 					if (worldObj.difficultySetting==2) var2=7;
 					else if (worldObj.difficultySetting==3) var2=15;
-				if (var2>0&&(!isBoss)) ((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.weakness.id,var2*20,0));
-				else if (var2>0&&(isBoss)) ((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.weakness.id,var2+var3*20,0));
+				if (var2>0&&(!isBoss())) ((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.weakness.id,var2*20,0));
+				else if (var2>0&&(isBoss())) ((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.weakness.id,var2+var3*20,0));
 			}
 			return true;
 		}
@@ -148,34 +141,55 @@ IEntityAdditionalSpawnData {
 	}
 
 	@Override
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
-		super.writeEntityToNBT(par1NBTTagCompound);
-		par1NBTTagCompound.setBoolean("AntlionType", isBoss);
-
+	public void writeEntityToNBT(NBTTagCompound nbt) {
+		super.writeEntityToNBT(nbt);
+		nbt.setBoolean("AntlionType", isBoss());
 	}
 
 	@Override
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
-		super.readEntityFromNBT(par1NBTTagCompound);
-		if (par1NBTTagCompound.hasKey("AntlionType"))
-			setIsBoss(par1NBTTagCompound.getBoolean("AntlionType"));
+	public void readEntityFromNBT(NBTTagCompound nbt) {
+		super.readEntityFromNBT(nbt);
+		setIsBoss(nbt.getBoolean("AntlionType"));
 	}
 
-	protected void setIsBoss(boolean par1) {
-		isBoss = par1;
-		dataWatcher.updateObject(16, Byte.valueOf((byte) 1));
+	public void setIsBoss(boolean isBoss) {
+		dataWatcher.updateObject(16, Byte.valueOf((byte)(isBoss?1:0)));
 		worldObj.setEntityState(this, (byte) 16);
+		
+		if (!isBoss)setSize(3.0F, 1.2F);
+		else setSize(1.5F, 0.6F);
+		
+		if (areAttributesSetup) updateBossAttributes();
+	}
+	
+	public void updateBossAttributes() {
+		if (isBoss()) {
+			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D);
+			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50.0D);
+			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D);
+			getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(6.0D);
+			getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(1.0D);
+		}
+		else {
+			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D);
+			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);
+			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D);
+			getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D);
+			getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(0.5D);
+		}
+	}
+	
+	public boolean isBoss() {
+		return dataWatcher.getWatchableObjectByte(16) == 1;
 	}
 
 	@Override
 	public void writeSpawnData(ByteArrayDataOutput data) {
-		data.writeBoolean(isBoss);
-
+		data.writeBoolean(isBoss());
 	}
 
 	@Override
 	public void readSpawnData(ByteArrayDataInput data) {
-		isBoss = data.readBoolean();
-
+		setIsBoss(data.readBoolean());
 	}
 }

@@ -10,15 +10,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
 import erebus.block.BlockBambooCrate;
-import erebus.client.model.block.ModelBamboo;
 import erebus.client.model.block.ModelBambooCrate;
 import erebus.client.model.block.ModelColossalCrate;
 import erebus.tileentity.TileEntityBambooCrate;
 
 @SideOnly(Side.CLIENT)
 public class TileEntityRenderBamboo extends TileEntitySpecialRenderer {
-	private final ModelBamboo bambooModel = new ModelBamboo();
-	public static ResourceLocation bambooResource = new ResourceLocation("erebus:textures/item/bamboo.png");
+	public static final ResourceLocation bambooResource = new ResourceLocation("erebus:textures/item/bamboo.png");
 
 	private final ModelBambooCrate bambooCrateModel = new ModelBambooCrate();
 	public static ResourceLocation bambooCrateResource = new ResourceLocation("erebus:textures/item/bambooCrate.png");
@@ -30,18 +28,6 @@ public class TileEntityRenderBamboo extends TileEntitySpecialRenderer {
 		int x = bambooCrate.xCoord;
 		int y = bambooCrate.yCoord;
 		int z = bambooCrate.zCoord;
-
-		if (bambooCrate.worldObj.getBlockMetadata(x, y, z) == 0) {
-			bindTexture(bambooResource);
-
-			GL11.glPushMatrix();
-			GL11.glTranslatef((float) par2 + 0.5F, (float) par4 + 1.5F, (float) par6 + 0.5F);
-			GL11.glRotatef(0, 0.0F, 1.0F, 0.0F);
-			GL11.glScalef(1.0F, -1F, -1F);
-			bambooModel.renderModel(0.0625F);
-			GL11.glPopMatrix();
-			return;
-		}
 
 		BlockBambooCrate crate = (BlockBambooCrate) ModBlocks.bambooCrate;
 		if (bambooCrate.worldObj.getBlockId(x, y - 1, z) == crate.blockID && bambooCrate.worldObj.getBlockMetadata(x, y - 1, z) == 1)

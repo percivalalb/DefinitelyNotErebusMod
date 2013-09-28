@@ -2,6 +2,7 @@ package erebus.core.handler;
 
 import java.io.File;
 import java.util.logging.Level;
+
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.FMLLog;
 import erebus.ErebusMod;
@@ -57,31 +58,28 @@ public class ConfigurationHandler {
 			ModBlocks.umberFurnace_onID = config.getBlock("Block ID of Umebr Furnace OFF", 2524).getInt(2524);
 			ModBlocks.umberPaverID = config.getBlock("Block ID of Umebrpaver", 2525).getInt(2525);
 			ModBlocks.insectRepellentID = config.getBlock("Block ID of Insect Repellent Block", 2526).getInt(2526);
+			ModBlocks.bambooCropID = config.getBlock("Block ID of Bamboo Crop Block", 2554).getInt(2554);
 
 			int id = 2527;
 			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];
-			for (int i = 0; i < ModBlocks.umbercobbleStairsID.length; i++) {
+			for (int i = 0; i < ModBlocks.umbercobbleStairsID.length; i++)
 				ModBlocks.umbercobbleStairsID[i] = config.getBlock("Block ID of Umbercobble Stairs " + i, id).getInt(id++);
-			}
 			ModBlocks.plankStairsID = new int[BlockPlanksErebus.plankTypes.length];
-			for (int i = 0; i < ModBlocks.plankStairsID.length; i++) {
+			for (int i = 0; i < ModBlocks.plankStairsID.length; i++)
 				ModBlocks.plankStairsID[i] = config.getBlock("Block ID of Plank Stairs " + i, id).getInt(id++);
-			}
 			// 20 blocks for stairs
 			ModBlocks.petrifiedWoodStairsID = config.getBlock("Block ID of Petrified Wood Stairs", 2547).getInt(2547);
 			ModBlocks.stoneSlabsID = new int[2];
-			for (int i = 0; i < ModBlocks.stoneSlabsID.length; i++) {
+			for (int i = 0; i < ModBlocks.stoneSlabsID.length; i++)
 				ModBlocks.stoneSlabsID[i] = config.getBlock("Block ID of Stone Slabs " + i, 2548 + i).getInt(2548 + i);
-			}
 			ModBlocks.plankSlabsID = new int[2];
-			for (int i = 0; i < ModBlocks.plankSlabsID.length; i++) {
+			for (int i = 0; i < ModBlocks.plankSlabsID.length; i++)
 				ModBlocks.plankSlabsID[i] = config.getBlock("Block ID of Plank Slabs " + i, 2550 + i).getInt(2550 + i);
-			}
 			ModBlocks.wallErebusID = config.getBlock("Block ID of Wall", 2551).getInt(2551);
 
 			ModBlocks.spiderSpawnerID = config.getBlock("Block ID of Spider Spawners", 2552).getInt(2552);
 			ModBlocks.caveSpiderSpawnerID = config.getBlock("Block ID of Cave Spider Spawners", 2553).getInt(2553);
-			
+
 			// latest ID used (please update after adding new blocks!) >>> 2554
 
 			/*
@@ -118,7 +116,7 @@ public class ConfigurationHandler {
 			ModItems.compoundGogglesID = config.getItem("Item ID of Compound Goggles", 9730).getInt(9730);
 			ModItems.sprintLeggingsID = config.getItem("Item ID of Sprint Leggings", 9731).getInt(9731);
 			ModItems.jumpBootsID = config.getItem("Item ID of Jump Boots", 9732).getInt(9732);
-			
+
 			// latest ID used (please update after adding new items!) >>> 9732
 
 			/*

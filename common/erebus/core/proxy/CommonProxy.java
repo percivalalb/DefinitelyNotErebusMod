@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 
 import com.google.common.io.ByteArrayDataInput;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import erebus.ModBlocks;
@@ -34,6 +35,7 @@ public class CommonProxy implements IGuiHandler {
 	public static final int GUI_ID_COLOSSAL_CRATE = 2;
 	public static final int GUI_ID_PETRIFIED_CRAFT = 3;
 	public static final int GUI_ID_UMBER_FURNACE = 4;
+	public final int bambooCropRenderID = RenderingRegistry.getNextAvailableRenderId();
 
 	public void registerRenderInformation() {
 		// Unused server side. -- see ClientProxy for implementation

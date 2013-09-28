@@ -17,7 +17,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 
 public class ItemMaxSpeedBow extends Item {
-	private final int weaponEnchantibility;
+	private int weaponEnchantibility;
 	// private int chargeTime;
 	// TODO chargeTime unused!
 
@@ -25,12 +25,12 @@ public class ItemMaxSpeedBow extends Item {
 	@SideOnly(Side.CLIENT)
 	private Icon[] iconArray;
 
-	public ItemMaxSpeedBow(int id) {
-		super(id);
+	public ItemMaxSpeedBow(int par1, int par2, int par3) {
+		super(par1);
 		// this.setIconCoord(0, 9);
 		maxStackSize = 1;
-		setMaxDamage(301);
-		weaponEnchantibility = 5;
+		setMaxDamage(par2);
+		weaponEnchantibility = par3;
 	}
 
 	/**
@@ -39,54 +39,63 @@ public class ItemMaxSpeedBow extends Item {
 	 */
 	@Override
 	public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4) {
-		int var6 = getMaxItemUseDuration(par1ItemStack) - par4;
+		int var6 = this.getMaxItemUseDuration(par1ItemStack) - par4;
 
 		ArrowLooseEvent event = new ArrowLooseEvent(par3EntityPlayer, par1ItemStack, var6);
 		MinecraftForge.EVENT_BUS.post(event);
-		if (event.isCanceled())
+		if (event.isCanceled()) {
 			return;
+		}
 		var6 = event.charge;
 
 		boolean var5 = par3EntityPlayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0;
 
 		if (var5 || par3EntityPlayer.inventory.hasItem(Item.arrow.itemID)) {
-			float var7 = var6 / 20.0F;
+			float var7 = (float) var6 / 20.0F;
 			var7 = (var7 * var7 + var7 * 2.0F) / 1.0F;
 
-			if (var7 < 0.1D)
+			if ((double) var7 < 0.1D) {
 				return;
+			}
 
-			if (var7 > 1.0F)
+			if (var7 > 1.0F) {
 				var7 = 1.0F;
+			}
 
 			EntityArrow var8 = new EntityArrow(par2World, par3EntityPlayer, var7 * 2.0F);
 
-			if (var7 == 1.0F)
+			if (var7 == 1.0F) {
 				var8.setIsCritical(true);
+			}
 
 			int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
 
-			if (var9 > 0)
-				var8.setDamage(var8.getDamage() + var9 * 0.5D + 0.5D);
+			if (var9 > 0) {
+				var8.setDamage(var8.getDamage() + (double) var9 * 0.5D + 0.5D);
+			}
 
 			int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
 
-			if (var10 > 0)
+			if (var10 > 0) {
 				var8.setKnockbackStrength(var10);
+			}
 
-			if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, par1ItemStack) > 0)
+			if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, par1ItemStack) > 0) {
 				var8.setFire(100);
+			}
 
 			par1ItemStack.damageItem(1, par3EntityPlayer);
 			par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + var7 * 0.5F);
 
-			if (var5)
+			if (var5) {
 				var8.canBePickedUp = 2;
-			else
+			} else {
 				par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.itemID);
+			}
 
-			if (!par2World.isRemote)
+			if (!par2World.isRemote) {
 				par2World.spawnEntityInWorld(var8);
+			}
 		}
 	}
 
@@ -124,37 +133,44 @@ public class ItemMaxSpeedBow extends Item {
 			if (var5 || par3EntityPlayer.inventory.hasItem(Item.arrow.itemID)) {
 				EntityArrow var8 = new EntityArrow(par2World, par3EntityPlayer, 1.0F * 2.0F);
 
-				if (par2World.rand.nextInt(4) == 0)
+				if (par2World.rand.nextInt(4) == 0) {
 					var8.setIsCritical(true);
+				}
 
 				int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
 
-				if (var9 > 0)
-					var8.setDamage(var8.getDamage() + var9 * 0.5D + 0.5D);
+				if (var9 > 0) {
+					var8.setDamage(var8.getDamage() + (double) var9 * 0.5D + 0.5D);
+				}
 
 				int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
 
-				if (var10 > 0)
+				if (var10 > 0) {
 					var8.setKnockbackStrength(var10);
+				}
 
-				if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, par1ItemStack) > 0)
+				if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, par1ItemStack) > 0) {
 					var8.setFire(100);
+				}
 
 				par1ItemStack.damageItem(1, par3EntityPlayer);
 				par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 1.0F * 0.5F);
 
-				if (var5)
+				if (var5) {
 					var8.canBePickedUp = 2;
-				else
+				} else {
 					par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.itemID);
+				}
 
-				if (!par2World.isRemote)
+				if (!par2World.isRemote) {
 					par2World.spawnEntityInWorld(var8);
+				}
 			}
 		}
 
-		else if (sneak == true)
-			par3EntityPlayer.setItemInUse(par1ItemStack, getMaxItemUseDuration(par1ItemStack));
+		else if (sneak == true) {
+			par3EntityPlayer.setItemInUse(par1ItemStack, this.getMaxItemUseDuration(par1ItemStack));
+		}
 
 		return par1ItemStack;
 	}
@@ -165,22 +181,23 @@ public class ItemMaxSpeedBow extends Item {
 	 */
 	@Override
 	public int getItemEnchantability() {
-		return weaponEnchantibility;
+		return this.weaponEnchantibility;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
 		super.registerIcons(par1IconRegister);
-		iconArray = new Icon[bowPullIconNameArray.length];
+		this.iconArray = new Icon[bowPullIconNameArray.length];
 
-		for (int i = 0; i < iconArray.length; ++i)
-			iconArray[i] = par1IconRegister.registerIcon("erebus:" + bowPullIconNameArray[i]);
+		for (int i = 0; i < this.iconArray.length; ++i) {
+			this.iconArray[i] = par1IconRegister.registerIcon("erebus:" + bowPullIconNameArray[i]);
+		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public Icon func_94599_c(int par1) {
-		return iconArray[par1];
+		return this.iconArray[par1];
 	}
 
 	@Override
@@ -188,13 +205,13 @@ public class ItemMaxSpeedBow extends Item {
 		if (usingItem != null && usingItem.getItem().itemID == ModItems.maxSpeedBow.itemID) {
 			int k = usingItem.getMaxItemUseDuration() - useRemaining;
 			if (k >= 6)
-				return iconArray[2];
+				return this.iconArray[2];
 			if (k > 4)
-				return iconArray[1];
+				return this.iconArray[1];
 			if (k > 0)
-				return iconArray[0];
+				return this.iconArray[0];
 		}
-		return itemIcon;
+		return this.itemIcon;
 	}
 
 	@Override

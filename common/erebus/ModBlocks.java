@@ -35,6 +35,7 @@ import erebus.block.BlockUmberPaver;
 import erebus.block.BlockUmberstone;
 import erebus.block.BlockWallErebus;
 import erebus.item.block.ItemBlockAmber;
+import erebus.item.block.ItemBlockBamboo;
 import erebus.item.block.ItemBlockErebusOreExtras;
 import erebus.item.block.ItemBlockLeavesErebus;
 import erebus.item.block.ItemBlockLogErebus1;
@@ -202,7 +203,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(mirBrick, "erebus.mirBrick");
 		GameRegistry.registerBlock(petrifiedWoodPlanks, "erebus.petrifiedWoodPlanks");
 		GameRegistry.registerBlock(petrifiedCraftingTable, "erebus.petrifiedCraftingTable");
-		GameRegistry.registerBlock(bambooCrate, "erebus.bamboo");
+		GameRegistry.registerBlock(bambooCrate, ItemBlockBamboo.class, "erebus.bamboo");
 		GameRegistry.registerBlock(umberFurnace, "erebus.umberFurnaceOff");
 		GameRegistry.registerBlock(umberFurnace_on, "erebus.umberFurnaceOn");
 		GameRegistry.registerBlock(umberPaver, ItemBlockUmberpaver.class, "erebus.umberpaver");

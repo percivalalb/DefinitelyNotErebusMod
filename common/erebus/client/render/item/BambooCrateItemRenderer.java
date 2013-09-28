@@ -55,13 +55,12 @@ public class BambooCrateItemRenderer implements IItemRenderer {
 
 	private void renderBambooCrate(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(resourceBambooCrate);
-		GL11.glPushMatrix(); // Start Rendering
-		GL11.glTranslatef(x, y, z); // Position
+		GL11.glPushMatrix();
+		GL11.glTranslatef(x, y, z);
 		GL11.glRotatef(180F, 1F, 0, 0);
 		GL11.glRotatef(-90F, 0, 1F, 0);
-		GL11.glScaled(size, size, size); // Changes the size (Only really used
-		// when reading in the inventory)
-		modelBambooCrate.renderModel(0.0625F); // Render the Hollow log
-		GL11.glPopMatrix(); // End Rendering
+		GL11.glScaled(size, size, size);
+		modelBambooCrate.renderModel();
+		GL11.glPopMatrix();
 	}
 }

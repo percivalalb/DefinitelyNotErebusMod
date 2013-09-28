@@ -5,15 +5,14 @@ import java.util.Random;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import erebus.ErebusMod;
 import erebus.core.proxy.CommonProxy;
 import erebus.tileentity.TileEntityBambooCrate;
+import erebus.utils.Utils;
 
 /**
  * @author ProPercivalalb
@@ -24,7 +23,6 @@ public class BlockBambooCrate extends BlockContainer {
 
 	public BlockBambooCrate(int id) {
 		super(id, Material.wood);
-		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
 	}
 
 	@Override
@@ -147,42 +145,16 @@ public class BlockBambooCrate extends BlockContainer {
 	}
 
 	@Override
-	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
-		TileEntityBambooCrate tileentitycrate = (TileEntityBambooCrate) par1World.getBlockTileEntity(par2, par3, par4);
-
-		if (tileentitycrate != null) {
-			for (int j1 = 0; j1 < tileentitycrate.getSizeInventory(); ++j1) {
-				ItemStack itemstack = tileentitycrate.getStackInSlot(j1);
-
-				if (itemstack != null) {
-					float f = crateRand.nextFloat() * 0.8F + 0.1F;
-					float f1 = crateRand.nextFloat() * 0.8F + 0.1F;
-					float f2 = crateRand.nextFloat() * 0.8F + 0.1F;
-
-					while (itemstack.stackSize > 0) {
-						int k1 = crateRand.nextInt(21) + 10;
-
-						if (k1 > itemstack.stackSize)
-							k1 = itemstack.stackSize;
-
-						itemstack.stackSize -= k1;
-						EntityItem entityitem = new EntityItem(par1World, par2 + f, par3 + f1, par4 + f2, new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
-
-						if (itemstack.hasTagCompound())
-							entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
-
-						float f3 = 0.05F;
-						entityitem.motionX = (float) crateRand.nextGaussian() * f3;
-						entityitem.motionY = (float) crateRand.nextGaussian() * f3 + 0.2F;
-						entityitem.motionZ = (float) crateRand.nextGaussian() * f3;
-						par1World.spawnEntityInWorld(entityitem);
-					}
-				}
+	public void breakBlock(World world, int x, int y, int z, int par5, int par6) {
+		TileEntityBambooCrate tile = (TileEntityBambooCrate) world.getBlockTileEntity(x, y, z);
+		if (tile != null) {
+			for (int i = 0; i < tile.getSizeInventory(); ++i) {
+				ItemStack stack = tile.getStackInSlot(i);
+				if (stack != null)
+					Utils.dropStack(world, x, y, z, stack);
 			}
-
-			par1World.func_96440_m(par2, par3, par4, par5);
+			world.func_96440_m(x, y, z, par5);
 		}
-
-		super.breakBlock(par1World, par2, par3, par4, par5, par6);
+		super.breakBlock(world, x, y, z, par5, par6);
 	}
 }

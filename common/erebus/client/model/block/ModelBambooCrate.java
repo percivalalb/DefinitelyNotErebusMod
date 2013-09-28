@@ -112,19 +112,19 @@ public class ModelBambooCrate extends ModelBase {
 		model.rotateAngleZ = z;
 	}
 
-	public void renderModel(float f5) {
-		BottomBamb1.render(f5);
-		BottomBamb2.render(f5);
-		BottomBamb3.render(f5);
-		BottomBamb4.render(f5);
-		PillarBamb1.render(f5);
-		PillarBamb2.render(f5);
-		PillarBamb3.render(f5);
-		PillarBamb4.render(f5);
-		TopBamb1.render(f5);
-		TopBamb2.render(f5);
-		TopBamb3.render(f5);
-		TopBamb4.render(f5);
-		Core.render(f5);
+	public void renderModel() {
+		BottomBamb1.render(0.0625F);
+		BottomBamb2.render(0.0625F);
+		BottomBamb3.render(0.0625F);
+		BottomBamb4.render(0.0625F);
+		PillarBamb1.render(0.0625F);
+		PillarBamb2.render(0.0625F);
+		PillarBamb3.render(0.0625F);
+		PillarBamb4.render(0.0625F);
+		TopBamb1.render(0.0625F);
+		TopBamb2.render(0.0625F);
+		TopBamb3.render(0.0625F);
+		TopBamb4.render(0.0625F);
+		Core.render(0.0625F);
 	}
 }

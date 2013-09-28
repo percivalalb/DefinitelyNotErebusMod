@@ -45,13 +45,18 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntityBambooCrate.class, "Bamboo Crate (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityUmberFurnace.class, "Umber Furnace (Erebus)");
 	}
-	
+
 	public void postLoad() {
 		// Unused server side. -- see ClientProxy for implementation
 	}
-	
+
 	public void setClientNightVision(boolean enable){
 		// Unused server side. -- see ClientProxy for implementation
+	}
+
+	public boolean getClientNightVision() {
+		// Unused server side. -- see ClientProxy for implementation
+		return false;
 	}
 
 	public void handleParticlePacket(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data) {

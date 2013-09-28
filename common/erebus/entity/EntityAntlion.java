@@ -79,7 +79,7 @@ IEntityAdditionalSpawnData {
 
 	@Override
 	protected String getDeathSound(){
-		return "erebus:Squish";
+		return "erebus:squish";
 	}
 
 	protected void getStepSound(int par1, int par2, int par3, int par4){

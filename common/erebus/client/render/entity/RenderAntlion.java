@@ -13,48 +13,55 @@ import erebus.entity.EntityAntlion;
 
 public class RenderAntlion extends RenderLiving
 {
-    protected ModelAntlion model;
-    private static final ResourceLocation Texture = new ResourceLocation(
-	    "erebus:textures/mob/ModelAntlion.png");
+	protected ModelAntlion model;
+	private static final ResourceLocation Texture = new ResourceLocation(
+			"erebus:textures/mob/ModelAntlion.png");
 
-    public RenderAntlion(ModelAntlion par1ModelBase, float par2)
-    {
-	super(par1ModelBase, par2);
-	model =((ModelAntlion)mainModel);
+	public RenderAntlion(ModelAntlion par1ModelBase, float par2)
+	{
+		super(par1ModelBase, par2);
+		model =((ModelAntlion)mainModel);
 
-    }
-    public void renderAntlion(EntityAntlion par1EntityAntlion, double par2, double par4, double par6, float par8, float par9)
-    {
-	super.doRenderLiving(par1EntityAntlion, par2, par4, par6, par8, par9);
-    }
+	}
+	public void renderAntlion(EntityAntlion par1EntityAntlion, double par2, double par4, double par6, float par8, float par9)
+	{
+		super.doRenderLiving(par1EntityAntlion, par2, par4, par6, par8, par9);
+	}
 
-    @Override
-    public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
-    {
-	renderAntlion((EntityAntlion)par1EntityLiving, par2, par4, par6, par8, par9);
-    }
+	@Override
+	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+	{
+		renderAntlion((EntityAntlion)par1EntityLiving, par2, par4, par6, par8, par9);
+	}
 
-    @Override
-    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
-    {
-	renderAntlion((EntityAntlion)par1Entity, par2, par4, par6, par8, par9);
-    }
+	@Override
+	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+	{
+		renderAntlion((EntityAntlion)par1Entity, par2, par4, par6, par8, par9);
+	}
 
-    @Override
-    protected void preRenderCallback(EntityLivingBase entityliving, float f)
-    {
-	scaleAntlion((EntityAntlion) entityliving, f);
+	@Override
+	protected void preRenderCallback(EntityLivingBase entityliving, float f)
+	{
+		scaleAntlion((EntityAntlion) entityliving, f);
 
-    }
+	}
 
-    protected void scaleAntlion(EntityAntlion entityAntlion, float f) {
-	float f1 = 0.75F;
-	shadowSize = 0.3F;
-	GL11.glScalef(f1, f1, f1);
-    }
-    @Override
-    protected ResourceLocation getEntityTexture(Entity entity) {
-	return Texture;
-    }
+	protected void scaleAntlion(EntityAntlion entityAntlion, float f) {
+		if (!entityAntlion.isBoss) {
+			float f1 = 0.5F;
+			shadowSize = f1;
+			GL11.glScalef(f1, f1, f1);
+		} else if (entityAntlion.isBoss) {
+			float f1 = 1.0F;
+			shadowSize = f1;
+			GL11.glScalef(f1, f1, f1);
+		}
+
+	}
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity) {
+		return Texture;
+	}
 }
 

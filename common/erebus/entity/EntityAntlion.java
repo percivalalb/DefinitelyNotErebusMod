@@ -7,54 +7,59 @@ import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.item.Item;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityAntlion extends EntityMob{
-	public boolean isCaptured;
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteArrayDataOutput;
 
-	public EntityAntlion(World par1World){
+import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
+
+public class EntityAntlion extends EntityMob implements
+IEntityAdditionalSpawnData {
+	public boolean isBoss;
+	public EntityAntlion(World par1World) {
 		super(par1World);
 		isImmuneToFire=true;
-		setSize(2.5F,0.9F);
+		if (!isBoss)
+			setSize(1.5F, 0.6F);
+		if (isBoss)
+			setSize(3.0F, 1.2F);
 	}
 
 	@Override
 	protected void entityInit(){
 		super.entityInit();
+		dataWatcher.addObject(16, new Byte((byte) 0));
 	}
 
 	@Override
 	protected void applyEntityAttributes(){
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D); // Movespeed
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
-		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D); // atkDmg
-		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
-		getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(1.0D); // knockback
-	}
-
-	@Override
-	public boolean isAIEnabled(){
-		return false;
-	}
-
-	@Override
-	public boolean canRiderInteract(){
-		return true;
-	}
-
-	@Override
-	public boolean shouldRiderSit(){
-		return false;
+		if (!isBoss) {
+			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D); // Movespeed
+			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
+			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D); // atkDmg
+			getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
+			getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(0.5D); // knockback
+		}
+		if (isBoss) {
+			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D); // Movespeed
+			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50.0D); // MaxHealth
+			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D); // atkDmg
+			getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(6.0D); // followRange
+			getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(1.0D); // knockback
+		}
 	}
 
 	@Override
 	public int getTotalArmorValue(){
-		return 8;
+		if(isBoss)return 15;
+		else return 8;
 	}
 
 	@Override
@@ -64,21 +69,21 @@ public class EntityAntlion extends EntityMob{
 
 	@Override
 	protected String getLivingSound(){
-		return "Antlion:AntlionSound";
+		return "erebus:AntlionSound";
 	}
 
 	@Override
 	protected String getHurtSound(){
-		return "Antlion:Antlionhurt";
+		return "erebus:Antlionhurt";
 	}
 
 	@Override
 	protected String getDeathSound(){
-		return "Antlion:Squish";
+		return "erebus:squish";
 	}
 
 	protected void getStepSound(int par1, int par2, int par3, int par4){
-		worldObj.playSoundAtEntity(this,"mob.zombie.wood",0.15F,1.0F);
+		playSound("mob.spider.step", 0.15F, 1.0F);
 	}
 
 	@Override
@@ -109,15 +114,15 @@ public class EntityAntlion extends EntityMob{
 	public void onUpdate(){
 		super.onUpdate();
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D);
-		if (!worldObj.isRemote&&entityToAttack==null&&isOnSand()) yOffset=-1;
+		if (!worldObj.isRemote&&entityToAttack==null&&isOnSand()&&(!isBoss)) yOffset=-1;
 		else yOffset=0;
 	}
-	
+
 	@Override
 	public boolean attackEntityFrom(DamageSource source, float damage) {
 		if (source.equals(DamageSource.inWall)||source.equals(DamageSource.drown)) return false;
 		return super.attackEntityFrom(source,damage);
-    }
+	}
 
 	@Override
 	protected void attackEntity(Entity par1Entity, float par2){
@@ -130,14 +135,47 @@ public class EntityAntlion extends EntityMob{
 		if (super.attackEntityAsMob(par1Entity)){
 			if (par1Entity instanceof EntityLiving){
 				byte var2=0;
-				if (worldObj.difficultySetting>1) {
+				byte var3=5;
+				if (worldObj.difficultySetting>1)
 					if (worldObj.difficultySetting==2) var2=7;
 					else if (worldObj.difficultySetting==3) var2=15;
-				}
-				if (var2>0) ((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.weakness.id,var2*20,0));
+				if (var2>0&&(!isBoss)) ((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.weakness.id,var2*20,0));
+				else if (var2>0&&(isBoss)) ((EntityLiving)par1Entity).addPotionEffect(new PotionEffect(Potion.weakness.id,var2+var3*20,0));
 			}
 			return true;
 		}
 		else return false;
+	}
+
+	@Override
+	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
+		super.writeEntityToNBT(par1NBTTagCompound);
+		par1NBTTagCompound.setBoolean("AntlionType", isBoss);
+
+	}
+
+	@Override
+	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
+		super.readEntityFromNBT(par1NBTTagCompound);
+		if (par1NBTTagCompound.hasKey("AntlionType"))
+			setIsBoss(par1NBTTagCompound.getBoolean("AntlionType"));
+	}
+
+	protected void setIsBoss(boolean par1) {
+		isBoss = par1;
+		dataWatcher.updateObject(16, Byte.valueOf((byte) 1));
+		worldObj.setEntityState(this, (byte) 16);
+	}
+
+	@Override
+	public void writeSpawnData(ByteArrayDataOutput data) {
+		data.writeBoolean(isBoss);
+
+	}
+
+	@Override
+	public void readSpawnData(ByteArrayDataInput data) {
+		isBoss = data.readBoolean();
+
 	}
 }

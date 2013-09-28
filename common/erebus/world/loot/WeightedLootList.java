@@ -20,10 +20,11 @@ public class WeightedLootList extends WeightedList<LootItemStack> {
 			add(item);
 	}
 
-	public void setPostProcessor(IPostProcess postProcessor) {
+	public WeightedLootList setPostProcessor(IPostProcess postProcessor) {
 		this.postProcessor = postProcessor;
 		if (this.postProcessor == null)
 			this.postProcessor = genericPostProcessor;
+		return this;
 	}
 
 	public ItemStack generateIS(Random rand) {

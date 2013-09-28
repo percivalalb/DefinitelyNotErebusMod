@@ -15,11 +15,24 @@ import erebus.world.loot.LootUtil;
 import erebus.world.loot.WeightedLootList;
 
 public class WorldGenSpiderDungeons extends WorldGenerator {
-	public static final WeightedLootList chestLoot = new WeightedLootList(new LootItemStack(Item.silk).setAmount(5, 10).setWeight(13), new LootItemStack(Block.web).setAmount(3, 8).setWeight(13), new LootItemStack(Item.stick).setAmount(1, 8).setWeight(12), new LootItemStack(Item.goldNugget)
-	.setAmount(3, 11).setWeight(12), new LootItemStack(ModItems.erebusMaterials).setAmount(3, 8).setDamage(ItemErebusMaterial.dataBoneShard).setWeight(12), new LootItemStack(Item.bone).setAmount(1, 3).setWeight(11), new LootItemStack(Item.ingotIron).setAmount(1, 3).setWeight(10), new LootItemStack(
-	Item.ingotGold).setAmount(1, 2).setWeight(10), new LootItemStack(ModItems.erebusMaterials).setAmount(1, 5).setDamage(ItemErebusMaterial.dataFlyWing).setWeight(10), new LootItemStack(ModItems.erebusMaterials).setAmount(1).setDamage(ItemErebusMaterial.dataJade).setWeight(9), new LootItemStack(
-	ModItems.erebusMaterials).setAmount(3, 6).setDamage(ItemErebusMaterial.dataExoPlate).setWeight(8), new LootItemStack(ModItems.erebusMaterials).setAmount(2, 6).setDamage(ItemErebusMaterial.dataCompoundEyes).setWeight(7), new LootItemStack(ModItems.erebusMaterials).setAmount(1, 1)
-	.setDamage(ItemErebusMaterial.dataCompoundLens).setWeight(2), new LootItemStack(ModItems.maxSpeedBow).setAmount(1).setWeight(1));
+	//@formatter:off
+	public static final WeightedLootList chestLoot = new WeightedLootList(
+		new LootItemStack(Item.silk).setAmount(5, 10).setWeight(13),
+		new LootItemStack(Block.web).setAmount(3, 8).setWeight(13),
+		new LootItemStack(Item.stick).setAmount(1, 8).setWeight(12),
+		new LootItemStack(Item.goldNugget).setAmount(3, 11).setWeight(12),
+		new LootItemStack(ModItems.erebusMaterials).setAmount(3, 8).setDamage(ItemErebusMaterial.dataBoneShard).setWeight(12),
+		new LootItemStack(Item.bone).setAmount(1, 3).setWeight(11),
+		new LootItemStack(Item.ingotIron).setAmount(1, 3).setWeight(10),
+		new LootItemStack(Item.ingotGold).setAmount(1, 2).setWeight(10),
+		new LootItemStack(ModItems.erebusMaterials).setAmount(1, 5).setDamage(ItemErebusMaterial.dataFlyWing).setWeight(10),
+		new LootItemStack(ModItems.erebusMaterials).setAmount(1).setDamage(ItemErebusMaterial.dataJade).setWeight(9),
+		new LootItemStack(ModItems.erebusMaterials).setAmount(3, 6).setDamage(ItemErebusMaterial.dataExoPlate).setWeight(8),
+		new LootItemStack(ModItems.erebusMaterials).setAmount(2, 6).setDamage(ItemErebusMaterial.dataCompoundEyes).setWeight(7),
+		new LootItemStack(ModItems.erebusMaterials).setAmount(1, 1).setDamage(ItemErebusMaterial.dataCompoundLens).setWeight(2),
+		new LootItemStack(ModItems.maxSpeedBow).setAmount(1).setWeight(1)
+	);
+	//@formatter:on
 
 	@Override
 	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5) {
@@ -131,19 +144,7 @@ public class WorldGenSpiderDungeons extends WorldGenerator {
 			par1World.setBlock(par3, par4 + 1, par5, Block.web.blockID, 0, 2);
 			par1World.setBlock(par3, par4 - 1, par5, Block.web.blockID, 0, 2);
 
-			// switch(par2Random.nextInt(3)){
-			// case 0:
 			par1World.setBlock(par3, par4, par5, ModBlocks.spiderSpawner.blockID, 0, 2);
-			// break;
-			// case 1:
-			// par1World.setBlock(par3, par4, par5,
-			// mod_Erebus.caveSpiderSpawner.blockID, 0, 2);
-			// break;
-			// case 2:
-			// par1World.setBlock(par3, par4, par5,
-			// mod_Erebus.spiderSpawner.blockID, 0, 2);
-			// break;
-			// }
 			return true;
 		} else {
 			return false;

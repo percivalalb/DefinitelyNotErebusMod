@@ -35,7 +35,7 @@ public class RecipePaxel implements IRecipe {
 			currentDurability += is.getMaxDamage() - is.getItemDamage();
 		}
 
-		return new ItemStack(ModItems.jadePaxel.itemID, 1, ErebusMod.toolJADEPAXEL.getMaxUses() - (int) Math.floor((float) currentDurability * ErebusMod.toolJADEPAXEL.getMaxUses() / (float) totalDurability));
+		return new ItemStack(ModItems.jadePaxel.itemID, 1, ErebusMod.toolJADEPAXEL.getMaxUses() - (int) Math.floor((float) currentDurability * ErebusMod.toolJADEPAXEL.getMaxUses() / totalDurability));
 	}
 
 	@Override

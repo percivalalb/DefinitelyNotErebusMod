@@ -360,8 +360,8 @@ public class ModelAntlion extends ModelBase {
 		RB1.addChild(RB3);
 	}
 
-	public void render(Entity par1Entity, float par2, float par3, float par4,
-			float par5, float par6, float par7) {
+	@Override
+	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
 		super.render(par1Entity, par2, par3, par4, par5, par6, par7);
 		setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
 
@@ -420,8 +420,8 @@ public class ModelAntlion extends ModelBase {
 		model.rotateAngleZ = z;
 	}
 
-	public void setRotationAngles(float par1, float par2, float par3,
-			float par4, float par5, float par6, Entity par7Entity) {
+	@Override
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
 		float cos1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.5F * par2;
 		float cos2 = MathHelper.cos(par1 * 1.0F) * 0.5F * par2;
@@ -437,5 +437,5 @@ public class ModelAntlion extends ModelBase {
 		RB1.rotateAngleY = -cos2 + 3.8397247F;
 		RM1.rotateAngleY = -cos1 + 3.141593F;
 		RF1.rotateAngleY = -cos2 + 2.6179942F;
-}
+	}
 }

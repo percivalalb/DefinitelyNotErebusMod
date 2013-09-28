@@ -146,7 +146,7 @@ public abstract class GenLayerErebus extends GenLayer {
 	 */
 	@Override
 	protected int nextInt(int par1) {
-		int j = (int) ((this.chunkSeed >> 24) % (long) par1);
+		int j = (int) ((this.chunkSeed >> 24) % par1);
 
 		if (j < 0) {
 			j += par1;

@@ -46,9 +46,9 @@ public class WorldGenPonds extends WorldGenerator {
 				for (int j1 = 1; j1 < 15; ++j1) {
 					for (int k1 = 1; k1 < 15; ++k1) {
 						for (int l1 = 1; l1 < 7; ++l1) {
-							double d6 = ((double) j1 - d3) / (d0 / 2.0D);
-							double d7 = ((double) l1 - d4) / (d1 / 2.0D);
-							double d8 = ((double) k1 - d5) / (d2 / 2.0D);
+							double d6 = (j1 - d3) / (d0 / 2.0D);
+							double d7 = (l1 - d4) / (d1 / 2.0D);
+							double d8 = (k1 - d5) / (d2 / 2.0D);
 							double d9 = d6 * d6 + d7 * d7 + d8 * d8;
 
 							if (d9 < 1.0D) {

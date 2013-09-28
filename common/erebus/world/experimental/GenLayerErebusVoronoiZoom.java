@@ -34,19 +34,19 @@ public class GenLayerErebusVoronoiZoom extends GenLayerErebus {
 			int var17 = var11[0 + (var15 + 1) * var9];
 
 			for (int var18 = 0; var18 < var9 - 1; ++var18) {
-				double var19 = (double) var6 * 0.9D;
-				this.initChunkSeed((long) (var18 + var7 << var5), (long) (var15 + var8 << var5));
-				double var21 = ((double) this.nextInt(1024) / 1024.0D - 0.5D) * var19;
-				double var23 = ((double) this.nextInt(1024) / 1024.0D - 0.5D) * var19;
-				this.initChunkSeed((long) (var18 + var7 + 1 << var5), (long) (var15 + var8 << var5));
-				double var25 = ((double) this.nextInt(1024) / 1024.0D - 0.5D) * var19 + (double) var6;
-				double var27 = ((double) this.nextInt(1024) / 1024.0D - 0.5D) * var19;
-				this.initChunkSeed((long) (var18 + var7 << var5), (long) (var15 + var8 + 1 << var5));
-				double var29 = ((double) this.nextInt(1024) / 1024.0D - 0.5D) * var19;
-				double var31 = ((double) this.nextInt(1024) / 1024.0D - 0.5D) * var19 + (double) var6;
-				this.initChunkSeed((long) (var18 + var7 + 1 << var5), (long) (var15 + var8 + 1 << var5));
-				double var33 = ((double) this.nextInt(1024) / 1024.0D - 0.5D) * var19 + (double) var6;
-				double var35 = ((double) this.nextInt(1024) / 1024.0D - 0.5D) * var19 + (double) var6;
+				double var19 = var6 * 0.9D;
+				this.initChunkSeed(var18 + var7 << var5, var15 + var8 << var5);
+				double var21 = (this.nextInt(1024) / 1024.0D - 0.5D) * var19;
+				double var23 = (this.nextInt(1024) / 1024.0D - 0.5D) * var19;
+				this.initChunkSeed(var18 + var7 + 1 << var5, var15 + var8 << var5);
+				double var25 = (this.nextInt(1024) / 1024.0D - 0.5D) * var19 + var6;
+				double var27 = (this.nextInt(1024) / 1024.0D - 0.5D) * var19;
+				this.initChunkSeed(var18 + var7 << var5, var15 + var8 + 1 << var5);
+				double var29 = (this.nextInt(1024) / 1024.0D - 0.5D) * var19;
+				double var31 = (this.nextInt(1024) / 1024.0D - 0.5D) * var19 + var6;
+				this.initChunkSeed(var18 + var7 + 1 << var5, var15 + var8 + 1 << var5);
+				double var33 = (this.nextInt(1024) / 1024.0D - 0.5D) * var19 + var6;
+				double var35 = (this.nextInt(1024) / 1024.0D - 0.5D) * var19 + var6;
 				int var37 = var11[var18 + 1 + (var15 + 0) * var9];
 				int var38 = var11[var18 + 1 + (var15 + 1) * var9];
 
@@ -54,10 +54,10 @@ public class GenLayerErebusVoronoiZoom extends GenLayerErebus {
 					int var40 = ((var15 << var5) + var39) * var12 + (var18 << var5);
 
 					for (int var41 = 0; var41 < var6; ++var41) {
-						double var42 = ((double) var39 - var23) * ((double) var39 - var23) + ((double) var41 - var21) * ((double) var41 - var21);
-						double var44 = ((double) var39 - var27) * ((double) var39 - var27) + ((double) var41 - var25) * ((double) var41 - var25);
-						double var46 = ((double) var39 - var31) * ((double) var39 - var31) + ((double) var41 - var29) * ((double) var41 - var29);
-						double var48 = ((double) var39 - var35) * ((double) var39 - var35) + ((double) var41 - var33) * ((double) var41 - var33);
+						double var42 = (var39 - var23) * (var39 - var23) + (var41 - var21) * (var41 - var21);
+						double var44 = (var39 - var27) * (var39 - var27) + (var41 - var25) * (var41 - var25);
+						double var46 = (var39 - var31) * (var39 - var31) + (var41 - var29) * (var41 - var29);
+						double var48 = (var39 - var35) * (var39 - var35) + (var41 - var33) * (var41 - var33);
 
 						if (var42 < var44 && var42 < var46 && var42 < var48) {
 							var14[var40++] = var16;

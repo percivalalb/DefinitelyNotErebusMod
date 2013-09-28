@@ -109,7 +109,9 @@ public class ModBlocks {
 	//@formatter:on
 
 	public static void init() {
-		// Block declaration: constructor, hardness, resistance, light value, light opacity, step sound, creative tab (null), unlocalized name, texture name
+		// Block declaration: constructor, hardness, resistance, light value,
+		// light opacity, step sound, creative tab (null), unlocalized name,
+		// texture name
 		portalErebus = (BlockPortalErebus) new BlockPortalErebus(portalErebusID).setHardness(-1F).setLightValue(1.0F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("portalErebus");
 
 		umberstone = new BlockUmberstone(umberstoneID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberstone");
@@ -124,7 +126,7 @@ public class ModBlocks {
 		logErebusGroup1 = new BlockLogErebus(logErebusGroup1ID, 0).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("logErebus1");
 		logErebusGroup2 = new BlockLogErebus(logErebusGroup2ID, 1).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("logErebus2");
 		planksErebus = new BlockPlanksErebus(planksErebusID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("planksErebus");
-		leavesErebus = (BlockLeavesErebus)new BlockLeavesErebus(leavesErebusID).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("leavesErebus");
+		leavesErebus = (BlockLeavesErebus) new BlockLeavesErebus(leavesErebusID).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("leavesErebus");
 		erebusSapling = new BlockSaplingErebus(erebusSaplingID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("sapling_mahogany");
 		hollowLogAcacia = new BlockHollowLog(hollowLogAcaciaID, TileEntityHollowLog.class).setHardness(0.7F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("hollowLogAcacia").setTextureName("erebus:log_acacia");
 
@@ -149,14 +151,14 @@ public class ModBlocks {
 		for (int i = 0; i < umbercobbleStairs.length; i++)
 			umbercobbleStairs[i] = new BlockStairsErebus(umbercobbleStairsID[i], umberstone, i).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("umbercobbleStairs" + i);
 		plankStairs = new Block[BlockPlanksErebus.plankTypes.length];
-		for(int i = 0; i < BlockPlanksErebus.plankTypes.length; i++)
+		for (int i = 0; i < BlockPlanksErebus.plankTypes.length; i++)
 			plankStairs[i] = new BlockStairsErebus(plankStairsID[i], planksErebus, i).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("stairsPlanks" + i);
 		petrifiedWoodStairs = new BlockStairsErebus(petrifiedWoodStairsID, petrifiedWoodPlanks, 0).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("petrifiedWoodStairs");
 		stoneSlabs = new Block[2];
-		for (int i = 0; i < 2; i ++)
+		for (int i = 0; i < 2; i++)
 			stoneSlabs[i] = new BlockSlabStoneErebus(stoneSlabsID[i], i == 1).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("slabStoneErebus");
 		plankSlabs = new Block[2];
-		for (int i = 0; i < 2; i ++)
+		for (int i = 0; i < 2; i++)
 			plankSlabs[i] = new BlockSlabPlanksErebus(plankSlabsID[i], i == 1).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("slabPlanksErebus");
 		wallErebus = new BlockWallErebus(wallErebusID, umberstone).setUnlocalizedName("wallErebus");
 
@@ -164,13 +166,15 @@ public class ModBlocks {
 		caveSpiderSpawner = new BlockSpiderSpawner(caveSpiderSpawnerID, "CaveSpider").setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner");
 
 		// Creative tabs
-		ErebusMod.tabErebusBlock.add(umberstone,umberOreBlock,oreFossil,erebusOreExtra,redGem,blockAmber,quickSand,ghostSand);
-		ErebusMod.tabErebusBlock.add(logErebusGroup1,logErebusGroup2,hollowLogAcacia,planksErebus,leavesErebus,erebusSapling);
-		ErebusMod.tabErebusBlock.add(erebusGrass,fern,fiddlehead,thorns);
+		ErebusMod.tabErebusBlock.add(umberstone, umberOreBlock, oreFossil, erebusOreExtra, redGem, blockAmber, quickSand, ghostSand);
+		ErebusMod.tabErebusBlock.add(logErebusGroup1, logErebusGroup2, hollowLogAcacia, planksErebus, leavesErebus, erebusSapling);
+		ErebusMod.tabErebusBlock.add(erebusGrass, fern, fiddlehead, thorns);
 		ErebusMod.tabErebusBlock.add(blockSilk, mirBrick, petrifiedWoodPlanks, petrifiedCraftingTable, bambooCrop, bambooCrate, umberFurnace, umberPaver);
-		for(Block b:umbercobbleStairs)ErebusMod.tabErebusBlock.add(b);
-		for(Block b:plankStairs)ErebusMod.tabErebusBlock.add(b);
-		ErebusMod.tabErebusBlock.add(petrifiedWoodStairs,stoneSlabs[0],plankSlabs[0],wallErebus);
+		for (Block b : umbercobbleStairs)
+			ErebusMod.tabErebusBlock.add(b);
+		for (Block b : plankStairs)
+			ErebusMod.tabErebusBlock.add(b);
+		ErebusMod.tabErebusBlock.add(petrifiedWoodStairs, stoneSlabs[0], plankSlabs[0], wallErebus);
 
 		// Registering blocks
 		GameRegistry.registerBlock(portalErebus, "erebus.portal");
@@ -182,7 +186,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(blockAmber, ItemBlockAmber.class, "erebus.blockAmber");
 		GameRegistry.registerBlock(quickSand, "erebus.quickSand");
 		GameRegistry.registerBlock(ghostSand, "erebus.ghostSand");
-		if(ErebusMod.activateExtraOres)
+		if (ErebusMod.activateExtraOres)
 			GameRegistry.registerBlock(erebusOreExtra, ItemBlockErebusOreExtras.class, "erebus.erebusOreExtras");
 
 		GameRegistry.registerBlock(logErebusGroup1, ItemBlockLogErebus1.class, "erebus.logErebus1");
@@ -247,7 +251,7 @@ public class ModBlocks {
 		MinecraftForge.setBlockHarvestLevel(quickSand, "shovel", 2);
 		MinecraftForge.setBlockHarvestLevel(ghostSand, "shovel", 0);
 
-		if(ErebusMod.activateExtraOres) {
+		if (ErebusMod.activateExtraOres) {
 			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 0, "pickaxe", 1);
 			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 1, "pickaxe", 1);
 			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 2, "pickaxe", 2);

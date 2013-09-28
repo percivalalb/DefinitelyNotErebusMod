@@ -72,7 +72,8 @@ public class ModItems {
 	//@formatter:on
 
 	public static void init() {
-		// constructor, set full 3D, creative tab (null), unlocalized name, texture name
+		// constructor, set full 3D, creative tab (null), unlocalized name,
+		// texture name
 
 		portalActivator = new ItemPortalActivator(portalActivatorID).setUnlocalizedName("portalActivator").setTextureName("erebus:portalActivator");
 		erebusMaterials = new ItemErebusMaterial(erebusMaterialsID).setUnlocalizedName("erebusMaterials");
@@ -108,15 +109,15 @@ public class ModItems {
 		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorEXOSKELETON, 3).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
 
 		// Creative tabs
-		ErebusMod.tabErebusItem.add(portalActivator,erebusMaterials,erebusFood,turnip);
+		ErebusMod.tabErebusItem.add(portalActivator, erebusMaterials, erebusFood, turnip);
 		if (ErebusMod.activateExtraOres)
 			ErebusMod.tabErebusItem.add(metalIngot);
 
-		ErebusMod.tabErebusGear.add(bamBucket,sprayCan);
-		ErebusMod.tabErebusGear.add(jadeHelmet,jadeBody,jadeLegs,jadeBoots,jadeSword,jadePickaxe,jadeAxe,jadeShovel,jadePaxel,jadeHoe);
-		ErebusMod.tabErebusGear.add(exoskeletonHelmet,exoskeletonBody,exoskeletonLegs,exoskeletonBoots);
-		ErebusMod.tabErebusGear.add(fossilClub,waspSword,maxSpeedBow);
-		ErebusMod.tabErebusGear.add(compoundGoggles,sprintLeggings,jumpBoots);
+		ErebusMod.tabErebusGear.add(bamBucket, sprayCan);
+		ErebusMod.tabErebusGear.add(jadeHelmet, jadeBody, jadeLegs, jadeBoots, jadeSword, jadePickaxe, jadeAxe, jadeShovel, jadePaxel, jadeHoe);
+		ErebusMod.tabErebusGear.add(exoskeletonHelmet, exoskeletonBody, exoskeletonLegs, exoskeletonBoots);
+		ErebusMod.tabErebusGear.add(fossilClub, waspSword, maxSpeedBow);
+		ErebusMod.tabErebusGear.add(compoundGoggles, sprintLeggings, jumpBoots);
 
 		// Tool classes
 		MinecraftForge.setToolClass(jadeAxe, "axe", 2);
@@ -126,10 +127,10 @@ public class ModItems {
 		GameRegistry.registerItem(portalActivator, "erebus.portalActivator");
 		GameRegistry.registerItem(erebusMaterials, "erebus.erebusMaterials");
 		GameRegistry.registerItem(erebusFood, "erebus.erebusFood");
-		if(ErebusMod.activateExtraOres)
+		if (ErebusMod.activateExtraOres)
 			GameRegistry.registerItem(metalIngot, "erebus.metalIngot");
 		GameRegistry.registerItem(bamBucket, "erebus.bamBucket");
-		FluidContainerRegistry.registerFluidContainer(FluidRegistry.WATER, new ItemStack(bamBucket,1,1), new ItemStack(bamBucket,1,0));
+		FluidContainerRegistry.registerFluidContainer(FluidRegistry.WATER, new ItemStack(bamBucket, 1, 1), new ItemStack(bamBucket, 1, 0));
 		GameRegistry.registerItem(turnip, "erebus.turnips");
 		GameRegistry.registerItem(sprayCan, "erebus.sprayCan");
 

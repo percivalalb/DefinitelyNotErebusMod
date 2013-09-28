@@ -6,6 +6,7 @@ import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.registry.GameRegistry;
 import erebus.block.BlockAmber;
 import erebus.block.BlockBambooCrate;
+import erebus.block.BlockBambooCrop;
 import erebus.block.BlockErebusGrass;
 import erebus.block.BlockErebusOre;
 import erebus.block.BlockErebusOreExtras;
@@ -92,6 +93,7 @@ public class ModBlocks {
 	public static Block umberFurnace_on;				public static int umberFurnace_onID;
 	public static Block umberPaver;						public static int umberPaverID;
 	public static Block insectRepellent;				public static int insectRepellentID;
+	public static Block bambooCrop;						public static int bambooCropID;
 
 	// STAIRS, SLABS, WALLS
 	public static Block[] umbercobbleStairs;			public static int[] umbercobbleStairsID;
@@ -142,6 +144,7 @@ public class ModBlocks {
 		umberFurnace_on = new BlockUmberFurnace(umberFurnace_onID, true).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberFurnaceON");
 		umberPaver = new BlockUmberPaver(umberPaverID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberPaver");
 		insectRepellent = new BlockInsectRepellent(insectRepellentID, Material.air).setUnlocalizedName("insectRepellent");
+		bambooCrop = new BlockBambooCrop(bambooCropID).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("bambooCrop");
 
 		umbercobbleStairs = new Block[BlockUmberstone.iconPaths.length];
 		for (int i = 0; i < umbercobbleStairs.length; i++)
@@ -204,6 +207,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(umberFurnace, "erebus.umberFurnaceOff");
 		GameRegistry.registerBlock(umberFurnace_on, "erebus.umberFurnaceOn");
 		GameRegistry.registerBlock(umberPaver, ItemBlockUmberpaver.class, "erebus.umberpaver");
+		GameRegistry.registerBlock(bambooCrop, "erebus.bambooCrop");
 
 		for (int i = 0; i < umbercobbleStairs.length; i++)
 			GameRegistry.registerBlock(umbercobbleStairs[i], "erebus.umbercobbleStairs" + i);

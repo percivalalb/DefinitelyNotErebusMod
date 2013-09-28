@@ -1,7 +1,7 @@
 package erebus.client.render.item;
 
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
@@ -16,16 +16,16 @@ import erebus.client.render.tileentity.TileEntityRenderBamboo;
  */
 public class BambooItemRenderer implements IItemRenderer {
 
-	private ModelBambooCrate modelBambooCrate;
-	private ModelBamboo modelBamboo;
-	private ResourceLocation resourceBambooCrate;
-	private ResourceLocation resourceBamboo;
+	private final ModelBambooCrate modelBambooCrate;
+	private final ModelBamboo modelBamboo;
+	private final ResourceLocation resourceBambooCrate;
+	private final ResourceLocation resourceBamboo;
 
 	public BambooItemRenderer() {
-		this.modelBambooCrate = new ModelBambooCrate();
-		this.modelBamboo = new ModelBamboo();
-		this.resourceBambooCrate = TileEntityRenderBamboo.bambooCrateResource;
-		this.resourceBamboo = TileEntityRenderBamboo.bambooResource;
+		modelBambooCrate = new ModelBambooCrate();
+		modelBamboo = new ModelBamboo();
+		resourceBambooCrate = TileEntityRenderBamboo.bambooCrateResource;
+		resourceBamboo = TileEntityRenderBamboo.bambooResource;
 	}
 
 	@Override
@@ -87,8 +87,8 @@ public class BambooItemRenderer implements IItemRenderer {
 		GL11.glRotatef(180F, 1F, 0, 0);
 		GL11.glRotatef(-90F, 0, 1F, 0);
 		GL11.glScaled(size, size, size); // Changes the size (Only really used
-											// when reading in the inventory)
-		modelBamboo.renderModel(0.0625F); // Render the Hollow log
+		// when reading in the inventory)
+		modelBamboo.renderModel(); // Render the Hollow log
 		GL11.glPopMatrix(); // End Rendering
 	}
 
@@ -99,7 +99,7 @@ public class BambooItemRenderer implements IItemRenderer {
 		GL11.glRotatef(180F, 1F, 0, 0);
 		GL11.glRotatef(-90F, 0, 1F, 0);
 		GL11.glScaled(size, size, size); // Changes the size (Only really used
-											// when reading in the inventory)
+		// when reading in the inventory)
 		modelBambooCrate.renderModel(0.0625F); // Render the Hollow log
 		GL11.glPopMatrix(); // End Rendering
 	}

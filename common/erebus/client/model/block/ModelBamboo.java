@@ -39,10 +39,9 @@ public class ModelBamboo extends ModelBase {
 		model.rotateAngleZ = z;
 	}
 
-	public void renderModel(float f5) {
-		bambooBase.render(f5);
-		pieceBottom.render(f5);
-		pieceTop.render(f5);
+	public void renderModel() {
+		bambooBase.render(0.0625F);
+		pieceBottom.render(0.0625F);
+		pieceTop.render(0.0625F);
 	}
-
 }

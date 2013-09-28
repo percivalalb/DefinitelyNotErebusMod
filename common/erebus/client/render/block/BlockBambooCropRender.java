@@ -34,7 +34,7 @@ public class BlockBambooCropRender implements ISimpleBlockRenderingHandler {
 		GL11.glTranslatef(x + 0.5F, y + 1.5F, z + 0.5F);
 		GL11.glRotatef(0, 0.0F, 1.0F, 0.0F);
 		GL11.glScalef(1.0F, -1F, -1F);
-		// bambooModel.renderModel();
+		bambooModel.renderModel();
 		GL11.glPopMatrix();
 		return false;
 	}

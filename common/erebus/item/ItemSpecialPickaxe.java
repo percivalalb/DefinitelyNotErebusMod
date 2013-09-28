@@ -9,7 +9,6 @@ public class ItemSpecialPickaxe extends ItemPickaxe {
 
 	public ItemSpecialPickaxe(int id) {
 		super(id, EnumToolMaterial.EMERALD);
-		setCreativeTab(null);
 	}
 
 	@Override
@@ -19,6 +18,6 @@ public class ItemSpecialPickaxe extends ItemPickaxe {
 
 	@Override
 	public float getStrVsBlock(ItemStack stack, Block block) {
-		return 50F;
+		return 10F;
 	}
 }

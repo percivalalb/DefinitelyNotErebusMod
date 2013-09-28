@@ -48,11 +48,11 @@ public class RenderAntlion extends RenderLiving
 	}
 
 	protected void scaleAntlion(EntityAntlion entityAntlion, float f) {
-		if (!entityAntlion.isBoss) {
+		if (!entityAntlion.isBoss()) {
 			float f1 = 0.5F;
 			shadowSize = f1;
 			GL11.glScalef(f1, f1, f1);
-		} else if (entityAntlion.isBoss) {
+		} else if (entityAntlion.isBoss()) {
 			float f1 = 1.0F;
 			shadowSize = f1;
 			GL11.glScalef(f1, f1, f1);

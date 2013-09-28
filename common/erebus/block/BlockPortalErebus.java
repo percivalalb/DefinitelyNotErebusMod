@@ -32,7 +32,7 @@ public class BlockPortalErebus extends BlockBreakable {
 		if (side == Side.SERVER) {
 			if (entity.ridingEntity == null && entity.riddenByEntity == null && entity instanceof EntityPlayerMP) {
 				EntityPlayerMP player = (EntityPlayerMP) entity;
-				ErebusMod.packeterebushandler.getPlayer(player.username).setInPortal();
+				ErebusMod.teleportHandler.getPlayer(player.username).setInPortal();
 			}
 		} else if (side == Side.CLIENT && entity instanceof EntityPlayer) {
 			TeleportClient.setInPortal();

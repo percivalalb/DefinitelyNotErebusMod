@@ -2,7 +2,6 @@ package erebus.core.teleport;
 
 import java.util.Random;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.network.packet.Packet;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
 import erebus.ErebusMod;
@@ -23,10 +22,6 @@ public class TeleportServer {
 
 	public EntityPlayerMP getPlayer() {
 		return player;
-	}
-
-	public void sendPacket(Packet packet) {
-		player.playerNetServerHandler.sendPacketToPlayer(packet);
 	}
 
 	public void onTick() {
@@ -63,5 +58,18 @@ public class TeleportServer {
 		} else {
 			inPortal = true;
 		}
+	}
+	
+	@Override
+	public boolean equals(Object o){
+		if (o instanceof TeleportServer){
+			return ((TeleportServer)o).player.username.equals(player.username);
+		}
+		return false;
+	}
+	
+	@Override
+	public int hashCode(){
+		return player.username.hashCode();
 	}
 }

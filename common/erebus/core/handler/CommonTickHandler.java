@@ -43,7 +43,7 @@ public class CommonTickHandler implements ITickHandler {
 		}
 		if (type.equals(EnumSet.of(TickType.PLAYER))) {
 			EntityPlayerMP player = (EntityPlayerMP) tickData[0];
-			ErebusMod.teleportHandler.onTick(player);
+			ErebusMod.packeterebushandler.onTick(player);
 		} else if (type.equals(EnumSet.of(TickType.WORLD))) {
 			World world = (World) tickData[0];
 			if (world.provider.dimensionId == ErebusMod.erebusDimensionID) {

@@ -15,7 +15,6 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -23,7 +22,7 @@ import erebus.client.sound.AmbientMusicManager;
 import erebus.client.sound.EntitySoundEvent;
 import erebus.core.handler.CommonTickHandler;
 import erebus.core.handler.ConfigurationHandler;
-import erebus.core.handler.PlayerTeleportHandler;
+import erebus.core.handler.ConnectionTeleportHandler;
 import erebus.core.handler.VersionCheckTickHandler;
 import erebus.core.helper.LogHelper;
 import erebus.core.proxy.CommonProxy;
@@ -63,7 +62,7 @@ public class ErebusMod {
 	public static boolean shouldDoVersionCheck = true;
 	public static byte beetleLarvaEating = 0;
 
-	public static PlayerTeleportHandler teleportHandler = new PlayerTeleportHandler();
+	public static ConnectionTeleportHandler packeterebushandler = new ConnectionTeleportHandler();
 
 	@EventHandler
 	@SideOnly(Side.CLIENT)
@@ -87,7 +86,7 @@ public class ErebusMod {
 		ModItems.init();
 		ModEntities.init();
 
-		GameRegistry.registerPlayerTracker(teleportHandler);
+		NetworkRegistry.instance().registerConnectionHandler(packeterebushandler);
 		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
 
 		DimensionManager.registerProviderType(erebusDimensionID, WorldProviderErebus.class, true);

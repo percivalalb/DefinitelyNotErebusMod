@@ -63,6 +63,7 @@ public class ModItems {
 	public static Item fossilClub;						public static int fossilClubID;
 	public static Item waspSword;						public static int waspSwordID;
 	public static Item maxSpeedBow;						public static int maxSpeedBowID;
+	public static Item specialPickaxe;					public static int specialPickaxeID;
 
 	// MISC ARMOR
 	public static Item compoundGoggles;                 public static int compoundGogglesID;

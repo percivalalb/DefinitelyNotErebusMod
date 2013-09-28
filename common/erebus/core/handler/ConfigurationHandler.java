@@ -112,12 +112,13 @@ public class ConfigurationHandler {
 			ModItems.fossilClubID = config.getItem("Item ID of Caveman's Club", 9727).getInt(9727);
 			ModItems.waspSwordID = config.getItem("Item ID of Wasp Sword", 9728).getInt(9728);
 			ModItems.maxSpeedBowID = config.getItem("Item ID of MaxSpeed Bow", 9729).getInt(9729);
+			ModItems.specialPickaxeID = config.getItem("Item ID of ", 9733).getInt(9733);
 
 			ModItems.compoundGogglesID = config.getItem("Item ID of Compound Goggles", 9730).getInt(9730);
 			ModItems.sprintLeggingsID = config.getItem("Item ID of Sprint Leggings", 9731).getInt(9731);
 			ModItems.jumpBootsID = config.getItem("Item ID of Jump Boots", 9732).getInt(9732);
 
-			// latest ID used (please update after adding new items!) >>> 9732
+			// latest ID used (please update after adding new items!) >>> 9733
 
 			/*
 			 * Biomes & misc

@@ -25,6 +25,7 @@ import erebus.item.ItemMaxSpeedBow;
 import erebus.item.ItemMetalIngots;
 import erebus.item.ItemPaxel;
 import erebus.item.ItemPortalActivator;
+import erebus.item.ItemSpecialPickaxe;
 import erebus.item.ItemSprayCan;
 import erebus.item.ItemSprintLeggings;
 
@@ -102,7 +103,8 @@ public class ModItems {
 
 		fossilClub = new ItemCavemanClub(fossilClubID, ErebusMod.toolCAVEMANCLUB).setFull3D().setUnlocalizedName("clubBone").setTextureName("erebus:clubBone");
 		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setCreativeTab(null).setUnlocalizedName("waspSword");
-		maxSpeedBow = new ItemMaxSpeedBow(maxSpeedBowID, 301, 5).setUnlocalizedName("maxSpeedBow").setTextureName("erebus:maxSpeedBow");
+		maxSpeedBow = new ItemMaxSpeedBow(maxSpeedBowID).setUnlocalizedName("maxSpeedBow").setTextureName("erebus:maxSpeedBow");
+		specialPickaxe = new ItemSpecialPickaxe(specialPickaxeID).setUnlocalizedName("specialPickaxe").setTextureName("erebus:specialPickaxe");
 
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
 		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorEXOSKELETON, 2).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
@@ -153,6 +155,7 @@ public class ModItems {
 		GameRegistry.registerItem(fossilClub, "erebus.clubBone");
 		GameRegistry.registerItem(waspSword, "erebus.waspSword");
 		GameRegistry.registerItem(maxSpeedBow, "erebus.maxSpeedBow");
+		GameRegistry.registerItem(specialPickaxe, "erebus.specialPickaxe");
 
 		GameRegistry.registerItem(compoundGoggles, "erebus.compoundGoggles");
 		GameRegistry.registerItem(sprintLeggings, "erebus.sprintLeggings");

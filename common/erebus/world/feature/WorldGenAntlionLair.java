@@ -22,7 +22,7 @@ import erebus.world.loot.LootItemStack;
 import erebus.world.loot.LootUtil;
 import erebus.world.loot.WeightedLootList;
 
-public class WorldGenAntlionLair extends WorldGenerator{
+public class WorldGenAntlionLair extends WorldGenerator {
 	//@formatter:off
 	public static final WeightedLootList chestLoot = new WeightedLootList(
 		new LootItemStack(Item.book).setAmount(1, 4).setWeight(18),
@@ -89,16 +89,16 @@ public class WorldGenAntlionLair extends WorldGenerator{
 		}
 	});
 	//@formatter:on
-	
+
 	@Override
-	public boolean generate(World world, Random random, int x, int y, int z){
+	public boolean generate(World world, Random random, int x, int y, int z) {
 		boolean found = false;
-		
-		for(int a=0; a<15; a++){
-			if (world.isAirBlock(x,y,z)&&world.getBlockId(x,y-1,z)==Block.sand.blockID){
-				for(int xx=x-3; xx<=x+3; xx++){
-					for(int zz=z-3; zz<=z+3; zz++){
-						if (!world.isAirBlock(x,y,z)||world.getBlockId(xx,y-1,zz)!=Block.sand.blockID){
+
+		for (int a = 0; a < 15; a++) {
+			if (world.isAirBlock(x, y, z) && world.getBlockId(x, y - 1, z) == Block.sand.blockID) {
+				for (int xx = x - 3; xx <= x + 3; xx++) {
+					for (int zz = z - 3; zz <= z + 3; zz++) {
+						if (!world.isAirBlock(x, y, z) || world.getBlockId(xx, y - 1, zz) != Block.sand.blockID) {
 							return false;
 						}
 					}
@@ -107,36 +107,38 @@ public class WorldGenAntlionLair extends WorldGenerator{
 				break;
 			}
 
-			if (--y<=12) return false;
+			if (--y <= 12)
+				return false;
 		}
-		if (!found) return false;
-		
-		for(int xx=x-3; xx<=x+3; xx++){
-			for(int zz=z-3; zz<=z+3; zz++){
-				for(int yy=y-1; yy>=y-6; yy--){
-					world.setBlock(xx,yy,zz,yy==y-1?ModBlocks.ghostSand.blockID:0);
+		if (!found)
+			return false;
+
+		for (int xx = x - 3; xx <= x + 3; xx++) {
+			for (int zz = z - 3; zz <= z + 3; zz++) {
+				for (int yy = y - 1; yy >= y - 6; yy--) {
+					world.setBlock(xx, yy, zz, yy == y - 1 ? ModBlocks.ghostSand.blockID : 0);
 				}
 			}
 		}
-		
-		int chestX,chestZ;
-		if (random.nextInt(2)==0){
-			chestX=x+random.nextInt(6)-3;
-			chestZ=z+(random.nextInt(2)==0?-3:3);
+
+		int chestX, chestZ;
+		if (random.nextInt(2) == 0) {
+			chestX = x + random.nextInt(6) - 3;
+			chestZ = z + (random.nextInt(2) == 0 ? -3 : 3);
+		} else {
+			chestX = x + (random.nextInt(2) == 0 ? -3 : 3);
+			chestZ = z + random.nextInt(6) - 3;
 		}
-		else{
-			chestX=x+(random.nextInt(2)==0?-3:3);
-			chestZ=z+random.nextInt(6)-3;
-		}
-		
-		world.setBlock(chestX,y-6,chestZ,Block.chest.blockID,0,2);
-		TileEntityChest chest=(TileEntityChest)world.getBlockTileEntity(chestX,y-6,chestZ);
-		if (chest!=null)LootUtil.generateLoot(chest,random,chestLoot,10,14);
-		
-		EntityAntlion antlion=new EntityAntlion(world);
+
+		world.setBlock(chestX, y - 6, chestZ, Block.chest.blockID, 0, 2);
+		TileEntityChest chest = (TileEntityChest) world.getBlockTileEntity(chestX, y - 6, chestZ);
+		if (chest != null)
+			LootUtil.generateLoot(chest, random, chestLoot, 10, 14);
+
+		EntityAntlion antlion = new EntityAntlion(world);
 		antlion.setIsBoss(true);
-		antlion.setLocationAndAngles(x,y-4,z,random.nextFloat()*360F,0F);
-		antlion.forceSpawn=true;
+		antlion.setLocationAndAngles(x, y - 4, z, random.nextFloat() * 360F, 0F);
+		antlion.forceSpawn = true;
 		world.spawnEntityInWorld(antlion);
 
 		return true;

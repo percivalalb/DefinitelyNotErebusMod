@@ -31,7 +31,7 @@ public abstract class ItemBlockSlabGeneric extends ItemBlockGeneric {
 
 			if ((side == 1 && !flag || side == 0 && flag) && i1 == slabArray[0].blockID && k1 == itemStack.getItemDamage()) {
 				if (world.checkNoEntityCollision(slabArray[1].getCollisionBoundingBoxFromPool(world, x, y, z)) && world.setBlock(x, y, z, slabArray[1].blockID, k1, 3)) {
-					world.playSoundEffect((double) ((float) x + 0.5F), (double) ((float) y + 0.5F), (double) ((float) z + 0.5F), slabArray[1].stepSound.getPlaceSound(), (slabArray[1].stepSound.getVolume() + 1.0F) / 2.0F, slabArray[1].stepSound.getPitch() * 0.8F);
+					world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, slabArray[1].stepSound.getPlaceSound(), (slabArray[1].stepSound.getVolume() + 1.0F) / 2.0F, slabArray[1].stepSound.getPitch() * 0.8F);
 					--itemStack.stackSize;
 				}
 
@@ -119,7 +119,7 @@ public abstract class ItemBlockSlabGeneric extends ItemBlockGeneric {
 
 		if (i1 == slabArray[0].blockID && k1 == itemStack.getItemDamage()) {
 			if (world.checkNoEntityCollision(slabArray[1].getCollisionBoundingBoxFromPool(world, x, y, z)) && world.setBlock(x, y, z, slabArray[1].blockID, k1, 3)) {
-				world.playSoundEffect((double) ((float) x + 0.5F), (double) ((float) y + 0.5F), (double) ((float) z + 0.5F), slabArray[1].stepSound.getPlaceSound(), (slabArray[1].stepSound.getVolume() + 1.0F) / 2.0F, slabArray[1].stepSound.getPitch() * 0.8F);
+				world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, slabArray[1].stepSound.getPlaceSound(), (slabArray[1].stepSound.getVolume() + 1.0F) / 2.0F, slabArray[1].stepSound.getPitch() * 0.8F);
 				--itemStack.stackSize;
 			}
 

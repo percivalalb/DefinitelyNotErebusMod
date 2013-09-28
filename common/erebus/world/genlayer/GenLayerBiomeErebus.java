@@ -27,7 +27,7 @@ public class GenLayerBiomeErebus extends GenLayer {
 
 		for (int i1 = 0; i1 < par4; ++i1) {
 			for (int j1 = 0; j1 < par3; ++j1) {
-				this.initChunkSeed((long) (j1 + par1), (long) (i1 + par2));
+				this.initChunkSeed(j1 + par1, i1 + par2);
 				// int k1 = aint[j1 + i1 * par3];
 				BiomeGenBase biome = this.allowedBiomes[this.nextInt(this.allowedBiomes.length)];
 				aint1[j1 + i1 * par3] = biome.biomeID;

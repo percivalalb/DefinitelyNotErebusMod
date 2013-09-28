@@ -93,8 +93,8 @@ public class WorldGenErebusHugeTree extends WorldGenerator {
 						this.growLeaves(par1World, var11, var12, var14, 0, par2Random);
 
 						for (int var13 = 0; var13 < 5; ++var13) {
-							var11 = par3 + (int) (1.5F + MathHelper.cos(var15) * (float) var13);
-							var12 = par5 + (int) (1.5F + MathHelper.sin(var15) * (float) var13);
+							var11 = par3 + (int) (1.5F + MathHelper.cos(var15) * var13);
+							var12 = par5 + (int) (1.5F + MathHelper.sin(var15) * var13);
 							this.setBlockAndMetadata(par1World, var11, var14 - 3 + var13 / 2, var12, this.woodID, this.woodMetadata);
 						}
 					}

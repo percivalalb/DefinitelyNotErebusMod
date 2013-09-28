@@ -52,10 +52,10 @@ public class PortalOverlayHandler {
 		float f4 = icon.getMaxV();
 		Tessellator tessellator = Tessellator.instance;
 		tessellator.startDrawingQuads();
-		tessellator.addVertexWithUV(0.0D, (double) par3, -90.0D, (double) f1, (double) f4);
-		tessellator.addVertexWithUV((double) par2, (double) par3, -90.0D, (double) f3, (double) f4);
-		tessellator.addVertexWithUV((double) par2, 0.0D, -90.0D, (double) f3, (double) f2);
-		tessellator.addVertexWithUV(0.0D, 0.0D, -90.0D, (double) f1, (double) f2);
+		tessellator.addVertexWithUV(0.0D, par3, -90.0D, f1, f4);
+		tessellator.addVertexWithUV(par2, par3, -90.0D, f3, f4);
+		tessellator.addVertexWithUV(par2, 0.0D, -90.0D, f3, f2);
+		tessellator.addVertexWithUV(0.0D, 0.0D, -90.0D, f1, f2);
 		tessellator.draw();
 		GL11.glDepthMask(true);
 		GL11.glEnable(GL11.GL_DEPTH_TEST);

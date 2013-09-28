@@ -52,7 +52,7 @@ public class CommonProxy implements IGuiHandler {
 		// Unused server side. -- see ClientProxy for implementation
 	}
 
-	public void setClientNightVision(boolean enable){
+	public void setClientNightVision(boolean enable) {
 		// Unused server side. -- see ClientProxy for implementation
 	}
 

@@ -31,7 +31,7 @@ public class GenLayerErebusZoom extends GenLayerErebus {
 			int var16 = var9[0 + (var12 + 1) * var7];
 
 			for (int var17 = 0; var17 < var7 - 1; ++var17) {
-				this.initChunkSeed((long) (var17 + var5 << 1), (long) (var12 + var6 << 1));
+				this.initChunkSeed(var17 + var5 << 1, var12 + var6 << 1);
 				int var18 = var9[var17 + 1 + (var12 + 0) * var7];
 				int var19 = var9[var17 + 1 + (var12 + 1) * var7];
 				var10[var14] = var15;
@@ -106,7 +106,7 @@ public class GenLayerErebusZoom extends GenLayerErebus {
 		Object var4 = par2GenLayerErebus;
 
 		for (int var5 = 0; var5 < par3; ++var5) {
-			var4 = new GenLayerErebusZoom(par0 + (long) var5, (GenLayerErebus) var4);
+			var4 = new GenLayerErebusZoom(par0 + var5, (GenLayerErebus) var4);
 		}
 
 		return (GenLayerErebus) var4;

@@ -30,7 +30,7 @@ public class EntityPortalErebusFX extends EntityFX {
 
 	@Override
 	public void renderParticle(Tessellator tessellator, float f, float f1, float f2, float f3, float f4, float f5) {
-		float f6 = ((float) particleAge + f) / (float) particleMaxAge;
+		float f6 = (particleAge + f) / particleMaxAge;
 		f6 = 1.0F - f6;
 		f6 *= f6;
 		f6 = 1.0F - f6;
@@ -55,9 +55,9 @@ public class EntityPortalErebusFX extends EntityFX {
 		float f1 = f;
 		f = -f + f * f * 2.0F;
 		f = 1.0F - f;
-		posX = field_4086_p + motionX * (double) f;
-		posY = field_4085_q + motionY * (double) f + (double) (1.0F - f1);
-		posZ = field_4084_r + motionZ * (double) f;
+		posX = field_4086_p + motionX * f;
+		posY = field_4085_q + motionY * f + (1.0F - f1);
+		posZ = field_4084_r + motionZ * f;
 		if (particleAge++ >= particleMaxAge) {
 			setDead();
 		}

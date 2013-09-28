@@ -117,7 +117,7 @@ public class ConfigurationHandler {
 			ModItems.sprintLeggingsID = config.getItem("Item ID of Sprint Leggings", 9731).getInt(9731);
 			ModItems.jumpBootsID = config.getItem("Item ID of Jump Boots", 9732).getInt(9732);
 
-			// latest ID used (please update after adding new items!) >>> 9732
+			// latest ID used (please update after adding new items!) >>> 9733
 
 			/*
 			 * Biomes & misc

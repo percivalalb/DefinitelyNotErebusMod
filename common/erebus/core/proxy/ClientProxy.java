@@ -59,11 +59,9 @@ import erebus.client.render.entity.RenderSolifuge;
 import erebus.client.render.entity.RenderTarantula;
 import erebus.client.render.entity.RenderVelvetWorm;
 import erebus.client.render.entity.RenderWasp;
-import erebus.client.render.item.BambooCrateItemRenderer;
 import erebus.client.render.item.HollowLogItemRenderer;
 import erebus.client.render.item.ItemUmberFurnaceRenderer;
 import erebus.client.render.item.WaspSwordItemRenderer;
-import erebus.client.render.tileentity.TileEntityRenderBambooCrate;
 import erebus.client.render.tileentity.TileEntityRenderHollowLog;
 import erebus.client.render.tileentity.TileEntitySpawnerRender;
 import erebus.core.handler.ClientTickHandler;
@@ -86,7 +84,6 @@ import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
 import erebus.network.packet.PacketParticle;
-import erebus.tileentity.TileEntityBambooCrate;
 import erebus.tileentity.TileEntityHollowLog;
 import erebus.tileentity.TileEntitySpawner;
 
@@ -118,12 +115,10 @@ public class ClientProxy extends CommonProxy {
 
 		// Special Renderer
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHollowLog.class, new TileEntityRenderHollowLog());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBambooCrate.class, new TileEntityRenderBambooCrate());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpawner.class, new TileEntitySpawnerRender());
 		RenderingRegistry.registerBlockHandler(bambooCropRenderID, new BlockBambooCropRender());
 
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.hollowLogAcacia.blockID, new HollowLogItemRenderer(TileEntityRenderHollowLog.hollowLogResource));
-		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooCrate.blockID, new BambooCrateItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.waspSword.itemID, new WaspSwordItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.umberFurnace.blockID, new ItemUmberFurnaceRenderer());
 	}

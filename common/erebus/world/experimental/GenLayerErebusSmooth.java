@@ -26,7 +26,7 @@ public class GenLayerErebusSmooth extends GenLayerErebus {
 				int var17 = var9[var12 + 1 + (var11 + 1) * var7];
 
 				if (var13 == var14 && var15 == var16) {
-					this.initChunkSeed((long) (var12 + par1), (long) (var11 + par2));
+					this.initChunkSeed(var12 + par1, var11 + par2);
 
 					if (this.nextInt(2) == 0) {
 						var17 = var13;

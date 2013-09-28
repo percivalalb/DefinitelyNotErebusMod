@@ -15,6 +15,7 @@ import erebus.ModBlocks;
 
 @SideOnly(Side.CLIENT)
 public class BlockBambooCropRender implements ISimpleBlockRenderingHandler {
+
 	public BlockBambooCropRender() {
 	}
 

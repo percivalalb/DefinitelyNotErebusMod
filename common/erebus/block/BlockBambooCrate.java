@@ -14,9 +14,6 @@ import erebus.core.proxy.CommonProxy;
 import erebus.tileentity.TileEntityBambooCrate;
 import erebus.utils.Utils;
 
-/**
- * @author ProPercivalalb
- */
 public class BlockBambooCrate extends BlockContainer {
 
 	private final Random crateRand = new Random();

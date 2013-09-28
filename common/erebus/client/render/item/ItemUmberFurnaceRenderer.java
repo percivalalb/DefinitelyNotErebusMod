@@ -10,13 +10,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
 
-/**
- * Erebus
- * 
- * @author ganymedes01
- * 
- */
-
 @SideOnly(Side.CLIENT)
 public class ItemUmberFurnaceRenderer implements IItemRenderer {
 

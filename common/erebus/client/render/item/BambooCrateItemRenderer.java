@@ -10,9 +10,6 @@ import cpw.mods.fml.client.FMLClientHandler;
 import erebus.client.model.block.ModelBambooCrate;
 import erebus.client.render.tileentity.TileEntityRenderBambooCrate;
 
-/**
- * @author ProPercivalalb
- */
 public class BambooCrateItemRenderer implements IItemRenderer {
 
 	private final ModelBambooCrate modelBambooCrate;

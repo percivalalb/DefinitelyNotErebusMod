@@ -25,7 +25,6 @@ import erebus.inventory.ContainerColossalCrate;
 import erebus.inventory.ContainerPetrifiedCraftingTable;
 import erebus.inventory.ContainerUmberFurnace;
 import erebus.tileentity.TileEntityBambooCrate;
-import erebus.tileentity.TileEntityHollowLog;
 import erebus.tileentity.TileEntitySpawner;
 import erebus.tileentity.TileEntityUmberFurnace;
 
@@ -36,6 +35,7 @@ public class CommonProxy implements IGuiHandler {
 	public static final int GUI_ID_PETRIFIED_CRAFT = 3;
 	public static final int GUI_ID_UMBER_FURNACE = 4;
 	public final int bambooCropRenderID = RenderingRegistry.getNextAvailableRenderId();
+	public final int hollowLogRenderID = RenderingRegistry.getNextAvailableRenderId();
 
 	public void registerRenderInformation() {
 		// Unused server side. -- see ClientProxy for implementation
@@ -43,7 +43,6 @@ public class CommonProxy implements IGuiHandler {
 
 	public void registerTileEntities() {
 		GameRegistry.registerTileEntity(TileEntitySpawner.class, "Custom Spawner (Erebus)");
-		GameRegistry.registerTileEntity(TileEntityHollowLog.class, "Hollow Log (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityBambooCrate.class, "Bamboo Crate (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityUmberFurnace.class, "Umber Furnace (Erebus)");
 	}

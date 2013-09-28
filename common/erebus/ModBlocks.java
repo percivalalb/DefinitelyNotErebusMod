@@ -35,7 +35,6 @@ import erebus.block.BlockUmberPaver;
 import erebus.block.BlockUmberstone;
 import erebus.block.BlockWallErebus;
 import erebus.item.block.ItemBlockAmber;
-import erebus.item.block.ItemBlockBamboo;
 import erebus.item.block.ItemBlockErebusOreExtras;
 import erebus.item.block.ItemBlockLeavesErebus;
 import erebus.item.block.ItemBlockLogErebus1;
@@ -139,12 +138,12 @@ public class ModBlocks {
 		mirBrick = new Block(mirBrickID, Material.rock).setHardness(1.5F).setResistance(100.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("mirbrick").setTextureName("erebus:mirbrick");
 		petrifiedWoodPlanks = new Block(petrifiedWoodPlanksID, Material.rock).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("petrifiedWoodPlanks").setTextureName("erebus:petrifiedWoodPlanks");
 		petrifiedCraftingTable = new BlockPetrifiedCraftingTable(petrifiedCraftingTableID).setHardness(2.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("petrifiedCraftingTable");
-		bambooCrate = new BlockBambooCrate(bambooCrateID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("bamboo");
+		bambooCrate = new BlockBambooCrate(bambooCrateID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("bambooCrate");
 		umberFurnace = new BlockUmberFurnace(umberFurnaceID, false).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberFurnaceOFF");
 		umberFurnace_on = new BlockUmberFurnace(umberFurnace_onID, true).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberFurnaceON");
 		umberPaver = new BlockUmberPaver(umberPaverID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberPaver");
 		insectRepellent = new BlockInsectRepellent(insectRepellentID, Material.air).setUnlocalizedName("insectRepellent");
-		bambooCrop = new BlockBambooCrop(bambooCropID).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("bambooCrop");
+		bambooCrop = new BlockBambooCrop(bambooCropID).setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("bambooCrop").setTextureName("erebus:bambooCropBase");
 
 		umbercobbleStairs = new Block[BlockUmberstone.iconPaths.length];
 		for (int i = 0; i < umbercobbleStairs.length; i++)
@@ -168,7 +167,7 @@ public class ModBlocks {
 		ErebusMod.tabErebusBlock.add(umberstone,umberOreBlock,oreFossil,erebusOreExtra,redGem,blockAmber,quickSand,ghostSand);
 		ErebusMod.tabErebusBlock.add(logErebusGroup1,logErebusGroup2,hollowLogAcacia,planksErebus,leavesErebus,erebusSapling);
 		ErebusMod.tabErebusBlock.add(erebusGrass,fern,fiddlehead,thorns);
-		ErebusMod.tabErebusBlock.add(blockSilk,mirBrick,petrifiedWoodPlanks,petrifiedCraftingTable,bambooCrate,umberFurnace,umberPaver);
+		ErebusMod.tabErebusBlock.add(blockSilk, mirBrick, petrifiedWoodPlanks, petrifiedCraftingTable, bambooCrop, bambooCrate, umberFurnace, umberPaver);
 		for(Block b:umbercobbleStairs)ErebusMod.tabErebusBlock.add(b);
 		for(Block b:plankStairs)ErebusMod.tabErebusBlock.add(b);
 		ErebusMod.tabErebusBlock.add(petrifiedWoodStairs,stoneSlabs[0],plankSlabs[0],wallErebus);
@@ -203,7 +202,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(mirBrick, "erebus.mirBrick");
 		GameRegistry.registerBlock(petrifiedWoodPlanks, "erebus.petrifiedWoodPlanks");
 		GameRegistry.registerBlock(petrifiedCraftingTable, "erebus.petrifiedCraftingTable");
-		GameRegistry.registerBlock(bambooCrate, ItemBlockBamboo.class, "erebus.bamboo");
+		GameRegistry.registerBlock(bambooCrate, "erebus.bambooCrate");
 		GameRegistry.registerBlock(umberFurnace, "erebus.umberFurnaceOff");
 		GameRegistry.registerBlock(umberFurnace_on, "erebus.umberFurnaceOn");
 		GameRegistry.registerBlock(umberPaver, ItemBlockUmberpaver.class, "erebus.umberpaver");

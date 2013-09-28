@@ -50,10 +50,9 @@ import erebus.item.block.ItemBlockWallErebus;
 import erebus.item.block.ItemSapling;
 import erebus.tileentity.TileEntityHollowLog;
 
-/**
- * @author ProPercivalalb
- */
 public class ModBlocks {
+
+	//@formatter:off
 
 	// PORTAL
 	public static BlockPortalErebus portalErebus;		public static int portalErebusID;
@@ -105,6 +104,8 @@ public class ModBlocks {
 	// DUNGEONS
 	public static Block spiderSpawner;     				public static int spiderSpawnerID;
 	public static Block caveSpiderSpawner;    			public static int caveSpiderSpawnerID;
+
+	//@formatter:on
 
 	public static void init() {
 		// Block declaration: constructor, hardness, resistance, light value, light opacity, step sound, creative tab (null), unlocalized name, texture name

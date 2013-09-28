@@ -1,6 +1,7 @@
 package erebus.core.teleport;
 
 import java.util.Random;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.packet.Packet;
 import cpw.mods.fml.common.network.PacketDispatcher;
@@ -10,7 +11,7 @@ import erebus.network.PacketHandler;
 import erebus.world.TeleporterErebus;
 
 public class TeleportServer {
-	private EntityPlayerMP player;
+	private final EntityPlayerMP player;
 	public float prevTimeInPortal;
 	public float timeInPortal;
 	public boolean inPortal = false;
@@ -30,38 +31,45 @@ public class TeleportServer {
 	}
 
 	public void onTick() {
-		if (this.inPortal) {
+		if (inPortal) {
 			timeInPortal += 0.0125F;
-			if (this.timeInPortal >= 1.0F) {
-				this.timeInPortal = 1.0F;
-				this.timeUntilPortal = 10;
+			if (timeInPortal >= 1.0F) {
+				timeInPortal = 1.0F;
+				timeUntilPortal = 10;
 				PacketDispatcher.sendPacketToPlayer(PacketHandler.buildPacket(0, player.dimension != ErebusMod.erebusDimensionID), (Player) player);
 
-				if (player.dimension == (byte) ErebusMod.erebusDimensionID) {
+				if (player.dimension == (byte) ErebusMod.erebusDimensionID)
 					player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, TeleporterErebus.TELEPORTER_TO_OVERWORLD);
-				} else if (player.dimension == (byte) 0) {
+				else if (player.dimension == (byte) 0)
 					player.mcServer.getConfigurationManager().transferPlayerToDimension(player, ErebusMod.erebusDimensionID, TeleporterErebus.TELEPORTER_TO_EREBUS);
-				}
 			}
-			this.inPortal = false;
+			inPortal = false;
 		} else {
-			if (this.timeInPortal > 0.0F) {
-				this.timeInPortal -= 0.05F;
-			}
-			if (this.timeInPortal < 0.0F) {
-				this.timeInPortal = 0.0F;
-			}
+			if (timeInPortal > 0.0F)
+				timeInPortal -= 0.05F;
+			if (timeInPortal < 0.0F)
+				timeInPortal = 0.0F;
 		}
-		if (this.timeUntilPortal > 0) {
-			--this.timeUntilPortal;
-		}
+		if (timeUntilPortal > 0)
+			--timeUntilPortal;
 	}
 
 	public void setInPortal() {
-		if (timeUntilPortal > 0) {
+		if (timeUntilPortal > 0)
 			timeUntilPortal = 10;
-		} else {
+		else
 			inPortal = true;
-		}
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof TeleportServer)
+			return ((TeleportServer) o).player.username.equals(player.username);
+		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		return player.username.hashCode();
 	}
 }

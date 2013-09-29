@@ -74,9 +74,9 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 			}
 		}
 
-		if (rand.nextInt(36) == 0)
+		if (rand.nextInt(34) == 0)
 			for (int attempt = 0; attempt < 15; attempt++) {
-				int xx = x + 4 + rand.nextInt(8), yy = 15 + rand.nextInt(35), zz = z + 4 + rand.nextInt(8);
+				int xx = x + 5 + rand.nextInt(6), yy = 15 + rand.nextInt(35), zz = z + 5 + rand.nextInt(6);
 				if (new WorldGenAntlionLair().generate(worldObj, rand, xx, yy, zz))
 					break;
 			}

@@ -23,11 +23,11 @@ public class WorldGenBamboo extends WorldGenerator {
 
 			for (yy = y - 4; yy <= y + 4; yy++)
 				if (world.isAirBlock(xx, yy, zz) && world.getBlockId(xx, yy - 1, zz) == Block.grass.blockID) {
-					world.setBlock(xx, yy, zz, ModBlocks.bambooCrate.blockID);
+					world.setBlock(xx, yy, zz, ModBlocks.bambooCrop.blockID);
 
 					for (int bambooY = 1, bambooHeight = rand.nextInt(6) + 4; bambooY < bambooHeight; bambooY++)
 						if (world.isAirBlock(xx, yy + bambooY, zz))
-							world.setBlock(xx, yy + bambooY, zz, ModBlocks.bambooCrate.blockID);
+							world.setBlock(xx, yy + bambooY, zz, ModBlocks.bambooCrop.blockID);
 
 					++bambooPlaced;
 					break;

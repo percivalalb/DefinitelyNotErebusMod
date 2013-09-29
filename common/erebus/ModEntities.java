@@ -21,9 +21,6 @@ import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
 
-/**
- * @author ProPercivalalb
- */
 public class ModEntities {
 
 	public static void init() {
@@ -45,7 +42,6 @@ public class ModEntities {
 		registerEntity(EntityAntlion.class, "Antlion", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFFFFFF);
 		registerEntity(EntityBlackWidow.class, "BlackWidow", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 		EntityRegistry.addSpawn(EntityBlackWidow.class, 100, 5, 10, EnumCreatureType.monster, BiomeGenBase.hell);
-
 	}
 
 	public static void registerEntity(Class entityClass, String saveName, int id, int backgroundEggColour, int foregroundEggColour) {

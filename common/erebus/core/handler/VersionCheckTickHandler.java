@@ -8,13 +8,6 @@ import cpw.mods.fml.common.TickType;
 import erebus.lib.Reference;
 import erebus.utils.VersionHelper;
 
-/**
- * Erebus
- * 
- * @author ganymedes01
- * 
- */
-
 public class VersionCheckTickHandler implements ITickHandler {
 
 	private static boolean initialized = false;

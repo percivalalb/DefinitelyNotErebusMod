@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 import erebus.ModItems;
 
 public class EntityLocust extends EntityMob {
+
 	private float heightOffset = 0.5F;
 	protected EntityLiving theEntity;
 	public boolean canJump = true;
@@ -23,11 +24,6 @@ public class EntityLocust extends EntityMob {
 		setSize(2F, 1F);
 		getNavigator().setAvoidsWater(true);
 
-	}
-
-	@Override
-	protected void entityInit() {
-		super.entityInit();
 	}
 
 	@Override
@@ -65,12 +61,11 @@ public class EntityLocust extends EntityMob {
 
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
-
 		entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 9), 0.0F);
 	}
 
 	public boolean randJump() {
-		return (rand.nextInt(50) == 0);
+		return rand.nextInt(50) == 0;
 	}
 
 	@Override
@@ -85,11 +80,6 @@ public class EntityLocust extends EntityMob {
 
 	@Override
 	protected void fall(float par1) {
-	}
-
-	@Override
-	public void onUpdate() {
-		super.onUpdate();
 	}
 
 	@Override

@@ -18,6 +18,7 @@ import erebus.ModItems;
 import erebus.item.ItemErebusMaterial;
 
 public class BlockBambooCrop extends Block {
+
 	@SideOnly(Side.CLIENT)
 	private Icon iconTop;
 

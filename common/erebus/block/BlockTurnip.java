@@ -17,8 +17,8 @@ public class BlockTurnip extends BlockCrops {
 	@SideOnly(Side.CLIENT)
 	private Icon[] iconArray;
 
-	public BlockTurnip(int par1) {
-		super(par1);
+	public BlockTurnip(int id) {
+		super(id);
 	}
 
 	@Override

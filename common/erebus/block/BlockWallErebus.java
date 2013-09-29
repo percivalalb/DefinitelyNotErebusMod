@@ -1,6 +1,7 @@
 package erebus.block;
 
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockWall;
 import net.minecraft.creativetab.CreativeTabs;
@@ -11,6 +12,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
 
 public class BlockWallErebus extends BlockWall {
+
 	public BlockWallErebus(int id, Block sourceBlock) {
 		super(id, sourceBlock);
 		setCreativeTab(null);
@@ -26,29 +28,28 @@ public class BlockWallErebus extends BlockWall {
 				return ModBlocks.umberstone.getIcon(side, 1); // Umbercobble
 			case 2:
 				return ModBlocks.umberstone.getIcon(side, 2); // Mossy
-																// Umbercobble
+				// Umbercobble
 			case 3:
 				return ModBlocks.umberstone.getIcon(side, 3); // Webbed
-																// Umbercobble
+				// Umbercobble
 			case 4:
 				return ModBlocks.umberstone.getIcon(side, 4); // Umberstone
-																// Bricks
+				// Bricks
 			case 5:
 				return ModBlocks.umberPaver.getIcon(side, 0); // Umberpaver
 			case 6:
 				return ModBlocks.umberPaver.getIcon(side, 1); // Mossy
-																// Umberpaver
+				// Umberpaver
 			case 7:
 				return ModBlocks.umberPaver.getIcon(side, 2); // Webbed
-																// Umberpaver
+				// Umberpaver
 		}
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int id, CreativeTabs creativeTab, List list) {
-		for (int a = 0; a < 8; a++) {
+		for (int a = 0; a < 8; a++)
 			list.add(new ItemStack(id, 1, a));
-		}
 	}
 }

@@ -1,11 +1,6 @@
 package erebus.lib;
 
-/**
- * @author ProPercivalalb
- **/
 public class Reference {
-
-	/* General Mod related constants */
 	public static final String MOD_ID = "Erebus";
 	public static final String MOD_NAME = "Erebus";
 	public static final String MOD_VERSION = "v0.1.0";

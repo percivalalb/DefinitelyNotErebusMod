@@ -1,31 +1,33 @@
 package erebus.core.handler;
 
 import java.util.EnumSet;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
+
 import org.lwjgl.input.Keyboard;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
 import erebus.core.teleport.TeleportClient;
 
 public class ClientTickHandler implements ITickHandler {
+
 	public static Minecraft mc = FMLClientHandler.instance().getClient();
 	public boolean keyStates[] = new boolean[256];
 
 	// private static int ticks = 0;
 
 	public boolean checkKey(int i) {
-		if (Minecraft.getMinecraft().currentScreen != null) {
+		if (Minecraft.getMinecraft().currentScreen != null)
 			return false;
-		}
-		if (Keyboard.isKeyDown(i) != keyStates[i]) {
+		if (Keyboard.isKeyDown(i) != keyStates[i])
 			return keyStates[i] = !keyStates[i];
-		} else {
+		else
 			return false;
-		}
 	}
 
 	@Override
@@ -40,11 +42,10 @@ public class ClientTickHandler implements ITickHandler {
 			onRenderTickEnd(ticks1);
 		} else if (type.equals(EnumSet.of(TickType.CLIENT))) {
 			GuiScreen guiscreen = Minecraft.getMinecraft().currentScreen;
-			if (guiscreen != null) {
+			if (guiscreen != null)
 				onTickInGUI(guiscreen);
-			} else {
+			else
 				onTickInGame();
-			}
 		} else if (type.equals(EnumSet.of(TickType.PLAYER))) {
 			EntityPlayer player = (EntityPlayer) tickData[0];
 			teleportTick(player);
@@ -79,11 +80,8 @@ public class ClientTickHandler implements ITickHandler {
 		// TODO mod_Erebus.renderBossHealth();
 		float time = TeleportClient.prevTimeInPortal + (TeleportClient.timeInPortal - TeleportClient.prevTimeInPortal) * ticks;
 		if (time > 0.0F && TeleportClient.mc.currentScreen == null) {
-		} else {
-			if (TeleportClient.mc.thePlayer != null) {
-				TeleportClient.mc.thePlayer.removePotionEffect(Potion.confusion.id);
-			}
-		}
+		} else if (TeleportClient.mc.thePlayer != null)
+			TeleportClient.mc.thePlayer.removePotionEffect(Potion.confusion.id);
 
 		if (TeleportClient.mc.thePlayer != null) {
 			// TODO TeleportErebusClient.renderGameOverlay(1);

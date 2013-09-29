@@ -10,6 +10,7 @@ import erebus.ErebusMod;
 import erebus.entity.EntityBeetleLarva;
 
 public class EntityAIEatWoodenItem extends EntityAIBase {
+
 	private final int diffEaten = 0;// 0-peaceful,1-easy,2-med,3-hard
 	private final int maxTicks = 240;// approx 30 tick/sec +- processing delays
 	private final int maxDToWood = 8;// this variable has a childish name.
@@ -119,6 +120,6 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 	}
 
 	protected AxisAlignedBB getBlockAABB(int par1, int par2, int par3) {
-		return AxisAlignedBB.getAABBPool().getAABB((WoodX), WoodY, (WoodZ), (float) (WoodX + 1.0D), WoodY + 1.0D, (float) (WoodZ + 1.0D));
+		return AxisAlignedBB.getAABBPool().getAABB(WoodX, WoodY, WoodZ, (float) (WoodX + 1.0D), WoodY + 1.0D, (float) (WoodZ + 1.0D));
 	}
 }

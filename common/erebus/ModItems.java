@@ -100,7 +100,7 @@ public class ModItems {
 		exoskeletonLegs = new ItemExoskeletonArmor(exoskeletonLegsID, 2).setUnlocalizedName("leggingsExo").setTextureName("erebus:leggingsExo");
 		exoskeletonBoots = new ItemExoskeletonArmor(exoskeletonBootsID, 3).setUnlocalizedName("bootsExo").setTextureName("erebus:bootsExo");
 
-		fossilClub = new ItemCavemanClub(fossilClubID, ErebusMod.toolCAVEMANCLUB).setFull3D().setUnlocalizedName("clubBone").setTextureName("erebus:clubBone");
+		fossilClub = new ItemCavemanClub(fossilClubID).setFull3D().setUnlocalizedName("clubBone").setTextureName("erebus:clubBone");
 		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setCreativeTab(null).setUnlocalizedName("waspSword");
 		maxSpeedBow = new ItemMaxSpeedBow(maxSpeedBowID).setUnlocalizedName("maxSpeedBow").setTextureName("erebus:maxSpeedBow");
 

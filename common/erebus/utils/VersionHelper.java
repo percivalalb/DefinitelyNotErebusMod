@@ -10,13 +10,6 @@ import net.minecraft.util.EnumChatFormatting;
 import cpw.mods.fml.common.FMLLog;
 import erebus.lib.Reference;
 
-/**
- * Erebus
- * 
- * @author ganymedes01
- * 
- */
-
 public class VersionHelper implements Runnable {
 	private static Logger logger = Logger.getLogger(Reference.MOD_ID.toUpperCase());
 	private static VersionHelper instance = new VersionHelper();

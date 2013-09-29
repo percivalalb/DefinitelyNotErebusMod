@@ -5,11 +5,14 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
+
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
 import erebus.lib.Reference;
@@ -17,12 +20,9 @@ import erebus.network.packet.PacketColossalCratePage;
 import erebus.network.packet.PacketParticle;
 import erebus.network.packet.PacketTeleport;
 
-/**
- * @author ProPercivalalb, chylex
- **/
 public class PacketHandler implements IPacketHandler {
 
-	private Map<Short, IPacket> map = new HashMap<Short, IPacket>();
+	private final Map<Short, IPacket> map = new HashMap<Short, IPacket>();
 
 	public PacketHandler() {
 		register(0, new PacketTeleport());
@@ -59,7 +59,7 @@ public class PacketHandler implements IPacketHandler {
 
 	public static ByteArrayOutputStream createDataStream(Object... data) {
 		int bytes = 0;
-		for (Object o : data) {
+		for (Object o : data)
 			if (o instanceof String)
 				bytes += ((String) o).length() * 2;
 			else if (o instanceof Integer || o instanceof Float)
@@ -70,11 +70,10 @@ public class PacketHandler implements IPacketHandler {
 				bytes += 2;
 			else if (o instanceof Double)
 				bytes += 8;
-		}
 
 		ByteArrayOutputStream bos = new ByteArrayOutputStream(bytes);
 		DataOutputStream dos = new DataOutputStream(bos);
-		for (Object o : data) {
+		for (Object o : data)
 			try {
 				if (o instanceof String)
 					dos.writeChars((String) o);
@@ -93,7 +92,6 @@ public class PacketHandler implements IPacketHandler {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
 		return bos;
 	}
 }

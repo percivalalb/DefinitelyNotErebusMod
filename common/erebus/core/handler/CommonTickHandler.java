@@ -10,6 +10,7 @@ import erebus.ErebusMod;
 import erebus.world.TeleporterErebus;
 
 public class CommonTickHandler implements ITickHandler {
+
 	public boolean genLairNextTick = false;
 	private int ticksToGo = 5;
 

@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
 public class ModelBlackWidow extends ModelBase {
+
 	ModelRenderer Rant1;
 	ModelRenderer Rant2;
 	ModelRenderer Lant1;
@@ -541,21 +542,21 @@ public class ModelBlackWidow extends ModelBase {
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
 
-		this.Head.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.MandibleR.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.MandibleL.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.Rant1.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.349F;
-		this.Rant2.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.349F;
-		this.Lant1.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.349F;
-		this.Lant2.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.349F;
+		Head.rotateAngleY = par4 / (180F / (float) Math.PI);
+		MandibleR.rotateAngleY = par4 / (180F / (float) Math.PI);
+		MandibleL.rotateAngleY = par4 / (180F / (float) Math.PI);
+		Rant1.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.349F;
+		Rant2.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.349F;
+		Lant1.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.349F;
+		Lant2.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.349F;
 
-		this.Head.rotateAngleX = par5 / (180F / (float) Math.PI);
-		this.MandibleR.rotateAngleX = par5 / (180F / (float) Math.PI) + 0.698F;
-		this.MandibleL.rotateAngleX = par5 / (180F / (float) Math.PI) + 0.698F;
-		this.Rant1.rotateAngleX = par5 / (180F / (float) Math.PI);
-		this.Rant2.rotateAngleX = par5 / (180F / (float) Math.PI);
-		this.Lant1.rotateAngleX = par5 / (180F / (float) Math.PI);
-		this.Lant2.rotateAngleX = par5 / (180F / (float) Math.PI);
+		Head.rotateAngleX = par5 / (180F / (float) Math.PI);
+		MandibleR.rotateAngleX = par5 / (180F / (float) Math.PI) + 0.698F;
+		MandibleL.rotateAngleX = par5 / (180F / (float) Math.PI) + 0.698F;
+		Rant1.rotateAngleX = par5 / (180F / (float) Math.PI);
+		Rant2.rotateAngleX = par5 / (180F / (float) Math.PI);
+		Lant1.rotateAngleX = par5 / (180F / (float) Math.PI);
+		Lant2.rotateAngleX = par5 / (180F / (float) Math.PI);
 
 		float x = 0.7853982F;
 		float b = 1.2F;
@@ -567,77 +568,77 @@ public class ModelBlackWidow extends ModelBase {
 		float movcos2 = MathHelper.cos(par1 * 0.7F) * 0.5F * par2;
 		float movcos3 = MathHelper.cos(par1 * 0.0F) * 0.0F * par2;
 
-		this.LegFL1.rotateAngleY = -0.698F + movcos1;
-		this.LegFL1.rotateAngleX = -0.698F - movsin1;
-		this.LegFL1.rotateAngleZ = b + movcos2;
-		this.LegFL2.rotateAngleZ = -x + movcos3;
-		this.LegFL3.rotateAngleZ = -0.2617994F - x + movcos3;
-		this.LegFL4.rotateAngleZ = -0.2617994F - x + movcos3;
-		this.LegFL5.rotateAngleZ = -0.7853982F - x + movcos3;
-		this.LegFL6.rotateAngleZ = -1.186824F - x + movcos3;
+		LegFL1.rotateAngleY = -0.698F + movcos1;
+		LegFL1.rotateAngleX = -0.698F - movsin1;
+		LegFL1.rotateAngleZ = b + movcos2;
+		LegFL2.rotateAngleZ = -x + movcos3;
+		LegFL3.rotateAngleZ = -0.2617994F - x + movcos3;
+		LegFL4.rotateAngleZ = -0.2617994F - x + movcos3;
+		LegFL5.rotateAngleZ = -0.7853982F - x + movcos3;
+		LegFL6.rotateAngleZ = -1.186824F - x + movcos3;
 
-		this.LegMFL1.rotateAngleY = -0.175F - movcos1;
-		this.LegMFL1.rotateAngleX = -0.175F + movsin1;
-		this.LegMFL1.rotateAngleZ = x - movcos2;
-		this.LegMFL2.rotateAngleZ = -x - movcos3;
-		this.LegMFL3.rotateAngleZ = -0.2617994F - x - movcos3;
-		this.LegMFL4.rotateAngleZ = -0.2617994F - x - movcos3;
-		this.LegMFL5.rotateAngleZ = -0.7853982F - x - movcos3;
-		this.LegMFL6.rotateAngleZ = -1.186824F - x - movcos3;
+		LegMFL1.rotateAngleY = -0.175F - movcos1;
+		LegMFL1.rotateAngleX = -0.175F + movsin1;
+		LegMFL1.rotateAngleZ = x - movcos2;
+		LegMFL2.rotateAngleZ = -x - movcos3;
+		LegMFL3.rotateAngleZ = -0.2617994F - x - movcos3;
+		LegMFL4.rotateAngleZ = -0.2617994F - x - movcos3;
+		LegMFL5.rotateAngleZ = -0.7853982F - x - movcos3;
+		LegMFL6.rotateAngleZ = -1.186824F - x - movcos3;
 
-		this.LegMBL1.rotateAngleY = 0.175F + movcos1;
-		this.LegMBL1.rotateAngleX = 0.175F - movsin1;
-		this.LegMBL1.rotateAngleZ = x + movcos2;
-		this.LegMBL2.rotateAngleZ = -x + movcos3;
-		this.LegMBL3.rotateAngleZ = -0.2617994F - x + movcos3;
-		this.LegMBL4.rotateAngleZ = -0.2617994F - x + movcos3;
-		this.LegMBL5.rotateAngleZ = -0.7853982F - x + movcos3;
-		this.LegMBL6.rotateAngleZ = -1.186824F - x + movcos3;
+		LegMBL1.rotateAngleY = 0.175F + movcos1;
+		LegMBL1.rotateAngleX = 0.175F - movsin1;
+		LegMBL1.rotateAngleZ = x + movcos2;
+		LegMBL2.rotateAngleZ = -x + movcos3;
+		LegMBL3.rotateAngleZ = -0.2617994F - x + movcos3;
+		LegMBL4.rotateAngleZ = -0.2617994F - x + movcos3;
+		LegMBL5.rotateAngleZ = -0.7853982F - x + movcos3;
+		LegMBL6.rotateAngleZ = -1.186824F - x + movcos3;
 
-		this.LegBL1.rotateAngleY = 0.698F - movcos1;
-		this.LegBL1.rotateAngleX = 0.698F + movsin1;
-		this.LegBL1.rotateAngleZ = b - movcos2;
-		this.LegBL2.rotateAngleZ = -x - movcos3;
-		this.LegBL3.rotateAngleZ = -0.2617994F - x - movcos3;
-		this.LegBL4.rotateAngleZ = -0.2617994F - x - movcos3;
-		this.LegBL5.rotateAngleZ = -0.7853982F - x - movcos3;
-		this.LegBL6.rotateAngleZ = -1.186824F - x - movcos3;
+		LegBL1.rotateAngleY = 0.698F - movcos1;
+		LegBL1.rotateAngleX = 0.698F + movsin1;
+		LegBL1.rotateAngleZ = b - movcos2;
+		LegBL2.rotateAngleZ = -x - movcos3;
+		LegBL3.rotateAngleZ = -0.2617994F - x - movcos3;
+		LegBL4.rotateAngleZ = -0.2617994F - x - movcos3;
+		LegBL5.rotateAngleZ = -0.7853982F - x - movcos3;
+		LegBL6.rotateAngleZ = -1.186824F - x - movcos3;
 
-		this.LegFR1.rotateAngleY = 3.84F + movcos1;
-		this.LegFR1.rotateAngleX = 3.84F - movsin1;
-		this.LegFR1.rotateAngleZ = -b + movcos2;
-		this.LegFR2.rotateAngleZ = x2 + movcos3;
-		this.LegFR3.rotateAngleZ = 0.2617994F + x2 + movcos3;
-		this.LegFR4.rotateAngleZ = 0.2617994F + x2 + movcos3;
-		this.LegFR5.rotateAngleZ = 0.7853982F + x2 + movcos3;
-		this.LegFR6.rotateAngleZ = 1.186824F + x2 + movcos3;
+		LegFR1.rotateAngleY = 3.84F + movcos1;
+		LegFR1.rotateAngleX = 3.84F - movsin1;
+		LegFR1.rotateAngleZ = -b + movcos2;
+		LegFR2.rotateAngleZ = x2 + movcos3;
+		LegFR3.rotateAngleZ = 0.2617994F + x2 + movcos3;
+		LegFR4.rotateAngleZ = 0.2617994F + x2 + movcos3;
+		LegFR5.rotateAngleZ = 0.7853982F + x2 + movcos3;
+		LegFR6.rotateAngleZ = 1.186824F + x2 + movcos3;
 
-		this.LegMFR1.rotateAngleY = 3.317F - movcos1;
-		this.LegMFR1.rotateAngleX = 3.317F + movsin1;
-		this.LegMFR1.rotateAngleZ = -x - movcos2;
-		this.LegMFR2.rotateAngleZ = x2 - movcos3;
-		this.LegMFR3.rotateAngleZ = 0.2617994F + x2 - movcos3;
-		this.LegMFR4.rotateAngleZ = 0.2617994F + x2 - movcos3;
-		this.LegMFR5.rotateAngleZ = 0.7853982F + x2 - movcos3;
-		this.LegMFR6.rotateAngleZ = 1.186824F + x2 - movcos3;
+		LegMFR1.rotateAngleY = 3.317F - movcos1;
+		LegMFR1.rotateAngleX = 3.317F + movsin1;
+		LegMFR1.rotateAngleZ = -x - movcos2;
+		LegMFR2.rotateAngleZ = x2 - movcos3;
+		LegMFR3.rotateAngleZ = 0.2617994F + x2 - movcos3;
+		LegMFR4.rotateAngleZ = 0.2617994F + x2 - movcos3;
+		LegMFR5.rotateAngleZ = 0.7853982F + x2 - movcos3;
+		LegMFR6.rotateAngleZ = 1.186824F + x2 - movcos3;
 
-		this.LegMBR1.rotateAngleY = 2.967F + movcos1;
-		this.LegMBR1.rotateAngleX = 2.967F - movsin1;
-		this.LegMBR1.rotateAngleZ = -x + movcos2;
-		this.LegMBR2.rotateAngleZ = x2 + movcos3;
-		this.LegMBR3.rotateAngleZ = 0.2617994F + x2 + movcos3;
-		this.LegMBR4.rotateAngleZ = 0.2617994F + x2 + movcos3;
-		this.LegMBR5.rotateAngleZ = 0.7853982F + x2 + movcos3;
-		this.LegMBR6.rotateAngleZ = 1.186824F + x2 + movcos3;
+		LegMBR1.rotateAngleY = 2.967F + movcos1;
+		LegMBR1.rotateAngleX = 2.967F - movsin1;
+		LegMBR1.rotateAngleZ = -x + movcos2;
+		LegMBR2.rotateAngleZ = x2 + movcos3;
+		LegMBR3.rotateAngleZ = 0.2617994F + x2 + movcos3;
+		LegMBR4.rotateAngleZ = 0.2617994F + x2 + movcos3;
+		LegMBR5.rotateAngleZ = 0.7853982F + x2 + movcos3;
+		LegMBR6.rotateAngleZ = 1.186824F + x2 + movcos3;
 
-		this.LegBR1.rotateAngleY = 2.443F - movcos1;
-		this.LegBR1.rotateAngleX = 2.443F + movsin1;
-		this.LegBR1.rotateAngleZ = -b - movcos2;
-		this.LegBR2.rotateAngleZ = x2 - movcos3;
-		this.LegBR3.rotateAngleZ = 0.2617994F + x2 - movcos3;
-		this.LegBR4.rotateAngleZ = 0.2617994F + x2 - movcos3;
-		this.LegBR5.rotateAngleZ = 0.7853982F + x2 - movcos3;
-		this.LegBR6.rotateAngleZ = 1.186824F + x2 - movcos3;
+		LegBR1.rotateAngleY = 2.443F - movcos1;
+		LegBR1.rotateAngleX = 2.443F + movsin1;
+		LegBR1.rotateAngleZ = -b - movcos2;
+		LegBR2.rotateAngleZ = x2 - movcos3;
+		LegBR3.rotateAngleZ = 0.2617994F + x2 - movcos3;
+		LegBR4.rotateAngleZ = 0.2617994F + x2 - movcos3;
+		LegBR5.rotateAngleZ = 0.7853982F + x2 - movcos3;
+		LegBR6.rotateAngleZ = 1.186824F + x2 - movcos3;
 	}
 
 }

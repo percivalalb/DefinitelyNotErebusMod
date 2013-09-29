@@ -19,10 +19,11 @@ import erebus.ModItems;
 import erebus.client.render.entity.AnimationMathHelper;
 
 public class EntityBotFly extends EntityMob {
+
 	private ChunkCoordinates currentFlightTarget;
 	private float heightOffset = 0.5F;
 	public float wingFloat;
-	AnimationMathHelper mathWings = new AnimationMathHelper();
+	private final AnimationMathHelper mathWings = new AnimationMathHelper();
 
 	public EntityBotFly(World par1World) {
 		super(par1World);

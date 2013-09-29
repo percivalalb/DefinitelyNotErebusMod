@@ -1,14 +1,16 @@
 package erebus.world.feature.trees;
 
 import java.util.Random;
-import erebus.ModBlocks;
-import erebus.block.BlockLeavesErebus;
-import erebus.block.BlockLogErebus;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import erebus.ModBlocks;
+import erebus.block.BlockLeavesErebus;
+import erebus.block.BlockLogErebus;
 
 public class WorldGenAsperTree extends WorldGenerator {
+
 	private static final int[] offsetX = new int[] { -1, 1, 0, 0 };
 	private static final int[] offsetZ = new int[] { 0, 0, -1, 1 };
 
@@ -22,14 +24,11 @@ public class WorldGenAsperTree extends WorldGenerator {
 			return false;
 		int testY;
 
-		for (testY = y + 1; testY <= y + height + 1; ++testY) {
-			for (int testX = x - 2; testX <= x + 2; ++testX) {
-				for (int testZ = z - 2; testZ <= z + 2; ++testZ) {
+		for (testY = y + 1; testY <= y + height + 1; ++testY)
+			for (int testX = x - 2; testX <= x + 2; ++testX)
+				for (int testZ = z - 2; testZ <= z + 2; ++testZ)
 					if (!world.isAirBlock(testX, testY, testZ))
 						return false;
-				}
-			}
-		}
 
 		if (world.getBlockId(x, y - 1, z) != Block.dirt.blockID && world.getBlockId(x, y - 1, z) != Block.grass.blockID)
 			return false;
@@ -56,19 +55,16 @@ public class WorldGenAsperTree extends WorldGenerator {
 		}
 
 		double centerY = 2D + (height - 2D) * 0.5D;
-		for (int yy = 1; yy < height; yy++) {
-			for (int xx = -1; xx <= 1; xx++) {
+		for (int yy = 1; yy < height; yy++)
+			for (int xx = -1; xx <= 1; xx++)
 				for (int zz = -1; zz <= 1; zz++) {
 					if (xx == 0 && zz == 0)
 						continue;
 
 					double dist = Math.sqrt(xx * xx + Math.pow(centerY - yy, 2) + zz * zz);
-					if ((dist <= 1.5D || random.nextDouble() > (dist - 1.5D)) && world.isAirBlock(x + xx, y + yy, z + zz)) {
+					if ((dist <= 1.5D || random.nextDouble() > dist - 1.5D) && world.isAirBlock(x + xx, y + yy, z + zz))
 						world.setBlock(x + xx, y + yy, z + zz, ModBlocks.leavesErebus.blockID, BlockLeavesErebus.dataAsperDecay, 3);
-					}
 				}
-			}
-		}
 
 		for (int a = 0; a < 4; a++)
 			world.setBlock(x + offsetX[a], y + height, z + offsetZ[a], ModBlocks.leavesErebus.blockID, BlockLeavesErebus.dataAsperDecay, 3);

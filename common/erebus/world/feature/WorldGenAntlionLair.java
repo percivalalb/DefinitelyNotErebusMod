@@ -2,6 +2,7 @@ package erebus.world.feature;
 
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -23,6 +24,7 @@ import erebus.world.loot.LootUtil;
 import erebus.world.loot.WeightedLootList;
 
 public class WorldGenAntlionLair extends WorldGenerator {
+	
 	//@formatter:off
 	public static final WeightedLootList chestLoot = new WeightedLootList(
 		new LootItemStack(Item.book).setAmount(1, 4).setWeight(18),
@@ -70,20 +72,18 @@ public class WorldGenAntlionLair extends WorldGenerator {
 	).setPostProcessor(new IPostProcess(){
 		@Override
 		public ItemStack postProcessItem(ItemStack is, Random rand){
-			if (is.itemID==Item.enchantedBook.itemID || ((is.getItem() instanceof ItemTool || is.getItem() instanceof ItemArmor || is.getItem() instanceof ItemSword) && rand.nextInt(2) == 0)){
+			if (is.itemID==Item.enchantedBook.itemID || (is.getItem() instanceof ItemTool || is.getItem() instanceof ItemArmor || is.getItem() instanceof ItemSword) && rand.nextInt(2) == 0){
 				if (is.itemID==Item.enchantedBook.itemID)is.itemID=Item.book.itemID;
 				List enchList = EnchantmentHelper.buildEnchantmentList(rand,is,7+rand.nextInt(10));
 				if (is.itemID==Item.book.itemID)is.itemID=Item.enchantedBook.itemID;
 
-				if (enchList!=null && enchList.size()>0){
-					if (is.itemID==Item.enchantedBook.itemID)Item.enchantedBook.addEnchantment(is,((EnchantmentData)enchList.get(rand.nextInt(enchList.size()))));
-					else{
+				if (enchList!=null && enchList.size()>0)
+					if (is.itemID==Item.enchantedBook.itemID)Item.enchantedBook.addEnchantment(is,(EnchantmentData)enchList.get(rand.nextInt(enchList.size())));
+					else
 						for(int a=0; a<enchList.size(); ++a){
 							EnchantmentData data=(EnchantmentData)enchList.get(a);
 							is.addEnchantment(data.enchantmentobj,data.enchantmentLevel);
 						}
-					}
-				}
 			}
 			return is;
 		}
@@ -96,13 +96,10 @@ public class WorldGenAntlionLair extends WorldGenerator {
 
 		for (int a = 0; a < 15; a++) {
 			if (world.isAirBlock(x, y, z) && world.getBlockId(x, y - 1, z) == Block.sand.blockID) {
-				for (int xx = x - 3; xx <= x + 3; xx++) {
-					for (int zz = z - 3; zz <= z + 3; zz++) {
-						if (!world.isAirBlock(x, y, z) || world.getBlockId(xx, y - 1, zz) != Block.sand.blockID) {
+				for (int xx = x - 3; xx <= x + 3; xx++)
+					for (int zz = z - 3; zz <= z + 3; zz++)
+						if (!world.isAirBlock(x, y, z) || world.getBlockId(xx, y - 1, zz) != Block.sand.blockID)
 							return false;
-						}
-					}
-				}
 				found = true;
 				break;
 			}
@@ -113,13 +110,10 @@ public class WorldGenAntlionLair extends WorldGenerator {
 		if (!found)
 			return false;
 
-		for (int xx = x - 3; xx <= x + 3; xx++) {
-			for (int zz = z - 3; zz <= z + 3; zz++) {
-				for (int yy = y - 1; yy >= y - 6; yy--) {
+		for (int xx = x - 3; xx <= x + 3; xx++)
+			for (int zz = z - 3; zz <= z + 3; zz++)
+				for (int yy = y - 1; yy >= y - 6; yy--)
 					world.setBlock(xx, yy, zz, yy == y - 1 ? ModBlocks.ghostSand.blockID : 0);
-				}
-			}
-		}
 
 		int chestX, chestZ;
 		if (random.nextInt(2) == 0) {

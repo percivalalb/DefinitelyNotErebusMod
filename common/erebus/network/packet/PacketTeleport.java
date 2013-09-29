@@ -2,17 +2,17 @@ package erebus.network.packet;
 
 import java.net.URL;
 import java.util.Map.Entry;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+
 import com.google.common.io.ByteArrayDataInput;
+
 import erebus.client.sound.AmbientMusicManager;
 import erebus.core.teleport.TeleportClient;
 import erebus.network.IPacket;
 
-/**
- * @author ProPercivalalb
- **/
 public class PacketTeleport implements IPacket {
 
 	@Override

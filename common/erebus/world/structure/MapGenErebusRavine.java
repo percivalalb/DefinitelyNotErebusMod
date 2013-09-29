@@ -11,6 +11,7 @@ import erebus.ModBiomes;
 import erebus.ModBlocks;
 
 public class MapGenErebusRavine extends MapGenBase {
+
 	private final float[] field_75046_d = new float[1024];
 
 	protected void generateRavine(long seed, int x, int z, byte[] blocks, double par6, double par8, double seed0, float seed2, float seed3, float seed4, int seed5, int seed6, double seed7) {
@@ -143,9 +144,6 @@ public class MapGenErebusRavine extends MapGenBase {
 		}
 	}
 
-	/**
-	 * Recursively called by generate() (generate) and optionally by itself.
-	 */
 	@Override
 	protected void recursiveGenerate(World world, int x, int z, int par4, int par5, byte[] blocks) {
 		if (rand.nextInt(50) == 0) {
@@ -168,30 +166,6 @@ public class MapGenErebusRavine extends MapGenBase {
 		return blocks[index] == worldObj.getBiomeGenForCoords(x + chunkX * 16, z + chunkZ * 16).topBlock;
 	}
 
-	/**
-	 * Digs out the current block, default implementation removes stone, filler,
-	 * and top block Sets the block to lava if y is less then 10, and air other
-	 * wise. If setting to air, it also checks to see if we've broken the
-	 * surface and if so tries to make the floor the biome's top block
-	 * 
-	 * @param data
-	 *            Block data array
-	 * @param index
-	 *            Pre-calculated index into block data
-	 * @param x
-	 *            local X position
-	 * @param y
-	 *            local Y position
-	 * @param z
-	 *            local Z position
-	 * @param chunkX
-	 *            Chunk X position
-	 * @param chunkZ
-	 *            Chunk Y position
-	 * @param foundTop
-	 *            True if we've encountered the biome's top block. Ideally if
-	 *            we've broken the surface.
-	 */
 	protected void digBlock(byte[] blocks, int index, int x, int y, int z, int chunkX, int chunkZ, boolean foundTop) {
 		BiomeGenBase biome = worldObj.getBiomeGenForCoords(x + chunkX * 16, z + chunkZ * 16);
 		int top = biome.topBlock;

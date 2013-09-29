@@ -16,6 +16,7 @@ import erebus.ModItems;
 import erebus.client.render.entity.AnimationMathHelper;
 
 public class EntityWasp extends EntityMob {
+
 	private float heightOffset = 0.5F;
 	public float wingFloat;
 	AnimationMathHelper mathWings = new AnimationMathHelper();
@@ -113,11 +114,11 @@ public class EntityWasp extends EntityMob {
 	@Override
 	public void onLivingUpdate() {
 		if (!worldObj.isRemote) {
-			heightOffset = (0.5F + (float) rand.nextGaussian() * 5.0F);
-			if ((getEntityToAttack() != null) && (getEntityToAttack().posY + getEntityToAttack().getEyeHeight() > posY + getEyeHeight() + heightOffset))
+			heightOffset = 0.5F + (float) rand.nextGaussian() * 5.0F;
+			if (getEntityToAttack() != null && getEntityToAttack().posY + getEntityToAttack().getEyeHeight() > posY + getEyeHeight() + heightOffset)
 				motionY += (0.350000011920929D - motionY) * 0.350000011920929D;
 		}
-		if ((!onGround) && (motionY < 0.0D))
+		if (!onGround && motionY < 0.0D)
 			motionY *= 0.5D;
 		super.onLivingUpdate();
 	}
@@ -146,7 +147,7 @@ public class EntityWasp extends EntityMob {
 	@Override
 	public boolean attackEntityAsMob(Entity par1Entity) {
 		if (super.attackEntityAsMob(par1Entity)) {
-			if ((par1Entity instanceof EntityLivingBase)) {
+			if (par1Entity instanceof EntityLivingBase) {
 				byte var2 = 0;
 				if (worldObj.difficultySetting > 1)
 					if (worldObj.difficultySetting == 2)
@@ -163,7 +164,7 @@ public class EntityWasp extends EntityMob {
 
 	@Override
 	protected void attackEntity(Entity par1Entity, float par2) {
-		if ((par2 < 2.0F) && (par1Entity.boundingBox.maxY > boundingBox.minY) && (par1Entity.boundingBox.minY < boundingBox.maxY))
+		if (par2 < 2.0F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY)
 			attackEntityAsMob(par1Entity);
 	}
 }

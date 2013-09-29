@@ -3,11 +3,6 @@ package erebus.core.helper;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-/**
- * @author ProPercivalalb For any of these method if it requires an instance but
- *         it is a static thing you are try to look up just put the instance as
- *         null
- */
 public class ReflectionHelper {
 
 	public static Class getClass(String className) {

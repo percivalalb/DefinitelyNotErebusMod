@@ -9,6 +9,7 @@ import erebus.entity.EntityGrasshopper;
 import erebus.entity.EntityLocust;
 
 public class EntityAIEatCrops extends EntityAIBase {
+
 	private final int diffEaten = 0;// 0-peaceful,1-easy,2-med,3-hard
 	private final int maxTicks = 240;// approx 30 tick/sec +- processing delays
 	private final int maxDistance = 8;// higher numbers increase load
@@ -49,7 +50,7 @@ public class EntityAIEatCrops extends EntityAIBase {
 
 	@Override
 	public boolean continueExecuting() {
-		return (theEntity.worldObj.getBlockId(PlantX, PlantY, PlantZ) != Block.tallGrass.blockID) ? false : !theEntity.getNavigator().noPath() || (theEntity.worldObj.getBlockId(PlantX, PlantY, PlantZ) != Block.crops.blockID) ? false : !theEntity.getNavigator().noPath();
+		return theEntity.worldObj.getBlockId(PlantX, PlantY, PlantZ) != Block.tallGrass.blockID ? false : !theEntity.getNavigator().noPath() || theEntity.worldObj.getBlockId(PlantX, PlantY, PlantZ) != Block.crops.blockID ? false : !theEntity.getNavigator().noPath();
 	}
 
 	@Override
@@ -110,6 +111,6 @@ public class EntityAIEatCrops extends EntityAIBase {
 	}
 
 	protected AxisAlignedBB getBlockAABB(int par1, int par2, int par3) {
-		return AxisAlignedBB.getAABBPool().getAABB((PlantX), (PlantY), (PlantZ), PlantX + 1.0D, PlantY + 1.0D, PlantZ + 1.0D);
+		return AxisAlignedBB.getAABBPool().getAABB(PlantX, PlantY, PlantZ, PlantX + 1.0D, PlantY + 1.0D, PlantZ + 1.0D);
 	}
 }

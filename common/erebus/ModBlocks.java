@@ -47,7 +47,7 @@ import erebus.item.block.ItemBlockUmberOre;
 import erebus.item.block.ItemBlockUmberStone;
 import erebus.item.block.ItemBlockUmberpaver;
 import erebus.item.block.ItemBlockWallErebus;
-import erebus.item.block.ItemSapling;
+import erebus.item.block.ItemBlockSapling;
 
 public class ModBlocks {
 
@@ -192,7 +192,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(logErebusGroup2, ItemBlockLogErebus2.class, "erebus.logErebus2");
 		GameRegistry.registerBlock(planksErebus, ItemBlockPlanksErebus.class, "erebus.planksErebus");
 		GameRegistry.registerBlock(leavesErebus, ItemBlockLeavesErebus.class, "erebus.leavesErebus");
-		GameRegistry.registerBlock(erebusSapling, ItemSapling.class, "erebus.erebusSapling");
+		GameRegistry.registerBlock(erebusSapling, ItemBlockSapling.class, "erebus.erebusSapling");
 		GameRegistry.registerBlock(hollowLogAcacia, "erebus.hollowLogAcacia");
 
 		GameRegistry.registerBlock(erebusGrass, "erebus.erebusGrass");

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class WeightedList<T extends IWeightProvider> extends ArrayList<T> {
-	private static final long serialVersionUID = -382485527777212023L;
 
 	private int totalWeight = 0;
 

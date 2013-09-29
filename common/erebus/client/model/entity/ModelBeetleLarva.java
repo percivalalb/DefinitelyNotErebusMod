@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
 public class ModelBeetleLarva extends ModelBase {
+
 	// fields
 	ModelRenderer torso1;
 	ModelRenderer torso2;
@@ -197,51 +198,51 @@ public class ModelBeetleLarva extends ModelBase {
 		float be = MathHelper.cos(par1 + 4.0F * 1.0F) * 1.5F * par2;
 		float bf = MathHelper.cos(par1 + 5.0F * 1.0F) * 0.75F * par2;
 
-		this.head.rotationPointX = bf;
-		this.jawleft.rotationPointX = bf;
-		this.jawright.rotationPointX = bf;
-		this.mouthjaw.rotationPointX = bf;
-		this.sensorleft.rotationPointX = bf;
-		this.sensorright.rotationPointX = bf;
+		head.rotationPointX = bf;
+		jawleft.rotationPointX = bf;
+		jawright.rotationPointX = bf;
+		mouthjaw.rotationPointX = bf;
+		sensorleft.rotationPointX = bf;
+		sensorright.rotationPointX = bf;
 
-		this.torso1.rotationPointY = ba + 20F;
+		torso1.rotationPointY = ba + 20F;
 
-		this.torso2.rotationPointY = bb + 20F;
+		torso2.rotationPointY = bb + 20F;
 
-		this.torso3.rotationPointY = bc + 20F;
+		torso3.rotationPointY = bc + 20F;
 
-		this.torso4.rotationPointY = bd + 20F;
+		torso4.rotationPointY = bd + 20F;
 
-		this.torso5.rotationPointY = be + 20F;
+		torso5.rotationPointY = be + 20F;
 
-		this.torso6.rotationPointY = bf + 20F;
+		torso6.rotationPointY = bf + 20F;
 
-		this.legright1.rotationPointY = bc + 21F;
-		this.legleft1.rotationPointY = bc + 21F;
+		legright1.rotationPointY = bc + 21F;
+		legleft1.rotationPointY = bc + 21F;
 
-		this.legright2.rotationPointY = bc + 21F;
-		this.legleft2.rotationPointY = bc + 21F;
+		legright2.rotationPointY = bc + 21F;
+		legleft2.rotationPointY = bc + 21F;
 
-		this.legright3.rotationPointY = bc + 21F;
-		this.legleft3.rotationPointY = bc + 21F;
+		legright3.rotationPointY = bc + 21F;
+		legleft3.rotationPointY = bc + 21F;
 
-		this.legright1.rotateAngleX = -MathHelper.cos(par1 * 1.0F) * 1.3F * par2;
-		this.legleft1.rotateAngleX = MathHelper.cos(par1 * 1.0F) * 1.3F * par2;
+		legright1.rotateAngleX = -MathHelper.cos(par1 * 1.0F) * 1.3F * par2;
+		legleft1.rotateAngleX = MathHelper.cos(par1 * 1.0F) * 1.3F * par2;
 
-		this.legright1.rotateAngleY = -MathHelper.cos(par1 * 1.0F) * 0.5F * par2;
-		this.legleft1.rotateAngleY = MathHelper.cos(par1 * 1.0F) * 0.5F * par2;
+		legright1.rotateAngleY = -MathHelper.cos(par1 * 1.0F) * 0.5F * par2;
+		legleft1.rotateAngleY = MathHelper.cos(par1 * 1.0F) * 0.5F * par2;
 
-		this.legright2.rotateAngleX = -MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 1.3F * par2;
-		this.legleft2.rotateAngleX = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 1.3F * par2;
+		legright2.rotateAngleX = -MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 1.3F * par2;
+		legleft2.rotateAngleX = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 1.3F * par2;
 
-		this.legright2.rotateAngleY = -MathHelper.cos(par1 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par2;
-		this.legleft2.rotateAngleY = MathHelper.cos(par1 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par2;
+		legright2.rotateAngleY = -MathHelper.cos(par1 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par2;
+		legleft2.rotateAngleY = MathHelper.cos(par1 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par2;
 
-		this.legright3.rotateAngleX = -MathHelper.cos(par1 * 1.0F) * 1.3F * par2;
-		this.legleft3.rotateAngleX = MathHelper.cos(par1 * 1.0F) * 1.3F * par2;
+		legright3.rotateAngleX = -MathHelper.cos(par1 * 1.0F) * 1.3F * par2;
+		legleft3.rotateAngleX = MathHelper.cos(par1 * 1.0F) * 1.3F * par2;
 
-		this.legright3.rotateAngleY = -MathHelper.cos(par1 + 1.0F * 1.0F) * 0.5F * par2;
-		this.legleft3.rotateAngleY = MathHelper.cos(par1 + 1.0F * 1.0F) * 0.5F * par2;
+		legright3.rotateAngleY = -MathHelper.cos(par1 + 1.0F * 1.0F) * 0.5F * par2;
+		legleft3.rotateAngleY = MathHelper.cos(par1 + 1.0F * 1.0F) * 0.5F * par2;
 	}
 
 }

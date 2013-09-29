@@ -16,9 +16,6 @@ import erebus.ModBlocks;
 @SideOnly(Side.CLIENT)
 public class BlockBambooCropRender implements ISimpleBlockRenderingHandler {
 
-	public BlockBambooCropRender() {
-	}
-
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
 		renderer.renderAllFaces = true;

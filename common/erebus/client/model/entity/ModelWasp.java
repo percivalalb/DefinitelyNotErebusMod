@@ -10,6 +10,7 @@ import org.lwjgl.opengl.GL11;
 import erebus.entity.EntityWasp;
 
 public class ModelWasp extends ModelBase {
+
 	ModelRenderer Thx;
 	ModelRenderer ThxS;
 	ModelRenderer ThxTop;

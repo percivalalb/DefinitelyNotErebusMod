@@ -10,6 +10,7 @@ import org.lwjgl.opengl.GL11;
 import erebus.entity.EntityLocust;
 
 public class ModelLocust extends ModelBase {
+
 	ModelRenderer LAnt;
 	ModelRenderer RAnt;
 	ModelRenderer LEye;

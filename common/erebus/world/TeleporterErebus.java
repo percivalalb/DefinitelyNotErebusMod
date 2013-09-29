@@ -20,18 +20,13 @@ import erebus.ModBlocks;
 import erebus.core.helper.LogHelper;
 
 public class TeleporterErebus extends Teleporter {
+
 	public static final TeleporterErebus TELEPORTER_TO_OVERWORLD = new TeleporterErebus(DimensionManager.getWorld(0));
 	public static final TeleporterErebus TELEPORTER_TO_EREBUS = new TeleporterErebus(DimensionManager.getWorld(ErebusMod.erebusDimensionID));
 
 	private final WorldServer worldServerInstance;
-	/** A private Random() function in Teleporter */
 	private final Random random;
-	/** Stores successful portal placement locations for rapid lookup. */
 	private final LongHashMap destinationCoordinateCache = new LongHashMap();
-	/**
-	 * A list of valid keys for the destinationCoordainteCache. These are based
-	 * on the X & Z of the players initial location.
-	 */
 	private final List destinationCoordinateKeys = new ArrayList();
 
 	private TeleporterErebus(WorldServer par1WorldServer) {
@@ -40,9 +35,6 @@ public class TeleporterErebus extends Teleporter {
 		random = new Random(par1WorldServer.getSeed());
 	}
 
-	/**
-	 * Place an entity in a nearby portal, creating one if necessary.
-	 */
 	@Override
 	public void placeInPortal(Entity par1Entity, double par2, double par4, double par6, float par8) {
 		if (worldServerInstance.provider.dimensionId != ErebusMod.erebusDimensionID) {
@@ -72,9 +64,6 @@ public class TeleporterErebus extends Teleporter {
 		}
 	}
 
-	/**
-	 * Place an entity in a nearby portal which already exists.
-	 */
 	@Override
 	public boolean placeInExistingPortal(Entity par1Entity, double par2, double par4, double par6, float par8) {
 		short short1 = 128;
@@ -251,43 +240,43 @@ public class TeleporterErebus extends Teleporter {
 				d2 = j2 + 0.5D - par1Entity.posZ;
 				label274:
 
-				for (k2 = worldServerInstance.getActualHeight() - 1; k2 >= 0; --k2)
-					if (worldServerInstance.isAirBlock(i2, k2, j2)) {
-						while (k2 > 0 && worldServerInstance.isAirBlock(i2, k2 - 1, j2))
-							--k2;
+					for (k2 = worldServerInstance.getActualHeight() - 1; k2 >= 0; --k2)
+						if (worldServerInstance.isAirBlock(i2, k2, j2)) {
+							while (k2 > 0 && worldServerInstance.isAirBlock(i2, k2 - 1, j2))
+								--k2;
 
-						for (i3 = l1; i3 < l1 + 4; ++i3) {
-							l2 = i3 % 2;
-							k3 = 1 - l2;
+							for (i3 = l1; i3 < l1 + 4; ++i3) {
+								l2 = i3 % 2;
+								k3 = 1 - l2;
 
-							if (i3 % 4 >= 2) {
-								l2 = -l2;
-								k3 = -k3;
-							}
+								if (i3 % 4 >= 2) {
+									l2 = -l2;
+									k3 = -k3;
+								}
 
-							for (j3 = 0; j3 < 3; ++j3)
-								for (i4 = 0; i4 < 4; ++i4)
-									for (l3 = -1; l3 < 4; ++l3) {
-										k4 = i2 + (i4 - 1) * l2 + j3 * k3;
-										j4 = k2 + l3;
-										int l4 = j2 + (i4 - 1) * k3 - j3 * l2;
+								for (j3 = 0; j3 < 3; ++j3)
+									for (i4 = 0; i4 < 4; ++i4)
+										for (l3 = -1; l3 < 4; ++l3) {
+											k4 = i2 + (i4 - 1) * l2 + j3 * k3;
+											j4 = k2 + l3;
+											int l4 = j2 + (i4 - 1) * k3 - j3 * l2;
 
-										if (l3 < 0 && !worldServerInstance.getBlockMaterial(k4, j4, l4).isSolid() || l3 >= 0 && !worldServerInstance.isAirBlock(k4, j4, l4))
-											continue label274;
-									}
+											if (l3 < 0 && !worldServerInstance.getBlockMaterial(k4, j4, l4).isSolid() || l3 >= 0 && !worldServerInstance.isAirBlock(k4, j4, l4))
+												continue label274;
+										}
 
-							d4 = k2 + 0.5D - par1Entity.posY;
-							d3 = d1 * d1 + d4 * d4 + d2 * d2;
+								d4 = k2 + 0.5D - par1Entity.posY;
+								d3 = d1 * d1 + d4 * d4 + d2 * d2;
 
-							if (d0 < 0.0D || d3 < d0) {
-								d0 = d3;
-								l = i2;
-								i1 = k2;
-								j1 = j2;
-								k1 = i3 % 4;
+								if (d0 < 0.0D || d3 < d0) {
+									d0 = d3;
+									l = i2;
+									i1 = k2;
+									j1 = j2;
+									k1 = i3 % 4;
+								}
 							}
 						}
-					}
 			}
 		}
 
@@ -299,37 +288,37 @@ public class TeleporterErebus extends Teleporter {
 					d2 = j2 + 0.5D - par1Entity.posZ;
 					label222:
 
-					for (k2 = worldServerInstance.getActualHeight() - 1; k2 >= 0; --k2)
-						if (worldServerInstance.isAirBlock(i2, k2, j2)) {
-							while (k2 > 0 && worldServerInstance.isAirBlock(i2, k2 - 1, j2))
-								--k2;
+						for (k2 = worldServerInstance.getActualHeight() - 1; k2 >= 0; --k2)
+							if (worldServerInstance.isAirBlock(i2, k2, j2)) {
+								while (k2 > 0 && worldServerInstance.isAirBlock(i2, k2 - 1, j2))
+									--k2;
 
-							for (i3 = l1; i3 < l1 + 2; ++i3) {
-								l2 = i3 % 2;
-								k3 = 1 - l2;
+								for (i3 = l1; i3 < l1 + 2; ++i3) {
+									l2 = i3 % 2;
+									k3 = 1 - l2;
 
-								for (j3 = 0; j3 < 4; ++j3)
-									for (i4 = -1; i4 < 4; ++i4) {
-										l3 = i2 + (j3 - 1) * l2;
-										k4 = k2 + i4;
-										j4 = j2 + (j3 - 1) * k3;
+									for (j3 = 0; j3 < 4; ++j3)
+										for (i4 = -1; i4 < 4; ++i4) {
+											l3 = i2 + (j3 - 1) * l2;
+											k4 = k2 + i4;
+											j4 = j2 + (j3 - 1) * k3;
 
-										if (i4 < 0 && !worldServerInstance.getBlockMaterial(l3, k4, j4).isSolid() || i4 >= 0 && !worldServerInstance.isAirBlock(l3, k4, j4))
-											continue label222;
+											if (i4 < 0 && !worldServerInstance.getBlockMaterial(l3, k4, j4).isSolid() || i4 >= 0 && !worldServerInstance.isAirBlock(l3, k4, j4))
+												continue label222;
+										}
+
+									d4 = k2 + 0.5D - par1Entity.posY;
+									d3 = d1 * d1 + d4 * d4 + d2 * d2;
+
+									if (d0 < 0.0D || d3 < d0) {
+										d0 = d3;
+										l = i2;
+										i1 = k2;
+										j1 = j2;
+										k1 = i3 % 2;
 									}
-
-								d4 = k2 + 0.5D - par1Entity.posY;
-								d3 = d1 * d1 + d4 * d4 + d2 * d2;
-
-								if (d0 < 0.0D || d3 < d0) {
-									d0 = d3;
-									l = i2;
-									i1 = k2;
-									j1 = j2;
-									k1 = i3 % 2;
 								}
 							}
-						}
 				}
 			}
 
@@ -388,10 +377,6 @@ public class TeleporterErebus extends Teleporter {
 		return true;
 	}
 
-	/**
-	 * called periodically to remove out-of-date portal locations from the cache
-	 * list. Argument par1 is a WorldServer.getTotalWorldTime() value.
-	 */
 	@Override
 	public void removeStalePortalLocations(long par1) {
 		if (par1 % 100L == 0L) {

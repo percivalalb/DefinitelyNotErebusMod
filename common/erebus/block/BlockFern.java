@@ -3,7 +3,6 @@ package erebus.block;
 import java.util.ArrayList;
 import java.util.Random;
 
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,8 +12,8 @@ import net.minecraftforge.common.IShearable;
 
 public class BlockFern extends BlockUndergroundFlower implements IShearable {
 
-	public BlockFern(int par1) {
-		super(par1, Material.vine);
+	public BlockFern(int id) {
+		super(id);
 		float var3 = 0.4F;
 		setBlockBounds(0.5F - var3, 0.0F, 0.5F - var3, 0.5F + var3, 0.8F, 0.5F + var3);
 	}

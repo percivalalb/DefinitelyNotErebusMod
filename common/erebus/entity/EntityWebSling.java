@@ -26,42 +26,29 @@ public class EntityWebSling extends EntitySnowball {
 		return "erebus:webslingsplat";
 	}
 
-	/**
-	 * Called when this Entity hits a block or entity.
-	 */
 	@Override
 	protected void onImpact(MovingObjectPosition par1MovingObjectPosition) {
-		if (!this.worldObj.isRemote) {
-			int var1 = MathHelper.floor_double(this.posX);
-			int var2 = MathHelper.floor_double(this.posY);
-			int var3 = MathHelper.floor_double(this.posZ);
+		if (!worldObj.isRemote) {
+			int var1 = MathHelper.floor_double(posX);
+			int var2 = MathHelper.floor_double(posY);
+			int var3 = MathHelper.floor_double(posZ);
 
-			if (par1MovingObjectPosition.entityHit != null) {
-				this.worldObj.setBlock(var1, var2, var3, Block.web.blockID);
-			} else if (par1MovingObjectPosition.entityHit == null && Block.web.canPlaceBlockAt(this.worldObj, var1, var2, var3)) {
-				this.worldObj.setBlock(var1, var2, var3, Block.web.blockID);
-			}
-			if (!this.worldObj.isRemote) {
-				this.setDead();
-			}
+			if (par1MovingObjectPosition.entityHit != null)
+				worldObj.setBlock(var1, var2, var3, Block.web.blockID);
+			else if (par1MovingObjectPosition.entityHit == null && Block.web.canPlaceBlockAt(worldObj, var1, var2, var3))
+				worldObj.setBlock(var1, var2, var3, Block.web.blockID);
+			if (!worldObj.isRemote)
+				setDead();
 		}
-		this.worldObj.playSoundAtEntity(this, getWebSlingSplatSound(), 1.0F, 1.0F);
+		worldObj.playSoundAtEntity(this, getWebSlingSplatSound(), 1.0F, 1.0F);
 	}
 
-	/**
-	 * Returns true if other Entities should be prevented from moving through
-	 * this Entity.
-	 */
 	@Override
 	public boolean canBeCollidedWith() {
 		return false;
 	}
 
-	/**
-	 * Called when the entity is attacked.
-	 */
 	public boolean attackEntityFrom(DamageSource par1DamageSource, int par2) {
 		return false;
 	}
-
 }

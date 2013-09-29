@@ -9,7 +9,8 @@ import erebus.ErebusMod;
 import erebus.ModItems;
 
 public class RecipePaxel implements IRecipe {
-	private ItemStack result;
+
+	private final ItemStack result;
 
 	public RecipePaxel() {
 		result = new ItemStack(ModItems.jadePaxel);

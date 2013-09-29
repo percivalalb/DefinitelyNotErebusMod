@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.MathHelper;
 
 public class ModelCentipede extends ModelBase {
+
 	// fields
 	ModelRenderer Head1;
 	ModelRenderer Head3;
@@ -508,170 +509,170 @@ public class ModelCentipede extends ModelBase {
 		float be = MathHelper.cos(par2 + 4.0F * 1.0F) * 1.5F * par3;
 		float bf = MathHelper.cos(par2 + 5.0F * 1.0F) * 0.75F * par3;
 
-		this.Head1.rotationPointX = bf;
-		this.Head3.rotationPointX = bf;
-		this.RAnt.rotationPointX = bf;
-		this.LAnt.rotationPointX = bf;
-		this.RMand1.rotationPointX = bf;
-		this.RMand2.rotationPointX = bf;
-		this.RMand3.rotationPointX = bf;
-		this.LMand1.rotationPointX = bf;
-		this.LMand2.rotationPointX = bf;
-		this.LMand3.rotationPointX = bf;
+		Head1.rotationPointX = bf;
+		Head3.rotationPointX = bf;
+		RAnt.rotationPointX = bf;
+		LAnt.rotationPointX = bf;
+		RMand1.rotationPointX = bf;
+		RMand2.rotationPointX = bf;
+		RMand3.rotationPointX = bf;
+		LMand1.rotationPointX = bf;
+		LMand2.rotationPointX = bf;
+		LMand3.rotationPointX = bf;
 
-		this.BodA1.rotationPointX = ba;
-		this.BodA2.rotationPointX = ba;
+		BodA1.rotationPointX = ba;
+		BodA2.rotationPointX = ba;
 
-		this.BodB1.rotationPointX = bb;
-		this.BodB2.rotationPointX = bb;
+		BodB1.rotationPointX = bb;
+		BodB2.rotationPointX = bb;
 
-		this.BodC1.rotationPointX = bc;
-		this.BodC2.rotationPointX = bc;
+		BodC1.rotationPointX = bc;
+		BodC2.rotationPointX = bc;
 
-		this.BodD1.rotationPointX = bd;
-		this.BodD2.rotationPointX = bd;
+		BodD1.rotationPointX = bd;
+		BodD2.rotationPointX = bd;
 
-		this.BodE1.rotationPointX = be;
-		this.BodE2.rotationPointX = be;
+		BodE1.rotationPointX = be;
+		BodE2.rotationPointX = be;
 
-		this.BodF1.rotationPointX = bf;
-		this.BodF2.rotationPointX = bf;
+		BodF1.rotationPointX = bf;
+		BodF2.rotationPointX = bf;
 
-		this.RLA1.rotationPointX = ba - 3.0F;
-		this.RLA2.rotationPointX = ba - 3.0F;
-		this.RLA3.rotationPointX = ba - 3.0F;
-		this.LLA1.rotationPointX = ba + 3.0F;
-		this.LLA2.rotationPointX = ba + 3.0F;
-		this.LLA3.rotationPointX = ba + 3.0F;
+		RLA1.rotationPointX = ba - 3.0F;
+		RLA2.rotationPointX = ba - 3.0F;
+		RLA3.rotationPointX = ba - 3.0F;
+		LLA1.rotationPointX = ba + 3.0F;
+		LLA2.rotationPointX = ba + 3.0F;
+		LLA3.rotationPointX = ba + 3.0F;
 
-		this.RLB1.rotationPointX = bb - 3.0F;
-		this.RLB2.rotationPointX = bb - 3.0F;
-		this.RLB3.rotationPointX = bb - 3.0F;
-		this.LLB1.rotationPointX = bb + 3.0F;
-		this.LLB2.rotationPointX = bb + 3.0F;
-		this.LLB3.rotationPointX = bb + 3.0F;
+		RLB1.rotationPointX = bb - 3.0F;
+		RLB2.rotationPointX = bb - 3.0F;
+		RLB3.rotationPointX = bb - 3.0F;
+		LLB1.rotationPointX = bb + 3.0F;
+		LLB2.rotationPointX = bb + 3.0F;
+		LLB3.rotationPointX = bb + 3.0F;
 
-		this.RLC1.rotationPointX = bc - 3.0F;
-		this.RLC2.rotationPointX = bc - 3.0F;
-		this.RLC3.rotationPointX = bc - 3.0F;
-		this.LLC1.rotationPointX = bc + 3.0F;
-		this.LLC2.rotationPointX = bc + 3.0F;
-		this.LLC3.rotationPointX = bc + 3.0F;
+		RLC1.rotationPointX = bc - 3.0F;
+		RLC2.rotationPointX = bc - 3.0F;
+		RLC3.rotationPointX = bc - 3.0F;
+		LLC1.rotationPointX = bc + 3.0F;
+		LLC2.rotationPointX = bc + 3.0F;
+		LLC3.rotationPointX = bc + 3.0F;
 
-		this.RLD1.rotationPointX = bd - 3.0F;
-		this.RLD2.rotationPointX = bd - 3.0F;
-		this.RLD3.rotationPointX = bd - 3.0F;
-		this.LLD1.rotationPointX = bd + 3.0F;
-		this.LLD2.rotationPointX = bd + 3.0F;
-		this.LLD3.rotationPointX = bd + 3.0F;
+		RLD1.rotationPointX = bd - 3.0F;
+		RLD2.rotationPointX = bd - 3.0F;
+		RLD3.rotationPointX = bd - 3.0F;
+		LLD1.rotationPointX = bd + 3.0F;
+		LLD2.rotationPointX = bd + 3.0F;
+		LLD3.rotationPointX = bd + 3.0F;
 
-		this.RLE1.rotationPointX = be - 3.0F;
-		this.RLE2.rotationPointX = be - 3.0F;
-		this.RLE3.rotationPointX = be - 3.0F;
-		this.LLE1.rotationPointX = be + 3.0F;
-		this.LLE2.rotationPointX = be + 3.0F;
-		this.LLE3.rotationPointX = be + 3.0F;
+		RLE1.rotationPointX = be - 3.0F;
+		RLE2.rotationPointX = be - 3.0F;
+		RLE3.rotationPointX = be - 3.0F;
+		LLE1.rotationPointX = be + 3.0F;
+		LLE2.rotationPointX = be + 3.0F;
+		LLE3.rotationPointX = be + 3.0F;
 
-		this.RLA1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		this.RLA2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		this.RLA3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		this.LLA1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
-		this.LLA2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
-		this.LLA3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
+		RLA1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
+		RLA2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
+		RLA3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
+		LLA1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
+		LLA2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
+		LLA3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
 
-		this.RLA1.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3;
-		this.RLA2.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3 - 0.2617994F;
-		this.RLA3.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3 - 0.5235988F;
-		this.LLA1.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3;
-		this.LLA2.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3 + 0.2617994F;
-		this.LLA3.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3 + 0.5235988F;
+		RLA1.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3;
+		RLA2.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3 - 0.2617994F;
+		RLA3.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3 - 0.5235988F;
+		LLA1.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3;
+		LLA2.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3 + 0.2617994F;
+		LLA3.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3 + 0.5235988F;
 
-		this.RLB1.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
-		this.RLB2.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
-		this.RLB3.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
-		this.LLB1.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
-		this.LLB2.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
-		this.LLB3.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
+		RLB1.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
+		RLB2.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
+		RLB3.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
+		LLB1.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
+		LLB2.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
+		LLB3.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
 
-		this.RLB1.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3;
-		this.RLB2.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3 - 0.2617994F;
-		this.RLB3.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3 - 0.5235988F;
-		this.LLB1.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3;
-		this.LLB2.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3 + 0.2617994F;
-		this.LLB3.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3 + 0.5235988F;
+		RLB1.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3;
+		RLB2.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3 - 0.2617994F;
+		RLB3.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3 - 0.5235988F;
+		LLB1.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3;
+		LLB2.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3 + 0.2617994F;
+		LLB3.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3 + 0.5235988F;
 
-		this.RLC1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		this.RLC2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		this.RLC3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		this.LLC1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
-		this.LLC2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
-		this.LLC3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
+		RLC1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
+		RLC2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
+		RLC3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
+		LLC1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
+		LLC2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
+		LLC3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
 
-		this.RLC1.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3;
-		this.RLC2.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3 - 0.2617994F;
-		this.RLC3.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3 - 0.5235988F;
-		this.LLC1.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3;
-		this.LLC2.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3 + 0.2617994F;
-		this.LLC3.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3 + 0.5235988F;
+		RLC1.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3;
+		RLC2.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3 - 0.2617994F;
+		RLC3.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3 - 0.5235988F;
+		LLC1.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3;
+		LLC2.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3 + 0.2617994F;
+		LLC3.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3 + 0.5235988F;
 
-		this.RLD1.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
-		this.RLD2.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
-		this.RLD3.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
-		this.LLD1.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
-		this.LLD2.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
-		this.LLD3.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
+		RLD1.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
+		RLD2.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
+		RLD3.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
+		LLD1.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
+		LLD2.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
+		LLD3.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
 
-		this.RLD1.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3;
-		this.RLD2.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3 - 0.2617994F;
-		this.RLD3.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3 - 0.5235988F;
-		this.LLD1.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3;
-		this.LLD2.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3 + 0.2617994F;
-		this.LLD3.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3 + 0.5235988F;
+		RLD1.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3;
+		RLD2.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3 - 0.2617994F;
+		RLD3.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3 - 0.5235988F;
+		LLD1.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3;
+		LLD2.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3 + 0.2617994F;
+		LLD3.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3 + 0.5235988F;
 
-		this.RLE1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		this.RLE2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		this.RLE3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		this.LLE1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
-		this.LLE2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
-		this.LLE3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
+		RLE1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
+		RLE2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
+		RLE3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
+		LLE1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
+		LLE2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
+		LLE3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
 
-		this.RLE1.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3;
-		this.RLE2.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3 - 0.2617994F;
-		this.RLE3.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3 - 0.5235988F;
-		this.LLE1.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3;
-		this.LLE2.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3 + 0.2617994F;
-		this.LLE3.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3 + 0.5235988F;
+		RLE1.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3;
+		RLE2.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3 - 0.2617994F;
+		RLE3.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3 - 0.5235988F;
+		LLE1.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3;
+		LLE2.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3 + 0.2617994F;
+		LLE3.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3 + 0.5235988F;
 	}
 
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
-		this.Head1.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.Head3.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.RAnt.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.175F;
-		this.LAnt.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.175F;
-		this.RMand1.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.175F;
-		this.RMand2.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.RMand3.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.175F;
-		this.LMand1.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.175F;
-		this.LMand2.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.LMand3.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.175F;
+		Head1.rotateAngleY = par4 / (180F / (float) Math.PI);
+		Head3.rotateAngleY = par4 / (180F / (float) Math.PI);
+		RAnt.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.175F;
+		LAnt.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.175F;
+		RMand1.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.175F;
+		RMand2.rotateAngleY = par4 / (180F / (float) Math.PI);
+		RMand3.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.175F;
+		LMand1.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.175F;
+		LMand2.rotateAngleY = par4 / (180F / (float) Math.PI);
+		LMand3.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.175F;
 
-		this.Head1.rotateAngleX = par5 / (180F / (float) Math.PI);
-		this.Head3.rotateAngleX = par5 / (180F / (float) Math.PI);
-		this.RAnt.rotateAngleX = par5 / (180F / (float) Math.PI);
-		this.LAnt.rotateAngleX = par5 / (180F / (float) Math.PI);
-		this.RMand1.rotateAngleX = par5 / (180F / (float) Math.PI);
-		this.RMand2.rotateAngleX = par5 / (180F / (float) Math.PI);
-		this.RMand3.rotateAngleX = par5 / (180F / (float) Math.PI);
-		this.LMand1.rotateAngleX = par5 / (180F / (float) Math.PI);
-		this.LMand2.rotateAngleX = par5 / (180F / (float) Math.PI);
-		this.LMand3.rotateAngleX = par5 / (180F / (float) Math.PI);
+		Head1.rotateAngleX = par5 / (180F / (float) Math.PI);
+		Head3.rotateAngleX = par5 / (180F / (float) Math.PI);
+		RAnt.rotateAngleX = par5 / (180F / (float) Math.PI);
+		LAnt.rotateAngleX = par5 / (180F / (float) Math.PI);
+		RMand1.rotateAngleX = par5 / (180F / (float) Math.PI);
+		RMand2.rotateAngleX = par5 / (180F / (float) Math.PI);
+		RMand3.rotateAngleX = par5 / (180F / (float) Math.PI);
+		LMand1.rotateAngleX = par5 / (180F / (float) Math.PI);
+		LMand2.rotateAngleX = par5 / (180F / (float) Math.PI);
+		LMand3.rotateAngleX = par5 / (180F / (float) Math.PI);
 
-		this.RLF1.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.919862F;
-		this.RLF2.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.919862F;
-		this.RLF3.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.919862F;
-		this.LLF1.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.22173F;
-		this.LLF2.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.22173F;
-		this.LLF3.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.22173F;
+		RLF1.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.919862F;
+		RLF2.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.919862F;
+		RLF3.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.919862F;
+		LLF1.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.22173F;
+		LLF2.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.22173F;
+		LLF3.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.22173F;
 	}
 }

@@ -3,6 +3,7 @@ package erebus.block;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -16,8 +17,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
 
 public class BlockLeavesErebus extends BlockLeaves {
-	public static final String[] leafTypes = new String[] { "acacia", "eucalyptus", "mahogany", "asper", "mossbark", "pink" };
 
+	public static final String[] leafTypes = new String[] { "acacia", "eucalyptus", "mahogany", "asper", "mossbark", "pink" };
 	public static final byte dataAcacia = 0, dataEucalyptus = 1, dataMahogany = 2, dataAsper = 3, dataMossbark = 4, dataPink = 5;
 	public static final byte dataAcaciaDecay = 8, dataEucalyptusDecay = 9, dataMahoganyDecay = 10, dataAsperDecay = 11, dataMossbarkDecay = 12, dataPinkDecay = 13;
 
@@ -58,9 +59,8 @@ public class BlockLeavesErebus extends BlockLeaves {
 				int j1 = b1 * b1;
 				int k1 = b1 / 2;
 
-				if (adjacentTreeBlocks == null) {
+				if (adjacentTreeBlocks == null)
 					adjacentTreeBlocks = new int[b1 * b1 * b1];
-				}
 
 				int l1;
 
@@ -69,57 +69,44 @@ public class BlockLeavesErebus extends BlockLeaves {
 					int j2;
 					int k2;
 
-					for (l1 = -b0; l1 <= b0; ++l1) {
-						for (i2 = -b0; i2 <= b0; ++i2) {
+					for (l1 = -b0; l1 <= b0; ++l1)
+						for (i2 = -b0; i2 <= b0; ++i2)
 							for (j2 = -b0; j2 <= b0; ++j2) {
 								k2 = world.getBlockId(x + l1, y + i2, z + j2);
 
 								Block block = Block.blocksList[k2];
 
-								if (block != null && block.canSustainLeaves(world, x + l1, y + i2, z + j2)) {
+								if (block != null && block.canSustainLeaves(world, x + l1, y + i2, z + j2))
 									adjacentTreeBlocks[(l1 + k1) * j1 + (i2 + k1) * b1 + j2 + k1] = 0;
-								} else if (block != null && block.isLeaves(world, x + l1, y + i2, z + j2)) {
+								else if (block != null && block.isLeaves(world, x + l1, y + i2, z + j2))
 									adjacentTreeBlocks[(l1 + k1) * j1 + (i2 + k1) * b1 + j2 + k1] = -2;
-								} else {
+								else
 									adjacentTreeBlocks[(l1 + k1) * j1 + (i2 + k1) * b1 + j2 + k1] = -1;
-								}
 							}
-						}
-					}
 
-					for (l1 = 1; l1 <= 10; ++l1) { // increased range 4 -> 10
-						for (i2 = -b0; i2 <= b0; ++i2) {
-							for (j2 = -b0; j2 <= b0; ++j2) {
-								for (k2 = -b0; k2 <= b0; ++k2) {
+					for (l1 = 1; l1 <= 10; ++l1)
+						for (i2 = -b0; i2 <= b0; ++i2)
+							for (j2 = -b0; j2 <= b0; ++j2)
+								for (k2 = -b0; k2 <= b0; ++k2)
 									if (adjacentTreeBlocks[(i2 + k1) * j1 + (j2 + k1) * b1 + k2 + k1] == l1 - 1) {
-										if (adjacentTreeBlocks[(i2 + k1 - 1) * j1 + (j2 + k1) * b1 + k2 + k1] == -2) {
+										if (adjacentTreeBlocks[(i2 + k1 - 1) * j1 + (j2 + k1) * b1 + k2 + k1] == -2)
 											adjacentTreeBlocks[(i2 + k1 - 1) * j1 + (j2 + k1) * b1 + k2 + k1] = l1;
-										}
 
-										if (adjacentTreeBlocks[(i2 + k1 + 1) * j1 + (j2 + k1) * b1 + k2 + k1] == -2) {
+										if (adjacentTreeBlocks[(i2 + k1 + 1) * j1 + (j2 + k1) * b1 + k2 + k1] == -2)
 											adjacentTreeBlocks[(i2 + k1 + 1) * j1 + (j2 + k1) * b1 + k2 + k1] = l1;
-										}
 
-										if (adjacentTreeBlocks[(i2 + k1) * j1 + (j2 + k1 - 1) * b1 + k2 + k1] == -2) {
+										if (adjacentTreeBlocks[(i2 + k1) * j1 + (j2 + k1 - 1) * b1 + k2 + k1] == -2)
 											adjacentTreeBlocks[(i2 + k1) * j1 + (j2 + k1 - 1) * b1 + k2 + k1] = l1;
-										}
 
-										if (adjacentTreeBlocks[(i2 + k1) * j1 + (j2 + k1 + 1) * b1 + k2 + k1] == -2) {
+										if (adjacentTreeBlocks[(i2 + k1) * j1 + (j2 + k1 + 1) * b1 + k2 + k1] == -2)
 											adjacentTreeBlocks[(i2 + k1) * j1 + (j2 + k1 + 1) * b1 + k2 + k1] = l1;
-										}
 
-										if (adjacentTreeBlocks[(i2 + k1) * j1 + (j2 + k1) * b1 + (k2 + k1 - 1)] == -2) {
-											adjacentTreeBlocks[(i2 + k1) * j1 + (j2 + k1) * b1 + (k2 + k1 - 1)] = l1;
-										}
+										if (adjacentTreeBlocks[(i2 + k1) * j1 + (j2 + k1) * b1 + k2 + k1 - 1] == -2)
+											adjacentTreeBlocks[(i2 + k1) * j1 + (j2 + k1) * b1 + k2 + k1 - 1] = l1;
 
-										if (adjacentTreeBlocks[(i2 + k1) * j1 + (j2 + k1) * b1 + k2 + k1 + 1] == -2) {
+										if (adjacentTreeBlocks[(i2 + k1) * j1 + (j2 + k1) * b1 + k2 + k1 + 1] == -2)
 											adjacentTreeBlocks[(i2 + k1) * j1 + (j2 + k1) * b1 + k2 + k1 + 1] = l1;
-										}
 									}
-								}
-							}
-						}
-					}
 				}
 
 				l1 = adjacentTreeBlocks[k1 * j1 + k1 * b1 + k1];
@@ -183,18 +170,16 @@ public class BlockLeavesErebus extends BlockLeaves {
 		if (!world.isRemote) {
 			byte saplingChance = (byte) (meta < 8 ? 20 : 40);
 
-			if (world.rand.nextInt(saplingChance) == 0 && damageDropped(meta) != -1) {
+			if (world.rand.nextInt(saplingChance) == 0 && damageDropped(meta) != -1)
 				dropBlockAsItem_do(world, x, y, z, new ItemStack(idDropped(meta, world.rand, fortune), 1, damageDropped(meta)));
-			}
 		}
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int id, CreativeTabs creativeTab, List list) {
-		for (int a = 0; a < leafTypes.length; a++) {
+		for (int a = 0; a < leafTypes.length; a++)
 			list.add(new ItemStack(id, 1, a));
-		}
 	}
 
 	@Override
@@ -207,9 +192,8 @@ public class BlockLeavesErebus extends BlockLeaves {
 	public void registerIcons(IconRegister iconRegister) {
 		iconArray = new Icon[leafTypes.length];
 
-		for (int a = 0; a < leafTypes.length; a++) {
+		for (int a = 0; a < leafTypes.length; a++)
 			iconArray[a] = iconRegister.registerIcon("erebus:leaves_" + leafTypes[a]);
-		}
 	}
 
 	@Override
@@ -227,8 +211,5 @@ public class BlockLeavesErebus extends BlockLeaves {
 
 	@Override
 	public void beginLeavesDecay(World world, int x, int y, int z) {
-		// int meta=world.getBlockMetadata(x,y,z);
-		// if
-		// (meta<8)world.setBlockMetadataWithNotify(x,y,z,world.getBlockMetadata(x,y,z)+8,4);
 	}
 }

@@ -20,6 +20,7 @@ import com.google.common.io.ByteArrayDataOutput;
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 
 public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpawnData {
+
 	private int shouldDo;
 	public float WidowSize = 0.4F + rand.nextFloat();
 	Class[] preys = { EntityFly.class, EntityBotFly.class };
@@ -108,12 +109,12 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	}
 
 	public boolean isClimbing() {
-		return (!onGround) && (isOnLadder());
+		return !onGround && isOnLadder();
 	}
 
 	@Override
 	public boolean isOnLadder() {
-		return (isCollidedHorizontally);
+		return isCollidedHorizontally;
 	}
 
 	@Override

@@ -1,14 +1,15 @@
 package erebus.client.model.entity;
 
-import org.lwjgl.opengl.GL11;
-
-import erebus.entity.EntityMosquito;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+import org.lwjgl.opengl.GL11;
+
+import erebus.entity.EntityMosquito;
+
 public class ModelMosquito extends ModelBase {
+
 	// fields
 	ModelRenderer Tail;
 	ModelRenderer Body;
@@ -59,9 +60,9 @@ public class ModelMosquito extends ModelBase {
 		WingRight.render(f5);
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
-		GL11.glScalef(1.0F + (mosquito.getBloodConsumed() / 10F), 1.0F, 1.0F);
+		GL11.glScalef(1.0F + mosquito.getBloodConsumed() / 10F, 1.0F, 1.0F);
 		Body.render(f5);
-		GL11.glScalef(1.0F - (mosquito.getBloodConsumed() / 10F), 1.0F, 1.0F);
+		GL11.glScalef(1.0F - mosquito.getBloodConsumed() / 10F, 1.0F, 1.0F);
 		GL11.glScalef(mosquito.suckFloat, 1.0F, 1.0F);
 		Head4.render(f5);
 		Head2.render(f5);
@@ -81,11 +82,10 @@ public class ModelMosquito extends ModelBase {
 
 		// makes the choice between sitting and default model by checking if it
 		// is riding an entity
-		if (entity.ridingEntity != null) {
+		if (entity.ridingEntity != null)
 			sittingModel();
-		} else {
+		else
 			defaultModel();
-		}
 
 		// wing animation
 		EntityMosquito mosquito = (EntityMosquito) entity;

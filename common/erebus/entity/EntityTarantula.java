@@ -12,9 +12,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import erebus.ModItems;
 
-/**
- * @author ProPercivalalb
- */
 public class EntityTarantula extends EntitySpider {
 
 	public EntityTarantula(World par1World) {
@@ -141,11 +138,5 @@ public class EntityTarantula extends EntitySpider {
 			entityDropItem(new ItemStack(ModItems.erebusFood, legDrop + par2, 4), 0.0F);
 
 		dropItem(Item.spiderEye.itemID, chanceFiftyFifty + par2);
-
-		/*
-		 * 50% chance for 1 Spider eye, 50% for two 40% chance for 1 String, 40%
-		 * for two and 20% for three 20% for zero tarantula legs, 60% for 1 and
-		 * 20% for two
-		 */
 	}
 }

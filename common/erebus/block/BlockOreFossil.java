@@ -11,8 +11,8 @@ import erebus.ModItems;
 
 public class BlockOreFossil extends Block {
 
-	public BlockOreFossil(int par1) {
-		super(par1, Material.rock);
+	public BlockOreFossil(int id) {
+		super(id, Material.rock);
 	}
 
 	@Override

@@ -14,15 +14,11 @@ import net.minecraftforge.common.IPlantable;
 
 public class BlockUndergroundFlower extends Block implements IPlantable {
 
-	protected BlockUndergroundFlower(int par1, Material par3Material) {
-		super(par1, par3Material);
+	protected BlockUndergroundFlower(int id) {
+		super(id, Material.vine);
 		setTickRandomly(true);
 		float var4 = 0.2F;
 		setBlockBounds(0.5F - var4, 0.0F, 0.5F - var4, 0.5F + var4, var4 * 3.0F, 0.5F + var4);
-	}
-
-	protected BlockUndergroundFlower(int par1, int par2) {
-		this(par1, Material.plants);
 	}
 
 	@Override
@@ -55,7 +51,7 @@ public class BlockUndergroundFlower extends Block implements IPlantable {
 	@Override
 	public boolean canBlockStay(World par1World, int par2, int par3, int par4) {
 		Block soil = blocksList[par1World.getBlockId(par2, par3 - 1, par4)];
-		return (soil != null && soil.canSustainPlant(par1World, par2, par3 - 1, par4, ForgeDirection.UP, this));
+		return soil != null && soil.canSustainPlant(par1World, par2, par3 - 1, par4, ForgeDirection.UP, this);
 	}
 
 	@Override

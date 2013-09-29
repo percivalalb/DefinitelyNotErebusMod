@@ -17,8 +17,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 
 public class BlockThorns extends Block implements IShearable {
-	public BlockThorns(int par1) {
-		super(par1, Material.vine);
+
+	public BlockThorns(int id) {
+		super(id, Material.vine);
 		setTickRandomly(true);
 	}
 
@@ -178,17 +179,17 @@ public class BlockThorns extends Block implements IShearable {
 			int k1;
 			label138:
 
-			for (i1 = par2 - b0; i1 <= par2 + b0; ++i1)
-				for (j1 = par4 - b0; j1 <= par4 + b0; ++j1)
-					for (k1 = par3 - 1; k1 <= par3 + 1; ++k1)
-						if (par1World.getBlockId(i1, k1, j1) == blockID) {
-							--l;
+				for (i1 = par2 - b0; i1 <= par2 + b0; ++i1)
+					for (j1 = par4 - b0; j1 <= par4 + b0; ++j1)
+						for (k1 = par3 - 1; k1 <= par3 + 1; ++k1)
+							if (par1World.getBlockId(i1, k1, j1) == blockID) {
+								--l;
 
-							if (l <= 0) {
-								flag = true;
-								break label138;
+								if (l <= 0) {
+									flag = true;
+									break label138;
+								}
 							}
-						}
 
 			i1 = par1World.getBlockMetadata(par2, par3, par4);
 			j1 = par1World.rand.nextInt(6);

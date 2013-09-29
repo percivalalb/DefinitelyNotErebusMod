@@ -1,6 +1,7 @@
 package erebus.world.feature;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -8,37 +9,27 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import erebus.ModBlocks;
 
 public class WorldGenErebusHugeTree extends WorldGenerator {
-	/** The base height of the tree */
+
 	private final int baseHeight;
-
-	/** Sets the metadata for the wood blocks used */
 	private final int woodMetadata;
-
-	/** Sets the metadata for the leaves used in huge trees */
 	private final int leavesMetadata;
-
-	/** Sets whether thorns generate */
 	private final boolean thorns;
-
-	/** Sets the ID of the wood blocks used */
 	private final int woodID;
-
-	/** Sets the ID of the leaves used in huge trees */
 	private final int leavesID;
 
 	public WorldGenErebusHugeTree(boolean par1, int par2, int par3, int par4, boolean par5, int par6, int par7) {
 		super(par1);
-		this.baseHeight = par2;
-		this.woodMetadata = par3;
-		this.leavesMetadata = par4;
-		this.thorns = par5;
-		this.woodID = par6;
-		this.leavesID = par7;
+		baseHeight = par2;
+		woodMetadata = par3;
+		leavesMetadata = par4;
+		thorns = par5;
+		woodID = par6;
+		leavesID = par7;
 	}
 
 	@Override
 	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5) {
-		int var6 = par2Random.nextInt(3) + this.baseHeight;
+		int var6 = par2Random.nextInt(3) + baseHeight;
 		boolean var7 = true;
 
 		if (par4 >= 1 && par4 + var6 + 1 <= 256) {
@@ -50,33 +41,27 @@ public class WorldGenErebusHugeTree extends WorldGenerator {
 			for (var8 = par4; var8 <= par4 + 1 + var6; ++var8) {
 				byte var9 = 2;
 
-				if (var8 == par4) {
+				if (var8 == par4)
 					var9 = 1;
-				}
 
-				if (var8 >= par4 + 1 + var6 - 2) {
+				if (var8 >= par4 + 1 + var6 - 2)
 					var9 = 2;
-				}
 
-				for (var10 = par3 - var9; var10 <= par3 + var9 && var7; ++var10) {
-					for (var11 = par5 - var9; var11 <= par5 + var9 && var7; ++var11) {
+				for (var10 = par3 - var9; var10 <= par3 + var9 && var7; ++var10)
+					for (var11 = par5 - var9; var11 <= par5 + var9 && var7; ++var11)
 						if (var8 >= 0 && var8 < 256) {
 							var12 = par1World.getBlockId(var10, var8, var11);
 
-							if (var12 != 0 && (Block.blocksList[var12] != null && !Block.blocksList[var12].isLeaves(par1World, var10, var8, var11)) && var12 != Block.grass.blockID && var12 != Block.dirt.blockID &&
-							(Block.blocksList[var12] != null && !Block.blocksList[var12].isWood(par1World, var10, var8, var11)) && var12 != Block.sapling.blockID) {
+							if (var12 != 0 && Block.blocksList[var12] != null && !Block.blocksList[var12].isLeaves(par1World, var10, var8, var11) && var12 != Block.grass.blockID && var12 != Block.dirt.blockID &&
+							Block.blocksList[var12] != null && !Block.blocksList[var12].isWood(par1World, var10, var8, var11) && var12 != Block.sapling.blockID)
 								var7 = false;
-							}
-						} else {
+						} else
 							var7 = false;
-						}
-					}
-				}
 			}
 
-			if (!var7) {
+			if (!var7)
 				return false;
-			} else {
+			else {
 				var8 = par1World.getBlockId(par3, par4 - 1, par5);
 
 				if ((var8 == Block.grass.blockID || var8 == Block.dirt.blockID) && par4 < 256 - var6 - 1) {
@@ -84,18 +69,18 @@ public class WorldGenErebusHugeTree extends WorldGenerator {
 					par1World.setBlock(par3 + 1, par4 - 1, par5, Block.dirt.blockID);
 					par1World.setBlock(par3, par4 - 1, par5 + 1, Block.dirt.blockID);
 					par1World.setBlock(par3 + 1, par4 - 1, par5 + 1, Block.dirt.blockID);
-					this.growLeaves(par1World, par3, par5, par4 + var6, 2, par2Random);
+					growLeaves(par1World, par3, par5, par4 + var6, 2, par2Random);
 
 					for (int var14 = par4 + var6 - 2 - par2Random.nextInt(4); var14 > par4 + var6 / 2; var14 -= 2 + par2Random.nextInt(4)) {
 						float var15 = par2Random.nextFloat() * (float) Math.PI * 2.0F;
 						var11 = par3 + (int) (0.5F + MathHelper.cos(var15) * 4.0F);
 						var12 = par5 + (int) (0.5F + MathHelper.sin(var15) * 4.0F);
-						this.growLeaves(par1World, var11, var12, var14, 0, par2Random);
+						growLeaves(par1World, var11, var12, var14, 0, par2Random);
 
 						for (int var13 = 0; var13 < 5; ++var13) {
 							var11 = par3 + (int) (1.5F + MathHelper.cos(var15) * var13);
 							var12 = par5 + (int) (1.5F + MathHelper.sin(var15) * var13);
-							this.setBlockAndMetadata(par1World, var11, var14 - 3 + var13 / 2, var12, this.woodID, this.woodMetadata);
+							setBlockAndMetadata(par1World, var11, var14 - 3 + var13 / 2, var12, woodID, woodMetadata);
 						}
 					}
 
@@ -103,16 +88,14 @@ public class WorldGenErebusHugeTree extends WorldGenerator {
 						var11 = par1World.getBlockId(par3, par4 + var10, par5);
 
 						if (var11 == 0 || Block.blocksList[var11] == null || Block.blocksList[var11].isLeaves(par1World, par3, par4 + var10, par5)) {
-							this.setBlockAndMetadata(par1World, par3, par4 + var10, par5, this.woodID, this.woodMetadata);
+							setBlockAndMetadata(par1World, par3, par4 + var10, par5, woodID, woodMetadata);
 
 							if (var10 > 0) {
-								if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 - 1, par4 + var10, par5) && this.thorns == true) {
-									this.setBlockAndMetadata(par1World, par3 - 1, par4 + var10, par5, ModBlocks.thorns.blockID, 8);
-								}
+								if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 - 1, par4 + var10, par5) && thorns == true)
+									setBlockAndMetadata(par1World, par3 - 1, par4 + var10, par5, ModBlocks.thorns.blockID, 8);
 
-								if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3, par4 + var10, par5 - 1) && this.thorns == true) {
-									this.setBlockAndMetadata(par1World, par3, par4 + var10, par5 - 1, ModBlocks.thorns.blockID, 1);
-								}
+								if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3, par4 + var10, par5 - 1) && thorns == true)
+									setBlockAndMetadata(par1World, par3, par4 + var10, par5 - 1, ModBlocks.thorns.blockID, 1);
 							}
 						}
 
@@ -120,61 +103,53 @@ public class WorldGenErebusHugeTree extends WorldGenerator {
 							var11 = par1World.getBlockId(par3 + 1, par4 + var10, par5);
 
 							if (var11 == 0 || Block.blocksList[var11] == null || Block.blocksList[var11].isLeaves(par1World, par3 + 1, par4 + var10, par5)) {
-								this.setBlockAndMetadata(par1World, par3 + 1, par4 + var10, par5, this.woodID, this.woodMetadata);
+								setBlockAndMetadata(par1World, par3 + 1, par4 + var10, par5, woodID, woodMetadata);
 
 								if (var10 > 0) {
-									if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 2, par4 + var10, par5) && this.thorns == true) {
-										this.setBlockAndMetadata(par1World, par3 + 2, par4 + var10, par5, ModBlocks.thorns.blockID, 2);
-									}
+									if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 2, par4 + var10, par5) && thorns == true)
+										setBlockAndMetadata(par1World, par3 + 2, par4 + var10, par5, ModBlocks.thorns.blockID, 2);
 
-									if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 1, par4 + var10, par5 - 1) && this.thorns == true) {
-										this.setBlockAndMetadata(par1World, par3 + 1, par4 + var10, par5 - 1, ModBlocks.thorns.blockID, 1);
-									}
+									if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 1, par4 + var10, par5 - 1) && thorns == true)
+										setBlockAndMetadata(par1World, par3 + 1, par4 + var10, par5 - 1, ModBlocks.thorns.blockID, 1);
 								}
 							}
 
 							var11 = par1World.getBlockId(par3 + 1, par4 + var10, par5 + 1);
 
 							if (var11 == 0 || Block.blocksList[var11] == null || Block.blocksList[var11].isLeaves(par1World, par3 + 1, par4 + var10, par5 + 1)) {
-								this.setBlockAndMetadata(par1World, par3 + 1, par4 + var10, par5 + 1, this.woodID, this.woodMetadata);
+								setBlockAndMetadata(par1World, par3 + 1, par4 + var10, par5 + 1, woodID, woodMetadata);
 
 								if (var10 > 0) {
-									if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 2, par4 + var10, par5 + 1) && this.thorns == true) {
-										this.setBlockAndMetadata(par1World, par3 + 2, par4 + var10, par5 + 1, ModBlocks.thorns.blockID, 2);
-									}
+									if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 2, par4 + var10, par5 + 1) && thorns == true)
+										setBlockAndMetadata(par1World, par3 + 2, par4 + var10, par5 + 1, ModBlocks.thorns.blockID, 2);
 
-									if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 1, par4 + var10, par5 + 2) && this.thorns == true) {
-										this.setBlockAndMetadata(par1World, par3 + 1, par4 + var10, par5 + 2, ModBlocks.thorns.blockID, 4);
-									}
+									if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 1, par4 + var10, par5 + 2) && thorns == true)
+										setBlockAndMetadata(par1World, par3 + 1, par4 + var10, par5 + 2, ModBlocks.thorns.blockID, 4);
 								}
 							}
 
 							var11 = par1World.getBlockId(par3, par4 + var10, par5 + 1);
 
 							if (var11 == 0 || Block.blocksList[var11] == null || Block.blocksList[var11].isLeaves(par1World, par3, par4 + var10, par5 + 1)) {
-								this.setBlockAndMetadata(par1World, par3, par4 + var10, par5 + 1, this.woodID, this.woodMetadata);
+								setBlockAndMetadata(par1World, par3, par4 + var10, par5 + 1, woodID, woodMetadata);
 
 								if (var10 > 0) {
-									if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 - 1, par4 + var10, par5 + 1) && this.thorns == true) {
-										this.setBlockAndMetadata(par1World, par3 - 1, par4 + var10, par5 + 1, ModBlocks.thorns.blockID, 8);
-									}
+									if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 - 1, par4 + var10, par5 + 1) && thorns == true)
+										setBlockAndMetadata(par1World, par3 - 1, par4 + var10, par5 + 1, ModBlocks.thorns.blockID, 8);
 
-									if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3, par4 + var10, par5 + 2) && this.thorns == true) {
-										this.setBlockAndMetadata(par1World, par3, par4 + var10, par5 + 2, ModBlocks.thorns.blockID, 4);
-									}
+									if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3, par4 + var10, par5 + 2) && thorns == true)
+										setBlockAndMetadata(par1World, par3, par4 + var10, par5 + 2, ModBlocks.thorns.blockID, 4);
 								}
 							}
 						}
 					}
 
 					return true;
-				} else {
+				} else
 					return false;
-				}
 			}
-		} else {
+		} else
 			return false;
-		}
 	}
 
 	private void growLeaves(World par1World, int par2, int par3, int par4, int par5, Random par6Random) {
@@ -193,9 +168,8 @@ public class WorldGenErebusHugeTree extends WorldGenerator {
 					Block block = Block.blocksList[par1World.getBlockId(var11, var8, var13)];
 
 					if ((var12 >= 0 || var14 >= 0 || var12 * var12 + var14 * var14 <= var10 * var10) && (var12 <= 0 && var14 <= 0 || var12 * var12 + var14 * var14 <= (var10 + 1) * (var10 + 1)) && (par6Random.nextInt(4) != 0 || var12 * var12 + var14 * var14 <= (var10 - 1) * (var10 - 1)) &&
-					(block == null || block.canBeReplacedByLeaves(par1World, var11, var8, var13))) {
-						this.setBlockAndMetadata(par1World, var11, var8, var13, this.leavesID, this.leavesMetadata);
-					}
+					(block == null || block.canBeReplacedByLeaves(par1World, var11, var8, var13)))
+						setBlockAndMetadata(par1World, var11, var8, var13, leavesID, leavesMetadata);
 				}
 			}
 		}

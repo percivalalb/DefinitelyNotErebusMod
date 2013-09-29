@@ -12,19 +12,10 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-/**
- * 
- * Erebus
- * 
- * @author ganymedes01
- * 
- */
-
 public class TileEntitySpawner extends TileEntity {
 	private int spawnDelay = 20;
 	private final String mobName;
 
-	// Change these to make entities spawn faster
 	private final int minSpawnDelay = 200;
 	private final int maxSpawnDelay = 800;
 

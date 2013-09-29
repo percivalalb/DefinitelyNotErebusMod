@@ -1,10 +1,10 @@
 package erebus.world.loot;
 
 import java.util.Random;
+
 import net.minecraft.item.ItemStack;
 
 public class WeightedLootList extends WeightedList<LootItemStack> {
-	private static final long serialVersionUID = -491398574791344180L;
 
 	private static final IPostProcess genericPostProcessor = new IPostProcess() {
 		@Override

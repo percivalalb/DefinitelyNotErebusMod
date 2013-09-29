@@ -1,9 +1,9 @@
 package erebus.client.model.entity;
 
-import erebus.entity.EntityFly;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import erebus.entity.EntityFly;
 
 public class ModelFly extends ModelBase {
 
@@ -134,10 +134,10 @@ public class ModelFly extends ModelBase {
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
 		EntityFly var8 = (EntityFly) par7Entity;
-		this.Shape12.rotateAngleX = var8.wingFloat;
-		this.Shape13.rotateAngleX = var8.wingFloat;
-		this.Shape12.rotateAngleZ = var8.wingFloat;
-		this.Shape13.rotateAngleZ = -var8.wingFloat;
+		Shape12.rotateAngleX = var8.wingFloat;
+		Shape13.rotateAngleX = var8.wingFloat;
+		Shape12.rotateAngleZ = var8.wingFloat;
+		Shape13.rotateAngleZ = -var8.wingFloat;
 	}
 
 	public int getFlySize() {

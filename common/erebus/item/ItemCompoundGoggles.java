@@ -6,10 +6,6 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import erebus.ModItems;
 
-/**
- * @author Everyone involved
- */
-
 public class ItemCompoundGoggles extends ItemArmor {
 
 	public ItemCompoundGoggles(int i, EnumArmorMaterial enumarmormaterial, int j, int k) {

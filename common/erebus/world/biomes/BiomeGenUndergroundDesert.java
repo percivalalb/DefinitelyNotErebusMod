@@ -1,6 +1,7 @@
 package erebus.world.biomes;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
@@ -20,6 +21,7 @@ import erebus.world.feature.WorldGenAntlionLair;
 import erebus.world.feature.trees.WorldGenScorchedTree;
 
 public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
+
 	public BiomeGenUndergroundDesert(int par1) {
 		super(par1);
 		spawnableMonsterList.clear();
@@ -46,7 +48,7 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 			int posY = rand.nextInt(120);
 			int posZ = z + rand.nextInt(16);
 			if (worldObj.getBlockId(posX, posY, posZ) == 0 && worldObj.getBlockId(posX, posY - 1, posZ) == Block.sand.blockID)
-				(new WorldGenLakes(Block.lavaMoving.blockID)).generate(worldObj, worldObj.rand, posX, posY, posZ);
+				new WorldGenLakes(Block.lavaMoving.blockID).generate(worldObj, worldObj.rand, posX, posY, posZ);
 		}
 
 		for (int c = 10; c > 0; c--) {
@@ -55,9 +57,6 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 			int posZ = z + rand.nextInt(16);
 			if (worldObj.getBlockId(posX, posY, posZ) == ModBlocks.umberstone.blockID && worldObj.getBlockId(posX, posY - 1, posZ) == 0) {
 				worldObj.setBlock(posX, posY, posZ, Block.lavaMoving.blockID);
-				/**
-				 * Makes lava fall instantly Avoids a lot of block update lag
-				 **/
 				worldObj.scheduledUpdatesAreImmediate = true;
 				Block.blocksList[Block.lavaMoving.blockID].updateTick(worldObj, posX, posY, posZ, rand);
 				worldObj.scheduledUpdatesAreImmediate = false;
@@ -69,18 +68,17 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 			int l3 = rand.nextInt(120);
 			int j5 = z + rand.nextInt(16);
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.sand.blockID) {
-				(new WorldGenScorchedTree()).generate(worldObj, rand, j2, l3, j5);
+				new WorldGenScorchedTree().generate(worldObj, rand, j2, l3, j5);
 				if (rand.nextInt(4) != 0)
 					break;
 			}
 		}
 
-		if (rand.nextInt(36) == 0) {
+		if (rand.nextInt(36) == 0)
 			for (int attempt = 0; attempt < 15; attempt++) {
 				int xx = x + 4 + rand.nextInt(8), yy = 15 + rand.nextInt(35), zz = z + 4 + rand.nextInt(8);
 				if (new WorldGenAntlionLair().generate(worldObj, rand, xx, yy, zz))
 					break;
 			}
-		}
 	}
 }

@@ -16,6 +16,7 @@ import erebus.tileentity.TileEntityBambooCrate;
 
 @SideOnly(Side.CLIENT)
 public class TileEntityRenderBambooCrate extends TileEntitySpecialRenderer {
+
 	private final ModelBambooCrate bambooCrateModel = new ModelBambooCrate();
 	public static ResourceLocation bambooCrateResource = new ResourceLocation("erebus:textures/item/bambooCrate.png");
 

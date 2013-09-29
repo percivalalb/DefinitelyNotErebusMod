@@ -15,6 +15,7 @@ import erebus.entity.EntityMoth;
 
 @SideOnly(Side.CLIENT)
 public class RenderMoth extends RenderLiving {
+
 	protected ModelMoth model;
 	private final ResourceLocation resource1 = new ResourceLocation("erebus:textures/mob/Moth.png");
 	private final ResourceLocation resource2 = new ResourceLocation("erebus:textures/mob/Moth2.png");
@@ -22,7 +23,7 @@ public class RenderMoth extends RenderLiving {
 
 	public RenderMoth(ModelMoth par1ModelBase, float par2) {
 		super(par1ModelBase, par2);
-		model = ((ModelMoth) mainModel);
+		model = (ModelMoth) mainModel;
 	}
 
 	public void renderMoth(EntityMoth par1EntityMoth, double par2, double par4, double par6, float par8, float par9) {

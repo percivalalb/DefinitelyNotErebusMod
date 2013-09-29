@@ -11,6 +11,7 @@ import erebus.network.PacketHandler;
 import erebus.world.TeleporterErebus;
 
 public class TeleportServer {
+
 	private final EntityPlayerMP player;
 	public float prevTimeInPortal;
 	public float timeInPortal;

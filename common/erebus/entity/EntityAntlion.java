@@ -153,6 +153,11 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 	}
 
 	@Override
+	public void despawnEntity(){
+		if (!isBoss())super.despawnEntity();
+	}
+
+	@Override
 	public void writeEntityToNBT(NBTTagCompound nbt) {
 		super.writeEntityToNBT(nbt);
 		nbt.setBoolean("AntlionType", isBoss());

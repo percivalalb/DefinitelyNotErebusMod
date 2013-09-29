@@ -14,4 +14,4 @@ tmp/
 local.properties
 .classpath
 .loadpath
-.settings/
+.settings/sf.eclipse.javacc.prefs

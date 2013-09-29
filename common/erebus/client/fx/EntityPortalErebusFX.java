@@ -41,7 +41,7 @@ public class EntityPortalErebusFX extends EntityFX {
 	@Override
 	public float getBrightness(float par1) {
 		float var2 = super.getBrightness(par1);
-		float var3 = (float) this.particleAge / (float) this.particleMaxAge;
+		float var3 = (float) particleAge / (float) particleMaxAge;
 		var3 = var3 * var3 * var3 * var3;
 		return var2 * (1.0F - var3) + var3;
 	}
@@ -58,13 +58,12 @@ public class EntityPortalErebusFX extends EntityFX {
 		posX = field_4086_p + motionX * f;
 		posY = field_4085_q + motionY * f + (1.0F - f1);
 		posZ = field_4084_r + motionZ * f;
-		if (particleAge++ >= particleMaxAge) {
+		if (particleAge++ >= particleMaxAge)
 			setDead();
-		}
 	}
 
-	private float field_4083_a;
-	private double field_4086_p;
-	private double field_4085_q;
-	private double field_4084_r;
+	private final float field_4083_a;
+	private final double field_4086_p;
+	private final double field_4085_q;
+	private final double field_4084_r;
 }

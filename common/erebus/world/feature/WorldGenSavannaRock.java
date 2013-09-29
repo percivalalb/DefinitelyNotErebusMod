@@ -1,19 +1,19 @@
 package erebus.world.feature;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
 public class WorldGenSavannaRock extends WorldGenerator {
+
 	@Override
 	public boolean generate(World world, Random rand, int x, int y, int z) {
-		for (int xx = x - 3; xx <= x + 3; xx++) {
-			for (int zz = z - 3; zz <= z + 3; zz++) {
+		for (int xx = x - 3; xx <= x + 3; xx++)
+			for (int zz = z - 3; zz <= z + 3; zz++)
 				if (world.getBlockId(xx, y - 1, zz) != Block.grass.blockID)
 					return false;
-			}
-		}
 
 		float radX, radY, radZ;
 
@@ -34,14 +34,12 @@ public class WorldGenSavannaRock extends WorldGenerator {
 			++y;
 
 			if (radX > radZ)
-				x += (rand.nextInt(2) * 2) - 1;
+				x += rand.nextInt(2) * 2 - 1;
 			else
-				z += (rand.nextInt(2) * 2) - 1;
+				z += rand.nextInt(2) * 2 - 1;
 		}
 
-		// Rare variations
-
-		if (rand.nextInt(22) == 0) {
+		if (rand.nextInt(22) == 0)
 			for (int attempt = 0, diamonds = 0, diamondAmount = rand.nextInt(2) + 1, iradX = (int) Math.ceil(radX), iradY = (int) Math.ceil(radY), iradZ = (int) Math.ceil(radZ); attempt < 10 && diamonds < diamondAmount; attempt++) {
 				int xx = x + rand.nextInt(iradX * 2) - iradX, yy = y + rand.nextInt(iradY * 2) - iradY, zz = z + rand.nextInt(iradZ * 2) - iradZ;
 				int id = world.getBlockId(xx, yy, zz);
@@ -51,20 +49,15 @@ public class WorldGenSavannaRock extends WorldGenerator {
 					++diamonds;
 				}
 			}
-		}
 
 		return true;
 	}
 
 	private void generateEllipsoidAt(World world, Random rand, int x, int y, int z, float radX, float radY, float radZ) {
-		for (float xf = x - radX; xf <= x + radX; xf++) {
-			for (float zf = z - radZ; zf <= z + radZ; zf++) {
-				for (float yf = y - radY; yf <= y + radY; yf++) {
-					if ((Math.pow(xf - x, 2) / (radX * radX)) + (Math.pow(yf - y, 2) / (radY * radY)) + (Math.pow(zf - z, 2) / (radZ * radZ)) <= 1.1) {
+		for (float xf = x - radX; xf <= x + radX; xf++)
+			for (float zf = z - radZ; zf <= z + radZ; zf++)
+				for (float yf = y - radY; yf <= y + radY; yf++)
+					if (Math.pow(xf - x, 2) / (radX * radX) + Math.pow(yf - y, 2) / (radY * radY) + Math.pow(zf - z, 2) / (radZ * radZ) <= 1.1)
 						world.setBlock((int) Math.floor(xf), (int) Math.floor(yf), (int) Math.floor(zf), (rand.nextInt(6) == 0 ? Block.silverfish : Block.stone).blockID);
-					}
-				}
-			}
-		}
 	}
 }

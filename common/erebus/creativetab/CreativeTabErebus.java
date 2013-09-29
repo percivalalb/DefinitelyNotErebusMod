@@ -2,12 +2,14 @@ package erebus.creativetab;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 public class CreativeTabErebus extends CreativeTabs {
-	private List<Short> blockList = new ArrayList<Short>();
+
+	private final List<Short> blockList = new ArrayList<Short>();
 
 	public CreativeTabErebus(String name) {
 		super(name);

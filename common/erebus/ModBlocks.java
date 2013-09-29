@@ -47,8 +47,7 @@ import erebus.item.block.ItemBlockUmberOre;
 import erebus.item.block.ItemBlockUmberStone;
 import erebus.item.block.ItemBlockUmberpaver;
 import erebus.item.block.ItemBlockWallErebus;
-import erebus.item.block.ItemSapling;
-import erebus.tileentity.TileEntityHollowLog;
+import erebus.item.block.ItemBlockSapling;
 
 public class ModBlocks {
 
@@ -128,7 +127,7 @@ public class ModBlocks {
 		planksErebus = new BlockPlanksErebus(planksErebusID).setHardness(2.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("planksErebus");
 		leavesErebus = (BlockLeavesErebus) new BlockLeavesErebus(leavesErebusID).setHardness(0.2F).setLightOpacity(1).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("leavesErebus");
 		erebusSapling = new BlockSaplingErebus(erebusSaplingID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("sapling_mahogany");
-		hollowLogAcacia = new BlockHollowLog(hollowLogAcaciaID, TileEntityHollowLog.class).setHardness(0.7F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("hollowLogAcacia").setTextureName("erebus:log_acacia");
+		hollowLogAcacia = new BlockHollowLog(hollowLogAcaciaID).setHardness(0.7F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("hollowLogAcacia");
 
 		erebusGrass = new BlockErebusGrass(erebusGrassID).setHardness(0.0F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("erebusTallGrass").setTextureName("erebus:tallgrass");
 		thorns = new BlockThorns(thornsID).setHardness(0.2F).setStepSound(Block.soundGrassFootstep).setUnlocalizedName("thorns").setTextureName("erebus:thorns");
@@ -193,7 +192,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(logErebusGroup2, ItemBlockLogErebus2.class, "erebus.logErebus2");
 		GameRegistry.registerBlock(planksErebus, ItemBlockPlanksErebus.class, "erebus.planksErebus");
 		GameRegistry.registerBlock(leavesErebus, ItemBlockLeavesErebus.class, "erebus.leavesErebus");
-		GameRegistry.registerBlock(erebusSapling, ItemSapling.class, "erebus.erebusSapling");
+		GameRegistry.registerBlock(erebusSapling, ItemBlockSapling.class, "erebus.erebusSapling");
 		GameRegistry.registerBlock(hollowLogAcacia, "erebus.hollowLogAcacia");
 
 		GameRegistry.registerBlock(erebusGrass, "erebus.erebusGrass");

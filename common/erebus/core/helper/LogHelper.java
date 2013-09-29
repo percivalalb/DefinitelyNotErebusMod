@@ -6,9 +6,6 @@ import java.util.logging.Logger;
 import cpw.mods.fml.common.FMLLog;
 import erebus.lib.Reference;
 
-/**
- * @author ProPercivalalb
- */
 public class LogHelper {
 
 	private static Logger erebusLogger = Logger.getLogger(Reference.MOD_ID);

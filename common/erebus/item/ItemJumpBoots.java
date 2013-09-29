@@ -13,6 +13,7 @@ import erebus.ErebusMod;
 import erebus.ModItems;
 
 public class ItemJumpBoots extends ItemArmor {
+
 	public ItemJumpBoots(int i, EnumArmorMaterial enumarmormaterial, int k) {
 		super(i, enumarmormaterial, 2, k);
 		setCreativeTab(ErebusMod.tabErebusGear);

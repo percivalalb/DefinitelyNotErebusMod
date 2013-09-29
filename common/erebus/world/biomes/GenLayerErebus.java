@@ -19,6 +19,7 @@ import net.minecraft.world.gen.layer.GenLayerVoronoiZoom;
 import net.minecraft.world.gen.layer.GenLayerZoom;
 
 public abstract class GenLayerErebus extends GenLayer {
+
 	public GenLayerErebus(long par1) {
 		super(par1);
 	}
@@ -37,9 +38,8 @@ public abstract class GenLayerErebus extends GenLayer {
 		GenLayerAddMushroomIsland genlayeraddmushroomisland = new GenLayerAddMushroomIsland(5L, genlayeraddisland);
 		byte b0 = 4;
 
-		if (par2WorldType == WorldType.LARGE_BIOMES) {
+		if (par2WorldType == WorldType.LARGE_BIOMES)
 			b0 = 6;
-		}
 		b0 = getModdedBiomeSize(par2WorldType, b0);
 
 		GenLayer genlayer = GenLayerZoom.magnify(1000L, genlayeraddmushroomisland, 0);
@@ -55,17 +55,14 @@ public abstract class GenLayerErebus extends GenLayer {
 		for (int j = 0; j < b0; ++j) {
 			object = new GenLayerZoom((long) (1000 + j), (GenLayer) object);
 
-			if (j == 0) {
+			if (j == 0)
 				object = new GenLayerAddIsland(3L, (GenLayer) object);
-			}
 
-			if (j == 1) {
+			if (j == 1)
 				object = new GenLayerShore(1000L, (GenLayer) object);
-			}
 
-			if (j == 1) {
+			if (j == 1)
 				object = new GenLayerSwampRivers(1000L, (GenLayer) object);
-			}
 		}
 
 		GenLayerSmooth genlayersmooth1 = new GenLayerSmooth(1000L, (GenLayer) object);

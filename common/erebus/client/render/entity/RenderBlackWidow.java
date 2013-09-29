@@ -12,12 +12,13 @@ import erebus.client.model.entity.ModelBlackWidow;
 import erebus.entity.EntityBlackWidow;
 
 public class RenderBlackWidow extends RenderLiving {
+
 	protected ModelBlackWidow model;
 	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelBlackWidow.png");
 
 	public RenderBlackWidow(ModelBlackWidow par1ModelBase, float par2) {
 		super(par1ModelBase, par2);
-		model = ((ModelBlackWidow) mainModel);
+		model = (ModelBlackWidow) mainModel;
 
 	}
 

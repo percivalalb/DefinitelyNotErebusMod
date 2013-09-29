@@ -7,12 +7,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
-/**
- * Erebus
- * 
- * @author ganymedes01
- */
-
 public class TileEntityBambooCrate extends TileEntity implements IInventory {
 
 	private ItemStack[] crateContents = new ItemStack[27];

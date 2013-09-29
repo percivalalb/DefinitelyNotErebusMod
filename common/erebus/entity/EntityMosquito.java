@@ -23,40 +23,26 @@ import net.minecraft.world.World;
 import erebus.client.render.entity.AnimationMathHelper;
 
 public class EntityMosquito extends EntityFlying implements IMob {
-	// this integer makes flying smoother
+
 	public int courseChangeCooldown;
 
-	// waypoints used for movement
 	public double waypointX;
 	public double waypointY;
 	public double waypointZ;
 
-	// used for cooldown of causing damage
 	private int drainage;
 
-	// entity it will attack
 	Entity entityToAttack;
 
-	// determines constant animation movement
 	AnimationMathHelper mathWings = new AnimationMathHelper();
 	AnimationMathHelper mathSucking = new AnimationMathHelper();
 	public float wingFloat;
 	public float suckFloat;
 
-	// used for checking position on first tick
 	public boolean firstTickCheck;
 
-	// feel free to play around with the three following variables:
-
-	// variable that determines the max amount of hits a Mosquito does before
-	// being content
-	// it also determines a part of the maximum health
 	private final int maxBloodLevel = 5;
-	// variable that determines the time between hits when sucking
 	public int hitInterval = 30;
-	// add classes to this array to make it attack specific mobs! I put pig for
-	// testing.
-	// example: EntityPig.class,EntityCow.class,EntityZombie.class etc.
 	Class[] preys = { EntityPig.class, EntityCow.class };
 
 	public EntityMosquito(World par1World) {
@@ -68,10 +54,8 @@ public class EntityMosquito extends EntityFlying implements IMob {
 		suckFloat = 1.0F;
 		firstTickCheck = false;
 		setBloodConsumed(0);
-		// TODO health = 10;
 	}
 
-	// gets stored NBTcompound data
 	@Override
 	protected void entityInit() {
 		super.entityInit();
@@ -80,16 +64,12 @@ public class EntityMosquito extends EntityFlying implements IMob {
 
 	@Override
 	public void onUpdate() {
-		// revent the mosquito the glitch when the game is saved on top of an
-		// entity
 		if (!firstTickCheck) {
 			mountEntity(null);
 			ridingEntity = null;
 			firstTickCheck = true;
 		}
 
-		// calculate wing movement for animation
-		// calculate sucking movement for animation and particles
 		if (ridingEntity != null) {
 			suckFloat = 1.0F + mathSucking.swing(1.0F, 0.15F);
 			if (rand.nextInt(10) == 0)
@@ -101,7 +81,6 @@ public class EntityMosquito extends EntityFlying implements IMob {
 			wingFloat = mathWings.swing(4.0F, 0.1F);
 		}
 
-		// find enemies
 		if (findPlayerToAttack() != null && getBloodConsumed() < maxBloodLevel)
 			entityToAttack = findPlayerToAttack();
 		else if (findEnemyToAttack() != null && getBloodConsumed() < maxBloodLevel)
@@ -109,14 +88,12 @@ public class EntityMosquito extends EntityFlying implements IMob {
 		else
 			entityToAttack = null;
 
-		// mount enemies to start sucking blood
 		if (entityToAttack != null && ridingEntity == null && getDistanceToEntity(entityToAttack) <= 1.2D && !worldObj.isRemote && entityToAttack.riddenByEntity == null && getBloodConsumed() < maxBloodLevel)
 			mountEntity(entityToAttack);
 
 		super.onUpdate();
 	}
 
-	// determine offset when mounting mobs
 	@Override
 	public double getYOffset() {
 		if (ridingEntity != null && ridingEntity instanceof EntityPlayer)
@@ -140,42 +117,37 @@ public class EntityMosquito extends EntityFlying implements IMob {
 		int l = MathHelper.floor_double(posZ);
 		int m = worldObj.getBlockId(j, k - 1, l);
 
-		// get random waypoints to fly to
 		if (d3 < 1.0D || d3 > 60D || waypointY > i + 5 || waypointY <= i + 1 && waypointY > i - 1) {
 			waypointX = posX + (rand.nextFloat() * 2.0F - 1.0F) * 2F;
 			waypointY = posY + (rand.nextFloat() * 2.0F - 1.0F) * 2F;
 			waypointZ = posZ + (rand.nextFloat() * 2.0F - 1.0F) * 2F;
 		}
 
-		// get position of enemy and use it to determine waypoints
 		if (entityToAttack != null) {
 			waypointX = entityToAttack.posX;
 			waypointY = entityToAttack.posY;
 			waypointZ = entityToAttack.posZ;
 		}
 
-		// damaging when riding enemy
 		if (ridingEntity != null && ridingEntity instanceof EntityLiving && getBloodConsumed() < maxBloodLevel) {
 			drainage++;
 			if (drainage >= hitInterval) {
 				ridingEntity.attackEntityFrom(DamageSource.causeMobDamage(this), getDamage());
 				drainage = 0;
 				setBloodConsumed(getBloodConsumed() + 1);
-				// TODO health += 1;
 			}
 		} else if (ridingEntity != null && ridingEntity instanceof EntityLiving && getBloodConsumed() >= maxBloodLevel) {
 			entityToAttack = null;
 			mountEntity(ridingEntity);
 		}
 
-		// for smooth turning while flying
 		if (courseChangeCooldown-- <= 0) {
 			courseChangeCooldown = 1;
 
 			if (isCourseTraversable(waypointX, waypointY, waypointZ, d3)) {
-				motionX += (d / d3) * 0.1D;
-				motionY += (d1 / d3) * 0.1D;
-				motionZ += (d2 / d3) * 0.1D;
+				motionX += d / d3 * 0.1D;
+				motionY += d1 / d3 * 0.1D;
+				motionZ += d2 / d3 * 0.1D;
 			} else {
 				waypointX = posX;
 				waypointY = posY;
@@ -183,26 +155,22 @@ public class EntityMosquito extends EntityFlying implements IMob {
 			}
 		}
 
-		// prevent underwater flying
 		if (m == Block.waterStill.blockID && rand.nextInt(10) == 0 && (motionX > 0.05D || motionZ > 0.05D || motionX < -0.05D || motionZ < -0.05D))
 			motionY = 0.25D;
 	}
 
-	// removes step sounds when on the ground
 	@Override
 	protected void playStepSound(int par1, int par2, int par3, int par4) {
 	}
 
 	@Override
 	public void onLivingUpdate() {
-		// rotate towards waypoints
 		float var7 = (float) (Math.atan2(motionZ, motionX) * 180.0D / Math.PI) - 90.0F;
 		float var8 = MathHelper.wrapAngleTo180_float(var7 - rotationYaw);
 		rotationYaw += var8;
 		super.onLivingUpdate();
 	}
 
-	// used to determine if waypoints will not cause problems
 	private boolean isCourseTraversable(double d, double d1, double d2, double d3) {
 		double d4 = (waypointX - posX) / d3;
 		double d5 = (waypointY - posY) / d3;
@@ -219,7 +187,6 @@ public class EntityMosquito extends EntityFlying implements IMob {
 		return true;
 	}
 
-	// determines if it should fight back when hit
 	@Override
 	public boolean attackEntityFrom(DamageSource par1DamageSource, float par2) {
 		if (isEntityInvulnerable())
@@ -258,7 +225,6 @@ public class EntityMosquito extends EntityFlying implements IMob {
 		dropItem(Item.netherStalkSeeds.itemID, i);
 	}
 
-	// find enemies other than players to attack. uses preys array
 	protected Entity findEnemyToAttack() {
 		List list = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.expand(10D, 10D, 10D));
 
@@ -289,7 +255,6 @@ public class EntityMosquito extends EntityFlying implements IMob {
 		return EnumCreatureAttribute.ARTHROPOD;
 	}
 
-	// determine damage it deals
 	public int getDamage() {
 		int var2 = 2;
 
@@ -331,7 +296,6 @@ public class EntityMosquito extends EntityFlying implements IMob {
 		return 1.0F;
 	}
 
-	// the part below saves and keeps track of the Blood Level of the mosquito
 	public int getBloodConsumed() {
 		return dataWatcher.getWatchableObjectByte(15);
 	}
@@ -352,12 +316,8 @@ public class EntityMosquito extends EntityFlying implements IMob {
 		setBloodConsumed(nbttagcompound.getInteger("BloodLevel"));
 	}
 
-	// checks if entity can spawn. in this case it checks of water is nearby
 	@Override
 	public boolean getCanSpawnHere() {
-		// if(this.worldObj.checkIfAABBIsClear(this.boundingBox) &&
-		// this.worldObj.getCollidingBoundingBoxes(this,
-		// this.boundingBox).isEmpty())
 		{
 			AxisAlignedBB axisalignedbb = boundingBox.expand(5D, 5D, 5D);
 			int n = MathHelper.floor_double(axisalignedbb.minX);
@@ -382,5 +342,4 @@ public class EntityMosquito extends EntityFlying implements IMob {
 
 		return false;
 	}
-
 }

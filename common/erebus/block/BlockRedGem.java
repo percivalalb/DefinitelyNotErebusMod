@@ -18,26 +18,23 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 import erebus.item.ItemErebusMaterial;
 
-/**
- * @author ProPercivalalb
- */
 public class BlockRedGem extends Block {
 
 	public static final String[] iconPaths = new String[] { "redgem", "redlamp_on", "redlamp_off" };
 	@SideOnly(Side.CLIENT)
 	public static Icon[] icons;
 
-	public BlockRedGem(int par1) {
-		super(par1, Material.glass);
+	public BlockRedGem(int id) {
+		super(id, Material.glass);
 	}
 
 	@Override
-	public void registerIcons(IconRegister iconRegister) {
+	public void registerIcons(IconRegister reg) {
 		icons = new Icon[iconPaths.length];
 
 		int i = 0;
 		for (String path : iconPaths)
-			icons[i++] = iconRegister.registerIcon("erebus:" + path);
+			icons[i++] = reg.registerIcon("erebus:" + path);
 	}
 
 	@Override
@@ -54,7 +51,6 @@ public class BlockRedGem extends Block {
 		par3List.add(new ItemStack(par1, 1, 1));
 	}
 
-	// Data about the item that drops when broken
 	@Override
 	public int damageDropped(int meta) {
 		return meta == 1 || meta == 2 ? 1 : ItemErebusMaterial.dataRedGem;

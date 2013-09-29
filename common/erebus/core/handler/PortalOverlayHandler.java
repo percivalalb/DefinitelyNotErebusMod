@@ -7,29 +7,26 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.Icon;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.ForgeSubscribe;
+
 import org.lwjgl.opengl.GL11;
+
 import erebus.ModBlocks;
 import erebus.core.teleport.TeleportClient;
 
-/**
- * @author ProPercivalalb
- **/
 public class PortalOverlayHandler {
 
 	@ForgeSubscribe
 	public void onPreRenderGameOverlay(RenderGameOverlayEvent.Pre event) {
 		Minecraft mc = Minecraft.getMinecraft();
-		if (mc.thePlayer != null) {
+		if (mc.thePlayer != null)
 			if (event.type == RenderGameOverlayEvent.ElementType.HELMET) {
 				ScaledResolution var5 = new ScaledResolution(mc.gameSettings, mc.displayWidth, mc.displayHeight);
 				int width = var5.getScaledWidth();
 				int height = var5.getScaledHeight();
 				float time = TeleportClient.prevTimeInPortal + (TeleportClient.timeInPortal - TeleportClient.prevTimeInPortal) * event.partialTicks;
-				if (time > 0.0F) {
-					this.renderPortalOverlay(time, width, height);
-				}
+				if (time > 0.0F)
+					renderPortalOverlay(time, width, height);
 			}
-		}
 	}
 
 	private void renderPortalOverlay(float par1, int par2, int par3) {

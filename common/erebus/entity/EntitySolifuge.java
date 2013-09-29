@@ -18,10 +18,10 @@ import net.minecraft.world.World;
 import erebus.ModItems;
 
 public class EntitySolifuge extends EntityMob {
+
 	protected EntityLiving theEntity;
 
 	public EntitySolifuge(World par1World) {
-
 		super(par1World);
 		isImmuneToFire = true;
 		setSize(2.0F, 1.0F);
@@ -104,12 +104,11 @@ public class EntitySolifuge extends EntityMob {
 
 	@Override
 	public boolean isOnLadder() {
-		return (isCollidedHorizontally);
+		return isCollidedHorizontally;
 	}
 
 	@Override
 	protected void attackEntity(Entity par1Entity, float par2) {
-
 		if (par2 > 2.0F && par2 < 6.0F && rand.nextInt(10) == 0) {
 			if (onGround) {
 				double d0 = par1Entity.posX - posX;

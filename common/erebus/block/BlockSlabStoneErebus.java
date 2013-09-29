@@ -2,6 +2,7 @@ package erebus.block;
 
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -13,8 +14,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
 
 public class BlockSlabStoneErebus extends BlockHalfSlab {
-	public static final String[] slabTypes = new String[] { "umberstone", "umbercobble", "umbercobbleMossy", "umbercobbleWebbed", "umbrick", "umberpaver", "umberpaverMossy", "umberpaverWebbed" };
 
+	public static final String[] slabTypes = new String[] { "umberstone", "umbercobble", "umbercobbleMossy", "umbercobbleWebbed", "umbrick", "umberpaver", "umberpaverMossy", "umberpaverWebbed" };
 	public static final byte dataUmberstone = 0, dataUmbercobble = 1, dataUmbercobbleMossy = 2, dataUmbercobbleWebbed = 3, dataUmbrick = 4, dataUmberpaver = 5, dataUmberpaverMossy = 6, dataUmberpaverWebbed = 7;
 
 	public BlockSlabStoneErebus(int id, boolean isDouble) {
@@ -69,8 +70,7 @@ public class BlockSlabStoneErebus extends BlockHalfSlab {
 		if (isDoubleSlab)
 			return;
 
-		for (int a = 0; a < slabTypes.length; a++) {
+		for (int a = 0; a < slabTypes.length; a++)
 			list.add(new ItemStack(id, 1, a));
-		}
 	}
 }

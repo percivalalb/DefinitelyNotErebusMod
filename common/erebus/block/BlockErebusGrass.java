@@ -1,6 +1,7 @@
 package erebus.block;
 
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.creativetab.CreativeTabs;
@@ -12,27 +13,21 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockErebusGrass extends BlockTallGrass {
-	public BlockErebusGrass(int par1) {
-		super(par1);
+
+	public BlockErebusGrass(int id) {
+		super(id);
 	}
 
 	@Override
-	public boolean canBlockStay(World par1World, int par2, int par3, int par4) {
-		Block soil = blocksList[par1World.getBlockId(par2, par3 - 1, par4)];
-		return ((soil != null && soil.canSustainPlant(par1World, par2, par3 - 1, par4, ForgeDirection.UP, this)));
+	public boolean canBlockStay(World world, int x, int y, int z) {
+		Block soil = blocksList[world.getBlockId(x, y - 1, z)];
+		return soil != null && soil.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this);
 	}
 
 	@Override
-	/**
-	 * returns a list of blocks with the same ID, but different meta (eg: wood returns 4 blocks)
-	 */
 	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 
 	}
-
-	/*
-	 * public Icon getIcon(int par1, int par2) { return this.blockIcon; }
-	 */
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -42,8 +37,8 @@ public class BlockErebusGrass extends BlockTallGrass {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int colorMultiplier(IBlockAccess par1IBlockAccess, int par2, int par3, int par4) {
-		return par1IBlockAccess.getBiomeGenForCoords(par2, par4).getBiomeGrassColor();
+	public int colorMultiplier(IBlockAccess access, int x, int y, int z) {
+		return access.getBiomeGenForCoords(x, z).getBiomeGrassColor();
 	}
 
 	@Override

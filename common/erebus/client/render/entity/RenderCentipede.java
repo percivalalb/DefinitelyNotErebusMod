@@ -12,14 +12,15 @@ import erebus.client.model.entity.ModelCentipede;
 import erebus.entity.EntityCentipede;
 
 public class RenderCentipede extends RenderLiving {
+
 	protected ModelCentipede model;
-	private ResourceLocation resource1 = new ResourceLocation("erebus:textures/mob/Centipede.png");
-	private ResourceLocation resource2 = new ResourceLocation("erebus:textures/mob/ModelCentipede.png");
-	private ResourceLocation resource3 = new ResourceLocation("erebus:textures/mob/CentipedeBlack.png");
+	private final ResourceLocation resource1 = new ResourceLocation("erebus:textures/mob/Centipede.png");
+	private final ResourceLocation resource2 = new ResourceLocation("erebus:textures/mob/ModelCentipede.png");
+	private final ResourceLocation resource3 = new ResourceLocation("erebus:textures/mob/CentipedeBlack.png");
 
 	public RenderCentipede(ModelCentipede par1ModelBase, float par2) {
 		super(par1ModelBase, par2);
-		model = ((ModelCentipede) mainModel);
+		model = (ModelCentipede) mainModel;
 
 	}
 
@@ -29,12 +30,12 @@ public class RenderCentipede extends RenderLiving {
 
 	@Override
 	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9) {
-		this.renderCentipede((EntityCentipede) par1EntityLiving, par2, par4, par6, par8, par9);
+		renderCentipede((EntityCentipede) par1EntityLiving, par2, par4, par6, par8, par9);
 	}
 
 	@Override
 	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
-		this.renderCentipede((EntityCentipede) par1Entity, par2, par4, par6, par8, par9);
+		renderCentipede((EntityCentipede) par1Entity, par2, par4, par6, par8, par9);
 	}
 
 	@Override
@@ -48,7 +49,7 @@ public class RenderCentipede extends RenderLiving {
 
 	protected void scaleCentipede(EntityCentipede entityCentipede, float f) {
 		float f1 = 1.0F;
-		this.shadowSize = 0.5F;
+		shadowSize = 0.5F;
 		GL11.glScalef(f1, f1, f1);
 	}
 

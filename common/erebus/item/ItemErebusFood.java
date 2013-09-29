@@ -1,6 +1,7 @@
 package erebus.item;
 
 import java.util.List;
+
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,10 +17,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemErebusFood extends ItemFood {
 
-	/**
-	 * The icon path, not including "erebus:" as it is joined when registering
-	 * icon
-	 **/
 	public static final String[] iconPaths = new String[] { "larvaRaw", "beetleLarvaCooked", "grasshopperLegRaw", "grasshopperLegCooked", "legTarantula", "legTarantulaCooked", "bambooSoup" };
 	public static final short dataLarvaRaw = 0, dataLarvaCooked = 1, dataGrasshopperLegRaw = 2, dataGrasshopperLegCooked = 3, dataLegTarantula = 4, dataLegTarantulaCooked = 5, dataBambooSoup = 6;
 
@@ -95,12 +92,11 @@ public class ItemErebusFood extends ItemFood {
 		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 		onFoodEaten(stack, world, player);
 
-		if (stack.getItemDamage() == 6) {
+		if (stack.getItemDamage() == 6)
 			if (stack.stackSize == 0)
 				return new ItemStack(Item.bowlEmpty);
 			else
 				player.inventory.addItemStackToInventory(new ItemStack(Item.bowlEmpty));
-		}
 
 		return stack;
 	}
@@ -108,18 +104,16 @@ public class ItemErebusFood extends ItemFood {
 	@Override
 	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
 		PotionEffect effect = this.getPotionEffect(stack, world, player);
-		if (!world.isRemote && effect != null) {
+		if (!world.isRemote && effect != null)
 			player.addPotionEffect(effect);
-		}
 	}
 
 	@Override
 	public void registerIcons(IconRegister iconRegister) {
 		icons = new Icon[iconPaths.length];
 		int i = 0;
-		for (String path : iconPaths) {
+		for (String path : iconPaths)
 			icons[i++] = iconRegister.registerIcon("erebus:" + path);
-		}
 	}
 
 	@Override
@@ -132,9 +126,8 @@ public class ItemErebusFood extends ItemFood {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		for (int a = 0; a < iconPaths.length; a++) {
+		for (int a = 0; a < iconPaths.length; a++)
 			par3List.add(new ItemStack(par1, 1, a));
-		}
 	}
 
 	@Override

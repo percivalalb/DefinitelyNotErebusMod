@@ -15,7 +15,6 @@ public class BlockUmberPaver extends Block {
 
 	@SideOnly(Side.CLIENT)
 	private Icon[] blockIcon;
-
 	private final String[] types = new String[] { "", "Mossy", "Webbed" };
 
 	public BlockUmberPaver(int id) {

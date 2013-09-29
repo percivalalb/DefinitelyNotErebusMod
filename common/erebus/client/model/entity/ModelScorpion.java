@@ -7,6 +7,7 @@ import net.minecraft.util.MathHelper;
 import erebus.entity.EntityScorpion;
 
 public class ModelScorpion extends ModelBase {
+
 	// fields
 	ModelRenderer RMand;
 	ModelRenderer LMand;

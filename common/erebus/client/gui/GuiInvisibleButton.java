@@ -11,6 +11,5 @@ public class GuiInvisibleButton extends GuiButton {
 
 	@Override
 	public void drawButton(Minecraft par1Minecraft, int par2, int par3) {
-		// Empty to stop any button being drawn
 	}
 }

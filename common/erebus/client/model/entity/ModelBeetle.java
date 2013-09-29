@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
 public class ModelBeetle extends ModelBase {
+
 	// fields
 	ModelRenderer backbody;
 	ModelRenderer body;

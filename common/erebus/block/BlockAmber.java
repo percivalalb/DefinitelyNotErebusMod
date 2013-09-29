@@ -1,6 +1,7 @@
 package erebus.block;
 
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -14,6 +15,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockAmber extends Block {
+
 	@SideOnly(Side.CLIENT)
 	private Icon blockAmber, glassAmber, brickAmber;
 	@SideOnly(Side.CLIENT)
@@ -73,17 +75,17 @@ public class BlockAmber extends Block {
 		if (meta == 1) {
 			boolean[] nearby = null;
 
-			if (side == 0 || side == 1) {
+			if (side == 0 || side == 1)
 				nearby = new boolean[] { isGlass(world, x - 1, y, z), isGlass(world, x + 1, y, z), isGlass(world, x, y, z - 1), isGlass(world, x, y, z + 1), isGlass(world, x - 1, y, z - 1), isGlass(world, x - 1, y, z + 1), isGlass(world, x + 1, y, z - 1), isGlass(world, x + 1, y, z + 1) };
-			} else if (side == 2) {
+			else if (side == 2)
 				nearby = new boolean[] { isGlass(world, x + 1, y, z), isGlass(world, x - 1, y, z), isGlass(world, x, y + 1, z), isGlass(world, x, y - 1, z), isGlass(world, x + 1, y + 1, z), isGlass(world, x + 1, y - 1, z), isGlass(world, x - 1, y + 1, z), isGlass(world, x - 1, y - 1, z) };
-			} else if (side == 3) {
+			else if (side == 3)
 				nearby = new boolean[] { isGlass(world, x - 1, y, z), isGlass(world, x + 1, y, z), isGlass(world, x, y + 1, z), isGlass(world, x, y - 1, z), isGlass(world, x - 1, y + 1, z), isGlass(world, x - 1, y - 1, z), isGlass(world, x + 1, y + 1, z), isGlass(world, x + 1, y - 1, z) };
-			} else if (side == 4) {
+			else if (side == 4)
 				nearby = new boolean[] { isGlass(world, x, y, z - 1), isGlass(world, x, y, z + 1), isGlass(world, x, y + 1, z), isGlass(world, x, y - 1, z), isGlass(world, x, y + 1, z - 1), isGlass(world, x, y - 1, z - 1), isGlass(world, x, y + 1, z + 1), isGlass(world, x, y - 1, z + 1) };
-			} else if (side == 5) {
+			else if (side == 5)
 				nearby = new boolean[] { isGlass(world, x, y, z + 1), isGlass(world, x, y, z - 1), isGlass(world, x, y + 1, z), isGlass(world, x, y - 1, z), isGlass(world, x, y + 1, z + 1), isGlass(world, x, y - 1, z + 1), isGlass(world, x, y + 1, z - 1), isGlass(world, x, y - 1, z - 1) };
-			} else
+			else
 				return glassAmber; // staph complaining about nearby being null
 
 			if (!nearby[0] && !nearby[1] && !nearby[2] && !nearby[3])
@@ -202,25 +204,24 @@ public class BlockAmber extends Block {
 	public Icon getIcon(int side, int meta) {
 		switch (meta) {
 			case 0:
-				return this.blockAmber;
+				return blockAmber;
 			case 1:
-				return this.glassAmber;
+				return glassAmber;
 			case 2:
-				return this.brickAmber;
+				return brickAmber;
 		}
 		return null;
 	}
 
 	@Override
 	public void registerIcons(IconRegister iconRegister) {
-		this.blockAmber = iconRegister.registerIcon("erebus:blockAmber");
-		this.glassAmber = iconRegister.registerIcon("erebus:glassAmber");
-		this.brickAmber = iconRegister.registerIcon("erebus:brickAmber");
+		blockAmber = iconRegister.registerIcon("erebus:blockAmber");
+		glassAmber = iconRegister.registerIcon("erebus:glassAmber");
+		brickAmber = iconRegister.registerIcon("erebus:brickAmber");
 
 		connectedGlass = new Icon[connectedGlassStr.length];
-		for (int a = 0; a < connectedGlassStr.length; a++) {
+		for (int a = 0; a < connectedGlassStr.length; a++)
 			connectedGlass[a] = iconRegister.registerIcon("erebus:glassAmber_" + connectedGlassStr[a]);
-		}
 	}
 
 	@Override

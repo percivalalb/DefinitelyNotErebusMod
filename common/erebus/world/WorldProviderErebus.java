@@ -13,6 +13,7 @@ import erebus.ErebusMod;
 import erebus.ModBiomes;
 
 public class WorldProviderErebus extends WorldProvider {
+
 	@SideOnly(Side.CLIENT)
 	private double[] currentFogColor, targetFogColor;
 
@@ -65,8 +66,8 @@ public class WorldProviderErebus extends WorldProvider {
 				currentFogColor[a] = targetFogColor[a];
 		}
 
-		for (int a = 0; a < 3; a++) {
-			if (currentFogColor[a] != targetFogColor[a]) {
+		for (int a = 0; a < 3; a++)
+			if (currentFogColor[a] != targetFogColor[a])
 				if (currentFogColor[a] < targetFogColor[a]) {
 					currentFogColor[a] += 2D;
 					if (currentFogColor[a] > targetFogColor[a])
@@ -76,10 +77,8 @@ public class WorldProviderErebus extends WorldProvider {
 					if (currentFogColor[a] < targetFogColor[a])
 						currentFogColor[a] = targetFogColor[a];
 				}
-			}
-		}
 
-		return this.worldObj.getWorldVec3Pool().getVecFromPool(currentFogColor[0] / 255D, currentFogColor[1] / 255D, currentFogColor[2] / 255D);
+		return worldObj.getWorldVec3Pool().getVecFromPool(currentFogColor[0] / 255D, currentFogColor[1] / 255D, currentFogColor[2] / 255D);
 	}
 
 	@Override
@@ -88,20 +87,20 @@ public class WorldProviderErebus extends WorldProvider {
 
 		for (int i = 0; i <= 15; i++) {
 			float f1 = 1.0F - i / 15F;
-			lightBrightnessTable[i] = ((1.0F - f1) / (f1 * 3F + 1.0F)) * (1.0F - f) + f;
+			lightBrightnessTable[i] = (1.0F - f1) / (f1 * 3F + 1.0F) * (1.0F - f) + f;
 		}
 	}
 
 	@Override
 	public void registerWorldChunkManager() {
-		worldChunkMgr = new WorldChunkManagerErebus(1.0F, 0.0F, this.worldObj);
-		this.hasNoSky = true;
-		this.dimensionId = ErebusMod.erebusDimensionID;
+		worldChunkMgr = new WorldChunkManagerErebus(1.0F, 0.0F, worldObj);
+		hasNoSky = true;
+		dimensionId = ErebusMod.erebusDimensionID;
 	}
 
 	@Override
 	public IChunkProvider createChunkGenerator() {
-		return new ChunkProviderErebus(this.worldObj, this.worldObj.getSeed());
+		return new ChunkProviderErebus(worldObj, worldObj.getSeed());
 	}
 
 	@Override
@@ -122,16 +121,16 @@ public class WorldProviderErebus extends WorldProvider {
 
 	@Override
 	public ChunkCoordinates getRandomizedSpawnPoint() {
-		ChunkCoordinates chunkcoordinates = new ChunkCoordinates(this.worldObj.getSpawnPoint());
+		ChunkCoordinates chunkcoordinates = new ChunkCoordinates(worldObj.getSpawnPoint());
 
 		boolean isAdventure = worldObj.getWorldInfo().getGameType() == EnumGameType.ADVENTURE;
 		int spawnFuzz = 100;
 		int spawnFuzzHalf = spawnFuzz / 2;
 
 		if (!hasNoSky && !isAdventure) {
-			chunkcoordinates.posX += this.worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
-			chunkcoordinates.posZ += this.worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
-			chunkcoordinates.posY = this.worldObj.getTopSolidOrLiquidBlock(chunkcoordinates.posX, chunkcoordinates.posZ);
+			chunkcoordinates.posX += worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
+			chunkcoordinates.posZ += worldObj.rand.nextInt(spawnFuzz) - spawnFuzzHalf;
+			chunkcoordinates.posY = worldObj.getTopSolidOrLiquidBlock(chunkcoordinates.posX, chunkcoordinates.posZ);
 		}
 
 		return chunkcoordinates;

@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
 public class ModelAntlion extends ModelBase {
+
 	ModelRenderer MandR1;
 	ModelRenderer MandR2;
 	ModelRenderer MandR3;

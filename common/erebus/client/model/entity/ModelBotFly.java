@@ -3,10 +3,13 @@ package erebus.client.model.entity;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+
 import org.lwjgl.opengl.GL11;
+
 import erebus.entity.EntityBotFly;
 
 public class ModelBotFly extends ModelBase {
+
 	// fields
 	ModelRenderer Head;
 	ModelRenderer HeadFront;
@@ -322,10 +325,10 @@ public class ModelBotFly extends ModelBase {
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
 		EntityBotFly var8 = (EntityBotFly) par7Entity;
-		this.RWing1.rotateAngleX = var8.wingFloat;
-		this.RWing2.rotateAngleX = var8.wingFloat;
-		this.LWing1.rotateAngleX = var8.wingFloat;
-		this.LWing2.rotateAngleX = var8.wingFloat;
+		RWing1.rotateAngleX = var8.wingFloat;
+		RWing2.rotateAngleX = var8.wingFloat;
+		LWing1.rotateAngleX = var8.wingFloat;
+		LWing2.rotateAngleX = var8.wingFloat;
 	}
 
 	public int getFlySize() {

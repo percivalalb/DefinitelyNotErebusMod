@@ -1,16 +1,11 @@
 package erebus.network;
 
-import com.google.common.io.ByteArrayDataInput;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 
-/**
- * @author ProPercivalalb
- **/
-public interface IPacket {
+import com.google.common.io.ByteArrayDataInput;
 
-	/** Called in the main packet handler class **/
+public interface IPacket {
 	public void handle(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data);
 }

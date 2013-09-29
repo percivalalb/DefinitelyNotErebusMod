@@ -26,8 +26,8 @@ import erebus.world.feature.trees.WorldGenMossbarkTree;
 import erebus.world.feature.trees.WorldGenSavannaTree;
 
 public class BlockSaplingErebus extends BlockSapling {
-	public static final String[] saplingTypes = new String[] { "acacia", "eucalyptus", "mahogany", "mossbark", "asper" };
 
+	public static final String[] saplingTypes = new String[] { "acacia", "eucalyptus", "mahogany", "mossbark", "asper" };
 	public static final byte dataAcacia = 0, dataEucalyptus = 1, dataMahogany = 2, dataMossbark = 3, dataAsper = 4;
 
 	@SideOnly(Side.CLIENT)

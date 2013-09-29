@@ -5,6 +5,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelIncaWarrior extends ModelBase {
+
 	// fields
 	ModelRenderer BELT;
 	ModelRenderer BELT1;

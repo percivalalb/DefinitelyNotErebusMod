@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
 public class ModelTarantula extends ModelBase {
+
 	// fields
 	ModelRenderer Body;
 	ModelRenderer RearEnd;
@@ -234,35 +235,35 @@ public class ModelTarantula extends ModelBase {
 	}
 
 	// Normal Legs
-	private float Pair1Z = 1.4F;
-	private float Pair2Z = 1F;
-	private float Pair3Z = 1.2F;
-	private float Pair4Z = 1F;
+	private final float Pair1Z = 1.4F;
+	private final float Pair2Z = 1F;
+	private final float Pair3Z = 1.2F;
+	private final float Pair4Z = 1F;
 
-	private float Pair1Y = 0.8F;
-	private float Pair2Y = 0.5F;
-	private float Pair3Y = 0.3F;
-	private float Pair4Y = 0.6F;
+	private final float Pair1Y = 0.8F;
+	private final float Pair2Y = 0.5F;
+	private final float Pair3Y = 0.3F;
+	private final float Pair4Y = 0.6F;
 
 	// Extension Legs
-	private float PairE1Z = 0.3F;
-	private float PairE2Z = 1.3F;
-	private float PairE3Z = 1.8F;
-	private float PairE4Z = 1.2F;
+	private final float PairE1Z = 0.3F;
+	private final float PairE2Z = 1.3F;
+	private final float PairE3Z = 1.8F;
+	private final float PairE4Z = 1.2F;
 
-	private float PairE1Y = 1.4F;
-	private float PairE2Y = 0.5F;
-	private float PairE3Y = 0.3F;
-	private float PairE4Y = 0.6F;
+	private final float PairE1Y = 1.4F;
+	private final float PairE2Y = 0.5F;
+	private final float PairE3Y = 0.3F;
+	private final float PairE4Y = 0.6F;
 
-	private float legSpeed = 1.1F;
+	private final float legSpeed = 1.1F;
 
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, null);
 
-		this.Head.rotateAngleY = par4 / (180F / (float) Math.PI);
-		this.Head.rotateAngleX = par5 / (180F / (float) Math.PI);
+		Head.rotateAngleY = par4 / (180F / (float) Math.PI);
+		Head.rotateAngleX = par5 / (180F / (float) Math.PI);
 
 		float varY = MathHelper.sin(par1 * legSpeed) * 1.4F * par2;
 		float varZ = Math.abs(MathHelper.cos(par1 * legSpeed)) * 0.8F * par2;
@@ -281,45 +282,45 @@ public class ModelTarantula extends ModelBase {
 
 		// Normal Legs
 		// Z
-		this.Leg1.rotateAngleZ = -Pair1Z + varZ;
-		this.Leg2.rotateAngleZ = -Pair2Z + varZ;
-		this.Leg3.rotateAngleZ = -Pair3Z + varZ;
-		this.Leg4.rotateAngleZ = -Pair4Z + varZ;
+		Leg1.rotateAngleZ = -Pair1Z + varZ;
+		Leg2.rotateAngleZ = -Pair2Z + varZ;
+		Leg3.rotateAngleZ = -Pair3Z + varZ;
+		Leg4.rotateAngleZ = -Pair4Z + varZ;
 
-		this.Leg1F.rotateAngleZ = Pair1Z - varZ;
-		this.Leg2F.rotateAngleZ = Pair2Z - varZ;
-		this.Leg3F.rotateAngleZ = Pair3Z - varZ;
-		this.Leg4F.rotateAngleZ = Pair4Z - varZ;
+		Leg1F.rotateAngleZ = Pair1Z - varZ;
+		Leg2F.rotateAngleZ = Pair2Z - varZ;
+		Leg3F.rotateAngleZ = Pair3Z - varZ;
+		Leg4F.rotateAngleZ = Pair4Z - varZ;
 		// Y
-		this.Leg1.rotateAngleY = Pair1Y + varY;
-		this.Leg2.rotateAngleY = Pair2Y - varY;
-		this.Leg3.rotateAngleY = -Pair3Y + varY;
-		this.Leg4.rotateAngleY = -Pair4Y - varY;
+		Leg1.rotateAngleY = Pair1Y + varY;
+		Leg2.rotateAngleY = Pair2Y - varY;
+		Leg3.rotateAngleY = -Pair3Y + varY;
+		Leg4.rotateAngleY = -Pair4Y - varY;
 
-		this.Leg1F.rotateAngleY = -Pair1Y + varY;
-		this.Leg2F.rotateAngleY = -Pair2Y - varY;
-		this.Leg3F.rotateAngleY = Pair3Y + varY;
-		this.Leg4F.rotateAngleY = Pair4Y - varY;
+		Leg1F.rotateAngleY = -Pair1Y + varY;
+		Leg2F.rotateAngleY = -Pair2Y - varY;
+		Leg3F.rotateAngleY = Pair3Y + varY;
+		Leg4F.rotateAngleY = Pair4Y - varY;
 		// Extension Legs
 		// Z
-		this.LegE1.rotateAngleZ = PairE1Z + varEZ;
-		this.LegE2.rotateAngleZ = PairE2Z + varEZ;
-		this.LegE3.rotateAngleZ = PairE3Z + varEZ;
-		this.LegE4.rotateAngleZ = PairE4Z + varEZ;
+		LegE1.rotateAngleZ = PairE1Z + varEZ;
+		LegE2.rotateAngleZ = PairE2Z + varEZ;
+		LegE3.rotateAngleZ = PairE3Z + varEZ;
+		LegE4.rotateAngleZ = PairE4Z + varEZ;
 
-		this.LegEF1.rotateAngleZ = -PairE1Z + varEZ;
-		this.LegEF2.rotateAngleZ = -PairE2Z + varEZ;
-		this.LegEF3.rotateAngleZ = -PairE3Z + varEZ;
-		this.LegEF4.rotateAngleZ = -PairE4Z + varEZ;
+		LegEF1.rotateAngleZ = -PairE1Z + varEZ;
+		LegEF2.rotateAngleZ = -PairE2Z + varEZ;
+		LegEF3.rotateAngleZ = -PairE3Z + varEZ;
+		LegEF4.rotateAngleZ = -PairE4Z + varEZ;
 		// Y
-		this.LegE1.rotateAngleY = PairE1Y + varEY;
-		this.LegE2.rotateAngleY = PairE2Y + varEY;
-		this.LegE3.rotateAngleY = -PairE3Y + varEY;
-		this.LegE4.rotateAngleY = -PairE4Y + varEY;
+		LegE1.rotateAngleY = PairE1Y + varEY;
+		LegE2.rotateAngleY = PairE2Y + varEY;
+		LegE3.rotateAngleY = -PairE3Y + varEY;
+		LegE4.rotateAngleY = -PairE4Y + varEY;
 
-		this.LegEF1.rotateAngleY = -PairE1Y + varEY;
-		this.LegEF2.rotateAngleY = -PairE2Y + varEY;
-		this.LegEF3.rotateAngleY = PairE3Y + varEY;
-		this.LegEF4.rotateAngleY = PairE4Y + varEY;
+		LegEF1.rotateAngleY = -PairE1Y + varEY;
+		LegEF2.rotateAngleY = -PairE2Y + varEY;
+		LegEF3.rotateAngleY = PairE3Y + varEY;
+		LegEF4.rotateAngleY = PairE4Y + varEY;
 	}
 }

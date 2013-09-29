@@ -1,12 +1,14 @@
 package erebus.core.teleport;
 
 import java.util.Random;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import cpw.mods.fml.client.FMLClientHandler;
 
 public class TeleportClient {
+
 	public static float prevTimeInPortal;
 	public static float timeInPortal;
 	public static boolean inPortal = false;
@@ -18,36 +20,29 @@ public class TeleportClient {
 		prevTimeInPortal = timeInPortal;
 
 		if (inPortal) {
-			if (mc.currentScreen != null) {
+			if (mc.currentScreen != null)
 				mc.displayGuiScreen((GuiScreen) null);
-			}
-			if (timeInPortal == 0.0F) {
+			if (timeInPortal == 0.0F)
 				mc.sndManager.playSoundFX("EternalFrost.portaltravel", 1.0F, random.nextFloat() * 0.4F + 0.8F);
-			}
 			timeInPortal += 0.0125F;
-			if (timeInPortal >= 1.0F) {
+			if (timeInPortal >= 1.0F)
 				timeInPortal = 1.0F;
-			}
 			inPortal = false;
 		} else {
-			if (timeInPortal > 0.0F) {
+			if (timeInPortal > 0.0F)
 				timeInPortal -= 0.05F;
-			}
 
-			if (timeInPortal < 0.0F) {
+			if (timeInPortal < 0.0F)
 				timeInPortal = 0.0F;
-			}
 		}
-		if (timeUntilPortal > 0) {
+		if (timeUntilPortal > 0)
 			--timeUntilPortal;
-		}
 	}
 
 	public static void setInPortal() {
-		if (timeUntilPortal > 0) {
+		if (timeUntilPortal > 0)
 			timeUntilPortal = 10;
-		} else {
+		else
 			inPortal = true;
-		}
 	}
 }

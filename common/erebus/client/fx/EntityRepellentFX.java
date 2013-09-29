@@ -8,6 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class EntityRepellentFX extends EntityFX {
+
 	float repellentParticleScale;
 
 	public EntityRepellentFX(World par1World, double par2, double par4, double par6, float par8, float par9, float par10) {

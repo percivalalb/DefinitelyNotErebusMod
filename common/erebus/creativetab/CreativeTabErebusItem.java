@@ -6,6 +6,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 
 public class CreativeTabErebusItem extends CreativeTabErebus {
+
 	public CreativeTabErebusItem(String name) {
 		super(name);
 	}

@@ -21,6 +21,7 @@ import erebus.network.PacketHandler;
 import erebus.network.packet.PacketParticle;
 
 public class EntityGrasshopper extends EntityMob {
+
 	protected EntityLiving theEntity;
 	private ChunkCoordinates currentJumpTarget;
 	private final EntityAIWander aiWander = new EntityAIWander(this, 0.6D);
@@ -58,7 +59,7 @@ public class EntityGrasshopper extends EntityMob {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.6D); // Movespeed
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // Max
-																					// Health
+		// Health
 	}
 
 	@Override
@@ -99,7 +100,7 @@ public class EntityGrasshopper extends EntityMob {
 	}
 
 	public boolean randJump() {
-		return (rand.nextInt(50) == 0);
+		return rand.nextInt(50) == 0;
 	}
 
 	@Override

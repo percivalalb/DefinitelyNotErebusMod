@@ -4,13 +4,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+
 import com.google.common.io.ByteArrayDataInput;
+
 import erebus.inventory.ContainerColossalCrate;
 import erebus.network.IPacket;
 
-/**
- * @author ProPercivalalb
- **/
 public class PacketColossalCratePage implements IPacket {
 
 	@Override
@@ -24,5 +23,4 @@ public class PacketColossalCratePage implements IPacket {
 			}
 		}
 	}
-
 }

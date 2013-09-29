@@ -12,13 +12,13 @@ import erebus.client.model.entity.ModelSolifuge;
 import erebus.entity.EntitySolifuge;
 
 public class RenderSolifuge extends RenderLiving {
-	protected ModelSolifuge model;
 
+	protected ModelSolifuge model;
 	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelSolifuge.png");
 
 	public RenderSolifuge(ModelSolifuge par1ModelBase, float par2) {
 		super(par1ModelBase, par2);
-		model = ((ModelSolifuge) mainModel);
+		model = (ModelSolifuge) mainModel;
 
 	}
 

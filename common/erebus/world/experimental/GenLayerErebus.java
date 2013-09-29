@@ -5,6 +5,10 @@ import net.minecraft.world.gen.layer.GenLayer;
 
 public abstract class GenLayerErebus extends GenLayer {
 
+	public GenLayerErebus(long par1) {
+		super(par1);
+	}
+
 	public static GenLayerErebus[] initializeAllBiomeGenerators(long par0, WorldType par2WorldType) {
 		GenLayerErebusIsland var3 = new GenLayerErebusIsland(1L);
 		GenLayerErebusFuzzyZoom var9 = new GenLayerErebusFuzzyZoom(2000L, var3);
@@ -19,9 +23,8 @@ public abstract class GenLayerErebus extends GenLayer {
 		GenLayerErebusAddMushroomIsland var16 = new GenLayerErebusAddMushroomIsland(5L, var10);
 		byte var4 = 4;
 
-		if (par2WorldType == WorldType.LARGE_BIOMES) {
+		if (par2WorldType == WorldType.LARGE_BIOMES)
 			var4 = 6;
-		}
 		var4 = getModdedBiomeSize(par2WorldType, var4);
 
 		GenLayerErebus var5 = GenLayerErebusZoom.func_75915_a(1000L, var16, 0);
@@ -37,17 +40,14 @@ public abstract class GenLayerErebus extends GenLayer {
 		for (int var7 = 0; var7 < var4; ++var7) {
 			var18 = new GenLayerErebusZoom((long) (1000 + var7), (GenLayerErebus) var18);
 
-			if (var7 == 0) {
+			if (var7 == 0)
 				var18 = new GenLayerErebusAddIsland(3L, (GenLayerErebus) var18);
-			}
 
-			if (var7 == 1) {
+			if (var7 == 1)
 				var18 = new GenLayerErebusShore(1000L, (GenLayerErebus) var18);
-			}
 
-			if (var7 == 1) {
+			if (var7 == 1)
 				var18 = new GenLayerErebusSwampRivers(1000L, (GenLayerErebus) var18);
-			}
 		}
 
 		GenLayerErebusSmooth var19 = new GenLayerErebusSmooth(1000L, (GenLayerErebus) var18);
@@ -56,9 +56,5 @@ public abstract class GenLayerErebus extends GenLayer {
 		var20.initWorldGenSeed(par0);
 		var8.initWorldGenSeed(par0);
 		return new GenLayerErebus[] { var20, var8, var20 };
-	}
-
-	public GenLayerErebus(long par1) {
-		super(par1);
 	}
 }

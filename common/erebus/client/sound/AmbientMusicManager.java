@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundManager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,6 +26,7 @@ import erebus.lib.Reference;
 
 @SideOnly(Side.CLIENT)
 public class AmbientMusicManager implements IScheduledTickHandler {
+
 	private static AmbientMusicManager instance;
 
 	public static AmbientMusicManager getInstance() {
@@ -39,8 +41,8 @@ public class AmbientMusicManager implements IScheduledTickHandler {
 	}
 
 	private SoundManager sndMan;
-	private Random rand = new Random();
-	private Map<String, URL> poolAmbient = new HashMap<String, URL>();
+	private final Random rand = new Random();
+	private final Map<String, URL> poolAmbient = new HashMap<String, URL>();
 
 	private AmbientMusicManager() {
 	}
@@ -80,10 +82,9 @@ public class AmbientMusicManager implements IScheduledTickHandler {
 	public Entry<String, URL> getEntry(String name) {
 		name = "erebus:" + name;
 
-		for (Entry<String, URL> entry : poolAmbient.entrySet()) {
+		for (Entry<String, URL> entry : poolAmbient.entrySet())
 			if (entry.getKey().equals(name))
 				return entry;
-		}
 
 		return null;
 	}

@@ -17,9 +17,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 
 public class ItemMaxSpeedBow extends Item {
+
 	private final int weaponEnchantibility;
-	// private int chargeTime;
-	// TODO chargeTime unused!
 
 	public static final String[] bowPullIconNameArray = new String[] { "maxSpeedBow_pull_0", "maxSpeedBow_pull_1", "maxSpeedBow_pull_2" };
 	@SideOnly(Side.CLIENT)
@@ -27,16 +26,11 @@ public class ItemMaxSpeedBow extends Item {
 
 	public ItemMaxSpeedBow(int id) {
 		super(id);
-		// this.setIconCoord(0, 9);
 		maxStackSize = 1;
 		setMaxDamage(301);
 		weaponEnchantibility = 5;
 	}
 
-	/**
-	 * called when the player releases the use item button. Args: itemstack,
-	 * world, entityplayer, itemInUseCount
-	 */
 	@Override
 	public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4) {
 		int var6 = getMaxItemUseDuration(par1ItemStack) - par4;
@@ -94,27 +88,16 @@ public class ItemMaxSpeedBow extends Item {
 		return par1ItemStack;
 	}
 
-	/**
-	 * How long it takes to use or consume an item
-	 */
 	@Override
 	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
 		return 72000;
 	}
 
-	/**
-	 * returns the action that specifies what animation to play when the items
-	 * is being used
-	 */
 	@Override
 	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
 		return EnumAction.bow;
 	}
 
-	/**
-	 * Called whenever this item is equipped and the right mouse button is
-	 * pressed. Args: itemStack, world, entityPlayer
-	 */
 	@Override
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 		boolean sneak = par3EntityPlayer.isSneaking();
@@ -159,10 +142,6 @@ public class ItemMaxSpeedBow extends Item {
 		return par1ItemStack;
 	}
 
-	/**
-	 * Return the enchantability factor of the item, most of the time is based
-	 * on material.
-	 */
 	@Override
 	public int getItemEnchantability() {
 		return weaponEnchantibility;

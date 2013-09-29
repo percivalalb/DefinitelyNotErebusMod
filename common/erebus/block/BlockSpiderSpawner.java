@@ -11,12 +11,12 @@ public class BlockSpiderSpawner extends BlockSpawner {
 	}
 
 	@Override
-	public int idDropped(int par1, Random par2Random, int par3) {
+	public int idDropped(int id, Random rand, int fortune) {
 		return Item.silk.itemID;
 	}
 
 	@Override
-	public int quantityDropped(Random par1Random) {
-		return par1Random.nextInt(3);
+	public int quantityDropped(Random rand) {
+		return rand.nextInt(3);
 	}
 }

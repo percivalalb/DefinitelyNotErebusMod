@@ -9,8 +9,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ModelFirebrat extends ModelBase {
-	private final ModelRenderer[] firebratBodyParts = new ModelRenderer[7];
 
+	private final ModelRenderer[] firebratBodyParts = new ModelRenderer[7];
 	private final ModelRenderer[] firebratWings;
 	private final float[] field_78170_c = new float[7];
 

@@ -16,6 +16,7 @@ import erebus.tileentity.TileEntityBambooCrate;
 
 @SideOnly(Side.CLIENT)
 public class TileEntityRenderBambooCrate extends TileEntitySpecialRenderer {
+
 	private final ModelBambooCrate bambooCrateModel = new ModelBambooCrate();
 	public static ResourceLocation bambooCrateResource = new ResourceLocation("erebus:textures/item/bambooCrate.png");
 
@@ -56,7 +57,7 @@ public class TileEntityRenderBambooCrate extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float) par2 + 0.5F, (float) par4 + 1.5F, (float) par6 + 0.5F);
 		GL11.glRotatef(0, 0.0F, 1.0F, 0.0F);
 		GL11.glScalef(1.0F, -1F, -1F);
-		bambooCrateModel.renderModel(0.0625F);
+		bambooCrateModel.renderModel();
 		GL11.glPopMatrix();
 	}
 

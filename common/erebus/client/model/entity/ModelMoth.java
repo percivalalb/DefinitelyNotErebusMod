@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import erebus.entity.EntityMoth;
 
 public class ModelMoth extends ModelBase {
+
 	// fields
 	ModelRenderer body;
 	ModelRenderer head;

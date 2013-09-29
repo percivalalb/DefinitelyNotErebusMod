@@ -7,6 +7,7 @@ import net.minecraft.util.MathHelper;
 import erebus.entity.EntityGrasshopper;
 
 public class ModelGrasshopper extends ModelBase {
+
 	ModelRenderer LAnt;
 	ModelRenderer RAnt;
 	ModelRenderer LEye;

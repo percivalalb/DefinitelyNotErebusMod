@@ -1,14 +1,16 @@
 package erebus.world.feature.trees;
 
 import java.util.Random;
-import erebus.ModBlocks;
-import erebus.block.BlockLeavesErebus;
-import erebus.block.BlockLogErebus;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import erebus.ModBlocks;
+import erebus.block.BlockLeavesErebus;
+import erebus.block.BlockLogErebus;
 
 public class WorldGenMossbarkTree extends WorldGenerator {
+
 	private static final int[] offsetX = new int[] { -1, 1, 0, 0 };
 	private static final int[] offsetZ = new int[] { 0, 0, -1, 1 };
 
@@ -22,9 +24,8 @@ public class WorldGenMossbarkTree extends WorldGenerator {
 			middleBranchHeights[a] = 1 + random.nextInt(2);
 			outsideBranchHeights[a] = middleBranchHeights[a] + random.nextInt(4);
 
-			if (middleBranchHeights[a] + outsideBranchHeights[a] > maxBranchHeight) {
+			if (middleBranchHeights[a] + outsideBranchHeights[a] > maxBranchHeight)
 				maxBranchHeight = middleBranchHeights[a] + outsideBranchHeights[a];
-			}
 		}
 
 		// check for space
@@ -35,25 +36,20 @@ public class WorldGenMossbarkTree extends WorldGenerator {
 			return false;
 		int testY;
 
-		for (testY = y + 1; testY < y + 3; ++testY) {
+		for (testY = y + 1; testY < y + 3; ++testY)
 			if (!world.isAirBlock(x, testY, z))
 				return false;
-		}
 
 		for (testY = y + 3; testY <= y + 1 + maxHeight; ++testY) {
-			for (int testX = x - 4; testX <= x + 4; ++testX) {
-				for (int testZ = z - 1; testZ <= z + 1; ++testZ) {
+			for (int testX = x - 4; testX <= x + 4; ++testX)
+				for (int testZ = z - 1; testZ <= z + 1; ++testZ)
 					if (!world.isAirBlock(testX, testY, testZ))
 						return false;
-				}
-			}
 
-			for (int testX = x - 1; testX <= x + 1; ++testX) {
-				for (int testZ = z - 4; testZ <= z + 4; ++testZ) {
+			for (int testX = x - 1; testX <= x + 1; ++testX)
+				for (int testZ = z - 4; testZ <= z + 4; ++testZ)
 					if (!world.isAirBlock(testX, testY, testZ))
 						return false;
-				}
-			}
 		}
 
 		if (world.getBlockId(x, y - 1, z) != Block.dirt.blockID && world.getBlockId(x, y - 1, z) != Block.grass.blockID)
@@ -89,9 +85,8 @@ public class WorldGenMossbarkTree extends WorldGenerator {
 		for (int yy = 0; yy < 2; ++yy)
 			world.setBlock(x, y - 1 - yy, z, ModBlocks.leavesErebus.blockID, BlockLeavesErebus.dataMossbarkDecay, 3);
 
-		for (int yy = 0; yy < height; ++yy) {
+		for (int yy = 0; yy < height; ++yy)
 			world.setBlock(x, y + yy, z, ModBlocks.logErebusGroup2.blockID, BlockLogErebus.dataMossbark, 3);
-		}
 	}
 
 	public void generateOutsideBranch(World world, Random random, int x, int y, int z, int height) {

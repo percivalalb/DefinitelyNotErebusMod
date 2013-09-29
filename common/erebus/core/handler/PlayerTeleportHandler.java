@@ -8,6 +8,7 @@ import cpw.mods.fml.common.IPlayerTracker;
 import erebus.core.teleport.TeleportServer;
 
 public class PlayerTeleportHandler implements IPlayerTracker {
+
 	public HashMap<String, TeleportServer> serverPlayers = new HashMap<String, TeleportServer>();
 
 	public void onTick(EntityPlayerMP player) {

@@ -23,13 +23,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.block.BlockUmberFurnace;
 import erebus.inventory.ContainerUmberFurnace;
 
-/**
- * Erebus
- * 
- * @author ganymedes01
- * 
- */
-
 public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler, ISidedInventory {
 
 	ItemStack[] inventory = new ItemStack[4];
@@ -119,7 +112,7 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 			if (!inventory[RESULT_SLOT].isItemEqual(itemstack))
 				return false;
 			int result = inventory[RESULT_SLOT].stackSize + itemstack.stackSize;
-			return (result <= getInventoryStackLimit() && result <= itemstack.getMaxStackSize());
+			return result <= getInventoryStackLimit() && result <= itemstack.getMaxStackSize();
 		}
 	}
 
@@ -273,7 +266,7 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 	}
 
 	public int getScaledFluidAmount(int scale) {
-		return tank.getFluid() != null ? (int) (((float) tank.getFluid().amount / (float) (tank.getCapacity())) * scale) : 0;
+		return tank.getFluid() != null ? (int) ((float) tank.getFluid().amount / (float) tank.getCapacity() * scale) : 0;
 	}
 
 	public String getFluidAmount() {

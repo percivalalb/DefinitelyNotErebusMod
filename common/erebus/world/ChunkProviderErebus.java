@@ -2,6 +2,7 @@ package erebus.world;
 
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSand;
 import net.minecraft.entity.EnumCreatureType;
@@ -23,6 +24,7 @@ import erebus.world.feature.WorldGenSpiderDungeons;
 import erebus.world.structure.MapGenErebusRavine;
 
 public class ChunkProviderErebus implements IChunkProvider {
+
 	private final World worldObj;
 
 	private final Random rand;
@@ -72,18 +74,18 @@ public class ChunkProviderErebus implements IChunkProvider {
 		biomesForGeneration = worldObj.getWorldChunkManager().getBiomesForGeneration(biomesForGeneration, x * 4 - 2, z * 4 - 2, i + 5, j + 5);
 		noiseArray = initializeNoiseField(noiseArray, x * byte0, 0, z * byte0, i, byte2, j);
 
-		for (int k = 0; k < byte0; k++) {
-			for (int l = 0; l < byte0; l++) {
+		for (int k = 0; k < byte0; k++)
+			for (int l = 0; l < byte0; l++)
 				for (int i1 = 0; i1 < 16; i1++) {
 					double d = 0.125D;
-					double d1 = noiseArray[((k + 0) * j + (l + 0)) * byte2 + (i1 + 0)];
-					double d2 = noiseArray[((k + 0) * j + (l + 1)) * byte2 + (i1 + 0)];
-					double d3 = noiseArray[((k + 1) * j + (l + 0)) * byte2 + (i1 + 0)];
-					double d4 = noiseArray[((k + 1) * j + (l + 1)) * byte2 + (i1 + 0)];
-					double d5 = (noiseArray[((k + 0) * j + (l + 0)) * byte2 + (i1 + 1)] - d1) * d;
-					double d6 = (noiseArray[((k + 0) * j + (l + 1)) * byte2 + (i1 + 1)] - d2) * d;
-					double d7 = (noiseArray[((k + 1) * j + (l + 0)) * byte2 + (i1 + 1)] - d3) * d;
-					double d8 = (noiseArray[((k + 1) * j + (l + 1)) * byte2 + (i1 + 1)] - d4) * d;
+					double d1 = noiseArray[((k + 0) * j + l + 0) * byte2 + i1 + 0];
+					double d2 = noiseArray[((k + 0) * j + l + 1) * byte2 + i1 + 0];
+					double d3 = noiseArray[((k + 1) * j + l + 0) * byte2 + i1 + 0];
+					double d4 = noiseArray[((k + 1) * j + l + 1) * byte2 + i1 + 0];
+					double d5 = (noiseArray[((k + 0) * j + l + 0) * byte2 + i1 + 1] - d1) * d;
+					double d6 = (noiseArray[((k + 0) * j + l + 1) * byte2 + i1 + 1] - d2) * d;
+					double d7 = (noiseArray[((k + 1) * j + l + 0) * byte2 + i1 + 1] - d3) * d;
+					double d8 = (noiseArray[((k + 1) * j + l + 1) * byte2 + i1 + 1] - d4) * d;
 
 					for (int j1 = 0; j1 < 8; j1++) {
 						double d9 = 0.25D;
@@ -124,8 +126,6 @@ public class ChunkProviderErebus implements IChunkProvider {
 						d4 += d8;
 					}
 				}
-			}
-		}
 	}
 
 	@Override
@@ -147,9 +147,8 @@ public class ChunkProviderErebus implements IChunkProvider {
 		Chunk chunk = new Chunk(worldObj, blocks, x, z);
 		byte[] biomeArrayReference = chunk.getBiomeArray();
 
-		for (int k = 0; k < biomeArrayReference.length; ++k) {
+		for (int k = 0; k < biomeArrayReference.length; ++k)
 			biomeArrayReference[k] = (byte) biomesForGeneration[k].biomeID;
-		}
 
 		chunk.generateSkylightMap();
 		chunk.resetRelightChecks();
@@ -172,7 +171,7 @@ public class ChunkProviderErebus implements IChunkProvider {
 		double ad[] = new double[sizeY];
 
 		for (int k = 0; k < sizeY; k++) {
-			ad[k] = Math.cos((k * Math.PI * 6D) / sizeY) * 2D;
+			ad[k] = Math.cos(k * Math.PI * 6D / sizeY) * 2D;
 			double d2 = k;
 
 			if (k > sizeY / 2)
@@ -216,7 +215,7 @@ public class ChunkProviderErebus implements IChunkProvider {
 				}
 
 				d3 += 0.5D;
-				d5 = (d5 * sizeY) / 16D;
+				d5 = d5 * sizeY / 16D;
 				j++;
 
 				for (int j1 = 0; j1 < sizeY; j1++) {
@@ -270,7 +269,7 @@ public class ChunkProviderErebus implements IChunkProvider {
 		double var6 = 0.03125D;
 		stoneNoise = noiseGen4.generateNoiseOctaves(stoneNoise, x * 16, z * 16, 0, 16, 16, 1, var6 * 2.0D, var6 * 2.0D, var6 * 2.0D);
 
-		for (int xInChunk = 0; xInChunk < 16; ++xInChunk) {
+		for (int xInChunk = 0; xInChunk < 16; ++xInChunk)
 			for (int zInChunk = 0; zInChunk < 16; ++zInChunk) {
 				BiomeGenBase biome = biomes[zInChunk + xInChunk * 16];
 				float var11 = biome.getFloatTemperature();
@@ -289,7 +288,7 @@ public class ChunkProviderErebus implements IChunkProvider {
 
 						if (var18 == 0)
 							var13 = -1;
-						else if (var18 == ModBlocks.umberstone.blockID || var18 == ModBlocks.umberstoneID - 256) {
+						else if (var18 == ModBlocks.umberstone.blockID || var18 == ModBlocks.umberstoneID - 256)
 							if (var13 == -1) {
 								if (var12 <= 0) {
 									topBlock = 0;
@@ -320,21 +319,14 @@ public class ChunkProviderErebus implements IChunkProvider {
 									fillerBlock = (byte) Block.sandStone.blockID;
 								}
 							}
-						}
 					}
 				}
 			}
-		}
 	}
 
-	/**
-	 * Populates chunk with ores etc etc
-	 */
 	@Override
 	public void populate(IChunkProvider chunkProvider, int x, int z) {
 		BlockSand.fallInstantly = true;
-		// this.genSpiderTunnels.generateStructuresInChunk(this.worldObj,
-		// this.hellRNG, x, z);
 
 		int worldCoordX = x * 16;
 		int worldCoordZ = z * 16;
@@ -346,9 +338,8 @@ public class ChunkProviderErebus implements IChunkProvider {
 			biome.generateDefault(worldObj, rand, chunkProvider, worldCoordX, worldCoordZ);
 		}
 
-		for (int attempt = 0; attempt < 14; ++attempt) {
-			(new WorldGenSpiderDungeons()).generate(worldObj, rand, worldCoordX + rand.nextInt(16) + 8, rand.nextInt(128), worldCoordZ + rand.nextInt(16) + 8);
-		}
+		for (int attempt = 0; attempt < 14; ++attempt)
+			new WorldGenSpiderDungeons().generate(worldObj, rand, worldCoordX + rand.nextInt(16) + 8, rand.nextInt(128), worldCoordZ + rand.nextInt(16) + 8);
 
 		BlockSand.fallInstantly = false;
 	}
@@ -372,11 +363,6 @@ public class ChunkProviderErebus implements IChunkProvider {
 	public String makeString() {
 		return "ErebusRandomLevelSource";
 	}
-
-	/*
-	 * ==================================== Stuff that isn't necessary to change
-	 * ====================================
-	 */
 
 	@Override
 	public boolean chunkExists(int x, int z) {

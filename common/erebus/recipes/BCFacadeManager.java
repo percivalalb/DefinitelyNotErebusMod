@@ -3,13 +3,6 @@ package erebus.recipes;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import erebus.ModBlocks;
 
-/**
- * Erebus
- * 
- * @author ganymedes01
- * 
- */
-
 public class BCFacadeManager {
 
 	public static void registerFacades() {

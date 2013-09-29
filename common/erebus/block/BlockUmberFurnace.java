@@ -25,6 +25,7 @@ import erebus.core.proxy.CommonProxy;
 import erebus.tileentity.TileEntityUmberFurnace;
 
 public class BlockUmberFurnace extends BlockContainer {
+
 	private final boolean isActive;
 	private static boolean keepFurnaceInventory;
 
@@ -71,7 +72,7 @@ public class BlockUmberFurnace extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int par1, int par2) {
-		return par1 == 1 ? furnaceIconTop : (par1 == 0 ? furnaceIconTop : (par1 != par2 ? blockIcon : furnaceIconFront));
+		return par1 == 1 ? furnaceIconTop : par1 == 0 ? furnaceIconTop : par1 != par2 ? blockIcon : furnaceIconFront;
 	}
 
 	@Override

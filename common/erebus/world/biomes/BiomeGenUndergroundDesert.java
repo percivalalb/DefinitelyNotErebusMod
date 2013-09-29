@@ -1,6 +1,7 @@
 package erebus.world.biomes;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
@@ -46,7 +47,7 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 			int posY = rand.nextInt(120);
 			int posZ = z + rand.nextInt(16);
 			if (worldObj.getBlockId(posX, posY, posZ) == 0 && worldObj.getBlockId(posX, posY - 1, posZ) == Block.sand.blockID)
-				(new WorldGenLakes(Block.lavaMoving.blockID)).generate(worldObj, worldObj.rand, posX, posY, posZ);
+				new WorldGenLakes(Block.lavaMoving.blockID).generate(worldObj, worldObj.rand, posX, posY, posZ);
 		}
 
 		for (int c = 10; c > 0; c--) {
@@ -69,18 +70,17 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 			int l3 = rand.nextInt(120);
 			int j5 = z + rand.nextInt(16);
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.sand.blockID) {
-				(new WorldGenScorchedTree()).generate(worldObj, rand, j2, l3, j5);
+				new WorldGenScorchedTree().generate(worldObj, rand, j2, l3, j5);
 				if (rand.nextInt(4) != 0)
 					break;
 			}
 		}
 
-		if (rand.nextInt(36) == 0) {
+		if (rand.nextInt(34) == 0)
 			for (int attempt = 0; attempt < 15; attempt++) {
-				int xx = x + 4 + rand.nextInt(8), yy = 15 + rand.nextInt(35), zz = z + 4 + rand.nextInt(8);
+				int xx = x + 5 + rand.nextInt(6), yy = 15 + rand.nextInt(35), zz = z + 5 + rand.nextInt(6);
 				if (new WorldGenAntlionLair().generate(worldObj, rand, xx, yy, zz))
 					break;
 			}
-		}
 	}
 }

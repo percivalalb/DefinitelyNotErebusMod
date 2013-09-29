@@ -86,7 +86,7 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 
 	@Override
 	public boolean isOnLadder() {
-		return (isCollidedHorizontally);
+		return isCollidedHorizontally;
 	}
 
 	@Override
@@ -110,7 +110,7 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 			super.onUpdate();
 
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D);
-		if (!worldObj.isRemote && entityToAttack == null && isOnSand() && (!isBoss()))
+		if (!worldObj.isRemote && entityToAttack == null && isOnSand() && !isBoss())
 			yOffset = -1;
 		else
 			yOffset = 0;
@@ -141,14 +141,20 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 						var2 = 7;
 					else if (worldObj.difficultySetting == 3)
 						var2 = 15;
-				if (var2 > 0 && (!isBoss()))
+				if (var2 > 0 && !isBoss())
 					((EntityLiving) par1Entity).addPotionEffect(new PotionEffect(Potion.weakness.id, var2 * 20, 0));
-				else if (var2 > 0 && (isBoss()))
+				else if (var2 > 0 && isBoss())
 					((EntityLiving) par1Entity).addPotionEffect(new PotionEffect(Potion.weakness.id, var2 + var3 * 20, 0));
 			}
 			return true;
 		} else
 			return false;
+	}
+
+	@Override
+	public void despawnEntity() {
+		if (!isBoss())
+			super.despawnEntity();
 	}
 
 	@Override

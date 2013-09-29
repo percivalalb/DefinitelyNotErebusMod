@@ -14,7 +14,6 @@ import erebus.ModItems;
 import erebus.client.render.entity.AnimationMathHelper;
 
 public class EntityScorpion extends EntityMob {
-
 	protected EntityLiving theEntity;
 	public boolean isCaptured;
 	public float wingFloat;
@@ -86,6 +85,17 @@ public class EntityScorpion extends EntityMob {
 		return EnumCreatureAttribute.ARTHROPOD;
 	}
 
+	/*
+	 * just to avoid crashes
+	 * 
+	 * @Override protected String getLivingSound() { return
+	 * "erebus:scorpionsound"; }
+	 * 
+	 * @Override protected String getHurtSound() { return "erebus:scorpionhurt";
+	 * }
+	 * 
+	 * @Override protected String getDeathSound() { return "erebus:squish"; }
+	 */
 	protected void getStepSound(int par1, int par2, int par3, int par4) {
 		worldObj.playSoundAtEntity(this, "mob.zombie.wood", 0.15F, 1.0F);
 	}
@@ -100,7 +110,7 @@ public class EntityScorpion extends EntityMob {
 
 	@Override
 	public boolean isOnLadder() {
-		return isCollidedHorizontally;
+		return (isCollidedHorizontally);
 	}
 
 	@Override

@@ -10,6 +10,7 @@ import net.minecraft.world.biome.SpawnListEntry;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import erebus.ModBlocks;
+import erebus.entity.EntityAntlion;
 import erebus.entity.EntityBlackWidow;
 import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
@@ -37,6 +38,7 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityFly.class, 10, 8, 8));
 		spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 35, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityCaveSpider.class, 10, 1, 4));
+		spawnableMonsterList.add(new SpawnListEntry(EntityAntlion.class, 30, 1, 8));
 		topBlock = (byte) Block.sand.blockID;
 		fillerBlock = (byte) Block.sandStone.blockID;
 	}

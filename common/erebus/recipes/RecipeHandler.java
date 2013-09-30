@@ -106,7 +106,7 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksErebus, 1, BlockPlanksErebus.dataBamboo), new Object[] { "##", "##", '#', new ItemStack(ModItems.erebusMaterials, 1, 3) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.bambooCrate, 1, 1), new Object[] { "bpb", "p p", "bpb", 'p', new ItemStack(ModBlocks.planksErebus, 1, BlockPlanksErebus.dataBamboo), 'b', new ItemStack(ModItems.erebusMaterials, 1, 3) });
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.erebusFood, 1, ItemErebusFood.dataBambooSoup), new Object[] { new ItemStack(Item.bowlEmpty), new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBamboo),
-		new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBambooShoot) });
+			new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBambooShoot) });
 
 		// Compound goggles
 		GameRegistry.addRecipe(new ItemStack(ModItems.erebusMaterials, 1, 5), new Object[] { "GGG", "GEG", "GGG", 'E', new ItemStack(ModBlocks.blockAmber, 1, 1), 'G', new ItemStack(ModItems.erebusMaterials, 1, 4) });
@@ -117,6 +117,9 @@ public class RecipeHandler {
 
 		// Sprint Leggings
 		GameRegistry.addRecipe(new ItemStack(ModItems.sprintLeggings), new Object[] { "BBB", "BXB", "BBB", 'B', new ItemStack(ModItems.erebusMaterials, 1, 8), 'X', new ItemStack(ModItems.exoskeletonLegs, 1) });
+
+		// Wasp Dagger
+		GameRegistry.addRecipe(new ItemStack(ModItems.waspDagger), new Object[] { "   ", " W ", " S ", 'W', new ItemStack(ModItems.erebusMaterials, 1, 10), 'S', new ItemStack(Item.stick) });
 
 		// Miscellaneous
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockSilk, 1), new Object[] { "sss", "sss", "sss", 's', Item.silk });

@@ -438,5 +438,12 @@ public class ModelAntlion extends ModelBase {
 		RB1.rotateAngleY = -cos2 + 3.8397247F;
 		RM1.rotateAngleY = -cos1 + 3.141593F;
 		RF1.rotateAngleY = -cos2 + 2.6179942F;
+
+		MandR1.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2 + 0.35F;
+		MandR2.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2 + 0.35F;
+		MandR3.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2 - 0.35F;
+		MandL1.rotateAngleY = -MathHelper.cos(par1 * 0.5F + (float) Math.PI) * 0.2F * par2 - 0.35F;
+		MandL2.rotateAngleY = -MathHelper.cos(par1 * 0.5F + (float) Math.PI) * 0.2F * par2 - 0.35F;
+		MandL3.rotateAngleY = -MathHelper.cos(par1 * 0.5F + (float) Math.PI) * 0.2F * par2 + 0.35F;
 	}
 }

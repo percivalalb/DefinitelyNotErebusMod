@@ -62,6 +62,7 @@ import erebus.client.render.entity.RenderVelvetWorm;
 import erebus.client.render.entity.RenderWasp;
 import erebus.client.render.item.BambooCrateItemRenderer;
 import erebus.client.render.item.ItemUmberFurnaceRenderer;
+import erebus.client.render.item.WaspDaggerItemRenderer;
 import erebus.client.render.item.WaspSwordItemRenderer;
 import erebus.client.render.tileentity.TileEntityRenderBambooCrate;
 import erebus.client.render.tileentity.TileEntitySpawnerRender;
@@ -123,6 +124,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooCrate.blockID, new BambooCrateItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.waspSword.itemID, new WaspSwordItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.umberFurnace.blockID, new ItemUmberFurnaceRenderer());
+		MinecraftForgeClient.registerItemRenderer(ModItems.waspDagger.itemID, new WaspDaggerItemRenderer());
 	}
 
 	@Override

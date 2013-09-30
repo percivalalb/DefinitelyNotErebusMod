@@ -7,7 +7,6 @@ import net.minecraft.util.MathHelper;
 import erebus.entity.EntityScorpion;
 
 public class ModelScorpion extends ModelBase {
-	// fields
 	ModelRenderer RMand;
 	ModelRenderer LMand;
 	ModelRenderer Head;
@@ -71,7 +70,6 @@ public class ModelScorpion extends ModelBase {
 	public ModelScorpion() {
 		textureWidth = 64;
 		textureHeight = 128;
-
 		RMand = new ModelRenderer(this, 33, 0);
 		RMand.addBox(0F, -0.5F, -0.5F, 3, 2, 1);
 		RMand.setRotationPoint(-1F, 18F, -5F);
@@ -510,7 +508,6 @@ public class ModelScorpion extends ModelBase {
 		float cozy2 = MathHelper.cos(par1 * 1.0F) * 0.4F * par2;
 		float cosxnz1 = MathHelper.cos(par1 / 3.0F + (float) Math.PI) * 0.1F * par2;
 		float cosxnz2 = MathHelper.cos(par1 / 3.0F + (float) Math.PI) * 0.05F * par2;
-
 		LBL1.rotateAngleZ = cosz1 - 0.3F;
 		LML1.rotateAngleZ = cosz2 - 0.3F;
 		LFL1.rotateAngleZ = cosz1 - 0.3F;
@@ -519,7 +516,6 @@ public class ModelScorpion extends ModelBase {
 		RML1.rotateAngleZ = -cosz1 + 0.3F;
 		RFL1.rotateAngleZ = -cosz2 + 0.3F;
 		RFFL1.rotateAngleZ = -cosz1 + 0.3F;
-
 		LBL1.rotateAngleY = cozy1 - 0.6981317F;
 		LML1.rotateAngleY = cozy2 - 0.2617994F;
 		LFL1.rotateAngleY = cozy1 + 0.2617994F;
@@ -528,31 +524,24 @@ public class ModelScorpion extends ModelBase {
 		RML1.rotateAngleY = -cozy1 - 2.879793F;
 		RFL1.rotateAngleY = -cozy2 + 2.879793F;
 		RFFL1.rotateAngleY = -cozy1 + 2.443461F;
-
 		ClawR1.rotateAngleX = -cosxnz1;
 		ClawR1.rotateAngleZ = cosxnz1;
 		ClawR2.rotateAngleX = -cosxnz1;
 		ClawR3.rotateAngleX = cosxnz1;
 		ClawR4.rotateAngleX = cosxnz1;
-
 		ClawR5Bot.rotateAngleX = cosxnz2;
 		ClawR5Top.rotateAngleX = cosxnz2;
-
 		ClawR5Bot.rotateAngleZ = cosxnz2;
 		ClawR5Top.rotateAngleZ = cosxnz2;
-
 		ClawL1.rotateAngleX = -cosxnz1;
 		ClawL1.rotateAngleZ = cosxnz1;
 		ClawL2.rotateAngleX = -cosxnz1;
 		ClawL3.rotateAngleX = cosxnz1;
 		ClawL4.rotateAngleX = cosxnz1;
-
 		ClawL5Bot.rotateAngleX = cosxnz2;
 		ClawL5Top.rotateAngleX = cosxnz2;
-
 		ClawL5Bot.rotateAngleZ = cosxnz2;
 		ClawL5Top.rotateAngleZ = cosxnz2;
-
 		Tail1.rotateAngleZ = -cosxnz1;
 		Tail2.rotateAngleZ = -cosxnz1;
 		Tail3.rotateAngleZ = -cosxnz1;
@@ -561,7 +550,6 @@ public class ModelScorpion extends ModelBase {
 		Tail6.rotateAngleZ = -cosxnz1;
 		Sting1.rotateAngleZ = -cosxnz1;
 		Sting2.rotateAngleZ = -cosxnz1;
-
 		if (var8.captured()) {
 			Tail1.rotateAngleX = var8.stingticks;
 			Tail2.rotateAngleX = var8.stingticks + 0.8726646F;
@@ -571,6 +559,20 @@ public class ModelScorpion extends ModelBase {
 			Tail6.rotateAngleX = var8.stingticks + 2.268928F;
 			Sting1.rotateAngleX = var8.stingticks + 2.617994F;
 			Sting2.rotateAngleX = var8.stingticks + 1.570796F;
+			ClawR1.rotateAngleZ = 0.2943951F;
+			ClawR2.rotateAngleX = -0F;
+			ClawR2.rotateAngleZ = 0.2943951F;
+			ClawR3.rotateAngleZ = 0.2943951F;
+			ClawR4.rotateAngleZ = 0.2943951F;
+			ClawR5Bot.rotateAngleX = 0.14719755F;
+			ClawR5Top.rotateAngleX = 0.14719755F;
+			ClawL1.rotateAngleZ = -0.2943951F;
+			ClawL2.rotateAngleZ = -0.2943951F;
+			ClawL2.rotateAngleX = 0F;
+			ClawL3.rotateAngleZ = -0.2943951F;
+			ClawL4.rotateAngleZ = -0.2943951F;
+			ClawL5Bot.rotateAngleX = -0.14719755F;
+			ClawL5Top.rotateAngleX = -0.14719755F;
 		}
 		if (!var8.captured()) {
 			Tail1.rotateAngleX = 0F;
@@ -581,10 +583,22 @@ public class ModelScorpion extends ModelBase {
 			Tail6.rotateAngleX = 2.268928F;
 			Sting1.rotateAngleX = 2.617994F;
 			Sting2.rotateAngleX = 1.570796F;
+			ClawR1.rotateAngleZ = 0F + cosxnz1;
+			ClawR2.rotateAngleX = 0F - cosxnz1;
+			ClawR2.rotateAngleZ = 0F;
+			ClawR3.rotateAngleZ = 0F;
+			ClawR4.rotateAngleZ = 0F;
+			ClawL5Bot.rotateAngleX = 0F + cosxnz2;
+			ClawL5Top.rotateAngleX = 0F + cosxnz2;
+			ClawL1.rotateAngleZ = 0F + cosxnz1;
+			ClawL2.rotateAngleX = 0F - cosxnz1;
+			ClawL2.rotateAngleZ = 0F;
+			ClawL3.rotateAngleZ = 0F;
+			ClawL4.rotateAngleZ = 0F;
+			ClawL5Bot.rotateAngleX = 0F + cosxnz2;
+			ClawL5Top.rotateAngleX = 0F + cosxnz2;
 		}
-
 		RMand.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2 + 1.570796F;
 		LMand.rotateAngleY = -MathHelper.cos(par1 * 0.5F + (float) Math.PI) * 0.2F * par2 + 1.570796F;
 	}
-
 }

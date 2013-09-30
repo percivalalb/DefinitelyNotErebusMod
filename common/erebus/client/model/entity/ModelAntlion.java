@@ -4,9 +4,9 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
+import erebus.entity.EntityAntlion;
 
 public class ModelAntlion extends ModelBase {
-
 	ModelRenderer MandR1;
 	ModelRenderer MandR2;
 	ModelRenderer MandR3;
@@ -58,7 +58,6 @@ public class ModelAntlion extends ModelBase {
 	public ModelAntlion() {
 		textureWidth = 128;
 		textureHeight = 128;
-
 		MandR1 = new ModelRenderer(this, 110, 54);
 		MandR1.addBox(-1.5F, -2F, -5F, 3, 4, 5);
 		MandR1.setRotationPoint(-3F, 21.5F, -28F);
@@ -344,19 +343,14 @@ public class ModelAntlion extends ModelBase {
 
 		LF1.addChild(LF2);
 		LF1.addChild(LF3);
-
 		LM1.addChild(LM2);
 		LM1.addChild(LM3);
-
 		LB1.addChild(LB2);
 		LB1.addChild(LB3);
-
 		RF1.addChild(RF2);
 		RF1.addChild(RF3);
-
 		RM1.addChild(RM2);
 		RM1.addChild(RM3);
-
 		RB1.addChild(RB2);
 		RB1.addChild(RB3);
 	}
@@ -365,7 +359,6 @@ public class ModelAntlion extends ModelBase {
 	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
 		super.render(par1Entity, par2, par3, par4, par5, par6, par7);
 		setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
-
 		MandR1.render(par7);
 		MandR2.render(par7);
 		MandR3.render(par7);
@@ -396,23 +389,11 @@ public class ModelAntlion extends ModelBase {
 		Thx11.render(par7);
 		Thx12.render(par7);
 		RF1.render(par7);
-		// RF2.render(par7);
-		// RF3.render(par7);
 		RM1.render(par7);
-		// RM2.render(par7);
-		// RM3.render(par7);
 		RB1.render(par7);
-		// RB2.render(par7);
-		// RB3.render(par7);
 		LF1.render(par7);
-		// LF2.render(par7);
-		// LF3.render(par7);
 		LM1.render(par7);
-		// LM2.render(par7);
-		// LM3.render(par7);
 		LB1.render(par7);
-		// LB2.render(par7);
-		// LB3.render(par7);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -424,6 +405,7 @@ public class ModelAntlion extends ModelBase {
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
+		EntityAntlion var8 = (EntityAntlion) par7Entity;
 		float cos1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.5F * par2;
 		float cos2 = MathHelper.cos(par1 * 1.0F) * 0.5F * par2;
 		LB1.rotateAngleX = cos1;
@@ -438,7 +420,6 @@ public class ModelAntlion extends ModelBase {
 		RB1.rotateAngleY = -cos2 + 3.8397247F;
 		RM1.rotateAngleY = -cos1 + 3.141593F;
 		RF1.rotateAngleY = -cos2 + 2.6179942F;
-
 		MandR1.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2 + 0.35F;
 		MandR2.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2 + 0.35F;
 		MandR3.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2 - 0.35F;

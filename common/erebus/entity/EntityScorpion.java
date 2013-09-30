@@ -1,7 +1,6 @@
 package erebus.entity;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityMob;
@@ -13,13 +12,11 @@ import net.minecraft.world.World;
 import erebus.ModItems;
 
 public class EntityScorpion extends EntityMob {
-	protected EntityLiving theEntity;
 	private boolean sting;
 	private boolean poisoned;
 	public static float stingticks;
 
 	public EntityScorpion(World par1World) {
-
 		super(par1World);
 		stepHeight = 0.1F;
 		isImmuneToFire = true;
@@ -48,7 +45,6 @@ public class EntityScorpion extends EntityMob {
 		if (!worldObj.isRemote && captured())
 			updateRiderPosition();
 		if (sting && stingticks < 0.64F) {
-			// wingFloat = mathWings.swing(1.0F, 0.4F);
 			stingticks = stingticks + 0.16F;
 			if (stingticks >= 0.64F) {
 				setHasBeenStung(true);

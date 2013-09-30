@@ -31,16 +31,16 @@ public class WaspDaggerItemRenderer implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		switch (type) {
 			case ENTITY:
-				renderSword(0.0F, 1.0F, 0.0F, 1.D);
+				renderDagger(0.0F, 1.0F, 0.0F, 0.75D);
 				break;
 			case EQUIPPED:
-				renderEquipped(0.3F, 0.8F, 0.4F, 1.2D);
+				renderEquipped(0.3F, 0.5F, 0.4F, 0.75D);
 				break;
 			case EQUIPPED_FIRST_PERSON:
-				renderSwordFirstPerson(0.5F, 1.0F, 0.5F, 1.2D);
+				renderDaggerFirstPerson(0.5F, 0.9F, 0.5F, 0.75D);
 				break;
 			case INVENTORY:
-				renderSwordInventory(-0.35F, -0.4F, 0.0F, 0.5D);
+				renderDaggerInventory(-0.35F, -0.4F, 0.0F, 0.5D);
 				break;
 			default:
 				break;
@@ -60,7 +60,7 @@ public class WaspDaggerItemRenderer implements IItemRenderer {
 		GL11.glPopMatrix(); // End Rendering
 	}
 
-	private void renderSword(float x, float y, float z, double size) {
+	private void renderDagger(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
 		GL11.glPushMatrix(); // Start Rendering
 		GL11.glTranslatef(x, y, z); // Position
@@ -73,7 +73,7 @@ public class WaspDaggerItemRenderer implements IItemRenderer {
 		GL11.glPopMatrix(); // End Rendering
 	}
 
-	private void renderSwordFirstPerson(float x, float y, float z, double size) {
+	private void renderDaggerFirstPerson(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
 		GL11.glPushMatrix(); // Start Rendering
 		GL11.glTranslatef(x, y, z); // Position
@@ -85,7 +85,7 @@ public class WaspDaggerItemRenderer implements IItemRenderer {
 		GL11.glPopMatrix(); // End Rendering
 	}
 
-	private void renderSwordInventory(float x, float y, float z, double size) {
+	private void renderDaggerInventory(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
 		GL11.glPushMatrix(); // Start Rendering
 		GL11.glTranslatef(x, y, z); // Position

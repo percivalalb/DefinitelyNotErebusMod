@@ -31,13 +31,13 @@ public class WaspSwordItemRenderer implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		switch (type) {
 			case ENTITY:
-				renderSword(0.0F, 1.0F, 0.0F, 1.D);
+				renderSword(0.0F, 1.0F, 0.0F, 0.75D);
 				break;
 			case EQUIPPED:
-				renderEquipped(0.3F, 0.8F, 0.4F, 1.2D);
+				renderEquipped(0.3F, 0.5F, 0.4F, 0.75D);
 				break;
 			case EQUIPPED_FIRST_PERSON:
-				renderSwordFirstPerson(0.5F, 1.0F, 0.5F, 1.2D);
+				renderSwordFirstPerson(0.5F, 0.9F, 0.5F, 0.75D);
 				break;
 			case INVENTORY:
 				renderSwordInventory(-0.35F, -0.4F, 0.0F, 0.5D);
@@ -55,7 +55,7 @@ public class WaspSwordItemRenderer implements IItemRenderer {
 		GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glRotatef(180.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glScaled(-size, -size, size); // Changes the size (Only really used
-											// when reading in the inventory)
+		// when reading in the inventory)
 		ModelWaspSword.render(0.0625F); // Render
 		GL11.glPopMatrix(); // End Rendering
 	}
@@ -68,7 +68,7 @@ public class WaspSwordItemRenderer implements IItemRenderer {
 		GL11.glRotatef(-135F, 0, 1F, 0);
 		GL11.glRotatef(70F, 0, 0, 1F);
 		GL11.glScaled(size, size, size); // Changes the size (Only really used
-											// when reading in the inventory)
+		// when reading in the inventory)
 		ModelWaspSword.render(0.0625F); // Render
 		GL11.glPopMatrix(); // End Rendering
 	}
@@ -80,7 +80,7 @@ public class WaspSwordItemRenderer implements IItemRenderer {
 		GL11.glRotatef(180F, 1F, 0, 0);
 		GL11.glRotatef(-45F, 0, 1F, 0);
 		GL11.glScaled(size, size, size); // Changes the size (Only really used
-											// when reading in the inventory)
+		// when reading in the inventory)
 		ModelWaspSword.render(0.0625F); // Render
 		GL11.glPopMatrix(); // End Rendering
 	}
@@ -93,7 +93,7 @@ public class WaspSwordItemRenderer implements IItemRenderer {
 		GL11.glRotatef(135F, 0, 1F, 0);
 		GL11.glRotatef(-20F, 0, 0, 1F);
 		GL11.glScaled(size, size, size); // Changes the size (Only really used
-											// when reading in the inventory)
+		// when reading in the inventory)
 		ModelWaspSword.render(0.0625F); // Render
 		GL11.glPopMatrix(); // End Rendering
 	}

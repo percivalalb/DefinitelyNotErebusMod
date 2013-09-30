@@ -10,6 +10,7 @@ import net.minecraft.world.biome.SpawnListEntry;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenTallGrass;
 import erebus.ModBlocks;
+import erebus.entity.EntityBeetle;
 import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
@@ -44,6 +45,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 		spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 35, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityCaveSpider.class, 10, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityTarantula.class, 10, 4, 8));
+		spawnableMonsterList.add(new SpawnListEntry(EntityBeetle.class, 35, 4, 8));
 		spawnableMonsterList.add(new SpawnListEntry(EntityBeetleLarva.class, 150, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityGrasshopper.class, 10, 4, 8));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityMoth.class, 5, 4, 4));

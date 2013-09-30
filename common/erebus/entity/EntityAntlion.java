@@ -174,9 +174,9 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 		worldObj.setEntityState(this, (byte) 16);
 
 		if (!isBoss)
-			setSize(3.0F, 1.2F);
-		else
 			setSize(1.5F, 0.6F);
+		else
+			setSize(3.0F, 1.2F);
 
 		if (areAttributesSetup)
 			updateBossAttributes();

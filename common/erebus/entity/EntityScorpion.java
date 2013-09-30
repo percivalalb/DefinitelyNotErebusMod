@@ -11,14 +11,9 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import erebus.ModItems;
-import erebus.client.render.entity.AnimationMathHelper;
 
 public class EntityScorpion extends EntityMob {
-
 	protected EntityLiving theEntity;
-	public boolean isCaptured;
-	public float wingFloat;
-	AnimationMathHelper mathWings = new AnimationMathHelper();
 	private boolean sting;
 	private boolean poisoned;
 	public static float stingticks;
@@ -48,15 +43,10 @@ public class EntityScorpion extends EntityMob {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-
-		if (!worldObj.isRemote && riddenByEntity == null) {
-			setIsInJaws(false);
+		if (!worldObj.isRemote && !captured())
 			setisStinging(false);
-		}
-		if (!worldObj.isRemote && riddenByEntity != null) {
+		if (!worldObj.isRemote && captured())
 			updateRiderPosition();
-			setIsInJaws(true);
-		}
 		if (sting && stingticks < 0.64F) {
 			// wingFloat = mathWings.swing(1.0F, 0.4F);
 			stingticks = stingticks + 0.16F;
@@ -72,10 +62,6 @@ public class EntityScorpion extends EntityMob {
 		}
 	}
 
-	private void setHasBeenStung(boolean par1) {
-		poisoned = par1;
-	}
-
 	@Override
 	public boolean getCanSpawnHere() {
 		return super.getCanSpawnHere();
@@ -86,8 +72,21 @@ public class EntityScorpion extends EntityMob {
 		return EnumCreatureAttribute.ARTHROPOD;
 	}
 
-	protected void getStepSound(int par1, int par2, int par3, int par4) {
-		worldObj.playSoundAtEntity(this, "mob.zombie.wood", 0.15F, 1.0F);
+	/*
+	 * just to avoid crashes
+	 * 
+	 * @Override protected String getLivingSound() { return
+	 * "erebus:scorpionsound"; }
+	 * 
+	 * @Override protected String getHurtSound() { return "erebus:scorpionhurt";
+	 * }
+	 * 
+	 * @Override protected String getDeathSound() { return "erebus:squish"; }
+	 */
+
+	@Override
+	protected void playStepSound(int par1, int par2, int par3, int par4) {
+		playSound("mob.spider.step", 0.15F, 1.0F);
 	}
 
 	@Override
@@ -113,28 +112,34 @@ public class EntityScorpion extends EntityMob {
 		return false;
 	}
 
+	public boolean captured() {
+		return riddenByEntity != null;
+	}
+
+	private void setisStinging(boolean par1) {
+		sting = par1;
+	}
+
+	private void setHasBeenStung(boolean par1) {
+		poisoned = par1;
+	}
+
 	@Override
 	public void onCollideWithPlayer(EntityPlayer par1EntityPlayer) {
 		super.onCollideWithPlayer(par1EntityPlayer);
 		byte var2 = 0;
-		if (!worldObj.isRemote && par1EntityPlayer.boundingBox.maxY >= boundingBox.minY && par1EntityPlayer.boundingBox.minY <= boundingBox.maxY && !isCaptured)
+		if (!worldObj.isRemote && par1EntityPlayer.boundingBox.maxY >= boundingBox.minY && par1EntityPlayer.boundingBox.minY <= boundingBox.maxY && captured())
 			if (worldObj.difficultySetting > 1)
 				if (worldObj.difficultySetting == 2)
 					var2 = 7;
 				else if (worldObj.difficultySetting == 3)
 					var2 = 15;
 		if (var2 > 0 && rand.nextInt(200) == 0) {
-			par1EntityPlayer.addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 5, 0));
+			par1EntityPlayer.addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 10, 0));
 			setisStinging(true);
 		}
-
-		if (!worldObj.isRemote && riddenByEntity == null)
+		if (!worldObj.isRemote && !captured())
 			par1EntityPlayer.mountEntity(this);
-	}
-
-	private void setisStinging(boolean par1) {
-		sting = par1;
-
 	}
 
 	@Override
@@ -142,12 +147,8 @@ public class EntityScorpion extends EntityMob {
 		double a = Math.toRadians(rotationYaw);
 		double offSetX = -Math.sin(a) * 0.75D;
 		double offSetZ = Math.cos(a) * 0.75D;
-		if (riddenByEntity != null)
+		if (captured())
 			riddenByEntity.setPosition(posX + offSetX, posY + 0.75D + riddenByEntity.getYOffset(), posZ + offSetZ);
-	}
-
-	public void setIsInJaws(boolean par1) {
-		isCaptured = par1;
 	}
 
 	@Override

@@ -7,8 +7,6 @@ import net.minecraft.util.MathHelper;
 import erebus.entity.EntityScorpion;
 
 public class ModelScorpion extends ModelBase {
-
-	// fields
 	ModelRenderer RMand;
 	ModelRenderer LMand;
 	ModelRenderer Head;
@@ -72,7 +70,6 @@ public class ModelScorpion extends ModelBase {
 	public ModelScorpion() {
 		textureWidth = 64;
 		textureHeight = 128;
-
 		RMand = new ModelRenderer(this, 33, 0);
 		RMand.addBox(0F, -0.5F, -0.5F, 3, 2, 1);
 		RMand.setRotationPoint(-1F, 18F, -5F);
@@ -431,35 +428,27 @@ public class ModelScorpion extends ModelBase {
 		LFFL1.addChild(LFFL2);
 		LFFL1.addChild(LFFL3);
 		LFFL1.addChild(LFFL4);
-
 		LFL1.addChild(LFL2);
 		LFL1.addChild(LFL3);
 		LFL1.addChild(LFL4);
-
 		LML1.addChild(LML2);
 		LML1.addChild(LML3);
 		LML1.addChild(LML4);
-
 		LBL1.addChild(LBL2);
 		LBL1.addChild(LBL3);
 		LBL1.addChild(LBL4);
-
 		RFFL1.addChild(RFFL2);
 		RFFL1.addChild(RFFL3);
 		RFFL1.addChild(RFFL4);
-
 		RFL1.addChild(RFL2);
 		RFL1.addChild(RFL3);
 		RFL1.addChild(RFL4);
-
 		RML1.addChild(RML2);
 		RML1.addChild(RML3);
 		RML1.addChild(RML4);
-
 		RBL1.addChild(RBL2);
 		RBL1.addChild(RBL3);
 		RBL1.addChild(RBL4);
-
 		Tail1.addChild(Tail2);
 		Tail1.addChild(Tail3);
 		Tail1.addChild(Tail4);
@@ -481,37 +470,13 @@ public class ModelScorpion extends ModelBase {
 		Body1.render(par7);
 		Body2.render(par7);
 		RBL1.render(par7);
-		// RBL2.render(par7);
-		// RBL3.render(par7);
-		// RBL4.render(par7);
 		RML1.render(par7);
-		// RML2.render(par7);
-		// RML3.render(par7);
-		// RML4.render(par7);
 		RFL1.render(par7);
-		// RFL2.render(par7);
-		// RFL3.render(par7);
-		// RFL4.render(par7);
 		RFFL1.render(par7);
-		// RFFL2.render(par7);
-		// RFFL3.render(par7);
-		// RFFL4.render(par7);
 		LFFL1.render(par7);
-		// LFFL2.render(par7);
-		// LFFL3.render(par7);
-		// LFFL4.render(par7);
 		LFL1.render(par7);
-		// LFL2.render(par7);
-		// LFL3.render(par7);
-		// LFL4.render(par7);
 		LML1.render(par7);
-		// LML2.render(par7);
-		// LML3.render(par7);
-		// LML4.render(par7);
 		LBL1.render(par7);
-		// LBL2.render(par7);
-		// LBL3.render(par7);
-		// LBL4.render(par7);
 		ClawR1.render(par7);
 		ClawR2.render(par7);
 		ClawR3.render(par7);
@@ -525,13 +490,6 @@ public class ModelScorpion extends ModelBase {
 		ClawL5Top.render(par7);
 		ClawL5Bot.render(par7);
 		Tail1.render(par7);
-		// Tail2.render(par7);
-		// Tail3.render(par7);
-		// Tail4.render(par7);
-		// Tail5.render(par7);
-		// Tail6.render(par7);
-		// Sting1.render(par7);
-		// Sting2.render(par7);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -543,16 +501,13 @@ public class ModelScorpion extends ModelBase {
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
-
+		EntityScorpion var8 = (EntityScorpion) par7Entity;
 		float cosz1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.3F * par2;
 		float cosz2 = MathHelper.cos(par1 * 1.0F) * 0.3F * par2;
-
 		float cozy1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.4F * par2;
 		float cozy2 = MathHelper.cos(par1 * 1.0F) * 0.4F * par2;
-
 		float cosxnz1 = MathHelper.cos(par1 / 3.0F + (float) Math.PI) * 0.1F * par2;
 		float cosxnz2 = MathHelper.cos(par1 / 3.0F + (float) Math.PI) * 0.05F * par2;
-
 		LBL1.rotateAngleZ = cosz1 - 0.3F;
 		LML1.rotateAngleZ = cosz2 - 0.3F;
 		LFL1.rotateAngleZ = cosz1 - 0.3F;
@@ -561,7 +516,6 @@ public class ModelScorpion extends ModelBase {
 		RML1.rotateAngleZ = -cosz1 + 0.3F;
 		RFL1.rotateAngleZ = -cosz2 + 0.3F;
 		RFFL1.rotateAngleZ = -cosz1 + 0.3F;
-
 		LBL1.rotateAngleY = cozy1 - 0.6981317F;
 		LML1.rotateAngleY = cozy2 - 0.2617994F;
 		LFL1.rotateAngleY = cozy1 + 0.2617994F;
@@ -570,31 +524,24 @@ public class ModelScorpion extends ModelBase {
 		RML1.rotateAngleY = -cozy1 - 2.879793F;
 		RFL1.rotateAngleY = -cozy2 + 2.879793F;
 		RFFL1.rotateAngleY = -cozy1 + 2.443461F;
-
 		ClawR1.rotateAngleX = -cosxnz1;
 		ClawR1.rotateAngleZ = cosxnz1;
 		ClawR2.rotateAngleX = -cosxnz1;
 		ClawR3.rotateAngleX = cosxnz1;
 		ClawR4.rotateAngleX = cosxnz1;
-
 		ClawR5Bot.rotateAngleX = cosxnz2;
 		ClawR5Top.rotateAngleX = cosxnz2;
-
 		ClawR5Bot.rotateAngleZ = cosxnz2;
 		ClawR5Top.rotateAngleZ = cosxnz2;
-
 		ClawL1.rotateAngleX = -cosxnz1;
 		ClawL1.rotateAngleZ = cosxnz1;
 		ClawL2.rotateAngleX = -cosxnz1;
 		ClawL3.rotateAngleX = cosxnz1;
 		ClawL4.rotateAngleX = cosxnz1;
-
 		ClawL5Bot.rotateAngleX = cosxnz2;
 		ClawL5Top.rotateAngleX = cosxnz2;
-
 		ClawL5Bot.rotateAngleZ = cosxnz2;
 		ClawL5Top.rotateAngleZ = cosxnz2;
-
 		Tail1.rotateAngleZ = -cosxnz1;
 		Tail2.rotateAngleZ = -cosxnz1;
 		Tail3.rotateAngleZ = -cosxnz1;
@@ -603,19 +550,55 @@ public class ModelScorpion extends ModelBase {
 		Tail6.rotateAngleZ = -cosxnz1;
 		Sting1.rotateAngleZ = -cosxnz1;
 		Sting2.rotateAngleZ = -cosxnz1;
-		// rotateAngleX for tail sting
-		EntityScorpion var8 = (EntityScorpion) par7Entity;
-		Tail1.rotateAngleX = EntityScorpion.stingticks;
-		Tail2.rotateAngleX = EntityScorpion.stingticks + 0.8726646F;
-		Tail3.rotateAngleX = EntityScorpion.stingticks + 1.22173F;
-		Tail4.rotateAngleX = EntityScorpion.stingticks + 1.570796F;
-		Tail5.rotateAngleX = EntityScorpion.stingticks + 1.919862F;
-		Tail6.rotateAngleX = EntityScorpion.stingticks + 2.268928F;
-		Sting1.rotateAngleX = EntityScorpion.stingticks + 2.617994F;
-		Sting2.rotateAngleX = EntityScorpion.stingticks + 1.570796F;
-
+		if (var8.captured()) {
+			Tail1.rotateAngleX = var8.stingticks;
+			Tail2.rotateAngleX = var8.stingticks + 0.8726646F;
+			Tail3.rotateAngleX = var8.stingticks + 1.22173F;
+			Tail4.rotateAngleX = var8.stingticks + 1.570796F;
+			Tail5.rotateAngleX = var8.stingticks + 1.919862F;
+			Tail6.rotateAngleX = var8.stingticks + 2.268928F;
+			Sting1.rotateAngleX = var8.stingticks + 2.617994F;
+			Sting2.rotateAngleX = var8.stingticks + 1.570796F;
+			ClawR1.rotateAngleZ = 0.2943951F;
+			ClawR2.rotateAngleX = -0F;
+			ClawR2.rotateAngleZ = 0.2943951F;
+			ClawR3.rotateAngleZ = 0.2943951F;
+			ClawR4.rotateAngleZ = 0.2943951F;
+			ClawR5Bot.rotateAngleX = 0.14719755F;
+			ClawR5Top.rotateAngleX = 0.14719755F;
+			ClawL1.rotateAngleZ = -0.2943951F;
+			ClawL2.rotateAngleZ = -0.2943951F;
+			ClawL2.rotateAngleX = 0F;
+			ClawL3.rotateAngleZ = -0.2943951F;
+			ClawL4.rotateAngleZ = -0.2943951F;
+			ClawL5Bot.rotateAngleX = -0.14719755F;
+			ClawL5Top.rotateAngleX = -0.14719755F;
+		}
+		if (!var8.captured()) {
+			Tail1.rotateAngleX = 0F;
+			Tail2.rotateAngleX = 0.8726646F;
+			Tail3.rotateAngleX = 1.22173F;
+			Tail4.rotateAngleX = 1.570796F;
+			Tail5.rotateAngleX = 1.919862F;
+			Tail6.rotateAngleX = 2.268928F;
+			Sting1.rotateAngleX = 2.617994F;
+			Sting2.rotateAngleX = 1.570796F;
+			ClawR1.rotateAngleZ = 0F + cosxnz1;
+			ClawR2.rotateAngleX = 0F - cosxnz1;
+			ClawR2.rotateAngleZ = 0F;
+			ClawR3.rotateAngleZ = 0F;
+			ClawR4.rotateAngleZ = 0F;
+			ClawL5Bot.rotateAngleX = 0F + cosxnz2;
+			ClawL5Top.rotateAngleX = 0F + cosxnz2;
+			ClawL1.rotateAngleZ = 0F + cosxnz1;
+			ClawL2.rotateAngleX = 0F - cosxnz1;
+			ClawL2.rotateAngleZ = 0F;
+			ClawL3.rotateAngleZ = 0F;
+			ClawL4.rotateAngleZ = 0F;
+			ClawL5Bot.rotateAngleX = 0F + cosxnz2;
+			ClawL5Top.rotateAngleX = 0F + cosxnz2;
+		}
 		RMand.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2 + 1.570796F;
 		LMand.rotateAngleY = -MathHelper.cos(par1 * 0.5F + (float) Math.PI) * 0.2F * par2 + 1.570796F;
 	}
-
 }

@@ -1,7 +1,6 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
@@ -9,6 +8,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.SpawnListEntry;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenLakes;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import erebus.ModBlocks;
 import erebus.entity.EntityAntlion;
 import erebus.entity.EntityBlackWidow;
@@ -45,12 +45,13 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 
 	@Override
 	public void generateTerrain(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) {
-		for (int c = 40; c > 0; c--) {
+		WorldGenerator gen = new WorldGenLakes(Block.lavaMoving.blockID);
+		for (int c = 35; c > 0; c--) {
 			int posX = x + rand.nextInt(16);
-			int posY = rand.nextInt(120);
+			int posY = 15 + rand.nextInt(90);
 			int posZ = z + rand.nextInt(16);
 			if (worldObj.getBlockId(posX, posY, posZ) == 0 && worldObj.getBlockId(posX, posY - 1, posZ) == Block.sand.blockID)
-				new WorldGenLakes(Block.lavaMoving.blockID).generate(worldObj, worldObj.rand, posX, posY, posZ);
+				gen.generate(worldObj, worldObj.rand, posX, posY, posZ);
 		}
 
 		for (int c = 10; c > 0; c--) {
@@ -76,11 +77,12 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 			}
 		}
 
-		if (rand.nextInt(34) == 0)
+		if (rand.nextInt(34) == 0) {
 			for (int attempt = 0; attempt < 15; attempt++) {
 				int xx = x + 5 + rand.nextInt(6), yy = 15 + rand.nextInt(35), zz = z + 5 + rand.nextInt(6);
 				if (new WorldGenAntlionLair().generate(worldObj, rand, xx, yy, zz))
 					break;
 			}
+		}
 	}
 }

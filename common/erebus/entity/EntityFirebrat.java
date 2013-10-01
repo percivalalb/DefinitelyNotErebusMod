@@ -6,6 +6,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class EntityFirebrat extends EntityMob {
@@ -64,8 +65,9 @@ public class EntityFirebrat extends EntityMob {
 	}
 
 	@Override
-	protected int getDropItemId() {
-		return Item.blazePowder.itemID;
+	protected void dropFewItems(boolean par1, int par2) {
+		if (rand.nextInt(5) == 0)
+			entityDropItem(new ItemStack(Item.blazePowder, 1, 0), 0.0F);
 	}
 
 	@Override

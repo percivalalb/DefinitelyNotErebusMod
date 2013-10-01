@@ -90,21 +90,21 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 					new WorldGenAsperTree().generate(worldObj, rand, j2, l3, j5);
 			}
 		}
-
-		for (int c = 0; c < 200; c++) {
-			int j2 = x + rand.nextInt(16) + 8;
-			int l3 = rand.nextInt(120);
-			int j5 = z + rand.nextInt(16) + 8;
-			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
-				new WorldGenTallGrass(ModBlocks.erebusGrass.blockID, 1).generate(worldObj, rand, j2, l3, j5);
-		}
-
-		for (int c = 0; c < 50; c++) {
-			int j2 = x + rand.nextInt(16) + 8;
-			int l3 = rand.nextInt(120);
-			int j5 = z + rand.nextInt(16) + 8;
+	
+		for (int c = 0; c < 28; c++) {
+			int j2 = x + rand.nextInt(16);
+			int l3 = 15 + rand.nextInt(90);
+			int j5 = z + rand.nextInt(16);
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				new WorldGenRottenAcacia().generate(worldObj, rand, j2, l3, j5);
+		}
+
+		for (int c = 0; c < 180; c++) {
+			int j2 = x + rand.nextInt(16);
+			int l3 = 15 + rand.nextInt(90);
+			int j5 = z + rand.nextInt(16);
+			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
+				new WorldGenTallGrass(ModBlocks.erebusGrass.blockID, 1).generate(worldObj, rand, j2, l3, j5);
 		}
 
 		if (rand.nextInt(6) == 0) {

@@ -34,7 +34,7 @@ public class BlockHollowLogRender implements ISimpleBlockRenderingHandler {
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
 		int meta=world.getBlockMetadata(x,y,z);
 		
-		float pixel = 0.0625F;
+		float pixel = 0.005F; //0.0625F; <-- causes Z-fighting
 		renderer.renderAllFaces = true;
 		renderer.setRenderBounds(0D, 0D, 0D, 1D, 1D, meta == 1 ? pixel : 0D);
 		renderer.renderStandardBlock(ModBlocks.hollowLogAcacia, x, y, z);
@@ -49,8 +49,6 @@ public class BlockHollowLogRender implements ISimpleBlockRenderingHandler {
 		renderer.setRenderBounds(0D, 1D-pixel, 0D, 1D, 1D, 1D);
 		renderer.renderStandardBlock(ModBlocks.hollowLogAcacia, x, y, z);
 		renderer.renderAllFaces = false;
-		
-		// TODO fix moss z-fighting
 		
 		return true;
 	}

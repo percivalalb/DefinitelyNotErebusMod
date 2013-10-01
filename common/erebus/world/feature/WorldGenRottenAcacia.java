@@ -10,22 +10,23 @@ import erebus.ModBlocks;
 public class WorldGenRottenAcacia extends WorldGenerator {
 
 	@Override
-	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5) {
-		while (par1World.isAirBlock(par3, par4, par5) && par4 > 2)
-			--par4;
-
-		int varA = par1World.getBlockId(par3 + 1, par4, par5);
-		int varB = par1World.getBlockId(par3, par4, par5);
-		int varC = par1World.getBlockId(par3 - 1, par4, par5);
-
-		if (varA != Block.grass.blockID || varB != Block.grass.blockID || varC != Block.grass.blockID)
-			return false;
-		else {
-			par1World.setBlock(par3, par4 + 1, par5 + 1, ModBlocks.hollowLogAcacia.blockID);
-			par1World.setBlock(par3, par4 + 1, par5, ModBlocks.hollowLogAcacia.blockID);
-			par1World.setBlock(par3, par4 + 1, par5 - 1, ModBlocks.hollowLogAcacia.blockID);
-
-			return true;
+	public boolean generate(World world, Random random, int x, int y, int z) {
+		for (int a = 0; a < 25; a++) {
+			if (world.isAirBlock(x, y, z) && world.getBlockId(x, y - 1, z) == Block.grass.blockID) break;
+			if (--y <= 1) return false;
 		}
+		
+		int len = random.nextInt(3) + 3;
+		int offsetX = random.nextInt(2), offsetZ = 1 - offsetX;
+		
+		for(int a = 0; a < len; a++) {
+			if (!world.isAirBlock(x+offsetX*a,y,z+offsetZ*a) || world.getBlockId(x+offsetX*a,y-1,z+offsetZ*a) != Block.grass.blockID)return false;
+		}
+		
+		for(int a = 0; a < len; a++) {
+			world.setBlock(x+offsetX*a,y,z+offsetZ*a,ModBlocks.hollowLogAcacia.blockID,offsetX==0?0:1,2);
+		}
+		
+		return true;
 	}
 }

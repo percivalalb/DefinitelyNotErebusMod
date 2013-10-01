@@ -63,6 +63,7 @@ public class ModItems {
 	public static Item fossilClub;						public static int fossilClubID;
 	public static Item waspSword;						public static int waspSwordID;
 	public static Item maxSpeedBow;						public static int maxSpeedBowID;
+	public static Item waspDagger;						public static int waspDaggerID;
 
 	// MISC ARMOR
 	public static Item compoundGoggles;                 public static int compoundGogglesID;
@@ -103,6 +104,7 @@ public class ModItems {
 		fossilClub = new ItemCavemanClub(fossilClubID).setFull3D().setUnlocalizedName("clubBone").setTextureName("erebus:clubBone");
 		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setCreativeTab(null).setUnlocalizedName("waspSword");
 		maxSpeedBow = new ItemMaxSpeedBow(maxSpeedBowID).setUnlocalizedName("maxSpeedBow").setTextureName("erebus:maxSpeedBow");
+		waspDagger = new ItemSword(waspDaggerID, ErebusMod.weaponWASPDAGGER).setCreativeTab(null).setUnlocalizedName("waspDagger");
 
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
 		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorEXOSKELETON, 2).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
@@ -116,7 +118,7 @@ public class ModItems {
 		ErebusMod.tabErebusGear.add(bamBucket, sprayCan);
 		ErebusMod.tabErebusGear.add(jadeHelmet, jadeBody, jadeLegs, jadeBoots, jadeSword, jadePickaxe, jadeAxe, jadeShovel, jadePaxel, jadeHoe);
 		ErebusMod.tabErebusGear.add(exoskeletonHelmet, exoskeletonBody, exoskeletonLegs, exoskeletonBoots);
-		ErebusMod.tabErebusGear.add(fossilClub, waspSword, maxSpeedBow);
+		ErebusMod.tabErebusGear.add(fossilClub, waspSword, waspDagger, maxSpeedBow);
 		ErebusMod.tabErebusGear.add(compoundGoggles, sprintLeggings, jumpBoots);
 
 		// Tool classes
@@ -153,6 +155,7 @@ public class ModItems {
 		GameRegistry.registerItem(fossilClub, "erebus.clubBone");
 		GameRegistry.registerItem(waspSword, "erebus.waspSword");
 		GameRegistry.registerItem(maxSpeedBow, "erebus.maxSpeedBow");
+		GameRegistry.registerItem(waspDagger, "erebus.waspDagger");
 
 		GameRegistry.registerItem(compoundGoggles, "erebus.compoundGoggles");
 		GameRegistry.registerItem(sprintLeggings, "erebus.sprintLeggings");

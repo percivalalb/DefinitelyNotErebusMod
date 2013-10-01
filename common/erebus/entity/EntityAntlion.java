@@ -20,9 +20,7 @@ import com.google.common.io.ByteArrayDataOutput;
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 
 public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnData {
-
 	private boolean areAttributesSetup = false;
-
 	public EntityAntlion(World world) {
 		super(world);
 		isImmuneToFire = true;
@@ -109,7 +107,6 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 			worldObj.difficultySetting = difficulty;
 		} else
 			super.onUpdate();
-
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D);
 		if (!worldObj.isRemote && entityToAttack == null && isOnSand() && !isBoss())
 			yOffset = -1;
@@ -174,7 +171,7 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 		worldObj.setEntityState(this, (byte) 16);
 
 		if (!isBoss)
-			setSize(1.5F, 0.6F);
+			setSize(1.0F, 0.6F);
 		else
 			setSize(3.0F, 1.2F);
 

@@ -7,13 +7,13 @@ import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityAmbientCreature;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import erebus.ModItems;
 import erebus.client.render.entity.AnimationMathHelper;
 
 public class EntityMoth extends EntityAmbientCreature {
@@ -210,7 +210,7 @@ public class EntityMoth extends EntityAmbientCreature {
 
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
-		if (rand.nextInt(10) == 0)
-			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 6), 0.0F);
+		if (rand.nextInt(5) == 0)
+			entityDropItem(new ItemStack(Item.glowstone, 1, 0), 0.0F);
 	}
 }

@@ -243,9 +243,9 @@ public class EntityBotFly extends EntityMob {
 
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
-		if (rand.nextInt(10) == 0)
+		if (rand.nextInt(4) == 0)
 			entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(2) + 1, 6), 0.0F);
-		if (rand.nextInt(20) == 0)
+		if (rand.nextInt(8) == 0)
 			entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3), 4), 0.0F);
 	}
 

@@ -36,7 +36,7 @@ public class ItemJumpBoots extends ItemArmor {
 	public void onEntityJump(LivingJumpEvent e) {
 		if (e.entityLiving instanceof EntityPlayer) {
 			ItemStack is = ((EntityPlayer) e.entityLiving).inventory.armorInventory[0];
-			if (is != null && is.itemID == itemID)
+			if (is != null && is.itemID == itemID && !e.entityLiving.isSneaking())
 				e.entityLiving.motionY += 0.4D;
 		} else if (e.entityLiving instanceof EntityLiving) {
 			ItemStack is = ((EntityLiving) e.entityLiving).getCurrentItemOrArmor(1);

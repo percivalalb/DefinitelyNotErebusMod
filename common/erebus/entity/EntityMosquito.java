@@ -43,7 +43,7 @@ public class EntityMosquito extends EntityFlying implements IMob {
 
 	private final int maxBloodLevel = 5;
 	public int hitInterval = 30;
-	Class[] preys = { EntityPig.class, EntityCow.class };
+	Class[] preys = { EntityPig.class, EntityCow.class, EntityBeetleLarva.class };
 
 	public EntityMosquito(World par1World) {
 		super(par1World);

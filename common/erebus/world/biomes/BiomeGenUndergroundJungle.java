@@ -242,7 +242,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				new WorldGenTallGrass(ModBlocks.fern.blockID, 1).generate(worldObj, rand, j2, l3, j5);
 		}
 
-		for (int c = 0; c < 17; c++) {
+		for (int c = 0; c < 16; c++) {
 			int j2 = x + getRandomXZOffset(rand);
 			int l3 = 15 + rand.nextInt(90);
 			int j5 = z + getRandomXZOffset(rand);

@@ -4,18 +4,55 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 
+@SideOnly(Side.CLIENT)
 public class BlockHollowLogRender implements ISimpleBlockRenderingHandler {
-
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
-
+		float pixel = 0.0625F;
+		renderer.renderAllFaces = true;
+		renderer.setRenderBounds(0D, 0D, 0D, 1D, 1D, pixel);
+		BlockRenderHelper.renderSimpleBlock(ModBlocks.hollowLogAcacia, metadata, renderer);
+		renderer.setRenderBounds(0D, 0D, 0D, pixel, 1D, 1D);
+		BlockRenderHelper.renderSimpleBlock(ModBlocks.hollowLogAcacia, metadata, renderer);
+		renderer.setRenderBounds(1D - pixel, 0D, 0D, 1D, 1D, 1D);
+		BlockRenderHelper.renderSimpleBlock(ModBlocks.hollowLogAcacia, metadata, renderer);
+		renderer.setRenderBounds(0D, 0D, 1D - pixel, 1D, 1D, 1D);
+		BlockRenderHelper.renderSimpleBlock(ModBlocks.hollowLogAcacia, metadata, renderer);
+		renderer.setRenderBounds(0D, 0D, 0D, 1D, pixel, 1D);
+		BlockRenderHelper.renderSimpleBlock(ModBlocks.hollowLogAcacia, metadata, renderer);
+		renderer.setRenderBounds(0D, 1D - pixel, 0D, 1D, 1D, 1D);
+		BlockRenderHelper.renderSimpleBlock(ModBlocks.hollowLogAcacia, metadata, renderer);
+		renderer.renderAllFaces = false;
 	}
 
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
-		return false;
+		int meta=world.getBlockMetadata(x,y,z);
+		
+		float pixel = 0.0625F;
+		renderer.renderAllFaces = true;
+		renderer.setRenderBounds(0D, 0D, 0D, 1D, 1D, meta == 1 ? pixel : 0D);
+		renderer.renderStandardBlock(ModBlocks.hollowLogAcacia, x, y, z);
+		renderer.setRenderBounds(0D, 0D, 0D, meta == 0 ? pixel : 0D, 1D, 1D);
+		renderer.renderStandardBlock(ModBlocks.hollowLogAcacia, x, y, z);
+		renderer.setRenderBounds(1D - (meta == 0 ? pixel : 0D), 0D, 0D, 1D, 1D, 1D);
+		renderer.renderStandardBlock(ModBlocks.hollowLogAcacia, x, y, z);
+		renderer.setRenderBounds(0D, 0D, 1D - (meta == 1 ? pixel : 0D), 1D, 1D, 1D);
+		renderer.renderStandardBlock(ModBlocks.hollowLogAcacia, x, y, z);
+		renderer.setRenderBounds(0D, 0D, 0D, 1D, pixel, 1D);
+		renderer.renderStandardBlock(ModBlocks.hollowLogAcacia, x, y, z);
+		renderer.setRenderBounds(0D, 1D-pixel, 0D, 1D, 1D, 1D);
+		renderer.renderStandardBlock(ModBlocks.hollowLogAcacia, x, y, z);
+		renderer.renderAllFaces = false;
+		
+		// TODO fix moss z-fighting
+		
+		return true;
 	}
 
 	@Override

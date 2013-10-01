@@ -22,7 +22,7 @@ import erebus.ErebusMod;
 public class BlockHollowLog extends Block {
 
 	@SideOnly(Side.CLIENT)
-	private Icon tree_top, tree_side;
+	private Icon iconTop, iconSide, iconMoss;
 
 	public BlockHollowLog(int id) {
 		super(id, Material.wood);
@@ -30,15 +30,15 @@ public class BlockHollowLog extends Block {
 
 	@Override
 	public Icon getIcon(int side, int meta) {
-		int k = meta & 12;
-		return k == 4 && (side == 1 || side == 0) ? tree_top : k == 0 && (side == 2 || side == 3) ? tree_top : k == 4 && (side == 2 || side == 3) ? tree_top : tree_side;
+		return side == 0 || side == 1 ? iconTop : (((side == 2 || side == 3) && meta == 1) || ((side == 4 || side == 5) && meta == 0)) ? iconSide : iconMoss;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		tree_top = reg.registerIcon("erebus:log_acacia_top");
-		tree_side = reg.registerIcon("erebus:log_acacia");
+		iconTop = reg.registerIcon("erebus:hollow_log_top");
+		iconSide = reg.registerIcon("erebus:hollow_log_side");
+		iconMoss = reg.registerIcon("erebus:hollow_log_moss");
 	}
 
 	@Override
@@ -77,14 +77,7 @@ public class BlockHollowLog extends Block {
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack stack) {
 		int l = MathHelper.floor_double(player.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
 
-		if (l == 0)
-			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
-		if (l == 1)
-			world.setBlockMetadataWithNotify(x, y, z, 1, 2);
-		if (l == 2)
-			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
-		if (l == 3)
-			world.setBlockMetadataWithNotify(x, y, z, 1, 2);
+		world.setBlockMetadataWithNotify(x, y, z, l == 0 || l == 2 ? 0 : 1, 2);
 	}
 
 	@Override

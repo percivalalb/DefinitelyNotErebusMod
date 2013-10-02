@@ -6,7 +6,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -18,6 +18,8 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
+import erebus.ModBlocks;
+import erebus.ModItems;
 
 public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnData {
 	private boolean areAttributesSetup = false;
@@ -79,13 +81,17 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 	}
 
 	@Override
-	protected void dropRareDrop(int par1) {
-		dropItem(Item.ingotIron.itemID, 1);
+	protected void dropFewItems(boolean par1, int par2) {
+		int var3 = rand.nextInt(4) + rand.nextInt(1 + par2);
+		int var4;
+		for (var4 = 0; var4 < var3; ++var4)
+			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 0), 0.0F);
 	}
 
 	@Override
-	public boolean isOnLadder() {
-		return isCollidedHorizontally;
+	protected void dropRareDrop(int par1) {
+		if (isBoss())
+			dropItem(ModBlocks.ghostSand.blockID, 4);
 	}
 
 	@Override
@@ -173,7 +179,7 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 		if (!isBoss)
 			setSize(1.0F, 0.6F);
 		else
-			setSize(3.0F, 1.2F);
+			setSize(2.0F, 1.2F);
 
 		if (areAttributesSetup)
 			updateBossAttributes();
@@ -182,10 +188,10 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 	public void updateBossAttributes() {
 		if (isBoss()) {
 			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D);
-			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50.0D);
+			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(60.0D);
 			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D);
-			getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(6.0D);
-			getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(1.0D);
+			getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(8.0D);
+			getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(0.5D);
 		} else {
 			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D);
 			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);

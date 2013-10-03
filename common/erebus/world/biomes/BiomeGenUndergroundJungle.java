@@ -25,7 +25,6 @@ import erebus.entity.EntityFly;
 import erebus.entity.EntityMosquito;
 import erebus.entity.EntityMoth;
 import erebus.entity.EntityTarantula;
-import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
 import erebus.world.feature.WorldGenAmberGround;
 import erebus.world.feature.WorldGenAmberUmberstone;
@@ -54,7 +53,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 		spawnableMonsterList.add(new SpawnListEntry(EntityWasp.class, 30, 4, 8));
 		spawnableMonsterList.add(new SpawnListEntry(EntityCentipede.class, 10, 4, 8));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityBotFly.class, 10, 4, 8));
-		spawnableCaveCreatureList.add(new SpawnListEntry(EntityVelvetWorm.class, 10, 2, 4));
+		// spawnableCaveCreatureList.add(newSpawnListEntry(EntityVelvetWorm.class,10,2,4));
 		spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 35, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityCaveSpider.class, 10, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityTarantula.class, 5, 4, 8));

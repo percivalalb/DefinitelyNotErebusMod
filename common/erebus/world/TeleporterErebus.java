@@ -36,44 +36,25 @@ public class TeleporterErebus extends Teleporter {
 	}
 
 	@Override
-	public void placeInPortal(Entity par1Entity, double par2, double par4, double par6, float par8) {
-		if (worldServerInstance.provider.dimensionId != ErebusMod.erebusDimensionID) {
-			if (!placeInExistingPortal(par1Entity, par2, par4, par6, par8)) {
-				makePortal(par1Entity);
-				placeInExistingPortal(par1Entity, par2, par4, par6, par8);
-			}
-		} else {
-			int i = MathHelper.floor_double(par1Entity.posX);
-			int j = MathHelper.floor_double(par1Entity.posY) - 1;
-			int k = MathHelper.floor_double(par1Entity.posZ);
-			byte b0 = 1;
-			byte b1 = 0;
-
-			for (int l = -2; l <= 2; ++l)
-				for (int i1 = -2; i1 <= 2; ++i1)
-					for (int j1 = -1; j1 < 3; ++j1) {
-						int k1 = i + i1 * b0 + l * b1;
-						int l1 = j + j1;
-						int i2 = k + i1 * b1 - l * b0;
-						boolean flag = j1 < 0;
-						worldServerInstance.setBlock(k1, l1, i2, flag ? Block.stoneBrick.blockID : 0, flag ? 1 : 0, 3);
-					}
-
-			par1Entity.setLocationAndAngles(i, j, k, par1Entity.rotationYaw, 0.0F);
-			par1Entity.motionX = par1Entity.motionY = par1Entity.motionZ = 0.0D;
+	public void placeInPortal(Entity entity, double x, double y, double z, float par8) {
+		//System.out.println("placeInPortal: start");
+		if (!placeInExistingPortal(entity, x, y, z, par8)) {
+			makePortal(entity);
+			placeInExistingPortal(entity, x, y, z, par8);
 		}
+		//System.out.println("placeInPortal: end");
 	}
 
 	@Override
-	public boolean placeInExistingPortal(Entity par1Entity, double par2, double par4, double par6, float par8) {
-		short short1 = 128;
+	public boolean placeInExistingPortal(Entity entity, double x, double y, double z, float par8) {
+		short checkRad = 32;
 		double d3 = -1.0D;
 		int i = 0;
 		int j = 0;
 		int k = 0;
-		int l = MathHelper.floor_double(par1Entity.posX);
-		int i1 = MathHelper.floor_double(par1Entity.posZ);
-		long j1 = ChunkCoordIntPair.chunkXZ2Int(l, i1);
+		int int_x = MathHelper.floor_double(entity.posX);
+		int int_z = MathHelper.floor_double(entity.posZ);
+		long j1 = ChunkCoordIntPair.chunkXZ2Int(int_x, int_z);
 		boolean flag = true;
 		double d4;
 		int k1;
@@ -86,19 +67,19 @@ public class TeleporterErebus extends Teleporter {
 			k = portalposition.posZ;
 			portalposition.lastUpdateTime = worldServerInstance.getTotalWorldTime();
 			flag = false;
-		} else
-			for (k1 = l - short1; k1 <= l + short1; ++k1) {
-				double d5 = k1 + 0.5D - par1Entity.posX;
+		} else {
+			for (k1 = int_x - checkRad; k1 <= int_x + checkRad; ++k1) {
+				double d5 = k1 + 0.5D - entity.posX;
 
-				for (int l1 = i1 - short1; l1 <= i1 + short1; ++l1) {
-					double d6 = l1 + 0.5D - par1Entity.posZ;
+				for (int l1 = int_z - checkRad; l1 <= int_z + checkRad; ++l1) {
+					double d6 = l1 + 0.5D - entity.posZ;
 
-					for (int i2 = worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
+					for (int i2 = worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2) {
 						if (worldServerInstance.getBlockId(k1, i2, l1) == ModBlocks.portalErebus.blockID) {
 							while (worldServerInstance.getBlockId(k1, i2 - 1, l1) == ModBlocks.portalErebus.blockID)
 								--i2;
 
-							d4 = i2 + 0.5D - par1Entity.posY;
+							d4 = i2 + 0.5D - entity.posY;
 							double d7 = d5 * d5 + d4 * d4 + d6 * d6;
 
 							if (d3 < 0.0D || d7 < d3) {
@@ -108,8 +89,10 @@ public class TeleporterErebus extends Teleporter {
 								k = l1;
 							}
 						}
+					}
 				}
 			}
+		}
 
 		if (d3 >= 0.0D) {
 			if (flag) {
@@ -134,7 +117,7 @@ public class TeleporterErebus extends Teleporter {
 			if (worldServerInstance.getBlockId(i, j, k + 1) == ModBlocks.portalErebus.blockID)
 				j2 = 1;
 
-			int k2 = par1Entity.getTeleportDirection();
+			int k2 = entity.getTeleportDirection();
 
 			if (j2 > -1) {
 				int l2 = Direction.rotateLeft[j2];
@@ -191,30 +174,33 @@ public class TeleporterErebus extends Teleporter {
 					f6 = 1.0F;
 				}
 
-				double d10 = par1Entity.motionX;
-				double d11 = par1Entity.motionZ;
-				par1Entity.motionX = d10 * f3 + d11 * f6;
-				par1Entity.motionZ = d10 * f5 + d11 * f4;
-				par1Entity.rotationYaw = par8 - k2 * 90 + j2 * 90;
-			} else
-				par1Entity.motionX = par1Entity.motionY = par1Entity.motionZ = 0.0D;
+				double d10 = entity.motionX;
+				double d11 = entity.motionZ;
+				entity.motionX = d10 * f3 + d11 * f6;
+				entity.motionZ = d10 * f5 + d11 * f4;
+				entity.rotationYaw = par8 - k2 * 90 + j2 * 90;
+			} else {
+				entity.motionX = entity.motionY = entity.motionZ = 0.0D;
+			}
 
-			par1Entity.setLocationAndAngles(d8, d9, d4, par1Entity.rotationYaw, par1Entity.rotationPitch);
+			entity.setLocationAndAngles(d8, d9, d4, entity.rotationYaw, entity.rotationPitch);
 			return true;
-		} else
+		} else {
 			return false;
+		}
 	}
 
 	@Override
-	public boolean makePortal(Entity par1Entity) {
-		byte b0 = 16;
+	public boolean makePortal(Entity entity) {
+		//System.out.println("makePortal - start");
+		byte checkRad = 16;
 		double d0 = -1.0D;
-		int i = MathHelper.floor_double(par1Entity.posX);
-		int j = MathHelper.floor_double(par1Entity.posY);
-		int k = MathHelper.floor_double(par1Entity.posZ);
-		int l = i;
-		int i1 = j;
-		int j1 = k;
+		int int_x = MathHelper.floor_double(entity.posX);
+		int int_y = MathHelper.floor_double(entity.posY);
+		int int_z = MathHelper.floor_double(entity.posZ);
+		int l = int_x;
+		int i1 = int_y;
+		int j1 = int_z;
 		int k1 = 0;
 		int l1 = random.nextInt(4);
 		int i2;
@@ -233,11 +219,11 @@ public class TeleporterErebus extends Teleporter {
 		double d3;
 		double d4;
 
-		for (i2 = i - b0; i2 <= i + b0; ++i2) {
-			d1 = i2 + 0.5D - par1Entity.posX;
+		for (i2 = int_x - checkRad; i2 <= int_x + checkRad; ++i2) {
+			d1 = i2 + 0.5D - entity.posX;
 
-			for (j2 = k - b0; j2 <= k + b0; ++j2) {
-				d2 = j2 + 0.5D - par1Entity.posZ;
+			for (j2 = int_z - checkRad; j2 <= int_z + checkRad; ++j2) {
+				d2 = j2 + 0.5D - entity.posZ;
 				label274:
 
 					for (k2 = worldServerInstance.getActualHeight() - 1; k2 >= 0; --k2)
@@ -265,7 +251,7 @@ public class TeleporterErebus extends Teleporter {
 												continue label274;
 										}
 
-								d4 = k2 + 0.5D - par1Entity.posY;
+								d4 = k2 + 0.5D - entity.posY;
 								d3 = d1 * d1 + d4 * d4 + d2 * d2;
 
 								if (d0 < 0.0D || d3 < d0) {
@@ -279,13 +265,15 @@ public class TeleporterErebus extends Teleporter {
 						}
 			}
 		}
+		
+		//System.out.println("part 1 - d0 is "+d0);
 
 		if (d0 < 0.0D)
-			for (i2 = i - b0; i2 <= i + b0; ++i2) {
-				d1 = i2 + 0.5D - par1Entity.posX;
+			for (i2 = int_x - checkRad; i2 <= int_x + checkRad; ++i2) {
+				d1 = i2 + 0.5D - entity.posX;
 
-				for (j2 = k - b0; j2 <= k + b0; ++j2) {
-					d2 = j2 + 0.5D - par1Entity.posZ;
+				for (j2 = int_z - checkRad; j2 <= int_z + checkRad; ++j2) {
+					d2 = j2 + 0.5D - entity.posZ;
 					label222:
 
 						for (k2 = worldServerInstance.getActualHeight() - 1; k2 >= 0; --k2)
@@ -307,7 +295,7 @@ public class TeleporterErebus extends Teleporter {
 												continue label222;
 										}
 
-									d4 = k2 + 0.5D - par1Entity.posY;
+									d4 = k2 + 0.5D - entity.posY;
 									d3 = d1 * d1 + d4 * d4 + d2 * d2;
 
 									if (d0 < 0.0D || d3 < d0) {
@@ -334,6 +322,8 @@ public class TeleporterErebus extends Teleporter {
 		}
 
 		boolean flag;
+		
+		//System.out.println("part 2 - d0 is "+d0);
 
 		if (d0 < 0.0D) {
 			if (i1 < 70)
@@ -352,6 +342,7 @@ public class TeleporterErebus extends Teleporter {
 						i4 = j2 + (i3 - 1) * l5 - k2 * k5;
 						flag = l2 < 0;
 						worldServerInstance.setBlock(k3, j3, i4, flag ? Block.stoneBrick.blockID : 0, flag ? 1 : 0, 3);
+						//if (flag)System.out.println("setting a block");
 					}
 		}
 
@@ -373,6 +364,8 @@ public class TeleporterErebus extends Teleporter {
 					worldServerInstance.notifyBlocksOfNeighborChange(k3, j3, i4, worldServerInstance.getBlockId(k3, j3, i4));
 				}
 		}
+		
+		//System.out.println("makePortal - end");
 
 		return true;
 	}

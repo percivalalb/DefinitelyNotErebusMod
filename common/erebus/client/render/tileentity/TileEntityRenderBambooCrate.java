@@ -8,7 +8,6 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.ModBlocks;
 import erebus.block.BlockBambooCrate;
 import erebus.client.model.block.ModelBambooCrate;
 import erebus.client.model.block.ModelColossalCrate;
@@ -28,13 +27,7 @@ public class TileEntityRenderBambooCrate extends TileEntitySpecialRenderer {
 		int y = bambooCrate.yCoord;
 		int z = bambooCrate.zCoord;
 
-		if (bambooCrate.worldObj.getBlockId(x, y - 1, z) == ModBlocks.bambooCrate.blockID)
-			y--;
-		if (bambooCrate.worldObj.getBlockId(x - 1, y, z) == ModBlocks.bambooCrate.blockID)
-			x--;
-		if (bambooCrate.worldObj.getBlockId(x, y, z - 1) == ModBlocks.bambooCrate.blockID)
-			z--;
-		if (BlockBambooCrate.squareCrate(bambooCrate.worldObj, x, y, z)) {
+		if (BlockBambooCrate.isValidCrate(bambooCrate.worldObj, x, y, z)) {
 			if (bambooCrate.xCoord != x || bambooCrate.yCoord != y || bambooCrate.zCoord != z)
 				return;
 
@@ -44,7 +37,7 @@ public class TileEntityRenderBambooCrate extends TileEntitySpecialRenderer {
 			GL11.glTranslatef((float) par2 + 1.5F, (float) par4 + 1.5F, (float) par6 + 1.5F);
 			GL11.glRotatef(0, 0.0F, 1.0F, 0.0F);
 			GL11.glScalef(1.0F, -1F, -1F);
-			colossalCrateModel.renderModel(0.0625F);
+			colossalCrateModel.renderModel();
 			GL11.glPopMatrix();
 			return;
 		} else {

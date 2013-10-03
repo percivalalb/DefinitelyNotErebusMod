@@ -109,19 +109,19 @@ public class ModelColossalCrate extends ModelBase {
 		model.rotateAngleZ = z;
 	}
 
-	public void renderModel(float f5) {
-		BambooBase1.render(f5);
-		BambooBase2.render(f5);
-		BambooBase3.render(f5);
-		BambooBase4.render(f5);
-		BambooPillar1.render(f5);
-		BambooPillar2.render(f5);
-		BambooPillar3.render(f5);
-		BambooPillar4.render(f5);
-		BambooTop1.render(f5);
-		BambooTop2.render(f5);
-		BambooTop3.render(f5);
-		BambooTop4.render(f5);
-		BambooCenter.render(f5);
+	public void renderModel() {
+		BambooBase1.render(0.0625F);
+		BambooBase2.render(0.0625F);
+		BambooBase3.render(0.0625F);
+		BambooBase4.render(0.0625F);
+		BambooPillar1.render(0.0625F);
+		BambooPillar2.render(0.0625F);
+		BambooPillar3.render(0.0625F);
+		BambooPillar4.render(0.0625F);
+		BambooTop1.render(0.0625F);
+		BambooTop2.render(0.0625F);
+		BambooTop3.render(0.0625F);
+		BambooTop4.render(0.0625F);
+		BambooCenter.render(0.0625F);
 	}
 }

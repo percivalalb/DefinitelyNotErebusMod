@@ -65,12 +65,12 @@ public class BlockBambooCrate extends BlockContainer {
 		return true;
 	}
 
-	public boolean isValidCrate(World world, int x, int y, int z) {
-		if (world.getBlockId(x, y - 1, z) == blockID)
+	public static boolean isValidCrate(World world, int x, int y, int z) {
+		if (world.getBlockId(x, y - 1, z) == ModBlocks.bambooCrate.blockID)
 			y--;
-		if (world.getBlockId(x - 1, y, z) == blockID)
+		if (world.getBlockId(x - 1, y, z) == ModBlocks.bambooCrate.blockID)
 			x--;
-		if (world.getBlockId(x, y, z - 1) == blockID)
+		if (world.getBlockId(x, y, z - 1) == ModBlocks.bambooCrate.blockID)
 			z--;
 		return squareCrate(world, x, y, z);
 	}

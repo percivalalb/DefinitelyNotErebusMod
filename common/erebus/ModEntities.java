@@ -25,6 +25,8 @@ import erebus.entity.EntityWaspDagger;
 public class ModEntities {
 
 	public static void init() {
+
+		// Mob Entities
 		registerEntity(EntityBeetleLarva.class, "BeetleLarva", EntityRegistry.findGlobalUniqueEntityId(), -1251634, -13032944);
 		registerEntity(EntityWasp.class, "Wasp", EntityRegistry.findGlobalUniqueEntityId(), -256, -16382458);
 		registerEntity(EntityCentipede.class, "Centipede", EntityRegistry.findGlobalUniqueEntityId(), -13565952, -92160);
@@ -42,7 +44,11 @@ public class ModEntities {
 		registerEntity(EntityFirebrat.class, "Firebrat", EntityRegistry.findGlobalUniqueEntityId(), 0xFF0000, 0xFF8800);
 		registerEntity(EntityAntlion.class, "Antlion", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFFFFFF);
 		registerEntity(EntityBlackWidow.class, "BlackWidow", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
+
+		// Extra Mob spawn conditions
 		EntityRegistry.addSpawn(EntityBlackWidow.class, 100, 5, 10, EnumCreatureType.monster, BiomeGenBase.hell);
+
+		// Entity Items
 		EntityRegistry.registerModEntity(EntityWaspDagger.class, "WaspDagger", EntityRegistry.findGlobalUniqueEntityId(), ErebusMod.instance, 64, 1, true);
 	}
 

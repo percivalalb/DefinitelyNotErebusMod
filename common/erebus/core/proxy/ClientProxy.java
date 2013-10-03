@@ -40,6 +40,7 @@ import erebus.client.model.entity.ModelSolifuge;
 import erebus.client.model.entity.ModelTarantula;
 import erebus.client.model.entity.ModelVelvetWorm;
 import erebus.client.model.entity.ModelWasp;
+import erebus.client.model.item.ModelWaspDagger;
 import erebus.client.render.EntityRendererErebus;
 import erebus.client.render.block.BlockBambooCropRender;
 import erebus.client.render.block.BlockHollowLogRender;
@@ -85,6 +86,7 @@ import erebus.entity.EntitySolifuge;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
+import erebus.entity.EntityWaspDagger;
 import erebus.network.packet.PacketParticle;
 import erebus.tileentity.TileEntityBambooCrate;
 import erebus.tileentity.TileEntitySpawner;
@@ -114,6 +116,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityMoth.class, new RenderMoth(new ModelMoth(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityFirebrat.class, new RenderFirebrat(new ModelFirebrat(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityAntlion.class, new RenderAntlion(new ModelAntlion(), 0.3F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityWaspDagger.class, new WaspDaggerItemRenderer(new ModelWaspDagger(), 0.3F));
 
 		// Special Renderer
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBambooCrate.class, new TileEntityRenderBambooCrate());
@@ -124,7 +127,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooCrate.blockID, new BambooCrateItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.waspSword.itemID, new WaspSwordItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.umberFurnace.blockID, new ItemUmberFurnaceRenderer());
-		MinecraftForgeClient.registerItemRenderer(ModItems.waspDagger.itemID, new WaspDaggerItemRenderer());
+		MinecraftForgeClient.registerItemRenderer(ModItems.waspDagger.itemID, new WaspDaggerItemRenderer(new ModelWaspDagger(), 0.3F));
 	}
 
 	@Override

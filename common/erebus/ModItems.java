@@ -27,6 +27,7 @@ import erebus.item.ItemPaxel;
 import erebus.item.ItemPortalActivator;
 import erebus.item.ItemSprayCan;
 import erebus.item.ItemSprintLeggings;
+import erebus.item.ItemWaspDagger;
 
 public class ModItems {
 
@@ -104,7 +105,7 @@ public class ModItems {
 		fossilClub = new ItemCavemanClub(fossilClubID).setFull3D().setUnlocalizedName("clubBone").setTextureName("erebus:clubBone");
 		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setCreativeTab(null).setUnlocalizedName("waspSword");
 		maxSpeedBow = new ItemMaxSpeedBow(maxSpeedBowID).setUnlocalizedName("maxSpeedBow").setTextureName("erebus:maxSpeedBow");
-		waspDagger = new ItemSword(waspDaggerID, ErebusMod.weaponWASPDAGGER).setCreativeTab(null).setUnlocalizedName("waspDagger");
+		waspDagger = new ItemWaspDagger(waspDaggerID).setCreativeTab(null).setUnlocalizedName("waspDagger");
 
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
 		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorEXOSKELETON, 2).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");

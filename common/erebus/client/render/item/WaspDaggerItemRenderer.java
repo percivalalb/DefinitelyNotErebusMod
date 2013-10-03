@@ -1,5 +1,7 @@
 package erebus.client.render.item;
 
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
@@ -8,12 +10,13 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.FMLClientHandler;
 import erebus.client.model.item.ModelWaspDagger;
+import erebus.entity.EntityWaspDagger;
 
-public class WaspDaggerItemRenderer implements IItemRenderer {
+public class WaspDaggerItemRenderer extends Render implements IItemRenderer {
 	private final ModelWaspDagger ModelWaspDagger;
 	public static ResourceLocation texture = new ResourceLocation("erebus:textures/item/ModelWaspSword.png");
 
-	public WaspDaggerItemRenderer() {
+	public WaspDaggerItemRenderer(ModelWaspDagger par1ModelBase, float par2) {
 		ModelWaspDagger = new ModelWaspDagger();
 	}
 
@@ -34,7 +37,7 @@ public class WaspDaggerItemRenderer implements IItemRenderer {
 				renderDagger(0.0F, 1.0F, 0.0F, 0.75D);
 				break;
 			case EQUIPPED:
-				renderEquipped(0.3F, 0.5F, 0.4F, 0.75D);
+				renderEquipped(0.3F, 0.5F, 0.4F, 1.0D);
 				break;
 			case EQUIPPED_FIRST_PERSON:
 				renderDaggerFirstPerson(0.5F, 0.9F, 0.5F, 0.75D);
@@ -50,11 +53,11 @@ public class WaspDaggerItemRenderer implements IItemRenderer {
 	private void renderEquipped(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
 		GL11.glPushMatrix(); // Start Rendering
-		GL11.glTranslatef(x, y + 0.6F, z + 0.5F);// Position
-		GL11.glRotatef(20.0F, 1.0F, 0.0F, 0.0F);
-		GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(180.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glScaled(-size, -size, size); // Changes the size (Only really used
+		GL11.glTranslatef(x - 0.2F, y + 0.6F, z + 0.5F);// Position
+		GL11.glRotatef(160.0F, 1.0F, 0.0F, 0.0F);
+		GL11.glRotatef(10.0F, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(20.0F, 0.0F, 0.0F, 1.0F);
+		GL11.glScaled(size, size, size); // Changes the size (Only really used
 		// when reading in the inventory)
 		ModelWaspDagger.render(0.0625F); // Render
 		GL11.glPopMatrix(); // End Rendering
@@ -96,5 +99,26 @@ public class WaspDaggerItemRenderer implements IItemRenderer {
 		// when reading in the inventory)
 		ModelWaspDagger.render(0.0625F); // Render
 		GL11.glPopMatrix(); // End Rendering
+	}
+
+	@Override
+	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+		renderWaspDagger((EntityWaspDagger) par1Entity, par2, par4, par6, par8, par9);
+	}
+
+	public void renderWaspDagger(EntityWaspDagger par1EntityWaspDagger, double par2, double par4, double par6, float par8, float par9) {
+		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
+		GL11.glPushMatrix();
+		GL11.glTranslatef((float) par2, (float) par4, (float) par6);
+		GL11.glRotatef(par1EntityWaspDagger.prevRotationYaw + (par1EntityWaspDagger.rotationYaw - par1EntityWaspDagger.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(par1EntityWaspDagger.prevRotationPitch + (par1EntityWaspDagger.rotationPitch - par1EntityWaspDagger.prevRotationPitch) * par9 - par1EntityWaspDagger.rotationticks, 0.0F, 0.0F, 1.0F);
+		GL11.glScaled(0.4F, 0.4F, 0.4F);
+		ModelWaspDagger.render(0.0625F);
+		GL11.glPopMatrix();
+	}
+
+	@Override
+	protected ResourceLocation getEntityTexture(Entity entity) {
+		return texture;
 	}
 }

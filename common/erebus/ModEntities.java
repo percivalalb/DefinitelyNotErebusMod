@@ -20,6 +20,7 @@ import erebus.entity.EntitySolifuge;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
 import erebus.entity.EntityWasp;
+import erebus.entity.EntityWaspDagger;
 
 public class ModEntities {
 
@@ -42,6 +43,7 @@ public class ModEntities {
 		registerEntity(EntityAntlion.class, "Antlion", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFFFFFF);
 		registerEntity(EntityBlackWidow.class, "BlackWidow", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 		EntityRegistry.addSpawn(EntityBlackWidow.class, 100, 5, 10, EnumCreatureType.monster, BiomeGenBase.hell);
+		EntityRegistry.registerModEntity(EntityWaspDagger.class, "WaspDagger", EntityRegistry.findGlobalUniqueEntityId(), ErebusMod.instance, 64, 1, true);
 	}
 
 	public static void registerEntity(Class entityClass, String saveName, int id, int backgroundEggColour, int foregroundEggColour) {

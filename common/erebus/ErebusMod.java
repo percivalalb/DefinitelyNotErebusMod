@@ -55,8 +55,6 @@ public class ErebusMod {
 	public static EnumToolMaterial toolJADE = EnumHelper.addToolMaterial("JADE", 2, 863, 10.0F, 2.0F, 18);
 	public static EnumToolMaterial toolJADEPAXEL = EnumHelper.addToolMaterial("JADEPAXEL", 2, 1079, 8.0F, 4.0F, 14);
 	public static EnumToolMaterial toolCAVEMANCLUB = EnumHelper.addToolMaterial("CAVEMANCLUB", 0, 131, 4.0F, 2.0F, 12);
-	public static EnumToolMaterial weaponWASPDAGGER = EnumHelper.addToolMaterial("WASPDAGGER", 0, 16, 0.5F, 0.5F, 12);
-
 
 	public static CreativeTabErebus tabErebusBlock = new CreativeTabErebusBlock("erebus.block");
 	public static CreativeTabErebus tabErebusItem = new CreativeTabErebusItem("erebus.item");

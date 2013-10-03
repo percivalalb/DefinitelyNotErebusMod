@@ -8,8 +8,8 @@ import erebus.entity.EntityWaspDagger;
 
 public class ItemWaspDagger extends Item {
 
-	public ItemWaspDagger(int i) {
-		super(i);
+	public ItemWaspDagger(int id) {
+		super(id);
 		maxStackSize = 16;
 	}
 

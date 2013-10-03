@@ -10,7 +10,7 @@ public class ItemWaspDagger extends Item {
 
 	public ItemWaspDagger(int i) {
 		super(i);
-		maxStackSize = 1;
+		maxStackSize = 16;
 	}
 
 	@Override

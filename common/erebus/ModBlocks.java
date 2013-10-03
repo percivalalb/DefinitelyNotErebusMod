@@ -41,13 +41,14 @@ import erebus.item.block.ItemBlockLogErebus1;
 import erebus.item.block.ItemBlockLogErebus2;
 import erebus.item.block.ItemBlockPlanksErebus;
 import erebus.item.block.ItemBlockRedGem;
-import erebus.item.block.ItemBlockSlabPlanksErebus;
+import erebus.item.block.ItemBlockSapling;
+import erebus.item.block.ItemBlockSlabPlanks0Erebus;
+import erebus.item.block.ItemBlockSlabPlanks1Erebus;
 import erebus.item.block.ItemBlockSlabStoneErebus;
 import erebus.item.block.ItemBlockUmberOre;
 import erebus.item.block.ItemBlockUmberStone;
 import erebus.item.block.ItemBlockUmberpaver;
 import erebus.item.block.ItemBlockWallErebus;
-import erebus.item.block.ItemBlockSapling;
 
 public class ModBlocks {
 
@@ -156,9 +157,9 @@ public class ModBlocks {
 		stoneSlabs = new Block[2];
 		for (int i = 0; i < 2; i++)
 			stoneSlabs[i] = new BlockSlabStoneErebus(stoneSlabsID[i], i == 1).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("slabStoneErebus");
-		plankSlabs = new Block[2];
-		for (int i = 0; i < 2; i++)
-			plankSlabs[i] = new BlockSlabPlanksErebus(plankSlabsID[i], i == 1).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("slabPlanksErebus");
+		plankSlabs = new Block[4];
+		for (int i = 0; i < 4; i++)
+			plankSlabs[i] = new BlockSlabPlanksErebus(plankSlabsID[i], (int)Math.floor(i/2f), i%2 == 1).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("slabPlanksErebus");
 		wallErebus = new BlockWallErebus(wallErebusID, umberstone).setUnlocalizedName("wallErebus");
 
 		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, "Spider").setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner");
@@ -173,7 +174,7 @@ public class ModBlocks {
 			ErebusMod.tabErebusBlock.add(b);
 		for (Block b : plankStairs)
 			ErebusMod.tabErebusBlock.add(b);
-		ErebusMod.tabErebusBlock.add(petrifiedWoodStairs, stoneSlabs[0], plankSlabs[0], wallErebus);
+		ErebusMod.tabErebusBlock.add(petrifiedWoodStairs, stoneSlabs[0], plankSlabs[0], plankSlabs[2], wallErebus);
 
 		// Registering blocks
 		GameRegistry.registerBlock(portalErebus, "erebus.portal");
@@ -218,7 +219,7 @@ public class ModBlocks {
 		for (int i = 0; i < stoneSlabs.length; i++)
 			GameRegistry.registerBlock(stoneSlabs[i], ItemBlockSlabStoneErebus.class, "erebus.slabStone" + i);
 		for (int i = 0; i < plankSlabs.length; i++)
-			GameRegistry.registerBlock(plankSlabs[i], ItemBlockSlabPlanksErebus.class, "erebus.slabPlanks" + i);
+			GameRegistry.registerBlock(plankSlabs[i], i <= 1 ? ItemBlockSlabPlanks0Erebus.class : ItemBlockSlabPlanks1Erebus.class, "erebus.slabPlanks" + i);
 		GameRegistry.registerBlock(petrifiedWoodStairs, "erebus.petrifiedWoodStairs");
 
 		GameRegistry.registerBlock(wallErebus, ItemBlockWallErebus.class, "erebus.wallErebus");

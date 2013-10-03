@@ -64,8 +64,16 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.stoneSlabs[0], 6, 6), new Object[] { "###", '#', new ItemStack(ModBlocks.umberPaver, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.stoneSlabs[0], 6, 7), new Object[] { "###", '#', new ItemStack(ModBlocks.umberPaver, 1, 2) });
 
-		for (int i = 0; i < BlockSlabPlanksErebus.slabTypes.length; i++)
-			GameRegistry.addRecipe(new ItemStack(ModBlocks.plankSlabs[0], 6, i), new Object[] { "###", '#', new ItemStack(ModBlocks.planksErebus, 1, i) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.plankSlabs[0], 6, 0), new Object[] { "###", '#', new ItemStack(ModBlocks.planksErebus, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.plankSlabs[0], 6, 1), new Object[] { "###", '#', new ItemStack(ModBlocks.planksErebus, 1, 1) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.plankSlabs[0], 6, 2), new Object[] { "###", '#', new ItemStack(ModBlocks.planksErebus, 1, 2) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.plankSlabs[0], 6, 3), new Object[] { "###", '#', new ItemStack(ModBlocks.planksErebus, 1, 3) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.plankSlabs[0], 6, 4), new Object[] { "###", '#', new ItemStack(ModBlocks.planksErebus, 1, 4) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.plankSlabs[0], 6, 5), new Object[] { "###", '#', new ItemStack(ModBlocks.planksErebus, 1, 5) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.plankSlabs[0], 6, 6), new Object[] { "###", '#', new ItemStack(ModBlocks.planksErebus, 1, 6) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.plankSlabs[0], 6, 7), new Object[] { "###", '#', new ItemStack(ModBlocks.planksErebus, 1, 7) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.plankSlabs[2], 6, 0), new Object[] { "###", '#', new ItemStack(ModBlocks.planksErebus, 1, 8) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.plankSlabs[2], 6, 1), new Object[] { "###", '#', new ItemStack(ModBlocks.planksErebus, 1, 9) });
 
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.wallErebus, 6, 0), new Object[] { "###", "###", '#', new ItemStack(ModBlocks.umberstone, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.wallErebus, 6, 1), new Object[] { "###", "###", '#', new ItemStack(ModBlocks.umberstone, 1, 1) });
@@ -82,6 +90,7 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModItems.jadeAxe, 1), new Object[] { "XX", "X#", " #", '#', Item.stick, 'X', new ItemStack(ModItems.erebusMaterials, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(ModItems.jadeHoe, 1), new Object[] { "XX", " #", " #", '#', Item.stick, 'X', new ItemStack(ModItems.erebusMaterials, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(ModItems.jadeSword, 1), new Object[] { "X", "X", "#", '#', Item.stick, 'X', new ItemStack(ModItems.erebusMaterials, 1, 1) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.jadePaxel, 1), new Object[] { "XXX", "XSX", "XSX", 'X', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataJade), 'S', Item.stick });
 		GameRegistry.addRecipe(new RecipePaxel());
 
 		// Jade armor

@@ -28,14 +28,13 @@ public class TileEntityRenderBambooCrate extends TileEntitySpecialRenderer {
 		int y = bambooCrate.yCoord;
 		int z = bambooCrate.zCoord;
 
-		BlockBambooCrate crate = (BlockBambooCrate) ModBlocks.bambooCrate;
-		if (bambooCrate.worldObj.getBlockId(x, y - 1, z) == crate.blockID && bambooCrate.worldObj.getBlockMetadata(x, y - 1, z) == 1)
+		if (bambooCrate.worldObj.getBlockId(x, y - 1, z) == ModBlocks.bambooCrate.blockID)
 			y--;
-		if (bambooCrate.worldObj.getBlockId(x - 1, y, z) == crate.blockID && bambooCrate.worldObj.getBlockMetadata(x - 1, y, z) == 1)
+		if (bambooCrate.worldObj.getBlockId(x - 1, y, z) == ModBlocks.bambooCrate.blockID)
 			x--;
-		if (bambooCrate.worldObj.getBlockId(x, y, z - 1) == crate.blockID && bambooCrate.worldObj.getBlockMetadata(x, y, z - 1) == 1)
+		if (bambooCrate.worldObj.getBlockId(x, y, z - 1) == ModBlocks.bambooCrate.blockID)
 			z--;
-		if (crate.squareCrate(bambooCrate.worldObj, x, y, z)) {
+		if (BlockBambooCrate.squareCrate(bambooCrate.worldObj, x, y, z)) {
 			if (bambooCrate.xCoord != x || bambooCrate.yCoord != y || bambooCrate.zCoord != z)
 				return;
 
@@ -48,17 +47,16 @@ public class TileEntityRenderBambooCrate extends TileEntitySpecialRenderer {
 			colossalCrateModel.renderModel(0.0625F);
 			GL11.glPopMatrix();
 			return;
+		} else {
+			bindTexture(bambooCrateResource);
 
+			GL11.glPushMatrix();
+			GL11.glTranslatef((float) par2 + 0.5F, (float) par4 + 1.5F, (float) par6 + 0.5F);
+			GL11.glRotatef(0, 0.0F, 1.0F, 0.0F);
+			GL11.glScalef(1.0F, -1F, -1F);
+			bambooCrateModel.renderModel();
+			GL11.glPopMatrix();
 		}
-
-		bindTexture(bambooCrateResource);
-
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float) par2 + 0.5F, (float) par4 + 1.5F, (float) par6 + 0.5F);
-		GL11.glRotatef(0, 0.0F, 1.0F, 0.0F);
-		GL11.glScalef(1.0F, -1F, -1F);
-		bambooCrateModel.renderModel();
-		GL11.glPopMatrix();
 	}
 
 	@Override

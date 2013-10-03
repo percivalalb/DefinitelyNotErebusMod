@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import erebus.ErebusMod;
+import erebus.ModBlocks;
 import erebus.core.proxy.CommonProxy;
 import erebus.tileentity.TileEntityBambooCrate;
 import erebus.utils.Utils;
@@ -32,11 +33,7 @@ public class BlockBambooCrate extends BlockContainer {
 		blockIcon = reg.registerIcon("erebus:bambooCrate");
 	}
 
-	public enum Row {
-		BOTTOM, TOP, UNKNOWN;
-	}
-
-	public boolean squareCrate(World world, int x, int y, int z) {
+	public static boolean squareCrate(World world, int x, int y, int z) {
 		for (int xCount = x - 1; xCount <= x + 2; xCount++)
 			for (int yCount = y - 1; yCount <= y + 2; yCount++)
 				for (int zCount = z - 1; zCount <= z + 2; zCount++) {
@@ -60,53 +57,20 @@ public class BlockBambooCrate extends BlockContainer {
 						continue;
 
 					if (flag1 || flag2 || flag3 || flag4 || flag5 || flag6) {
-						if (blockId == blockID && blockMeta == 1)
+						if (blockId == ModBlocks.bambooCrate.blockID && blockMeta == 1)
 							return false;
-					} else if (blockId != blockID && blockMeta == 0)
-						return false;
-				}
-		return true;
-	}
-
-	public boolean squareCrateExcluede(World world, int x, int y, int z) {
-		for (int xCount = x - 1; xCount <= x + 2; xCount++)
-			for (int yCount = y - 1; yCount <= y + 2; yCount++)
-				for (int zCount = z - 1; zCount <= z + 2; zCount++) {
-					if (xCount == x && yCount == y && zCount == z)
-						continue;
-					int blockId = world.getBlockId(xCount, yCount, zCount);
-
-					boolean flag1 = xCount == x - 1;
-					boolean flag2 = xCount == x + 2;
-					boolean flag3 = yCount == y - 1;
-					boolean flag4 = yCount == y + 2;
-					boolean flag5 = zCount == z - 1;
-					boolean flag6 = zCount == z + 2;
-
-					if (flag1 && (flag5 || flag6))
-						continue;
-					if (flag2 && (flag5 || flag6))
-						continue;
-					if (flag3 && (flag1 || flag2 || flag5 || flag6))
-						continue;
-					if (flag4 && (flag1 || flag2 || flag5 || flag6))
-						continue;
-
-					if (flag1 && !flag5 || flag2 || flag3 || flag4 || flag5 || flag6) {
-						if (blockId == blockID)
-							return false;
-					} else if (blockId != blockID)
+					} else if (blockId != ModBlocks.bambooCrate.blockID && blockMeta == 0)
 						return false;
 				}
 		return true;
 	}
 
 	public boolean isValidCrate(World world, int x, int y, int z) {
-		if (world.getBlockId(x, y - 1, z) == blockID && world.getBlockMetadata(x, y - 1, z) == 1)
+		if (world.getBlockId(x, y - 1, z) == blockID)
 			y--;
-		if (world.getBlockId(x - 1, y, z) == blockID && world.getBlockMetadata(x - 1, y, z) == 1)
+		if (world.getBlockId(x - 1, y, z) == blockID)
 			x--;
-		if (world.getBlockId(x, y, z - 1) == blockID && world.getBlockMetadata(x, y, z - 1) == 1)
+		if (world.getBlockId(x, y, z - 1) == blockID)
 			z--;
 		return squareCrate(world, x, y, z);
 	}

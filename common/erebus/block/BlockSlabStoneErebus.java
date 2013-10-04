@@ -20,6 +20,7 @@ public class BlockSlabStoneErebus extends BlockHalfSlab {
 
 	public BlockSlabStoneErebus(int id, boolean isDouble) {
 		super(id, isDouble, Material.rock);
+		setLightOpacity(0);
 	}
 
 	@Override

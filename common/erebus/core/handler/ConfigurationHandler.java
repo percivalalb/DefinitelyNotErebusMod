@@ -74,13 +74,16 @@ public class ConfigurationHandler {
 				ModBlocks.stoneSlabsID[i] = config.getBlock("Block ID of Stone Slabs " + i, 2548 + i).getInt(2548 + i);
 			ModBlocks.plankSlabsID = new int[4];
 			for (int i = 0; i < ModBlocks.plankSlabsID.length; i++)
-				ModBlocks.plankSlabsID[i] = config.getBlock("Block ID of Plank Slabs " + i, i < 2 ? (2550 + i) : (2555 + i)).getInt(i < 2 ? (2550 + i) : (2555 + i));
+				ModBlocks.plankSlabsID[i] = config.getBlock("Block ID of Plank Slabs " + i, i < 2 ? 2550 + i : 2555 + i).getInt(i < 2 ? 2550 + i : 2555 + i);
 			ModBlocks.wallErebusID = config.getBlock("Block ID of Wall", 2551).getInt(2551);
+			ModBlocks.petrifiedWoodSlabID = new int[2];
+			for (int i = 0; i < ModBlocks.petrifiedWoodSlabID.length; i++)
+				ModBlocks.petrifiedWoodSlabID[i] = config.getBlock("Block ID of Petrified Wood Slab" + i, 2556 + i).getInt(2556 + i);
 
 			ModBlocks.spiderSpawnerID = config.getBlock("Block ID of Spider Spawners", 2552).getInt(2552);
 			ModBlocks.caveSpiderSpawnerID = config.getBlock("Block ID of Cave Spider Spawners", 2553).getInt(2553);
 
-			// latest ID used (please update after adding new blocks!) >>> 2556
+			// latest ID used (please update after adding new blocks!) >>> 2557
 
 			/*
 			 * Items

@@ -15,7 +15,6 @@ public class BlockWallErebus extends BlockWall {
 
 	public BlockWallErebus(int id, Block sourceBlock) {
 		super(id, sourceBlock);
-		setCreativeTab(null);
 	}
 
 	@Override

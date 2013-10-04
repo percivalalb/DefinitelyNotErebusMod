@@ -2,7 +2,6 @@ package erebus.block;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockWall;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -13,8 +12,8 @@ import erebus.ModBlocks;
 
 public class BlockWallErebus extends BlockWall {
 
-	public BlockWallErebus(int id, Block sourceBlock) {
-		super(id, sourceBlock);
+	public BlockWallErebus(int id) {
+		super(id, ModBlocks.umberstone);
 	}
 
 	@Override
@@ -26,29 +25,26 @@ public class BlockWallErebus extends BlockWall {
 			case 1:
 				return ModBlocks.umberstone.getIcon(side, 1); // Umbercobble
 			case 2:
-				return ModBlocks.umberstone.getIcon(side, 2); // Mossy
-				// Umbercobble
+				return ModBlocks.umberstone.getIcon(side, 2); // Mossy Umbercobble
 			case 3:
-				return ModBlocks.umberstone.getIcon(side, 3); // Webbed
-				// Umbercobble
+				return ModBlocks.umberstone.getIcon(side, 3); // Webbed Umbercobble
 			case 4:
-				return ModBlocks.umberstone.getIcon(side, 4); // Umberstone
-				// Bricks
+				return ModBlocks.umberstone.getIcon(side, 4); // Umberstone Bricks
 			case 5:
 				return ModBlocks.umberPaver.getIcon(side, 0); // Umberpaver
 			case 6:
-				return ModBlocks.umberPaver.getIcon(side, 1); // Mossy
-				// Umberpaver
+				return ModBlocks.umberPaver.getIcon(side, 1); // Mossy  Umberpaver
 			case 7:
-				return ModBlocks.umberPaver.getIcon(side, 2); // Webbed
-				// Umberpaver
+				return ModBlocks.umberPaver.getIcon(side, 2); // Webbed Umberpaver
+			case 8:
+				return ModBlocks.blockAmber.getIcon(side, 2); // Amber Bricks
 		}
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int id, CreativeTabs creativeTab, List list) {
-		for (int a = 0; a < 8; a++)
+		for (int a = 0; a < 9; a++)
 			list.add(new ItemStack(id, 1, a));
 	}
 }

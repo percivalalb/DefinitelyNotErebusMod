@@ -12,7 +12,6 @@ import erebus.ModBlocks;
 import erebus.ModItems;
 import erebus.block.BlockLogErebus;
 import erebus.block.BlockPlanksErebus;
-import erebus.block.BlockSlabPlanksErebus;
 import erebus.item.ItemErebusFood;
 import erebus.item.ItemErebusMaterial;
 
@@ -53,7 +52,9 @@ public class RecipeHandler {
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.umbercobbleStairs[i], 4), new Object[] { "#  ", "## ", "###", '#', new ItemStack(ModBlocks.umberstone, 1, i) });
 		for (int i = 0; i < ModBlocks.plankStairs.length; i++)
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.plankStairs[i], 4), new Object[] { "#  ", "## ", "###", '#', new ItemStack(ModBlocks.planksErebus, 1, i) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.amberBrickStairs, 4), new Object[] { "#  ", "## ", "###", '#', new ItemStack(ModBlocks.blockAmber, 1, 2) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedWoodStairs, 4), new Object[] { "#  ", "## ", "###", '#', new ItemStack(ModBlocks.petrifiedWoodPlanks, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedWoodSlab[0]), new Object[] { "xxx", 'x', ModBlocks.petrifiedWoodPlanks });
 
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.stoneSlabs[0], 6, 0), new Object[] { "###", '#', new ItemStack(ModBlocks.umberstone, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.stoneSlabs[0], 6, 1), new Object[] { "###", '#', new ItemStack(ModBlocks.umberstone, 1, 1) });
@@ -83,6 +84,7 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.wallErebus, 6, 5), new Object[] { "###", "###", '#', new ItemStack(ModBlocks.umberPaver, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.wallErebus, 6, 6), new Object[] { "###", "###", '#', new ItemStack(ModBlocks.umberPaver, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.wallErebus, 6, 7), new Object[] { "###", "###", '#', new ItemStack(ModBlocks.umberPaver, 1, 2) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.wallErebus, 6, 8), new Object[] { "###", "###", '#', new ItemStack(ModBlocks.blockAmber, 1, 2) });
 
 		// Jade tools
 		GameRegistry.addRecipe(new ItemStack(ModItems.jadePickaxe, 1), new Object[] { "XXX", " # ", " # ", '#', Item.stick, 'X', new ItemStack(ModItems.erebusMaterials, 1, 1) });

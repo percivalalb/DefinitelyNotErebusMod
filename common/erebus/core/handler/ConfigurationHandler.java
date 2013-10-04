@@ -79,11 +79,12 @@ public class ConfigurationHandler {
 			ModBlocks.petrifiedWoodSlabID = new int[2];
 			for (int i = 0; i < ModBlocks.petrifiedWoodSlabID.length; i++)
 				ModBlocks.petrifiedWoodSlabID[i] = config.getBlock("Block ID of Petrified Wood Slab" + i, 2556 + i).getInt(2556 + i);
+			ModBlocks.amberBrickStairsID = config.getBlock("Amber Brick Stairs ID", 2558).getInt(2558);
 
 			ModBlocks.spiderSpawnerID = config.getBlock("Block ID of Spider Spawners", 2552).getInt(2552);
 			ModBlocks.caveSpiderSpawnerID = config.getBlock("Block ID of Cave Spider Spawners", 2553).getInt(2553);
 
-			// latest ID used (please update after adding new blocks!) >>> 2557
+			// latest ID used (please update after adding new blocks!) >>> 2558
 
 			/*
 			 * Items

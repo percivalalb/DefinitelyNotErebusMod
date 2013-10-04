@@ -9,7 +9,6 @@ public class ItemCavemanClub extends ItemSword {
 
 	public ItemCavemanClub(int id) {
 		super(id, ErebusMod.toolCAVEMANCLUB);
-		setCreativeTab(null);
 	}
 
 	@Override

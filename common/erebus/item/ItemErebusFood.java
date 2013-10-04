@@ -25,7 +25,6 @@ public class ItemErebusFood extends ItemFood {
 
 	public ItemErebusFood(int id) {
 		super(id, 3, 0.5F, false);
-		setCreativeTab(null);
 		setHasSubtypes(true);
 		setMaxDamage(0);
 	}

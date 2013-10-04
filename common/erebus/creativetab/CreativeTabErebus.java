@@ -16,13 +16,17 @@ public class CreativeTabErebus extends CreativeTabs {
 	}
 
 	public void add(Block... blocks) {
-		for (Block block : blocks)
+		for (Block block : blocks) {
 			blockList.add((short) block.blockID);
+			block.setCreativeTab(this);
+		}
 	}
 
 	public void add(Item... items) {
-		for (Item item : items)
+		for (Item item : items) {
 			blockList.add((short) item.itemID);
+			item.setCreativeTab(this);
+		}
 	}
 
 	@Override

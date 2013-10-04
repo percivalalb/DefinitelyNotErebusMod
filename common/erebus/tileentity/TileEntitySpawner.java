@@ -14,7 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntitySpawner extends TileEntity {
 	private int spawnDelay = 20;
-	private final String mobName;
+	private String mobName;
 
 	private final int minSpawnDelay = 200;
 	private final int maxSpawnDelay = 800;
@@ -100,12 +100,14 @@ public class TileEntitySpawner extends TileEntity {
 	@Override
 	public void readFromNBT(NBTTagCompound data) {
 		super.readFromNBT(data);
+		mobName = data.getString("mobName");
 		spawnDelay = data.getInteger("spawnDelay");
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound data) {
 		super.writeToNBT(data);
+		data.setString("mobName", mobName);
 		data.setInteger("spawnDelay", spawnDelay);
 	}
 

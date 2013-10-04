@@ -24,6 +24,7 @@ import erebus.block.BlockPortalErebus;
 import erebus.block.BlockQuickSand;
 import erebus.block.BlockRedGem;
 import erebus.block.BlockSaplingErebus;
+import erebus.block.BlockSlabPetrifiedWood;
 import erebus.block.BlockSlabPlanksErebus;
 import erebus.block.BlockSlabStoneErebus;
 import erebus.block.BlockSpiderSpawner;
@@ -42,6 +43,7 @@ import erebus.item.block.ItemBlockLogErebus2;
 import erebus.item.block.ItemBlockPlanksErebus;
 import erebus.item.block.ItemBlockRedGem;
 import erebus.item.block.ItemBlockSapling;
+import erebus.item.block.ItemBlockSlabPetrifiedWood;
 import erebus.item.block.ItemBlockSlabPlanks0Erebus;
 import erebus.item.block.ItemBlockSlabPlanks1Erebus;
 import erebus.item.block.ItemBlockSlabStoneErebus;
@@ -101,6 +103,7 @@ public class ModBlocks {
 	public static Block[] stoneSlabs;					public static int[] stoneSlabsID;
 	public static Block[] plankSlabs;					public static int[] plankSlabsID;
 	public static Block wallErebus;						public static int wallErebusID;
+	public static Block[] petrifiedWoodSlab;			public static int[] petrifiedWoodSlabID;
 
 	// DUNGEONS
 	public static Block spiderSpawner;     				public static int spiderSpawnerID;
@@ -161,6 +164,9 @@ public class ModBlocks {
 		for (int i = 0; i < 4; i++)
 			plankSlabs[i] = new BlockSlabPlanksErebus(plankSlabsID[i], (int)Math.floor(i/2f), i%2 == 1).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("slabPlanksErebus");
 		wallErebus = new BlockWallErebus(wallErebusID, umberstone).setUnlocalizedName("wallErebus");
+		petrifiedWoodSlab = new Block[2];
+		for (int i = 0; i < petrifiedWoodSlab.length; i++)
+			petrifiedWoodSlab[i] = new BlockSlabPetrifiedWood(petrifiedWoodSlabID[i], i == 1).setUnlocalizedName("petrifiedWoodSlab");
 
 		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, "Spider").setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner");
 		caveSpiderSpawner = new BlockSpiderSpawner(caveSpiderSpawnerID, "CaveSpider").setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner");
@@ -175,6 +181,7 @@ public class ModBlocks {
 		for (Block b : plankStairs)
 			ErebusMod.tabErebusBlock.add(b);
 		ErebusMod.tabErebusBlock.add(petrifiedWoodStairs, stoneSlabs[0], plankSlabs[0], plankSlabs[2], wallErebus);
+		ErebusMod.tabErebusBlock.add(petrifiedWoodSlab[0]);
 
 		// Registering blocks
 		GameRegistry.registerBlock(portalErebus, "erebus.portal");
@@ -221,6 +228,8 @@ public class ModBlocks {
 		for (int i = 0; i < plankSlabs.length; i++)
 			GameRegistry.registerBlock(plankSlabs[i], i <= 1 ? ItemBlockSlabPlanks0Erebus.class : ItemBlockSlabPlanks1Erebus.class, "erebus.slabPlanks" + i);
 		GameRegistry.registerBlock(petrifiedWoodStairs, "erebus.petrifiedWoodStairs");
+		for (int i = 0; i < petrifiedWoodSlab.length; i++)
+			GameRegistry.registerBlock(petrifiedWoodSlab[i], ItemBlockSlabPetrifiedWood.class, "erebus.petrifiedWoodSlab" + i);
 
 		GameRegistry.registerBlock(wallErebus, ItemBlockWallErebus.class, "erebus.wallErebus");
 		GameRegistry.registerBlock(insectRepellent, "erebus.blockInsectRepellent");

@@ -8,6 +8,7 @@ public class BlockStairsErebus extends BlockStairs {
 	public BlockStairsErebus(int id, Block block, int meta) {
 		super(id, block, meta);
 		setHardness(2.0F);
+		setLightOpacity(0);
 		setCreativeTab(null);
 	}
 

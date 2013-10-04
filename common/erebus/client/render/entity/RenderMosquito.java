@@ -4,6 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -34,7 +35,8 @@ public class RenderMosquito extends RenderLiving {
 		renderLivingMosquito((EntityMosquito) par1Entity, par2, par4, par6, par8, par9);
 	}
 
-	protected void preRenderCallback(EntityLiving entityliving, float f) {
+	@Override
+	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
 		EntityMosquito mosquito = (EntityMosquito) entityliving;
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
 		GL11.glTranslatef(0.0F, -1.4F, -0.5F);

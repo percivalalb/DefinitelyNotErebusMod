@@ -22,11 +22,12 @@ public class BlockSlabPlanksErebus extends BlockHalfSlab {
 	public static final byte dataAcacia = 0, dataEucalyptus = 1, dataMahogany = 2, dataBaobab = 3, dataMossbark = 4, dataPink = 5, dataScorched = 6, dataAsper = 7,
 							 dataWhite = 0, dataBamboo = 1;
 
-	private int slabGroup;
+	private final int slabGroup;
 	
 	public BlockSlabPlanksErebus(int id, int slabGroup, boolean isDouble) {
 		super(id, isDouble, Material.wood);
 		this.slabGroup=slabGroup;
+		setLightOpacity(0);
 	}
 
 	@Override

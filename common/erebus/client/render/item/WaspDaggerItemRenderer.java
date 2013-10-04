@@ -37,7 +37,7 @@ public class WaspDaggerItemRenderer extends Render implements IItemRenderer {
 				renderDagger(0.0F, 1.0F, 0.0F, 0.75D);
 				break;
 			case EQUIPPED:
-				renderEquipped(0.3F, 0.5F, 0.4F, 1.0D);
+				renderEquipped(0.3F, 0.5F, 0.4F, 0.75D);
 				break;
 			case EQUIPPED_FIRST_PERSON:
 				renderDaggerFirstPerson(0.5F, 0.9F, 0.5F, 0.75D);
@@ -53,12 +53,11 @@ public class WaspDaggerItemRenderer extends Render implements IItemRenderer {
 	private void renderEquipped(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
 		GL11.glPushMatrix(); // Start Rendering
-		GL11.glTranslatef(x - 0.2F, y + 0.6F, z + 0.5F);// Position
-		GL11.glRotatef(160.0F, 1.0F, 0.0F, 0.0F);
-		GL11.glRotatef(10.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(20.0F, 0.0F, 0.0F, 1.0F);
-		GL11.glScaled(size, size, size); // Changes the size (Only really used
-		// when reading in the inventory)
+		GL11.glTranslatef(x, y + 0.6F, z + 0.5F);// Position
+		GL11.glRotatef(20.0F, 1.0F, 0.0F, 0.0F);
+		GL11.glRotatef(225.0F, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(0.0F, 0.0F, 0.0F, 1.0F);
+		GL11.glScaled(-size, -size, size); // Changes the size (Only really used
 		ModelWaspDagger.render(0.0625F); // Render
 		GL11.glPopMatrix(); // End Rendering
 	}

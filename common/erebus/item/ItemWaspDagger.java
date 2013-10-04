@@ -10,7 +10,6 @@ import erebus.entity.EntityWaspDagger;
 public class ItemWaspDagger extends ItemSword {
 	public ItemWaspDagger(int id) {
 		super(id, ErebusMod.weaponWaspDagger);
-		setCreativeTab(null);
 		maxStackSize = 16;
 	}
 

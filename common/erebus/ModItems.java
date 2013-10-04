@@ -83,19 +83,19 @@ public class ModItems {
 		if (ErebusMod.activateExtraOres)
 			metalIngot = new ItemMetalIngots(metalIngotID);
 		bamBucket = new ItemBambucket(bamBucketID).setUnlocalizedName("bamBucket");
-		turnip = new ItemSeedFood(turnipID, 4, 0.6F, ModBlocks.blockTurnip.blockID, Block.tilledField.blockID).setCreativeTab(null).setUnlocalizedName("turnips").setTextureName("erebus:turnips");
+		turnip = new ItemSeedFood(turnipID, 4, 0.6F, ModBlocks.blockTurnip.blockID, Block.tilledField.blockID).setUnlocalizedName("turnips").setTextureName("erebus:turnips");
 		sprayCan = new ItemSprayCan(sprayCanID).setUnlocalizedName("sprayCan").setTextureName("erebus:sprayCan");
 
 		jadeHelmet = new ItemJadeArmor(jadeHelmetID, 0).setUnlocalizedName("helmetJade").setTextureName("erebus:helmetJade");
 		jadeBody = new ItemJadeArmor(jadeBodyID, 1).setUnlocalizedName("chestplateJade").setTextureName("erebus:chestplateJade");
 		jadeLegs = new ItemJadeArmor(jadeLegsID, 2).setUnlocalizedName("leggingsJade").setTextureName("erebus:leggingsJade");
 		jadeBoots = new ItemJadeArmor(jadeBootsID, 3).setUnlocalizedName("bootsJade").setTextureName("erebus:bootsJade");
-		jadeSword = new ItemSword(jadeSwordID, ErebusMod.toolJADE).setCreativeTab(null).setUnlocalizedName("swordJade").setTextureName("erebus:swordJade");
-		jadePickaxe = new ItemPickaxe(jadePickaxeID, ErebusMod.toolJADE).setCreativeTab(null).setUnlocalizedName("pickaxeJade").setTextureName("erebus:pickaxeJade");
-		jadeAxe = new ItemAxe(jadeAxeID, ErebusMod.toolJADE).setCreativeTab(null).setUnlocalizedName("axeJade").setTextureName("erebus:axeJade");
-		jadeShovel = new ItemSpade(jadeShovelID, ErebusMod.toolJADE).setCreativeTab(null).setUnlocalizedName("shovelJade").setTextureName("erebus:shovelJade");
-		jadePaxel = new ItemPaxel(jadePaxelID, ErebusMod.toolJADEPAXEL).setCreativeTab(null).setUnlocalizedName("paxelJade").setTextureName("erebus:paxelJade");
-		jadeHoe = new ItemHoe(jadeHoeID, ErebusMod.toolJADE).setCreativeTab(null).setUnlocalizedName("hoeJade").setTextureName("erebus:hoeJade");
+		jadeSword = new ItemSword(jadeSwordID, ErebusMod.toolJADE).setUnlocalizedName("swordJade").setTextureName("erebus:swordJade");
+		jadePickaxe = new ItemPickaxe(jadePickaxeID, ErebusMod.toolJADE).setUnlocalizedName("pickaxeJade").setTextureName("erebus:pickaxeJade");
+		jadeAxe = new ItemAxe(jadeAxeID, ErebusMod.toolJADE).setUnlocalizedName("axeJade").setTextureName("erebus:axeJade");
+		jadeShovel = new ItemSpade(jadeShovelID, ErebusMod.toolJADE).setUnlocalizedName("shovelJade").setTextureName("erebus:shovelJade");
+		jadePaxel = new ItemPaxel(jadePaxelID, ErebusMod.toolJADEPAXEL).setUnlocalizedName("paxelJade").setTextureName("erebus:paxelJade");
+		jadeHoe = new ItemHoe(jadeHoeID, ErebusMod.toolJADE).setUnlocalizedName("hoeJade").setTextureName("erebus:hoeJade");
 
 		exoskeletonHelmet = new ItemExoskeletonArmor(exoskeletonHelmetID, 0).setUnlocalizedName("helmetExo").setTextureName("erebus:helmetExo");
 		exoskeletonBody = new ItemExoskeletonArmor(exoskeletonBodyID, 1).setUnlocalizedName("chestplateExo").setTextureName("erebus:chestplateExo");
@@ -103,9 +103,9 @@ public class ModItems {
 		exoskeletonBoots = new ItemExoskeletonArmor(exoskeletonBootsID, 3).setUnlocalizedName("bootsExo").setTextureName("erebus:bootsExo");
 
 		fossilClub = new ItemCavemanClub(fossilClubID).setFull3D().setUnlocalizedName("clubBone").setTextureName("erebus:clubBone");
-		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setCreativeTab(null).setUnlocalizedName("waspSword");
+		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setUnlocalizedName("waspSword");
 		maxSpeedBow = new ItemMaxSpeedBow(maxSpeedBowID).setUnlocalizedName("maxSpeedBow").setTextureName("erebus:maxSpeedBow");
-		waspDagger = new ItemWaspDagger(waspDaggerID).setCreativeTab(null).setUnlocalizedName("waspDagger");
+		waspDagger = new ItemWaspDagger(waspDaggerID).setUnlocalizedName("waspDagger");
 
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
 		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorEXOSKELETON, 2).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");

@@ -23,11 +23,11 @@
 package invtweaks.api;
 
 public interface IItemTreeItem extends Comparable<IItemTreeItem> {
-	String getName();
+    String getName();
 
-	int getId();
+    int getId();
 
-	int getDamage();
+    int getDamage();
 
-	int getOrder();
+    int getOrder();
 }

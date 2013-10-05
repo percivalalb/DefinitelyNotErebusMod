@@ -41,8 +41,9 @@ public class BlockBambooTorch extends Block {
 	@Override
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
 		int l = par1World.getBlockId(par2, par3 - 1, par4);
+		int m = par1World.getBlockId(par2, par3 + 1, par4);
 		Block block = Block.blocksList[l];
-		if (block == null)
+		if (block == null || m != 0)
 			return false;
 		if (block == this && (par1World.getBlockMetadata(par2, par3 - 1, par4) & 7) == 7)
 			return true;

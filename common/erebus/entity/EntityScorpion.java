@@ -76,9 +76,12 @@ public class EntityScorpion extends EntityMob {
 	 * 
 	 * @Override protected String getHurtSound() { return "erebus:scorpionhurt";
 	 * }
-	 * 
-	 * @Override protected String getDeathSound() { return "erebus:squish"; }
 	 */
+
+	@Override
+	protected String getDeathSound() {
+		return "erebus:squish";
+	}
 
 	@Override
 	protected void playStepSound(int par1, int par2, int par3, int par4) {

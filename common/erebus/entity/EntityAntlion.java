@@ -56,16 +56,13 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 		return EnumCreatureAttribute.ARTHROPOD;
 	}
 
-	@Override
-	protected String getLivingSound() {
-		return "erebus:AntlionSound";
-	}
-
-	@Override
-	protected String getHurtSound() {
-		return "erebus:Antlionhurt";
-	}
-
+	/*
+	 * @Override protected String getLivingSound() { return
+	 * "erebus:AntlionSound"; }
+	 * 
+	 * @Override protected String getHurtSound() { return "erebus:Antlionhurt";
+	 * }
+	 */
 	@Override
 	protected String getDeathSound() {
 		return "erebus:squish";

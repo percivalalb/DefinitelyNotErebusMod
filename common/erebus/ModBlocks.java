@@ -7,6 +7,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import erebus.block.BlockAmber;
 import erebus.block.BlockBambooCrate;
 import erebus.block.BlockBambooCrop;
+import erebus.block.BlockBambooTorch;
 import erebus.block.BlockErebusGrass;
 import erebus.block.BlockErebusOre;
 import erebus.block.BlockErebusOreExtras;
@@ -95,6 +96,7 @@ public class ModBlocks {
 	public static Block umberPaver;						public static int umberPaverID;
 	public static Block insectRepellent;				public static int insectRepellentID;
 	public static Block bambooCrop;						public static int bambooCropID;
+	public static Block bambooTorch;					public static int bambooTorchID;
 
 	// STAIRS, SLABS, WALLS
 	public static Block[] umbercobbleStairs;			public static int[] umbercobbleStairsID;
@@ -150,6 +152,7 @@ public class ModBlocks {
 		umberPaver = new BlockUmberPaver(umberPaverID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberPaver");
 		insectRepellent = new BlockInsectRepellent(insectRepellentID, Material.air).setUnlocalizedName("insectRepellent");
 		bambooCrop = new BlockBambooCrop(bambooCropID).setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("bambooCrop").setTextureName("erebus:bambooCropBase");
+		bambooTorch = new BlockBambooTorch(bambooTorchID, Material.wood).setHardness(0.0F).setUnlocalizedName("bambooTorch").setTextureName("erebus:blockBambooTorch");
 
 		umbercobbleStairs = new Block[BlockUmberstone.iconPaths.length];
 		for (int i = 0; i < umbercobbleStairs.length; i++)
@@ -185,6 +188,7 @@ public class ModBlocks {
 		ErebusMod.tabErebusBlock.add(petrifiedWoodStairs, stoneSlabs[0], plankSlabs[0], plankSlabs[2], wallErebus);
 		ErebusMod.tabErebusBlock.add(petrifiedWoodSlab[0]);
 		ErebusMod.tabErebusBlock.add(amberBrickStairs);
+		ErebusMod.tabErebusBlock.add(bambooTorch);
 
 		// Registering blocks
 		GameRegistry.registerBlock(portalErebus, "erebus.portal");
@@ -221,6 +225,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(umberFurnace_on, "erebus.umberFurnaceOn");
 		GameRegistry.registerBlock(umberPaver, ItemBlockUmberpaver.class, "erebus.umberpaver");
 		GameRegistry.registerBlock(bambooCrop, "erebus.bambooCrop");
+		GameRegistry.registerBlock(bambooTorch, "erebus.bambooTorch");
 
 		for (int i = 0; i < umbercobbleStairs.length; i++)
 			GameRegistry.registerBlock(umbercobbleStairs[i], "erebus.umbercobbleStairs" + i);

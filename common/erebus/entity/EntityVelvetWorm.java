@@ -32,7 +32,7 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob {
 		tasks.addTask(0, new EntityAISwimming(this));
 		targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
 		tasks.addTask(3, new EntityAILookIdle(this));
-		tasks.addTask(5, new EntityAIWander(this, 0.8F));
+		tasks.addTask(5, new EntityAIWander(this, 0.5D));
 		tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
 
 		if (par1World != null && !par1World.isRemote)
@@ -54,7 +54,7 @@ public class EntityVelvetWorm extends EntityMob implements IRangedAttackMob {
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.8D);
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.5D);
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(getAttackStrength()); // atkDmg
 	}
 

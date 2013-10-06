@@ -33,7 +33,8 @@ public class ModEntities {
 		registerEntity(EntityFly.class, "Fly", EntityRegistry.findGlobalUniqueEntityId(), -13165534, -6750208);
 		registerEntity(EntityMosquito.class, "Mosquito", EntityRegistry.findGlobalUniqueEntityId(), -13816034, -14803180);
 		registerEntity(EntityTarantula.class, "Tarantula", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xE82066);
-		// registerEntity(EntityVelvetWorm.class, "VelvetWorm",EntityRegistry.findGlobalUniqueEntityId(), 894731, 000000);
+		// registerEntity(EntityVelvetWorm.class, "VelvetWorm",
+		// EntityRegistry.findGlobalUniqueEntityId(), 894731, 000000);
 		registerEntity(EntityBotFly.class, "BotFly", EntityRegistry.findGlobalUniqueEntityId(), -6750208, -13165534);
 		registerEntity(EntityScorpion.class, "Scorpion", EntityRegistry.findGlobalUniqueEntityId(), 0xFFA200, 0xFFDB9C);
 		registerEntity(EntitySolifuge.class, "Solifuge", EntityRegistry.findGlobalUniqueEntityId(), 0xFFDB9C, 0xFFA200);

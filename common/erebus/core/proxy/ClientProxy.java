@@ -14,9 +14,7 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
-
 import com.google.common.io.ByteArrayDataInput;
-
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
@@ -41,7 +39,6 @@ import erebus.client.model.entity.ModelTarantula;
 import erebus.client.model.entity.ModelVelvetWorm;
 import erebus.client.model.entity.ModelWasp;
 import erebus.client.model.item.ModelWaspDagger;
-import erebus.client.render.EntityRendererErebus;
 import erebus.client.render.block.BlockBambooCropRender;
 import erebus.client.render.block.BlockHollowLogRender;
 import erebus.client.render.entity.RenderAntlion;
@@ -93,13 +90,12 @@ import erebus.tileentity.TileEntityBambooCrate;
 import erebus.tileentity.TileEntitySpawner;
 
 public class ClientProxy extends CommonProxy {
-
-	private EntityRendererErebus renderer;
-
 	@Override
 	public void registerRenderInformation() {
 		MinecraftForge.EVENT_BUS.register(new PortalOverlayHandler());
+		
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
+		
 		RenderingRegistry.registerEntityRenderingHandler(EntityBeetle.class, new RenderBeetle(new ModelBeetle(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityFly.class, new RenderFly());
 		RenderingRegistry.registerEntityRenderingHandler(EntityTarantula.class, new RenderTarantula(new ModelTarantula(), 0.5F));
@@ -119,7 +115,6 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityAntlion.class, new RenderAntlion(new ModelAntlion(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityWaspDagger.class, new WaspDaggerItemRenderer(new ModelWaspDagger(), 0.3F));
 
-		// Special Renderer
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBambooCrate.class, new TileEntityRenderBambooCrate());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpawner.class, new TileEntitySpawnerRender());
 		RenderingRegistry.registerBlockHandler(bambooCropRenderID, new BlockBambooCropRender());
@@ -130,24 +125,6 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.umberFurnace.blockID, new ItemUmberFurnaceRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.waspDagger.itemID, new WaspDaggerItemRenderer(new ModelWaspDagger(), 0.3F));
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooTorch.blockID, new BambooTorchItemRenderer());
-	}
-
-	@Override
-	public void postLoad() {
-		Minecraft.getMinecraft().entityRenderer = renderer = new EntityRendererErebus();
-	}
-
-	@Override
-	public void setClientNightVision(boolean enable) {
-		renderer.hasNightVisionEffect = enable;
-
-		if (Minecraft.getMinecraft().entityRenderer != renderer)
-			Minecraft.getMinecraft().entityRenderer = renderer;
-	}
-
-	@Override
-	public boolean getClientNightVision() {
-		return renderer.hasNightVisionEffect;
 	}
 
 	@Override

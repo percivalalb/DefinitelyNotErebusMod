@@ -67,7 +67,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 	}
 
 	public int getRandomXZOffset(Random rand) {
-		return rand.nextInt(16);
+		return rand.nextInt(16) + 8;
 	}
 
 	@Override
@@ -98,12 +98,12 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 
 		if (rand.nextInt(5) == 0)
 			for (int attempt = 0; attempt < 4; attempt++)
-				if (new WorldGenAmberGround().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16)))
+				if (new WorldGenAmberGround().generate(worldObj, rand, x + rand.nextInt(16) + 8, rand.nextInt(120), z + rand.nextInt(16) + 8))
 					break;
 
 		if (rand.nextInt(3) == 0)
 			for (int attempt = 0; attempt < 3; attempt++)
-				if (new WorldGenAmberUmberstone().generate(worldObj, rand, x + rand.nextInt(16), rand.nextInt(120), z + rand.nextInt(16)))
+				if (new WorldGenAmberUmberstone().generate(worldObj, rand, x + rand.nextInt(16) + 8, rand.nextInt(120), z + rand.nextInt(16) + 8))
 					break;
 
 		int i2 = x + getRandomXZOffset(rand);

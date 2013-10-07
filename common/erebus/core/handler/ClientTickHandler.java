@@ -1,17 +1,17 @@
 package erebus.core.handler;
 
 import java.util.EnumSet;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
-
+import net.minecraft.potion.PotionEffect;
 import org.lwjgl.input.Keyboard;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
+import erebus.ErebusMod;
+import erebus.ModItems;
 import erebus.core.teleport.TeleportClient;
 
 public class ClientTickHandler implements ITickHandler {
@@ -32,11 +32,22 @@ public class ClientTickHandler implements ITickHandler {
 
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
+		if (type.equals(EnumSet.of(TickType.RENDER))) {
+			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+			if (player != null && player.inventory.armorInventory[3] != null && player.inventory.armorInventory[3].getItem() == ModItems.compoundGoggles)
+				player.addPotionEffect(new PotionEffect(Potion.nightVision.id,300,1,true));
+		}
 	}
 
 	@Override
 	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
 		if (type.equals(EnumSet.of(TickType.RENDER))) {
+			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+			if (player != null){
+				PotionEffect eff=player.getActivePotionEffect(Potion.nightVision);
+				if (eff!=null && eff.getAmplifier() == 1)player.removePotionEffectClient(Potion.nightVision.id);
+			}
+			
 			onRenderTick();
 			float ticks1 = ((Float) tickData[0]).floatValue();
 			onRenderTickEnd(ticks1);

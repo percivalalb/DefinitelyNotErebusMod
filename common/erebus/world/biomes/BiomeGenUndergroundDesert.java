@@ -47,17 +47,17 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 	public void generateTerrain(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) {
 		WorldGenerator gen = new WorldGenLakes(Block.lavaMoving.blockID);
 		for (int c = 35; c > 0; c--) {
-			int posX = x + rand.nextInt(16);
+			int posX = x + rand.nextInt(16) + 8;
 			int posY = 15 + rand.nextInt(90);
-			int posZ = z + rand.nextInt(16);
+			int posZ = z + rand.nextInt(16) + 8;
 			if (worldObj.getBlockId(posX, posY, posZ) == 0 && worldObj.getBlockId(posX, posY - 1, posZ) == Block.sand.blockID)
 				gen.generate(worldObj, worldObj.rand, posX, posY, posZ);
 		}
 
 		for (int c = 10; c > 0; c--) {
-			int posX = x + rand.nextInt(16);
+			int posX = x + rand.nextInt(16) + 8;
 			int posY = rand.nextInt(120);
-			int posZ = z + rand.nextInt(16);
+			int posZ = z + rand.nextInt(16) + 8;
 			if (worldObj.getBlockId(posX, posY, posZ) == ModBlocks.umberstone.blockID && worldObj.getBlockId(posX, posY - 1, posZ) == 0) {
 				worldObj.setBlock(posX, posY, posZ, Block.lavaMoving.blockID);
 				worldObj.scheduledUpdatesAreImmediate = true;
@@ -67,9 +67,9 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 		}
 
 		for (int c = 22; c > 0; c--) {
-			int j2 = x + rand.nextInt(16);
+			int j2 = x + rand.nextInt(16) + 8;
 			int l3 = rand.nextInt(120);
-			int j5 = z + rand.nextInt(16);
+			int j5 = z + rand.nextInt(16) + 8;
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.sand.blockID) {
 				new WorldGenScorchedTree().generate(worldObj, rand, j2, l3, j5);
 				if (rand.nextInt(4) != 0)
@@ -79,7 +79,7 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 
 		if (rand.nextInt(34) == 0) {
 			for (int attempt = 0; attempt < 15; attempt++) {
-				int xx = x + 5 + rand.nextInt(6), yy = 15 + rand.nextInt(35), zz = z + 5 + rand.nextInt(6);
+				int xx = x + 5 + rand.nextInt(6) + 8, yy = 15 + rand.nextInt(35), zz = z + 5 + rand.nextInt(6) + 8;
 				if (new WorldGenAntlionLair().generate(worldObj, rand, xx, yy, zz))
 					break;
 			}

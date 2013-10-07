@@ -1,7 +1,6 @@
 package erebus;
 
 import java.io.File;
-
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraftforge.common.DimensionManager;
@@ -24,7 +23,6 @@ import erebus.client.sound.AmbientMusicManager;
 import erebus.client.sound.EntitySoundEvent;
 import erebus.core.handler.CommonTickHandler;
 import erebus.core.handler.ConfigurationHandler;
-import erebus.core.handler.NightVisionHandler;
 import erebus.core.handler.PlayerTeleportHandler;
 import erebus.core.handler.VersionCheckTickHandler;
 import erebus.core.helper.LogHelper;
@@ -109,14 +107,8 @@ public class ErebusMod {
 		MinecraftForge.EVENT_BUS.register(ModBlocks.quickSand);
 		MinecraftForge.EVENT_BUS.register(ModBlocks.insectRepellent);
 		MinecraftForge.EVENT_BUS.register(ModItems.jumpBoots);
-		MinecraftForge.EVENT_BUS.register(new NightVisionHandler());
 
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
 		BCFacadeManager.registerFacades();
-	}
-
-	@EventHandler
-	public void postLoad(FMLPostInitializationEvent event) {
-		proxy.postLoad();
 	}
 }

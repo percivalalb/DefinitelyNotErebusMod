@@ -23,6 +23,7 @@ import erebus.ModItems;
 
 public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnData {
 	private boolean areAttributesSetup = false;
+
 	public EntityAntlion(World world) {
 		super(world);
 		isImmuneToFire = true;
@@ -153,8 +154,9 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 	}
 
 	@Override
-	public void despawnEntity(){
-		if (!isBoss())super.despawnEntity();
+	public void despawnEntity() {
+		if (!isBoss())
+			super.despawnEntity();
 	}
 
 	@Override

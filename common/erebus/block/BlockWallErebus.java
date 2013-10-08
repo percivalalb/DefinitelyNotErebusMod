@@ -25,17 +25,22 @@ public class BlockWallErebus extends BlockWall {
 			case 1:
 				return ModBlocks.umberstone.getIcon(side, 1); // Umbercobble
 			case 2:
-				return ModBlocks.umberstone.getIcon(side, 2); // Mossy Umbercobble
+				return ModBlocks.umberstone.getIcon(side, 2); // Mossy
+																// Umbercobble
 			case 3:
-				return ModBlocks.umberstone.getIcon(side, 3); // Webbed Umbercobble
+				return ModBlocks.umberstone.getIcon(side, 3); // Webbed
+																// Umbercobble
 			case 4:
-				return ModBlocks.umberstone.getIcon(side, 4); // Umberstone Bricks
+				return ModBlocks.umberstone.getIcon(side, 4); // Umberstone
+																// Bricks
 			case 5:
 				return ModBlocks.umberPaver.getIcon(side, 0); // Umberpaver
 			case 6:
-				return ModBlocks.umberPaver.getIcon(side, 1); // Mossy  Umberpaver
+				return ModBlocks.umberPaver.getIcon(side, 1); // Mossy
+																// Umberpaver
 			case 7:
-				return ModBlocks.umberPaver.getIcon(side, 2); // Webbed Umberpaver
+				return ModBlocks.umberPaver.getIcon(side, 2); // Webbed
+																// Umberpaver
 			case 8:
 				return ModBlocks.blockAmber.getIcon(side, 2); // Amber Bricks
 		}

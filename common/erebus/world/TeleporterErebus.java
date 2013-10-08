@@ -37,12 +37,10 @@ public class TeleporterErebus extends Teleporter {
 
 	@Override
 	public void placeInPortal(Entity entity, double x, double y, double z, float par8) {
-		//System.out.println("placeInPortal: start");
 		if (!placeInExistingPortal(entity, x, y, z, par8)) {
 			makePortal(entity);
 			placeInExistingPortal(entity, x, y, z, par8);
 		}
-		//System.out.println("placeInPortal: end");
 	}
 
 	@Override
@@ -67,14 +65,14 @@ public class TeleporterErebus extends Teleporter {
 			k = portalposition.posZ;
 			portalposition.lastUpdateTime = worldServerInstance.getTotalWorldTime();
 			flag = false;
-		} else {
+		} else
 			for (k1 = int_x - checkRad; k1 <= int_x + checkRad; ++k1) {
 				double d5 = k1 + 0.5D - entity.posX;
 
 				for (int l1 = int_z - checkRad; l1 <= int_z + checkRad; ++l1) {
 					double d6 = l1 + 0.5D - entity.posZ;
 
-					for (int i2 = worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2) {
+					for (int i2 = worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
 						if (worldServerInstance.getBlockId(k1, i2, l1) == ModBlocks.portalErebus.blockID) {
 							while (worldServerInstance.getBlockId(k1, i2 - 1, l1) == ModBlocks.portalErebus.blockID)
 								--i2;
@@ -89,10 +87,8 @@ public class TeleporterErebus extends Teleporter {
 								k = l1;
 							}
 						}
-					}
 				}
 			}
-		}
 
 		if (d3 >= 0.0D) {
 			if (flag) {
@@ -179,20 +175,17 @@ public class TeleporterErebus extends Teleporter {
 				entity.motionX = d10 * f3 + d11 * f6;
 				entity.motionZ = d10 * f5 + d11 * f4;
 				entity.rotationYaw = par8 - k2 * 90 + j2 * 90;
-			} else {
+			} else
 				entity.motionX = entity.motionY = entity.motionZ = 0.0D;
-			}
 
 			entity.setLocationAndAngles(d8, d9, d4, entity.rotationYaw, entity.rotationPitch);
 			return true;
-		} else {
+		} else
 			return false;
-		}
 	}
 
 	@Override
 	public boolean makePortal(Entity entity) {
-		//System.out.println("makePortal - start");
 		byte checkRad = 16;
 		double d0 = -1.0D;
 		int int_x = MathHelper.floor_double(entity.posX);
@@ -226,47 +219,45 @@ public class TeleporterErebus extends Teleporter {
 				d2 = j2 + 0.5D - entity.posZ;
 				label274:
 
-					for (k2 = worldServerInstance.getActualHeight() - 1; k2 >= 0; --k2)
-						if (worldServerInstance.isAirBlock(i2, k2, j2)) {
-							while (k2 > 0 && worldServerInstance.isAirBlock(i2, k2 - 1, j2))
-								--k2;
+				for (k2 = worldServerInstance.getActualHeight() - 1; k2 >= 0; --k2)
+					if (worldServerInstance.isAirBlock(i2, k2, j2)) {
+						while (k2 > 0 && worldServerInstance.isAirBlock(i2, k2 - 1, j2))
+							--k2;
 
-							for (i3 = l1; i3 < l1 + 4; ++i3) {
-								l2 = i3 % 2;
-								k3 = 1 - l2;
+						for (i3 = l1; i3 < l1 + 4; ++i3) {
+							l2 = i3 % 2;
+							k3 = 1 - l2;
 
-								if (i3 % 4 >= 2) {
-									l2 = -l2;
-									k3 = -k3;
-								}
+							if (i3 % 4 >= 2) {
+								l2 = -l2;
+								k3 = -k3;
+							}
 
-								for (j3 = 0; j3 < 3; ++j3)
-									for (i4 = 0; i4 < 4; ++i4)
-										for (l3 = -1; l3 < 4; ++l3) {
-											k4 = i2 + (i4 - 1) * l2 + j3 * k3;
-											j4 = k2 + l3;
-											int l4 = j2 + (i4 - 1) * k3 - j3 * l2;
+							for (j3 = 0; j3 < 3; ++j3)
+								for (i4 = 0; i4 < 4; ++i4)
+									for (l3 = -1; l3 < 4; ++l3) {
+										k4 = i2 + (i4 - 1) * l2 + j3 * k3;
+										j4 = k2 + l3;
+										int l4 = j2 + (i4 - 1) * k3 - j3 * l2;
 
-											if (l3 < 0 && !worldServerInstance.getBlockMaterial(k4, j4, l4).isSolid() || l3 >= 0 && !worldServerInstance.isAirBlock(k4, j4, l4))
-												continue label274;
-										}
+										if (l3 < 0 && !worldServerInstance.getBlockMaterial(k4, j4, l4).isSolid() || l3 >= 0 && !worldServerInstance.isAirBlock(k4, j4, l4))
+											continue label274;
+									}
 
-								d4 = k2 + 0.5D - entity.posY;
-								d3 = d1 * d1 + d4 * d4 + d2 * d2;
+							d4 = k2 + 0.5D - entity.posY;
+							d3 = d1 * d1 + d4 * d4 + d2 * d2;
 
-								if (d0 < 0.0D || d3 < d0) {
-									d0 = d3;
-									l = i2;
-									i1 = k2;
-									j1 = j2;
-									k1 = i3 % 4;
-								}
+							if (d0 < 0.0D || d3 < d0) {
+								d0 = d3;
+								l = i2;
+								i1 = k2;
+								j1 = j2;
+								k1 = i3 % 4;
 							}
 						}
+					}
 			}
 		}
-		
-		//System.out.println("part 1 - d0 is "+d0);
 
 		if (d0 < 0.0D)
 			for (i2 = int_x - checkRad; i2 <= int_x + checkRad; ++i2) {
@@ -276,37 +267,37 @@ public class TeleporterErebus extends Teleporter {
 					d2 = j2 + 0.5D - entity.posZ;
 					label222:
 
-						for (k2 = worldServerInstance.getActualHeight() - 1; k2 >= 0; --k2)
-							if (worldServerInstance.isAirBlock(i2, k2, j2)) {
-								while (k2 > 0 && worldServerInstance.isAirBlock(i2, k2 - 1, j2))
-									--k2;
+					for (k2 = worldServerInstance.getActualHeight() - 1; k2 >= 0; --k2)
+						if (worldServerInstance.isAirBlock(i2, k2, j2)) {
+							while (k2 > 0 && worldServerInstance.isAirBlock(i2, k2 - 1, j2))
+								--k2;
 
-								for (i3 = l1; i3 < l1 + 2; ++i3) {
-									l2 = i3 % 2;
-									k3 = 1 - l2;
+							for (i3 = l1; i3 < l1 + 2; ++i3) {
+								l2 = i3 % 2;
+								k3 = 1 - l2;
 
-									for (j3 = 0; j3 < 4; ++j3)
-										for (i4 = -1; i4 < 4; ++i4) {
-											l3 = i2 + (j3 - 1) * l2;
-											k4 = k2 + i4;
-											j4 = j2 + (j3 - 1) * k3;
+								for (j3 = 0; j3 < 4; ++j3)
+									for (i4 = -1; i4 < 4; ++i4) {
+										l3 = i2 + (j3 - 1) * l2;
+										k4 = k2 + i4;
+										j4 = j2 + (j3 - 1) * k3;
 
-											if (i4 < 0 && !worldServerInstance.getBlockMaterial(l3, k4, j4).isSolid() || i4 >= 0 && !worldServerInstance.isAirBlock(l3, k4, j4))
-												continue label222;
-										}
-
-									d4 = k2 + 0.5D - entity.posY;
-									d3 = d1 * d1 + d4 * d4 + d2 * d2;
-
-									if (d0 < 0.0D || d3 < d0) {
-										d0 = d3;
-										l = i2;
-										i1 = k2;
-										j1 = j2;
-										k1 = i3 % 2;
+										if (i4 < 0 && !worldServerInstance.getBlockMaterial(l3, k4, j4).isSolid() || i4 >= 0 && !worldServerInstance.isAirBlock(l3, k4, j4))
+											continue label222;
 									}
+
+								d4 = k2 + 0.5D - entity.posY;
+								d3 = d1 * d1 + d4 * d4 + d2 * d2;
+
+								if (d0 < 0.0D || d3 < d0) {
+									d0 = d3;
+									l = i2;
+									i1 = k2;
+									j1 = j2;
+									k1 = i3 % 2;
 								}
 							}
+						}
 				}
 			}
 
@@ -322,8 +313,6 @@ public class TeleporterErebus extends Teleporter {
 		}
 
 		boolean flag;
-		
-		//System.out.println("part 2 - d0 is "+d0);
 
 		if (d0 < 0.0D) {
 			if (i1 < 70)
@@ -342,7 +331,6 @@ public class TeleporterErebus extends Teleporter {
 						i4 = j2 + (i3 - 1) * l5 - k2 * k5;
 						flag = l2 < 0;
 						worldServerInstance.setBlock(k3, j3, i4, flag ? Block.stoneBrick.blockID : 0, flag ? 1 : 0, 3);
-						//if (flag)System.out.println("setting a block");
 					}
 		}
 
@@ -364,8 +352,6 @@ public class TeleporterErebus extends Teleporter {
 					worldServerInstance.notifyBlocksOfNeighborChange(k3, j3, i4, worldServerInstance.getBlockId(k3, j3, i4));
 				}
 		}
-		
-		//System.out.println("makePortal - end");
 
 		return true;
 	}

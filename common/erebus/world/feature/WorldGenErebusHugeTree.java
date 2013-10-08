@@ -52,8 +52,8 @@ public class WorldGenErebusHugeTree extends WorldGenerator {
 						if (var8 >= 0 && var8 < 256) {
 							var12 = par1World.getBlockId(var10, var8, var11);
 
-							if (var12 != 0 && Block.blocksList[var12] != null && !Block.blocksList[var12].isLeaves(par1World, var10, var8, var11) && var12 != Block.grass.blockID && var12 != Block.dirt.blockID &&
-							Block.blocksList[var12] != null && !Block.blocksList[var12].isWood(par1World, var10, var8, var11) && var12 != Block.sapling.blockID)
+							if (var12 != 0 && Block.blocksList[var12] != null && !Block.blocksList[var12].isLeaves(par1World, var10, var8, var11) && var12 != Block.grass.blockID && var12 != Block.dirt.blockID && Block.blocksList[var12] != null &&
+							!Block.blocksList[var12].isWood(par1World, var10, var8, var11) && var12 != Block.sapling.blockID)
 								var7 = false;
 						} else
 							var7 = false;

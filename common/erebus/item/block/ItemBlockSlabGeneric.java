@@ -14,7 +14,7 @@ public abstract class ItemBlockSlabGeneric extends ItemBlockGeneric {
 	public ItemBlockSlabGeneric(int id, String unlocalizedName, Block[] slabArray, int groupId) {
 		super(id, unlocalizedName + groupId);
 		this.slabArray = slabArray;
-		this.groupId=groupId;
+		this.groupId = groupId;
 	}
 
 	@Override

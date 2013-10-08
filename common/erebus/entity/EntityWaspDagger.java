@@ -8,6 +8,7 @@ import net.minecraft.world.World;
 
 public class EntityWaspDagger extends EntityThrowable {
 	public static float rotationticks;
+
 	public EntityWaspDagger(World par1World) {
 		super(par1World);
 	}

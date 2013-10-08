@@ -21,8 +21,7 @@ public class ItemSprintLeggings extends ItemArmor {
 
 	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
-		if (stack.itemID == ModItems.sprintLeggings.itemID)
-		{
+		if (stack.itemID == ModItems.sprintLeggings.itemID) {
 			if (armtick >= 0 && armtick <= 20)
 				texture = "erebus:textures/armor/centipede_0.png";
 			if (armtick > 20 && armtick <= 40)

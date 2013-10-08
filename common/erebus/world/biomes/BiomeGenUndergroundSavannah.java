@@ -80,8 +80,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 				if (worldObj.getBlockId(xx, yy, zz) == 0 && worldObj.getBlockId(xx, yy - 1, zz) == Block.grass.blockID)
 					new WorldGenBamboo(7).generate(worldObj, rand, xx, yy, zz);
 			}
-		}
-		else {
+		} else {
 			for (int c = 10; c > 0; c--) {
 				int j2 = x + rand.nextInt(16) + 8;
 				int l3 = rand.nextInt(120);
@@ -90,7 +89,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 					new WorldGenAsperTree().generate(worldObj, rand, j2, l3, j5);
 			}
 		}
-	
+
 		for (int c = 0; c < 28; c++) {
 			int j2 = x + rand.nextInt(16) + 8;
 			int l3 = 15 + rand.nextInt(90);

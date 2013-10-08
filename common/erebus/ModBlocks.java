@@ -166,7 +166,7 @@ public class ModBlocks {
 			stoneSlabs[i] = new BlockSlabStoneErebus(stoneSlabsID[i], i == 1).setHardness(2.0F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("slabStoneErebus");
 		plankSlabs = new Block[4];
 		for (int i = 0; i < 4; i++)
-			plankSlabs[i] = new BlockSlabPlanksErebus(plankSlabsID[i], (int)Math.floor(i/2f), i%2 == 1).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("slabPlanksErebus");
+			plankSlabs[i] = new BlockSlabPlanksErebus(plankSlabsID[i], (int) Math.floor(i / 2f), i % 2 == 1).setHardness(2.0F).setResistance(5.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("slabPlanksErebus");
 		wallErebus = new BlockWallErebus(wallErebusID).setUnlocalizedName("wallErebus");
 		petrifiedWoodSlab = new Block[2];
 		for (int i = 0; i < petrifiedWoodSlab.length; i++)

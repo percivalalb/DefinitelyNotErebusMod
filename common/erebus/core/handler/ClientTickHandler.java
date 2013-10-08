@@ -19,7 +19,8 @@ public class ClientTickHandler implements ITickHandler {
 	public static Minecraft mc = FMLClientHandler.instance().getClient();
 	public boolean keyStates[] = new boolean[256];
 
-	private static PotionEffect nightVisionEffect = new PotionEffect(Potion.nightVision.id,300,1,true);
+	private static PotionEffect nightVisionEffect = new PotionEffect(Potion.nightVision.id, 300, 1, true);
+
 	// private static int ticks = 0;
 
 	public boolean checkKey(int i) {
@@ -44,11 +45,12 @@ public class ClientTickHandler implements ITickHandler {
 	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
 		if (type.equals(EnumSet.of(TickType.RENDER))) {
 			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
-			if (player != null){
-				PotionEffect eff=player.getActivePotionEffect(Potion.nightVision);
-				if (eff!=null && eff.getAmplifier() == 1)player.removePotionEffectClient(Potion.nightVision.id);
+			if (player != null) {
+				PotionEffect eff = player.getActivePotionEffect(Potion.nightVision);
+				if (eff != null && eff.getAmplifier() == 1)
+					player.removePotionEffectClient(Potion.nightVision.id);
 			}
-			
+
 			onRenderTick();
 			float ticks1 = ((Float) tickData[0]).floatValue();
 			onRenderTickEnd(ticks1);

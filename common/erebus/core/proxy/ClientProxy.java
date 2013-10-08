@@ -93,9 +93,9 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerRenderInformation() {
 		MinecraftForge.EVENT_BUS.register(new PortalOverlayHandler());
-		
+
 		TickRegistry.registerTickHandler(new ClientTickHandler(), Side.CLIENT);
-		
+
 		RenderingRegistry.registerEntityRenderingHandler(EntityBeetle.class, new RenderBeetle(new ModelBeetle(), 0.5F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityFly.class, new RenderFly());
 		RenderingRegistry.registerEntityRenderingHandler(EntityTarantula.class, new RenderTarantula(new ModelTarantula(), 0.5F));

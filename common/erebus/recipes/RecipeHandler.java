@@ -115,7 +115,8 @@ public class RecipeHandler {
 		// Bamboo
 		GameRegistry.addRecipe(new ItemStack(ModItems.bamBucket, 1, 0), new Object[] { "S", "B", 'S', Item.silk, 'B', new ItemStack(ModItems.erebusMaterials, 1, 3) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksErebus, 1, BlockPlanksErebus.dataBamboo), new Object[] { "##", "##", '#', new ItemStack(ModItems.erebusMaterials, 1, 3) });
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.bambooCrate, 1, 1), new Object[] { "bpb", "p p", "bpb", 'p', new ItemStack(ModBlocks.planksErebus, 1, BlockPlanksErebus.dataBamboo), 'b', new ItemStack(ModItems.erebusMaterials, 1, 3) });
+		// GameRegistry.addRecipe(new ItemStack(ModBlocks.bambooCrate, 1, 1), new Object[] { "bpb", "p p", "bpb", 'p', new ItemStack(ModBlocks.planksErebus, 1, BlockPlanksErebus.dataBamboo), 'b', new ItemStack(ModItems.erebusMaterials, 1, 3) });
+		// TODO removed until fixed
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.erebusFood, 1, ItemErebusFood.dataBambooSoup), new Object[] { new ItemStack(Item.bowlEmpty), new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBamboo),
 		new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBambooShoot) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.bambooTorch, 4), new Object[] { " C ", " B ", " B ", 'C', Item.coal, 'B', new ItemStack(ModItems.erebusMaterials, 1, 3) });

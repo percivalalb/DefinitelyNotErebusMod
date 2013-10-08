@@ -185,8 +185,7 @@ public class ModBlocks {
 			ErebusMod.tabErebusBlock.add(b);
 		for (Block b : plankStairs)
 			ErebusMod.tabErebusBlock.add(b);
-		ErebusMod.tabErebusBlock.add(petrifiedWoodStairs, stoneSlabs[0], plankSlabs[0], plankSlabs[2], wallErebus);
-		ErebusMod.tabErebusBlock.add(petrifiedWoodSlab[0]);
+		ErebusMod.tabErebusBlock.add(petrifiedWoodStairs, stoneSlabs[0], plankSlabs[0], plankSlabs[2], petrifiedWoodSlab[0], wallErebus);
 		ErebusMod.tabErebusBlock.add(amberBrickStairs);
 		ErebusMod.tabErebusBlock.add(bambooTorch);
 

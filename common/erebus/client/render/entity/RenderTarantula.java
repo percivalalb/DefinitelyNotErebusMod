@@ -5,8 +5,11 @@ import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.entity.EntityTarantula;
 
+@SideOnly(Side.CLIENT)
 public class RenderTarantula extends RenderLiving {
 
 	private final ResourceLocation resource1 = new ResourceLocation("erebus:textures/mob/Tarantula.png");

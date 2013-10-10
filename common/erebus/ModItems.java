@@ -27,6 +27,7 @@ import erebus.item.ItemPaxel;
 import erebus.item.ItemPortalActivator;
 import erebus.item.ItemSprayCan;
 import erebus.item.ItemSprintLeggings;
+import erebus.item.ItemWandOfAnimation;
 import erebus.item.ItemWaspDagger;
 
 public class ModItems {
@@ -41,6 +42,7 @@ public class ModItems {
 	public static Item bamBucket;						public static int bamBucketID;
 	public static Item turnip;							public static int turnipID;
 	public static Item sprayCan;						public static int sprayCanID;
+	public static Item WandOfAnimation;					public static int WandOfAnimationID;
 
 	// JADE STUFF
 	public static Item jadeHelmet;						public static int jadeHelmetID;
@@ -85,6 +87,7 @@ public class ModItems {
 		bamBucket = new ItemBambucket(bamBucketID).setUnlocalizedName("bamBucket");
 		turnip = new ItemSeedFood(turnipID, 4, 0.6F, ModBlocks.blockTurnip.blockID, Block.tilledField.blockID).setUnlocalizedName("turnips").setTextureName("erebus:turnips");
 		sprayCan = new ItemSprayCan(sprayCanID).setUnlocalizedName("sprayCan").setTextureName("erebus:sprayCan");
+		WandOfAnimation = new ItemWandOfAnimation(WandOfAnimationID).setUnlocalizedName("WandOfAnimation");
 
 		jadeHelmet = new ItemJadeArmor(jadeHelmetID, 0).setUnlocalizedName("helmetJade").setTextureName("erebus:helmetJade");
 		jadeBody = new ItemJadeArmor(jadeBodyID, 1).setUnlocalizedName("chestplateJade").setTextureName("erebus:chestplateJade");

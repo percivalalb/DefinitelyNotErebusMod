@@ -4,8 +4,11 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.entity.EntityScorpion;
 
+@SideOnly(Side.CLIENT)
 public class ModelScorpion extends ModelBase {
 	ModelRenderer RMand;
 	ModelRenderer LMand;

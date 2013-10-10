@@ -7,8 +7,11 @@ import net.minecraft.util.MathHelper;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.entity.EntityWasp;
 
+@SideOnly(Side.CLIENT)
 public class ModelWasp extends ModelBase {
 
 	ModelRenderer Thx;

@@ -3,12 +3,14 @@ package erebus;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import erebus.entity.EntityAnimatedBlock;
 import erebus.entity.EntityAntlion;
 import erebus.entity.EntityBeetle;
 import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityBlackWidow;
 import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
+import erebus.entity.EntityEngine;
 import erebus.entity.EntityFirebrat;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityGrasshopper;
@@ -44,6 +46,8 @@ public class ModEntities {
 		registerEntity(EntityFirebrat.class, "Firebrat", EntityRegistry.findGlobalUniqueEntityId(), 0xFF0000, 0xFF8800);
 		registerEntity(EntityAntlion.class, "Antlion", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFFFFFF);
 		registerEntity(EntityBlackWidow.class, "BlackWidow", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFF0000);
+		registerEntity(EntityEngine.class, "EngineOfIllapa", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
+		registerEntity(EntityAnimatedBlock.class, "AnimatedBlock", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 
 		// Extra Mob spawn conditions
 		EntityRegistry.addSpawn(EntityBlackWidow.class, 100, 5, 10, EnumCreatureType.monster, BiomeGenBase.hell);

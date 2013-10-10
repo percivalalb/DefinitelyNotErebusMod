@@ -6,8 +6,11 @@ import net.minecraft.entity.Entity;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.entity.EntityBotFly;
 
+@SideOnly(Side.CLIENT)
 public class ModelBotFly extends ModelBase {
 
 	// fields

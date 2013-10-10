@@ -25,6 +25,7 @@ import erebus.inventory.ContainerColossalCrate;
 import erebus.inventory.ContainerPetrifiedCraftingTable;
 import erebus.inventory.ContainerUmberFurnace;
 import erebus.tileentity.TileEntityBambooCrate;
+import erebus.tileentity.TileEntityLightningAltar;
 import erebus.tileentity.TileEntitySpawner;
 import erebus.tileentity.TileEntityUmberFurnace;
 
@@ -45,6 +46,7 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntitySpawner.class, "Custom Spawner (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityBambooCrate.class, "Bamboo Crate (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityUmberFurnace.class, "Umber Furnace (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityLightningAltar.class, "Tile Entity Bug Zapper (Erebus)");
 	}
 
 	public void handleParticlePacket(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data) {

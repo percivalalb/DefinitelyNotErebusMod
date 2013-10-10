@@ -17,7 +17,7 @@ public class TileEntityLightningAltarRenderer extends TileEntitySpecialRenderer 
 	private final ModelLightningAltar modelEngineBlock = new ModelLightningAltar();
 
 	public void renderAModelAt(TileEntityLightningAltar tile, double d, double d1, double d2, float f) {
-		bindTexture(new ResourceLocation("erebus:textures/entities/EngineOfIllapa1.png"));
+		bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa1.png"));
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) d + 0.5F, (float) d1 + 0.75F, (float) d2 + 0.5F);
 		GL11.glScalef(0.5F, -0.5F, -0.5F);

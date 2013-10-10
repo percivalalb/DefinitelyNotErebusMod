@@ -46,16 +46,16 @@ public class RenderEngineOfIllapa extends RenderLiving {
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		EntityEngine engine = (EntityEngine) entity;
 		if (engine.animationTicks <= 5)
-			return new ResourceLocation("engineofillapa:textures/entities/EngineOfIllapa1.png");
+			return new ResourceLocation("erebus:textures/mob/EngineOfIllapa1.png");
 		else if (engine.animationTicks > 5 && engine.animationTicks <= 10)
-			return new ResourceLocation("engineofillapa:textures/entities/EngineOfIllapa2.png");
+			return new ResourceLocation("erebus:textures/mob/EngineOfIllapa2.png");
 		else if (engine.animationTicks > 10 && engine.animationTicks <= 15)
-			return new ResourceLocation("engineofillapa:textures/entities/EngineOfIllapa3.png");
+			return new ResourceLocation("erebus:textures/mob/EngineOfIllapa3.png");
 		else if (engine.animationTicks > 15 && engine.animationTicks <= 20)
-			return new ResourceLocation("engineofillapa:textures/entities/EngineOfIllapa4.png");
+			return new ResourceLocation("erebus:textures/mob/EngineOfIllapa4.png");
 		else if (engine.animationTicks > 20 && engine.animationTicks <= 25)
-			return new ResourceLocation("engineofillapa:textures/entities/EngineOfIllapa5.png");
+			return new ResourceLocation("erebus:textures/mob/EngineOfIllapa5.png");
 		else
-			return new ResourceLocation("engineofillapa:textures/entities/EngineOfIllapa1.png");
+			return new ResourceLocation("erebus:textures/mob/EngineOfIllapa1.png");
 	}
 }

@@ -39,6 +39,7 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 		tasks.addTask(2, new EntityAIWander(this, 0.5D));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityMob.class, 0, true));
+		experienceValue = 0;
 	}
 
 	@SideOnly(Side.CLIENT)

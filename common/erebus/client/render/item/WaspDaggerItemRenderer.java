@@ -110,7 +110,7 @@ public class WaspDaggerItemRenderer extends Render implements IItemRenderer {
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) par2, (float) par4, (float) par6);
 		GL11.glRotatef(par1EntityWaspDagger.prevRotationYaw + (par1EntityWaspDagger.rotationYaw - par1EntityWaspDagger.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(par1EntityWaspDagger.prevRotationPitch + (par1EntityWaspDagger.rotationPitch - par1EntityWaspDagger.prevRotationPitch) * par9 - par1EntityWaspDagger.rotationticks, 0.0F, 0.0F, 1.0F);
+		GL11.glRotatef(par1EntityWaspDagger.prevRotationPitch + (par1EntityWaspDagger.rotationPitch - par1EntityWaspDagger.prevRotationPitch) * par9 - EntityWaspDagger.rotationticks, 0.0F, 0.0F, 1.0F);
 		GL11.glScaled(0.4F, 0.4F, 0.4F);
 		ModelWaspDagger.render(0.0625F);
 		GL11.glPopMatrix();

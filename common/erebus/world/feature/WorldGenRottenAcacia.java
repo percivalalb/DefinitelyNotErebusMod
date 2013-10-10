@@ -21,14 +21,12 @@ public class WorldGenRottenAcacia extends WorldGenerator {
 		int len = random.nextInt(3) + 3;
 		int offsetX = random.nextInt(2), offsetZ = 1 - offsetX;
 
-		for (int a = 0; a < len; a++) {
+		for (int a = 0; a < len; a++)
 			if (!world.isAirBlock(x + offsetX * a, y, z + offsetZ * a) || world.getBlockId(x + offsetX * a, y - 1, z + offsetZ * a) != Block.grass.blockID)
 				return false;
-		}
 
-		for (int a = 0; a < len; a++) {
+		for (int a = 0; a < len; a++)
 			world.setBlock(x + offsetX * a, y, z + offsetZ * a, ModBlocks.hollowLogAcacia.blockID, offsetX == 0 ? 0 : 1, 2);
-		}
 
 		return true;
 	}

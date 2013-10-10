@@ -1,6 +1,7 @@
 package erebus.world.biomes;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
@@ -77,12 +78,11 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 			}
 		}
 
-		if (rand.nextInt(34) == 0) {
+		if (rand.nextInt(34) == 0)
 			for (int attempt = 0; attempt < 15; attempt++) {
 				int xx = x + 5 + rand.nextInt(6) + 8, yy = 15 + rand.nextInt(35), zz = z + 5 + rand.nextInt(6) + 8;
 				if (new WorldGenAntlionLair().generate(worldObj, rand, xx, yy, zz))
 					break;
 			}
-		}
 	}
 }

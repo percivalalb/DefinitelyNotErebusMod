@@ -31,7 +31,6 @@ import erebus.client.model.entity.ModelBeetleLarva;
 import erebus.client.model.entity.ModelBlackWidow;
 import erebus.client.model.entity.ModelBotFly;
 import erebus.client.model.entity.ModelCentipede;
-import erebus.client.model.entity.ModelEngineEntity;
 import erebus.client.model.entity.ModelFirebrat;
 import erebus.client.model.entity.ModelGrasshopper;
 import erebus.client.model.entity.ModelLocust;
@@ -125,7 +124,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityFirebrat.class, new RenderFirebrat(new ModelFirebrat(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityAntlion.class, new RenderAntlion(new ModelAntlion(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityWaspDagger.class, new WaspDaggerItemRenderer(new ModelWaspDagger(), 0.3F));
-		RenderingRegistry.registerEntityRenderingHandler(EntityEngine.class, new RenderEngineOfIllapa(new ModelEngineEntity(), 0.3F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityEngine.class, new RenderEngineOfIllapa());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAnimatedBlock.class, new RenderAnimatedBlock(new ModelAnimatedBlock(), 0.3F));
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLightningAltar.class, new TileEntityLightningAltarRenderer());

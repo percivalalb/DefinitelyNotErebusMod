@@ -2,6 +2,7 @@ package erebus.block;
 
 import java.util.ArrayList;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
@@ -35,16 +36,15 @@ public class BlockOreFossil extends Block {
 			int id = -1;
 			int damage = 0;
 
-			if (world.rand.nextInt(3) == 0) {
+			if (world.rand.nextInt(3) == 0)
 				id = Item.bone.itemID;
-			} else {
+			else {
 				id = ModItems.erebusMaterials.itemID;
 				damage = 2;
 			}
 
-			if (id > 0) {
+			if (id > 0)
 				ret.add(new ItemStack(id, 1, damage));
-			}
 		}
 		return ret;
 	}

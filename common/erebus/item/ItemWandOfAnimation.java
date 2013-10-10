@@ -17,23 +17,21 @@ public class ItemWandOfAnimation extends Item {
 
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
-		if (stack.stackSize == 0)
-			return false;
-		else if (!player.canPlayerEdit(x, y, z, side, stack))
+		if (!player.canPlayerEdit(x, y, z, side, stack))
 			return false;
 		else {
 			int blockID = world.getBlockId(x, y, z);
-			int blockMeta = world.getBlockMetadata(x, y, z);
+			world.getBlockMetadata(x, y, z);
 			Block block = Block.blocksList[blockID];
 			if (!world.isRemote && block != null && !(block instanceof BlockContainer)) {
 				world.setBlockToAir(x, y, z);
 				EntityAnimatedBlock entityAnimatedBlock = new EntityAnimatedBlock(world);
-				entityAnimatedBlock.setBlock(blockID, blockMeta);
+
 				entityAnimatedBlock.setLocationAndAngles((double) x + 0.5F, y, (double) z + 0.5F, 0.0F, 0.0F);
 				world.spawnEntityInWorld(entityAnimatedBlock);
 				return true;
 			}
 		}
-		return stack != null;
+		return false;
 	}
 }

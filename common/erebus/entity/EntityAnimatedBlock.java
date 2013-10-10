@@ -20,27 +20,28 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 import erebus.utils.Utils;
 
 public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAdditionalSpawnData {
 
-	public int blockID;
-	public int blockMeta;
-	private final double moveSpeed;
+	@SideOnly(Side.CLIENT)
+	public int blockID, blockMeta;
 
 	public EntityAnimatedBlock(World world) {
 		super(world);
-		moveSpeed = 0.5D;
 		setSize(1.0F, 1.5F);
 		setBlock(Block.stone.blockID, 0);
 		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityMob.class, moveSpeed, false));
-		tasks.addTask(2, new EntityAIWander(this, moveSpeed));
+		tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityMob.class, 0.5D, false));
+		tasks.addTask(2, new EntityAIWander(this, 0.5D));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityMob.class, 0, true));
 	}
 
+	@SideOnly(Side.CLIENT)
 	public void setBlock(int blockID, int blockMeta) {
 		this.blockID = blockID;
 		this.blockMeta = blockMeta;
@@ -105,7 +106,7 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 	public void onUpdate() {
 		super.onUpdate();
 		if (!worldObj.isRemote && isDead)
-			Utils.dropStack(worldObj, (int)posX, (int)posY, (int)posZ, new ItemStack(Block.blocksList[blockID], 1, blockMeta));
+			Utils.dropStack(worldObj, (int) posX, (int) posY, (int) posZ, new ItemStack(Block.blocksList[blockID], 1, blockMeta));
 	}
 
 	public boolean isClimbing() {

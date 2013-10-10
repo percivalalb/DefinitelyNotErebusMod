@@ -4,9 +4,12 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class ModelAnimatedBlock extends ModelBase {
-	// fields
+
 	ModelRenderer LBL1;
 	ModelRenderer LBL2;
 	ModelRenderer LBL3;
@@ -31,7 +34,6 @@ public class ModelAnimatedBlock extends ModelBase {
 	ModelRenderer RFL2;
 	ModelRenderer RFL3;
 	ModelRenderer RFL4;
-	ModelRenderer Body;
 
 	public ModelAnimatedBlock() {
 		textureWidth = 16;
@@ -181,12 +183,6 @@ public class ModelAnimatedBlock extends ModelBase {
 		RFL4.setTextureSize(64, 32);
 		RFL4.mirror = true;
 		setRotation(RFL4, 0F, -0.3490659F, 0.8726646F);
-		Body = new ModelRenderer(this, 0, 0);
-		Body.addBox(-8F, -11F, -8F, 16, 16, 16);
-		Body.setRotationPoint(0F, 15F, 0F);
-		Body.setTextureSize(64, 32);
-		Body.mirror = true;
-		setRotation(Body, 0F, 0F, 0F);
 	}
 
 	@Override
@@ -217,8 +213,6 @@ public class ModelAnimatedBlock extends ModelBase {
 		RFL2.render(par7);
 		RFL3.render(par7);
 		RFL4.render(par7);
-		//Body.render(par7);
-
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -229,7 +223,6 @@ public class ModelAnimatedBlock extends ModelBase {
 
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
-
 		LBL1.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 + 0.25F;
 		LBL2.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 + 0.25F;
 		LBL3.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 + 0.3F;

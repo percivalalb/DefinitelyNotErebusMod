@@ -110,19 +110,16 @@ public class WorldGenAntlionLair extends WorldGenerator {
 		if (!found)
 			return false;
 
-		for (int xx = x - 5; xx <= x + 5; xx++) {
-			for (int zz = z - 5; zz <= z + 5; zz++) {
+		for (int xx = x - 5; xx <= x + 5; xx++)
+			for (int zz = z - 5; zz <= z + 5; zz++)
 				for (int yy = y - 1, layer = 0; yy >= y - 7; yy--, layer++) {
-					if (Math.sqrt(Math.pow(xx - x, 2) + Math.pow(zz - z, 2)) < 4.9D && yy != y - 7) {
-						if (yy >= y - 3 || (Math.abs(xx - x) <= 1 + (6 - layer) && Math.abs(zz - z) <= 1 + (6 - layer)))
+					if (Math.sqrt(Math.pow(xx - x, 2) + Math.pow(zz - z, 2)) < 4.9D && yy != y - 7)
+						if (yy >= y - 3 || Math.abs(xx - x) <= 1 + 6 - layer && Math.abs(zz - z) <= 1 + 6 - layer)
 							world.setBlock(xx, yy, zz, yy == y - 1 ? ModBlocks.ghostSand.blockID : 0);
-					}
 
 					if (layer > 0 && world.getBlockId(xx, yy, zz) != 0)
 						world.setBlock(xx, yy, zz, Block.sand.blockID);
 				}
-			}
-		}
 
 		world.setBlock(x, y - 7, z, Block.chest.blockID, 0, 2);
 		TileEntityChest chest = (TileEntityChest) world.getBlockTileEntity(x, y - 7, z);

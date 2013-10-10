@@ -18,12 +18,10 @@ import erebus.entity.EntityAnimatedBlock;
 @SideOnly(Side.CLIENT)
 public class RenderAnimatedBlock extends RenderLiving {
 
-	private final ModelAnimatedBlock model;
 	private final RenderBlocks blockRenderer = new RenderBlocks();
 
-	public RenderAnimatedBlock(ModelAnimatedBlock par1ModelBase, float scale) {
-		super(par1ModelBase, scale);
-		model = (ModelAnimatedBlock) mainModel;
+	public RenderAnimatedBlock(ModelAnimatedBlock model, float scale) {
+		super(model, scale);
 	}
 
 	public void renderAnimatedBlock(EntityAnimatedBlock entity, double x, double y, double z, float par8, float par9) {
@@ -32,7 +30,7 @@ public class RenderAnimatedBlock extends RenderLiving {
 		GL11.glDisable(GL11.GL_CULL_FACE);
 		GL11.glTranslatef((float) x, (float) y, (float) z);
 		GL11.glTranslatef(0.0F, 0.5F, 0.0F);
-		GL11.glRotatef(entity.rotationYaw, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(-entity.renderYawOffset, 0.0F, 1.0F, 0.0F);
 		blockRenderer.renderBlockAsItem(Block.blocksList[entity.blockID], entity.blockMeta, 1.0F);
 		GL11.glEnable(GL11.GL_CULL_FACE);
 		GL11.glEnable(GL11.GL_LIGHTING);

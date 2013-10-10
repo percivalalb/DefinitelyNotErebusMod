@@ -121,7 +121,7 @@ public class CommonProxy implements IGuiHandler {
 					x--;
 				if (world.getBlockId(x, y, z - 1) == crate.blockID)
 					z--;
-				if (crate.squareCrate(world, x, y, z)) {
+				if (BlockBambooCrate.squareCrate(world, x, y, z)) {
 					List<TileEntityBambooCrate> list = new ArrayList<TileEntityBambooCrate>();
 					int[][] places = new int[][] { { 1, 0, 0 }, { 1, 0, 1 }, { 0, 0, 1 }, { 1, 1, 0 }, { 1, 1, 1 }, { 0, 1, 1 }, { 0, 1, 0 }, { 0, 0, 0 } };
 					for (int[] place : places) {

@@ -6,10 +6,13 @@ import net.minecraft.entity.Entity;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.entity.EntityEngine;
 
+@SideOnly(Side.CLIENT)
 public class ModelEngineEntity extends ModelBase {
-	// fields
+
 	ModelRenderer Mid;
 	ModelRenderer Top;
 	ModelRenderer Bot;

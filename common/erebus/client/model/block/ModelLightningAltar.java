@@ -5,10 +5,10 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelLightningAltar extends ModelBase {
-	// fields
-	ModelRenderer Mid;
-	ModelRenderer Top;
-	ModelRenderer Bot;
+
+	private final ModelRenderer Mid;
+	private final ModelRenderer Top;
+	private final ModelRenderer Bot;
 
 	public ModelLightningAltar() {
 		textureWidth = 256;
@@ -31,14 +31,12 @@ public class ModelLightningAltar extends ModelBase {
 		Bot.setRotationPoint(0F, 20F, 0F);
 		Bot.setTextureSize(256, 320);
 		Bot.mirror = true;
-
 	}
 
-	public void render(float par7) {
-		Mid.render(par7);
-		Top.render(par7);
-		Bot.render(par7);
-
+	public void render() {
+		Mid.render(0.0625F);
+		Top.render(0.0625F);
+		Bot.render(0.0625F);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -51,5 +49,4 @@ public class ModelLightningAltar extends ModelBase {
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 
 	}
-
 }

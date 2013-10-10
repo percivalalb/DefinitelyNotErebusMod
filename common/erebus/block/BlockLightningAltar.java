@@ -39,41 +39,41 @@ public class BlockLightningAltar extends BlockContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World par1World) {
+	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityLightningAltar();
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-		return par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) || BlockFence.isIdAFence(par1World.getBlockId(par2, par3 - 1, par4));
+	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
+		return world.doesBlockHaveSolidTopSurface(x, y - 1, z) || BlockFence.isIdAFence(world.getBlockId(x, y - 1, z));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2) {
-		return par1 == 0 ? b : par1 == 1 ? a : blockIcon;
+	public Icon getIcon(int side, int meta) {
+		return side == 0 ? b : side == 1 ? a : blockIcon;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
-		blockIcon = par1IconRegister.registerIcon("erebus:BlockEngineOfIllapa");
-		a = par1IconRegister.registerIcon("erebus:BlockEngineOfIllapa");
-		b = par1IconRegister.registerIcon("erebus:BlockEngineOfIllapa");
+	public void registerIcons(IconRegister reg) {
+		blockIcon = reg.registerIcon("erebus:BlockEngineOfIllapa");
+		a = reg.registerIcon("erebus:BlockEngineOfIllapa");
+		b = reg.registerIcon("erebus:BlockEngineOfIllapa");
 	}
 
 	@Override
-	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-		if (par5EntityPlayer.getCurrentEquippedItem() != null)
-			if (par5EntityPlayer.getCurrentEquippedItem().itemID == ModItems.WandOfAnimation.itemID) {
-				EntityEngine entityEngineEntity = new EntityEngine(par1World);
-				entityEngineEntity.setLocationAndAngles((double) par2 + 0.5F, par3, (double) par4 + 0.5F, 0.0F, 0.0F);
-				if (!par1World.isRemote) {
-					par1World.setBlock(par2, par3, par4, 0);
-					par1World.spawnEntityInWorld(entityEngineEntity);
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+		if (player.getCurrentEquippedItem() != null)
+			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID) {
+				EntityEngine entityEngineEntity = new EntityEngine(world);
+				entityEngineEntity.setLocationAndAngles((double) x + 0.5F, y, (double) z + 0.5F, 0.0F, 0.0F);
+				if (!world.isRemote) {
+					world.setBlock(x, y, z, 0);
+					world.spawnEntityInWorld(entityEngineEntity);
 				}
 				return true;
 			}
-		return super.onBlockActivated(par1World, par2, par3, par4, par5EntityPlayer, par6, par7, par8, par9);
+		return false;
 	}
 }

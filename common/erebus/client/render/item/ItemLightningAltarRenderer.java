@@ -10,13 +10,8 @@ import cpw.mods.fml.client.FMLClientHandler;
 import erebus.client.model.block.ModelLightningAltar;
 
 public class ItemLightningAltarRenderer implements IItemRenderer {
-	private final ModelLightningAltar ModelEngineBlock;
-	private final ResourceLocation resource;
 
-	public ItemLightningAltarRenderer(ResourceLocation resourcelocation) {
-		ModelEngineBlock = new ModelLightningAltar();
-		resource = resourcelocation;
-	}
+	private final ModelLightningAltar ModelEngineBlock = new ModelLightningAltar();
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -49,15 +44,14 @@ public class ItemLightningAltarRenderer implements IItemRenderer {
 	}
 
 	private void renderBlock(float x, float y, float z, double size) {
-		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(resource);
-		GL11.glPushMatrix(); // Start Rendering
-		GL11.glTranslatef(x, y, z); // Position
+		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(new ResourceLocation("erebus:textures/entities/EngineOfIllapa1.png"));
+		GL11.glPushMatrix();
+		GL11.glTranslatef(x, y, z);
 		GL11.glRotatef(180F, 1F, 0, 0);
 		GL11.glRotatef(-90F, 0, 1F, 0);
-		GL11.glScaled(size, size, size); // Changes the size (Only really used
-		// when reading in the inventory)
-		ModelEngineBlock.render(0.0625F); // Render
-		GL11.glPopMatrix(); // End Rendering
+		GL11.glScaled(size, size, size);
+		ModelEngineBlock.render();
+		GL11.glPopMatrix();
 	}
 
 }

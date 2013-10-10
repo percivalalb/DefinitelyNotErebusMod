@@ -177,6 +177,7 @@ item.metalIngot2.name=Silver Ingot
 item.metalIngot3.name=Tin Ingot
 item.sprayCan.name=Insect Repellent
 item.waspDagger.name=Wasp Dagger
+item.wandOfAnimation.name=Wand Of Animation
 
 #Entities
 entity.BeetleLarva - Erebus.name=Beetle Larva

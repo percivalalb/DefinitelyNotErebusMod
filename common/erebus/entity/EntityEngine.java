@@ -22,11 +22,11 @@ public class EntityEngine extends IEntityMobBlock implements IRangedAttackMob
 
 {
 	protected EntityLiving theEntity;
-	int animationTicks = 0;
+	public int animationTicks = 0;
 	boolean active = true;
 
-	public EntityEngine(World par1World) {
-		super(par1World);
+	public EntityEngine(World world) {
+		super(world);
 		setSize(1.0F, 2.0F);
 		tasks.addTask(1, new IEntityArrowAttack(this, 0F, 60, 16.0F));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
@@ -67,7 +67,7 @@ public class EntityEngine extends IEntityMobBlock implements IRangedAttackMob
 	@Override
 	public boolean interact(EntityPlayer par1EntityPlayer) {
 		ItemStack itemstack = par1EntityPlayer.inventory.getCurrentItem();
-		if (itemstack != null && itemstack.itemID == ModItems.WandOfAnimation.itemID) {
+		if (itemstack != null && itemstack.itemID == ModItems.wandOfAnimation.itemID) {
 			setActive(false);
 			return true;
 		} else
@@ -98,7 +98,7 @@ public class EntityEngine extends IEntityMobBlock implements IRangedAttackMob
 				animationTicks--;
 			if (animationTicks == 0) {
 				setDead();
-				worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), ModBlocks.EngineOfIllapa.blockID);
+				worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), ModBlocks.engineOfIllapa.blockID);
 			}
 		}
 	}

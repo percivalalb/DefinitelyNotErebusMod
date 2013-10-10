@@ -22,17 +22,18 @@ import com.google.common.io.ByteArrayDataOutput;
 
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import erebus.ModItems;
-import erebus.item.ItemWandOfAnimation;
 
 public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAdditionalSpawnData {
-	public int blockloot = ItemWandOfAnimation.blockloot;
-	public int blockmeta = ItemWandOfAnimation.blockmeta;
+	public int blockloot;
+	public int blockmeta;
 	public int thisblockdrop = blockloot;
 	int thisblockdropmeta = blockmeta;
 	private final double moveSpeed;
 
-	public EntityAnimatedBlock(World par1World) {
-		super(par1World);
+	public EntityAnimatedBlock(World world, int blockloot, int blockmeta) {
+		super(world);
+		this.blockloot = blockloot;
+		this.blockmeta = blockmeta;
 		moveSpeed = 0.5D;
 		setSize(1.0F, 1.5F);
 		tasks.addTask(0, new EntityAISwimming(this));
@@ -123,7 +124,7 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 	@Override
 	public boolean interact(EntityPlayer par1EntityPlayer) {
 		ItemStack itemstack = par1EntityPlayer.inventory.getCurrentItem();
-		if (!worldObj.isRemote && itemstack != null && itemstack.itemID == ModItems.WandOfAnimation.itemID) {
+		if (!worldObj.isRemote && itemstack != null && itemstack.itemID == ModItems.wandOfAnimation.itemID) {
 			setDead();
 			worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), thisblockdrop, thisblockdropmeta, 3);
 			return true;

@@ -15,16 +15,15 @@ import erebus.tileentity.TileEntityLightningAltar;
 public class TileEntityLightningAltarRenderer extends TileEntitySpecialRenderer {
 
 	private final ModelLightningAltar modelEngineBlock = new ModelLightningAltar();
-	public static ResourceLocation texture = new ResourceLocation("engineofillapa:textures/entities/EngineOfIllapa1.png");
 
 	public void renderAModelAt(TileEntityLightningAltar tile, double d, double d1, double d2, float f) {
-		bindTexture(texture);
+		bindTexture(new ResourceLocation("erebus:textures/entities/EngineOfIllapa1.png"));
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) d + 0.5F, (float) d1 + 0.75F, (float) d2 + 0.5F);
 		GL11.glScalef(0.5F, -0.5F, -0.5F);
 		GL11.glRotatef(0 * 90, 0.0F, 1.0F, 0.0F);
-		modelEngineBlock.render(0.0625F);
-		GL11.glPopMatrix(); // end
+		modelEngineBlock.render();
+		GL11.glPopMatrix();
 	}
 
 	@Override

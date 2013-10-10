@@ -135,7 +135,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerBlockHandler(hollowLogRenderID, new BlockHollowLogRender());
 
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooCrate.blockID, new BambooCrateItemRenderer());
-		MinecraftForgeClient.registerItemRenderer(ModBlocks.EngineOfIllapa.blockID, new ItemLightningAltarRenderer(TileEntityLightningAltarRenderer.texture));
+		MinecraftForgeClient.registerItemRenderer(ModBlocks.engineOfIllapa.blockID, new ItemLightningAltarRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.waspSword.itemID, new WaspSwordItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.umberFurnace.blockID, new ItemUmberFurnaceRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.waspDagger.itemID, new WaspDaggerItemRenderer(new ModelWaspDagger(), 0.3F));

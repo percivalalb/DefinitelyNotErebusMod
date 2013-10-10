@@ -60,6 +60,7 @@ public class ConfigurationHandler {
 			ModBlocks.insectRepellentID = config.getBlock("Block ID of Insect Repellent Block", 2526).getInt(2526);
 			ModBlocks.bambooCropID = config.getBlock("Block ID of Bamboo Crop Block", 2554).getInt(2554);
 			ModBlocks.bambooTorchID = config.getBlock("Block ID of Bamboo Torch", 2559).getInt(2559);
+			ModBlocks.engineOfIllapaID = config.getBlock("Block ID of Engine Of Illapa", 2560).getInt(2560);
 
 			int id = 2527;
 			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];
@@ -85,7 +86,7 @@ public class ConfigurationHandler {
 			ModBlocks.spiderSpawnerID = config.getBlock("Block ID of Spider Spawners", 2552).getInt(2552);
 			ModBlocks.caveSpiderSpawnerID = config.getBlock("Block ID of Cave Spider Spawners", 2553).getInt(2553);
 
-			// latest ID used (please update after adding new blocks!) >>> 2559
+			// latest ID used (please update after adding new blocks!) >>> 2560
 
 			/*
 			 * Items
@@ -97,6 +98,7 @@ public class ConfigurationHandler {
 			ModItems.bamBucketID = config.getItem("Item ID of Bambucket", 9710).getInt(9710);
 			ModItems.turnipID = config.getItem("Item ID of Turnips", 9711).getInt(9711);
 			ModItems.sprayCanID = config.getItem("Item ID of Insect Repellent", 9712).getInt(9712);
+			ModItems.wandOfAnimationID = config.getItem("ItemID of Wand of Animation", 9734).getInt(9734);
 
 			ModItems.jadeHelmetID = config.getItem("Item ID of Jade Helmet", 9713).getInt(9713);
 			ModItems.jadeBodyID = config.getItem("Item ID of Jade Chestplate", 9714).getInt(9714);

@@ -1,4 +1,4 @@
-package erebus.item;
+package erebus.client.render.item;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

@@ -57,9 +57,9 @@ public class BlockLightningAltar extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister) {
-		blockIcon = par1IconRegister.registerIcon("engineofillapa:BlockEngineOfIllapa");
-		a = par1IconRegister.registerIcon("engineofillapa:BlockEngineOfIllapa");
-		b = par1IconRegister.registerIcon("engineofillapa:BlockEngineOfIllapa");
+		blockIcon = par1IconRegister.registerIcon("erebus:BlockEngineOfIllapa");
+		a = par1IconRegister.registerIcon("erebus:BlockEngineOfIllapa");
+		b = par1IconRegister.registerIcon("erebus:BlockEngineOfIllapa");
 	}
 
 	@Override

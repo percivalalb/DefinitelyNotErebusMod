@@ -98,7 +98,7 @@ public class EntityEngine extends IEntityMobBlock implements IRangedAttackMob
 				animationTicks--;
 			if (animationTicks == 0) {
 				setDead();
-				worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), ModBlocks.engineOfIllapa.blockID);
+				worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), ModBlocks.lightningAltar.blockID);
 			}
 		}
 	}

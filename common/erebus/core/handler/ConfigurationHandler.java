@@ -60,7 +60,7 @@ public class ConfigurationHandler {
 			ModBlocks.insectRepellentID = config.getBlock("Block ID of Insect Repellent Block", 2526).getInt(2526);
 			ModBlocks.bambooCropID = config.getBlock("Block ID of Bamboo Crop Block", 2554).getInt(2554);
 			ModBlocks.bambooTorchID = config.getBlock("Block ID of Bamboo Torch", 2559).getInt(2559);
-			ModBlocks.engineOfIllapaID = config.getBlock("Block ID of Engine Of Illapa", 2560).getInt(2560);
+			ModBlocks.lightningAltarID = config.getBlock("Block ID of Lightning Altar", 2560).getInt(2560);
 
 			int id = 2527;
 			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];

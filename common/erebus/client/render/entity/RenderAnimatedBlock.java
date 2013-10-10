@@ -33,7 +33,7 @@ public class RenderAnimatedBlock extends RenderLiving {
 		GL11.glTranslatef((float) x, (float) y, (float) z);
 		GL11.glTranslatef(0.0F, 0.5F, 0.0F);
 		GL11.glRotatef(entity.rotationYaw, 0.0F, 1.0F, 0.0F);
-		blockRenderer.renderBlockAsItem(Block.blocksList[entity.thisblockdrop], entity.blockmeta, 1.0F);
+		blockRenderer.renderBlockAsItem(Block.blocksList[entity.blockID], entity.blockMeta, 1.0F);
 		GL11.glEnable(GL11.GL_CULL_FACE);
 		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glPopMatrix();
@@ -63,6 +63,6 @@ public class RenderAnimatedBlock extends RenderLiving {
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		EntityAnimatedBlock animatedblock = (EntityAnimatedBlock) entity;
-		return new ResourceLocation("textures/blocks/" + Block.blocksList[animatedblock.thisblockdrop].getIcon(0, animatedblock.blockmeta).getIconName() + ".png");
+		return new ResourceLocation("textures/blocks/" + Block.blocksList[animatedblock.blockID].getIcon(0, animatedblock.blockMeta).getIconName() + ".png");
 	}
 }

@@ -9,7 +9,6 @@ import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -22,18 +21,16 @@ import com.google.common.io.ByteArrayDataOutput;
 
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import erebus.ModItems;
+import erebus.utils.Utils;
 
 public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAdditionalSpawnData {
-	public int blockloot;
-	public int blockmeta;
-	public int thisblockdrop = blockloot;
-	int thisblockdropmeta = blockmeta;
+
+	public int blockID;
+	public int blockMeta;
 	private final double moveSpeed;
 
-	public EntityAnimatedBlock(World world, int blockloot, int blockmeta) {
+	public EntityAnimatedBlock(World world) {
 		super(world);
-		this.blockloot = blockloot;
-		this.blockmeta = blockmeta;
 		moveSpeed = 0.5D;
 		setSize(1.0F, 1.5F);
 		tasks.addTask(0, new EntityAISwimming(this));
@@ -41,6 +38,11 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 		tasks.addTask(2, new EntityAIWander(this, moveSpeed));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityMob.class, 0, true));
+	}
+
+	public void setBlock(int blockID, int blockMeta) {
+		this.blockID = blockID;
+		this.blockMeta = blockMeta;
 	}
 
 	@Override
@@ -53,15 +55,10 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.5D); // Movespeed
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D); // MaxHealth
-		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D); // atkDmg
-		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
-	}
-
-	@Override
-	public void onLivingUpdate() {
-		super.onLivingUpdate();
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.5D);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D);
+		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D);
+		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D);
 	}
 
 	@Override
@@ -106,10 +103,8 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		if (!worldObj.isRemote && isDead) {
-			EntityItem entity_item = new EntityItem(worldObj, posX, posY, posZ, new ItemStack(Block.blocksList[thisblockdrop], 1, thisblockdropmeta));
-			worldObj.spawnEntityInWorld(entity_item);
-		}
+		if (!worldObj.isRemote && isDead)
+			Utils.dropStack(worldObj, (int)posX, (int)posY, (int)posZ, new ItemStack(Block.blocksList[blockID], 1, blockMeta));
 	}
 
 	public boolean isClimbing() {
@@ -122,14 +117,14 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 	}
 
 	@Override
-	public boolean interact(EntityPlayer par1EntityPlayer) {
-		ItemStack itemstack = par1EntityPlayer.inventory.getCurrentItem();
-		if (!worldObj.isRemote && itemstack != null && itemstack.itemID == ModItems.wandOfAnimation.itemID) {
+	public boolean interact(EntityPlayer player) {
+		ItemStack stack = player.inventory.getCurrentItem();
+		if (!worldObj.isRemote && stack != null && stack.itemID == ModItems.wandOfAnimation.itemID) {
 			setDead();
-			worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), thisblockdrop, thisblockdropmeta, 3);
+			worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), blockID, blockMeta, 3);
 			return true;
 		} else
-			return super.interact(par1EntityPlayer);
+			return false;
 	}
 
 	@Override
@@ -149,54 +144,27 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 		return atk;
 	}
 
-	// Write NBT for Block type persistence
 	@Override
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
-		super.writeEntityToNBT(par1NBTTagCompound);
-		par1NBTTagCompound.setInteger("BlockType", thisblockdrop);
-		par1NBTTagCompound.setInteger("BlockMeta", thisblockdropmeta);
+	public void writeEntityToNBT(NBTTagCompound data) {
+		super.writeEntityToNBT(data);
+		data.setInteger("blockID", blockID);
+		data.setInteger("blockMeta", blockMeta);
 	}
 
-	// Read NBT for Block type persistence
 	@Override
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
-		super.readEntityFromNBT(par1NBTTagCompound);
-		if (par1NBTTagCompound.hasKey("BlockType"))
-			;
-		{
-			setthisblockdrop(par1NBTTagCompound.getInteger("BlockType"));
-		}
-		if (par1NBTTagCompound.hasKey("BlockMeta"))
-			;
-		{
-			setthisblockdropmeta(par1NBTTagCompound.getInteger("BlockMeta"));
-		}
+	public void readEntityFromNBT(NBTTagCompound data) {
+		super.readEntityFromNBT(data);
+		blockID = data.getInteger("blockID");
+		blockMeta = data.getInteger("blockMeta");
 	}
 
-	// Set Block type using NBT and datawatcher
-	protected void setthisblockdrop(int par1) {
-		thisblockdrop = par1;
-		dataWatcher.updateObject(16, Byte.valueOf((byte) 1));
-		worldObj.setEntityState(this, (byte) 16);
-	}
-
-	protected void setthisblockdropmeta(int par1) {
-		thisblockdropmeta = par1;
-		dataWatcher.updateObject(17, Byte.valueOf((byte) 1));
-		worldObj.setEntityState(this, (byte) 17);
-	}
-
-	// This is a much easier method to get the required data than custom packet
-	// handling - thanks Forge!
 	@Override
 	public void writeSpawnData(ByteArrayDataOutput data) {
-		data.writeInt(thisblockdrop);
-		data.writeInt(thisblockdropmeta);
+
 	}
 
 	@Override
 	public void readSpawnData(ByteArrayDataInput data) {
-		thisblockdrop = data.readInt();
-		thisblockdropmeta = data.readInt();
+
 	}
 }

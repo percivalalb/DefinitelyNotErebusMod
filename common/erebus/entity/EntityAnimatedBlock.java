@@ -14,6 +14,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
 import com.google.common.io.ByteArrayDataInput;
@@ -29,6 +30,7 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 
 	@SideOnly(Side.CLIENT)
 	public int blockID, blockMeta;
+	private int lastX = 0, lastY = 0, lastZ = 0;
 
 	public EntityAnimatedBlock(World world) {
 		super(world);
@@ -110,6 +112,37 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 		super.onUpdate();
 		if (!worldObj.isRemote && isDead)
 			Utils.dropStack(worldObj, (int) posX, (int) posY, (int) posZ, new ItemStack(Block.blocksList[blockID], 1, blockMeta));
+	}
+
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (worldObj.isRemote)
+			if (worldObj.getSunBrightness(1.0F) < 0.5F)
+				lightUp();
+			else
+				switchOff();
+	}
+
+	private void lightUp() {
+		if ((int) posX != lastX || (int) posY != lastY || (int) posZ != lastZ || isDead) {
+			worldObj.setLightValue(EnumSkyBlock.Block, (int) posX, (int) posY, (int) posZ, Block.lightValue[blockID]);
+			worldObj.updateLightByType(EnumSkyBlock.Block, lastX, lastY, lastZ);
+			lastX = (int) posX;
+			lastY = (int) posY;
+			lastZ = (int) posZ;
+		}
+	}
+
+	private void switchOff() {
+		worldObj.updateLightByType(EnumSkyBlock.Block, lastX, lastY, lastZ);
+	}
+
+	@Override
+	public void setDead() {
+		super.setDead();
+		if (worldObj.isRemote)
+			switchOff();
 	}
 
 	public boolean isClimbing() {

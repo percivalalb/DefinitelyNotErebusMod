@@ -3,7 +3,6 @@ package erebus.core.proxy;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.client.gui.inventory.GuiCrafting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
@@ -19,6 +18,7 @@ import erebus.ModBlocks;
 import erebus.block.BlockBambooCrate;
 import erebus.client.gui.GuiBambooCrate;
 import erebus.client.gui.GuiColossalCrate;
+import erebus.client.gui.GuiPetrifiedWorkbench;
 import erebus.client.gui.GuiUmberFurnace;
 import erebus.inventory.ContainerBambooCrate;
 import erebus.inventory.ContainerColossalCrate;
@@ -134,7 +134,7 @@ public class CommonProxy implements IGuiHandler {
 		}
 
 		else if (ID == GUI_ID_PETRIFIED_CRAFT)
-			return new GuiCrafting(player.inventory, world, x, y, z);
+			return new GuiPetrifiedWorkbench(player.inventory, world, x, y, z);
 		if (ID == GUI_ID_UMBER_FURNACE) {
 			TileEntity tileentity = world.getBlockTileEntity(x, y, z);
 			if (tileentity instanceof TileEntityUmberFurnace)

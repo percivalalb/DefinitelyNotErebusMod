@@ -9,16 +9,12 @@ import org.lwjgl.opengl.GL11;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.client.model.item.ModelWaspSword;
+import erebus.client.model.item.ModelWandOfAnimation;
 
 @SideOnly(Side.CLIENT)
-public class WaspSwordItemRenderer implements IItemRenderer {
-	private final ModelWaspSword model;
-	public static ResourceLocation texture = new ResourceLocation("erebus:textures/item/ModelWaspSword.png");
+public class WandOfAnimationItemRenderer implements IItemRenderer {
 
-	public WaspSwordItemRenderer() {
-		model = new ModelWaspSword();
-	}
+	private final ModelWandOfAnimation model = new ModelWandOfAnimation();
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -32,18 +28,19 @@ public class WaspSwordItemRenderer implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
+		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(new ResourceLocation("erebus:textures/item/wandOfAnimation.png"));
 		switch (type) {
 			case ENTITY:
-				renderSword(0.0F, 1.0F, 0.0F, 0.75D);
+				renderWand(0.0F, 1.0F, 0.0F, 0.75D);
 				break;
 			case EQUIPPED:
 				renderEquipped(0.3F, 0.5F, 0.4F, 0.75D);
 				break;
 			case EQUIPPED_FIRST_PERSON:
-				renderSwordFirstPerson(0.5F, 0.9F, 0.5F, 0.75D);
+				renderWandFirstPerson(0.5F, 0.9F, 0.5F, 0.75D);
 				break;
 			case INVENTORY:
-				renderSwordInventory(-0.35F, -0.4F, 0.0F, 0.5D);
+				renderWandInventory(-0.35F, -0.4F, 0.0F, 0.5D);
 				break;
 			default:
 				break;
@@ -51,7 +48,6 @@ public class WaspSwordItemRenderer implements IItemRenderer {
 	}
 
 	private void renderEquipped(float x, float y, float z, double size) {
-		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
 		GL11.glPushMatrix();
 		GL11.glTranslatef(x, y + 0.6F, z + 0.5F);
 		GL11.glRotatef(20.0F, 1.0F, 0.0F, 0.0F);
@@ -62,8 +58,7 @@ public class WaspSwordItemRenderer implements IItemRenderer {
 		GL11.glPopMatrix();
 	}
 
-	private void renderSword(float x, float y, float z, double size) {
-		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
+	private void renderWand(float x, float y, float z, double size) {
 		GL11.glPushMatrix();
 		GL11.glTranslatef(x, y, z);
 		GL11.glRotatef(180F, 1F, 0, 0);
@@ -74,8 +69,7 @@ public class WaspSwordItemRenderer implements IItemRenderer {
 		GL11.glPopMatrix();
 	}
 
-	private void renderSwordFirstPerson(float x, float y, float z, double size) {
-		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
+	private void renderWandFirstPerson(float x, float y, float z, double size) {
 		GL11.glPushMatrix();
 		GL11.glTranslatef(x, y, z);
 		GL11.glRotatef(180F, 1F, 0, 0);
@@ -85,8 +79,7 @@ public class WaspSwordItemRenderer implements IItemRenderer {
 		GL11.glPopMatrix();
 	}
 
-	private void renderSwordInventory(float x, float y, float z, double size) {
-		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
+	private void renderWandInventory(float x, float y, float z, double size) {
 		GL11.glPushMatrix();
 		GL11.glTranslatef(x, y, z);
 		GL11.glRotatef(135F, 1F, 0, 0);

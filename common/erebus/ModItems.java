@@ -87,7 +87,7 @@ public class ModItems {
 		bamBucket = new ItemBambucket(bamBucketID).setUnlocalizedName("bamBucket");
 		turnip = new ItemSeedFood(turnipID, 4, 0.6F, ModBlocks.blockTurnip.blockID, Block.tilledField.blockID).setUnlocalizedName("turnips").setTextureName("erebus:turnips");
 		sprayCan = new ItemSprayCan(sprayCanID).setUnlocalizedName("sprayCan").setTextureName("erebus:sprayCan");
-		wandOfAnimation = new ItemWandOfAnimation(wandOfAnimationID).setUnlocalizedName("wandOfAnimation").setTextureName("erebus:wandOfAnimation");
+		wandOfAnimation = new ItemWandOfAnimation(wandOfAnimationID).setUnlocalizedName("wandOfAnimation");
 
 		jadeHelmet = new ItemJadeArmor(jadeHelmetID, 0).setUnlocalizedName("helmetJade").setTextureName("erebus:helmetJade");
 		jadeBody = new ItemJadeArmor(jadeBodyID, 1).setUnlocalizedName("chestplateJade").setTextureName("erebus:chestplateJade");

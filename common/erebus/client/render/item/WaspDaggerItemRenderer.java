@@ -9,9 +9,12 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.item.ModelWaspDagger;
 import erebus.entity.EntityWaspDagger;
 
+@SideOnly(Side.CLIENT)
 public class WaspDaggerItemRenderer extends Render implements IItemRenderer {
 	private final ModelWaspDagger ModelWaspDagger;
 	public static ResourceLocation texture = new ResourceLocation("erebus:textures/item/ModelWaspSword.png");

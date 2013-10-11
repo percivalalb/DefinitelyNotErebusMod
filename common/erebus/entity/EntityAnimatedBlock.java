@@ -21,14 +21,11 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 import erebus.utils.Utils;
 
 public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAdditionalSpawnData {
 
-	@SideOnly(Side.CLIENT)
 	public int blockID, blockMeta;
 	private int lastX = 0, lastY = 0, lastZ = 0;
 
@@ -44,11 +41,14 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 		experienceValue = 0;
 	}
 
-	@SideOnly(Side.CLIENT)
 	public void setBlock(int blockID, int blockMeta) {
 		this.blockID = blockID;
 		this.blockMeta = blockMeta;
-		Block block = Block.blocksList[blockID];
+		updateAttributes(Block.blocksList[blockID]);
+	}
+
+	// TODO make this right
+	private void updateAttributes(Block block) {
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(block.blockHardness > 0 ? block.blockHardness : 1.0D);
 	}
 
@@ -166,16 +166,16 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 	}
 
 	@Override
-	protected void attackEntity(Entity par1Entity, float par2) {
-		if (par2 > 0.0F && par2 < 2.0F)
-			attackEntityAsMob(par1Entity);
+	protected void attackEntity(Entity entity, float distance) {
+		if (distance > 0.0F && distance < 2.0F)
+			attackEntityAsMob(entity);
 	}
 
 	@Override
-	public boolean attackEntityAsMob(Entity par1Entity) {
+	public boolean attackEntityAsMob(Entity entity) {
 		boolean atk = false;
-		if (super.attackEntityAsMob(par1Entity))
-			if (par1Entity instanceof EntityMob)
+		if (super.attackEntityAsMob(entity))
+			if (entity instanceof EntityMob)
 				atk = true;
 			else
 				atk = false;

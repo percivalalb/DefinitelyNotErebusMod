@@ -78,7 +78,7 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 
 	@Override
 	public EnumCreatureAttribute getCreatureAttribute() {
-		return EnumCreatureAttribute.UNDEFINED;
+		return EnumCreatureAttribute.ARTHROPOD;
 	}
 
 	@Override

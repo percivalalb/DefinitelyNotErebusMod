@@ -139,11 +139,11 @@ public class EntityEngine extends IEntityMobBlock implements IRangedAttackMob
 	}
 
 	@Override
-	public void attackEntityWithRangedAttack(EntityLivingBase par1EntityLiving, float par2) {
-		if (par1EntityLiving.getCreatureAttribute().equals(EnumCreatureAttribute.ARTHROPOD)) {
-			double x = par1EntityLiving.posX;
-			double y = par1EntityLiving.boundingBox.minY;
-			double z = par1EntityLiving.posZ;
+	public void attackEntityWithRangedAttack(EntityLivingBase entity, float par2) {
+		if (entity.getCreatureAttribute().equals(EnumCreatureAttribute.ARTHROPOD) && !(entity instanceof EntityAnimatedBlock)) {
+			double x = entity.posX;
+			double y = entity.boundingBox.minY;
+			double z = entity.posZ;
 			EntityLightningBolt entitybolt = new EntityLightningBolt(worldObj, 0D, 0D, 0D);
 			entitybolt.setLocationAndAngles(x, y, z, rotationYaw, rotationPitch);
 			worldObj.addWeatherEffect(entitybolt);

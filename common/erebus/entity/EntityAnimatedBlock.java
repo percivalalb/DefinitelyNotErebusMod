@@ -23,14 +23,12 @@ import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
-import erebus.item.ItemWandOfAnimation;
 import erebus.utils.Utils;
 
 public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAdditionalSpawnData {
 
 	@SideOnly(Side.CLIENT)
-	public int blockID = ItemWandOfAnimation.blockID;
-	public int blockMeta = ItemWandOfAnimation.blockMeta;
+	public int blockID, blockMeta;
 
 	public EntityAnimatedBlock(World world) {
 		super(world);
@@ -48,6 +46,8 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 	public void setBlock(int blockID, int blockMeta) {
 		this.blockID = blockID;
 		this.blockMeta = blockMeta;
+		Block block = Block.blocksList[blockID];
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(block.blockHardness > 0 ? block.blockHardness : 1.0D);
 	}
 
 	@Override

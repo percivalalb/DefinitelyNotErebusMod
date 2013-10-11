@@ -10,8 +10,6 @@ import erebus.entity.EntityAnimatedBlock;
 
 public class ItemWandOfAnimation extends Item {
 
-	public static int blockID;
-	public static int blockMeta;
 	public ItemWandOfAnimation(int id) {
 		super(id);
 		setFull3D();
@@ -22,10 +20,10 @@ public class ItemWandOfAnimation extends Item {
 		if (!player.canPlayerEdit(x, y, z, side, stack))
 			return false;
 		else {
-			blockID = world.getBlockId(x, y, z);
-			blockMeta = world.getBlockMetadata(x, y, z);
+			int blockID = world.getBlockId(x, y, z);
+			int blockMeta = world.getBlockMetadata(x, y, z);
 			Block block = Block.blocksList[blockID];
-			if (!world.isRemote && block != null && !(block instanceof BlockContainer)) {
+			if (!world.isRemote && block != null && canAnimate(block)) {
 				world.setBlockToAir(x, y, z);
 				EntityAnimatedBlock entityAnimatedBlock = new EntityAnimatedBlock(world);
 				entityAnimatedBlock.setLocationAndAngles((double) x + 0.5F, y, (double) z + 0.5F, 0.0F, 0.0F);
@@ -35,5 +33,9 @@ public class ItemWandOfAnimation extends Item {
 			}
 		}
 		return false;
+	}
+
+	private boolean canAnimate(Block block) {
+		return !(block instanceof BlockContainer) && block.blockHardness >= 0 && block.getBlockBoundsMaxX() - block.getBlockBoundsMinX() >= 0.7F && block.getBlockBoundsMaxZ() - block.getBlockBoundsMinZ() >= 0.7F;
 	}
 }

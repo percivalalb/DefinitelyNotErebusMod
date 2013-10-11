@@ -63,6 +63,12 @@ public class RenderAnimatedBlock extends RenderLiving {
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		EntityAnimatedBlock animatedblock = (EntityAnimatedBlock) entity;
-		return new ResourceLocation("textures/blocks/" + Block.blocksList[animatedblock.blockID].getIcon(0, animatedblock.blockMeta).getIconName() + ".png");
+		String blockPath = Block.blocksList[animatedblock.blockID].getIcon(0, animatedblock.blockMeta).getIconName();
+		String modName = "minecraft";
+		if (blockPath.contains(":")) {
+			modName = blockPath.split(":")[0];
+			blockPath = blockPath.split(":")[1];
+		}
+		return new ResourceLocation(modName, "textures/blocks/" + blockPath + ".png");
 	}
 }

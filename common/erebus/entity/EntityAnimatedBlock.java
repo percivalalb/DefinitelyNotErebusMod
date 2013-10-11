@@ -23,12 +23,14 @@ import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
+import erebus.item.ItemWandOfAnimation;
 import erebus.utils.Utils;
 
 public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAdditionalSpawnData {
 
 	@SideOnly(Side.CLIENT)
-	public int blockID, blockMeta;
+	public int blockID = ItemWandOfAnimation.blockID;
+	public int blockMeta = ItemWandOfAnimation.blockMeta;
 
 	public EntityAnimatedBlock(World world) {
 		super(world);
@@ -163,11 +165,13 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 
 	@Override
 	public void writeSpawnData(ByteArrayDataOutput data) {
-
+		data.writeInt(blockID);
+		data.writeInt(blockMeta);
 	}
 
 	@Override
 	public void readSpawnData(ByteArrayDataInput data) {
-
+		blockID = data.readInt();
+		blockMeta = data.readInt();
 	}
 }

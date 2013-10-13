@@ -14,7 +14,11 @@ import erebus.client.model.item.ModelWandOfAnimation;
 @SideOnly(Side.CLIENT)
 public class WandOfAnimationItemRenderer implements IItemRenderer {
 
-	private final ModelWandOfAnimation model = new ModelWandOfAnimation();
+	private final ModelWandOfAnimation model;
+
+	public WandOfAnimationItemRenderer() {
+		model = new ModelWandOfAnimation();
+	}
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -37,10 +41,10 @@ public class WandOfAnimationItemRenderer implements IItemRenderer {
 				renderEquipped(0.3F, 0.5F, 0.4F, 0.75D);
 				break;
 			case EQUIPPED_FIRST_PERSON:
-				renderWandFirstPerson(0.5F, 0.9F, 0.5F, 0.75D);
+				renderWandFirstPerson(0.5F, 0.9F, 0.5F, 1.0D);
 				break;
 			case INVENTORY:
-				renderWandInventory(-0.35F, -0.4F, 0.0F, 0.5D);
+				renderWandInventory(0.1F, 0.1F, 0.0F, 0.75D);
 				break;
 			default:
 				break;
@@ -54,7 +58,7 @@ public class WandOfAnimationItemRenderer implements IItemRenderer {
 		GL11.glRotatef(225.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glRotatef(0.0F, 0.0F, 0.0F, 1.0F);
 		GL11.glScaled(-size, -size, size);
-		model.render();
+		model.render(0.0625F);
 		GL11.glPopMatrix();
 	}
 
@@ -65,7 +69,7 @@ public class WandOfAnimationItemRenderer implements IItemRenderer {
 		GL11.glRotatef(-135F, 0, 1F, 0);
 		GL11.glRotatef(70F, 0, 0, 1F);
 		GL11.glScaled(size, size, size);
-		model.render();
+		model.render(0.0625F);
 		GL11.glPopMatrix();
 	}
 
@@ -75,7 +79,7 @@ public class WandOfAnimationItemRenderer implements IItemRenderer {
 		GL11.glRotatef(180F, 1F, 0, 0);
 		GL11.glRotatef(-45F, 0, 1F, 0);
 		GL11.glScaled(size, size, size);
-		model.render();
+		model.render(0.0625F);
 		GL11.glPopMatrix();
 	}
 
@@ -86,7 +90,7 @@ public class WandOfAnimationItemRenderer implements IItemRenderer {
 		GL11.glRotatef(135F, 0, 1F, 0);
 		GL11.glRotatef(-20F, 0, 0, 1F);
 		GL11.glScaled(size, size, size);
-		model.render();
+		model.render(0.0625F);
 		GL11.glPopMatrix();
 	}
 }

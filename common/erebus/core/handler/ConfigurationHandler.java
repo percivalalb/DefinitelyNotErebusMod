@@ -124,8 +124,9 @@ public class ConfigurationHandler {
 			ModItems.compoundGogglesID = config.getItem("Item ID of Compound Goggles", 9730).getInt(9730);
 			ModItems.sprintLeggingsID = config.getItem("Item ID of Sprint Leggings", 9731).getInt(9731);
 			ModItems.jumpBootsID = config.getItem("Item ID of Jump Boots", 9732).getInt(9732);
+			ModItems.armorGliderID = config.getItem("Item ID of Chest Armour Glider", 9735).getInt(9735);
 
-			// latest ID used (please update after adding new items!) >>> 9734
+			// latest ID used (please update after adding new items!) >>> 9735
 
 			/*
 			 * Biomes & misc

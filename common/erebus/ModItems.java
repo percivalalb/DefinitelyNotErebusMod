@@ -13,6 +13,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import erebus.item.ItemArmorGlider;
 import erebus.item.ItemBambucket;
 import erebus.item.ItemCavemanClub;
 import erebus.item.ItemCompoundGoggles;
@@ -72,6 +73,7 @@ public class ModItems {
 	public static Item compoundGoggles;                 public static int compoundGogglesID;
 	public static Item sprintLeggings;					public static int sprintLeggingsID;
 	public static Item jumpBoots;						public static int jumpBootsID;
+	public static Item armorGlider;						public static int armorGliderID;
 
 	//@formatter:on
 
@@ -113,6 +115,7 @@ public class ModItems {
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
 		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorEXOSKELETON, 2).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
 		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorEXOSKELETON, 3).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
+		armorGlider = new ItemArmorGlider(armorGliderID, 1).setUnlocalizedName("armorGlider").setTextureName("erebus:armorGlider");
 
 		// Creative tabs
 		ErebusMod.tabErebusItem.add(portalActivator, erebusMaterials, erebusFood, turnip, wandOfAnimation);
@@ -123,7 +126,7 @@ public class ModItems {
 		ErebusMod.tabErebusGear.add(jadeHelmet, jadeBody, jadeLegs, jadeBoots, jadeSword, jadePickaxe, jadeAxe, jadeShovel, jadePaxel, jadeHoe);
 		ErebusMod.tabErebusGear.add(exoskeletonHelmet, exoskeletonBody, exoskeletonLegs, exoskeletonBoots);
 		ErebusMod.tabErebusGear.add(fossilClub, waspSword, waspDagger, maxSpeedBow);
-		ErebusMod.tabErebusGear.add(compoundGoggles, sprintLeggings, jumpBoots);
+		ErebusMod.tabErebusGear.add(compoundGoggles, sprintLeggings, jumpBoots, armorGlider);
 
 		// Tool classes
 		MinecraftForge.setToolClass(jadeAxe, "axe", 2);
@@ -165,5 +168,6 @@ public class ModItems {
 		GameRegistry.registerItem(compoundGoggles, "erebus.compoundGoggles");
 		GameRegistry.registerItem(sprintLeggings, "erebus.sprintLeggings");
 		GameRegistry.registerItem(jumpBoots, "erebus.jumpBoots");
+		GameRegistry.registerItem(armorGlider, "erebus.armorGlider");
 	}
 }

@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
-import erebus.ModItems;
 import erebus.client.model.armor.ModelArmorGlider;
 
 public class ItemArmorGlider extends ItemArmor {
@@ -18,17 +17,22 @@ public class ItemArmorGlider extends ItemArmor {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
-		return new ModelArmorGlider();
+	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
+		return "erebus:textures/armor/ModelArmorGlider.png";
 	}
 
 	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
-		if (stack.itemID == ModItems.armorGlider.itemID)
-			return "erebus:textures/armor/ModelArmorGlider.png";
-		else
-			return null;
+	@SideOnly(Side.CLIENT)
+	public ModelBiped getArmorModel(EntityLivingBase player, ItemStack stack, int slot) {
+		ModelBiped model = new ModelArmorGlider();
+		model.bipedHead.showModel = slot == 0;
+		model.bipedHeadwear.showModel = slot == 0;
+		model.bipedBody.showModel = slot == 1 || slot == 2;
+		model.bipedRightArm.showModel = slot == 1;
+		model.bipedLeftArm.showModel = slot == 1;
+		model.bipedRightLeg.showModel = slot == 2 || slot == 3;
+		model.bipedLeftLeg.showModel = slot == 2 || slot == 3;
+		model.isSneak = player.isSneaking();
+		return model;
 	}
-
 }

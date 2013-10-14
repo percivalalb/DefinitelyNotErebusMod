@@ -17,6 +17,7 @@ public class ItemArmorGlider extends ItemArmor {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
 		return "erebus:textures/armor/ModelArmorGlider.png";
 	}

@@ -26,14 +26,13 @@ public class ItemArmorGlider extends ItemArmor {
 	@SideOnly(Side.CLIENT)
 	public ModelBiped getArmorModel(EntityLivingBase player, ItemStack stack, int slot) {
 		ModelBiped model = new ModelArmorGlider();
-		model.bipedHead.showModel = slot == 0;
-		model.bipedHeadwear.showModel = slot == 0;
-		model.bipedBody.showModel = slot == 1 || slot == 2;
-		model.bipedRightArm.showModel = slot == 1;
-		model.bipedLeftArm.showModel = slot == 1;
-		model.bipedRightLeg.showModel = slot == 2 || slot == 3;
-		model.bipedLeftLeg.showModel = slot == 2 || slot == 3;
-		model.isSneak = player.isSneaking();
+		model.bipedHead.showModel = false;
+		model.bipedHeadwear.showModel = false;
+		model.bipedBody.showModel = false;
+		model.bipedRightArm.showModel = false;
+		model.bipedLeftArm.showModel = false;
+		model.bipedRightLeg.showModel = false;
+		model.bipedLeftLeg.showModel = false;
 		return model;
 	}
 }

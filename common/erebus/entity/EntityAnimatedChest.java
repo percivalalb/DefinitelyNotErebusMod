@@ -45,6 +45,11 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 		return true;
 	}
 
+	@Override
+	public boolean canDespawn() {
+		return false;
+	}
+
 
 	@Override
 	public void onUpdate() {

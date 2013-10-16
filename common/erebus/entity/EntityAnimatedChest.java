@@ -9,11 +9,12 @@ import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import erebus.ModItems;
+import erebus.tileentity.TileEntityAnimatedChest;
 import erebus.utils.Utils;
 
 public class EntityAnimatedChest extends EntityAnimatedBlock {
 
-	private ItemStack[] inventory;
+	public ItemStack[] inventory;
 
 	public EntityAnimatedChest(World world) {
 		super(world);
@@ -47,21 +48,21 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 	@Override
 	// TODO make it open and show inventory
 	public boolean interact(EntityPlayer player) {
+		if (!worldObj.isRemote)
+			return true;
 		ItemStack stack = player.inventory.getCurrentItem();
-		if (!worldObj.isRemote && stack != null && stack.itemID == ModItems.wandOfAnimation.itemID) {
+		if (stack != null && stack.itemID == ModItems.wandOfAnimation.itemID) {
 			setDead();
 			worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), blockID, blockMeta, 3);
 			TileEntityChest chest = (TileEntityChest) worldObj.getBlockTileEntity(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ));
 			for(int i = 0; i < 27; i++)
 				chest.setInventorySlotContents(i, inventory[i]);
 			return true;
-		} else {
-			TileEntityChest newChest = new TileEntityChest();
-			for (int i = 0; i < 27; i++)
-				newChest.setInventorySlotContents(i, inventory[i]);
-			player.displayGUIChest(newChest);
+		} else if (stack == null) {
+			player.displayGUIChest(new TileEntityAnimatedChest(this));
 			return true;
-		}
+		} else
+			return false;
 	}
 
 	@Override

@@ -48,7 +48,7 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 	@Override
 	// TODO make it open and show inventory
 	public boolean interact(EntityPlayer player) {
-		if (!worldObj.isRemote)
+		if (worldObj.isRemote)
 			return true;
 		ItemStack stack = player.inventory.getCurrentItem();
 		if (stack != null && stack.itemID == ModItems.wandOfAnimation.itemID) {

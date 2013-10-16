@@ -2,11 +2,12 @@ package erebus.tileentity;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.tileentity.TileEntity;
 import erebus.entity.EntityAnimatedChest;
 
-public class TileEntityAnimatedChest extends TileEntityChest {
+public class TileEntityAnimatedChest extends TileEntity implements IInventory {
 
 	private final ItemStack[] chestContents;
 
@@ -78,5 +79,25 @@ public class TileEntityAnimatedChest extends TileEntityChest {
 
 		if (stack != null && stack.stackSize > getInventoryStackLimit())
 			stack.stackSize = getInventoryStackLimit();
+	}
+
+	@Override
+	public String getInvName() {
+		return "Chester";
+	}
+
+	@Override
+	public boolean isInvNameLocalized() {
+		return false;
+	}
+
+	@Override
+	public int getInventoryStackLimit() {
+		return 64;
+	}
+
+	@Override
+	public boolean isItemValidForSlot(int slot, ItemStack item) {
+		return true;
 	}
 }

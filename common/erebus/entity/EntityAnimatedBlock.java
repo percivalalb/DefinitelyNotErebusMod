@@ -28,16 +28,19 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 
 	public int blockID, blockMeta;
 	private int lastX = 0, lastY = 0, lastZ = 0;
+	protected final EntityAIWander aiWander = new EntityAIWander(this, 0.5D);
+	protected final EntityAINearestAttackableTarget aiAttackNearestTarget = new EntityAINearestAttackableTarget(this, EntityMob.class, 0, true);
+	protected final EntityAIAttackOnCollide aiAttackOnCollide = new EntityAIAttackOnCollide(this, EntityMob.class, 0.5D, false);
 
 	public EntityAnimatedBlock(World world) {
 		super(world);
 		setSize(1.0F, 1.5F);
 		setBlock(Block.stone.blockID, 0);
 		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityMob.class, 0.5D, false));
-		tasks.addTask(2, new EntityAIWander(this, 0.5D));
+		tasks.addTask(1, aiAttackOnCollide);
+		tasks.addTask(2, aiWander);
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityMob.class, 0, true));
+		targetTasks.addTask(1, aiAttackNearestTarget);
 		experienceValue = 0;
 	}
 

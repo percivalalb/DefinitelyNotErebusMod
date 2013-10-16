@@ -1,5 +1,6 @@
 package erebus.entity;
 
+import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -19,6 +20,10 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 	public EntityAnimatedChest(World world) {
 		super(world);
 		inventory = new ItemStack[27];
+		tasks.removeTask(aiWander);
+		tasks.removeTask(aiAttackOnCollide);
+		tasks.removeTask(aiAttackNearestTarget);
+		tasks.addTask(1, new EntityAITempt(this, 1.0D, ModItems.wandOfAnimation.itemID, false));
 	}
 
 	public EntityAnimatedChest setContents(IInventory chest) {
@@ -33,6 +38,11 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 			chest.setInventorySlotContents(i, null);
 		}
 		return this;
+	}
+
+	@Override
+	public boolean isAIEnabled() {
+		return true;
 	}
 
 

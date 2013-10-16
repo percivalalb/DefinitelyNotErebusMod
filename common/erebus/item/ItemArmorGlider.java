@@ -1,17 +1,19 @@
 package erebus.item;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
 import erebus.client.model.armor.ModelArmorGlider;
 
 public class ItemArmorGlider extends ItemArmor {
-
 	public ItemArmorGlider(int id, int armorType) {
 		super(id, ErebusMod.armorEXOSKELETON, 2, armorType);
 	}
@@ -34,5 +36,21 @@ public class ItemArmorGlider extends ItemArmor {
 		model.bipedRightLeg.showModel = false;
 		model.bipedLeftLeg.showModel = false;
 		return model;
+	}
+
+	@Override
+	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack itemStack) {
+		player.fallDistance = 0.0F;
+		// if (getUseButton())
+		if (!player.onGround) {
+			player.motionX *= 1.0D;
+			player.motionZ *= 1.0D;
+			player.motionY *= 0.5D;
+
+		}
+	}
+
+	private boolean getUseButton() {
+		return Minecraft.getMinecraft().gameSettings.keyBindUseItem.isPressed();
 	}
 }

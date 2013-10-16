@@ -5,8 +5,10 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.world.World;
 import erebus.entity.EntityAnimatedBlock;
+import erebus.entity.EntityAnimatedChest;
 
 public class ItemWandOfAnimation extends Item {
 
@@ -24,8 +26,12 @@ public class ItemWandOfAnimation extends Item {
 			int blockMeta = world.getBlockMetadata(x, y, z);
 			Block block = Block.blocksList[blockID];
 			if (!world.isRemote && block != null && canAnimate(block)) {
+				EntityAnimatedBlock entityAnimatedBlock;
+				if (block.blockID == Block.chest.blockID)
+					entityAnimatedBlock = new EntityAnimatedChest(world).setContents((TileEntityChest) world.getBlockTileEntity(x, y, z));
+				else
+					entityAnimatedBlock = new EntityAnimatedBlock(world);
 				world.setBlockToAir(x, y, z);
-				EntityAnimatedBlock entityAnimatedBlock = new EntityAnimatedBlock(world);
 				entityAnimatedBlock.setLocationAndAngles((double) x + 0.5F, y, (double) z + 0.5F, 0.0F, 0.0F);
 				entityAnimatedBlock.setBlock(blockID, blockMeta);
 				world.spawnEntityInWorld(entityAnimatedBlock);
@@ -36,6 +42,6 @@ public class ItemWandOfAnimation extends Item {
 	}
 
 	private boolean canAnimate(Block block) {
-		return !(block instanceof BlockContainer) && block.blockHardness >= 0 && block.getBlockBoundsMaxX() - block.getBlockBoundsMinX() >= 0.7F && block.getBlockBoundsMaxZ() - block.getBlockBoundsMinZ() >= 0.7F;
+		return block.blockID == Block.chest.blockID || !(block instanceof BlockContainer) && block.blockHardness >= 0 && block.getBlockBoundsMaxX() - block.getBlockBoundsMinX() >= 0.7F && block.getBlockBoundsMaxZ() - block.getBlockBoundsMinZ() >= 0.7F;
 	}
 }

@@ -48,7 +48,7 @@ public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAddit
 	}
 
 	// TODO make this right
-	private void updateAttributes(Block block) {
+	protected void updateAttributes(Block block) {
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(block.blockHardness > 0 ? block.blockHardness : 1.0D);
 	}
 

@@ -1,6 +1,5 @@
 package erebus.item;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -14,6 +13,8 @@ import erebus.ErebusMod;
 import erebus.client.model.armor.ModelArmorGlider;
 
 public class ItemArmorGlider extends ItemArmor {
+	public static boolean gliding;
+
 	public ItemArmorGlider(int id, int armorType) {
 		super(id, ErebusMod.armorEXOSKELETON, 2, armorType);
 	}
@@ -41,16 +42,15 @@ public class ItemArmorGlider extends ItemArmor {
 	@Override
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack itemStack) {
 		player.fallDistance = 0.0F;
-		// if (getUseButton())
-		if (!player.onGround) {
-			player.motionX *= 1.0D;
-			player.motionZ *= 1.0D;
-			player.motionY *= 0.5D;
-
-		}
+		if (gliding)
+			if (!player.onGround) {
+				player.motionX *= 1.0D;
+				player.motionZ *= 1.0D;
+				player.motionY *= 0.5D;
+			}
 	}
 
-	private boolean getUseButton() {
-		return Minecraft.getMinecraft().gameSettings.keyBindUseItem.isPressed();
+	public static void setGliding(boolean isGliding) {
+		gliding = isGliding;
 	}
 }

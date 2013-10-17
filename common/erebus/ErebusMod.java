@@ -7,6 +7,7 @@ import net.minecraft.item.EnumToolMaterial;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -23,6 +24,7 @@ import erebus.client.sound.AmbientMusicManager;
 import erebus.client.sound.EntitySoundEvent;
 import erebus.core.handler.CommonTickHandler;
 import erebus.core.handler.ConfigurationHandler;
+import erebus.core.handler.KeyBindingHandler;
 import erebus.core.handler.LightningAltarNoises;
 import erebus.core.handler.PlayerTeleportHandler;
 import erebus.core.handler.VersionCheckTickHandler;
@@ -112,5 +114,7 @@ public class ErebusMod {
 
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
 		BCFacadeManager.registerFacades();
+		KeyBindingRegistry.registerKeyBinding(new KeyBindingHandler());
+
 	}
 }

@@ -18,8 +18,8 @@ public class RenderAnimatedChest extends RenderLiving
 	{
 		super(par1ModelBase, par2);
 		model = (ModelAnimatedChest) mainModel;
-
 	}
+
 	public void renderAnimatedChest(EntityAnimatedChest par1EntityAnimatedChest, double par2, double par4, double par6, float par8, float par9)
 	{
 		super.doRenderLiving(par1EntityAnimatedChest, par2, par4, par6, par8, par9);

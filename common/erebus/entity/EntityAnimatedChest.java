@@ -16,6 +16,9 @@ import erebus.utils.Utils;
 public class EntityAnimatedChest extends EntityAnimatedBlock {
 
 	public ItemStack[] inventory;
+	boolean isOpen = false;
+	boolean canClose;
+	public float openticks = 0;
 
 	public EntityAnimatedChest(World world) {
 		super(world);
@@ -41,23 +44,23 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 	}
 
 	@Override
-	public boolean isAIEnabled() {
-		return true;
-	}
-
-	@Override
-	public boolean canDespawn() {
-		return false;
-	}
-
-
-	@Override
 	public void onUpdate() {
 		super.onUpdate();
 		if (!worldObj.isRemote && isDead)
 			for (ItemStack stack : inventory)
 				if (stack != null)
 					Utils.dropStack(worldObj, (int) posX, (int) posY, (int) posZ, stack);
+	}
+
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+		if (isOpen)
+			if (openticks > -1.570F) //
+				openticks = openticks - 0.3925F;//
+		if (!isOpen)
+			if (openticks < 0F)
+				openticks = openticks + 0.3925F;
 	}
 
 	@Override
@@ -75,9 +78,15 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 			return true;
 		} else if (stack == null) {
 			player.displayGUIChest(new TileEntityAnimatedChest(this));
+			setOpen(true);
+			System.out.println(isOpen);
 			return true;
 		} else
 			return false;
+	}
+
+	protected void setOpen(boolean open) {
+		isOpen = open;
 	}
 
 	@Override

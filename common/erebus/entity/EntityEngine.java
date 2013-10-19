@@ -21,7 +21,6 @@ import erebus.ModItems;
 public class EntityEngine extends IEntityMobBlock implements IRangedAttackMob
 
 {
-	protected EntityLiving theEntity;
 	public int animationTicks = 0;
 	boolean active = true;
 

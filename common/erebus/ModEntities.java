@@ -15,6 +15,7 @@ import erebus.entity.EntityEngine;
 import erebus.entity.EntityFirebrat;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityGrasshopper;
+import erebus.entity.EntityHealer;
 import erebus.entity.EntityLocust;
 import erebus.entity.EntityMosquito;
 import erebus.entity.EntityMoth;
@@ -52,6 +53,7 @@ public class ModEntities {
 		registerEntity(EntityEngine.class, "EngineOfIllapa", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 		registerEntity(EntityAnimatedBlock.class, "AnimatedBlock", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 		registerEntity(EntityAnimatedChest.class, "AnimatedChest", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
+		registerEntity(EntityHealer.class, "Goddess Altar", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 
 		// Extra Mob spawn conditions
 		EntityRegistry.addSpawn(EntityBlackWidow.class, 100, 5, 10, EnumCreatureType.monster, BiomeGenBase.hell);

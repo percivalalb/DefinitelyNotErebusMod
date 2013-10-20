@@ -2,12 +2,15 @@ package erebus.entity;
 
 import java.util.Random;
 
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -15,7 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
 import erebus.ModItems;
 
-public class EntityHealer extends IEntityMobBlock
+public class EntityHealer extends IEntityMobBlock implements IRangedAttackMob
 
 {
 	public int animationTicks = 0;
@@ -24,8 +27,9 @@ public class EntityHealer extends IEntityMobBlock
 	public EntityHealer(World world) {
 		super(world);
 		setSize(1.0F, 2.0F);
+		tasks.addTask(1, new IEntityArrowAttack(this, 0F, 20, 4.0F));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
-		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityLiving.class, 0, true));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 	}
 
 	@Override
@@ -125,6 +129,12 @@ public class EntityHealer extends IEntityMobBlock
 		int z = (int) posZ;
 		if (worldObj.getBlockId(x, y, z) == 0)
 			posY -= 1;
+	}
+
+	@Override
+	public void attackEntityWithRangedAttack(EntityLivingBase entity, float par2) {
+		if (entity instanceof EntityPlayer)
+			entity.addPotionEffect(new PotionEffect(Potion.heal.id, 1 * 20, 0));
 	}
 
 }

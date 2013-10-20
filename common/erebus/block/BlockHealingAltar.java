@@ -57,9 +57,9 @@ public class BlockHealingAltar extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		blockIcon = reg.registerIcon("erebus:BlockEngineOfIllapa");
-		a = reg.registerIcon("erebus:BlockEngineOfIllapa");
-		b = reg.registerIcon("erebus:BlockEngineOfIllapa");
+		blockIcon = reg.registerIcon("erebus:BlockHealingAltar");
+		a = reg.registerIcon("erebus:BlockHealingAltar");
+		b = reg.registerIcon("erebus:BlockHealingAltar");
 	}
 
 	@Override

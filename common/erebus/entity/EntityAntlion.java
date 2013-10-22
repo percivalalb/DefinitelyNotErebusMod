@@ -176,9 +176,9 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 		worldObj.setEntityState(this, (byte) 16);
 
 		if (!isBoss)
-			setSize(1.0F, 0.6F);
+			setSize(2.0F, 0.9F);
 		else
-			setSize(2.0F, 1.2F);
+			setSize(2.75F, 1.2F);
 
 		if (areAttributesSetup)
 			updateBossAttributes();
@@ -189,7 +189,7 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D);
 			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(60.0D);
 			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D);
-			getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(8.0D);
+			getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D);
 			getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(0.5D);
 		} else {
 			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D);

@@ -8,6 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -79,7 +80,12 @@ public class BlockLightningAltar extends BlockContainer {
 		return false;
 	}
 
-	// Why doesn't this method below work?
+	@Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int i, int j, int k) {
+		float f = 0.0625F;
+		return AxisAlignedBB.getBoundingBox(i + f, j, k + f, i + 1 - f, j + 1 - f, k + 1 - f);
+	}
+
 	@Override
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
 		if (par5Entity instanceof EntityItem)

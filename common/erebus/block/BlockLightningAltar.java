@@ -4,6 +4,8 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
@@ -76,4 +78,12 @@ public class BlockLightningAltar extends BlockContainer {
 			}
 		return false;
 	}
+
+	// Why doesn't this method below work?
+	@Override
+	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
+		if (par5Entity instanceof EntityItem)
+			System.out.println("Entity Landed On Block");
+	}
+
 }

@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
@@ -88,8 +89,15 @@ public class BlockLightningAltar extends BlockContainer {
 
 	@Override
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
-		if (par5Entity instanceof EntityItem)
-			System.out.println("Entity Landed On Block");
-	}
+		if (par5Entity instanceof EntityItem) {
+			ItemStack itemstack = ((EntityItem) par5Entity).getEntityItem();
+			int metadata = itemstack.getItemDamage();
+			String thing = itemstack.getUnlocalizedName();
 
+			// Lots of lovely data to do exiting things with
+			System.out.println("Entity Landed On Block");
+			System.out.println(thing);
+			System.out.println(itemstack.itemID + "." + metadata);
+		}
+	}
 }

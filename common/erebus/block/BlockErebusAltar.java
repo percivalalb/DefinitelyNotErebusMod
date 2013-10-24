@@ -16,14 +16,17 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 import erebus.entity.EntityEngine;
-import erebus.tileentity.TileEntityLightningAltar;
+import erebus.entity.EntityHealer;
+import erebus.tileentity.TileEntityErebusAltar;
 
-public class BlockLightningAltar extends BlockContainer {
+public class BlockErebusAltar extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	private Icon a, b;
+	private int item;
+	private int meta;
 
-	public BlockLightningAltar(int id) {
+	public BlockErebusAltar(int id) {
 		super(id, Material.rock);
 	}
 
@@ -44,7 +47,7 @@ public class BlockLightningAltar extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityLightningAltar();
+		return new TileEntityErebusAltar();
 	}
 
 	@Override
@@ -61,22 +64,34 @@ public class BlockLightningAltar extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		blockIcon = reg.registerIcon("erebus:BlockEngineOfIllapa");
-		a = reg.registerIcon("erebus:BlockEngineOfIllapa");
-		b = reg.registerIcon("erebus:BlockEngineOfIllapa");
+		blockIcon = reg.registerIcon("erebus:blockErebusAltarBreak");
+		a = reg.registerIcon("erebus:blockErebusAltarBreak");
+		b = reg.registerIcon("erebus:blockErebusAltarBreak");
 	}
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		if (player.getCurrentEquippedItem() != null)
 			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID) {
-				EntityEngine entityEngineEntity = new EntityEngine(world);
-				entityEngineEntity.setLocationAndAngles((double) x + 0.5F, y, (double) z + 0.5F, 0.0F, 0.0F);
-				if (!world.isRemote) {
-					world.setBlock(x, y, z, 0);
-					world.spawnEntityInWorld(entityEngineEntity);
+				int type = world.getBlockMetadata(x, y, z);
+				switch (type) {
+					case 10:
+						EntityEngine entityEngineEntity = new EntityEngine(world);
+						entityEngineEntity.setLocationAndAngles((double) x + 0.5F, y, (double) z + 0.5F, 0.0F, 0.0F);
+						if (!world.isRemote) {
+							world.setBlock(x, y, z, 0);
+							world.spawnEntityInWorld(entityEngineEntity);
+							return true;
+						}
+					case 8:
+						EntityHealer entityHealer = new EntityHealer(world);
+						entityHealer.setLocationAndAngles((double) x + 0.5F, y, (double) z + 0.5F, 0.0F, 0.0F);
+						if (!world.isRemote) {
+							world.setBlock(x, y, z, 0);
+							world.spawnEntityInWorld(entityHealer);
+							return true;
+						}
 				}
-				return true;
 			}
 		return false;
 	}
@@ -89,15 +104,25 @@ public class BlockLightningAltar extends BlockContainer {
 
 	@Override
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
-		if (par5Entity instanceof EntityItem) {
-			ItemStack itemstack = ((EntityItem) par5Entity).getEntityItem();
-			int metadata = itemstack.getItemDamage();
-			String thing = itemstack.getUnlocalizedName();
-
-			// Lots of lovely data to do exiting things with
-			System.out.println("Entity Landed On Block");
-			System.out.println(thing);
-			System.out.println(itemstack.itemID + "." + metadata);
-		}
+		double offsetY = 0.9D;
+		if (par5Entity instanceof EntityItem)
+			if (par5Entity.boundingBox.minY >= par3 + offsetY) {
+				ItemStack itemstack = ((EntityItem) par5Entity).getEntityItem();
+				int metadata = itemstack.getItemDamage();
+				setItemOffering(itemstack.itemID, metadata);
+				if (item == ModItems.erebusMaterials.itemID) {
+					par1World.spawnParticle("flame", par5Entity.posX, par5Entity.posY + 0.3D, par5Entity.posZ, 0.0D, 0.0D, 0.0D);
+					par1World.spawnParticle("smoke", par5Entity.posX, par5Entity.posY, par5Entity.posZ, 0.0D, 0.0D, 0.0D);
+					par5Entity.setDead();
+					System.out.println("Offering Accepted");
+					par1World.setBlockMetadataWithNotify(par2, par3, par4, meta, 7);
+				}
+			}
 	}
+
+	private void setItemOffering(int itemID, int metadata) {
+		item = itemID;
+		meta = metadata;
+	}
+
 }

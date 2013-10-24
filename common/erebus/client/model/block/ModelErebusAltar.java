@@ -7,13 +7,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ModelLightningAltar extends ModelBase {
+public class ModelErebusAltar extends ModelBase {
 
 	private final ModelRenderer Mid;
 	private final ModelRenderer Top;
 	private final ModelRenderer Bot;
 
-	public ModelLightningAltar() {
+	public ModelErebusAltar() {
 		textureWidth = 256;
 		textureHeight = 64;
 

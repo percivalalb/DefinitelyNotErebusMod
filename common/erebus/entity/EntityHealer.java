@@ -97,7 +97,7 @@ public class EntityHealer extends IEntityMobBlock implements IRangedAttackMob
 				animationTicks--;
 			if (animationTicks == 0) {
 				setDead();
-				worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), ModBlocks.healingAltar.blockID);
+				worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), ModBlocks.erebusAltar.blockID);
 			}
 		}
 	}

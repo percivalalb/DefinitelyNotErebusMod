@@ -9,12 +9,12 @@ import org.lwjgl.opengl.GL11;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.client.model.block.ModelHealingAltar;
+import erebus.client.model.block.ModelErebusAltar;
 
 @SideOnly(Side.CLIENT)
-public class ItemHealingAltarRenderer implements IItemRenderer {
+public class ItemErebusAltarRenderer implements IItemRenderer {
 
-	private final ModelHealingAltar ModelAltarBlock = new ModelHealingAltar();
+	private final ModelErebusAltar ModelAltarBlock = new ModelErebusAltar();
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -47,7 +47,7 @@ public class ItemHealingAltarRenderer implements IItemRenderer {
 	}
 
 	private void renderBlock(float x, float y, float z, double size) {
-		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(new ResourceLocation("erebus:textures/mob/HealingAltar1.png"));
+		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(new ResourceLocation("erebus:textures/blocks/blockErebusAltar.png"));
 		GL11.glPushMatrix();
 		GL11.glTranslatef(x, y, z);
 		GL11.glRotatef(180F, 1F, 0, 0);

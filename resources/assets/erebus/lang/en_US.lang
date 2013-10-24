@@ -126,8 +126,8 @@ tile.umberFurnaceOFF.name=Umber Furnace
 tile.erebusFiddlehead.name=Fiddlehead
 tile.insectRepellent.name=Insect Repellent Block
 tile.bambooTorch.name=Bamboo Torch
-tile.lightningAltar.name=Lightning Altar
-tile.healingAltar.name=Healing Altar
+tile.erebusAltar.name=Erebus Altar
+
 #Items
 item.helmetExo.name=Exoskeleton Helmet
 item.chestplateExo.name=Exoskeleton Chestplate

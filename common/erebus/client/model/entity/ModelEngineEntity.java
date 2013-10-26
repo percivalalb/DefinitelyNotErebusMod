@@ -150,20 +150,18 @@ public class ModelEngineEntity extends ModelBase {
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 		EntityEngine var8 = (EntityEngine) par7Entity;
-
 		float x = var8.animationTicks;
+		Mid.rotateAngleY = x * -0.12568F;
+		Top.rotateAngleY = x * 0.12568F;
+		Bot.rotateAngleY = x * 0.12568F;
 		SmallBox.setRotationPoint(0F, 3.0F - x, 0F);
 		Sparks.setRotationPoint(0F, 3.0F - x, 0F);
-
 		ElectrodeF1.setRotationPoint(0F, 3.0F - x, 0F);
 		ElectrodeF2.setRotationPoint(0F, 3.0F - x, 0F);
-
 		ElectrodeR1.setRotationPoint(0F, 3.0F - x, 0F);
 		ElectrodeR2.setRotationPoint(0F, 3.0F - x, 0F);
-
 		ElectrodeB1.setRotationPoint(0F, 3.0F - x, 0F);
 		ElectrodeB2.setRotationPoint(0F, 3.0F - x, 0F);
-
 		ElectrodeL1.setRotationPoint(0F, 3.0F - x, 0F);
 		ElectrodeL2.setRotationPoint(0F, 3.0F - x, 0F);
 	}

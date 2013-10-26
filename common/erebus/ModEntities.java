@@ -19,11 +19,13 @@ import erebus.entity.EntityHealer;
 import erebus.entity.EntityLocust;
 import erebus.entity.EntityMosquito;
 import erebus.entity.EntityMoth;
+import erebus.entity.EntityRepairAltar;
 import erebus.entity.EntityScorpion;
 import erebus.entity.EntitySolifuge;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityWasp;
 import erebus.entity.EntityWaspDagger;
+import erebus.entity.EntityXPAltar;
 
 public class ModEntities {
 
@@ -54,6 +56,8 @@ public class ModEntities {
 		registerEntity(EntityAnimatedBlock.class, "AnimatedBlock", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 		registerEntity(EntityAnimatedChest.class, "AnimatedChest", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 		registerEntity(EntityHealer.class, "Goddess Altar", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
+		registerEntity(EntityRepairAltar.class, "Repair Altar", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
+		registerEntity(EntityXPAltar.class, "Experience Altar", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 
 		// Extra Mob spawn conditions
 		EntityRegistry.addSpawn(EntityBlackWidow.class, 100, 5, 10, EnumCreatureType.monster, BiomeGenBase.hell);

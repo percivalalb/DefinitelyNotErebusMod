@@ -17,6 +17,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 import erebus.entity.EntityEngine;
 import erebus.entity.EntityHealer;
+import erebus.entity.EntityRepairAltar;
+import erebus.entity.EntityXPAltar;
 import erebus.tileentity.TileEntityErebusAltar;
 
 public class BlockErebusAltar extends BlockContainer {
@@ -75,17 +77,35 @@ public class BlockErebusAltar extends BlockContainer {
 			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID) {
 				int type = world.getBlockMetadata(x, y, z);
 				switch (type) {
-					case 10:
+					case 8:
+						EntityXPAltar entityXPAltar = new EntityXPAltar(world);
+						entityXPAltar.setLocationAndAngles(x + 0.5D, y, z + 0.5D, 0.0F, 0.0F);
+						if (!world.isRemote) {
+							world.setBlock(x, y, z, 0);
+							world.spawnEntityInWorld(entityXPAltar);
+							return true;
+						}
+
+					case 9:
+						EntityRepairAltar entityRepairAltar = new EntityRepairAltar(world);
+						entityRepairAltar.setLocationAndAngles(x + 0.5D, y, z + 0.5D, 0.0F, 0.0F);
+						if (!world.isRemote) {
+							world.setBlock(x, y, z, 0);
+							world.spawnEntityInWorld(entityRepairAltar);
+							return true;
+						}
+
+					case 12:
 						EntityEngine entityEngineEntity = new EntityEngine(world);
-						entityEngineEntity.setLocationAndAngles((double) x + 0.5F, y, (double) z + 0.5F, 0.0F, 0.0F);
+						entityEngineEntity.setLocationAndAngles(x + 0.5D, y, z + 0.5D, 0.0F, 0.0F);
 						if (!world.isRemote) {
 							world.setBlock(x, y, z, 0);
 							world.spawnEntityInWorld(entityEngineEntity);
 							return true;
 						}
-					case 8:
+					case 13:
 						EntityHealer entityHealer = new EntityHealer(world);
-						entityHealer.setLocationAndAngles((double) x + 0.5F, y, (double) z + 0.5F, 0.0F, 0.0F);
+						entityHealer.setLocationAndAngles(x + 0.5D, y, z + 0.5D, 0.0F, 0.0F);
 						if (!world.isRemote) {
 							world.setBlock(x, y, z, 0);
 							world.spawnEntityInWorld(entityHealer);

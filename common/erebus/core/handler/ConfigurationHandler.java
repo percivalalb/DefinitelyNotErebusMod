@@ -41,6 +41,7 @@ public class ConfigurationHandler {
 			ModBlocks.quickSandID = config.getBlock("Block ID of Quick Sand", 2505).getInt(2505);
 			ModBlocks.ghostSandID = config.getBlock("Block ID of Ghost Sand", 2554).getInt(2554);
 			ModBlocks.erebusOreExtraID = config.getBlock("Block ID of Extra Erebus Ores", 2506).getInt(2506);
+			ModBlocks.umberstoneButtonID = config.getBlock("Block ID of Umberstone Button", 2561).getInt(2561);
 
 			ModBlocks.logErebusGroup1ID = config.getBlock("Block ID of Log - group 1", 2507).getInt(2507);
 			ModBlocks.logErebusGroup2ID = config.getBlock("Block ID of Log - group 2", 2508).getInt(2508);
@@ -92,7 +93,7 @@ public class ConfigurationHandler {
 			ModBlocks.spiderSpawnerID = config.getBlock("Block ID of Spider Spawners", 2552).getInt(2552);
 			ModBlocks.caveSpiderSpawnerID = config.getBlock("Block ID of Cave Spider Spawners", 2553).getInt(2553);
 
-			// latest ID used (please update after adding new blocks!) >>> 2560
+			// latest ID used (please update after adding new blocks!) >>> 2561
 
 			/*
 			 * Items

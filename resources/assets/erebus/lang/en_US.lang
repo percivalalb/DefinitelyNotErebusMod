@@ -93,6 +93,7 @@ umberStone_item_1.name=Umbercobble
 umberStone_item_2.name=Mossy Umbercobble
 umberStone_item_3.name=Webbed Umbercobble
 umberStone_item_4.name=Umbricks
+tile.umberstoneButton.name=Umberstone Button
 tile.umbercobbleStairs0.name=Umberstone Stairs
 tile.umbercobbleStairs1.name=Umbercobble Stairs
 tile.umbercobbleStairs2.name=Mossy Umbercobble Stairs

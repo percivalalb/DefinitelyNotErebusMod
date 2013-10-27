@@ -36,8 +36,10 @@ public class TeleporterErebus extends Teleporter {
 
 	@Override
 	public void placeInPortal(Entity entity, double x, double y, double z, float par8) {
+		//System.out.println("placing in portal");
 		if (!placeInExistingPortal(entity, x, y, z, par8)) {
-			makePortal(entity);
+			//System.out.println("NOPE. making portal");
+			if (!makePortal(entity));//System.out.println("failed at making portal...");
 			placeInExistingPortal(entity, x, y, z, par8);
 		}
 	}

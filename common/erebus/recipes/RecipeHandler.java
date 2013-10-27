@@ -35,6 +35,7 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.umberPaver, 4, 2), new Object[] { "##", "##", '#', new ItemStack(ModBlocks.umberstone, 1, 3) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.umberFurnace, 1), new Object[] { "###", "# #", "###", '#', new ItemStack(ModBlocks.umberstone, 1, 1) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.umberstone, 4, 4), new Object[] { "##", "##", '#', new ItemStack(ModBlocks.umberstone, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.umberstoneButton, 1, 0), new Object[] { "#", '#', new ItemStack(ModBlocks.umberstone, 1, 0) });
 
 		// Stone tools made from umberstone
 		GameRegistry.addRecipe(new ItemStack(Item.pickaxeStone, 1), new Object[] { "XXX", " # ", " # ", '#', Item.stick, 'X', new ItemStack(ModBlocks.umberstone, 1, 1) });

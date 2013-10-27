@@ -5,6 +5,7 @@ import java.util.List;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -17,8 +18,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemErebusFood extends ItemFood {
 
-	public static final String[] iconPaths = new String[] { "larvaRaw", "beetleLarvaCooked", "grasshopperLegRaw", "grasshopperLegCooked", "legTarantula", "legTarantulaCooked", "bambooSoup" };
-	public static final short dataLarvaRaw = 0, dataLarvaCooked = 1, dataGrasshopperLegRaw = 2, dataGrasshopperLegCooked = 3, dataLegTarantula = 4, dataLegTarantulaCooked = 5, dataBambooSoup = 6;
+	public static final String[] iconPaths = new String[] {
+		"larvaRaw", "beetleLarvaCooked", "grasshopperLegRaw", "grasshopperLegCooked", "legTarantula", "legTarantulaCooked",
+		"bambooSoup", "melonade", "melonadeSparkly"
+	};
+	
+	public static final short
+		dataLarvaRaw = 0, dataLarvaCooked = 1, dataGrasshopperLegRaw = 2, dataGrasshopperLegCooked = 3, dataLegTarantula = 4, dataLegTarantulaCooked = 5,
+		dataBambooSoup = 6, dataMelonade = 7, dataMelonadeSparkly = 8;
 
 	@SideOnly(Side.CLIENT)
 	public static Icon[] icons;
@@ -30,59 +37,76 @@ public class ItemErebusFood extends ItemFood {
 	}
 
 	public int getHealAmount(ItemStack stack, World world, EntityPlayer player) {
-		int meta = stack.getItemDamage();
-		switch (meta) {
-			case 0:
+		switch (stack.getItemDamage()) {
+			case dataLarvaRaw:
 				return 2;
-			case 1:
+			case dataLarvaCooked:
 				return 6;
-			case 2:
+			case dataGrasshopperLegRaw:
 				return 2;
-			case 3:
+			case dataGrasshopperLegCooked:
 				return 8;
-			case 4:
+			case dataLegTarantula:
 				return 2;
-			case 5:
+			case dataLegTarantulaCooked:
 				return 6;
-			case 6:
+			case dataBambooSoup:
 				return 4;
+			case dataMelonade:
+				return 3;
+			case dataMelonadeSparkly:
+				return 6;
 			default:
 				return 0;
 		}
 	}
 
 	public float getSaturationModifier(ItemStack stack, World world, EntityPlayer player) {
-		int meta = stack.getItemDamage();
-		switch (meta) {
-			case 0:
+		switch (stack.getItemDamage()) {
+			case dataLarvaRaw:
 				return 0.7F;
-			case 1:
+			case dataLarvaCooked:
 				return 0.9F;
-			case 2:
+			case dataGrasshopperLegRaw:
 				return 0.8F;
-			case 3:
+			case dataGrasshopperLegCooked:
 				return 0.9F;
-			case 4:
+			case dataLegTarantula:
 				return 0.6F;
-			case 5:
+			case dataLegTarantulaCooked:
 				return 1.0F;
-			case 6:
+			case dataBambooSoup:
 				return 1.0F;
+			case dataMelonade:
+				return 0.75F;
+			case dataMelonadeSparkly:
+				return 0.85F;
 			default:
 				return 0.0F;
 		}
 	}
 
 	public PotionEffect getPotionEffect(ItemStack stack, World world, EntityPlayer player) {
-		int meta = stack.getItemDamage();
-		switch (meta) {
-			case 0:
-				if (world.rand.nextFloat() > 0.75F)
-					return new PotionEffect(Potion.confusion.id, 30 * 20, 0);
+		switch (stack.getItemDamage()) {
+			case dataLarvaRaw:
+				return world.rand.nextFloat() > 0.75 ? new PotionEffect(Potion.confusion.id, 30 * 20, 0) : null;
+			case dataMelonadeSparkly:
+				return new PotionEffect(Potion.regeneration.id, 110, 0);
 			default:
 				return null;
 		}
 	}
+	
+	@Override
+	public EnumAction getItemUseAction(ItemStack stack) {
+		switch (stack.getItemDamage()) {
+			case dataMelonade:
+			case dataMelonadeSparkly:
+				return EnumAction.drink;
+			default:
+				return EnumAction.eat;
+		}
+    }
 
 	@Override
 	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
@@ -91,7 +115,7 @@ public class ItemErebusFood extends ItemFood {
 		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 		onFoodEaten(stack, world, player);
 
-		if (stack.getItemDamage() == 6)
+		if (stack.getItemDamage() == dataBambooSoup)
 			if (stack.stackSize == 0)
 				return new ItemStack(Item.bowlEmpty);
 			else

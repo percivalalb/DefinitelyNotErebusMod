@@ -10,6 +10,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import erebus.ModItems;
+import erebus.item.ItemErebusMaterial;
 
 public class EntityScorpion extends EntityMob {
 	private boolean sting;
@@ -93,7 +94,7 @@ public class EntityScorpion extends EntityMob {
 		int var3 = rand.nextInt(4) + rand.nextInt(1 + par2);
 		int var4;
 		for (var4 = 0; var4 < var3; ++var4)
-			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 0), 0.0F);
+			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate), 0.0F);
 	}
 
 	@Override

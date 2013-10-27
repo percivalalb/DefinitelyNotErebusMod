@@ -15,6 +15,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import erebus.ModItems;
 import erebus.client.render.entity.AnimationMathHelper;
+import erebus.item.ItemErebusMaterial;
 
 public class EntityFly extends EntityAmbientCreature {
 
@@ -220,8 +221,8 @@ public class EntityFly extends EntityAmbientCreature {
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
 		if (rand.nextInt(10) == 0)
-			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 6), 0.0F);
+			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataFlyWing), 0.0F);
 		if (rand.nextInt(20) == 0)
-			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 4), 0.0F);
+			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataCompoundEyes), 0.0F);
 	}
 }

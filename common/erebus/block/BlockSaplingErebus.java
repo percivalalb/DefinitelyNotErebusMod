@@ -50,7 +50,7 @@ public class BlockSaplingErebus extends BlockSapling {
 		if (!world.isRemote) {
 			super.updateTick(world, x, y, z, rand);
 
-			if (world.getBlockLightValue(x, y + 1, z) >= 9 && rand.nextInt(7) == 0)
+			if (rand.nextInt(13 - (world.getBlockLightValue(x, y + 1, z) >> 1)) == 0)
 				growTree(world, x, y, z, rand);
 		}
 	}
@@ -72,13 +72,13 @@ public class BlockSaplingErebus extends BlockSapling {
 
 		if (meta == dataEucalyptus)
 			worldGen = new WorldGenEucalyptus(ModBlocks.logErebusGroup1.blockID, BlockLogErebus.dataEucalyptus, ModBlocks.leavesErebus.blockID, BlockLeavesErebus.dataEucalyptusDecay, 8 + rand.nextInt(4), 5, 8, Block.grass.blockID);
-		else if (meta == dataMahogany)
+		else if (meta == dataAcacia)
 			worldGen = new WorldGenSavannaTree(world.rand.nextInt(3));
 		else if (meta == dataMossbark)
 			worldGen = new WorldGenMossbarkTree();
 		else if (meta == dataAsper)
 			worldGen = new WorldGenAsperTree();
-		else if (meta == dataAcacia)
+		else if (meta == dataMahogany)
 			for (var8 = 0; var8 >= -1; --var8) {
 				for (var9 = 0; var9 >= -1; --var9)
 					if (isSameSapling(world, x + var8, y, z + var9, 0) && isSameSapling(world, x + var8 + 1, y, z + var9, 0) && isSameSapling(world, x + var8, y, z + var9 + 1, 0) && isSameSapling(world, x + var8 + 1, y, z + var9 + 1, 0)) {

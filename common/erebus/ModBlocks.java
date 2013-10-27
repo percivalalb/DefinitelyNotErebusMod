@@ -183,14 +183,12 @@ public class ModBlocks {
 		ErebusMod.tabErebusBlock.add(umberstone, umberOreBlock, oreFossil, erebusOreExtra, redGem, blockAmber, quickSand, ghostSand);
 		ErebusMod.tabErebusBlock.add(logErebusGroup1, logErebusGroup2, hollowLogAcacia, planksErebus, leavesErebus, erebusSapling);
 		ErebusMod.tabErebusBlock.add(erebusGrass, fern, fiddlehead, thorns);
-		ErebusMod.tabErebusBlock.add(blockSilk, mirBrick, petrifiedWoodPlanks, petrifiedCraftingTable, bambooCrop, bambooCrate, umberFurnace, umberPaver, erebusAltar);
+		ErebusMod.tabErebusBlock.add(blockSilk, mirBrick, petrifiedWoodPlanks, petrifiedCraftingTable, bambooCrop, bambooCrate, bambooTorch, umberFurnace, umberPaver, erebusAltar);
 		for (Block b : umbercobbleStairs)
 			ErebusMod.tabErebusBlock.add(b);
 		for (Block b : plankStairs)
 			ErebusMod.tabErebusBlock.add(b);
-		ErebusMod.tabErebusBlock.add(petrifiedWoodStairs, stoneSlabs[0], plankSlabs[0], plankSlabs[2], petrifiedWoodSlab[0], wallErebus);
-		ErebusMod.tabErebusBlock.add(amberBrickStairs);
-		ErebusMod.tabErebusBlock.add(bambooTorch);
+		ErebusMod.tabErebusBlock.add(petrifiedWoodStairs, amberBrickStairs, stoneSlabs[0], plankSlabs[0], plankSlabs[2], petrifiedWoodSlab[0], wallErebus);
 
 		// Registering blocks
 		GameRegistry.registerBlock(portalErebus, "erebus.portal");

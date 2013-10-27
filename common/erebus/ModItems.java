@@ -126,7 +126,7 @@ public class ModItems {
 		ErebusMod.tabErebusGear.add(jadeHelmet, jadeBody, jadeLegs, jadeBoots, jadeSword, jadePickaxe, jadeAxe, jadeShovel, jadePaxel, jadeHoe);
 		ErebusMod.tabErebusGear.add(exoskeletonHelmet, exoskeletonBody, exoskeletonLegs, exoskeletonBoots);
 		ErebusMod.tabErebusGear.add(fossilClub, waspSword, waspDagger, maxSpeedBow);
-		ErebusMod.tabErebusGear.add(compoundGoggles, sprintLeggings, jumpBoots, armorGlider);
+		ErebusMod.tabErebusGear.add(compoundGoggles, armorGlider, sprintLeggings, jumpBoots);
 
 		// Tool classes
 		MinecraftForge.setToolClass(jadeAxe, "axe", 2);

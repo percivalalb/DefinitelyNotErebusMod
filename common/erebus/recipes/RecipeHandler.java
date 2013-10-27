@@ -7,11 +7,11 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
-import erebus.ErebusMod;
 import erebus.ModBlocks;
 import erebus.ModItems;
 import erebus.block.BlockLogErebus;
 import erebus.block.BlockPlanksErebus;
+import erebus.core.handler.ConfigurationHandler;
 import erebus.item.ItemErebusFood;
 import erebus.item.ItemErebusMaterial;
 
@@ -180,7 +180,7 @@ public class RecipeHandler {
 		OreDictionary.registerOre("oreEmerald", new ItemStack(ModBlocks.umberOreBlock, 1, 5));
 		OreDictionary.registerOre("craftingtable", new ItemStack(ModBlocks.petrifiedCraftingTable));
 
-		if (ErebusMod.activateExtraOres) {
+		if (ConfigurationHandler.activateExtraOres) {
 			OreDictionary.registerOre("ingotCopper", new ItemStack(ModItems.metalIngot, 1, 0));
 			OreDictionary.registerOre("ingotLead", new ItemStack(ModItems.metalIngot, 1, 1));
 			OreDictionary.registerOre("ingotSilver", new ItemStack(ModItems.metalIngot, 1, 2));

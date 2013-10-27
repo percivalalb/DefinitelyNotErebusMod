@@ -1,16 +1,18 @@
 package erebus.block;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -18,12 +20,40 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
 import erebus.ModBlocks;
+import erebus.core.handler.ConfigurationHandler;
 import erebus.core.teleport.TeleportClient;
+import erebus.entity.EntityBeetle;
+import erebus.entity.EntityBeetleLarva;
 
 public class BlockPortalErebus extends BlockBreakable {
 
 	public BlockPortalErebus(int id) {
 		super(id, "erebus:portalErebus", Material.portal, false);
+		setTickRandomly(true);
+	}
+	
+	@Override
+	public void updateTick(World world, int x, int y, int z, Random rand){
+		if (ConfigurationHandler.spawnPortalMobs&&world.difficultySetting>0&&world.provider.isSurfaceWorld()&&rand.nextInt(100)<3D+world.difficultySetting*0.5D){
+			int yy;
+			for(yy=y; !world.doesBlockHaveSolidTopSurface(x,yy,z)&&yy>0; --yy);
+
+			if (yy>0&&!world.isBlockNormalCube(x,yy+1,z)){
+				EntityLiving entity=null;
+				
+				if (rand.nextInt(2)==0)entity=new EntityBeetle(world);
+				else entity=new EntityBeetleLarva(world);
+				
+				if (entity!=null){
+					entity.setLocationAndAngles(x+0.5D, yy+1.1D, z+0.5D, MathHelper.wrapAngleTo180_float(world.rand.nextFloat() * 360.0F), 0.0F);
+					entity.rotationYawHead=entity.renderYawOffset = entity.rotationYaw;
+					entity.onSpawnWithEgg((EntityLivingData)null);
+					world.spawnEntityInWorld(entity);
+                    entity.playLivingSound();
+					entity.timeUntilPortal=entity.getPortalCooldown();
+				}
+			}
+		}
 	}
 
 	@Override

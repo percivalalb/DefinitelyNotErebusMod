@@ -6,7 +6,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.AxisAlignedBB;
-import erebus.ErebusMod;
+import erebus.core.handler.ConfigurationHandler;
 import erebus.entity.EntityBeetleLarva;
 
 public class EntityAIEatWoodenItem extends EntityAIBase {
@@ -109,11 +109,11 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 		if (block.blockHardness == -1)
 			return false;
 
-		if (ErebusMod.beetleLarvaEating == 2)
+		if (ConfigurationHandler.beetleLarvaEating == 2)
 			return true;
 		else if (block.blockMaterial != Material.wood || block instanceof BlockLog)
 			return false;
-		else if (ErebusMod.beetleLarvaEating == 0 && block.hasTileEntity(theEntity.worldObj.getBlockMetadata(x, y, z)))
+		else if (ConfigurationHandler.beetleLarvaEating == 0 && block.hasTileEntity(theEntity.worldObj.getBlockMetadata(x, y, z)))
 			return false;
 
 		return true;

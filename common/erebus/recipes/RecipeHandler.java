@@ -108,6 +108,13 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModItems.exoskeletonLegs, 1), new Object[] { "sss", "s s", "s s", 's', new ItemStack(ModItems.erebusMaterials, 1, 0) });
 		GameRegistry.addRecipe(new ItemStack(ModItems.exoskeletonBoots, 1), new Object[] { "   ", "s s", "s s", 's', new ItemStack(ModItems.erebusMaterials, 1, 0) });
 
+		// Special armor
+		GameRegistry.addRecipe(new ItemStack(ModItems.erebusMaterials, 1, 5), new Object[] { "GGG", "GEG", "GGG", 'E', new ItemStack(ModBlocks.blockAmber, 1, 1), 'G', new ItemStack(ModItems.erebusMaterials, 1, 4) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.compoundGoggles, 1), new Object[] { "XXX", "OXO", "   ", 'O', new ItemStack(ModItems.erebusMaterials, 1, 5), 'X', new ItemStack(ModItems.erebusMaterials, 1, 0) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.jumpBoots), new Object[] { "F F", "BXB", "B B", 'F', new ItemStack(ModItems.erebusMaterials, 1, 6), 'B', new ItemStack(ModItems.erebusMaterials, 1, 9), 'X', new ItemStack(ModItems.exoskeletonBoots, 1) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.sprintLeggings), new Object[] { "BBB", "BXB", "BBB", 'B', new ItemStack(ModItems.erebusMaterials, 1, 8), 'X', new ItemStack(ModItems.exoskeletonLegs, 1) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.waspDagger), new Object[] { "   ", " W ", " S ", 'W', new ItemStack(ModItems.erebusMaterials, 1, 10), 'S', new ItemStack(Item.stick) });
+
 		// Red Gem
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.redstone, 2, 0), new Object[] { new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataRedGem) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.redGem, 1, 0), new Object[] { "##", "##", '#', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataRedGem) });
@@ -121,24 +128,15 @@ public class RecipeHandler {
 		// ItemStack(ModBlocks.planksErebus, 1, BlockPlanksErebus.dataBamboo),
 		// 'b', new ItemStack(ModItems.erebusMaterials, 1, 3) });
 		// TODO removed until fixed
-		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.erebusFood, 1, ItemErebusFood.dataBambooSoup), new Object[] { new ItemStack(Item.bowlEmpty), new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBamboo),
-			new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBambooShoot) });
+		
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.bambooTorch, 4), new Object[] { " C ", " B ", " B ", 'C', Item.coal, 'B', new ItemStack(ModItems.erebusMaterials, 1, 3) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.erebusAltar), new Object[] { "RRR", "SPS", "SSS", 'S', Block.stone, 'S', Block.pistonBase, 'R', Item.redstone });
-
-		// Compound goggles
-		GameRegistry.addRecipe(new ItemStack(ModItems.erebusMaterials, 1, 5), new Object[] { "GGG", "GEG", "GGG", 'E', new ItemStack(ModBlocks.blockAmber, 1, 1), 'G', new ItemStack(ModItems.erebusMaterials, 1, 4) });
-		GameRegistry.addRecipe(new ItemStack(ModItems.compoundGoggles, 1), new Object[] { "XXX", "OXO", "   ", 'O', new ItemStack(ModItems.erebusMaterials, 1, 5), 'X', new ItemStack(ModItems.erebusMaterials, 1, 0) });
-
-		// Jump Boots
-		GameRegistry.addRecipe(new ItemStack(ModItems.jumpBoots), new Object[] { "F F", "BXB", "B B", 'F', new ItemStack(ModItems.erebusMaterials, 1, 6), 'B', new ItemStack(ModItems.erebusMaterials, 1, 9), 'X', new ItemStack(ModItems.exoskeletonBoots, 1) });
-
-		// Sprint Leggings
-		GameRegistry.addRecipe(new ItemStack(ModItems.sprintLeggings), new Object[] { "BBB", "BXB", "BBB", 'B', new ItemStack(ModItems.erebusMaterials, 1, 8), 'X', new ItemStack(ModItems.exoskeletonLegs, 1) });
-
-		// Wasp Dagger
-		GameRegistry.addRecipe(new ItemStack(ModItems.waspDagger), new Object[] { "   ", " W ", " S ", 'W', new ItemStack(ModItems.erebusMaterials, 1, 10), 'S', new ItemStack(Item.stick) });
-
+		
+		// Food
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.erebusFood, 1, ItemErebusFood.dataBambooSoup), new Object[] { new ItemStack(Item.bowlEmpty), new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBamboo), new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBambooShoot) });
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.erebusFood, 1, ItemErebusFood.dataMelonade), new Object[] { new ItemStack(Item.potion, 1, 0), new ItemStack(Item.melon) });
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.erebusFood, 1, ItemErebusFood.dataMelonadeSparkly), new Object[] { new ItemStack(Item.potion, 1, 0), new ItemStack(Item.speckledMelon) });
+		
 		// Miscellaneous
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockSilk, 1), new Object[] { "sss", "sss", "sss", 's', Item.silk });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.blockAmber, 4, 2), new Object[] { "ss", "ss", 's', new ItemStack(ModBlocks.blockAmber, 1, 0) });

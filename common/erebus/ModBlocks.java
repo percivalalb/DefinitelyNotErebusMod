@@ -10,6 +10,7 @@ import erebus.block.BlockBambooCrop;
 import erebus.block.BlockBambooTorch;
 import erebus.block.BlockButtonUmberstone;
 import erebus.block.BlockErebusAltar;
+import erebus.block.BlockErebusAltarLightning;
 import erebus.block.BlockErebusGrass;
 import erebus.block.BlockErebusOre;
 import erebus.block.BlockErebusOreExtras;
@@ -102,6 +103,7 @@ public class ModBlocks {
 	public static Block bambooCrop;						public static int bambooCropID;
 	public static Block bambooTorch;					public static int bambooTorchID;
 	public static Block erebusAltar;					public static int erebusAltarID;
+	public static Block erebusAltarLightning;			public static int erebusAltarLightningID;
 
 	// STAIRS, SLABS, WALLS
 	public static Block[] umbercobbleStairs;			public static int[] umbercobbleStairsID;
@@ -160,6 +162,7 @@ public class ModBlocks {
 		bambooCrop = new BlockBambooCrop(bambooCropID).setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("bambooCrop").setTextureName("erebus:bambooCropBase");
 		bambooTorch = new BlockBambooTorch(bambooTorchID, Material.wood).setHardness(0.0F).setUnlocalizedName("bambooTorch").setTextureName("erebus:blockBambooTorch");
 		erebusAltar = new BlockErebusAltar(erebusAltarID).setUnlocalizedName("erebusAltar");
+		erebusAltarLightning = new BlockErebusAltarLightning(erebusAltarLightningID).setUnlocalizedName("erebusAltarLightning");
 
 		umbercobbleStairs = new Block[BlockUmberstone.iconPaths.length];
 		for (int i = 0; i < umbercobbleStairs.length; i++)

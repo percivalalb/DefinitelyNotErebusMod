@@ -75,6 +75,7 @@ import erebus.client.render.item.ItemUmberFurnaceRenderer;
 import erebus.client.render.item.WandOfAnimationItemRenderer;
 import erebus.client.render.item.WaspDaggerItemRenderer;
 import erebus.client.render.item.WaspSwordItemRenderer;
+import erebus.client.render.tileentity.TileEntityErebusAltarLightningRenderer;
 import erebus.client.render.tileentity.TileEntityErebusAltarRenderer;
 import erebus.client.render.tileentity.TileEntityRenderBambooCrate;
 import erebus.client.render.tileentity.TileEntitySpawnerRender;
@@ -107,6 +108,7 @@ import erebus.entity.EntityXPAltar;
 import erebus.network.packet.PacketParticle;
 import erebus.tileentity.TileEntityBambooCrate;
 import erebus.tileentity.TileEntityErebusAltar;
+import erebus.tileentity.TileEntityErebusAltarLightning;
 import erebus.tileentity.TileEntitySpawner;
 
 public class ClientProxy extends CommonProxy {
@@ -141,12 +143,15 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityAnimatedBlock.class, new RenderAnimatedBlock(new ModelAnimatedBlock(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityAnimatedChest.class, new RenderAnimatedChest(new ModelAnimatedChest(), 0.3F));
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityErebusAltar.class, new TileEntityErebusAltarRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityErebusAltarLightning.class, new TileEntityErebusAltarLightningRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBambooCrate.class, new TileEntityRenderBambooCrate());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySpawner.class, new TileEntitySpawnerRender());
 		RenderingRegistry.registerBlockHandler(bambooCropRenderID, new BlockBambooCropRender());
 		RenderingRegistry.registerBlockHandler(hollowLogRenderID, new BlockHollowLogRender());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooCrate.blockID, new BambooCrateItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.erebusAltar.blockID, new ItemErebusAltarRenderer());
+		MinecraftForgeClient.registerItemRenderer(ModBlocks.erebusAltarLightning.blockID, new ItemErebusAltarRenderer());
+
 		MinecraftForgeClient.registerItemRenderer(ModItems.waspSword.itemID, new WaspSwordItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.umberFurnace.blockID, new ItemUmberFurnaceRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.waspDagger.itemID, new WaspDaggerItemRenderer(new ModelWaspDagger(), 0.3F));

@@ -14,8 +14,8 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ModBlocks;
 import erebus.ModItems;
-import erebus.entity.EntityEngine;
 import erebus.entity.EntityHealer;
 import erebus.entity.EntityRepairAltar;
 import erebus.entity.EntityXPAltar;
@@ -96,11 +96,8 @@ public class BlockErebusAltar extends BlockContainer {
 						}
 
 					case 12:
-						EntityEngine entityEngineEntity = new EntityEngine(world);
-						entityEngineEntity.setLocationAndAngles(x + 0.5D, y, z + 0.5D, 0.0F, 0.0F);
 						if (!world.isRemote) {
-							world.setBlock(x, y, z, 0);
-							world.spawnEntityInWorld(entityEngineEntity);
+							world.setBlock(x, y, z, ModBlocks.erebusAltarLightning.blockID, 0, 7);
 							return true;
 						}
 					case 13:

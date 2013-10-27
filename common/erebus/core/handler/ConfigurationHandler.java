@@ -5,7 +5,6 @@ import java.util.logging.Level;
 
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.FMLLog;
-import erebus.ErebusMod;
 import erebus.ModBiomes;
 import erebus.ModBlocks;
 import erebus.ModItems;
@@ -13,7 +12,7 @@ import erebus.block.BlockPlanksErebus;
 import erebus.block.BlockUmberstone;
 
 public class ConfigurationHandler {
-	
+
 	public static Configuration config;
 
 	public static int erebusDimensionID;
@@ -68,6 +67,7 @@ public class ConfigurationHandler {
 			ModBlocks.bambooCropID = config.getBlock("Block ID of Bamboo Crop Block", 2554).getInt(2554);
 			ModBlocks.bambooTorchID = config.getBlock("Block ID of Bamboo Torch", 2559).getInt(2559);
 			ModBlocks.erebusAltarID = config.getBlock("Block ID of Erebus Altar", 2560).getInt(2560);
+			ModBlocks.erebusAltarLightningID = config.getBlock("Block ID of Erebus Altar Lightning", 2562).getInt(2562);
 
 			int id = 2527;
 			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];
@@ -93,7 +93,7 @@ public class ConfigurationHandler {
 			ModBlocks.spiderSpawnerID = config.getBlock("Block ID of Spider Spawners", 2552).getInt(2552);
 			ModBlocks.caveSpiderSpawnerID = config.getBlock("Block ID of Cave Spider Spawners", 2553).getInt(2553);
 
-			// latest ID used (please update after adding new blocks!) >>> 2561
+			// latest ID used (please update after adding new blocks!) >>> 2562
 
 			/*
 			 * Items

@@ -1,7 +1,5 @@
 package erebus.block;
 
-import java.util.Random;
-
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
@@ -18,7 +16,6 @@ import erebus.tileentity.TileEntityErebusAltarLightning;
 
 public class BlockErebusAltarLightning extends BlockContainer {
 
-	public int animationTicks = 0;
 	@SideOnly(Side.CLIENT)
 	private Icon a, b;
 	private int item;
@@ -85,15 +82,5 @@ public class BlockErebusAltarLightning extends BlockContainer {
 		return false;
 	}
 
-	@Override
-	public int tickRate(World par1World) {
-		return 1;
-	}
-
-	@Override
-	public void updateTick(World world, int x, int y, int z, Random par5Random) {
-		world.scheduleBlockUpdate(x, y, z, blockID, tickRate(world));
-
-	}
 
 }

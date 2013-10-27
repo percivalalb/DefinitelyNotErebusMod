@@ -8,13 +8,13 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.client.model.entity.ModelEngineEntity;
+import erebus.client.model.block.ModelAltarLightning;
 import erebus.tileentity.TileEntityErebusAltarLightning;
 
 @SideOnly(Side.CLIENT)
 public class TileEntityErebusAltarLightningRenderer extends TileEntitySpecialRenderer {
 
-	private final ModelEngineEntity ModelAltarBlock = new ModelEngineEntity();
+	private final ModelAltarLightning ModelAltarBlock = new ModelAltarLightning();
 
 	public void renderAModelAt(TileEntityErebusAltarLightning tile, double d, double d1, double d2, float f) {
 		TileEntityErebusAltarLightning te = tile;

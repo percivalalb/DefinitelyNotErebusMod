@@ -1,4 +1,4 @@
-package erebus.client.model.entity;
+package erebus.client.model.block;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -10,7 +10,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.tileentity.TileEntityErebusAltarLightning;
 
 @SideOnly(Side.CLIENT)
-public class ModelEngineEntity extends ModelBase {
+public class ModelAltarLightning extends ModelBase {
 
 	ModelRenderer Mid;
 	ModelRenderer Top;
@@ -26,7 +26,7 @@ public class ModelEngineEntity extends ModelBase {
 	ModelRenderer ElectrodeR2;
 	ModelRenderer Sparks;
 
-	public ModelEngineEntity() {
+	public ModelAltarLightning() {
 		textureWidth = 256;
 		textureHeight = 64;
 
@@ -112,10 +112,6 @@ public class ModelEngineEntity extends ModelBase {
 
 	public void render(TileEntityErebusAltarLightning tile) {
 
-		// Mid.render(0.0625F);
-		// Top.render(0.0625F);
-		// Bot.render(0.0625F);
-
 		float x = tile.animationTicks;
 		GL11.glPushMatrix();
 
@@ -137,12 +133,12 @@ public class ModelEngineEntity extends ModelBase {
 		GL11.glPopMatrix();
 
 		GL11.glPushMatrix();
-		GL11.glRotatef(-x * 14.4F, 0F, 1F, 0F);
+		GL11.glRotatef(-x * 7.2F, 0F, 1F, 0F);
 		Mid.render(0.0625F);
 		GL11.glPopMatrix();
 
 		GL11.glPushMatrix();
-		GL11.glRotatef(x * 14.4F, 0F, 1F, 0F);
+		GL11.glRotatef(x * 7.2F, 0F, 1F, 0F);
 		Top.render(0.0625F);
 		Bot.render(0.0625F);
 		GL11.glPopMatrix();
@@ -169,9 +165,6 @@ public class ModelEngineEntity extends ModelBase {
 	}
 
 	public void setRotationAngles() {
-
-
-
 	}
 
 }

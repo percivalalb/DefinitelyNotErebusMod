@@ -13,7 +13,6 @@ public class TileEntityErebusAltarLightning extends TileEntity {
 
 	@Override
 	public void updateEntity() {
-
 		if (active)
 			if (animationTicks <= 24)
 				animationTicks++;
@@ -21,14 +20,10 @@ public class TileEntityErebusAltarLightning extends TileEntity {
 			if (animationTicks >= 1)
 				animationTicks--;
 			if (animationTicks == 0)
-				// setDead();
 				worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.erebusAltar.blockID);
 		}
 		if (animationTicks <= 24)
 			flameOn(worldObj, xCoord, yCoord, zCoord);
-		System.out.println(active);
-		System.out.println(animationTicks);
-
 	}
 
 	@SideOnly(Side.CLIENT)

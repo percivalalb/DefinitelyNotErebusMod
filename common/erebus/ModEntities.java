@@ -11,7 +11,6 @@ import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityBlackWidow;
 import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
-import erebus.entity.EntityEngine;
 import erebus.entity.EntityFirebrat;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityGrasshopper;
@@ -52,7 +51,6 @@ public class ModEntities {
 		registerEntity(EntityFirebrat.class, "Firebrat", EntityRegistry.findGlobalUniqueEntityId(), 0xFF0000, 0xFF8800);
 		registerEntity(EntityAntlion.class, "Antlion", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFFFFFF);
 		registerEntity(EntityBlackWidow.class, "BlackWidow", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFF0000);
-		registerEntity(EntityEngine.class, "EngineOfIllapa", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 		registerEntity(EntityAnimatedBlock.class, "AnimatedBlock", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 		registerEntity(EntityAnimatedChest.class, "AnimatedChest", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 		registerEntity(EntityHealer.class, "Goddess Altar", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);

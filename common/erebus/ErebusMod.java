@@ -104,6 +104,7 @@ public class ErebusMod {
 		MinecraftForge.EVENT_BUS.register(ModBlocks.erebusSapling);
 		MinecraftForge.EVENT_BUS.register(ModBlocks.quickSand);
 		MinecraftForge.EVENT_BUS.register(ModBlocks.insectRepellent);
+		MinecraftForge.EVENT_BUS.register(ModItems.armorGlider);
 		MinecraftForge.EVENT_BUS.register(ModItems.jumpBoots);
 		MinecraftForge.EVENT_BUS.register(new LightningAltarNoises());
 

@@ -1,6 +1,7 @@
 package erebus.block;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -92,9 +93,8 @@ public class BlockInsectRepellent extends Block {
 			if (l == 5 && !world.isBlockOpaqueCube(x - 1, y, z))
 				particleX = x + 0 - d0;
 
-			if (particleX < x || particleX > x + 1 || particleY < 0.0D || particleY > y + 1 || particleZ < z || particleZ > z + 1) {
+			if (particleX < x || particleX > x + 1 || particleY < 0.0D || particleY > y + 1 || particleZ < z || particleZ > z + 1)
 				ErebusMod.proxy.spawnCustomParticle("repellent", world, particleX, particleY, particleZ, 0D, 0D, 0D);
-			}
 		}
 	}
 

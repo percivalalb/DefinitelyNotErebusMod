@@ -172,19 +172,17 @@ public class MapGenErebusRavine extends MapGenBase {
 		int filler = biome.fillerBlock;
 		int block = blocks[index];
 
-		if (block == ModBlocks.umberstone.blockID || block == filler || block == top || true) {
-			if (y < 3)
-				blocks[index] = (byte) Block.bedrock.blockID;
-			else if (y < 4)
-				blocks[index] = (byte) ModBlocks.umberstone.blockID;
-			else if (y < 10 && biome.biomeID == ModBiomes.desertID)
-				blocks[index] = (byte) Block.lavaMoving.blockID;
-			else {
-				blocks[index] = 0;
+		if (y < 3)
+			blocks[index] = (byte) Block.bedrock.blockID;
+		else if (y < 4)
+			blocks[index] = (byte) ModBlocks.umberstone.blockID;
+		else if (y < 10 && biome.biomeID == ModBiomes.desertID)
+			blocks[index] = (byte) Block.lavaMoving.blockID;
+		else {
+			blocks[index] = 0;
 
-				if (foundTop && blocks[index - 1] == filler)
-					blocks[index - 1] = (byte) top;
-			}
+			if (foundTop && blocks[index - 1] == filler)
+				blocks[index - 1] = (byte) top;
 		}
 	}
 }

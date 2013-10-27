@@ -8,9 +8,12 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelBlackWidow;
 import erebus.entity.EntityBlackWidow;
 
+@SideOnly(Side.CLIENT)
 public class RenderBlackWidow extends RenderLiving {
 
 	protected ModelBlackWidow model;

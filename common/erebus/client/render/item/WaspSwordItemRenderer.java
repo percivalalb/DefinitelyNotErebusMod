@@ -7,14 +7,17 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.item.ModelWaspSword;
 
+@SideOnly(Side.CLIENT)
 public class WaspSwordItemRenderer implements IItemRenderer {
-	private final ModelWaspSword ModelWaspSword;
+	private final ModelWaspSword model;
 	public static ResourceLocation texture = new ResourceLocation("erebus:textures/item/ModelWaspSword.png");
 
 	public WaspSwordItemRenderer() {
-		ModelWaspSword = new ModelWaspSword();
+		model = new ModelWaspSword();
 	}
 
 	@Override
@@ -49,52 +52,48 @@ public class WaspSwordItemRenderer implements IItemRenderer {
 
 	private void renderEquipped(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
-		GL11.glPushMatrix(); // Start Rendering
-		GL11.glTranslatef(x, y + 0.6F, z + 0.5F);// Position
+		GL11.glPushMatrix();
+		GL11.glTranslatef(x, y + 0.6F, z + 0.5F);
 		GL11.glRotatef(20.0F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(225.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glRotatef(0.0F, 0.0F, 0.0F, 1.0F);
-		GL11.glScaled(-size, -size, size); // Changes the size (Only really used
-		// when reading in the inventory)
-		ModelWaspSword.render(0.0625F); // Render
-		GL11.glPopMatrix(); // End Rendering
+		GL11.glScaled(-size, -size, size);
+		model.render();
+		GL11.glPopMatrix();
 	}
 
 	private void renderSword(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
-		GL11.glPushMatrix(); // Start Rendering
-		GL11.glTranslatef(x, y, z); // Position
+		GL11.glPushMatrix();
+		GL11.glTranslatef(x, y, z);
 		GL11.glRotatef(180F, 1F, 0, 0);
 		GL11.glRotatef(-135F, 0, 1F, 0);
 		GL11.glRotatef(70F, 0, 0, 1F);
-		GL11.glScaled(size, size, size); // Changes the size (Only really used
-		// when reading in the inventory)
-		ModelWaspSword.render(0.0625F); // Render
-		GL11.glPopMatrix(); // End Rendering
+		GL11.glScaled(size, size, size);
+		model.render();
+		GL11.glPopMatrix();
 	}
 
 	private void renderSwordFirstPerson(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
-		GL11.glPushMatrix(); // Start Rendering
-		GL11.glTranslatef(x, y, z); // Position
+		GL11.glPushMatrix();
+		GL11.glTranslatef(x, y, z);
 		GL11.glRotatef(180F, 1F, 0, 0);
 		GL11.glRotatef(-45F, 0, 1F, 0);
-		GL11.glScaled(size, size, size); // Changes the size (Only really used
-		// when reading in the inventory)
-		ModelWaspSword.render(0.0625F); // Render
-		GL11.glPopMatrix(); // End Rendering
+		GL11.glScaled(size, size, size);
+		model.render();
+		GL11.glPopMatrix();
 	}
 
 	private void renderSwordInventory(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
-		GL11.glPushMatrix(); // Start Rendering
-		GL11.glTranslatef(x, y, z); // Position
+		GL11.glPushMatrix();
+		GL11.glTranslatef(x, y, z);
 		GL11.glRotatef(135F, 1F, 0, 0);
 		GL11.glRotatef(135F, 0, 1F, 0);
 		GL11.glRotatef(-20F, 0, 0, 1F);
-		GL11.glScaled(size, size, size); // Changes the size (Only really used
-		// when reading in the inventory)
-		ModelWaspSword.render(0.0625F); // Render
-		GL11.glPopMatrix(); // End Rendering
+		GL11.glScaled(size, size, size);
+		model.render();
+		GL11.glPopMatrix();
 	}
 }

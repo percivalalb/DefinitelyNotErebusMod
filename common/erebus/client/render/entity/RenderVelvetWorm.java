@@ -7,9 +7,12 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelVelvetWorm;
 import erebus.entity.EntityVelvetWorm;
 
+@SideOnly(Side.CLIENT)
 public class RenderVelvetWorm extends RenderLiving {
 
 	protected ModelVelvetWorm model;

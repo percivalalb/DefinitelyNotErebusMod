@@ -30,7 +30,7 @@ public class BlockHollowLog extends Block {
 
 	@Override
 	public Icon getIcon(int side, int meta) {
-		return side == 0 || side == 1 ? iconTop : (((side == 2 || side == 3) && meta == 1) || ((side == 4 || side == 5) && meta == 0)) ? iconSide : iconMoss;
+		return side == 0 || side == 1 ? iconTop : (side == 2 || side == 3) && meta == 1 || (side == 4 || side == 5) && meta == 0 ? iconSide : iconMoss;
 	}
 
 	@Override

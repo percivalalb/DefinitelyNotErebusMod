@@ -8,9 +8,12 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelWasp;
 import erebus.entity.EntityWasp;
 
+@SideOnly(Side.CLIENT)
 public class RenderWasp extends RenderLiving {
 
 	protected ModelWasp model;
@@ -43,7 +46,7 @@ public class RenderWasp extends RenderLiving {
 	}
 
 	protected void scaleWasp(EntityWasp entityWasp, float f) {
-		float f1 = 1.5F;
+		float f1 = 0.75F;
 		shadowSize = 0.5F;
 		GL11.glScalef(f1, f1, f1);
 	}

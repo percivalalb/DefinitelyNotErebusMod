@@ -27,8 +27,7 @@ public class BlockQuickSand extends Block {
 
 	@ForgeSubscribe
 	public void onEntityJump(LivingJumpEvent e) {
-		if (e.entity.worldObj.getBlockId((int) Math.floor(e.entity.posX), (int) Math.floor(e.entity.posY) - 1, (int) Math.floor(e.entity.posZ)) == blockID) {
+		if (e.entity.worldObj.getBlockId((int) Math.floor(e.entity.posX), (int) Math.floor(e.entity.posY) - 1, (int) Math.floor(e.entity.posZ)) == blockID)
 			e.entityLiving.motionY = 0D;
-		}
 	}
 }

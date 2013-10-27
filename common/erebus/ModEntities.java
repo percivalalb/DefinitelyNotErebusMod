@@ -3,25 +3,33 @@ package erebus;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import erebus.entity.EntityAnimatedBlock;
+import erebus.entity.EntityAnimatedChest;
 import erebus.entity.EntityAntlion;
 import erebus.entity.EntityBeetle;
 import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityBlackWidow;
 import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
+import erebus.entity.EntityEngine;
 import erebus.entity.EntityFirebrat;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityGrasshopper;
+import erebus.entity.EntityHealer;
 import erebus.entity.EntityLocust;
 import erebus.entity.EntityMosquito;
 import erebus.entity.EntityMoth;
+import erebus.entity.EntityRepairAltar;
 import erebus.entity.EntityScorpion;
 import erebus.entity.EntitySolifuge;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityWasp;
 import erebus.entity.EntityWaspDagger;
+import erebus.entity.EntityXPAltar;
 
 public class ModEntities {
+
+	private static final int WASP_DAGGER_ID = 0;
 
 	public static void init() {
 
@@ -44,12 +52,19 @@ public class ModEntities {
 		registerEntity(EntityFirebrat.class, "Firebrat", EntityRegistry.findGlobalUniqueEntityId(), 0xFF0000, 0xFF8800);
 		registerEntity(EntityAntlion.class, "Antlion", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFFFFFF);
 		registerEntity(EntityBlackWidow.class, "BlackWidow", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFF0000);
+		registerEntity(EntityEngine.class, "EngineOfIllapa", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
+		registerEntity(EntityAnimatedBlock.class, "AnimatedBlock", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
+		registerEntity(EntityAnimatedChest.class, "AnimatedChest", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
+		registerEntity(EntityHealer.class, "Goddess Altar", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
+		registerEntity(EntityRepairAltar.class, "Repair Altar", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
+		registerEntity(EntityXPAltar.class, "Experience Altar", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
 
 		// Extra Mob spawn conditions
 		EntityRegistry.addSpawn(EntityBlackWidow.class, 100, 5, 10, EnumCreatureType.monster, BiomeGenBase.hell);
 
 		// Entity Items
-		EntityRegistry.registerModEntity(EntityWaspDagger.class, "WaspDagger", EntityRegistry.findGlobalUniqueEntityId(), ErebusMod.instance, 64, 1, true);
+		EntityRegistry.registerGlobalEntityID(EntityWaspDagger.class, "WaspDagger", EntityRegistry.findGlobalUniqueEntityId());
+		EntityRegistry.registerModEntity(EntityWaspDagger.class, "WaspDagger", WASP_DAGGER_ID, ErebusMod.instance, 64, 1, true);
 	}
 
 	public static void registerEntity(Class entityClass, String saveName, int id, int backgroundEggColour, int foregroundEggColour) {

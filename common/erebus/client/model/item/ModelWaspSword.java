@@ -155,27 +155,27 @@ public class ModelWaspSword extends ModelBase {
 
 	}
 
-	public void render(float par7) {
-		Point.render(par7);
-		Blade.render(par7);
-		SpikeTop1.render(par7);
-		SpikeTop2.render(par7);
-		SpikeMid1.render(par7);
-		SpikeMid2.render(par7);
-		SpikeBot1.render(par7);
-		SpikeBot2.render(par7);
-		DecL4.render(par7);
-		DecL3.render(par7);
-		DecL1.render(par7);
-		DecL2.render(par7);
-		DecR1.render(par7);
-		DecR2.render(par7);
-		DecR3.render(par7);
-		DecR4.render(par7);
-		Tang.render(par7);
-		TangJewel.render(par7);
-		Hilt.render(par7);
-		Pommel.render(par7);
+	public void render() {
+		Point.render(0.0625F);
+		Blade.render(0.0625F);
+		SpikeTop1.render(0.0625F);
+		SpikeTop2.render(0.0625F);
+		SpikeMid1.render(0.0625F);
+		SpikeMid2.render(0.0625F);
+		SpikeBot1.render(0.0625F);
+		SpikeBot2.render(0.0625F);
+		DecL4.render(0.0625F);
+		DecL3.render(0.0625F);
+		DecL1.render(0.0625F);
+		DecL2.render(0.0625F);
+		DecR1.render(0.0625F);
+		DecR2.render(0.0625F);
+		DecR3.render(0.0625F);
+		DecR4.render(0.0625F);
+		Tang.render(0.0625F);
+		TangJewel.render(0.0625F);
+		Hilt.render(0.0625F);
+		Pommel.render(0.0625F);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -185,7 +185,7 @@ public class ModelWaspSword extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par6Entity) {
 
 	}
 

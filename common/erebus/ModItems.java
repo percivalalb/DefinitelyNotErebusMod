@@ -13,6 +13,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import erebus.item.ItemArmorGlider;
 import erebus.item.ItemBambucket;
 import erebus.item.ItemCavemanClub;
 import erebus.item.ItemCompoundGoggles;
@@ -27,6 +28,7 @@ import erebus.item.ItemPaxel;
 import erebus.item.ItemPortalActivator;
 import erebus.item.ItemSprayCan;
 import erebus.item.ItemSprintLeggings;
+import erebus.item.ItemWandOfAnimation;
 import erebus.item.ItemWaspDagger;
 
 public class ModItems {
@@ -41,6 +43,7 @@ public class ModItems {
 	public static Item bamBucket;						public static int bamBucketID;
 	public static Item turnip;							public static int turnipID;
 	public static Item sprayCan;						public static int sprayCanID;
+	public static Item wandOfAnimation;					public static int wandOfAnimationID;
 
 	// JADE STUFF
 	public static Item jadeHelmet;						public static int jadeHelmetID;
@@ -70,6 +73,7 @@ public class ModItems {
 	public static Item compoundGoggles;                 public static int compoundGogglesID;
 	public static Item sprintLeggings;					public static int sprintLeggingsID;
 	public static Item jumpBoots;						public static int jumpBootsID;
+	public static Item armorGlider;						public static int armorGliderID;
 
 	//@formatter:on
 
@@ -85,6 +89,7 @@ public class ModItems {
 		bamBucket = new ItemBambucket(bamBucketID).setUnlocalizedName("bamBucket");
 		turnip = new ItemSeedFood(turnipID, 4, 0.6F, ModBlocks.blockTurnip.blockID, Block.tilledField.blockID).setUnlocalizedName("turnips").setTextureName("erebus:turnips");
 		sprayCan = new ItemSprayCan(sprayCanID).setUnlocalizedName("sprayCan").setTextureName("erebus:sprayCan");
+		wandOfAnimation = new ItemWandOfAnimation(wandOfAnimationID).setUnlocalizedName("wandOfAnimation");
 
 		jadeHelmet = new ItemJadeArmor(jadeHelmetID, 0).setUnlocalizedName("helmetJade").setTextureName("erebus:helmetJade");
 		jadeBody = new ItemJadeArmor(jadeBodyID, 1).setUnlocalizedName("chestplateJade").setTextureName("erebus:chestplateJade");
@@ -110,9 +115,10 @@ public class ModItems {
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
 		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorEXOSKELETON, 2).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
 		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorEXOSKELETON, 3).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
+		armorGlider = new ItemArmorGlider(armorGliderID, 1).setUnlocalizedName("armorGlider").setTextureName("erebus:armorGlider");
 
 		// Creative tabs
-		ErebusMod.tabErebusItem.add(portalActivator, erebusMaterials, erebusFood, turnip);
+		ErebusMod.tabErebusItem.add(portalActivator, erebusMaterials, erebusFood, turnip, wandOfAnimation);
 		if (ErebusMod.activateExtraOres)
 			ErebusMod.tabErebusItem.add(metalIngot);
 
@@ -120,7 +126,7 @@ public class ModItems {
 		ErebusMod.tabErebusGear.add(jadeHelmet, jadeBody, jadeLegs, jadeBoots, jadeSword, jadePickaxe, jadeAxe, jadeShovel, jadePaxel, jadeHoe);
 		ErebusMod.tabErebusGear.add(exoskeletonHelmet, exoskeletonBody, exoskeletonLegs, exoskeletonBoots);
 		ErebusMod.tabErebusGear.add(fossilClub, waspSword, waspDagger, maxSpeedBow);
-		ErebusMod.tabErebusGear.add(compoundGoggles, sprintLeggings, jumpBoots);
+		ErebusMod.tabErebusGear.add(compoundGoggles, sprintLeggings, jumpBoots, armorGlider);
 
 		// Tool classes
 		MinecraftForge.setToolClass(jadeAxe, "axe", 2);
@@ -136,6 +142,7 @@ public class ModItems {
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.WATER, new ItemStack(bamBucket, 1, 1), new ItemStack(bamBucket, 1, 0));
 		GameRegistry.registerItem(turnip, "erebus.turnips");
 		GameRegistry.registerItem(sprayCan, "erebus.sprayCan");
+		GameRegistry.registerItem(wandOfAnimation, "erebus.wandOfAnimation");
 
 		GameRegistry.registerItem(jadeHelmet, "erebus.helmetJade");
 		GameRegistry.registerItem(jadeBody, "erebus.chestplateJade");
@@ -161,5 +168,6 @@ public class ModItems {
 		GameRegistry.registerItem(compoundGoggles, "erebus.compoundGoggles");
 		GameRegistry.registerItem(sprintLeggings, "erebus.sprintLeggings");
 		GameRegistry.registerItem(jumpBoots, "erebus.jumpBoots");
+		GameRegistry.registerItem(armorGlider, "erebus.armorGlider");
 	}
 }

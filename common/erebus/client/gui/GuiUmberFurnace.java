@@ -57,8 +57,8 @@ public class GuiUmberFurnace extends GuiContainer {
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float f) {
 		super.drawScreen(mouseX, mouseY, f);
-		tankXMin = ((width - xSize) / 2) + 11;
-		tankYMin = ((height - ySize) / 2) + 11;
+		tankXMin = (width - xSize) / 2 + 11;
+		tankYMin = (height - ySize) / 2 + 11;
 		tankXMax = tankXMin + 16;
 		tankYMax = tankYMin + 65;
 		if (mouseX >= tankXMin && mouseX <= tankXMax)

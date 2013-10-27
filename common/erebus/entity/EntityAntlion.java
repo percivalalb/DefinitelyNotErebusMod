@@ -5,7 +5,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
@@ -28,6 +35,12 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 		super(world);
 		isImmuneToFire = true;
 		experienceValue = 17;
+		tasks.addTask(0, new EntityAISwimming(this));
+		tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.7D, false));
+		tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+		tasks.addTask(3, new EntityAIWander(this, 0.7D));
+		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 	}
 
 	@Override
@@ -42,6 +55,11 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 		super.applyEntityAttributes();
 		areAttributesSetup = true;
 		updateBossAttributes();
+	}
+
+	@Override
+	public boolean isAIEnabled() {
+		return true;
 	}
 
 	@Override
@@ -103,15 +121,15 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 
 	@Override
 	public void onUpdate() {
+		super.onUpdate();
 		if (isBoss()) { // a hack to keep boss antlions alive even on peaceful
 			int difficulty = worldObj.difficultySetting;
 			if (difficulty == 0)
 				worldObj.difficultySetting = 1;
-			super.onUpdate();
+
 			worldObj.difficultySetting = difficulty;
 		} else
-			super.onUpdate();
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D);
+			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.5D);
 		if (!worldObj.isRemote && entityToAttack == null && isOnSand() && !isBoss())
 			yOffset = -1;
 		else
@@ -176,9 +194,9 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 		worldObj.setEntityState(this, (byte) 16);
 
 		if (!isBoss)
-			setSize(1.0F, 0.6F);
+			setSize(2.0F, 0.9F);
 		else
-			setSize(2.0F, 1.2F);
+			setSize(2.75F, 1.2F);
 
 		if (areAttributesSetup)
 			updateBossAttributes();
@@ -186,13 +204,13 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 
 	public void updateBossAttributes() {
 		if (isBoss()) {
-			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D);
+			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.7D);
 			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(60.0D);
 			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D);
-			getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(8.0D);
-			getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(0.5D);
+			getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D);
+			getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(0.75D);
 		} else {
-			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.7D);
+			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.7D);
 			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);
 			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D);
 			getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D);

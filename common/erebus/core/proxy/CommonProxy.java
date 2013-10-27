@@ -3,7 +3,6 @@ package erebus.core.proxy;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.client.gui.inventory.GuiCrafting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
@@ -19,12 +18,14 @@ import erebus.ModBlocks;
 import erebus.block.BlockBambooCrate;
 import erebus.client.gui.GuiBambooCrate;
 import erebus.client.gui.GuiColossalCrate;
+import erebus.client.gui.GuiPetrifiedWorkbench;
 import erebus.client.gui.GuiUmberFurnace;
 import erebus.inventory.ContainerBambooCrate;
 import erebus.inventory.ContainerColossalCrate;
 import erebus.inventory.ContainerPetrifiedCraftingTable;
 import erebus.inventory.ContainerUmberFurnace;
 import erebus.tileentity.TileEntityBambooCrate;
+import erebus.tileentity.TileEntityErebusAltar;
 import erebus.tileentity.TileEntitySpawner;
 import erebus.tileentity.TileEntityUmberFurnace;
 
@@ -45,6 +46,7 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntitySpawner.class, "Custom Spawner (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityBambooCrate.class, "Bamboo Crate (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityUmberFurnace.class, "Umber Furnace (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityErebusAltar.class, "Tile Entity Bug Zapper (Erebus)");
 	}
 
 	public void handleParticlePacket(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data) {
@@ -119,7 +121,7 @@ public class CommonProxy implements IGuiHandler {
 					x--;
 				if (world.getBlockId(x, y, z - 1) == crate.blockID)
 					z--;
-				if (crate.squareCrate(world, x, y, z)) {
+				if (BlockBambooCrate.squareCrate(world, x, y, z)) {
 					List<TileEntityBambooCrate> list = new ArrayList<TileEntityBambooCrate>();
 					int[][] places = new int[][] { { 1, 0, 0 }, { 1, 0, 1 }, { 0, 0, 1 }, { 1, 1, 0 }, { 1, 1, 1 }, { 0, 1, 1 }, { 0, 1, 0 }, { 0, 0, 0 } };
 					for (int[] place : places) {
@@ -132,7 +134,7 @@ public class CommonProxy implements IGuiHandler {
 		}
 
 		else if (ID == GUI_ID_PETRIFIED_CRAFT)
-			return new GuiCrafting(player.inventory, world, x, y, z);
+			return new GuiPetrifiedWorkbench(player.inventory, world, x, y, z);
 		if (ID == GUI_ID_UMBER_FURNACE) {
 			TileEntity tileentity = world.getBlockTileEntity(x, y, z);
 			if (tileentity instanceof TileEntityUmberFurnace)

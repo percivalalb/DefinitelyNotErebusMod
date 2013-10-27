@@ -58,7 +58,7 @@ public class BlockTurnip extends BlockCrops {
 	@Override
 	public boolean canBlockStay(World par1World, int par2, int par3, int par4) {
 		Block soil = blocksList[par1World.getBlockId(par2, par3 - 1, par4)];
-		return (soil != null && soil == Block.grass || soil == Block.tilledField || soil == Block.dirt);
+		return soil != null && soil == Block.grass || soil == Block.tilledField || soil == Block.dirt;
 	}
 
 	@Override

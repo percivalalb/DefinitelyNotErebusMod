@@ -4,9 +4,13 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.entity.EntityScorpion;
 
+@SideOnly(Side.CLIENT)
 public class ModelScorpion extends ModelBase {
+
 	ModelRenderer RMand;
 	ModelRenderer LMand;
 	ModelRenderer Head;
@@ -551,14 +555,14 @@ public class ModelScorpion extends ModelBase {
 		Sting1.rotateAngleZ = -cosxnz1;
 		Sting2.rotateAngleZ = -cosxnz1;
 		if (var8.captured()) {
-			Tail1.rotateAngleX = var8.stingticks;
-			Tail2.rotateAngleX = var8.stingticks + 0.8726646F;
-			Tail3.rotateAngleX = var8.stingticks + 1.22173F;
-			Tail4.rotateAngleX = var8.stingticks + 1.570796F;
-			Tail5.rotateAngleX = var8.stingticks + 1.919862F;
-			Tail6.rotateAngleX = var8.stingticks + 2.268928F;
-			Sting1.rotateAngleX = var8.stingticks + 2.617994F;
-			Sting2.rotateAngleX = var8.stingticks + 1.570796F;
+			Tail1.rotateAngleX = EntityScorpion.stingticks;
+			Tail2.rotateAngleX = EntityScorpion.stingticks + 0.8726646F;
+			Tail3.rotateAngleX = EntityScorpion.stingticks + 1.22173F;
+			Tail4.rotateAngleX = EntityScorpion.stingticks + 1.570796F;
+			Tail5.rotateAngleX = EntityScorpion.stingticks + 1.919862F;
+			Tail6.rotateAngleX = EntityScorpion.stingticks + 2.268928F;
+			Sting1.rotateAngleX = EntityScorpion.stingticks + 2.617994F;
+			Sting2.rotateAngleX = EntityScorpion.stingticks + 1.570796F;
 			ClawR1.rotateAngleZ = 0.2943951F;
 			ClawR2.rotateAngleX = -0F;
 			ClawR2.rotateAngleZ = 0.2943951F;

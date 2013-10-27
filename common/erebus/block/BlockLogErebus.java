@@ -2,6 +2,7 @@ package erebus.block;
 
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.BlockLog;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -46,9 +47,8 @@ public class BlockLogErebus extends BlockLog {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int id, CreativeTabs creativeTab, List list) {
-		for (int a = 0; a < logTypes[logGroup].length; a++) {
+		for (int a = 0; a < logTypes[logGroup].length; a++)
 			list.add(new ItemStack(id, 1, a));
-		}
 	}
 
 	@Override

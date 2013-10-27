@@ -9,9 +9,12 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.item.ModelWaspDagger;
 import erebus.entity.EntityWaspDagger;
 
+@SideOnly(Side.CLIENT)
 public class WaspDaggerItemRenderer extends Render implements IItemRenderer {
 	private final ModelWaspDagger ModelWaspDagger;
 	public static ResourceLocation texture = new ResourceLocation("erebus:textures/item/ModelWaspSword.png");
@@ -110,7 +113,7 @@ public class WaspDaggerItemRenderer extends Render implements IItemRenderer {
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) par2, (float) par4, (float) par6);
 		GL11.glRotatef(par1EntityWaspDagger.prevRotationYaw + (par1EntityWaspDagger.rotationYaw - par1EntityWaspDagger.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(par1EntityWaspDagger.prevRotationPitch + (par1EntityWaspDagger.rotationPitch - par1EntityWaspDagger.prevRotationPitch) * par9 - par1EntityWaspDagger.rotationticks, 0.0F, 0.0F, 1.0F);
+		GL11.glRotatef(par1EntityWaspDagger.prevRotationPitch + (par1EntityWaspDagger.rotationPitch - par1EntityWaspDagger.prevRotationPitch) * par9 - EntityWaspDagger.rotationticks, 0.0F, 0.0F, 1.0F);
 		GL11.glScaled(0.4F, 0.4F, 0.4F);
 		ModelWaspDagger.render(0.0625F);
 		GL11.glPopMatrix();

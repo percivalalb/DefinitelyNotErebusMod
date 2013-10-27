@@ -8,9 +8,12 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelScorpion;
 import erebus.entity.EntityScorpion;
 
+@SideOnly(Side.CLIENT)
 public class RenderScorpion extends RenderLiving {
 
 	protected ModelScorpion model;

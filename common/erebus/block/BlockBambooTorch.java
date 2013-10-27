@@ -81,7 +81,6 @@ public class BlockBambooTorch extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random) {
-		int l = par1World.getBlockMetadata(par2, par3, par4);
 		double d0 = par2 + 0.4375F;
 		double d1 = par3 + 2.0625F;
 		double d2 = par4 + 0.4375F;

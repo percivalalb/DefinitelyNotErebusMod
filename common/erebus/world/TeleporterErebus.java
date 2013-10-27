@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.Direction;
@@ -15,14 +14,14 @@ import net.minecraft.world.PortalPosition;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.DimensionManager;
-import erebus.ErebusMod;
 import erebus.ModBlocks;
+import erebus.core.handler.ConfigurationHandler;
 import erebus.core.helper.LogHelper;
 
 public class TeleporterErebus extends Teleporter {
 
 	public static final TeleporterErebus TELEPORTER_TO_OVERWORLD = new TeleporterErebus(DimensionManager.getWorld(0));
-	public static final TeleporterErebus TELEPORTER_TO_EREBUS = new TeleporterErebus(DimensionManager.getWorld(ErebusMod.erebusDimensionID));
+	public static final TeleporterErebus TELEPORTER_TO_EREBUS = new TeleporterErebus(DimensionManager.getWorld(ConfigurationHandler.erebusDimensionID));
 
 	private final WorldServer worldServerInstance;
 	private final Random random;

@@ -1,12 +1,11 @@
 package erebus.core.teleport;
 
 import java.util.Random;
-
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.packet.Packet;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.common.network.Player;
-import erebus.ErebusMod;
+import erebus.core.handler.ConfigurationHandler;
 import erebus.network.PacketHandler;
 import erebus.world.TeleporterErebus;
 
@@ -37,12 +36,12 @@ public class TeleportServer {
 			if (timeInPortal >= 1.0F) {
 				timeInPortal = 1.0F;
 				timeUntilPortal = 10;
-				PacketDispatcher.sendPacketToPlayer(PacketHandler.buildPacket(0, player.dimension != ErebusMod.erebusDimensionID), (Player) player);
+				PacketDispatcher.sendPacketToPlayer(PacketHandler.buildPacket(0, player.dimension != ConfigurationHandler.erebusDimensionID), (Player) player);
 
-				if (player.dimension == (byte) ErebusMod.erebusDimensionID)
+				if (player.dimension == (byte) ConfigurationHandler.erebusDimensionID)
 					player.mcServer.getConfigurationManager().transferPlayerToDimension(player, 0, TeleporterErebus.TELEPORTER_TO_OVERWORLD);
 				else if (player.dimension == (byte) 0)
-					player.mcServer.getConfigurationManager().transferPlayerToDimension(player, ErebusMod.erebusDimensionID, TeleporterErebus.TELEPORTER_TO_EREBUS);
+					player.mcServer.getConfigurationManager().transferPlayerToDimension(player, ConfigurationHandler.erebusDimensionID, TeleporterErebus.TELEPORTER_TO_EREBUS);
 			}
 			inPortal = false;
 		} else {

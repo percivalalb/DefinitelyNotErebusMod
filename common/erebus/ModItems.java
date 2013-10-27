@@ -13,6 +13,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import erebus.core.handler.ConfigurationHandler;
 import erebus.item.ItemArmorGlider;
 import erebus.item.ItemBambucket;
 import erebus.item.ItemCavemanClub;
@@ -84,7 +85,7 @@ public class ModItems {
 		portalActivator = new ItemPortalActivator(portalActivatorID).setUnlocalizedName("portalActivator").setTextureName("erebus:portalActivator");
 		erebusMaterials = new ItemErebusMaterial(erebusMaterialsID).setUnlocalizedName("erebusMaterials");
 		erebusFood = new ItemErebusFood(erebusFoodID).setUnlocalizedName("erebusFood");
-		if (ErebusMod.activateExtraOres)
+		if (ConfigurationHandler.activateExtraOres)
 			metalIngot = new ItemMetalIngots(metalIngotID);
 		bamBucket = new ItemBambucket(bamBucketID).setUnlocalizedName("bamBucket");
 		turnip = new ItemSeedFood(turnipID, 4, 0.6F, ModBlocks.blockTurnip.blockID, Block.tilledField.blockID).setUnlocalizedName("turnips").setTextureName("erebus:turnips");
@@ -119,7 +120,7 @@ public class ModItems {
 
 		// Creative tabs
 		ErebusMod.tabErebusItem.add(portalActivator, erebusMaterials, erebusFood, turnip, wandOfAnimation);
-		if (ErebusMod.activateExtraOres)
+		if (ConfigurationHandler.activateExtraOres)
 			ErebusMod.tabErebusItem.add(metalIngot);
 
 		ErebusMod.tabErebusGear.add(bamBucket, sprayCan);
@@ -136,7 +137,7 @@ public class ModItems {
 		GameRegistry.registerItem(portalActivator, "erebus.portalActivator");
 		GameRegistry.registerItem(erebusMaterials, "erebus.erebusMaterials");
 		GameRegistry.registerItem(erebusFood, "erebus.erebusFood");
-		if (ErebusMod.activateExtraOres)
+		if (ConfigurationHandler.activateExtraOres)
 			GameRegistry.registerItem(metalIngot, "erebus.metalIngot");
 		GameRegistry.registerItem(bamBucket, "erebus.bamBucket");
 		FluidContainerRegistry.registerFluidContainer(FluidRegistry.WATER, new ItemStack(bamBucket, 1, 1), new ItemStack(bamBucket, 1, 0));

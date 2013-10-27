@@ -61,12 +61,7 @@ public class ErebusMod {
 	public static CreativeTabErebus tabErebusBlock = new CreativeTabErebusBlock("erebus.block");
 	public static CreativeTabErebus tabErebusItem = new CreativeTabErebusItem("erebus.item");
 	public static CreativeTabErebus tabErebusGear = new CreativeTabErebusGear("erebus.gear");
-
-	public static int erebusDimensionID;
-	public static boolean activateExtraOres = false;
-	public static boolean shouldDoVersionCheck = true;
-	public static byte beetleLarvaEating = 0;
-
+	
 	public static PlayerTeleportHandler teleportHandler = new PlayerTeleportHandler();
 
 	@EventHandler
@@ -82,7 +77,7 @@ public class ErebusMod {
 
 		ConfigurationHandler.loadConfig(new File(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + Reference.MOD_ID + ".cfg"));
 
-		if (shouldDoVersionCheck) {
+		if (ConfigurationHandler.shouldDoVersionCheck) {
 			VersionHelper.execute();
 			TickRegistry.registerTickHandler(new VersionCheckTickHandler(), Side.CLIENT);
 		}
@@ -94,8 +89,8 @@ public class ErebusMod {
 		GameRegistry.registerPlayerTracker(teleportHandler);
 		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
 
-		DimensionManager.registerProviderType(erebusDimensionID, WorldProviderErebus.class, true);
-		DimensionManager.registerDimension(erebusDimensionID, erebusDimensionID);
+		DimensionManager.registerProviderType(ConfigurationHandler.erebusDimensionID, WorldProviderErebus.class, true);
+		DimensionManager.registerDimension(ConfigurationHandler.erebusDimensionID, ConfigurationHandler.erebusDimensionID);
 	}
 
 	@EventHandler

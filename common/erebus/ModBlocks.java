@@ -37,6 +37,7 @@ import erebus.block.BlockUmberFurnace;
 import erebus.block.BlockUmberPaver;
 import erebus.block.BlockUmberstone;
 import erebus.block.BlockWallErebus;
+import erebus.core.handler.ConfigurationHandler;
 import erebus.item.block.ItemBlockAmber;
 import erebus.item.block.ItemBlockErebusOreExtras;
 import erebus.item.block.ItemBlockLeavesErebus;
@@ -200,7 +201,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(blockAmber, ItemBlockAmber.class, "erebus.blockAmber");
 		GameRegistry.registerBlock(quickSand, "erebus.quickSand");
 		GameRegistry.registerBlock(ghostSand, "erebus.ghostSand");
-		if (ErebusMod.activateExtraOres)
+		if (ConfigurationHandler.activateExtraOres)
 			GameRegistry.registerBlock(erebusOreExtra, ItemBlockErebusOreExtras.class, "erebus.erebusOreExtras");
 
 		GameRegistry.registerBlock(logErebusGroup1, ItemBlockLogErebus1.class, "erebus.logErebus1");
@@ -270,7 +271,7 @@ public class ModBlocks {
 		MinecraftForge.setBlockHarvestLevel(quickSand, "shovel", 2);
 		MinecraftForge.setBlockHarvestLevel(ghostSand, "shovel", 0);
 
-		if (ErebusMod.activateExtraOres) {
+		if (ConfigurationHandler.activateExtraOres) {
 			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 0, "pickaxe", 1);
 			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 1, "pickaxe", 1);
 			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 2, "pickaxe", 2);

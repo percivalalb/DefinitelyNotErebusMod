@@ -13,8 +13,14 @@ import erebus.block.BlockPlanksErebus;
 import erebus.block.BlockUmberstone;
 
 public class ConfigurationHandler {
-
+	
 	public static Configuration config;
+
+	public static int erebusDimensionID;
+	public static boolean spawnPortalMobs = true;
+	public static boolean activateExtraOres = false;
+	public static boolean shouldDoVersionCheck = true;
+	public static byte beetleLarvaEating = 0;
 
 	public static void loadConfig(File configFile) {
 		config = new Configuration(configFile);
@@ -136,10 +142,11 @@ public class ConfigurationHandler {
 			ModBiomes.savannahID = config.get(Configuration.CATEGORY_GENERAL, "Biome ID of Subterranean Savannah", 153).getInt(153);
 			ModBiomes.cavernID = config.get(Configuration.CATEGORY_GENERAL, "Biome ID of Cavern", 154, "Biome IDs must be below 256").getInt(154);
 
-			ErebusMod.erebusDimensionID = config.get(Configuration.CATEGORY_GENERAL, "Dimension ID of The Erebus", 66, "There doesn't appear to be a limit on dimension IDs, but try to keep it low").getInt(66);
-			ErebusMod.activateExtraOres = config.get(Configuration.CATEGORY_GENERAL, "Should generate copper, lead, silver and tin?", false).getBoolean(false);
-			ErebusMod.beetleLarvaEating = (byte) config.get(Configuration.CATEGORY_GENERAL, "Beetle larva eating settings", 0, "0 = only wooden blocks except tile entities & logs, 1 = only wooden blocks except logs, 2 = anything").getInt(0);
-			ErebusMod.shouldDoVersionCheck = config.get(Configuration.CATEGORY_GENERAL, "Should do version check?", true).getBoolean(true);
+			ConfigurationHandler.erebusDimensionID = config.get(Configuration.CATEGORY_GENERAL, "Dimension ID of The Erebus", 66, "There doesn't appear to be a limit on dimension IDs, but try to keep it low").getInt(66);
+			ConfigurationHandler.spawnPortalMobs = config.get(Configuration.CATEGORY_GENERAL, "Should spawn beetles and larvae in the portal", true).getBoolean(true);
+			ConfigurationHandler.activateExtraOres = config.get(Configuration.CATEGORY_GENERAL, "Should generate copper, lead, silver and tin?", false).getBoolean(false);
+			ConfigurationHandler.beetleLarvaEating = (byte) config.get(Configuration.CATEGORY_GENERAL, "Beetle larva eating settings", 0, "0 = only wooden blocks except tile entities & logs, 1 = only wooden blocks except logs, 2 = anything").getInt(0);
+			ConfigurationHandler.shouldDoVersionCheck = config.get(Configuration.CATEGORY_GENERAL, "Should do version check?", true).getBoolean(true);
 
 		} catch (Exception e) {
 			FMLLog.log(Level.SEVERE, e, "Erebus has had a problem loading its configuration");

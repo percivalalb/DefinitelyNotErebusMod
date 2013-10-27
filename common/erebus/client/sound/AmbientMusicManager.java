@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundManager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,7 +19,7 @@ import cpw.mods.fml.common.TickType;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.ErebusMod;
+import erebus.core.handler.ConfigurationHandler;
 import erebus.core.helper.LogHelper;
 import erebus.lib.Reference;
 
@@ -70,7 +69,7 @@ public class AmbientMusicManager implements IScheduledTickHandler {
 
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
-		if (!sndMan.sndSystem.playing("BgMusic") && rand.nextInt(15) == 0 && ((EntityPlayer) tickData[0]).dimension == ErebusMod.erebusDimensionID) {
+		if (!sndMan.sndSystem.playing("BgMusic") && rand.nextInt(15) == 0 && ((EntityPlayer) tickData[0]).dimension == ConfigurationHandler.erebusDimensionID) {
 			List<Entry<String, URL>> entries = new ArrayList<Entry<String, URL>>(poolAmbient.entrySet());
 			if (entries.size() == 0)
 				return;

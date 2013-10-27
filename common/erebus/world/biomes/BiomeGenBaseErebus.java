@@ -1,15 +1,14 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
-import erebus.ErebusMod;
 import erebus.ModBlocks;
 import erebus.block.BlockErebusOre;
 import erebus.block.BlockErebusOreExtras;
+import erebus.core.handler.ConfigurationHandler;
 import erebus.world.feature.WorldGenErebusMinable;
 
 public abstract class BiomeGenBaseErebus extends BiomeGenBase {
@@ -21,7 +20,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 	public abstract void generateTerrain(World worldObj, Random rand, IChunkProvider par1IChunkProvider, int x, int z);
 
 	public void generateDefault(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) {
-		boolean extraOres = ErebusMod.activateExtraOres;
+		boolean extraOres = ConfigurationHandler.activateExtraOres;
 
 		for (int a = 0; a < (extraOres ? 8 : 10); ++a)
 			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataCoal, 11 + rand.nextInt(4), worldObj, rand, x, z, 6, 112, 3);

@@ -10,6 +10,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import erebus.ModItems;
+import erebus.item.ItemErebusMaterial;
 
 public class EntityCentipede extends EntityMob {
 
@@ -85,9 +86,9 @@ public class EntityCentipede extends EntityMob {
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2) {
-		entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 8), 0.0F);
-		entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3) + 1, 0), 0.0F);
+	protected void dropFewItems(boolean hitByPlayer, int looting) {
+		if (rand.nextInt(5)<=1+(looting>>1))entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBioVelocity), 0.0F);
+		entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3) + 1, ItemErebusMaterial.dataExoPlate), 0.0F);
 	}
 
 	@Override

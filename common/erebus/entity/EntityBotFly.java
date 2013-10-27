@@ -17,6 +17,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import erebus.ModItems;
 import erebus.client.render.entity.AnimationMathHelper;
+import erebus.item.ItemErebusMaterial;
 
 public class EntityBotFly extends EntityMob {
 
@@ -244,9 +245,9 @@ public class EntityBotFly extends EntityMob {
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
 		if (rand.nextInt(4) == 0)
-			entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(2) + 1, 6), 0.0F);
+			entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(2) + 1, ItemErebusMaterial.dataFlyWing), 0.0F);
 		if (rand.nextInt(8) == 0)
-			entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3), 4), 0.0F);
+			entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3), ItemErebusMaterial.dataCompoundEyes), 0.0F);
 	}
 
 	@Override

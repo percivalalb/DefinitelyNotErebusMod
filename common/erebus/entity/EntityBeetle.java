@@ -13,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import erebus.ModItems;
+import erebus.item.ItemErebusMaterial;
 
 public class EntityBeetle extends EntityUndergroundAnimal {
 
@@ -82,6 +83,6 @@ public class EntityBeetle extends EntityUndergroundAnimal {
 		int var3 = rand.nextInt(4) + rand.nextInt(1 + par2);
 		int var4;
 		for (var4 = 0; var4 < var3; ++var4)
-			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, 0), 0.0F);
+			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate), 0.0F);
 	}
 }

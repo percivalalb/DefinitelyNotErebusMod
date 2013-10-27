@@ -1,5 +1,6 @@
 package erebus.item;
 
+import org.lwjgl.opengl.GL11;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -7,6 +8,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.event.ForgeSubscribe;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
@@ -42,12 +45,33 @@ public class ItemArmorGlider extends ItemArmor {
 	@Override
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack itemStack) {
 		player.fallDistance = 0.0F;
-		if (gliding)
+		if (gliding) {
 			if (!player.onGround) {
 				player.motionX *= 1.0D;
 				player.motionZ *= 1.0D;
 				player.motionY *= 0.5D;
 			}
+		}
+	}
+	
+	@ForgeSubscribe
+	public void onPlayerRenderPre(RenderPlayerEvent.Pre e){
+		GL11.glPushMatrix();
+		
+		if (gliding && !e.entityPlayer.onGround) {
+			/*GL11.glTranslated(0D,-e.entityPlayer.height/2,0D);
+			GL11.glRotated(60D,1F,0F,0F);
+			//GL11.glRotated(Math.toRadians(e.entityPlayer.rotationYaw),0F,1F,0F);
+			GL11.glTranslated(0D,e.entityPlayer.height/2,0D);
+			//GL11.glRotated(60D*Math.toRadians(e.entityPlayer.rotationYaw),1F,0F,0F);*/
+			
+			// umm, just do whatever the fuck you want here, I got no idea
+		}
+	}
+	
+	@ForgeSubscribe
+	public void onPlayerRenderPost(RenderPlayerEvent.Post e){
+		GL11.glPopMatrix();
 	}
 
 	public static void setGliding(boolean isGliding) {

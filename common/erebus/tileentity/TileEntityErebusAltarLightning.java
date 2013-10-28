@@ -17,7 +17,7 @@ public class TileEntityErebusAltarLightning extends TileEntity {
 
 	public int animationTicks = 0;
 	private boolean active = true;
-
+	public int fuzz = 0;
 	@Override
 	public void updateEntity() {
 		findEnemyToAttack();
@@ -26,6 +26,12 @@ public class TileEntityErebusAltarLightning extends TileEntity {
 				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "erebus:altarchangestate", 1.0F, 1.3F);
 			if (animationTicks <= 24)
 				animationTicks++;
+			if(animationTicks==25)
+				if (fuzz < 20) {
+					fuzz++;
+					if (fuzz >= 20)
+						fuzz = 0;
+				}
 		}
 		if (!active) {
 			if (animationTicks == 25)
@@ -65,7 +71,6 @@ public class TileEntityErebusAltarLightning extends TileEntity {
 	}
 
 	protected Entity findEnemyToAttack() {
-
 		List list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D, xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D).expand(6D, 2D, 6D));
 		if (active)
 			for (int i = 0; i < list.size(); i++) {

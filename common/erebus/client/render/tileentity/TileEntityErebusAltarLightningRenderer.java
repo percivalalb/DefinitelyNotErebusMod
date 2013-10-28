@@ -26,10 +26,14 @@ public class TileEntityErebusAltarLightningRenderer extends TileEntitySpecialRen
 			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa3.png"));
 		else if (te.animationTicks > 15 && te.animationTicks <= 20)
 			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa4.png"));
-		else if (te.animationTicks > 20 && te.animationTicks <= 25)
+		else if (te.animationTicks > 20 && te.animationTicks < 25)
 			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa5.png"));
-		else
-			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa1.png"));
+		else if (te.animationTicks == 25 && te.fuzz <= 5)
+			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa5.png"));
+		else if (te.animationTicks == 25 && te.fuzz > 5 && te.fuzz <= 10 || te.animationTicks == 25 && te.fuzz > 15 && te.fuzz <= 20)
+			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa6.png"));
+		else if (te.animationTicks == 25 && te.fuzz > 10 && te.fuzz <= 15)
+			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa7.png"));
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) d + 0.5F, (float) d1 + 0.75F, (float) d2 + 0.5F);
 		GL11.glScalef(0.5F, -0.5F, -0.5F);

@@ -1,5 +1,6 @@
 package erebus;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -33,40 +34,47 @@ public class ModEntities {
 	public static void init() {
 
 		// Mob Entities
-		registerEntity(EntityBeetleLarva.class, "BeetleLarva", EntityRegistry.findGlobalUniqueEntityId(), -1251634, -13032944);
-		registerEntity(EntityWasp.class, "Wasp", EntityRegistry.findGlobalUniqueEntityId(), -256, -16382458);
-		registerEntity(EntityCentipede.class, "Centipede", EntityRegistry.findGlobalUniqueEntityId(), -13565952, -92160);
-		registerEntity(EntityBeetle.class, "Beetle", EntityRegistry.findGlobalUniqueEntityId(), -12116973, -5938366);
-		registerEntity(EntityFly.class, "Fly", EntityRegistry.findGlobalUniqueEntityId(), -13165534, -6750208);
-		registerEntity(EntityMosquito.class, "Mosquito", EntityRegistry.findGlobalUniqueEntityId(), -13816034, -14803180);
-		registerEntity(EntityTarantula.class, "Tarantula", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xE82066);
+		registerEntity(EntityBeetleLarva.class, "BeetleLarva", -1251634, -13032944);
+		registerEntity(EntityWasp.class, "Wasp", -256, -16382458);
+		registerEntity(EntityCentipede.class, "Centipede", -13565952, -92160);
+		registerEntity(EntityBeetle.class, "Beetle", -12116973, -5938366);
+		registerEntity(EntityFly.class, "Fly", -13165534, -6750208);
+		registerEntity(EntityMosquito.class, "Mosquito", -13816034, -14803180);
+		registerEntity(EntityTarantula.class, "Tarantula", 0x000000, 0xE82066);
 		// registerEntity(EntityVelvetWorm.class, "VelvetWorm",
 		// EntityRegistry.findGlobalUniqueEntityId(), 894731, 000000);
-		registerEntity(EntityBotFly.class, "BotFly", EntityRegistry.findGlobalUniqueEntityId(), -6750208, -13165534);
-		registerEntity(EntityScorpion.class, "Scorpion", EntityRegistry.findGlobalUniqueEntityId(), 0xFFA200, 0xFFDB9C);
-		registerEntity(EntitySolifuge.class, "Solifuge", EntityRegistry.findGlobalUniqueEntityId(), 0xFFDB9C, 0xFFA200);
-		registerEntity(EntityGrasshopper.class, "Grasshopper", EntityRegistry.findGlobalUniqueEntityId(), 0x06B900, 0x5FFF5F);
-		registerEntity(EntityLocust.class, "Locust", EntityRegistry.findGlobalUniqueEntityId(), 0x5FFF5F, 0x06B900);
-		registerEntity(EntityMoth.class, "Moth", EntityRegistry.findGlobalUniqueEntityId(), 0x00FFDD, 0xFBFFA8);
-		registerEntity(EntityFirebrat.class, "Firebrat", EntityRegistry.findGlobalUniqueEntityId(), 0xFF0000, 0xFF8800);
-		registerEntity(EntityAntlion.class, "Antlion", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFFFFFF);
-		registerEntity(EntityBlackWidow.class, "BlackWidow", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0xFF0000);
-		registerEntity(EntityAnimatedBlock.class, "AnimatedBlock", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
-		registerEntity(EntityAnimatedChest.class, "AnimatedChest", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
-		registerEntity(EntityHealer.class, "Goddess Altar", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
-		registerEntity(EntityRepairAltar.class, "Repair Altar", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
-		registerEntity(EntityXPAltar.class, "Experience Altar", EntityRegistry.findGlobalUniqueEntityId(), 0x000000, 0x000000);
+		registerEntity(EntityBotFly.class, "BotFly", -6750208, -13165534);
+		registerEntity(EntityScorpion.class, "Scorpion", 0xFFA200, 0xFFDB9C);
+		registerEntity(EntitySolifuge.class, "Solifuge", 0xFFDB9C, 0xFFA200);
+		registerEntity(EntityGrasshopper.class, "Grasshopper", 0x06B900, 0x5FFF5F);
+		registerEntity(EntityLocust.class, "Locust", 0x5FFF5F, 0x06B900);
+		registerEntity(EntityMoth.class, "Moth", 0x00FFDD, 0xFBFFA8);
+		registerEntity(EntityFirebrat.class, "Firebrat", 0xFF0000, 0xFF8800);
+		registerEntity(EntityAntlion.class, "Antlion", 0x000000, 0xFFFFFF);
+		registerEntity(EntityBlackWidow.class, "BlackWidow", 0x000000, 0xFF0000);
+
+		registerEntityWithoutEgg(EntityAnimatedBlock.class, "AnimatedBlock");
+		registerEntityWithoutEgg(EntityAnimatedChest.class, "AnimatedChest");
+		registerEntityWithoutEgg(EntityHealer.class, "Goddess Altar");
+		registerEntityWithoutEgg(EntityRepairAltar.class, "Repair Altar");
+		registerEntityWithoutEgg(EntityXPAltar.class, "Experience Altar");
 
 		// Extra Mob spawn conditions
 		EntityRegistry.addSpawn(EntityBlackWidow.class, 100, 5, 10, EnumCreatureType.monster, BiomeGenBase.hell);
 
 		// Entity Items
-		EntityRegistry.registerGlobalEntityID(EntityWaspDagger.class, "WaspDagger", EntityRegistry.findGlobalUniqueEntityId());
-		EntityRegistry.registerModEntity(EntityWaspDagger.class, "WaspDagger", WASP_DAGGER_ID, ErebusMod.instance, 64, 1, true);
+		registerEntityWithoutEgg(EntityWaspDagger.class, "WaspDagger");
 	}
 
-	public static void registerEntity(Class entityClass, String saveName, int id, int backgroundEggColour, int foregroundEggColour) {
+	private static void registerEntity(Class<? extends Entity> entityClass, String saveName, int backgroundEggColour, int foregroundEggColour) {
+		int id = EntityRegistry.findGlobalUniqueEntityId();
 		EntityRegistry.registerGlobalEntityID(entityClass, saveName + " - Erebus", id, backgroundEggColour, foregroundEggColour);
 		EntityRegistry.registerModEntity(entityClass, saveName + " - Erebus", id, ErebusMod.instance, 120, 1, true);
+	}
+
+	private static void registerEntityWithoutEgg(Class<? extends Entity> entityClass, String saveName) {
+		int id = EntityRegistry.findGlobalUniqueEntityId();
+		EntityRegistry.registerGlobalEntityID(entityClass, saveName, EntityRegistry.findGlobalUniqueEntityId());
+		EntityRegistry.registerModEntity(entityClass, saveName, id, ErebusMod.instance, 120, 1, true);
 	}
 }

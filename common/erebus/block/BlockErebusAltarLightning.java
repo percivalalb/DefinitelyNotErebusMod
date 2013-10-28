@@ -68,6 +68,7 @@ public class BlockErebusAltarLightning extends BlockContainer {
 	public void onBlockAdded(World world, int x, int y, int z) {
 		TileEntityErebusAltarLightning te = (TileEntityErebusAltarLightning) world.getBlockTileEntity(x, y, z);
 		te.setActive(true);
+		world.scheduleBlockUpdate(x, y, z, blockID, tickRate(world));
 	}
 
 	@Override
@@ -81,6 +82,30 @@ public class BlockErebusAltarLightning extends BlockContainer {
 
 		return false;
 	}
-
-
+	/*
+	 * @Override public void updateTick(World world, int x, int y, int z, Random
+	 * par5Random) { world.scheduleBlockUpdate(x, y, z, blockID,
+	 * tickRate(world));
+	 * 
+	 * }
+	 * 
+	 * @Override public int tickRate(World par1World) { return 10; }
+	 * 
+	 * @Override public AxisAlignedBB getCollisionBoundingBoxFromPool(World
+	 * world, int i, int j, int k) { int f = 6; return
+	 * AxisAlignedBB.getBoundingBox(i - f, j, k - f, i + 1 + f, j + 3, k + 1 +
+	 * f); }
+	 * 
+	 * @Override public void onEntityCollidedWithBlock(World world, int x, int
+	 * y, int z, Entity entity) { TileEntityErebusAltarLightning te =
+	 * (TileEntityErebusAltarLightning) world.getBlockTileEntity(x, y, z); if
+	 * (te.isActive()) if (entity instanceof EntityLivingBase) if
+	 * (((EntityLivingBase)
+	 * entity).getCreatureAttribute().equals(EnumCreatureAttribute.ARTHROPOD)) {
+	 * double a = entity.posX; double b = entity.boundingBox.minY; double c =
+	 * entity.posZ; EntityLightningBolt entitybolt = new
+	 * EntityLightningBolt(world, 0D, 0D, 0D);
+	 * entitybolt.setLocationAndAngles(a, b, c, 0F, 0F);
+	 * world.addWeatherEffect(entitybolt); } }
+	 */
 }

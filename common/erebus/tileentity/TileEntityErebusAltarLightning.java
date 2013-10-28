@@ -1,6 +1,13 @@
 package erebus.tileentity;
 
+import java.util.List;
+
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -9,10 +16,11 @@ import erebus.ModBlocks;
 public class TileEntityErebusAltarLightning extends TileEntity {
 
 	public int animationTicks = 0;
-	boolean active = true;
+	private boolean active = true;
 
 	@Override
 	public void updateEntity() {
+		findEnemyToAttack();
 		if (active) {
 			if (animationTicks == 0)
 				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "erebus:altarchangestate", 1.0F, 1.3F);
@@ -56,4 +64,23 @@ public class TileEntityErebusAltarLightning extends TileEntity {
 		active = par1;
 	}
 
+	protected Entity findEnemyToAttack() {
+
+		List list = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, AxisAlignedBB.getBoundingBox(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D, xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D).expand(6D, 2D, 6D));
+		if (active)
+			for (int i = 0; i < list.size(); i++) {
+				Entity entity = (Entity) list.get(i);
+				if (entity != null)
+					if (entity instanceof EntityLivingBase)
+						if (((EntityLivingBase) entity).getCreatureAttribute().equals(EnumCreatureAttribute.ARTHROPOD)) {
+							double a = entity.posX;
+							double b = entity.boundingBox.minY;
+							double c = entity.posZ;
+							EntityLightningBolt entitybolt = new EntityLightningBolt(worldObj, 0D, 0D, 0D);
+							entitybolt.setLocationAndAngles(a, b, c, 0F, 0F);
+							worldObj.addWeatherEffect(entitybolt);
+						}
+			}
+		return null;
+	}
 }

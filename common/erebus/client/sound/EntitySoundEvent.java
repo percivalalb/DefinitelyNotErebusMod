@@ -52,6 +52,10 @@ public class EntitySoundEvent {
 
 			// Insect Repellent
 			event.manager.addSound("erebus:SprayCanSound.ogg");
+
+			// Altar Open/Close
+			event.manager.addSound("erebus:altarchangestate.ogg");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println("Erebus had a problem loading its sounds. Please report it to the authors.");

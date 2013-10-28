@@ -13,10 +13,15 @@ public class TileEntityErebusAltarLightning extends TileEntity {
 
 	@Override
 	public void updateEntity() {
-		if (active)
+		if (active) {
+			if (animationTicks == 0)
+				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "erebus:altarchangestate", 1.0F, 1.3F);
 			if (animationTicks <= 24)
 				animationTicks++;
+		}
 		if (!active) {
+			if (animationTicks == 25)
+				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "erebus:altarchangestate", 1.0F, 1.3F);
 			if (animationTicks >= 1)
 				animationTicks--;
 			if (animationTicks == 0)

@@ -74,7 +74,7 @@ public class ModEntities {
 
 	private static void registerEntityWithoutEgg(Class<? extends Entity> entityClass, String saveName) {
 		int id = EntityRegistry.findGlobalUniqueEntityId();
-		EntityRegistry.registerGlobalEntityID(entityClass, saveName, EntityRegistry.findGlobalUniqueEntityId());
+		EntityRegistry.registerGlobalEntityID(entityClass, saveName, id);
 		EntityRegistry.registerModEntity(entityClass, saveName, id, ErebusMod.instance, 120, 1, true);
 	}
 }

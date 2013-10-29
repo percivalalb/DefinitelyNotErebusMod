@@ -53,8 +53,9 @@ public class EntitySoundEvent {
 			// Insect Repellent
 			event.manager.addSound("erebus:SprayCanSound.ogg");
 
-			// Altar Open/Close
+			// Altar sounds
 			event.manager.addSound("erebus:altarchangestate.ogg");
+			event.manager.addSound("erebus:altaroffering.ogg");
 
 		} catch (Exception e) {
 			e.printStackTrace();

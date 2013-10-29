@@ -130,8 +130,7 @@ public class BlockErebusAltar extends BlockContainer {
 				if (item == ModItems.erebusMaterials.itemID) {
 					if (world.getWorldTime() % 80 == 0) {
 						entity.setDead();
-						// need better sound here
-						world.playSoundEffect(entity.posX, entity.posY, entity.posZ, "portal.travel", 0.2F, 10.0F);
+						world.playSoundEffect(entity.posX, entity.posY, entity.posZ, "erebus:altaroffering", 0.2F, 10.0F);
 						world.spawnParticle("flame", entity.posX, entity.posY + 0.3D, entity.posZ, 0.0D, 0.0D, 0.0D);
 						world.spawnParticle("cloud", entity.posX, entity.posY + 0.3D, entity.posZ, 0.0D, 0.0D, 0.0D);
 					}

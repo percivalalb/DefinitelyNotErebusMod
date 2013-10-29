@@ -120,19 +120,23 @@ public class BlockErebusAltar extends BlockContainer {
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
 		double offsetY = 0.9D;
-		if (par5Entity instanceof EntityItem)
-			if (par5Entity.boundingBox.minY >= par3 + offsetY) {
-				ItemStack itemstack = ((EntityItem) par5Entity).getEntityItem();
+		if (entity instanceof EntityItem)
+			if (entity.boundingBox.minY >= y + offsetY) {
+				ItemStack itemstack = ((EntityItem) entity).getEntityItem();
 				int metadata = itemstack.getItemDamage();
 				setItemOffering(itemstack.itemID, metadata);
 				if (item == ModItems.erebusMaterials.itemID) {
-					par1World.spawnParticle("flame", par5Entity.posX, par5Entity.posY + 0.3D, par5Entity.posZ, 0.0D, 0.0D, 0.0D);
-					par1World.spawnParticle("smoke", par5Entity.posX, par5Entity.posY, par5Entity.posZ, 0.0D, 0.0D, 0.0D);
-					par5Entity.setDead();
+					if (world.getWorldTime() % 80 == 0) {
+						entity.setDead();
+						// need better sound here
+						world.playSoundEffect(entity.posX, entity.posY, entity.posZ, "portal.travel", 0.2F, 10.0F);
+						world.spawnParticle("flame", entity.posX, entity.posY + 0.3D, entity.posZ, 0.0D, 0.0D, 0.0D);
+						world.spawnParticle("cloud", entity.posX, entity.posY + 0.3D, entity.posZ, 0.0D, 0.0D, 0.0D);
+					}
 					System.out.println("Offering Accepted");
-					par1World.setBlockMetadataWithNotify(par2, par3, par4, meta, 7);
+					world.setBlockMetadataWithNotify(x, y, z, meta, 7);
 				}
 			}
 	}

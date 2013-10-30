@@ -16,7 +16,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
 import erebus.ModItems;
-import erebus.entity.EntityHealer;
 import erebus.entity.EntityRepairAltar;
 import erebus.entity.EntityXPAltar;
 import erebus.tileentity.TileEntityErebusAltar;
@@ -73,43 +72,6 @@ public class BlockErebusAltar extends BlockContainer {
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-		if (player.getCurrentEquippedItem() != null)
-			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID) {
-				int type = world.getBlockMetadata(x, y, z);
-				switch (type) {
-					case 8:
-						EntityXPAltar entityXPAltar = new EntityXPAltar(world);
-						entityXPAltar.setLocationAndAngles(x + 0.5D, y, z + 0.5D, 0.0F, 0.0F);
-						if (!world.isRemote) {
-							world.setBlock(x, y, z, 0);
-							world.spawnEntityInWorld(entityXPAltar);
-							return true;
-						}
-
-					case 9:
-						EntityRepairAltar entityRepairAltar = new EntityRepairAltar(world);
-						entityRepairAltar.setLocationAndAngles(x + 0.5D, y, z + 0.5D, 0.0F, 0.0F);
-						if (!world.isRemote) {
-							world.setBlock(x, y, z, 0);
-							world.spawnEntityInWorld(entityRepairAltar);
-							return true;
-						}
-
-					case 12:
-						if (!world.isRemote) {
-							world.setBlock(x, y, z, ModBlocks.erebusAltarLightning.blockID, 0, 7);
-							return true;
-						}
-					case 13:
-						EntityHealer entityHealer = new EntityHealer(world);
-						entityHealer.setLocationAndAngles(x + 0.5D, y, z + 0.5D, 0.0F, 0.0F);
-						if (!world.isRemote) {
-							world.setBlock(x, y, z, 0);
-							world.spawnEntityInWorld(entityHealer);
-							return true;
-						}
-				}
-			}
 		return false;
 	}
 
@@ -129,15 +91,49 @@ public class BlockErebusAltar extends BlockContainer {
 				setItemOffering(itemstack.itemID, metadata);
 				if (item == ModItems.erebusMaterials.itemID) {
 					if (world.getWorldTime() % 80 == 0) {
+						chooseAltar(world, x, y, z);
 						entity.setDead();
 						world.playSoundEffect(entity.posX, entity.posY, entity.posZ, "erebus:altaroffering", 0.2F, 10.0F);
 						world.spawnParticle("flame", entity.posX, entity.posY + 0.3D, entity.posZ, 0.0D, 0.0D, 0.0D);
 						world.spawnParticle("cloud", entity.posX, entity.posY + 0.3D, entity.posZ, 0.0D, 0.0D, 0.0D);
+						System.out.println(meta);
 					}
 					System.out.println("Offering Accepted");
-					world.setBlockMetadataWithNotify(x, y, z, meta, 7);
 				}
 			}
+	}
+
+	private void chooseAltar(World world, int x, int y, int z) {
+		switch (meta) {
+			case 8:
+				EntityXPAltar entityXPAltar = new EntityXPAltar(world);
+				entityXPAltar.setLocationAndAngles(x + 0.5D, y, z + 0.5D, 0.0F, 0.0F);
+				if (!world.isRemote) {
+					world.setBlock(x, y, z, 0);
+					world.spawnEntityInWorld(entityXPAltar);
+					break;
+				}
+
+			case 9:
+				EntityRepairAltar entityRepairAltar = new EntityRepairAltar(world);
+				entityRepairAltar.setLocationAndAngles(x + 0.5D, y, z + 0.5D, 0.0F, 0.0F);
+				if (!world.isRemote) {
+					world.setBlock(x, y, z, 0);
+					world.spawnEntityInWorld(entityRepairAltar);
+					break;
+				}
+
+			case 12:
+				if (!world.isRemote) {
+					world.setBlock(x, y, z, ModBlocks.erebusAltarLightning.blockID, 0, 3);
+					break;
+				}
+			case 13:
+				if (!world.isRemote) {
+					world.setBlock(x, y, z, ModBlocks.erebusAltarHealing.blockID, 0, 7);
+					break;
+				}
+		}
 	}
 
 	private void setItemOffering(int itemID, int metadata) {

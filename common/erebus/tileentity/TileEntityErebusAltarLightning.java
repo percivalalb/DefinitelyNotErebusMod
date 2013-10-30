@@ -6,6 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -15,9 +16,9 @@ import erebus.ModBlocks;
 
 public class TileEntityErebusAltarLightning extends TileEntity {
 
-	public int animationTicks = 0;
-	private boolean active = true;
-	public int fuzz = 0;
+	public int animationTicks;
+	public boolean active;
+	public int fuzz;
 	@Override
 	public void updateEntity() {
 		findEnemyToAttack();
@@ -38,10 +39,10 @@ public class TileEntityErebusAltarLightning extends TileEntity {
 				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "erebus:altarchangestate", 1.0F, 1.3F);
 			if (animationTicks >= 1)
 				animationTicks--;
-			if (animationTicks == 0)
+			if (animationTicks == 1)
 				worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.erebusAltar.blockID);
 		}
-		if (animationTicks <= 24)
+		if (animationTicks >= 1 && animationTicks <= 24)
 			flameOn(worldObj, xCoord, yCoord, zCoord);
 	}
 
@@ -87,5 +88,22 @@ public class TileEntityErebusAltarLightning extends TileEntity {
 						}
 			}
 		return null;
+	}
+
+
+	@Override
+	public void writeToNBT(NBTTagCompound state) {
+		super.writeToNBT(state);
+		state.setInteger("animationTicks", animationTicks);
+		state.setInteger("fuzz", fuzz);
+		state.setBoolean("active", active);
+	}
+
+	@Override
+	public void readFromNBT(NBTTagCompound state) {
+		super.readFromNBT(state);
+		animationTicks = state.getInteger("animationTicks");
+		fuzz = state.getInteger("fuzz");
+		active = state.getBoolean("active");
 	}
 }

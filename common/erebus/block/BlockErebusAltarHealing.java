@@ -11,17 +11,17 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
-import erebus.tileentity.TileEntityErebusAltarLightning;
+import erebus.tileentity.TileEntityErebusAltarHealing;
 
 
-public class BlockErebusAltarLightning extends BlockContainer {
+public class BlockErebusAltarHealing extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	private Icon a, b;
 	private int item;
 	private int meta;
 
-	public BlockErebusAltarLightning(int id) {
+	public BlockErebusAltarHealing(int id) {
 		super(id, Material.rock);
 	}
 
@@ -42,7 +42,7 @@ public class BlockErebusAltarLightning extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityErebusAltarLightning();
+		return new TileEntityErebusAltarHealing();
 	}
 
 	@Override
@@ -66,13 +66,13 @@ public class BlockErebusAltarLightning extends BlockContainer {
 
 	@Override
 	public void onBlockAdded(World world, int x, int y, int z) {
-		TileEntityErebusAltarLightning te = (TileEntityErebusAltarLightning) world.getBlockTileEntity(x, y, z);
+		TileEntityErebusAltarHealing te = (TileEntityErebusAltarHealing) world.getBlockTileEntity(x, y, z);
 		te.setActive(false);
 	}
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-		TileEntityErebusAltarLightning te = (TileEntityErebusAltarLightning) world.getBlockTileEntity(x, y, z);
+		TileEntityErebusAltarHealing te = (TileEntityErebusAltarHealing) world.getBlockTileEntity(x, y, z);
 		if (player.getCurrentEquippedItem() != null)
 			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID && !te.active) {
 				te.setActive(true);

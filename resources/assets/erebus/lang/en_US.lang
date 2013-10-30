@@ -129,6 +129,7 @@ tile.insectRepellent.name=Insect Repellent Block
 tile.bambooTorch.name=Bamboo Torch
 tile.erebusAltar.name=Erebus Altar
 tile.erebusAltarLightning.name=Altar of Lightning
+tile.erebusAltarHealing.name=Altar of Healing
 
 #Items
 item.helmetExo.name=Exoskeleton Helmet

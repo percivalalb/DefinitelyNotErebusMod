@@ -15,7 +15,6 @@ import erebus.entity.EntityCentipede;
 import erebus.entity.EntityFirebrat;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityGrasshopper;
-import erebus.entity.EntityHealer;
 import erebus.entity.EntityLocust;
 import erebus.entity.EntityMosquito;
 import erebus.entity.EntityMoth;
@@ -25,7 +24,6 @@ import erebus.entity.EntitySolifuge;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityWasp;
 import erebus.entity.EntityWaspDagger;
-import erebus.entity.EntityXPAltar;
 
 public class ModEntities {
 
@@ -55,9 +53,8 @@ public class ModEntities {
 
 		registerEntityWithoutEgg(EntityAnimatedBlock.class, "AnimatedBlock");
 		registerEntityWithoutEgg(EntityAnimatedChest.class, "AnimatedChest");
-		registerEntityWithoutEgg(EntityHealer.class, "Goddess Altar");
 		registerEntityWithoutEgg(EntityRepairAltar.class, "Repair Altar");
-		registerEntityWithoutEgg(EntityXPAltar.class, "Experience Altar");
+
 
 		// Extra Mob spawn conditions
 		EntityRegistry.addSpawn(EntityBlackWidow.class, 100, 5, 10, EnumCreatureType.monster, BiomeGenBase.hell);

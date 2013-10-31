@@ -18,7 +18,6 @@ import erebus.entity.EntityGrasshopper;
 import erebus.entity.EntityLocust;
 import erebus.entity.EntityMosquito;
 import erebus.entity.EntityMoth;
-import erebus.entity.EntityRepairAltar;
 import erebus.entity.EntityScorpion;
 import erebus.entity.EntitySolifuge;
 import erebus.entity.EntityTarantula;
@@ -53,7 +52,6 @@ public class ModEntities {
 
 		registerEntityWithoutEgg(EntityAnimatedBlock.class, "AnimatedBlock");
 		registerEntityWithoutEgg(EntityAnimatedChest.class, "AnimatedChest");
-		registerEntityWithoutEgg(EntityRepairAltar.class, "Repair Altar");
 
 
 		// Extra Mob spawn conditions

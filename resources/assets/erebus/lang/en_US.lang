@@ -130,6 +130,8 @@ tile.bambooTorch.name=Bamboo Torch
 tile.erebusAltar.name=Erebus Altar
 tile.erebusAltarLightning.name=Altar of Lightning
 tile.erebusAltarHealing.name=Altar of Healing
+tile.erebusAltarXP.name=Altar of Experience
+tile.erebusAltarRepair.name=Altar of Repair
 
 #Items
 item.helmetExo.name=Exoskeleton Helmet

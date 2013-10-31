@@ -3,31 +3,31 @@ package erebus.block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.ModBlocks;
 import erebus.ModItems;
-import erebus.tileentity.TileEntityErebusAltar;
+import erebus.tileentity.TileEntityErebusAltarXP;
 
-public class BlockErebusAltar extends BlockContainer {
+
+public class BlockErebusAltarXP extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	private Icon a, b;
 	private int item;
 	private int meta;
-	String message;
-	public BlockErebusAltar(int id) {
+	private int uses;
+
+	public BlockErebusAltarXP(int id) {
 		super(id, Material.rock);
 	}
 
@@ -48,7 +48,7 @@ public class BlockErebusAltar extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityErebusAltar();
+		return new TileEntityErebusAltarXP();
 	}
 
 	@Override
@@ -71,13 +71,10 @@ public class BlockErebusAltar extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-		message = "Place Erebus item offerings on this altar. Then activate with The Wand of Animation.";
-		if (world.isRemote){
-			Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText(message.toString()));
-			return true;
-		}
-		return false;
+	public void onBlockAdded(World world, int x, int y, int z) {
+		TileEntityErebusAltarXP te = (TileEntityErebusAltarXP) world.getBlockTileEntity(x, y, z);
+		te.setActive(false);
+		te.setUses(0);
 	}
 
 	@Override
@@ -88,60 +85,42 @@ public class BlockErebusAltar extends BlockContainer {
 
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
+		TileEntityErebusAltarXP te = (TileEntityErebusAltarXP) world.getBlockTileEntity(x, y, z);
+		EntityXPOrb orb = new EntityXPOrb(world, x + 0.5D, y + 1.8D, z + 0.5D, 33);
 		double offsetY = 0.9D;
 		if (entity instanceof EntityItem)
-			if (entity.boundingBox.minY >= y + offsetY) {
+			if (entity.boundingBox.minY >= y + offsetY && te.active) {
 				ItemStack itemstack = ((EntityItem) entity).getEntityItem();
 				int metadata = itemstack.getItemDamage();
 				setItemOffering(itemstack.itemID, metadata);
-				if (item == ModItems.erebusMaterials.itemID)
-					if (world.getWorldTime() % 80 == 0) {
-						chooseAltar(world, x, y, z);
-						entity.setDead();
-						world.playSoundEffect(entity.posX, entity.posY, entity.posZ, "erebus:altaroffering", 0.2F, 10.0F);
-						world.spawnParticle("flame", entity.posX, entity.posY + 0.3D, entity.posZ, 0.0D, 0.0D, 0.0D);
-						world.spawnParticle("cloud", entity.posX, entity.posY + 0.3D, entity.posZ, 0.0D, 0.0D, 0.0D);
-						if (world.isRemote)
-							Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText(message.toString()));
-					}
+				if (item == ModItems.erebusMaterials.itemID) {
+					entity.setDead();
+					te.setUses(te.getUses() + 1);
+					if (!world.isRemote)
+						world.spawnEntityInWorld(orb);
+				}
 			}
 	}
 
-	private void chooseAltar(World world, int x, int y, int z) {
-		switch (meta) {
-			case 8:
-				if (!world.isRemote) {
-					world.setBlock(x, y, z, ModBlocks.erebusAltarXP.blockID, 0, 3);
-					message = "Altar of Experience Summoned.";
-					break;
-				}
 
-			case 9:
-				if (!world.isRemote) {
-					world.setBlock(x, y, z, ModBlocks.erebusAltarRepair.blockID, 0, 3);
-					message = "Altar of Repair Summoned.";
-					break;
-				}
-
-			case 12:
-				if (!world.isRemote) {
-					world.setBlock(x, y, z, ModBlocks.erebusAltarLightning.blockID, 0, 3);
-					message = "Altar of Lightning Summoned.";
-					break;
-				}
-			case 13:
-				if (!world.isRemote) {
-					world.setBlock(x, y, z, ModBlocks.erebusAltarHealing.blockID, 0, 3);
-					message = "Altar of Healing Summoned.";
-					break;
-				}
-		}
-
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
+		TileEntityErebusAltarXP te = (TileEntityErebusAltarXP) world.getBlockTileEntity(x, y, z);
+		if (player.getCurrentEquippedItem() != null)
+			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID && !te.active) {
+				te.setActive(true);
+				return true;
+			}
+		if (player.getCurrentEquippedItem() != null)
+			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID && te.active) {
+				te.setActive(false);
+				return true;
+			}
+		return false;
 	}
 
 	private void setItemOffering(int itemID, int metadata) {
 		item = itemID;
 		meta = metadata;
 	}
-
 }

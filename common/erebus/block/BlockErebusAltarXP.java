@@ -85,7 +85,7 @@ public class BlockErebusAltarXP extends BlockContainer {
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
 		TileEntityErebusAltarXP te = (TileEntityErebusAltarXP) world.getBlockTileEntity(x, y, z);
-		EntityXPOrb orb = new EntityXPOrb(world, x + 0.5D, y + 1.8D, z + 0.5D, 1);
+		// EntityXPOrb orb =
 		double offsetY = 0.9D;
 		if (entity instanceof EntityItem)
 			if (entity.boundingBox.minY >= y + offsetY && te.active) {
@@ -94,8 +94,10 @@ public class BlockErebusAltarXP extends BlockContainer {
 				setItemOffering(itemstack.itemID, metadata);
 				if (item == ModItems.erebusMaterials.itemID) {
 					entity.setDead();
-					if (!world.isRemote)
-						world.spawnEntityInWorld(orb);
+					if (!world.isRemote) {
+						world.spawnEntityInWorld(new EntityXPOrb(world, x + 0.5D, y + 1.8D, z + 0.5D, itemstack.stackSize));
+						te.setUses(te.getUses() + itemstack.stackSize);
+					}
 				}
 			}
 	}

@@ -19,7 +19,6 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 			if (animationTicks <= 24)
 				animationTicks++;
 		}
-
 		if (!active) {
 			if (animationTicks == 25)
 				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "erebus:altarchangestate", 1.0F, 1.3F);

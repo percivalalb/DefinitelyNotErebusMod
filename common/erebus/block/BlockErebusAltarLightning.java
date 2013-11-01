@@ -18,8 +18,6 @@ public class BlockErebusAltarLightning extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	private Icon a, b;
-	private int item;
-	private int meta;
 
 	public BlockErebusAltarLightning(int id) {
 		super(id, Material.rock);
@@ -76,6 +74,7 @@ public class BlockErebusAltarLightning extends BlockContainer {
 		if (player.getCurrentEquippedItem() != null)
 			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID && !te.active) {
 				te.setActive(true);
+				te.setSpawnTicks(12000);
 				return true;
 			}
 		if (player.getCurrentEquippedItem() != null)
@@ -83,7 +82,6 @@ public class BlockErebusAltarLightning extends BlockContainer {
 				te.setActive(false);
 				return true;
 			}
-
 		return false;
 	}
 }

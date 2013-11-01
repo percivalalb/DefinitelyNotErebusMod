@@ -11,16 +11,16 @@ public class TileEntityErebusAltarXP extends TileEntity {
 
 	public int animationTicks;
 	public boolean active;
-	private int uses;
+	private int spawnTicks;
 	@Override
 	public void updateEntity() {
+		spawnTicks--;
 		if (active) {
 			if (animationTicks == 0)
 				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "erebus:altarchangestate", 1.0F, 1.3F);
 			if (animationTicks <= 24)
 				animationTicks++;
 		}
-
 		if (!active) {
 			if (animationTicks == 25)
 				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "erebus:altarchangestate", 1.0F, 1.3F);
@@ -31,7 +31,7 @@ public class TileEntityErebusAltarXP extends TileEntity {
 		}
 		if (animationTicks == 6)
 			cloudBurst(worldObj, xCoord, yCoord, zCoord);
-		if (uses == 25)
+		if (spawnTicks == 0)
 			setActive(false);
 	}
 
@@ -40,7 +40,6 @@ public class TileEntityErebusAltarXP extends TileEntity {
 		double d0 = x + 0.53125F;
 		double d1 = y + 1.25F;
 		double d2 = z + 0.53125F;
-
 		world.spawnParticle("cloud", d0, d1, d2, 0.0D, 0.0D, 0.0D);
 		world.spawnParticle("cloud", d0, d1, d2 - 0.265625, 0.0D, 0.0D, 0.0D);
 		world.spawnParticle("cloud", d0, d1, d2 + 0.265625, 0.0D, 0.0D, 0.0D);
@@ -54,6 +53,9 @@ public class TileEntityErebusAltarXP extends TileEntity {
 		active = par1;
 	}
 
+	public void setSpawnTicks(int i) {
+		spawnTicks = i;
+	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound state) {
@@ -67,15 +69,5 @@ public class TileEntityErebusAltarXP extends TileEntity {
 		super.readFromNBT(state);
 		animationTicks = state.getInteger("animationTicks");
 		active = state.getBoolean("active");
-	}
-
-	public void setUses(int i) {
-		uses = i;
-		if (uses == 24)
-			worldObj.playSoundEffect(xCoord, yCoord, zCoord, "random.orb", 0.5F, 0.3F);
-	}
-
-	public int getUses() {
-		return uses;
 	}
 }

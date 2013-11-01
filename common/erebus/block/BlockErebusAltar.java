@@ -94,7 +94,7 @@ public class BlockErebusAltar extends BlockContainer {
 				ItemStack itemstack = ((EntityItem) entity).getEntityItem();
 				int metadata = itemstack.getItemDamage();
 				setItemOffering(itemstack.itemID, metadata);
-				if (item == ModItems.erebusMaterials.itemID)
+				if (item == ModItems.erebusMaterials.itemID && isValidOffering())
 					if (world.getWorldTime() % 80 == 0) {
 						chooseAltar(world, x, y, z);
 						entity.setDead();
@@ -107,6 +107,21 @@ public class BlockErebusAltar extends BlockContainer {
 			}
 	}
 
+	private boolean isValidOffering() {
+		switch (meta) {
+			case 8:
+				return true;
+			case 9:
+				return true;
+			case 12:
+				return true;
+			case 13:
+				return true;
+			default:
+				return false;
+		}
+	}
+
 	private void chooseAltar(World world, int x, int y, int z) {
 		switch (meta) {
 			case 8:
@@ -115,14 +130,12 @@ public class BlockErebusAltar extends BlockContainer {
 					message = "Altar of Experience Summoned.";
 					break;
 				}
-
 			case 9:
 				if (!world.isRemote) {
 					world.setBlock(x, y, z, ModBlocks.erebusAltarRepair.blockID, 0, 3);
 					message = "Altar of Repair Summoned.";
 					break;
 				}
-
 			case 12:
 				if (!world.isRemote) {
 					world.setBlock(x, y, z, ModBlocks.erebusAltarLightning.blockID, 0, 3);
@@ -136,7 +149,6 @@ public class BlockErebusAltar extends BlockContainer {
 					break;
 				}
 		}
-
 	}
 
 	private void setItemOffering(int itemID, int metadata) {

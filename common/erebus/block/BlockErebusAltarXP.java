@@ -74,7 +74,6 @@ public class BlockErebusAltarXP extends BlockContainer {
 	public void onBlockAdded(World world, int x, int y, int z) {
 		TileEntityErebusAltarXP te = (TileEntityErebusAltarXP) world.getBlockTileEntity(x, y, z);
 		te.setActive(false);
-		te.setUses(0);
 	}
 
 	@Override
@@ -86,7 +85,7 @@ public class BlockErebusAltarXP extends BlockContainer {
 	@Override
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
 		TileEntityErebusAltarXP te = (TileEntityErebusAltarXP) world.getBlockTileEntity(x, y, z);
-		EntityXPOrb orb = new EntityXPOrb(world, x + 0.5D, y + 1.8D, z + 0.5D, 33);
+		EntityXPOrb orb = new EntityXPOrb(world, x + 0.5D, y + 1.8D, z + 0.5D, 1);
 		double offsetY = 0.9D;
 		if (entity instanceof EntityItem)
 			if (entity.boundingBox.minY >= y + offsetY && te.active) {
@@ -95,7 +94,6 @@ public class BlockErebusAltarXP extends BlockContainer {
 				setItemOffering(itemstack.itemID, metadata);
 				if (item == ModItems.erebusMaterials.itemID) {
 					entity.setDead();
-					te.setUses(te.getUses() + 1);
 					if (!world.isRemote)
 						world.spawnEntityInWorld(orb);
 				}
@@ -109,6 +107,7 @@ public class BlockErebusAltarXP extends BlockContainer {
 		if (player.getCurrentEquippedItem() != null)
 			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID && !te.active) {
 				te.setActive(true);
+				te.setSpawnTicks(12000);
 				return true;
 			}
 		if (player.getCurrentEquippedItem() != null)

@@ -11,10 +11,10 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 
 	public int animationTicks;
 	public boolean active;
-	private int spawnTicks;
+	public int spawnTicks;
+	public boolean notUsed = true;
 	@Override
 	public void updateEntity() {
-		spawnTicks--;
 		if (active) {
 			if (animationTicks == 0)
 				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "erebus:altarchangestate", 1.0F, 1.3F);
@@ -31,8 +31,12 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 		}
 		if (animationTicks == 6)
 			cloudBurst(worldObj, xCoord, yCoord, zCoord);
+
+		if (spawnTicks == 200)
+			setcanBeUsed(false);
 		if (spawnTicks == 0)
 			setActive(false);
+		spawnTicks--;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -58,6 +62,9 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 		spawnTicks = i;
 	}
 
+	public void setcanBeUsed(boolean canBeUsed) {
+		notUsed = canBeUsed;
+	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound state) {

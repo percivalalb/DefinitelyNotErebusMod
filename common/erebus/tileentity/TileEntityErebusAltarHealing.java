@@ -82,6 +82,7 @@ public class TileEntityErebusAltarHealing extends TileEntity {
 	public void writeToNBT(NBTTagCompound state) {
 		super.writeToNBT(state);
 		state.setInteger("animationTicks", animationTicks);
+		state.setInteger("spawnTicks", spawnTicks);
 		state.setBoolean("active", active);
 	}
 
@@ -89,6 +90,7 @@ public class TileEntityErebusAltarHealing extends TileEntity {
 	public void readFromNBT(NBTTagCompound state) {
 		super.readFromNBT(state);
 		animationTicks = state.getInteger("animationTicks");
+		spawnTicks = state.getInteger("spawnTicks");
 		active = state.getBoolean("active");
 	}
 }

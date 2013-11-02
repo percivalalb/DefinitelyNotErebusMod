@@ -32,7 +32,7 @@ public class TileEntityErebusAltarXP extends TileEntity {
 		}
 		if (animationTicks == 6)
 			cloudBurst(worldObj, xCoord, yCoord, zCoord);
-		if (spawnTicks == 0 || uses >= 825)
+		if (spawnTicks == 0 || uses >= 165)
 			setActive(false);
 	}
 
@@ -66,10 +66,16 @@ public class TileEntityErebusAltarXP extends TileEntity {
 		return uses;
 	}
 
+	public int getExcess() {
+		return uses - 165;
+	}
+
 	@Override
 	public void writeToNBT(NBTTagCompound state) {
 		super.writeToNBT(state);
 		state.setInteger("animationTicks", animationTicks);
+		state.setInteger("spawnTicks", spawnTicks);
+		state.setInteger("uses", uses);
 		state.setBoolean("active", active);
 	}
 
@@ -77,6 +83,8 @@ public class TileEntityErebusAltarXP extends TileEntity {
 	public void readFromNBT(NBTTagCompound state) {
 		super.readFromNBT(state);
 		animationTicks = state.getInteger("animationTicks");
+		spawnTicks = state.getInteger("spawnTicks");
+		uses = state.getInteger("uses");
 		active = state.getBoolean("active");
 	}
 

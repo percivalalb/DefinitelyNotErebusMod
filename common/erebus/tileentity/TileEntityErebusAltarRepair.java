@@ -11,8 +11,10 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 
 	public int animationTicks;
 	public boolean active;
+	private int spawnTicks;
 	@Override
 	public void updateEntity() {
+		spawnTicks--;
 		if (active) {
 			if (animationTicks == 0)
 				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "erebus:altarchangestate", 1.0F, 1.3F);
@@ -29,6 +31,8 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 		}
 		if (animationTicks == 6)
 			cloudBurst(worldObj, xCoord, yCoord, zCoord);
+		if (spawnTicks == 0)
+			setActive(false);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -50,6 +54,10 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 		active = par1;
 	}
 
+	public void setSpawnTicks(int i) {
+		spawnTicks = i;
+	}
+
 
 	@Override
 	public void writeToNBT(NBTTagCompound state) {
@@ -63,5 +71,27 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 		super.readFromNBT(state);
 		animationTicks = state.getInteger("animationTicks");
 		active = state.getBoolean("active");
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void sparky(World world, int x, int y, int z) {
+		double d0 = x + 0.53125F;
+		double d1 = y + 1.0F;
+		double d2 = z + 0.53125F;
+		world.spawnParticle("smoke", d0, d1, d2, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("lava", d0, d1, d2, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("smoke", d0, d1, d2 - 0.265625, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("lava", d0, d1, d2 - 0.265625, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("smoke", d0, d1, d2 + 0.265625, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("lava", d0, d1, d2 + 0.265625, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("smoke", d0 - 0.265625, d1, d2, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("lava", d0 - 0.265625, d1, d2, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("smoke", d0 + 0.265625, d1, d2, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("lava", d0 + 0.265625, d1, d2, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("smoke", d0, d1 + 0.25, d2, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("lava", d0, d1 + 0.25, d2, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("smoke", d0, d1 + 0.5, d2, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("lava", d0, d1 + 0.5, d2, 0.0D, 0.0D, 0.0D);
+
 	}
 }

@@ -102,7 +102,7 @@ public class TileEntityErebusAltarLightning extends TileEntity {
 	public void writeToNBT(NBTTagCompound state) {
 		super.writeToNBT(state);
 		state.setInteger("animationTicks", animationTicks);
-		state.setInteger("fuzz", fuzz);
+		state.setInteger("spawnTicks", spawnTicks);
 		state.setBoolean("active", active);
 	}
 
@@ -110,7 +110,8 @@ public class TileEntityErebusAltarLightning extends TileEntity {
 	public void readFromNBT(NBTTagCompound state) {
 		super.readFromNBT(state);
 		animationTicks = state.getInteger("animationTicks");
-		fuzz = state.getInteger("fuzz");
+		spawnTicks = state.getInteger("spawnTicks");
 		active = state.getBoolean("active");
 	}
+
 }

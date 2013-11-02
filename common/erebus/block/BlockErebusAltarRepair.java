@@ -22,6 +22,7 @@ public class BlockErebusAltarRepair extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	private Icon a, b;
+	private boolean notUsed;
 
 	public BlockErebusAltarRepair(int id) {
 		super(id, Material.rock);
@@ -70,6 +71,13 @@ public class BlockErebusAltarRepair extends BlockContainer {
 	public void onBlockAdded(World world, int x, int y, int z) {
 		TileEntityErebusAltarRepair te = (TileEntityErebusAltarRepair) world.getBlockTileEntity(x, y, z);
 		te.setActive(false);
+		te.setSpawnTicks(12000);
+		setcanBeUsed(true);
+	}
+
+	private void setcanBeUsed(boolean canBeUsed) {
+		notUsed = canBeUsed;
+
 	}
 
 	@Override
@@ -82,17 +90,22 @@ public class BlockErebusAltarRepair extends BlockContainer {
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
 		TileEntityErebusAltarRepair te = (TileEntityErebusAltarRepair) world.getBlockTileEntity(x, y, z);
 		double offsetY = 0.9D;
-		if (entity instanceof EntityItem)
-			if (entity.boundingBox.minY >= y + offsetY && te.active) {
-				ItemStack itemstack = ((EntityItem) entity).getEntityItem();
-				int maxDamage=itemstack.getMaxDamage();
-				if (itemstack.isItemStackDamageable()) {
-					itemstack.getItem().setDamage(itemstack, -maxDamage);
-					te.setActive(false);
+		if (entity instanceof EntityItem && entity.boundingBox.minY >= y + offsetY && te.active) {
+			ItemStack itemstack = ((EntityItem) entity).getEntityItem();
+			int repairDamage = itemstack.getItemDamage();
+			int maxDamage = itemstack.getMaxDamage();
+
+			if (itemstack.isItemStackDamageable() && repairDamage > 0 && notUsed) {
+				te.setSpawnTicks(60);
+				te.sparky(world, x, y, z);
+				if (world.getWorldTime() % 200 == 0) {
+					world.playSoundEffect(entity.posX, entity.posY, entity.posZ, "random.anvil_use", 0.2F, 1.0F);
+					itemstack.getItem().setDamage(itemstack, -repairDamage);
+					setcanBeUsed(false);
 				}
 			}
+		}
 	}
-
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		TileEntityErebusAltarRepair te = (TileEntityErebusAltarRepair) world.getBlockTileEntity(x, y, z);

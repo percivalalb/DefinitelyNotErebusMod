@@ -98,7 +98,7 @@ public class BlockErebusAltar extends BlockContainer {
 					if (world.getWorldTime() % 80 == 0) {
 						chooseAltar(world, x, y, z);
 						entity.setDead();
-						world.playSoundEffect(entity.posX, entity.posY, entity.posZ, "erebus:altaroffering", 0.2F, 10.0F);
+						world.playSoundEffect(entity.posX, entity.posY, entity.posZ, "erebus:altaroffering", 0.2F, 1.0F);
 						world.spawnParticle("flame", entity.posX, entity.posY + 0.3D, entity.posZ, 0.0D, 0.0D, 0.0D);
 						world.spawnParticle("cloud", entity.posX, entity.posY + 0.3D, entity.posZ, 0.0D, 0.0D, 0.0D);
 						if (world.isRemote)

@@ -11,8 +11,9 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 
 	public int animationTicks;
 	public boolean active;
-	public int spawnTicks;
+	private int spawnTicks;
 	public boolean notUsed = true;
+	private int collisions;
 	@Override
 	public void updateEntity() {
 		if (active) {
@@ -31,8 +32,7 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 		}
 		if (animationTicks == 6)
 			cloudBurst(worldObj, xCoord, yCoord, zCoord);
-
-		if (spawnTicks == 200)
+		if (spawnTicks == 160)
 			setcanBeUsed(false);
 		if (spawnTicks == 0)
 			setActive(false);
@@ -44,7 +44,6 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 		double d0 = x + 0.53125F;
 		double d1 = y + 1.25F;
 		double d2 = z + 0.53125F;
-
 		world.spawnParticle("cloud", d0, d1, d2, 0.0D, 0.0D, 0.0D);
 		world.spawnParticle("cloud", d0, d1, d2 - 0.265625, 0.0D, 0.0D, 0.0D);
 		world.spawnParticle("cloud", d0, d1, d2 + 0.265625, 0.0D, 0.0D, 0.0D);
@@ -62,6 +61,18 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 		spawnTicks = i;
 	}
 
+	public int getSpawnTicks() {
+		return spawnTicks;
+	}
+
+	public void setCollisions(int i) {
+		collisions = i;
+	}
+
+	public int getCollisions() {
+		return collisions;
+	}
+
 	public void setcanBeUsed(boolean canBeUsed) {
 		notUsed = canBeUsed;
 	}
@@ -70,6 +81,7 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 	public void writeToNBT(NBTTagCompound state) {
 		super.writeToNBT(state);
 		state.setInteger("animationTicks", animationTicks);
+		state.setInteger("spawnTicks", spawnTicks);
 		state.setBoolean("active", active);
 	}
 
@@ -77,28 +89,20 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 	public void readFromNBT(NBTTagCompound state) {
 		super.readFromNBT(state);
 		animationTicks = state.getInteger("animationTicks");
+		spawnTicks = state.getInteger("spawnTicks");
 		active = state.getBoolean("active");
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void sparky(World world, int x, int y, int z) {
 		double d0 = x + 0.53125F;
-		double d1 = y + 1.0F;
+		double d1 = y + 1.5F;
 		double d2 = z + 0.53125F;
-		world.spawnParticle("smoke", d0, d1, d2, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("lava", d0, d1, d2, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("smoke", d0, d1, d2 - 0.265625, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("lava", d0, d1, d2 - 0.265625, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("smoke", d0, d1, d2 + 0.265625, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("lava", d0, d1, d2 + 0.265625, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("smoke", d0 - 0.265625, d1, d2, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("lava", d0 - 0.265625, d1, d2, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("smoke", d0 + 0.265625, d1, d2, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("lava", d0 + 0.265625, d1, d2, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("smoke", d0, d1 + 0.25, d2, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("lava", d0, d1 + 0.25, d2, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("smoke", d0, d1 + 0.5, d2, 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("lava", d0, d1 + 0.5, d2, 0.0D, 0.0D, 0.0D);
-
+		world.spawnParticle("enchantmenttable", d0, d1, d2, 0.5D, 0.0D, -0.5D);
+		world.spawnParticle("enchantmenttable", d0, d1, d2, -0.5D, 0.0D, 0.5D);
+		world.spawnParticle("enchantmenttable", d0, d1, d2, -0.5D, 0.0D, -0.5D);
+		world.spawnParticle("enchantmenttable", d0, d1, d2, 0.5D, 0.0D, 0.5D);
+		world.spawnParticle("portal", d0, d1 + 0.5, d2, 0.0D, 0.0D, 0.0D);
 	}
+
 }

@@ -23,7 +23,6 @@ public class BlockErebusAltarRepair extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	private Icon a, b;
 
-
 	public BlockErebusAltarRepair(int id) {
 		super(id, Material.rock);
 	}
@@ -76,9 +75,10 @@ public class BlockErebusAltarRepair extends BlockContainer {
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int i, int j, int k) {
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
+		TileEntityErebusAltarRepair te = (TileEntityErebusAltarRepair) world.getBlockTileEntity(x, y, z);
 		float f = 0.0625F;
-		return AxisAlignedBB.getBoundingBox(i + f, j, k + f, i + 1 - f, j + 1 - f, k + 1 - f);
+		return AxisAlignedBB.getBoundingBox(x + f, y, z + f, x + 1 - f, y + 1 - f, z + 1 - f);
 	}
 
 	@Override
@@ -86,17 +86,23 @@ public class BlockErebusAltarRepair extends BlockContainer {
 		TileEntityErebusAltarRepair te = (TileEntityErebusAltarRepair) world.getBlockTileEntity(x, y, z);
 		double offsetY = 0.9D;
 		if (entity instanceof EntityItem && entity.boundingBox.minY >= y + offsetY && te.active) {
+			te.setCollisions(te.getCollisions() + 1);
 			ItemStack itemstack = ((EntityItem) entity).getEntityItem();
+			entity.posY = y + 1.6D;
 			int repairDamage = itemstack.getItemDamage();
 			int maxDamage = itemstack.getMaxDamage();
-			if (itemstack.isItemStackDamageable() && repairDamage > 0)
-				if (te.spawnTicks == 60) {
+			if (itemstack.isItemStackDamageable() && repairDamage > 0) {
+				if (te.notUsed)
+					te.setSpawnTicks(160);
+				if (te.getSpawnTicks() == 60 && te.getCollisions() == 101) {
 					world.playSoundEffect(entity.posX, entity.posY, entity.posZ, "random.anvil_use", 0.2F, 1.0F);
 					itemstack.getItem().setDamage(itemstack, -repairDamage);
 				}
-			if (te.notUsed && repairDamage > 0)
-				te.setSpawnTicks(200);
-			te.sparky(world, x, y, z);
+				if (te.getSpawnTicks() % 2 == 0 && te.getCollisions() < 101)
+					te.sparky(world, x, y, z);
+			}
+			if (te.getCollisions() > 101)
+				te.setSpawnTicks(0);
 		}
 	}
 

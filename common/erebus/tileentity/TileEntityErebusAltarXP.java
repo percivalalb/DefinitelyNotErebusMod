@@ -1,5 +1,6 @@
 package erebus.tileentity;
 
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -30,7 +31,7 @@ public class TileEntityErebusAltarXP extends TileEntity {
 		}
 		if (animationTicks == 6)
 			cloudBurst(worldObj, xCoord, yCoord, zCoord);
-		if (spawnTicks == 0 || uses > 165)
+		if (spawnTicks == 0)
 			setActive(false);
 		spawnTicks--;
 	}
@@ -38,7 +39,7 @@ public class TileEntityErebusAltarXP extends TileEntity {
 	@SideOnly(Side.CLIENT)
 	public void cloudBurst(World world, int x, int y, int z) {
 		double d0 = x + 0.53125F;
-		double d1 = y + 1.5F;
+		double d1 = y + 1.25F;
 		double d2 = z + 0.53125F;
 		world.spawnParticle("cloud", d0, d1, d2, 0.0D, 0.0D, 0.0D);
 		world.spawnParticle("cloud", d0, d1, d2 - 0.265625, 0.0D, 0.0D, 0.0D);
@@ -68,16 +69,22 @@ public class TileEntityErebusAltarXP extends TileEntity {
 	public int getExcess() {
 		return uses - 165;
 	}
-	/*
-	 * @Override public void writeToNBT(NBTTagCompound state) {
-	 * super.writeToNBT(state); state.setInteger("animationTicks",
-	 * animationTicks); state.setInteger("spawnTicks", spawnTicks);
-	 * state.setInteger("uses", uses); state.setBoolean("active", active); }
-	 * 
-	 * @Override public void readFromNBT(NBTTagCompound state) {
-	 * super.readFromNBT(state); animationTicks =
-	 * state.getInteger("animationTicks"); spawnTicks =
-	 * state.getInteger("spawnTicks"); uses = state.getInteger("uses"); active =
-	 * state.getBoolean("active"); }
-	 */
+
+	@Override
+	public void writeToNBT(NBTTagCompound state) {
+		super.writeToNBT(state);
+		state.setInteger("animationTicks", animationTicks);
+		state.setInteger("spawnTicks", spawnTicks);
+		state.setInteger("uses", uses);
+		state.setBoolean("active", active);
+	}
+
+	@Override
+	public void readFromNBT(NBTTagCompound state) {
+		super.readFromNBT(state);
+		animationTicks = state.getInteger("animationTicks");
+		spawnTicks = state.getInteger("spawnTicks");
+		uses = state.getInteger("uses");
+		active = state.getBoolean("active");
+	}
 }

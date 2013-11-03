@@ -87,23 +87,22 @@ public class BlockErebusAltarXP extends BlockContainer {
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
 		TileEntityErebusAltarXP te = (TileEntityErebusAltarXP) world.getBlockTileEntity(x, y, z);
 		double offsetY = 0.9D;
-		if (entity instanceof EntityItem)
-			if (entity.boundingBox.minY >= y + offsetY && te.active) {
-				ItemStack itemstack = ((EntityItem) entity).getEntityItem();
-				int metadata = itemstack.getItemDamage();
-				setItemOffering(itemstack.itemID, metadata);
-				if (item == ModItems.erebusMaterials.itemID) {
-					entity.setDead();
-					if (!world.isRemote) {
-						world.spawnEntityInWorld(new EntityXPOrb(world, x + 0.5D, y + 1.8D, z + 0.5D, itemstack.stackSize * 5));
-						te.setUses(te.getUses() + itemstack.stackSize);
-					}
-					if(te.getExcess()>0)
-						Utils.dropStack(world, (int) (x + 0.5D), (int) (y + 1.0D), (int) (z + 0.5D), new ItemStack(item, te.getExcess(), meta));
-				}
+		if (entity instanceof EntityItem && entity.boundingBox.minY >= y + offsetY && te.active) {
+			ItemStack itemstack = ((EntityItem) entity).getEntityItem();
+			int metadata = itemstack.getItemDamage();
+			setItemOffering(itemstack.itemID, metadata);
+			if (item == ModItems.erebusMaterials.itemID) {
+				te.setUses(te.getUses() + itemstack.stackSize);
+				entity.setDead();
+				if (!world.isRemote)
+					world.spawnEntityInWorld(new EntityXPOrb(world, x + 0.5D, y + 1.8D, z + 0.5D, itemstack.stackSize * 5));
+				if (te.getUses() > 165)
+					te.setSpawnTicks(0);
+				if(te.getExcess()>0)
+					Utils.dropStack(world, (int) (x + 0.5D), (int) (y + 1.0D), (int) (z + 0.5D), new ItemStack(item, te.getExcess(), meta));
 			}
+		}
 	}
-
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		TileEntityErebusAltarXP te = (TileEntityErebusAltarXP) world.getBlockTileEntity(x, y, z);

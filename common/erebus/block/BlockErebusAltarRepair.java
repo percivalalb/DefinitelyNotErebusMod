@@ -70,7 +70,6 @@ public class BlockErebusAltarRepair extends BlockContainer {
 	public void onBlockAdded(World world, int x, int y, int z) {
 		TileEntityErebusAltarRepair te = (TileEntityErebusAltarRepair) world.getBlockTileEntity(x, y, z);
 		te.setActive(false);
-		te.setSpawnTicks(12000);
 		te.setcanBeUsed(true);
 	}
 
@@ -112,6 +111,7 @@ public class BlockErebusAltarRepair extends BlockContainer {
 		if (player.getCurrentEquippedItem() != null)
 			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID && !te.active) {
 				te.setActive(true);
+				te.setSpawnTicks(12000);
 				return true;
 			}
 		if (player.getCurrentEquippedItem() != null)

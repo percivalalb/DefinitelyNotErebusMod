@@ -1,6 +1,5 @@
 package erebus.tileentity;
 
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -15,7 +14,6 @@ public class TileEntityErebusAltarXP extends TileEntity {
 	private int uses;
 	@Override
 	public void updateEntity() {
-		spawnTicks--;
 		if (active) {
 			if (animationTicks == 0)
 				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "erebus:altarchangestate", 1.0F, 1.3F);
@@ -32,14 +30,15 @@ public class TileEntityErebusAltarXP extends TileEntity {
 		}
 		if (animationTicks == 6)
 			cloudBurst(worldObj, xCoord, yCoord, zCoord);
-		if (spawnTicks == 0 || uses >= 165)
+		if (spawnTicks == 0 || uses > 165)
 			setActive(false);
+		spawnTicks--;
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void cloudBurst(World world, int x, int y, int z) {
 		double d0 = x + 0.53125F;
-		double d1 = y + 1.25F;
+		double d1 = y + 1.5F;
 		double d2 = z + 0.53125F;
 		world.spawnParticle("cloud", d0, d1, d2, 0.0D, 0.0D, 0.0D);
 		world.spawnParticle("cloud", d0, d1, d2 - 0.265625, 0.0D, 0.0D, 0.0D);
@@ -69,23 +68,16 @@ public class TileEntityErebusAltarXP extends TileEntity {
 	public int getExcess() {
 		return uses - 165;
 	}
-
-	@Override
-	public void writeToNBT(NBTTagCompound state) {
-		super.writeToNBT(state);
-		state.setInteger("animationTicks", animationTicks);
-		state.setInteger("spawnTicks", spawnTicks);
-		state.setInteger("uses", uses);
-		state.setBoolean("active", active);
-	}
-
-	@Override
-	public void readFromNBT(NBTTagCompound state) {
-		super.readFromNBT(state);
-		animationTicks = state.getInteger("animationTicks");
-		spawnTicks = state.getInteger("spawnTicks");
-		uses = state.getInteger("uses");
-		active = state.getBoolean("active");
-	}
-
+	/*
+	 * @Override public void writeToNBT(NBTTagCompound state) {
+	 * super.writeToNBT(state); state.setInteger("animationTicks",
+	 * animationTicks); state.setInteger("spawnTicks", spawnTicks);
+	 * state.setInteger("uses", uses); state.setBoolean("active", active); }
+	 * 
+	 * @Override public void readFromNBT(NBTTagCompound state) {
+	 * super.readFromNBT(state); animationTicks =
+	 * state.getInteger("animationTicks"); spawnTicks =
+	 * state.getInteger("spawnTicks"); uses = state.getInteger("uses"); active =
+	 * state.getBoolean("active"); }
+	 */
 }

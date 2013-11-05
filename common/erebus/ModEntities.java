@@ -14,6 +14,7 @@ import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
 import erebus.entity.EntityFirebrat;
 import erebus.entity.EntityFly;
+import erebus.entity.EntityGlowWorm;
 import erebus.entity.EntityGrasshopper;
 import erebus.entity.EntityLocust;
 import erebus.entity.EntityMosquito;
@@ -49,6 +50,7 @@ public class ModEntities {
 		registerEntity(EntityFirebrat.class, "Firebrat", 0xFF0000, 0xFF8800);
 		registerEntity(EntityAntlion.class, "Antlion", 0x000000, 0xFFFFFF);
 		registerEntity(EntityBlackWidow.class, "BlackWidow", 0x000000, 0xFF0000);
+		registerEntity(EntityGlowWorm.class, "GlowWorm", 0xFFFF00, 0xFFFFFF);
 
 		registerEntityWithoutEgg(EntityAnimatedBlock.class, "AnimatedBlock");
 		registerEntityWithoutEgg(EntityAnimatedChest.class, "AnimatedChest");

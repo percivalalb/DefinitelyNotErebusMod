@@ -22,7 +22,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.sound.AmbientMusicManager;
 import erebus.client.sound.EntitySoundEvent;
-import erebus.client.sound.LightningAltarNoises;
 import erebus.core.handler.CommonTickHandler;
 import erebus.core.handler.ConfigurationHandler;
 import erebus.core.handler.KeyBindingHandler;
@@ -106,7 +105,6 @@ public class ErebusMod {
 		MinecraftForge.EVENT_BUS.register(ModBlocks.insectRepellent);
 		MinecraftForge.EVENT_BUS.register(ModItems.armorGlider);
 		MinecraftForge.EVENT_BUS.register(ModItems.jumpBoots);
-		MinecraftForge.EVENT_BUS.register(new LightningAltarNoises());
 
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
 		BCFacadeManager.registerFacades();

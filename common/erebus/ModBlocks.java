@@ -10,6 +10,10 @@ import erebus.block.BlockBambooCrop;
 import erebus.block.BlockBambooTorch;
 import erebus.block.BlockButtonUmberstone;
 import erebus.block.BlockErebusAltar;
+import erebus.block.BlockErebusAltarHealing;
+import erebus.block.BlockErebusAltarLightning;
+import erebus.block.BlockErebusAltarRepair;
+import erebus.block.BlockErebusAltarXP;
 import erebus.block.BlockErebusGrass;
 import erebus.block.BlockErebusOre;
 import erebus.block.BlockErebusOreExtras;
@@ -102,6 +106,10 @@ public class ModBlocks {
 	public static Block bambooCrop;						public static int bambooCropID;
 	public static Block bambooTorch;					public static int bambooTorchID;
 	public static Block erebusAltar;					public static int erebusAltarID;
+	public static Block erebusAltarLightning;			public static int erebusAltarLightningID;
+	public static Block erebusAltarHealing;				public static int erebusAltarHealingID;
+	public static Block erebusAltarXP;					public static int erebusAltarXPID;
+	public static Block erebusAltarRepair;				public static int erebusAltarRepairID;
 
 	// STAIRS, SLABS, WALLS
 	public static Block[] umbercobbleStairs;			public static int[] umbercobbleStairsID;
@@ -160,6 +168,10 @@ public class ModBlocks {
 		bambooCrop = new BlockBambooCrop(bambooCropID).setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("bambooCrop").setTextureName("erebus:bambooCropBase");
 		bambooTorch = new BlockBambooTorch(bambooTorchID, Material.wood).setHardness(0.0F).setUnlocalizedName("bambooTorch").setTextureName("erebus:blockBambooTorch");
 		erebusAltar = new BlockErebusAltar(erebusAltarID).setUnlocalizedName("erebusAltar");
+		erebusAltarLightning = new BlockErebusAltarLightning(erebusAltarLightningID).setUnlocalizedName("erebusAltarLightning");
+		erebusAltarHealing = new BlockErebusAltarHealing(erebusAltarHealingID).setUnlocalizedName("erebusAltarHealing");
+		erebusAltarXP = new BlockErebusAltarXP(erebusAltarXPID).setUnlocalizedName("erebusAltarXP");
+		erebusAltarRepair = new BlockErebusAltarRepair(erebusAltarRepairID).setUnlocalizedName("erebusAltarRepair");
 
 		umbercobbleStairs = new Block[BlockUmberstone.iconPaths.length];
 		for (int i = 0; i < umbercobbleStairs.length; i++)
@@ -232,6 +244,10 @@ public class ModBlocks {
 		GameRegistry.registerBlock(bambooCrop, "erebus.bambooCrop");
 		GameRegistry.registerBlock(bambooTorch, "erebus.bambooTorch");
 		GameRegistry.registerBlock(erebusAltar, "erebus.erebusAltar");
+		GameRegistry.registerBlock(erebusAltar, "erebus.erebusAltarLightning");
+		GameRegistry.registerBlock(erebusAltar, "erebus.erebusAltarHealing");
+		GameRegistry.registerBlock(erebusAltar, "erebus.erebusAltarXP");
+		GameRegistry.registerBlock(erebusAltar, "erebus.erebusAltarRepair");
 
 		for (int i = 0; i < umbercobbleStairs.length; i++)
 			GameRegistry.registerBlock(umbercobbleStairs[i], "erebus.umbercobbleStairs" + i);

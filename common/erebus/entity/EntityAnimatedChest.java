@@ -16,9 +16,6 @@ import erebus.utils.Utils;
 public class EntityAnimatedChest extends EntityAnimatedBlock {
 
 	public ItemStack[] inventory;
-	boolean isOpen = false;
-	boolean canClose;
-	public float openticks = 0;
 
 	public EntityAnimatedChest(World world) {
 		super(world);
@@ -55,16 +52,10 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-		if (isOpen)
-			if (openticks > -1.570F) //
-				openticks = openticks - 0.3925F;//
-		if (!isOpen)
-			if (openticks < 0F)
-				openticks = openticks + 0.3925F;
+
 	}
 
 	@Override
-	// TODO make it open and show inventory
 	public boolean interact(EntityPlayer player) {
 		if (worldObj.isRemote)
 			return true;
@@ -78,23 +69,15 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 			return true;
 		} else if (stack == null) {
 			player.displayGUIChest(new TileEntityAnimatedChest(this));
-			setOpen(true);
-			System.out.println(isOpen);
 			return true;
 		} else
 			return false;
 	}
 
-	protected void setOpen(boolean open) {
-		isOpen = open;
-	}
-
 	@Override
 	public void writeEntityToNBT(NBTTagCompound data) {
 		super.writeEntityToNBT(data);
-
 		NBTTagList nbttaglist = new NBTTagList();
-
 		for (int i = 0; i < inventory.length; i++)
 			if (inventory[i] != null) {
 				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
@@ -102,21 +85,17 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 				inventory[i].writeToNBT(nbttagcompound1);
 				nbttaglist.appendTag(nbttagcompound1);
 			}
-
 		data.setTag("Items", nbttaglist);
 	}
 
 	@Override
 	public void readEntityFromNBT(NBTTagCompound data) {
 		super.readEntityFromNBT(data);
-
 		NBTTagList nbttaglist = data.getTagList("Items");
 		inventory = new ItemStack[27];
-
 		for (int i = 0; i < nbttaglist.tagCount(); i++) {
 			NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.tagAt(i);
 			byte b0 = nbttagcompound1.getByte("Slot");
-
 			if (b0 >= 0 && b0 < inventory.length)
 				inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 		}

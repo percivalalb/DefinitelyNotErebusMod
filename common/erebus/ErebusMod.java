@@ -25,7 +25,6 @@ import erebus.client.sound.EntitySoundEvent;
 import erebus.core.handler.CommonTickHandler;
 import erebus.core.handler.ConfigurationHandler;
 import erebus.core.handler.KeyBindingHandler;
-import erebus.core.handler.LightningAltarNoises;
 import erebus.core.handler.PlayerTeleportHandler;
 import erebus.core.handler.VersionCheckTickHandler;
 import erebus.core.helper.LogHelper;
@@ -106,7 +105,6 @@ public class ErebusMod {
 		MinecraftForge.EVENT_BUS.register(ModBlocks.insectRepellent);
 		MinecraftForge.EVENT_BUS.register(ModItems.armorGlider);
 		MinecraftForge.EVENT_BUS.register(ModItems.jumpBoots);
-		MinecraftForge.EVENT_BUS.register(new LightningAltarNoises());
 
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
 		BCFacadeManager.registerFacades();

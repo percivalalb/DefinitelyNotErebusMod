@@ -1,6 +1,7 @@
 package erebus.client.render.item;
 
 import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -67,15 +68,24 @@ public class WaspDaggerItemRenderer extends Render implements IItemRenderer {
 
 	private void renderDagger(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
-		GL11.glPushMatrix(); // Start Rendering
-		GL11.glTranslatef(x, y, z); // Position
-		GL11.glRotatef(180F, 1F, 0, 0);
-		GL11.glRotatef(-135F, 0, 1F, 0);
-		GL11.glRotatef(70F, 0, 0, 1F);
-		GL11.glScaled(size, size, size); // Changes the size (Only really used
-		// when reading in the inventory)
-		ModelWaspDagger.render(0.0625F); // Render
-		GL11.glPopMatrix(); // End Rendering
+		if (RenderItem.renderInFrame) {
+			GL11.glPushMatrix();
+			GL11.glTranslatef(x - 0.2F, y - 1.0F, z);
+			GL11.glRotatef(180F, 1F, 0, 0);
+			GL11.glRotatef(0F, 0, 1F, 0);
+			GL11.glRotatef(45F, 0, 0, 1F);
+			GL11.glScaled(0.3F, 0.3F, 0.3F);
+			ModelWaspDagger.render(0.0625F);
+			GL11.glPopMatrix();
+		} else {
+			GL11.glPushMatrix();
+			GL11.glTranslatef(x, y, z);
+			GL11.glRotatef(180F, 1F, 0, 0);
+			GL11.glRotatef(-135F, 0, 1F, 0);
+			GL11.glRotatef(70F, 0, 0, 1F);
+			GL11.glScaled(size, size, size);
+			ModelWaspDagger.render(0.0625F);
+		}
 	}
 
 	private void renderDaggerFirstPerson(float x, float y, float z, double size) {

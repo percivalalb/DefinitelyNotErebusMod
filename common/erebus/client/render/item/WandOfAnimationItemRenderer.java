@@ -1,5 +1,6 @@
 package erebus.client.render.item;
 
+import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
@@ -63,14 +64,25 @@ public class WandOfAnimationItemRenderer implements IItemRenderer {
 	}
 
 	private void renderWand(float x, float y, float z, double size) {
-		GL11.glPushMatrix();
-		GL11.glTranslatef(x, y, z);
-		GL11.glRotatef(180F, 1F, 0, 0);
-		GL11.glRotatef(-135F, 0, 1F, 0);
-		GL11.glRotatef(70F, 0, 0, 1F);
-		GL11.glScaled(size, size, size);
-		model.render(0.0625F);
-		GL11.glPopMatrix();
+		if (RenderItem.renderInFrame) {
+			GL11.glPushMatrix();
+			GL11.glTranslatef(x + 0.1F, y - 0.8F, z);
+			GL11.glRotatef(180F, 1F, 0, 0);
+			GL11.glRotatef(0F, 0, 1F, 0);
+			GL11.glRotatef(45F, 0, 0, 1F);
+			GL11.glScaled(0.6F, 0.6F, 0.6F);
+			model.render(0.0625F);
+			GL11.glPopMatrix();
+		} else {
+			GL11.glPushMatrix();
+			GL11.glTranslatef(x, y, z);
+			GL11.glRotatef(180F, 1F, 0, 0);
+			GL11.glRotatef(-135F, 0, 1F, 0);
+			GL11.glRotatef(70F, 0, 0, 1F);
+			GL11.glScaled(size, size, size);
+			model.render(0.0625F);
+			GL11.glPopMatrix();
+		}
 	}
 
 	private void renderWandFirstPerson(float x, float y, float z, double size) {

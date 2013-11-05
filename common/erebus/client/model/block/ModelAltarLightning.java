@@ -1,17 +1,16 @@
-package erebus.client.model.entity;
+package erebus.client.model.block;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.entity.EntityEngine;
+import erebus.tileentity.TileEntityErebusAltarLightning;
 
 @SideOnly(Side.CLIENT)
-public class ModelEngineEntity extends ModelBase {
+public class ModelAltarLightning extends ModelBase {
 
 	ModelRenderer Mid;
 	ModelRenderer Top;
@@ -27,7 +26,7 @@ public class ModelEngineEntity extends ModelBase {
 	ModelRenderer ElectrodeR2;
 	ModelRenderer Sparks;
 
-	public ModelEngineEntity() {
+	public ModelAltarLightning() {
 		textureWidth = 256;
 		textureHeight = 64;
 
@@ -111,34 +110,52 @@ public class ModelEngineEntity extends ModelBase {
 		setRotation(Sparks, 0F, 0.7853982F, 0F);
 	}
 
-	@Override
-	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(par1Entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
-		Mid.render(par7);
-		Top.render(par7);
-		Bot.render(par7);
+	public void render(TileEntityErebusAltarLightning tile) {
 
-		EntityEngine var8 = (EntityEngine) par1Entity;
+		float x = tile.animationTicks;
 		GL11.glPushMatrix();
-		float f1 = var8.animationTicks;
-		GL11.glScalef(0.04F * f1, 0.04F * f1, 0.04F * f1);
-		SmallBox.render(par7);
-		Sparks.render(par7);
 
-		ElectrodeF1.render(par7);
-		ElectrodeF2.render(par7);
+		GL11.glScalef(0.04F * x, 0.04F * x, 0.04F * x);
+		SmallBox.render(0.0625F);
+		Sparks.render(0.0625F);
 
-		ElectrodeR1.render(par7);
-		ElectrodeR2.render(par7);
+		ElectrodeF1.render(0.0625F);
+		ElectrodeF2.render(0.0625F);
 
-		ElectrodeB1.render(par7);
-		ElectrodeB2.render(par7);
+		ElectrodeR1.render(0.0625F);
+		ElectrodeR2.render(0.0625F);
 
-		ElectrodeL1.render(par7);
-		ElectrodeL2.render(par7);
+		ElectrodeB1.render(0.0625F);
+		ElectrodeB2.render(0.0625F);
+
+		ElectrodeL1.render(0.0625F);
+		ElectrodeL2.render(0.0625F);
 		GL11.glPopMatrix();
 
+		GL11.glPushMatrix();
+		GL11.glRotatef(-x * 7.2F, 0F, 1F, 0F);
+		Mid.render(0.0625F);
+		GL11.glPopMatrix();
+
+		GL11.glPushMatrix();
+		GL11.glRotatef(x * 7.2F, 0F, 1F, 0F);
+		Top.render(0.0625F);
+		Bot.render(0.0625F);
+		GL11.glPopMatrix();
+
+		// GL11.glPushMatrix();
+		// GL11.glTranslatef(0F, 3.0F - x, 0F);
+		// SmallBox.render(0.0625F);
+		// Sparks.render(0.0625F);
+		// ElectrodeF1.render(0.0625F);
+		// ElectrodeF2.render(0.0625F);
+		// ElectrodeR1.render(0.0625F);
+		// ElectrodeR2.render(0.0625F);
+		// ElectrodeB1.render(0.0625F);
+		// ElectrodeB2.render(0.0625F);
+		// ElectrodeL1.render(0.0625F);
+		// ElectrodeL2.render(0.0625F);
+		// GL11.glPopMatrix();
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -147,23 +164,7 @@ public class ModelEngineEntity extends ModelBase {
 		model.rotateAngleZ = z;
 	}
 
-	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
-		EntityEngine var8 = (EntityEngine) par7Entity;
-		float x = var8.animationTicks;
-		Mid.rotateAngleY = x * -0.12568F;
-		Top.rotateAngleY = x * 0.12568F;
-		Bot.rotateAngleY = x * 0.12568F;
-		SmallBox.setRotationPoint(0F, 3.0F - x, 0F);
-		Sparks.setRotationPoint(0F, 3.0F - x, 0F);
-		ElectrodeF1.setRotationPoint(0F, 3.0F - x, 0F);
-		ElectrodeF2.setRotationPoint(0F, 3.0F - x, 0F);
-		ElectrodeR1.setRotationPoint(0F, 3.0F - x, 0F);
-		ElectrodeR2.setRotationPoint(0F, 3.0F - x, 0F);
-		ElectrodeB1.setRotationPoint(0F, 3.0F - x, 0F);
-		ElectrodeB2.setRotationPoint(0F, 3.0F - x, 0F);
-		ElectrodeL1.setRotationPoint(0F, 3.0F - x, 0F);
-		ElectrodeL2.setRotationPoint(0F, 3.0F - x, 0F);
+	public void setRotationAngles() {
 	}
 
 }

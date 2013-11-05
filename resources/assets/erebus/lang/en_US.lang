@@ -128,6 +128,10 @@ tile.erebusFiddlehead.name=Fiddlehead
 tile.insectRepellent.name=Insect Repellent Block
 tile.bambooTorch.name=Bamboo Torch
 tile.erebusAltar.name=Erebus Altar
+tile.erebusAltarLightning.name=Altar of Lightning
+tile.erebusAltarHealing.name=Altar of Healing
+tile.erebusAltarXP.name=Altar of Experience
+tile.erebusAltarRepair.name=Altar of Repair
 
 #Items
 item.helmetExo.name=Exoskeleton Helmet
@@ -205,6 +209,7 @@ entity.Solifuge - Erebus.name=Solifuge
 entity.Moth - Erebus.name=Moth
 entity.Firebrat - Erebus.name=Firebrat
 entity.Antlion - Erebus.name=Antlion
+entity.GlowWorm - Erebus.name=Glow worm
 
 #Other
 itemGroup.erebus.block=Erebus Blocks

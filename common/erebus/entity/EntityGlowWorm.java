@@ -97,12 +97,11 @@ public class EntityGlowWorm extends EntityMob
 
 	@Override
 	public void onUpdate()
-	{
+ {
 		if (worldObj.isRemote && isGlowing())
 			lightUp(worldObj, (int) posX, (int) posY, (int) posZ);
-		else
-			if(worldObj.isRemote && !isGlowing())
-				switchOff();
+		else if (worldObj.isRemote && !isGlowing())
+			switchOff();
 		super.onUpdate();
 	}
 

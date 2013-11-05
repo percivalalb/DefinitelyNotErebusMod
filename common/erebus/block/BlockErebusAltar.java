@@ -18,7 +18,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
 import erebus.ModItems;
-import erebus.tileentity.TileEntityErebusAltar;
+import erebus.tileentity.TileEntityErebusAltarEmpty;
 
 public class BlockErebusAltar extends BlockContainer {
 
@@ -48,7 +48,7 @@ public class BlockErebusAltar extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityErebusAltar();
+		return new TileEntityErebusAltarEmpty();
 	}
 
 	@Override

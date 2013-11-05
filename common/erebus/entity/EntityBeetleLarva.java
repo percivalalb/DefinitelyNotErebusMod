@@ -141,8 +141,7 @@ public class EntityBeetleLarva extends EntityUndergroundAnimal {
 	public void onDeathUpdate() {
 
 		super.onDeathUpdate();
-		if (!worldObj.isRemote && isDead && !isSquashed)
-			dropFewItems(false, 0);
+
 		if (isSquashed) {
 			PacketDispatcher.sendPacketToAllAround(posX, posY, posZ, 64D, dimension, PacketHandler.buildPacket(2, PacketParticle.BEETLE_LARVA_SQUISH, entityId));
 

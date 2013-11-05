@@ -2,15 +2,12 @@ package erebus.core.proxy;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-
 import com.google.common.io.ByteArrayDataInput;
-
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -26,6 +23,11 @@ import erebus.inventory.ContainerPetrifiedCraftingTable;
 import erebus.inventory.ContainerUmberFurnace;
 import erebus.tileentity.TileEntityBambooCrate;
 import erebus.tileentity.TileEntityErebusAltar;
+import erebus.tileentity.TileEntityErebusAltarEmpty;
+import erebus.tileentity.TileEntityErebusAltarHealing;
+import erebus.tileentity.TileEntityErebusAltarLightning;
+import erebus.tileentity.TileEntityErebusAltarRepair;
+import erebus.tileentity.TileEntityErebusAltarXP;
 import erebus.tileentity.TileEntitySpawner;
 import erebus.tileentity.TileEntityUmberFurnace;
 
@@ -47,6 +49,11 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntityBambooCrate.class, "Bamboo Crate (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityUmberFurnace.class, "Umber Furnace (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityErebusAltar.class, "Tile Entity Bug Zapper (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityErebusAltarEmpty.class, "Altar - Empty (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityErebusAltarHealing.class, "Altar - Healing (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityErebusAltarLightning.class, "Altar - Lightning (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityErebusAltarRepair.class, "Altar - Repair (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityErebusAltarXP.class, "Altar - XP (Erebus)");
 	}
 
 	public void handleParticlePacket(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data) {

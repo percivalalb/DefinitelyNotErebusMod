@@ -1,25 +1,24 @@
 package erebus.tileentity;
 
 import java.util.List;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
 
-public class TileEntityErebusAltarLightning extends TileEntity {
+public class TileEntityErebusAltarLightning extends TileEntityErebusAltar {
 
 	public int animationTicks;
 	public boolean active;
 	public int fuzz;
 	private int spawnTicks;
+	
 	@Override
 	public void updateEntity() {
 		findEnemyToAttack();
@@ -99,19 +98,17 @@ public class TileEntityErebusAltarLightning extends TileEntity {
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound state) {
-		super.writeToNBT(state);
-		state.setInteger("animationTicks", animationTicks);
-		state.setInteger("spawnTicks", spawnTicks);
-		state.setBoolean("active", active);
+	protected void writeTileToNBT(NBTTagCompound nbt){
+		nbt.setInteger("animationTicks", animationTicks);
+		nbt.setInteger("spawnTicks", spawnTicks);
+		nbt.setBoolean("active", active);
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound state) {
-		super.readFromNBT(state);
-		animationTicks = state.getInteger("animationTicks");
-		spawnTicks = state.getInteger("spawnTicks");
-		active = state.getBoolean("active");
+	protected void readTileFromNBT(NBTTagCompound nbt){
+		animationTicks = nbt.getInteger("animationTicks");
+		spawnTicks = nbt.getInteger("spawnTicks");
+		active = nbt.getBoolean("active");
 	}
 
 }

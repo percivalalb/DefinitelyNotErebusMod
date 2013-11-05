@@ -1,18 +1,21 @@
 package erebus;
 
 import java.io.File;
-
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
+import com.google.common.reflect.ClassPath;
+import com.google.common.reflect.ClassPath.ClassInfo;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -33,6 +36,7 @@ import erebus.creativetab.CreativeTabErebus;
 import erebus.creativetab.CreativeTabErebusBlock;
 import erebus.creativetab.CreativeTabErebusGear;
 import erebus.creativetab.CreativeTabErebusItem;
+import erebus.integration.IModIntegration;
 import erebus.lib.Reference;
 import erebus.network.PacketHandler;
 import erebus.recipes.BCFacadeManager;
@@ -109,6 +113,28 @@ public class ErebusMod {
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
 		BCFacadeManager.registerFacades();
 		KeyBindingRegistry.registerKeyBinding(new KeyBindingHandler());
-
+	}
+	
+	@EventHandler
+	public void postLoad(FMLPostInitializationEvent event) {
+		try{
+			for(ClassInfo clsInfo:ClassPath.from(getClass().getClassLoader()).getTopLevelClasses("erebus.integration")) {
+				Class cls=clsInfo.load();
+				
+				if (IModIntegration.class.isAssignableFrom(cls) && !cls.isInterface()) {
+					try{
+						IModIntegration obj=(IModIntegration)cls.newInstance();
+						if (Loader.isModLoaded(obj.getModId()))obj.integrate();
+						LogHelper.logInfo("Succesfully integrated into mod: "+obj.getModId());
+					}catch(Exception e) {
+						e.printStackTrace();
+						LogHelper.logSevere("Error integrating into mod: "+clsInfo.getName());
+					}
+				}
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+			LogHelper.logSevere("Error loading mod integration");
+		}
 	}
 }

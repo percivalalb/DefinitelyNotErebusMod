@@ -30,6 +30,12 @@ public class ContainerUmberFurnace extends Container {
 		for (int i = 0; i < 9; ++i)
 			addSlotToContainer(new Slot(inventory, i, 8 + i * 18, 142));
 	}
+	
+	@Override
+	public void addCraftingToCrafters(ICrafting crafter) {
+        super.addCraftingToCrafters(crafter);
+        furnace.sendGUIData(this, crafter);
+    }
 
 	@Override
 	public void detectAndSendChanges() {
@@ -39,8 +45,8 @@ public class ContainerUmberFurnace extends Container {
 	}
 
 	@Override
-	public void updateProgressBar(int i, int j) {
-		furnace.getGUIData(i, j);
+	public void updateProgressBar(int id, int value) {
+		furnace.getGUIData(id, value);
 	}
 
 	@Override
@@ -74,6 +80,9 @@ public class ContainerUmberFurnace extends Container {
 				slot.putStack((ItemStack) null);
 			else
 				slot.onSlotChanged();
+			
+			if (slotItemStack.stackSize==itemStack.stackSize)return null;
+			slot.onPickupFromSlot(player,slotItemStack);
 		}
 
 		return itemStack;

@@ -1,19 +1,19 @@
 package erebus.tileentity;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
 
-public class TileEntityErebusAltarRepair extends TileEntity {
+public class TileEntityErebusAltarRepair extends TileEntityErebusAltar {
 
 	public int animationTicks;
 	public boolean active;
 	private int spawnTicks;
 	public boolean notUsed = true;
 	private int collisions;
+	
 	@Override
 	public void updateEntity() {
 		if (active) {
@@ -77,22 +77,6 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 		notUsed = canBeUsed;
 	}
 
-	@Override
-	public void writeToNBT(NBTTagCompound state) {
-		super.writeToNBT(state);
-		state.setInteger("animationTicks", animationTicks);
-		state.setInteger("spawnTicks", spawnTicks);
-		state.setBoolean("active", active);
-	}
-
-	@Override
-	public void readFromNBT(NBTTagCompound state) {
-		super.readFromNBT(state);
-		animationTicks = state.getInteger("animationTicks");
-		spawnTicks = state.getInteger("spawnTicks");
-		active = state.getBoolean("active");
-	}
-
 	@SideOnly(Side.CLIENT)
 	public void sparky(World world, int x, int y, int z) {
 		double d0 = x + 0.53125F;
@@ -103,6 +87,20 @@ public class TileEntityErebusAltarRepair extends TileEntity {
 		world.spawnParticle("enchantmenttable", d0, d1, d2, -0.5D, 0.0D, -0.5D);
 		world.spawnParticle("enchantmenttable", d0, d1, d2, 0.5D, 0.0D, 0.5D);
 		world.spawnParticle("portal", d0, d1 + 0.5, d2, 0.0D, 0.0D, 0.0D);
+	}
+
+	@Override
+	protected void writeTileToNBT(NBTTagCompound nbt){
+		nbt.setInteger("animationTicks", animationTicks);
+		nbt.setInteger("spawnTicks", spawnTicks);
+		nbt.setBoolean("active", active);
+	}
+
+	@Override
+	protected void readTileFromNBT(NBTTagCompound nbt){
+		animationTicks = nbt.getInteger("animationTicks");
+		spawnTicks = nbt.getInteger("spawnTicks");
+		active = nbt.getBoolean("active");
 	}
 
 }

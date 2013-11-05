@@ -74,9 +74,11 @@ public class EntityAIEatCrops extends EntityAIBase {
 			((EntityGrasshopper) theEntity).setMoveTasks(true);
 			((EntityGrasshopper) theEntity).setCanJump(true);
 			if (reproCap == 6) {
-				EntityGrasshopper entityGrasshopper = new EntityGrasshopper(theEntity.worldObj);
-				entityGrasshopper.setPosition(PlantX, PlantY + 1, PlantZ);
-				theEntity.worldObj.spawnEntityInWorld(entityGrasshopper);
+				if (theEntity.worldObj.countEntities(EntityGrasshopper.class) < 80) {
+					EntityGrasshopper entityGrasshopper = new EntityGrasshopper(theEntity.worldObj);
+					entityGrasshopper.setPosition(PlantX, PlantY + 1, PlantZ);
+					theEntity.worldObj.spawnEntityInWorld(entityGrasshopper);
+				}
 			}
 			ticksSpent = 0;
 			if (reproCap < 12)

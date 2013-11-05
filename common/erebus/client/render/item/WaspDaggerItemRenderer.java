@@ -85,6 +85,7 @@ public class WaspDaggerItemRenderer extends Render implements IItemRenderer {
 			GL11.glRotatef(70F, 0, 0, 1F);
 			GL11.glScaled(size, size, size);
 			ModelWaspDagger.render(0.0625F);
+			GL11.glPopMatrix();
 		}
 	}
 

@@ -9,8 +9,6 @@ import net.minecraft.client.particle.EntityFX;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.world.World;
@@ -198,17 +196,5 @@ public class ClientProxy extends CommonProxy {
 
 		if (fx != null)
 			Minecraft.getMinecraft().effectRenderer.addEffect(fx);
-	}
-
-	@Override
-	public void handleGliderPakcet(EntityPlayer player, boolean isGliding) {
-		ItemStack chestplate = player.inventory.armorInventory[2];
-
-		if (chestplate != null && chestplate.getItem() == ModItems.armorGlider)
-			if (!chestplate.hasTagCompound()) {
-				chestplate.stackTagCompound = new NBTTagCompound();
-				return;
-			} else
-				chestplate.getTagCompound().setBoolean("isGliding", isGliding);
 	}
 }

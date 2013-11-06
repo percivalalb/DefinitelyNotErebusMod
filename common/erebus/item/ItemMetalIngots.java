@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.core.handler.ConfigurationHandler;
 
 public class ItemMetalIngots extends Item {
 
@@ -34,9 +35,15 @@ public class ItemMetalIngots extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(int itemID, CreativeTabs tabs, List list) {
-		for (int i = 0; i < icons.length; i++)
-			list.add(new ItemStack(itemID, 1, i));
+	public void getSubItems(int id, CreativeTabs tabs, List list) {
+		if (ConfigurationHandler.copper)
+			list.add(new ItemStack(id, 1, 0));
+		if (ConfigurationHandler.lead)
+			list.add(new ItemStack(id, 1, 1));
+		if (ConfigurationHandler.silver)
+			list.add(new ItemStack(id, 1, 2));
+		if (ConfigurationHandler.tin)
+			list.add(new ItemStack(id, 1, 3));
 	}
 
 	@Override

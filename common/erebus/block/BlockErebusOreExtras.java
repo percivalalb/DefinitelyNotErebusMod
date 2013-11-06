@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.core.handler.ConfigurationHandler;
 
 public class BlockErebusOreExtras extends Block {
 
@@ -31,8 +32,16 @@ public class BlockErebusOreExtras extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(int id, CreativeTabs tab, List list) {
-		for (int i = 0; i < blockIcon.length; ++i)
-			list.add(new ItemStack(id, 1, i));
+		if (ConfigurationHandler.aluminium)
+			list.add(new ItemStack(id, 1, 0));
+		if (ConfigurationHandler.copper)
+			list.add(new ItemStack(id, 1, 1));
+		if (ConfigurationHandler.lead)
+			list.add(new ItemStack(id, 1, 2));
+		if (ConfigurationHandler.silver)
+			list.add(new ItemStack(id, 1, 3));
+		if (ConfigurationHandler.tin)
+			list.add(new ItemStack(id, 1, 4));
 	}
 
 	@Override

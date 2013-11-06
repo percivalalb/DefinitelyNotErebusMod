@@ -17,9 +17,14 @@ public class ConfigurationHandler {
 
 	public static int erebusDimensionID;
 	public static boolean spawnPortalMobs = true;
-	public static boolean activateExtraOres = false;
 	public static boolean shouldDoVersionCheck = true;
 	public static byte beetleLarvaEating = 0;
+
+	public static boolean lead = false;
+	public static boolean silver = false;
+	public static boolean copper = false;
+	public static boolean tin = false;
+	public static boolean aluminium = false;
 
 	public static void loadConfig(File configFile) {
 		config = new Configuration(configFile);
@@ -148,9 +153,14 @@ public class ConfigurationHandler {
 
 			ConfigurationHandler.erebusDimensionID = config.get(Configuration.CATEGORY_GENERAL, "Dimension ID of The Erebus", 66, "There doesn't appear to be a limit on dimension IDs, but try to keep it low").getInt(66);
 			ConfigurationHandler.spawnPortalMobs = config.get(Configuration.CATEGORY_GENERAL, "Should spawn beetles and larvae in the portal", true).getBoolean(true);
-			ConfigurationHandler.activateExtraOres = config.get(Configuration.CATEGORY_GENERAL, "Should generate copper, lead, silver and tin?", false).getBoolean(false);
 			ConfigurationHandler.beetleLarvaEating = (byte) config.get(Configuration.CATEGORY_GENERAL, "Beetle larva eating settings", 0, "0 = only wooden blocks except tile entities & logs, 1 = only wooden blocks except logs, 2 = anything").getInt(0);
 			ConfigurationHandler.shouldDoVersionCheck = config.get(Configuration.CATEGORY_GENERAL, "Should do version check?", true).getBoolean(true);
+
+			ConfigurationHandler.lead = config.get(Configuration.CATEGORY_GENERAL, "Should generate lead?", false).getBoolean(false);
+			ConfigurationHandler.silver = config.get(Configuration.CATEGORY_GENERAL, "Should generate silver?", false).getBoolean(false);
+			ConfigurationHandler.copper = config.get(Configuration.CATEGORY_GENERAL, "Should generate copper?", false).getBoolean(false);
+			ConfigurationHandler.tin = config.get(Configuration.CATEGORY_GENERAL, "Should generate tin?", false).getBoolean(false);
+			ConfigurationHandler.aluminium = config.get(Configuration.CATEGORY_GENERAL, "Should generate aluminium?", false).getBoolean(false);
 
 		} catch (Exception e) {
 			FMLLog.log(Level.SEVERE, e, "Erebus has had a problem loading its configuration");

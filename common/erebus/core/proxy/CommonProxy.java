@@ -67,6 +67,10 @@ public class CommonProxy implements IGuiHandler {
 		// Unused server side. -- see ClientProxy for implementation
 	}
 
+	public void handleGliderPakcet(EntityPlayer player, boolean isGliding) {
+		// Unused server side. -- see ClientProxy for implementation
+	}
+
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		if (ID == GUI_ID_BAMBOO_CRATE) {

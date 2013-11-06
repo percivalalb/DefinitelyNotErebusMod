@@ -5,15 +5,19 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
+
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
+
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.Player;
 import erebus.lib.Reference;
 import erebus.network.packet.PacketColossalCratePage;
+import erebus.network.packet.PacketGlider;
 import erebus.network.packet.PacketParticle;
 import erebus.network.packet.PacketSound;
 import erebus.network.packet.PacketTeleport;
@@ -27,6 +31,7 @@ public class PacketHandler implements IPacketHandler {
 		register(1, new PacketColossalCratePage());
 		register(2, new PacketParticle());
 		register(3, new PacketSound());
+		register(4, new PacketGlider());
 	}
 
 	private void register(int packetID, IPacket packet) {

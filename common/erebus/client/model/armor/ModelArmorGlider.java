@@ -6,8 +6,6 @@ import net.minecraft.entity.Entity;
 
 import org.lwjgl.opengl.GL11;
 
-import erebus.item.ItemArmorGlider;
-
 public class ModelArmorGlider extends ModelBiped {
 	//fields
 	ModelRenderer Body;
@@ -17,6 +15,8 @@ public class ModelArmorGlider extends ModelBiped {
 	ModelRenderer LWingbase;
 	ModelRenderer RWing;
 	ModelRenderer LWing;
+
+	public boolean isGliding;
 
 	public ModelArmorGlider()
 	{
@@ -95,11 +95,10 @@ public class ModelArmorGlider extends ModelBiped {
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
 
-		if (!ItemArmorGlider.gliding) {
+		if (!isGliding) {
 			RWing.rotateAngleZ = 0F;
 			LWing.rotateAngleZ = 0F;
-		}
-		else {
+		} else {
 			RWing.rotateAngleZ = 1.570796F;
 			LWing.rotateAngleZ = -1.570796F;
 		}

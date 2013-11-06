@@ -5,6 +5,7 @@ import java.util.Random;
 
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
@@ -66,4 +67,10 @@ public class BlockSlabPlanksErebus extends BlockHalfSlab {
 		for (int a = 0; a < slabTypes[slabGroup].length; a++)
 			list.add(new ItemStack(id, 1, a));
 	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister reg) {
+	}
+
 }

@@ -11,6 +11,7 @@ public class ItemWaspDagger extends ItemSword {
 	public ItemWaspDagger(int id) {
 		super(id, ErebusMod.weaponWaspDagger);
 		maxStackSize = 16;
+		setTextureName("paper");
 	}
 
 	@Override

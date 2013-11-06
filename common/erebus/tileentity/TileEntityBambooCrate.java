@@ -11,6 +11,8 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
 
 	private ItemStack[] crateContents = new ItemStack[27];
 
+	private boolean tag;
+
 	@Override
 	public int getSizeInventory() {
 		return crateContents.length;
@@ -78,13 +80,15 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
 		NBTTagList nbttaglist = data.getTagList("Items");
 		crateContents = new ItemStack[getSizeInventory()];
 
-		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
+		for (int i = 0; i < nbttaglist.tagCount(); i++) {
 			NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.tagAt(i);
 			byte b0 = nbttagcompound1.getByte("Slot");
 
 			if (b0 >= 0 && b0 < crateContents.length)
 				crateContents[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 		}
+
+		tag = data.getBoolean("tag");
 	}
 
 	@Override
@@ -92,7 +96,7 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
 		super.writeToNBT(data);
 		NBTTagList nbttaglist = new NBTTagList();
 
-		for (int i = 0; i < crateContents.length; ++i)
+		for (int i = 0; i < crateContents.length; i++)
 			if (crateContents[i] != null) {
 				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
 				nbttagcompound1.setByte("Slot", (byte) i);
@@ -101,10 +105,12 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
 			}
 
 		data.setTag("Items", nbttaglist);
+
+		data.setBoolean("tag", tag);
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
+	public boolean isUseableByPlayer(EntityPlayer player) {
 		return true;
 	}
 
@@ -119,5 +125,17 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
 		return true;
+	}
+
+	public void tag() {
+		tag = true;
+	}
+
+	public void untag() {
+		tag = false;
+	}
+
+	public boolean isTagged() {
+		return tag;
 	}
 }

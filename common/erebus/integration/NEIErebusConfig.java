@@ -8,7 +8,7 @@ import erebus.lib.Reference;
 public class NEIErebusConfig implements IConfigureNEI {
 
 	@Override
-	public void loadConfig() {
+	public void loadConfig() { 
 		API.hideItem(ModBlocks.erebusGrass.blockID);
 		API.hideItem(ModBlocks.portalErebus.blockID);
 		API.hideItem(ModBlocks.blockTurnip.blockID);
@@ -26,3 +26,5 @@ public class NEIErebusConfig implements IConfigureNEI {
 		return Reference.MOD_VERSION;
 	}
 }
+
+/// where do we get the api files from?

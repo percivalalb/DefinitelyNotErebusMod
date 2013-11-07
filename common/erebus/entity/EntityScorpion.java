@@ -127,7 +127,8 @@ public class EntityScorpion extends EntityMob {
 	@Override
 	public void onCollideWithPlayer(EntityPlayer player) {
 		super.onCollideWithPlayer(player);
-
+		if (player.isSneaking())
+			player.setSneaking(false);
 		byte var2 = 0;
 		if (!worldObj.isRemote && player.boundingBox.maxY >= boundingBox.minY && player.boundingBox.minY <= boundingBox.maxY && captured())
 			if (worldObj.difficultySetting > 1)

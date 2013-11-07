@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import erebus.ModItems;
 import erebus.client.render.entity.AnimationMathHelper;
@@ -18,7 +19,7 @@ import erebus.item.ItemErebusMaterial;
 
 public class EntityWasp extends EntityMob {
 
-	private float heightOffset = 0.5F;
+	private float heightOffset = 0.0F;
 	public float wingFloat;
 	AnimationMathHelper mathWings = new AnimationMathHelper();
 	Class[] preys = { EntityGrasshopper.class };
@@ -108,19 +109,23 @@ public class EntityWasp extends EntityMob {
 			entityToAttack = findEnemyToAttack();
 		else
 			entityToAttack = null;
-		super.onUpdate();
-	}
-
-	@Override
-	public void onLivingUpdate() {
 		if (!worldObj.isRemote) {
-			heightOffset = 0.5F + (float) rand.nextGaussian() * 5.0F;
-			if (getEntityToAttack() != null && getEntityToAttack().posY + getEntityToAttack().getEyeHeight() > posY + getEyeHeight() + heightOffset)
+			heightOffset = 1.0F + (float) rand.nextGaussian() * 5.0F;
+			if (getEntityToAttack() != null && getEntityToAttack().posY + getEntityToAttack().getEyeHeight() > posY + getEyeHeight() + heightOffset) {
+				double var1 = getEntityToAttack().posX + 0.5D - posX;
+				double var3 = getEntityToAttack().posY + 1.D - posY;
+				double var5 = getEntityToAttack().posZ + 0.5D - posZ;
 				motionY += (0.350000011920929D - motionY) * 0.350000011920929D;
+				motionX += (Math.signum(var1) * 0.5D - motionX) * 0.10000000149011612D;
+				motionY += (Math.signum(var3) * 0.699999988079071D - motionY) * 0.10000000149011612D;
+				motionZ += (Math.signum(var5) * 0.5D - motionZ) * 0.10000000149011612D;
+				float var7 = (float) (Math.atan2(motionZ, motionX) * 180.0D / Math.PI) - 90.0F;
+				float var8 = MathHelper.wrapAngleTo180_float(var7 - rotationYaw);
+				moveForward = 0.5F;
+				rotationYaw += var8;
+			}
 		}
-		if (!onGround && motionY < 0.0D)
-			motionY *= 0.5D;
-		super.onLivingUpdate();
+		super.onUpdate();
 	}
 
 	@Override

@@ -15,6 +15,7 @@ public class ItemWandOfAnimation extends Item {
 	public ItemWandOfAnimation(int id) {
 		super(id);
 		setFull3D();
+		setTextureName("paper");
 	}
 
 	@Override

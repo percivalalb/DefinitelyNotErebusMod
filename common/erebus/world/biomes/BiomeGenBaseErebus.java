@@ -1,6 +1,7 @@
 package erebus.world.biomes;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -20,7 +21,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 	public abstract void generateTerrain(World worldObj, Random rand, IChunkProvider par1IChunkProvider, int x, int z);
 
 	public void generateDefault(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) {
-		boolean extraOres = ConfigurationHandler.activateExtraOres;
+		boolean extraOres = ConfigurationHandler.lead || ConfigurationHandler.silver || ConfigurationHandler.copper || ConfigurationHandler.tin || ConfigurationHandler.aluminium;
 
 		for (int a = 0; a < (extraOres ? 8 : 10); ++a)
 			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataCoal, 11 + rand.nextInt(4), worldObj, rand, x, z, 6, 112, 3);
@@ -48,28 +49,25 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 		for (int a = 0; a < (extraOres ? 3 : 4); ++a)
 			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataPetrifiedWood, 5 + rand.nextInt(3), worldObj, rand, x, z, 6, 112, 2);
 
-		if (rand.nextInt(5) == 0) {
-			for (int a = 0; a < 3; ++a) {
+		if (rand.nextInt(5) == 0)
+			for (int a = 0; a < 3; ++a)
 				generateOreCluster(ModBlocks.oreFossil, 3, 10 + rand.nextInt(4), worldObj, rand, x, z, 36, 112, 3);
-			}
-		}
 
-		if (extraOres) {
+		if(ConfigurationHandler.aluminium)
 			for (int a = 0; a < 3; ++a)
 				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataAluminium, 3 + rand.nextInt(2), worldObj, rand, x, z, 6, 112, 2);
-
+		if(ConfigurationHandler.copper)
 			for (int a = 0; a < 8 + rand.nextInt(3); ++a)
 				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataCopper, 6 + rand.nextInt(3), worldObj, rand, x, z, 6, 112, 3);
-
+		if(ConfigurationHandler.lead)
 			for (int a = 0; a < 4; ++a)
 				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataLead, 4, worldObj, rand, x, z, 6, 112, 2);
-
+		if(ConfigurationHandler.silver)
 			for (int a = 0; a < 6; ++a)
 				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataSilver, 7 + rand.nextInt(3), worldObj, rand, x, z, 6, 112, 3);
-
+		if(ConfigurationHandler.tin)
 			for (int a = 0; a < 2 + rand.nextInt(3); ++a)
 				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataTin, 4 + rand.nextInt(2), worldObj, rand, x, z, 6, 112, 2);
-		}
 	}
 
 	private static final byte[] checkX = new byte[] { -1, -1, 1, 1, 0, 0 }, checkY = new byte[] { 0, 0, 0, 0, -1, 1 }, checkZ = new byte[] { -1, 1, -1, 1, 0, 0 };

@@ -216,7 +216,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(blockAmber, ItemBlockAmber.class, "erebus.blockAmber");
 		GameRegistry.registerBlock(quickSand, "erebus.quickSand");
 		GameRegistry.registerBlock(ghostSand, "erebus.ghostSand");
-		if (ConfigurationHandler.activateExtraOres)
+		if (ConfigurationHandler.lead || ConfigurationHandler.silver || ConfigurationHandler.copper || ConfigurationHandler.tin || ConfigurationHandler.aluminium)
 			GameRegistry.registerBlock(erebusOreExtra, ItemBlockErebusOreExtras.class, "erebus.erebusOreExtras");
 		GameRegistry.registerBlock(umberstoneButton, "erebus.umberstoneButton");
 
@@ -291,12 +291,15 @@ public class ModBlocks {
 		MinecraftForge.setBlockHarvestLevel(quickSand, "shovel", 2);
 		MinecraftForge.setBlockHarvestLevel(ghostSand, "shovel", 0);
 
-		if (ConfigurationHandler.activateExtraOres) {
+		if (ConfigurationHandler.aluminium)
 			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 0, "pickaxe", 1);
+		if (ConfigurationHandler.copper)
 			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 1, "pickaxe", 1);
+		if (ConfigurationHandler.lead)
 			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 2, "pickaxe", 2);
+		if (ConfigurationHandler.silver)
 			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 3, "pickaxe", 2);
+		if (ConfigurationHandler.tin)
 			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 4, "pickaxe", 1);
-		}
 	}
 }

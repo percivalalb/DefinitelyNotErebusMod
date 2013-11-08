@@ -20,12 +20,12 @@ public class ItemErebusFood extends ItemFood {
 
 	public static final String[] iconPaths = new String[] {
 		"larvaRaw", "beetleLarvaCooked", "grasshopperLegRaw", "grasshopperLegCooked", "legTarantula", "legTarantulaCooked",
-		"bambooSoup", "melonade", "melonadeSparkly"
+		"bambooSoup", "melonade", "melonadeSparkly", "larvaeOnStick"
 	};
-	
+
 	public static final short
-		dataLarvaRaw = 0, dataLarvaCooked = 1, dataGrasshopperLegRaw = 2, dataGrasshopperLegCooked = 3, dataLegTarantula = 4, dataLegTarantulaCooked = 5,
-		dataBambooSoup = 6, dataMelonade = 7, dataMelonadeSparkly = 8;
+	dataLarvaRaw = 0, dataLarvaCooked = 1, dataGrasshopperLegRaw = 2, dataGrasshopperLegCooked = 3, dataLegTarantula = 4, dataLegTarantulaCooked = 5,
+	dataBambooSoup = 6, dataMelonade = 7, dataMelonadeSparkly = 8, dataLarvaeOnStick = 9;
 
 	@SideOnly(Side.CLIENT)
 	public static Icon[] icons;
@@ -56,6 +56,8 @@ public class ItemErebusFood extends ItemFood {
 				return 3;
 			case dataMelonadeSparkly:
 				return 6;
+			case dataLarvaeOnStick:
+				return 18;
 			default:
 				return 0;
 		}
@@ -81,6 +83,8 @@ public class ItemErebusFood extends ItemFood {
 				return 0.75F;
 			case dataMelonadeSparkly:
 				return 0.85F;
+			case dataLarvaeOnStick:
+				return 2.0F;
 			default:
 				return 0.0F;
 		}
@@ -96,7 +100,7 @@ public class ItemErebusFood extends ItemFood {
 				return null;
 		}
 	}
-	
+
 	@Override
 	public EnumAction getItemUseAction(ItemStack stack) {
 		switch (stack.getItemDamage()) {
@@ -106,7 +110,7 @@ public class ItemErebusFood extends ItemFood {
 			default:
 				return EnumAction.eat;
 		}
-    }
+	}
 
 	@Override
 	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
@@ -158,5 +162,4 @@ public class ItemErebusFood extends ItemFood {
 		int i = par1ItemStack.getItemDamage();
 		return super.getUnlocalizedName() + "." + i;
 	}
-
 }

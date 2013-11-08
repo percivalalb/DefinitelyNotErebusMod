@@ -10,6 +10,7 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -19,9 +20,13 @@ import erebus.item.ItemErebusMaterial;
 
 public class EntityGlowWorm extends EntityMob
 {
-	public int lastX;
-	public int lastY;
-	public int lastZ;
+	private int prevX;
+	private int prevY;
+	private int prevZ;
+
+	private int x;
+	private int y;
+	private int z;
 
 	public EntityGlowWorm(World par1World)
 	{
@@ -96,40 +101,38 @@ public class EntityGlowWorm extends EntityMob
 	}
 
 	@Override
-	public void onUpdate()
+	public void onLivingUpdate()
 	{
 		if (worldObj.isRemote && isGlowing())
-			lightUp(worldObj, (int) posX, (int) posY, (int) posZ);
-		else
-			if(worldObj.isRemote && !isGlowing())
-				switchOff();
-		super.onUpdate();
+			lightUp();
+		else if (worldObj.isRemote && !isGlowing())
+			switchOff();
+		super.onLivingUpdate();
 	}
 
 	@SideOnly(Side.CLIENT)
-	private void lightUp(World world, int x, int y, int z)
+	private void lightUp()
 	{
-		/*
-		 * This method is flawed because the integer is always rounded up! The
-		 * position of the Entity on the block is not precise enough so
-		 * sometimes the wrong block is updated resulting in glowing patches
-		 * that are not cancelled. I need to make it work on AABB and get the
-		 * colliding blocks.
-		 */
-
-		if (x != lastX || y != lastY || z != lastZ) {
-			world.setLightValue(EnumSkyBlock.Block, x, y, z, 9);
-			world.updateLightByType(EnumSkyBlock.Block, lastX, lastY, lastZ);
-			lastX = x;
-			lastY = y;
-			lastZ = z;
+		worldObj.setLightValue(EnumSkyBlock.Block, x, y, z, 9);
+		int newX = MathHelper.floor_double(posX);
+		int newY = MathHelper.floor_double(posY);
+		int newZ = MathHelper.floor_double(posZ);
+		if (newX != x || newY != y || newZ != z) {
+			worldObj.updateLightByType(EnumSkyBlock.Block, x, y, z);
+			worldObj.updateLightByType(EnumSkyBlock.Block, prevX, prevY, prevZ);
+			prevX = x;
+			prevY = y;
+			prevZ = z;
+			x = newX;
+			y = newY;
+			z = newZ;
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	private void switchOff() {
-		worldObj.updateLightByType(EnumSkyBlock.Block, lastX, lastY, lastZ);
-		worldObj.updateLightByType(EnumSkyBlock.Block, (int) posX, (int) posY, (int) posZ);
+		worldObj.updateLightByType(EnumSkyBlock.Block, prevX, prevY, prevZ);
+		worldObj.updateLightByType(EnumSkyBlock.Block, x, y, z);
 	}
 
 	public boolean isGlowing()

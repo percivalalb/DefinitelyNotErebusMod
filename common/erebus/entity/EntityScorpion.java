@@ -125,26 +125,28 @@ public class EntityScorpion extends EntityMob {
 	}
 
 	@Override
-	public void onCollideWithPlayer(EntityPlayer par1EntityPlayer) {
-		super.onCollideWithPlayer(par1EntityPlayer);
+	public void onCollideWithPlayer(EntityPlayer player) {
+		super.onCollideWithPlayer(player);
+		if (player.isSneaking())
+			player.setSneaking(false);
 		byte var2 = 0;
-		if (!worldObj.isRemote && par1EntityPlayer.boundingBox.maxY >= boundingBox.minY && par1EntityPlayer.boundingBox.minY <= boundingBox.maxY && captured())
+		if (!worldObj.isRemote && player.boundingBox.maxY >= boundingBox.minY && player.boundingBox.minY <= boundingBox.maxY && captured())
 			if (worldObj.difficultySetting > 1)
 				if (worldObj.difficultySetting == 2)
 					var2 = 7;
 				else if (worldObj.difficultySetting == 3)
 					var2 = 15;
 		if (var2 > 0 && rand.nextInt(200) == 0) {
-			par1EntityPlayer.addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 10, 0));
+			player.addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 10, 0));
 			setisStinging(true);
 		}
 		if (!worldObj.isRemote && !captured())
-			par1EntityPlayer.mountEntity(this);
+			player.mountEntity(this);
 	}
 
 	@Override
 	public void updateRiderPosition() {
-		double a = Math.toRadians(rotationYaw);
+		double a = Math.toRadians(renderYawOffset);
 		double offSetX = -Math.sin(a) * 0.75D;
 		double offSetZ = Math.cos(a) * 0.75D;
 		if (captured())
@@ -152,14 +154,14 @@ public class EntityScorpion extends EntityMob {
 	}
 
 	@Override
-	protected void attackEntity(Entity par1Entity, float par2) {
-		super.attackEntity(par1Entity, par2);
-		if (par2 < 1.0F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY)
-			attackEntityAsMob(par1Entity);
+	protected void attackEntity(Entity entity, float par2) {
+		super.attackEntity(entity, par2);
+		if (par2 < 1.0F && entity.boundingBox.maxY > boundingBox.minY && entity.boundingBox.minY < boundingBox.maxY)
+			attackEntityAsMob(entity);
 	}
 
 	@Override
-	public boolean attackEntityAsMob(Entity par1Entity) {
-		return super.attackEntityAsMob(par1Entity);
+	public boolean attackEntityAsMob(Entity entity) {
+		return super.attackEntityAsMob(entity);
 	}
 }

@@ -20,13 +20,9 @@ import erebus.item.ItemErebusMaterial;
 
 public class EntityGlowWorm extends EntityMob
 {
-	private int prevX;
-	private int prevY;
-	private int prevZ;
-
-	private int x;
-	private int y;
-	private int z;
+	public int lastX;
+	public int lastY;
+	public int lastZ;
 
 	public EntityGlowWorm(World par1World)
 	{
@@ -101,38 +97,29 @@ public class EntityGlowWorm extends EntityMob
 	}
 
 	@Override
-	public void onLivingUpdate()
+	public void onUpdate()
 	{
 		if (worldObj.isRemote && isGlowing())
-			lightUp();
-		else if (worldObj.isRemote && !isGlowing())
+			lightUp(worldObj, MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ));
+		if (worldObj.isRemote && !isGlowing())
 			switchOff();
-		super.onLivingUpdate();
+		super.onUpdate();
 	}
 
 	@SideOnly(Side.CLIENT)
-	private void lightUp()
-	{
-		worldObj.setLightValue(EnumSkyBlock.Block, x, y, z, 9);
-		int newX = MathHelper.floor_double(posX);
-		int newY = MathHelper.floor_double(posY);
-		int newZ = MathHelper.floor_double(posZ);
-		if (newX != x || newY != y || newZ != z) {
-			worldObj.updateLightByType(EnumSkyBlock.Block, x, y, z);
-			worldObj.updateLightByType(EnumSkyBlock.Block, prevX, prevY, prevZ);
-			prevX = x;
-			prevY = y;
-			prevZ = z;
-			x = newX;
-			y = newY;
-			z = newZ;
+	private void lightUp(World world, int x, int y, int z) {
+		if (x != lastX || y != lastY || z != lastZ || isDead) {
+			worldObj.setLightValue(EnumSkyBlock.Block, (int) posX, (int) posY, (int) posZ, 9);
+			worldObj.updateLightByType(EnumSkyBlock.Block, lastX, lastY, lastZ);
+			lastX = x;
+			lastY = y;
+			lastZ = z;
 		}
 	}
-
 	@SideOnly(Side.CLIENT)
 	private void switchOff() {
-		worldObj.updateLightByType(EnumSkyBlock.Block, prevX, prevY, prevZ);
-		worldObj.updateLightByType(EnumSkyBlock.Block, x, y, z);
+		worldObj.updateLightByType(EnumSkyBlock.Block, lastX, lastY, lastZ);
+		worldObj.updateLightByType(EnumSkyBlock.Block, MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ));
 	}
 
 	public boolean isGlowing()

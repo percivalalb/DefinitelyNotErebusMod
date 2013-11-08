@@ -109,7 +109,7 @@ public class EntityGlowWorm extends EntityMob
 	@SideOnly(Side.CLIENT)
 	private void lightUp(World world, int x, int y, int z) {
 		if (x != lastX || y != lastY || z != lastZ || isDead) {
-			worldObj.setLightValue(EnumSkyBlock.Block, (int) posX, (int) posY, (int) posZ, 9);
+			worldObj.setLightValue(EnumSkyBlock.Block, x, y, z, 9);
 			worldObj.updateLightByType(EnumSkyBlock.Block, lastX, lastY, lastZ);
 			lastX = x;
 			lastY = y;

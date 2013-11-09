@@ -132,6 +132,7 @@ tile.erebusAltarLightning.name=Altar of Lightning
 tile.erebusAltarHealing.name=Altar of Healing
 tile.erebusAltarXP.name=Altar of Experience
 tile.erebusAltarRepair.name=Altar of Repair
+tile.glowingJar.name=Glowing Jar
 
 #Items
 item.helmetExo.name=Exoskeleton Helmet

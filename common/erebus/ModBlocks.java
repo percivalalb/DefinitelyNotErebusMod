@@ -20,6 +20,7 @@ import erebus.block.BlockErebusOreExtras;
 import erebus.block.BlockFern;
 import erebus.block.BlockFiddlehead;
 import erebus.block.BlockGhostSand;
+import erebus.block.BlockGlowingJar;
 import erebus.block.BlockHollowLog;
 import erebus.block.BlockInsectRepellent;
 import erebus.block.BlockLeavesErebus;
@@ -110,6 +111,7 @@ public class ModBlocks {
 	public static Block erebusAltarHealing;				public static int erebusAltarHealingID;
 	public static Block erebusAltarXP;					public static int erebusAltarXPID;
 	public static Block erebusAltarRepair;				public static int erebusAltarRepairID;
+	public static Block glowingJar;						public static int glowingJarID;
 
 	// STAIRS, SLABS, WALLS
 	public static Block[] umbercobbleStairs;			public static int[] umbercobbleStairsID;
@@ -172,6 +174,7 @@ public class ModBlocks {
 		erebusAltarHealing = new BlockErebusAltarHealing(erebusAltarHealingID).setUnlocalizedName("erebusAltarHealing");
 		erebusAltarXP = new BlockErebusAltarXP(erebusAltarXPID).setUnlocalizedName("erebusAltarXP");
 		erebusAltarRepair = new BlockErebusAltarRepair(erebusAltarRepairID).setUnlocalizedName("erebusAltarRepair");
+		glowingJar = new BlockGlowingJar(glowingJarID).setUnlocalizedName("glowingJar");
 
 		umbercobbleStairs = new Block[BlockUmberstone.iconPaths.length];
 		for (int i = 0; i < umbercobbleStairs.length; i++)
@@ -199,7 +202,7 @@ public class ModBlocks {
 		ErebusMod.tabErebusBlock.add(umberstone, umberOreBlock, oreFossil, erebusOreExtra, redGem, blockAmber, quickSand, ghostSand);
 		ErebusMod.tabErebusBlock.add(logErebusGroup1, logErebusGroup2, hollowLogAcacia, planksErebus, leavesErebus, erebusSapling);
 		ErebusMod.tabErebusBlock.add(erebusGrass, fern, fiddlehead, thorns);
-		ErebusMod.tabErebusBlock.add(blockSilk, mirBrick, petrifiedWoodPlanks, petrifiedCraftingTable, bambooCrop, bambooCrate, bambooTorch, umberstoneButton, umberFurnace, umberPaver, erebusAltar);
+		ErebusMod.tabErebusBlock.add(blockSilk, mirBrick, petrifiedWoodPlanks, petrifiedCraftingTable, bambooCrop, bambooCrate, bambooTorch, glowingJar, umberstoneButton, umberFurnace, umberPaver, erebusAltar);
 		for (Block b : umbercobbleStairs)
 			ErebusMod.tabErebusBlock.add(b);
 		for (Block b : plankStairs)
@@ -248,6 +251,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(erebusAltar, "erebus.erebusAltarHealing");
 		GameRegistry.registerBlock(erebusAltar, "erebus.erebusAltarXP");
 		GameRegistry.registerBlock(erebusAltar, "erebus.erebusAltarRepair");
+		GameRegistry.registerBlock(glowingJar, "erebus.glowingJar");
 
 		for (int i = 0; i < umbercobbleStairs.length; i++)
 			GameRegistry.registerBlock(umbercobbleStairs[i], "erebus.umbercobbleStairs" + i);

@@ -1,5 +1,6 @@
 package erebus.entity;
 
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -8,7 +9,6 @@ import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
@@ -20,7 +20,7 @@ import erebus.entity.ai.EntityAIEatCrops;
 import erebus.network.PacketHandler;
 import erebus.network.packet.PacketParticle;
 
-public class EntityGrasshopper extends EntityMob {
+public class EntityGrasshopper extends EntityCreature {
 
 	protected EntityLiving theEntity;
 	private ChunkCoordinates currentJumpTarget;

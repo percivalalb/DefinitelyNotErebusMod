@@ -1,5 +1,6 @@
 package erebus.entity;
 
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -7,7 +8,6 @@ import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
@@ -18,7 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 import erebus.item.ItemErebusMaterial;
 
-public class EntityGlowWorm extends EntityMob
+public class EntityGlowWorm extends EntityCreature
 {
 	public int lastX;
 	public int lastY;
@@ -108,14 +108,18 @@ public class EntityGlowWorm extends EntityMob
 
 	@SideOnly(Side.CLIENT)
 	private void lightUp(World world, int x, int y, int z) {
-		if (x != lastX || y != lastY || z != lastZ || isDead) {
-			worldObj.setLightValue(EnumSkyBlock.Block, x, y, z, 9);
-			worldObj.updateLightByType(EnumSkyBlock.Block, lastX, lastY, lastZ);
-			lastX = x;
-			lastY = y;
-			lastZ = z;
-		}
+		worldObj.setLightValue(EnumSkyBlock.Block, x, y, z, 9);
+		for (int i = -1; i < 2; i++)
+			for (int j = -1; j < 2; j++)
+				for (int k = -1; k < 2; k++)
+					if (x + i != lastX || y + j != lastY || z + k != lastZ || isDead) {
+						world.updateLightByType(EnumSkyBlock.Block, lastX + i, lastY + j, lastZ + k);
+						lastX = x;
+						lastY = y;
+						lastZ = z;
+					}
 	}
+
 	@SideOnly(Side.CLIENT)
 	private void switchOff() {
 		worldObj.updateLightByType(EnumSkyBlock.Block, lastX, lastY, lastZ);

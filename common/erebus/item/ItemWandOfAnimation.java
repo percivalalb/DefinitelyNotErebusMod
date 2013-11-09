@@ -16,6 +16,9 @@ public class ItemWandOfAnimation extends Item {
 		super(id);
 		setFull3D();
 		setTextureName("paper");
+		setMaxDamage(64);
+		setNoRepair();
+		setMaxStackSize(1);
 	}
 
 	@Override
@@ -36,6 +39,7 @@ public class ItemWandOfAnimation extends Item {
 				entityAnimatedBlock.setLocationAndAngles((double) x + 0.5F, y, (double) z + 0.5F, 0.0F, 0.0F);
 				entityAnimatedBlock.setBlock(blockID, blockMeta);
 				world.spawnEntityInWorld(entityAnimatedBlock);
+				stack.damageItem(1, player);
 				return true;
 			}
 		}

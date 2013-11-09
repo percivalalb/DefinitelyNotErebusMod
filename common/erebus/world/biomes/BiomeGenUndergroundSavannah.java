@@ -15,6 +15,7 @@ import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
 import erebus.entity.EntityFly;
+import erebus.entity.EntityGlowWorm;
 import erebus.entity.EntityGrasshopper;
 import erebus.entity.EntityMoth;
 import erebus.entity.EntityScorpion;
@@ -48,6 +49,7 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 		spawnableMonsterList.add(new SpawnListEntry(EntityBeetle.class, 50, 4, 8));
 		spawnableMonsterList.add(new SpawnListEntry(EntityBeetleLarva.class, 150, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityGrasshopper.class, 14, 4, 8));
+		spawnableMonsterList.add(new SpawnListEntry(EntityGlowWorm.class, 14, 4, 8));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityMoth.class, 5, 4, 4));
 		topBlock = (byte) Block.grass.blockID;
 		fillerBlock = (byte) Block.dirt.blockID;

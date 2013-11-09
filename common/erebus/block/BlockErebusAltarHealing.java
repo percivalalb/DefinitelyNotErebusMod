@@ -73,12 +73,14 @@ public class BlockErebusAltarHealing extends BlockContainer {
 		TileEntityErebusAltarHealing te = (TileEntityErebusAltarHealing) world.getBlockTileEntity(x, y, z);
 		if (player.getCurrentEquippedItem() != null)
 			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID && !te.active) {
+				player.getCurrentEquippedItem().damageItem(1, player);
 				te.setActive(true);
 				te.setSpawnTicks(12000);
 				return true;
 			}
 		if (player.getCurrentEquippedItem() != null)
 			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID && te.active) {
+				player.getCurrentEquippedItem().damageItem(1, player);
 				te.setActive(false);
 				return true;
 			}

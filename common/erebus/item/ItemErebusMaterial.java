@@ -21,12 +21,12 @@ public class ItemErebusMaterial extends Item {
 	public static final String[] iconPaths = new String[] {
 		"plateExo", "jade", "shardBone", "bamboo", "compoundEyes", "compoundLens", "flyWing",
 		"itemPetrifiedWood", "biovelocity", "elasticFibre", "waspSting", "bambooShoot",
-		"redGem", "bioluminescence", "supernaturalvelocity"
+		"redGem", "bioluminescence", "supernaturalvelocity", "altarFragment"
 	};
 	
 	public static final short dataExoPlate = 0, dataJade = 1, dataBoneShard = 2, dataBamboo = 3, dataCompoundEyes = 4, dataCompoundLens = 5,
 							  dataFlyWing = 6, dataPetrifiedWood = 7, dataBioVelocity = 8, dataElasticFibre = 9, dataWaspSting = 10, dataBambooShoot = 11,
-							  dataRedGem = 12, dataBioluminescence = 13, dataSupernaturalVelocity = 14;
+							  dataRedGem = 12, dataBioluminescence = 13, dataSupernaturalVelocity = 14, altarFragment = 15;
 
 	@SideOnly(Side.CLIENT)
 	public static Icon[] icons;

@@ -108,12 +108,14 @@ public class BlockErebusAltarXP extends BlockContainer {
 		TileEntityErebusAltarXP te = (TileEntityErebusAltarXP) world.getBlockTileEntity(x, y, z);
 		if (player.getCurrentEquippedItem() != null)
 			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID && !te.active) {
+				player.getCurrentEquippedItem().damageItem(1, player);
 				te.setSpawnTicks(12000);
 				te.setActive(true);
 				return true;
 			}
 		if (player.getCurrentEquippedItem() != null)
 			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID && te.active) {
+				player.getCurrentEquippedItem().damageItem(1, player);
 				te.setActive(false);
 				return true;
 			}

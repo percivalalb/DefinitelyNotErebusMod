@@ -73,12 +73,14 @@ public class BlockErebusAltarLightning extends BlockContainer {
 		TileEntityErebusAltarLightning te = (TileEntityErebusAltarLightning) world.getBlockTileEntity(x, y, z);
 		if (player.getCurrentEquippedItem() != null)
 			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID && !te.active) {
+				player.getCurrentEquippedItem().damageItem(1, player);
 				te.setActive(true);
 				te.setSpawnTicks(12000);
 				return true;
 			}
 		if (player.getCurrentEquippedItem() != null)
 			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID && te.active) {
+				player.getCurrentEquippedItem().damageItem(1, player);
 				te.setActive(false);
 				return true;
 			}

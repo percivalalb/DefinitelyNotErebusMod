@@ -46,7 +46,7 @@ public class RenderWasp extends RenderLiving {
 	}
 
 	protected void scaleWasp(EntityWasp entityWasp, float f) {
-		float f1 = 0.75F;
+		float f1 = 1.0F;
 		shadowSize = 0.5F;
 		GL11.glScalef(f1, f1, f1);
 	}

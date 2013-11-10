@@ -1,13 +1,16 @@
 package erebus;
 
 import java.io.File;
+
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
+
 import com.google.common.reflect.ClassPath;
 import com.google.common.reflect.ClassPath.ClassInfo;
+
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -60,11 +63,12 @@ public class ErebusMod {
 	public static EnumToolMaterial toolJADEPAXEL = EnumHelper.addToolMaterial("JADEPAXEL", 2, 1079, 8.0F, 4.0F, 14);
 	public static EnumToolMaterial toolCAVEMANCLUB = EnumHelper.addToolMaterial("CAVEMANCLUB", 0, 131, 4.0F, 2.0F, 12);
 	public static EnumToolMaterial weaponWaspDagger = EnumHelper.addToolMaterial("WASPDAGGER", 0, 16, 1.0F, 0.0F, 12);
+	public static EnumToolMaterial weaponWaspSword = EnumHelper.addToolMaterial("WASPSWORD", 0, 863, 1.0F, 4.0F, 18);
 
 	public static CreativeTabErebus tabErebusBlock = new CreativeTabErebusBlock("erebus.block");
 	public static CreativeTabErebus tabErebusItem = new CreativeTabErebusItem("erebus.item");
 	public static CreativeTabErebus tabErebusGear = new CreativeTabErebusGear("erebus.gear");
-	
+
 	public static PlayerTeleportHandler teleportHandler = new PlayerTeleportHandler();
 
 	@EventHandler
@@ -114,14 +118,14 @@ public class ErebusMod {
 		BCFacadeManager.registerFacades();
 		KeyBindingRegistry.registerKeyBinding(new KeyBindingHandler());
 	}
-	
+
 	@EventHandler
 	public void postLoad(FMLPostInitializationEvent event) {
 		try{
 			for(ClassInfo clsInfo:ClassPath.from(getClass().getClassLoader()).getTopLevelClasses("erebus.integration")) {
 				Class cls=clsInfo.load();
-				
-				if (IModIntegration.class.isAssignableFrom(cls) && !cls.isInterface()) {
+
+				if (IModIntegration.class.isAssignableFrom(cls) && !cls.isInterface())
 					try{
 						IModIntegration obj=(IModIntegration)cls.newInstance();
 						if (Loader.isModLoaded(obj.getModId()))obj.integrate();
@@ -130,7 +134,6 @@ public class ErebusMod {
 						e.printStackTrace();
 						LogHelper.logSevere("Error integrating into mod: "+clsInfo.getName());
 					}
-				}
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

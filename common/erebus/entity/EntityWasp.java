@@ -26,7 +26,7 @@ public class EntityWasp extends EntityMob {
 
 	public EntityWasp(World par1World) {
 		super(par1World);
-		setSize(1.0F, 1.0F);
+		setSize(1.5F, 1.5F);
 	}
 
 	@Override
@@ -125,6 +125,8 @@ public class EntityWasp extends EntityMob {
 				rotationYaw += var8;
 			}
 		}
+		if (motionY < 0.0D)
+			motionY *= 0.5D;
 		super.onUpdate();
 	}
 

@@ -31,6 +31,7 @@ import erebus.item.ItemSprayCan;
 import erebus.item.ItemSprintLeggings;
 import erebus.item.ItemWandOfAnimation;
 import erebus.item.ItemWaspDagger;
+import erebus.item.ItemWaspSword;
 
 public class ModItems {
 
@@ -109,7 +110,7 @@ public class ModItems {
 		exoskeletonBoots = new ItemExoskeletonArmor(exoskeletonBootsID, 3).setUnlocalizedName("bootsExo").setTextureName("erebus:bootsExo");
 
 		fossilClub = new ItemCavemanClub(fossilClubID).setFull3D().setUnlocalizedName("clubBone").setTextureName("erebus:clubBone");
-		waspSword = new ItemSword(waspSwordID, ErebusMod.toolJADE).setUnlocalizedName("waspSword").setTextureName("paper");
+		waspSword = new ItemWaspSword(waspSwordID).setUnlocalizedName("waspSword").setTextureName("paper");
 		maxSpeedBow = new ItemMaxSpeedBow(maxSpeedBowID).setUnlocalizedName("maxSpeedBow").setTextureName("erebus:maxSpeedBow");
 		waspDagger = new ItemWaspDagger(waspDaggerID).setUnlocalizedName("waspDagger");
 

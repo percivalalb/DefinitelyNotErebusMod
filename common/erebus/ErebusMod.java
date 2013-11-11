@@ -53,7 +53,7 @@ public class ErebusMod {
 
 	@SidedProxy(clientSide = Reference.SP_CLIENT, serverSide = Reference.SP_SERVER)
 	public static CommonProxy proxy;
-	// TEST
+
 	@Instance(Reference.MOD_ID)
 	public static ErebusMod instance;
 

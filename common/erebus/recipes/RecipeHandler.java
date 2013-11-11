@@ -108,6 +108,13 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModItems.exoskeletonLegs, 1), new Object[] { "sss", "s s", "s s", 's', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate) });
 		GameRegistry.addRecipe(new ItemStack(ModItems.exoskeletonBoots, 1), new Object[] { "   ", "s s", "s s", 's', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate) });
 
+		GameRegistry.addRecipe(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataReinforcedPlateExo), new Object[] { "sss", "sss", "sss", 's', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate) });
+
+		GameRegistry.addRecipe(new ItemStack(ModItems.reinExoskeletonHelmet, 1), new Object[] { "sss", "s s", "   ", 's', new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.reinExoskeletonBody, 1), new Object[] { "s s", "sss", "sss", 's', new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.reinExoskeletonLegs, 1), new Object[] { "sss", "s s", "s s", 's', new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.reinExoskeletonBoots, 1), new Object[] { "   ", "s s", "s s", 's', new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo) });
+
 		// Special armor
 		GameRegistry.addRecipe(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataCompoundLens), new Object[] { "GGG", "GEG", "GGG", 'E', new ItemStack(ModBlocks.blockAmber, 1, 1), 'G', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataCompoundEyes) });
 		GameRegistry.addRecipe(new ItemStack(ModItems.compoundGoggles, 1), new Object[] { "XXX", "OXO", "   ", 'O', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataCompoundLens), 'X', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate) });

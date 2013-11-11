@@ -27,6 +27,7 @@ import erebus.item.ItemMaxSpeedBow;
 import erebus.item.ItemMetalIngots;
 import erebus.item.ItemPaxel;
 import erebus.item.ItemPortalActivator;
+import erebus.item.ItemReinExoskeletonArmor;
 import erebus.item.ItemSprayCan;
 import erebus.item.ItemSprintLeggings;
 import erebus.item.ItemWandOfAnimation;
@@ -64,6 +65,11 @@ public class ModItems {
 	public static Item exoskeletonBody;					public static int exoskeletonBodyID;
 	public static Item exoskeletonLegs;					public static int exoskeletonLegsID;
 	public static Item exoskeletonBoots;				public static int exoskeletonBootsID;
+
+	public static Item reinExoskeletonHelmet;			public static int reinExoskeletonHelmetID;
+	public static Item reinExoskeletonBody;				public static int reinExoskeletonBodyID;
+	public static Item reinExoskeletonLegs;				public static int reinExoskeletonLegsID;
+	public static Item reinExoskeletonBoots;			public static int reinExoskeletonBootsID;
 
 	// MISC WEAPONS
 	public static Item fossilClub;						public static int fossilClubID;
@@ -109,6 +115,11 @@ public class ModItems {
 		exoskeletonLegs = new ItemExoskeletonArmor(exoskeletonLegsID, 2).setUnlocalizedName("leggingsExo").setTextureName("erebus:leggingsExo");
 		exoskeletonBoots = new ItemExoskeletonArmor(exoskeletonBootsID, 3).setUnlocalizedName("bootsExo").setTextureName("erebus:bootsExo");
 
+		reinExoskeletonHelmet = new ItemReinExoskeletonArmor(reinExoskeletonHelmetID, 0).setUnlocalizedName("exoHelmetRein").setTextureName("erebus:exoHelmetRein");
+		reinExoskeletonBody = new ItemReinExoskeletonArmor(reinExoskeletonBodyID, 1).setUnlocalizedName("exoChestplateRein").setTextureName("erebus:exoChestplateRein");
+		reinExoskeletonLegs = new ItemReinExoskeletonArmor(reinExoskeletonLegsID, 2).setUnlocalizedName("exoLeggingsRein").setTextureName("erebus:exoLeggingsRein");
+		reinExoskeletonBoots = new ItemReinExoskeletonArmor(reinExoskeletonBootsID, 3).setUnlocalizedName("exoBootsRein").setTextureName("erebus:exoBootsRein");
+
 		fossilClub = new ItemCavemanClub(fossilClubID).setFull3D().setUnlocalizedName("clubBone").setTextureName("erebus:clubBone");
 		waspSword = new ItemWaspSword(waspSwordID).setUnlocalizedName("waspSword").setTextureName("paper");
 		maxSpeedBow = new ItemMaxSpeedBow(maxSpeedBowID).setUnlocalizedName("maxSpeedBow").setTextureName("erebus:maxSpeedBow");
@@ -126,7 +137,7 @@ public class ModItems {
 
 		ErebusMod.tabErebusGear.add(bamBucket, sprayCan);
 		ErebusMod.tabErebusGear.add(jadeHelmet, jadeBody, jadeLegs, jadeBoots, jadeSword, jadePickaxe, jadeAxe, jadeShovel, jadePaxel, jadeHoe);
-		ErebusMod.tabErebusGear.add(exoskeletonHelmet, exoskeletonBody, exoskeletonLegs, exoskeletonBoots);
+		ErebusMod.tabErebusGear.add(exoskeletonHelmet, exoskeletonBody, exoskeletonLegs, exoskeletonBoots, reinExoskeletonHelmet, reinExoskeletonBody, reinExoskeletonLegs, reinExoskeletonBoots);
 		ErebusMod.tabErebusGear.add(fossilClub, waspSword, waspDagger, maxSpeedBow);
 		ErebusMod.tabErebusGear.add(compoundGoggles, armorGlider, sprintLeggings, jumpBoots);
 
@@ -161,6 +172,11 @@ public class ModItems {
 		GameRegistry.registerItem(exoskeletonBody, "erebus.chestplateExo");
 		GameRegistry.registerItem(exoskeletonLegs, "erebus.leggingsExo");
 		GameRegistry.registerItem(exoskeletonBoots, "erebus.bootsExo");
+
+		GameRegistry.registerItem(reinExoskeletonHelmet, "erebus.exoHelmetRein");
+		GameRegistry.registerItem(reinExoskeletonBody, "erebus.exoChestplateRein");
+		GameRegistry.registerItem(reinExoskeletonLegs, "erebus.exoLeggingsRein");
+		GameRegistry.registerItem(reinExoskeletonBoots, "erebus.exoBootsRein");
 
 		GameRegistry.registerItem(fossilClub, "erebus.clubBone");
 		GameRegistry.registerItem(waspSword, "erebus.waspSword");

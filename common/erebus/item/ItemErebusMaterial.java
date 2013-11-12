@@ -23,13 +23,13 @@ public class ItemErebusMaterial extends Item {
 		"plateExo", "jade", "shardBone", "bamboo", "compoundEyes", "compoundLens", "flyWing",
 		"itemPetrifiedWood", "biovelocity", "elasticFibre", "waspSting", "bambooShoot",
 		"redGem", "bioluminescence", "supernaturalvelocity", "altarFragment",
-		"reinforcedPlateExo"
+	"reinforcedPlateExo", "gliderWing"
 	};
 
 	public static final short dataExoPlate = 0, dataJade = 1, dataBoneShard = 2, dataBamboo = 3, dataCompoundEyes = 4, dataCompoundLens = 5,
 	dataFlyWing = 6, dataPetrifiedWood = 7, dataBioVelocity = 8, dataElasticFibre = 9, dataWaspSting = 10, dataBambooShoot = 11,
 	dataRedGem = 12,
-	dataBioluminescence = 13, dataSupernaturalVelocity = 14, dataAltarFragment = 15, dataReinforcedPlateExo = 16;
+	dataBioluminescence = 13, dataSupernaturalVelocity = 14, dataAltarFragment = 15, dataReinforcedPlateExo = 16, dataGliderWing = 17;
 
 	@SideOnly(Side.CLIENT)
 	public static Icon[] icons;

@@ -40,6 +40,8 @@ public class ClientTickHandler implements ITickHandler {
 			EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 			if (player != null && player.inventory.armorInventory[3] != null && player.inventory.armorInventory[3].getItem() == ModItems.compoundGoggles)
 				player.addPotionEffect(nightVisionEffect);
+			if (player != null && player.inventory.armorInventory[3] != null && player.inventory.armorInventory[3].getItem() == ModItems.reinCompoundGoggles)
+				player.addPotionEffect(nightVisionEffect);
 		}
 	}
 

@@ -78,6 +78,7 @@ public class ModItems {
 	public static Item waspDagger;						public static int waspDaggerID;
 
 	// MISC ARMOR
+	public static Item reinCompoundGoggles;             public static int reinCompoundGogglesID;
 	public static Item compoundGoggles;                 public static int compoundGogglesID;
 	public static Item sprintLeggings;					public static int sprintLeggingsID;
 	public static Item jumpBoots;						public static int jumpBootsID;
@@ -125,9 +126,10 @@ public class ModItems {
 		maxSpeedBow = new ItemMaxSpeedBow(maxSpeedBowID).setUnlocalizedName("maxSpeedBow").setTextureName("erebus:maxSpeedBow");
 		waspDagger = new ItemWaspDagger(waspDaggerID).setUnlocalizedName("waspDagger");
 
+		reinCompoundGoggles = new ItemCompoundGoggles(reinCompoundGogglesID, ErebusMod.armorREINEXOSKELETON, 2, 0).setUnlocalizedName("reinCompoundGoggles").setTextureName("erebus:reinCompoundGoggles");
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
-		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorEXOSKELETON, 2).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
-		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorEXOSKELETON, 3).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
+		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorREINEXOSKELETON, 2).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
+		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorREINEXOSKELETON, 3).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
 		armorGlider = new ItemArmorGlider(armorGliderID, 1).setUnlocalizedName("armorGlider").setTextureName("erebus:armorGlider");
 
 		// Creative tabs
@@ -139,7 +141,7 @@ public class ModItems {
 		ErebusMod.tabErebusGear.add(jadeHelmet, jadeBody, jadeLegs, jadeBoots, jadeSword, jadePickaxe, jadeAxe, jadeShovel, jadePaxel, jadeHoe);
 		ErebusMod.tabErebusGear.add(exoskeletonHelmet, exoskeletonBody, exoskeletonLegs, exoskeletonBoots, reinExoskeletonHelmet, reinExoskeletonBody, reinExoskeletonLegs, reinExoskeletonBoots);
 		ErebusMod.tabErebusGear.add(fossilClub, waspSword, waspDagger, maxSpeedBow);
-		ErebusMod.tabErebusGear.add(compoundGoggles, armorGlider, sprintLeggings, jumpBoots);
+		ErebusMod.tabErebusGear.add(compoundGoggles, reinCompoundGoggles, armorGlider, sprintLeggings, jumpBoots);
 
 		// Tool classes
 		MinecraftForge.setToolClass(jadeAxe, "axe", 2);

@@ -72,6 +72,7 @@ public class ItemArmorGlider extends ItemArmor {
 	}
 
 	@ForgeSubscribe
+	@SideOnly(Side.CLIENT)
 	public void onPlayerRenderPre(RenderPlayerEvent.Pre e){
 		GL11.glPushMatrix();
 

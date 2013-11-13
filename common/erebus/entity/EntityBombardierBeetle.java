@@ -8,25 +8,33 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 import erebus.item.ItemErebusMaterial;
 
 public class EntityBombardierBeetle extends EntityMob{
+	private final double explosionRadius = 0.5;
 	private final double moveSpeed;
+	private int collideTick;
 	public EntityBombardierBeetle(World par1World)
 	{
 		super(par1World);
 		moveSpeed = 0.7D;
 		stepHeight = 0.0F;
 		isImmuneToFire = true;
-		setSize(1.0F, 0.5F);
+		setSize(1.F, 0.6F);
 	}
 
 	@Override
 	protected void entityInit() {
 		super.entityInit();
+	}
+
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		collideTick++;
+		if (collideTick > 20 || entityToAttack == null)
+			collideTick = 0;
 	}
 
 	@Override
@@ -65,8 +73,10 @@ public class EntityBombardierBeetle extends EntityMob{
 
 	@Override
 	protected void dropFewItems(boolean hitByPlayer, int looting) {
-		if (rand.nextInt(9) <= 2 + (looting >> 1))
+		if (rand.nextInt(9) <= 2 + (looting >> 1)) {
 			dropItem(Item.gunpowder.itemID, 1);
+			dropItem(Item.blazePowder.itemID, 1);
+		}
 		entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3) + 1, ItemErebusMaterial.dataExoPlate), 0.0F);
 	}
 
@@ -81,31 +91,17 @@ public class EntityBombardierBeetle extends EntityMob{
 
 	@Override
 	public void onCollideWithPlayer(EntityPlayer player) {
-		if (player.boundingBox.maxY >= boundingBox.minY && player.boundingBox.minY <= boundingBox.maxY)
-			bang();
 		super.onCollideWithPlayer(player);
+		if (player.boundingBox.maxY >= boundingBox.minY && player.boundingBox.minY <= boundingBox.maxY)
+			if (collideTick == 20) {
+				boolean var2 = worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
+				worldObj.createExplosion(this, player.posX, player.posY, player.posZ, (float) explosionRadius, var2);
+			}
 	}
 
 	@Override
-	protected void attackEntity(Entity entity, float distance) {
-		if (!worldObj.isRemote && distance < 1.7F && entity.boundingBox.maxY >= boundingBox.minY && entity.boundingBox.minY <= boundingBox.maxY) {
-			super.attackEntity(entity, distance);
-			knockbackAttack(entity);
-		}
+	protected void attackEntity(Entity entity, float par2) {
+		// super.attackEntity(entity, par2);
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void bang() {
-		float f = (rand.nextFloat() - 0.5F) * 8.0F;
-		float f1 = (rand.nextFloat() - 0.5F) * 4.0F;
-		float f2 = (rand.nextFloat() - 0.5F) * 8.0F;
-		worldObj.spawnParticle("largeexplode", posX + f, posY + 1.0D + f1, posZ + f2, 0.0D, 0.0D, 0.0D);
-		worldObj.playSoundAtEntity(this, "random.explode", 1.0F, 1.0F);
-	}
-
-	public void knockbackAttack(Entity entity) {
-		double knockback = 0.5D;
-		double direction = Math.toRadians(renderYawOffset);
-		entity.addVelocity(-Math.sin(direction) * knockback, 0.25D, Math.cos(direction) * knockback);
-	}
 }

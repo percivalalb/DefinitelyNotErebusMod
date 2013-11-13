@@ -94,8 +94,8 @@ public class EntityBombardierBeetle extends EntityMob{
 		super.onCollideWithPlayer(player);
 		if (player.boundingBox.maxY >= boundingBox.minY && player.boundingBox.minY <= boundingBox.maxY)
 			if (collideTick == 20) {
-				boolean var2 = worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
-				worldObj.createExplosion(this, player.posX, player.posY, player.posZ, (float) explosionRadius, var2);
+				boolean rule = worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
+				worldObj.createExplosion(this, player.posX, player.posY, player.posZ, (float) explosionRadius, rule);
 			}
 	}
 

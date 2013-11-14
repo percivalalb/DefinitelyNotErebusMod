@@ -47,19 +47,11 @@ public class RenderBombardierBeetle extends RenderLiving
 	protected void preRenderCallback(EntityLivingBase entityliving, float f)
 	{
 		scaleBombardierBeetle((EntityBombardierBeetle) entityliving, f);
-		EntityBombardierBeetle entityBombardierBeetle = (EntityBombardierBeetle) entityliving;
-		if (entityBombardierBeetle.isClimbing())
-			rotateBeetle(entityliving);
-	}
-
-	protected void rotateBeetle(EntityLivingBase entityliving)
-	{
-		GL11.glRotatef(90.0F, -1.0F, 0.0F, 0.0F);
 	}
 
 	protected void scaleBombardierBeetle(EntityBombardierBeetle entityBombardierBeetle, float f) {
-		float f1 = 0.75F;
-		shadowSize = 0.3F;
+		float f1 = 1.5F;
+		shadowSize = 0.6F;
 		GL11.glScalef(f1, f1, f1);
 	}
 	@Override

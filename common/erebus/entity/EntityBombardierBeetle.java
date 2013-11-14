@@ -18,10 +18,10 @@ public class EntityBombardierBeetle extends EntityMob{
 	public EntityBombardierBeetle(World par1World)
 	{
 		super(par1World);
-		moveSpeed = 0.7D;
+		moveSpeed = 1.0D;
 		stepHeight = 0.0F;
 		isImmuneToFire = true;
-		setSize(1.F, 0.6F);
+		setSize(2.5F, 1.0F);
 	}
 
 	@Override
@@ -35,15 +35,21 @@ public class EntityBombardierBeetle extends EntityMob{
 		collideTick++;
 		if (collideTick > 20 || entityToAttack == null)
 			collideTick = 0;
+		if (entityToAttack != null)
+			if (!worldObj.isRemote && isCollidedHorizontally)
+				if (collideTick == 20)
+					clearpath();
+
 	}
 
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.7D); // Movespeed
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D); // Movespeed
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(75.0D); // MaxHealth
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D); // atkDmg
 		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
+		getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(0.75D);
 	}
 
 	@Override
@@ -80,15 +86,6 @@ public class EntityBombardierBeetle extends EntityMob{
 		entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3) + 1, ItemErebusMaterial.dataExoPlate), 0.0F);
 	}
 
-	public boolean isClimbing() {
-		return !onGround && isOnLadder();
-	}
-
-	@Override
-	public boolean isOnLadder() {
-		return isCollidedHorizontally;
-	}
-
 	@Override
 	public void onCollideWithPlayer(EntityPlayer player) {
 		super.onCollideWithPlayer(player);
@@ -99,9 +96,21 @@ public class EntityBombardierBeetle extends EntityMob{
 			}
 	}
 
+	private void clearpath() {
+		boolean rule = worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
+		double direction = Math.toRadians(renderYawOffset);
+		int x = (int) (posX - Math.sin(direction) * 2.0D);
+		int y = (int) posY;
+		int z = (int) (posZ + Math.cos(direction) * 2.0D);
+		worldObj.createExplosion(this, posX - Math.sin(direction) * 1.5D, posY + 1, posZ + Math.cos(direction) * 1.5D, (float) explosionRadius * 2, true);
+		worldObj.destroyBlock(x, y, z, true);
+		getMoveHelper().setMoveTo(entityToAttack.posX + 0.5D, entityToAttack.posY, entityToAttack.posZ + 0.5D, moveSpeed);
+	}
+
+
 	@Override
 	protected void attackEntity(Entity entity, float par2) {
-		// super.attackEntity(entity, par2);
+		super.attackEntity(entity, par2);
 	}
 
 }

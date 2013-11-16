@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import erebus.ModBlocks;
 import erebus.ModItems;
+import erebus.core.handler.ConfigurationHandler;
 import erebus.item.ItemErebusMaterial;
 
 public class EntityBombardierBeetle extends EntityMob{
@@ -41,7 +42,6 @@ public class EntityBombardierBeetle extends EntityMob{
 			if (!worldObj.isRemote && isCollidedHorizontally)
 				if (collideTick == 20)
 					clearpath();
-
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class EntityBombardierBeetle extends EntityMob{
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D); // Movespeed
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(75.0D); // MaxHealth
-		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D); // atkDmg
+		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(3.0D); // atkDmg
 		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
 		getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(0.75D);
 	}
@@ -101,12 +101,12 @@ public class EntityBombardierBeetle extends EntityMob{
 		int x = (int) (posX - Math.sin(direction) * 2.0D);
 		int y = (int) posY;
 		int z = (int) (posZ + Math.cos(direction) * 2.0D);
-		worldObj.createExplosion(this, posX - Math.sin(direction) * 1.5D, posY + 1, posZ + Math.cos(direction) * 1.5D, explosionRadius, rule);
 		if (worldObj.getBlockId(x, y, z) != ModBlocks.reinExoID)
-			if (rule)
+			if (ConfigurationHandler.BombardierBlockDestroy == true) {
+				worldObj.createExplosion(this, posX - Math.sin(direction) * 1.5D, posY + 1, posZ + Math.cos(direction) * 1.5D, explosionRadius, rule);
 				worldObj.destroyBlock(x, y, z, true);
+			}
 		getMoveHelper().setMoveTo(entityToAttack.posX + 0.5D, entityToAttack.posY, entityToAttack.posZ + 0.5D, moveSpeed);
-
 	}
 
 	@Override

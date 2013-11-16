@@ -19,6 +19,7 @@ public class ConfigurationHandler {
 	public static boolean spawnPortalMobs = true;
 	public static boolean shouldDoVersionCheck = true;
 	public static byte beetleLarvaEating = 0;
+	public static boolean BombardierBlockDestroy = true;
 
 	public static boolean lead = false;
 	public static boolean silver = false;
@@ -163,6 +164,7 @@ public class ConfigurationHandler {
 			ConfigurationHandler.spawnPortalMobs = config.get(Configuration.CATEGORY_GENERAL, "Should spawn beetles and larvae in the portal", true).getBoolean(true);
 			ConfigurationHandler.beetleLarvaEating = (byte) config.get(Configuration.CATEGORY_GENERAL, "Beetle larva eating settings", 0, "0 = only wooden blocks except tile entities & logs, 1 = only wooden blocks except logs, 2 = anything").getInt(0);
 			ConfigurationHandler.shouldDoVersionCheck = config.get(Configuration.CATEGORY_GENERAL, "Should do version check?", true).getBoolean(true);
+			ConfigurationHandler.BombardierBlockDestroy = config.get(Configuration.CATEGORY_GENERAL, "Bombardier Beetle Block destruction", true, "This will not stop block destruction for player attacks only collided with blocks!").getBoolean(true);
 
 			ConfigurationHandler.lead = config.get(Configuration.CATEGORY_GENERAL, "Should generate lead?", false).getBoolean(false);
 			ConfigurationHandler.silver = config.get(Configuration.CATEGORY_GENERAL, "Should generate silver?", false).getBoolean(false);

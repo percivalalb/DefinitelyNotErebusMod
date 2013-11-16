@@ -23,7 +23,7 @@ public class EntityBombardierBeetle extends EntityMob{
 	{
 		super(par1World);
 		moveSpeed = 1.0D;
-		stepHeight = 0.0F;
+		stepHeight = 1.0F;
 		setSize(2.5F, 1.0F);
 	}
 

@@ -44,7 +44,7 @@ public class EntityBotFly extends EntityMob {
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(15.0D);
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.3D);
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D); // atkDmg
-		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
+		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(8.0D); // followRange
 	}
 
 	@Override

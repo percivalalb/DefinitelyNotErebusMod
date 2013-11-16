@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.AxisAlignedBB;
 import erebus.block.BlockBambooCrop;
+import erebus.block.BlockHollowLog;
 import erebus.core.handler.ConfigurationHandler;
 import erebus.entity.EntityBeetleLarva;
 
@@ -68,7 +69,8 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 			((EntityBeetleLarva) theEntity).munchBlock();
 		} else
 			((EntityBeetleLarva) theEntity).setIsEating(false);
-		if (ticksSpent >= maxTicks && theEntity.worldObj.difficultySetting >= diffEaten && theEntity.boundingBox.maxY >= blockbounds.minY && theEntity.boundingBox.minY <= blockbounds.maxY) {
+		if (ticksSpent >= maxTicks && theEntity.worldObj.difficultySetting >= diffEaten && theEntity.boundingBox.maxY >= blockbounds.minY && theEntity.boundingBox.minY <= blockbounds.maxY && theEntity.boundingBox.maxX >= blockbounds.minX && theEntity.boundingBox.minX <= blockbounds.maxX &&
+		theEntity.boundingBox.maxZ >= blockbounds.minZ && theEntity.boundingBox.minZ <= blockbounds.maxZ) {
 			theEntity.worldObj.destroyBlock(WoodX, WoodY, WoodZ, false);
 			((EntityBeetleLarva) theEntity).setMoveTasks(true);
 			ticksSpent = 0;
@@ -112,7 +114,7 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 
 		if (ConfigurationHandler.beetleLarvaEating == 2)
 			return true;
-		else if (block.blockMaterial != Material.wood || block instanceof BlockLog || block instanceof BlockBambooCrop)
+		else if (block.blockMaterial != Material.wood || block instanceof BlockLog || block instanceof BlockBambooCrop || block instanceof BlockHollowLog)
 			return false;
 		else if (ConfigurationHandler.beetleLarvaEating == 0 && block.hasTileEntity(theEntity.worldObj.getBlockMetadata(x, y, z)))
 			return false;

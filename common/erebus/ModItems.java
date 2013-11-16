@@ -128,8 +128,8 @@ public class ModItems {
 
 		reinCompoundGoggles = new ItemCompoundGoggles(reinCompoundGogglesID, ErebusMod.armorREINEXOSKELETON, 2, 0).setUnlocalizedName("reinCompoundGoggles").setTextureName("erebus:reinCompoundGoggles");
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
-		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorREINEXOSKELETON, 2).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
-		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorREINEXOSKELETON, 3).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
+		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorREINEXOSPECIAL, 2).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
+		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorREINEXOSPECIAL, 3).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
 		armorGlider = new ItemArmorGlider(armorGliderID, 1).setUnlocalizedName("armorGlider").setTextureName("erebus:armorGlider");
 
 		// Creative tabs

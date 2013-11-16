@@ -23,7 +23,7 @@ import erebus.client.model.armor.ModelArmorGlider;
 public class ItemArmorGlider extends ItemArmor {
 
 	public ItemArmorGlider(int id, int armorType) {
-		super(id, ErebusMod.armorREINEXOSKELETON, 2, armorType);
+		super(id, ErebusMod.armorREINEXOSPECIAL, 2, armorType);
 	}
 
 	@Override

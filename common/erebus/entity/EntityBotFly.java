@@ -274,7 +274,7 @@ public class EntityBotFly extends EntityMob {
 
 	@Override
 	protected void attackEntity(Entity par1Entity, float par2) {
-		if (par2 < 2.0F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY)
+		if (par2 < 1.2F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY)
 			attackEntityAsMob(par1Entity);
 	}
 }

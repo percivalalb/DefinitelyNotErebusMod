@@ -3,7 +3,6 @@ package erebus.block;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -198,7 +197,7 @@ public class BlockLeavesErebus extends BlockLeaves {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int meta) {
-		return iconArray[meta & ~8];
+		return iconArray[(meta &= ~8) >= leafTypes.length ? 0 : meta];
 	}
 
 	@Override

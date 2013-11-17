@@ -2,7 +2,6 @@ package erebus.block;
 
 import java.util.ArrayList;
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -18,7 +17,7 @@ import erebus.ModItems;
 import erebus.item.ItemErebusMaterial;
 
 public class BlockBambooCrop extends Block {
-
+	
 	@SideOnly(Side.CLIENT)
 	private Icon iconTop;
 

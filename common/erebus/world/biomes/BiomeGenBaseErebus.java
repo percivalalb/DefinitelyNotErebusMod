@@ -1,7 +1,6 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -46,8 +45,8 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 			for (int a = 0; a < 1 + rand.nextInt(3); ++a)
 				generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataJade, 4, worldObj, rand, x, z, 6, 112, 2);
 
-		for (int a = 0; a < (extraOres ? 3 : 4); ++a)
-			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataPetrifiedWood, 5 + rand.nextInt(3), worldObj, rand, x, z, 6, 112, 2);
+		for (int a = 0; a < (extraOres ? 3 : 4) + rand.nextInt(2); ++a)
+			generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataPetrifiedWood, 7 + rand.nextInt(3), worldObj, rand, x, z, 6, 112, 2);
 
 		if (rand.nextInt(5) == 0)
 			for (int a = 0; a < 3; ++a)

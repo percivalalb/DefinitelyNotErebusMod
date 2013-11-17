@@ -125,20 +125,20 @@ public class ModelArmorGlider extends ModelBiped {
 			RWing.rotateAngleZ = 1.570796F;
 			LWing.rotateAngleZ = -1.570796F;
 		}
-
 		if (player.isSneaking()) {
 			Body.rotateAngleX = 0.4F;
 			RArm.rotateAngleX += 0.4F;
 			LArm.rotateAngleX += 0.4F;
 			RWingbase.rotateAngleX = 0.5F;
 			LWingbase.rotateAngleX = 0.5F;
-			RWing.rotateAngleX = 0.5F;
-			LWing.rotateAngleX = 0.5F;
+			if (!isGliding) {
+				RWing.rotateAngleX = 0.5F;
+				LWing.rotateAngleX = 0.5F;
+			}
 			RWingbase.rotationPointZ = 4.5F;
 			LWingbase.rotationPointZ = 4.5F;
 			RWing.rotationPointZ = 4.5F;
 			LWing.rotationPointZ = 4.5F;
-
 		} else {
 			Body.rotateAngleX = 0.0F;
 			RWingbase.rotateAngleX = 0.0F;

@@ -1,8 +1,12 @@
 package erebus.entity;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWander;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -11,6 +15,7 @@ import net.minecraft.world.World;
 import erebus.ModBlocks;
 import erebus.ModItems;
 import erebus.core.handler.ConfigurationHandler;
+import erebus.entity.ai.IEntityAIAttackOnCollide;
 import erebus.item.ItemErebusMaterial;
 
 public class EntityBombardierBeetle extends EntityMob{
@@ -25,11 +30,22 @@ public class EntityBombardierBeetle extends EntityMob{
 		moveSpeed = 1.0D;
 		stepHeight = 1.0F;
 		setSize(2.5F, 1.0F);
+		tasks.addTask(0, new EntityAISwimming(this));
+		tasks.addTask(1, new IEntityAIAttackOnCollide(this, EntityPlayer.class, 0.3D, false));
+		tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
+		tasks.addTask(3, new EntityAIWander(this, 0.3D));
+		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
+		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
 	}
 
 	@Override
 	protected void entityInit() {
 		super.entityInit();
+	}
+
+	@Override
+	public boolean isAIEnabled() {
+		return true;
 	}
 
 	@Override
@@ -106,12 +122,6 @@ public class EntityBombardierBeetle extends EntityMob{
 				worldObj.createExplosion(this, posX - Math.sin(direction) * 1.5D, posY + 1, posZ + Math.cos(direction) * 1.5D, explosionRadius, rule);
 				worldObj.destroyBlock(x, y, z, true);
 			}
-		getMoveHelper().setMoveTo(entityToAttack.posX + 0.5D, entityToAttack.posY, entityToAttack.posZ + 0.5D, moveSpeed);
 	}
-
-	@Override
-	protected void attackEntity(Entity entity, float par2) {
-		super.attackEntity(entity, par2);
-	}
-
 }
+

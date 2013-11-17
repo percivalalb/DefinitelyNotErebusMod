@@ -3,8 +3,12 @@ package erebus.client.model.armor;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.MathHelper;
 
 import org.lwjgl.opengl.GL11;
+
+import cpw.mods.fml.client.FMLClientHandler;
 
 public class ModelArmorGlider extends ModelBiped {
 	//fields
@@ -75,7 +79,15 @@ public class ModelArmorGlider extends ModelBiped {
 		GL11.glTranslatef(0.0F, -0.05F, 0.0F);
 		GL11.glScalef(1.1F, 1.2F, 1.3F);
 		Body.render(par7);
+		GL11.glPopMatrix();
+		GL11.glPushMatrix();
+		GL11.glTranslatef(0.15F, -0.05F, 0.0F);
+		GL11.glScalef(1.5F, 1.2F, 1.3F);
 		RArm.render(par7);
+		GL11.glPopMatrix();
+		GL11.glPushMatrix();
+		GL11.glTranslatef(-0.15F, -0.05F, 0.0F);
+		GL11.glScalef(1.5F, 1.2F, 1.3F);
 		LArm.render(par7);
 		GL11.glPopMatrix();
 		RWingbase.render(par7);
@@ -94,13 +106,47 @@ public class ModelArmorGlider extends ModelBiped {
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
 		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
-
-		if (!isGliding) {
+		EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
+		RArm.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float) Math.PI) * 2.0F * par2 * 0.5F;
+		LArm.rotateAngleX = MathHelper.cos(par1 * 0.6662F) * 2.0F * par2 * 0.5F;
+		if (!isGliding){
 			RWing.rotateAngleZ = 0F;
 			LWing.rotateAngleZ = 0F;
-		} else {
+			if (player.prevPosX != player.posX || player.prevPosZ != player.posZ) {
+				RWing.rotateAngleX = 0.7F;
+				LWing.rotateAngleX = 0.7F;
+			}
+			else{
+				RWing.rotateAngleX = 0.0F;
+				LWing.rotateAngleX = 0.0F;
+			}
+		}
+		if (isGliding) {
 			RWing.rotateAngleZ = 1.570796F;
 			LWing.rotateAngleZ = -1.570796F;
+		}
+
+		if (player.isSneaking()) {
+			Body.rotateAngleX = 0.4F;
+			RArm.rotateAngleX += 0.4F;
+			LArm.rotateAngleX += 0.4F;
+			RWingbase.rotateAngleX = 0.5F;
+			LWingbase.rotateAngleX = 0.5F;
+			RWing.rotateAngleX = 0.5F;
+			LWing.rotateAngleX = 0.5F;
+			RWingbase.rotationPointZ = 4.5F;
+			LWingbase.rotationPointZ = 4.5F;
+			RWing.rotationPointZ = 4.5F;
+			LWing.rotationPointZ = 4.5F;
+
+		} else {
+			Body.rotateAngleX = 0.0F;
+			RWingbase.rotateAngleX = 0.0F;
+			LWingbase.rotateAngleX = 0.0F;
+			RWingbase.rotationPointZ = 3.5F;
+			LWingbase.rotationPointZ = 3.5F;
+			RWing.rotationPointZ = 3.5F;
+			LWing.rotationPointZ = 3.5F;
 		}
 	}
 }

@@ -19,6 +19,7 @@ public class ConfigurationHandler {
 	public static boolean spawnPortalMobs = true;
 	public static boolean shouldDoVersionCheck = true;
 	public static byte beetleLarvaEating = 0;
+	public static boolean BombardierBlockDestroy = true;
 
 	public static boolean lead = false;
 	public static boolean silver = false;
@@ -77,6 +78,7 @@ public class ConfigurationHandler {
 			ModBlocks.erebusAltarXPID = config.getBlock("Block ID of Erebus Altar of Experience", 2564).getInt(2564);
 			ModBlocks.erebusAltarRepairID = config.getBlock("Block ID of Erebus Altar of Repair", 2565).getInt(2565);
 			ModBlocks.glowingJarID = config.getBlock("Block ID of Glowing Jar", 2566).getInt(2566);
+			ModBlocks.reinExoID = config.getBlock("Block ID of Reinforced Exoskeleton Block", 2567).getInt(2567);
 
 			int id = 2527;
 			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];
@@ -102,7 +104,7 @@ public class ConfigurationHandler {
 			ModBlocks.spiderSpawnerID = config.getBlock("Block ID of Spider Spawners", 2552).getInt(2552);
 			ModBlocks.caveSpiderSpawnerID = config.getBlock("Block ID of Cave Spider Spawners", 2553).getInt(2553);
 
-			// latest ID used (please update after adding new blocks!) >>> 2566
+			// latest ID used (please update after adding new blocks!) >>> 2567
 
 			/*
 			 * Items
@@ -138,11 +140,17 @@ public class ConfigurationHandler {
 			ModItems.waspDaggerID = config.getItem("Item ID of Wasp Dagger", 9733).getInt(9733);
 
 			ModItems.compoundGogglesID = config.getItem("Item ID of Compound Goggles", 9730).getInt(9730);
+			ModItems.reinCompoundGogglesID = config.getItem("Item ID of Reinforced Compound Goggles", 9740).getInt(9740);
 			ModItems.sprintLeggingsID = config.getItem("Item ID of Sprint Leggings", 9731).getInt(9731);
 			ModItems.jumpBootsID = config.getItem("Item ID of Jump Boots", 9732).getInt(9732);
 			ModItems.armorGliderID = config.getItem("Item ID of Chest Armour Glider", 9735).getInt(9735);
 
-			// latest ID used (please update after adding new items!) >>> 9735
+			ModItems.reinExoskeletonHelmetID = config.getItem("Item ID of Reinforced Exoskeleton Helmet", 9736).getInt(9736);
+			ModItems.reinExoskeletonBodyID = config.getItem("Item ID of Reinforced Exoskeleton Chestplate", 9737).getInt(9737);
+			ModItems.reinExoskeletonLegsID = config.getItem("Item ID of Reinforced Exoskeleton Leggings", 9738).getInt(9738);
+			ModItems.reinExoskeletonBootsID = config.getItem("Item ID of Reinforced Exoskeleton Boots", 9739).getInt(9739);
+
+			// latest ID used (please update after adding new items!) >>> 9740
 
 			/*
 			 * Biomes & misc
@@ -156,6 +164,7 @@ public class ConfigurationHandler {
 			ConfigurationHandler.spawnPortalMobs = config.get(Configuration.CATEGORY_GENERAL, "Should spawn beetles and larvae in the portal", true).getBoolean(true);
 			ConfigurationHandler.beetleLarvaEating = (byte) config.get(Configuration.CATEGORY_GENERAL, "Beetle larva eating settings", 0, "0 = only wooden blocks except tile entities & logs, 1 = only wooden blocks except logs, 2 = anything").getInt(0);
 			ConfigurationHandler.shouldDoVersionCheck = config.get(Configuration.CATEGORY_GENERAL, "Should do version check?", true).getBoolean(true);
+			ConfigurationHandler.BombardierBlockDestroy = config.get(Configuration.CATEGORY_GENERAL, "Bombardier Beetle Block destruction", true, "This will not stop block destruction for player attacks only collided with blocks!").getBoolean(true);
 
 			ConfigurationHandler.lead = config.get(Configuration.CATEGORY_GENERAL, "Should generate lead?", false).getBoolean(false);
 			ConfigurationHandler.silver = config.get(Configuration.CATEGORY_GENERAL, "Should generate silver?", false).getBoolean(false);

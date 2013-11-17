@@ -24,7 +24,7 @@ import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import erebus.ModItems;
 import erebus.utils.Utils;
 
-public class EntityAnimatedBlock extends IEntityMobBlock implements IEntityAdditionalSpawnData {
+public class EntityAnimatedBlock extends EntityMobBlock implements IEntityAdditionalSpawnData {
 
 	public int blockID, blockMeta;
 	private int lastX = 0, lastY = 0, lastZ = 0;

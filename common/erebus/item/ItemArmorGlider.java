@@ -23,7 +23,7 @@ import erebus.client.model.armor.ModelArmorGlider;
 public class ItemArmorGlider extends ItemArmor {
 
 	public ItemArmorGlider(int id, int armorType) {
-		super(id, ErebusMod.armorEXOSKELETON, 2, armorType);
+		super(id, ErebusMod.armorREINEXOSPECIAL, 2, armorType);
 	}
 
 	@Override
@@ -72,6 +72,7 @@ public class ItemArmorGlider extends ItemArmor {
 	}
 
 	@ForgeSubscribe
+	@SideOnly(Side.CLIENT)
 	public void onPlayerRenderPre(RenderPlayerEvent.Pre e){
 		GL11.glPushMatrix();
 
@@ -86,18 +87,8 @@ public class ItemArmorGlider extends ItemArmor {
 			if (chestPlate.getTagCompound().getBoolean("isGliding") && !e.entityPlayer.onGround) {
 				GL11.glTranslated(0D, -e.entityPlayer.height / 2, 0D);
 				GL11.glRotated(60D,1F,0F,0F);
-				//GL11.glRotated(Math.toRadians(e.entityPlayer.rotationYaw),0F,1F,0F);
-				// GL11.glTranslated(0D,e.entityPlayer.height/2,0D);
-				//GL11.glRotated(60D*Math.toRadians(e.entityPlayer.rotationYaw),1F,0F,0F);*/
-
-				// umm, just do whatever the fuck you want here, I got no idea
-				// dunno, maybe this is a bit weird
 			}
 		}
-	}
-
-	@ForgeSubscribe
-	public void onPlayerRenderPost(RenderPlayerEvent.Post e){
 		GL11.glPopMatrix();
 	}
 }

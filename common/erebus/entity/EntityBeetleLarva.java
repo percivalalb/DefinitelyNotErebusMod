@@ -1,5 +1,6 @@
 package erebus.entity;
 
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -21,7 +22,7 @@ import erebus.entity.ai.EntityAIEatWoodenItem;
 import erebus.network.PacketHandler;
 import erebus.network.packet.PacketParticle;
 
-public class EntityBeetleLarva extends EntityUndergroundAnimal {
+public class EntityBeetleLarva extends EntityCreature {
 
 	private final EntityAIWander aiWander = new EntityAIWander(this, 0.48D);
 	private final EntityAIWatchClosest aiWatchClosest = new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F);

@@ -1,5 +1,6 @@
 package erebus.entity;
 
+import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -15,7 +16,7 @@ import net.minecraft.world.World;
 import erebus.ModItems;
 import erebus.item.ItemErebusMaterial;
 
-public class EntityBeetle extends EntityUndergroundAnimal {
+public class EntityBeetle extends EntityCreature {
 
 	public int skin = rand.nextInt(51);
 

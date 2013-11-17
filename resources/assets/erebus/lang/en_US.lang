@@ -133,12 +133,17 @@ tile.erebusAltarHealing.name=Altar of Healing
 tile.erebusAltarXP.name=Altar of Experience
 tile.erebusAltarRepair.name=Altar of Repair
 tile.glowingJar.name=Glowing Jar
+tile.reinExo.name=Reinforced Exoskeleton Block
 
 #Items
 item.helmetExo.name=Exoskeleton Helmet
 item.chestplateExo.name=Exoskeleton Chestplate
 item.leggingsExo.name=Exoskeleton Leggings
 item.bootsExo.name=Exoskeleton Boots
+item.exoHelmetRein.name=Reinforced Exoskeleton Helmet
+item.exoChestplateRein.name=Reinforced Exoskeleton Chestplate
+item.exoLeggingsRein.name=Reinforced Exoskeleton Leggings
+item.exoBootsRein.name=Reinforced Exoskeleton Boots
 item.portalActivator.name=Portal Activator
 item.clubBone.name=Caveman's Club
 item.maxSpeedBow.name=MaxSpeed Bow
@@ -154,6 +159,7 @@ item.shovelJade.name=Jade Shovel
 item.paxelJade.name=Jade Paxel
 item.hoeJade.name=Jade Hoe
 item.compoundGoggles.name=Compound Goggles
+item.reinCompoundGoggles.name=Reinforced Compound Goggles
 item.jumpBoots.name=Jump Boots
 item.sprintLeggings.name=Sprint Leggings
 item.armorGlider.name=Chest Plate Glider
@@ -173,6 +179,8 @@ item.erebusMaterials.12.name=Red Gem
 item.erebusMaterials.13.name=Bioluminescence
 item.erebusMaterials.14.name=Supernatural-Velocity
 item.erebusMaterials.15.name=Altar Fragment
+item.erebusMaterials.16.name=Reinforced Exoskeleton Plate
+item.erebusMaterials.17.name=Glider Wing
 item.erebusFood.0.name=Beetle Larva
 item.erebusFood.1.name=Cooked Beetle Larva
 item.erebusFood.2.name=Grasshopper Leg
@@ -213,6 +221,7 @@ entity.Moth - Erebus.name=Moth
 entity.Firebrat - Erebus.name=Firebrat
 entity.Antlion - Erebus.name=Antlion
 entity.GlowWorm - Erebus.name=Glow worm
+entity.BombardierBeetle - Erebus.name=Bombardier Beetle
 
 #Other
 itemGroup.erebus.block=Erebus Blocks

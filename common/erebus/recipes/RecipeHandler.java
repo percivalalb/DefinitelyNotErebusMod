@@ -108,11 +108,23 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModItems.exoskeletonLegs, 1), new Object[] { "sss", "s s", "s s", 's', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate) });
 		GameRegistry.addRecipe(new ItemStack(ModItems.exoskeletonBoots, 1), new Object[] { "   ", "s s", "s s", 's', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate) });
 
+		GameRegistry.addRecipe(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataReinforcedPlateExo), new Object[] { "sss", "sss", "sss", 's', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate) });
+
+		GameRegistry.addRecipe(new ItemStack(ModItems.reinExoskeletonHelmet, 1), new Object[] { "sss", "s s", "   ", 's', new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.reinExoskeletonBody, 1), new Object[] { "s s", "sss", "sss", 's', new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.reinExoskeletonLegs, 1), new Object[] { "sss", "s s", "s s", 's', new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.reinExoskeletonBoots, 1), new Object[] { "   ", "s s", "s s", 's', new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo) });
+
 		// Special armor
 		GameRegistry.addRecipe(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataCompoundLens), new Object[] { "GGG", "GEG", "GGG", 'E', new ItemStack(ModBlocks.blockAmber, 1, 1), 'G', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataCompoundEyes) });
 		GameRegistry.addRecipe(new ItemStack(ModItems.compoundGoggles, 1), new Object[] { "XXX", "OXO", "   ", 'O', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataCompoundLens), 'X', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate) });
-		GameRegistry.addRecipe(new ItemStack(ModItems.jumpBoots), new Object[] { "F F", "BXB", "B B", 'F', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataFlyWing), 'B', new ItemStack(ModItems.erebusMaterials, 1, 9), 'X', new ItemStack(ModItems.exoskeletonBoots, 1) });
-		GameRegistry.addRecipe(new ItemStack(ModItems.sprintLeggings), new Object[] { "BBB", "BXB", "BBB", 'B', new ItemStack(ModItems.erebusMaterials, 1, 8), 'X', new ItemStack(ModItems.exoskeletonLegs, 1) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.reinCompoundGoggles, 1), new Object[] { "XXX", "XOX", "   ", 'O', new ItemStack(ModItems.compoundGoggles, 1), 'X', new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.jumpBoots), new Object[] { "F F", "BXB", "B B", 'F', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataFlyWing), 'B', new ItemStack(ModItems.erebusMaterials, 1, 9), 'X', new ItemStack(ModItems.reinExoskeletonBoots, 1) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.sprintLeggings), new Object[] { "BBB", "BXB", "BBB", 'B', new ItemStack(ModItems.erebusMaterials, 1, 8), 'X', new ItemStack(ModItems.reinExoskeletonLegs, 1) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.armorGlider), new Object[] { "   ", "GXG", "   ", 'G', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataGliderWing), 'B', new ItemStack(ModItems.erebusMaterials, 1, 9), 'X', new ItemStack(ModItems.reinExoskeletonBody, 1) });
+
+		GameRegistry.addRecipe(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataGliderWing), new Object[] { "SSS", "FFF", "FFF", 'S', Item.stick, 'F', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataFlyWing) });
+
 		GameRegistry.addRecipe(new ItemStack(ModItems.waspDagger), new Object[] { "   ", " W ", " S ", 'W', new ItemStack(ModItems.erebusMaterials, 1, 10), 'S', new ItemStack(Item.stick) });
 
 		// Red Gem
@@ -153,6 +165,8 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModItems.wandOfAnimation, 1), new Object[] { "  N", " S ", "D  ", 'D', Item.diamond, 'S', Item.stick, 'N', Item.netherStar });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.erebusAltar, 1), new Object[] { "XXX", "XOX", "XXX", 'O', Block.obsidian, 'X', new ItemStack(ModItems.erebusMaterials, 1, 15) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.glowingJar, 1), new Object[] { "XXX", "GBG", "GGG", 'X', Item.ingotIron, 'G', Block.glass, 'B', new ItemStack(ModItems.erebusMaterials, 1, 13) });
+		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.reinExo, 1), new Object[] { new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo), new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo),
+		new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo), new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo) });
 
 		// Furnace smelting
 		FurnaceRecipes.smelting().addSmelting(ModBlocks.blockAmber.blockID, 0, new ItemStack(ModBlocks.blockAmber, 1, 1), 0.3F);

@@ -13,8 +13,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
-public abstract class IEntityMobBlock extends EntityCreature implements IMob {
-	public IEntityMobBlock(World par1World) {
+public abstract class EntityMobBlock extends EntityCreature implements IMob {
+	public EntityMobBlock(World par1World) {
 		super(par1World);
 		experienceValue = 5;
 	}

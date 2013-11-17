@@ -27,7 +27,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 
 	public EntityBlackWidow(World par1World) {
 		super(par1World);
-		setSize(WidowSize * 2.0F, WidowSize);
+		setSize(1.0F, 1.0F);
 		isImmuneToFire = true;
 	}
 
@@ -74,6 +74,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 
 	@Override
 	public void onUpdate() {
+		setSize(WidowSize * 2.0F, WidowSize);
 		if (!worldObj.isRemote && WidowSize <= 0.7F) {
 			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(15.0D); // MaxHealth
 			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D); // atkDmg

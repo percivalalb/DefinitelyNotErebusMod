@@ -75,12 +75,73 @@ public class ThaumcraftIntegration implements IModIntegration{
 		registerItem(ModItems.jadeHelmet, -1, Aspect.GREED,5, Aspect.CRYSTAL,3, Aspect.ARMOR,4);
 		registerItem(ModItems.jadeBody, -1, Aspect.GREED,8, Aspect.CRYSTAL,4, Aspect.ARMOR,6);
 		registerItem(ModItems.jadeLegs, -1, Aspect.GREED,7, Aspect.CRYSTAL,4, Aspect.ARMOR,5, Aspect.MOTION,2);
-		registerItem(ModItems.jadeBoots, -1, Aspect.GREED,4, Aspect.CRYSTAL,2, Aspect.ARMOR,3, Aspect.TRAP,3);
+		registerItem(ModItems.jadeBoots, -1, Aspect.GREED,4, Aspect.CRYSTAL,2, Aspect.ARMOR,3, Aspect.TRAVEL,3);
 		
+		registerItem(ModItems.jadeSword, -1, Aspect.GREED,3, Aspect.WEAPON,4, Aspect.CRYSTAL,2);
+		registerItem(ModItems.jadePickaxe, -1, Aspect.GREED,3, Aspect.MINE,4, Aspect.CRYSTAL,2);
+		registerItem(ModItems.jadeAxe, -1, Aspect.GREED,3, Aspect.MINE,2, Aspect.TREE,1, Aspect.CRYSTAL,2);
+		registerItem(ModItems.jadeShovel, -1, Aspect.GREED,2, Aspect.MINE,3, Aspect.CRYSTAL,2);
+		registerItem(ModItems.jadePaxel, -1, Aspect.GREED,7, Aspect.MINE,5, Aspect.CRYSTAL,3);
+		registerItem(ModItems.jadeHoe, -1, Aspect.GREED,2, Aspect.HARVEST,3, Aspect.CRYSTAL,2);
+
 		registerItem(ModItems.fossilClub, -1, Aspect.DEATH,2, Aspect.BEAST,1);
 		registerItem(ModItems.maxSpeedBow, -1, Aspect.WEAPON,5, Aspect.DEATH,2, Aspect.AIR,3);
+		registerItem(ModItems.waspSword, -1, Aspect.WEAPON,4, Aspect.BEAST,2, Aspect.POISON,3);
 		
-		registerItem(ModItems.turnip, -1, Aspect.HUNGER,2, Aspect.LIFE,2, Aspect.SEED,1, Aspect.CROP,1);
+		registerItem(ModItems.compoundGoggles, -1, Aspect.LIGHT,2, Aspect.BEAST,1, Aspect.DARKNESS,2);
+		registerItem(ModItems.jumpBoots, -1, Aspect.AIR,2, Aspect.TRAVEL,3, Aspect.BEAST,1);
+		registerItem(ModItems.sprintLeggings, -1, Aspect.TRAVEL,5, Aspect.BEAST,2, Aspect.ARMOR,1);
+		registerItem(ModItems.armorGlider, -1, Aspect.TRAVEL,4, Aspect.ARMOR,2, Aspect.AIR,2, Aspect.FLIGHT,3);
+		
+		registerItem(ModItems.erebusMaterials, 0, Aspect.BEAST,2);
+		registerItem(ModItems.erebusMaterials, 1, Aspect.GREED,2, Aspect.CRYSTAL,1);
+		registerItem(ModItems.erebusMaterials, 2, Aspect.DEATH,1, Aspect.BEAST,1);
+		registerItem(ModItems.erebusMaterials, 3, Aspect.PLANT,2, Aspect.HARVEST,1, Aspect.CRAFT,1);
+		registerItem(ModItems.erebusMaterials, 4, Aspect.BEAST,2, Aspect.LIGHT,2, Aspect.DARKNESS,1);
+		registerItem(ModItems.erebusMaterials, 5, Aspect.BEAST,1, Aspect.LIGHT,1);
+		registerItem(ModItems.erebusMaterials, 6, Aspect.FLIGHT,1, Aspect.TRAVEL,1);
+		registerItem(ModItems.erebusMaterials, 7, Aspect.STONE,2, Aspect.TREE,2);
+		registerItem(ModItems.erebusMaterials, 8, Aspect.TRAVEL,1, Aspect.BEAST,2);
+		registerItem(ModItems.erebusMaterials, 9, Aspect.BEAST,3);
+		registerItem(ModItems.erebusMaterials, 10, Aspect.BEAST,3, Aspect.POISON,2);
+		registerItem(ModItems.erebusMaterials, 11, Aspect.LIFE,1, Aspect.PLANT,2, Aspect.HARVEST,1);
+		registerItem(ModItems.erebusMaterials, 12, Aspect.LIGHT,2, Aspect.CRYSTAL,1);
+		registerItem(ModItems.erebusMaterials, 13, Aspect.LIGHT,4, Aspect.BEAST,2);
+		registerItem(ModItems.erebusMaterials, 14, Aspect.TRAVEL,6, Aspect.BEAST,3);
+		
+		registerItem(ModItems.erebusFood, 0, Aspect.BEAST,1);
+		registerItem(ModItems.erebusFood, 1, Aspect.BEAST,1, Aspect.FIRE,1);
+		registerItem(ModItems.erebusFood, 2, Aspect.TRAVEL,1, Aspect.BEAST,1);
+		registerItem(ModItems.erebusFood, 3, Aspect.TRAVEL,1, Aspect.BEAST,1, Aspect.FIRE,1);
+		registerItem(ModItems.erebusFood, 4, Aspect.BEAST,1, Aspect.POISON,1);
+		registerItem(ModItems.erebusFood, 5, Aspect.BEAST,1, Aspect.POISON,1, Aspect.FIRE,1);
+		registerItem(ModItems.erebusFood, 6, Aspect.PLANT,2, Aspect.HUNGER,1);
+		registerItem(ModItems.erebusFood, 7, Aspect.HUNGER,1, Aspect.LIFE,2);
+		registerItem(ModItems.erebusFood, 8, Aspect.HUNGER,1, Aspect.LIFE,3, Aspect.GREED,2);
+		
+		registerItem(ModItems.turnip, -1, Aspect.HUNGER,2 , Aspect.LIFE,2, Aspect.SEED,1, Aspect.CROP,1);
+		registerItem(ModItems.bamBucket, 0, Aspect.VOID,1, Aspect.PLANT,2);
+		registerItem(ModItems.bamBucket, 1, Aspect.VOID,1, Aspect.PLANT,2, Aspect.WATER,2);
+		registerItem(ModItems.sprayCan, -1, Aspect.POISON,1, Aspect.AURA,2);
+		registerItem(ModItems.waspDagger, -1, Aspect.WEAPON,2, Aspect.AIR,1, Aspect.POISON,2);
+		registerItem(ModItems.wandOfAnimation, -1, Aspect.MAGIC,10, Aspect.ELDRITCH,8, Aspect.CRYSTAL,2, Aspect.ENERGY,4);
+		
+		registerEntity("Erebus.BeetleLarva", Aspect.BEAST,1, Aspect.HUNGER,1, Aspect.SLIME,2);
+		registerEntity("Erebus.Wasp", Aspect.AIR,4, Aspect.POISON,2);
+		registerEntity("Erebus.Centipede", Aspect.TRAVEL,3, Aspect.MOTION,2, Aspect.POISON,1);
+		registerEntity("Erebus.Beetle", Aspect.BEAST,1, Aspect.ARMOR,2);
+		registerEntity("Erebus.Fly", Aspect.AIR,1, Aspect.FLIGHT,1);
+		registerEntity("Erebus.Mosquito", Aspect.AIR,2, Aspect.DARKNESS,1, Aspect.WATER,1);
+		registerEntity("Erebus.Tarantula", Aspect.BEAST,2, Aspect.POISON,3);
+		registerEntity("Erebus.BotFly", Aspect.HUNGER,3, Aspect.AIR,2, Aspect.FLIGHT,2);
+		registerEntity("Erebus.BlackWidow", Aspect.POISON,5, Aspect.DARKNESS,3, Aspect.FIRE,1);
+		registerEntity("Erebus.Scorpion", Aspect.FIRE,1, Aspect.POISON,4, Aspect.WEAPON,2);
+		registerEntity("Erebus.Grasshopper", Aspect.TRAVEL,3, Aspect.HUNGER,1, Aspect.FLIGHT,2);
+		registerEntity("Erebus.Locust", Aspect.TRAVEL,3, Aspect.BEAST,2, Aspect.FLIGHT,2);
+		registerEntity("Erebus.Solifuge", Aspect.MOTION,3, Aspect.BEAST,2);
+		registerEntity("Erebus.Moth", Aspect.FLIGHT,3, Aspect.LIGHT,1);
+		registerEntity("Erebus.Firebrat", Aspect.FIRE,2, Aspect.BEAST,1);
+		registerEntity("Erebus.Antlion", Aspect.TRAP,3, Aspect.EARTH,2);
 	}
 	
 	private void registerBlock(Block block, int metadata, Object...aspects){
@@ -89,6 +150,10 @@ public class ThaumcraftIntegration implements IModIntegration{
 	
 	private void registerItem(Item item, int metadata, Object...aspects){
 		ThaumcraftApi.registerObjectTag(item.itemID, metadata, generateAspectList(aspects));
+	}
+	
+	private void registerEntity(String entityName, Object...aspects){
+		ThaumcraftApi.registerEntityTag(entityName, generateAspectList(aspects));
 	}
 	
 	private AspectList generateAspectList(Object...aspectData){

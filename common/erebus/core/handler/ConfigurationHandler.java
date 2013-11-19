@@ -70,6 +70,7 @@ public class ConfigurationHandler {
 			ModBlocks.umberFurnace_onID = config.getBlock("Block ID of Umebr Furnace OFF", 2524).getInt(2524);
 			ModBlocks.umberPaverID = config.getBlock("Block ID of Umebrpaver", 2525).getInt(2525);
 			ModBlocks.insectRepellentID = config.getBlock("Block ID of Insect Repellent Block", 2526).getInt(2526);
+			ModBlocks.bambooShootID = config.getBlock("Block ID of Bamboo Shoot Block", 2568).getInt(2568);
 			ModBlocks.bambooCropID = config.getBlock("Block ID of Bamboo Crop Block", 2554).getInt(2554);
 			ModBlocks.bambooTorchID = config.getBlock("Block ID of Bamboo Torch", 2559).getInt(2559);
 			ModBlocks.erebusAltarID = config.getBlock("Block ID of Erebus Altar", 2560).getInt(2560);
@@ -104,7 +105,7 @@ public class ConfigurationHandler {
 			ModBlocks.spiderSpawnerID = config.getBlock("Block ID of Spider Spawners", 2552).getInt(2552);
 			ModBlocks.caveSpiderSpawnerID = config.getBlock("Block ID of Cave Spider Spawners", 2553).getInt(2553);
 
-			// latest ID used (please update after adding new blocks!) >>> 2567
+			// latest ID used (please update after adding new blocks!) >>> 2568
 
 			/*
 			 * Items

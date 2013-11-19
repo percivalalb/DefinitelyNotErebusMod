@@ -39,7 +39,7 @@ public final class RandomMobNames {
 		NameData data = names.get(entity.getClass());
 
 		if (data != null && entity.getRNG().nextInt(data.diceSides) == 0 && !entity.hasCustomNameTag()) {
-			entity.setCustomNameTag(data.nameList[entity.getRNG().nextInt(data.nameList.length)]);System.out.println("rng");
+			entity.setCustomNameTag(data.nameList[entity.getRNG().nextInt(data.nameList.length)]);
 		}
 	}
 	

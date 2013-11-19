@@ -14,10 +14,9 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
-
 import com.google.common.io.ByteArrayDataInput;
-
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -85,6 +84,7 @@ import erebus.client.render.tileentity.TileEntityGlowingJarRenderer;
 import erebus.client.render.tileentity.TileEntityRenderBambooCrate;
 import erebus.client.render.tileentity.TileEntitySpawnerRender;
 import erebus.core.handler.ClientTickHandler;
+import erebus.core.handler.KeyBindingHandler;
 import erebus.core.handler.PortalOverlayHandler;
 import erebus.entity.EntityAnimatedBlock;
 import erebus.entity.EntityAnimatedChest;
@@ -119,6 +119,11 @@ import erebus.tileentity.TileEntityGlowingJar;
 import erebus.tileentity.TileEntitySpawner;
 
 public class ClientProxy extends CommonProxy {
+	@Override
+	public void registerKeyHandlers() {
+		KeyBindingRegistry.registerKeyBinding(new KeyBindingHandler());
+	}
+	
 	@Override
 	public void registerRenderInformation() {
 		MinecraftForge.EVENT_BUS.register(new PortalOverlayHandler());

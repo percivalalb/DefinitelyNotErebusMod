@@ -109,7 +109,7 @@ public class EntityBombardierBeetle extends EntityMob{
 		int y = (int) posY;
 		int z = (int) (posZ + Math.cos(direction) * 2.0D);
 		if (worldObj.getBlockId(x, y, z) != ModBlocks.reinExoID)
-			if (ConfigurationHandler.BombardierBlockDestroy == true) {
+			if (ConfigurationHandler.bombardierBlockDestroy == true) {
 				worldObj.createExplosion(this, posX - Math.sin(direction) * 1.5D, posY + 1, posZ + Math.cos(direction) * 1.5D, explosionRadius, rule);
 				worldObj.destroyBlock(x, y, z, true);
 			}

@@ -1,7 +1,7 @@
 package erebus.item;
 
 import java.util.List;
-
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,9 +11,12 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
 import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ModBlocks;
+import erebus.block.BlockBambooShoot;
 import erebus.network.PacketHandler;
 import erebus.network.packet.PacketSound;
 
@@ -27,8 +30,7 @@ public class ItemErebusMaterial extends Item {
 	};
 
 	public static final short dataExoPlate = 0, dataJade = 1, dataBoneShard = 2, dataBamboo = 3, dataCompoundEyes = 4, dataCompoundLens = 5,
-	dataFlyWing = 6, dataPetrifiedWood = 7, dataBioVelocity = 8, dataElasticFibre = 9, dataWaspSting = 10, dataBambooShoot = 11,
-	dataRedGem = 12,
+	dataFlyWing = 6, dataPetrifiedWood = 7, dataBioVelocity = 8, dataElasticFibre = 9, dataWaspSting = 10, dataBambooShoot = 11, dataRedGem = 12,
 	dataBioluminescence = 13, dataSupernaturalVelocity = 14, dataAltarFragment = 15, dataReinforcedPlateExo = 16, dataGliderWing = 17;
 
 	@SideOnly(Side.CLIENT)
@@ -38,6 +40,22 @@ public class ItemErebusMaterial extends Item {
 		super(id);
 		setHasSubtypes(true);
 		setMaxDamage(0);
+	}
+	
+	@Override
+	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+		if (side == 1 && is.getItemDamage() == dataBambooShoot && player.canPlayerEdit(x, y, z, side, is) && player.canPlayerEdit(x, y+1, z, side, is)){
+			Block soil = Block.blocksList[world.getBlockId(x, y, z)];
+
+			if (soil != null && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, (BlockBambooShoot) ModBlocks.bambooShoot) && world.isAirBlock(x, y+1, z)){ // TODO change to bamboo shoot block
+				world.setBlock(x, y+1, z, ModBlocks.bambooShoot.blockID);
+				
+				if (!player.capabilities.isCreativeMode) --is.stackSize;
+				return true;
+			}
+		}
+		
+		return false;
 	}
 
 	@Override

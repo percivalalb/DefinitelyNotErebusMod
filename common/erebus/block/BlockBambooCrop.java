@@ -23,6 +23,7 @@ public class BlockBambooCrop extends Block {
 
 	public BlockBambooCrop(int id) {
 		super(id, Material.wood);
+		setTickRandomly(true);
 		setBlockBounds(0.2F, 0.0F, 0.2F, 0.8F, 1.0F, 0.8F);
 	}
 
@@ -72,6 +73,13 @@ public class BlockBambooCrop extends Block {
 	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
+	}
+	
+	@Override
+	public void updateTick(World world, int x, int y, int z, Random rand) {
+		if (world.getBlockMetadata(x,y,z) != 0) {
+			// TODO growing
+		}
 	}
 
 	@Override

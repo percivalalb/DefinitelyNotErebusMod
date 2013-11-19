@@ -7,6 +7,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import erebus.block.BlockAmber;
 import erebus.block.BlockBambooCrate;
 import erebus.block.BlockBambooCrop;
+import erebus.block.BlockBambooShoot;
 import erebus.block.BlockBambooTorch;
 import erebus.block.BlockButtonUmberstone;
 import erebus.block.BlockErebusAltar;
@@ -105,6 +106,7 @@ public class ModBlocks {
 	public static Block umberFurnace_on;				public static int umberFurnace_onID;
 	public static Block umberPaver;						public static int umberPaverID;
 	public static Block insectRepellent;				public static int insectRepellentID;
+	public static Block bambooShoot;					public static int bambooShootID;
 	public static Block bambooCrop;						public static int bambooCropID;
 	public static Block bambooTorch;					public static int bambooTorchID;
 	public static Block erebusAltar;					public static int erebusAltarID;
@@ -169,6 +171,7 @@ public class ModBlocks {
 		umberFurnace_on = new BlockUmberFurnace(umberFurnace_onID, true).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberFurnaceON");
 		umberPaver = new BlockUmberPaver(umberPaverID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberPaver");
 		insectRepellent = new BlockInsectRepellent(insectRepellentID, Material.air).setUnlocalizedName("insectRepellent");
+		bambooShoot = new BlockBambooShoot(bambooShootID).setUnlocalizedName("bambooShoot").setTextureName("erebus:bambooShoot");
 		bambooCrop = new BlockBambooCrop(bambooCropID).setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("bambooCrop").setTextureName("erebus:bambooCropBase");
 		bambooTorch = new BlockBambooTorch(bambooTorchID, Material.wood).setHardness(0.0F).setUnlocalizedName("bambooTorch").setTextureName("erebus:blockBambooTorch");
 		erebusAltar = new BlockErebusAltar(erebusAltarID).setUnlocalizedName("erebusAltar");
@@ -247,6 +250,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(umberFurnace, "erebus.umberFurnaceOff");
 		GameRegistry.registerBlock(umberFurnace_on, "erebus.umberFurnaceOn");
 		GameRegistry.registerBlock(umberPaver, ItemBlockUmberpaver.class, "erebus.umberpaver");
+		GameRegistry.registerBlock(bambooShoot, "erebus.bambooShoot");
 		GameRegistry.registerBlock(bambooCrop, "erebus.bambooCrop");
 		GameRegistry.registerBlock(bambooTorch, "erebus.bambooTorch");
 		GameRegistry.registerBlock(erebusAltar, "erebus.erebusAltar");

@@ -9,6 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import erebus.ModItems;
+import erebus.item.ItemErebusMaterial;
 
 public class BlockOreFossil extends Block {
 
@@ -27,6 +28,11 @@ public class BlockOreFossil extends Block {
 
 		if (world.rand.nextInt(50 - Math.min(6, fortune * 2)) == 0) {
 			ret.add(new ItemStack(ModItems.fossilClub, 1));
+			return ret;
+		}
+
+		if (world.rand.nextInt(30 - Math.min(6, fortune * 2)) == 0) {
+			ret.add(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataAltarFragment));
 			return ret;
 		}
 

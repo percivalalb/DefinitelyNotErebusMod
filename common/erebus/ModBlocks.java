@@ -250,10 +250,10 @@ public class ModBlocks {
 		GameRegistry.registerBlock(bambooCrop, "erebus.bambooCrop");
 		GameRegistry.registerBlock(bambooTorch, "erebus.bambooTorch");
 		GameRegistry.registerBlock(erebusAltar, "erebus.erebusAltar");
-		GameRegistry.registerBlock(erebusAltar, "erebus.erebusAltarLightning");
-		GameRegistry.registerBlock(erebusAltar, "erebus.erebusAltarHealing");
-		GameRegistry.registerBlock(erebusAltar, "erebus.erebusAltarXP");
-		GameRegistry.registerBlock(erebusAltar, "erebus.erebusAltarRepair");
+		GameRegistry.registerBlock(erebusAltarLightning, "erebus.erebusAltarLightning");
+		GameRegistry.registerBlock(erebusAltarHealing, "erebus.erebusAltarHealing");
+		GameRegistry.registerBlock(erebusAltarXP, "erebus.erebusAltarXP");
+		GameRegistry.registerBlock(erebusAltarRepair, "erebus.erebusAltarRepair");
 		GameRegistry.registerBlock(glowingJar, "erebus.glowingJar");
 		GameRegistry.registerBlock(reinExo, "erebus.reinExo");
 

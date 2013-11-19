@@ -2,15 +2,12 @@ package erebus.core.proxy;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-
 import com.google.common.io.ByteArrayDataInput;
-
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -43,12 +40,16 @@ public class CommonProxy implements IGuiHandler {
 
 	private final int[][] places = new int[][] { { 1, 0, 0 }, { 1, 0, 1 }, { 0, 0, 1 }, { 1, 1, 0 }, { 1, 1, 1 }, { 0, 1, 1 }, { 0, 1, 0 }, { 0, 0, 0 } };
 
+	public void registerKeyHandlers() {
+		// Unused server side. -- see ClientProxy for implementation
+	}
+	
 	public void registerRenderInformation() {
 		// Unused server side. -- see ClientProxy for implementation
 	}
 
 	public void registerTileEntities() {
-		GameRegistry.registerTileEntity(TileEntitySpawner.class, "Custom Spawner (Erebus)");
+		GameRegistry.registerTileEntityWithAlternatives(TileEntitySpawner.class, "Custom Spawner (Erebus)", "Spider Spawner (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityBambooCrate.class, "Bamboo Crate (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityUmberFurnace.class, "Umber Furnace (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityErebusAltar.class, "Tile Entity Bug Zapper (Erebus)");

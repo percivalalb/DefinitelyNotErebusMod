@@ -95,10 +95,8 @@ public class EntityBombardierBeetle extends EntityMob{
 
 	@Override
 	protected void dropFewItems(boolean hitByPlayer, int looting) {
-		if (rand.nextInt(9) <= 2 + (looting >> 1)) {
-			dropItem(Item.gunpowder.itemID, 1);
-			dropItem(Item.blazePowder.itemID, 1);
-		}
+		dropItem(Item.gunpowder.itemID, 1);
+		dropItem(Item.blazePowder.itemID, 1);
 		entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3) + 1, ItemErebusMaterial.dataExoPlate), 0.0F);
 	}
 

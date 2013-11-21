@@ -27,7 +27,7 @@ public class EntityBombardierBeetle extends EntityMob{
 		super(par1World);
 		moveSpeed = 1.0D;
 		stepHeight = 1.0F;
-		setSize(2.5F, 1.0F);
+		setSize(2.0F, 1.3F);
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(1, new EntityAIExplodeAttackOnCollide(this, EntityPlayer.class, 0.3D, false));
 		tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
@@ -95,10 +95,8 @@ public class EntityBombardierBeetle extends EntityMob{
 
 	@Override
 	protected void dropFewItems(boolean hitByPlayer, int looting) {
-		if (rand.nextInt(9) <= 2 + (looting >> 1)) {
-			dropItem(Item.gunpowder.itemID, 1);
-			dropItem(Item.blazePowder.itemID, 1);
-		}
+		dropItem(Item.gunpowder.itemID, 1);
+		dropItem(Item.blazePowder.itemID, 1);
 		entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3) + 1, ItemErebusMaterial.dataExoPlate), 0.0F);
 	}
 

@@ -180,7 +180,7 @@ public class ModBlocks {
 		erebusAltarXP = new BlockErebusAltarXP(erebusAltarXPID).setUnlocalizedName("erebusAltarXP");
 		erebusAltarRepair = new BlockErebusAltarRepair(erebusAltarRepairID).setUnlocalizedName("erebusAltarRepair");
 		glowingJar = new BlockGlowingJar(glowingJarID).setUnlocalizedName("glowingJar");
-		reinExo = new BlockReinExo(reinExoID).setHardness(1.5F).setResistance(50.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("reinExo").setTextureName("erebus:reinExo");
+		reinExo = new BlockReinExo(reinExoID).setHardness(1.5F).setResistance(2000.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("reinExo").setTextureName("erebus:reinExo");
 
 		umbercobbleStairs = new Block[BlockUmberstone.iconPaths.length];
 		for (int i = 0; i < umbercobbleStairs.length; i++)

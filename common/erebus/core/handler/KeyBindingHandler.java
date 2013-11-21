@@ -31,6 +31,8 @@ public class KeyBindingHandler extends KeyHandler{
 		if (tickEnd)
 			if (kb.keyCode == glide.keyCode) {
 				EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
+				if (player == null) return;
+				
 				ItemStack chestPlate = player.inventory.armorInventory[2];
 				if (chestPlate != null && chestPlate.getItem() == ModItems.armorGlider) {
 					if (!chestPlate.hasTagCompound())
@@ -46,6 +48,8 @@ public class KeyBindingHandler extends KeyHandler{
 	public void keyUp(EnumSet<TickType> types, KeyBinding kb, boolean tickEnd) {
 		if (tickEnd) {
 			EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
+			if (player == null) return;
+			
 			ItemStack chestPlate = player.inventory.armorInventory[2];
 			if (chestPlate != null && chestPlate.getItem() == ModItems.armorGlider) {
 				if (!chestPlate.hasTagCompound())

@@ -19,10 +19,10 @@ public class ModBiomes {
 	public static BiomeGenBase cavern;
 
 	public static void init() {
-		underjungle = new BiomeGenUndergroundJungle(jungleID).setColor(5470985).func_76733_a(5470985).setTemperatureRainfall(1.2F, 0.9F).setBiomeName("Undergound Jungle");
+		underjungle = new BiomeGenUndergroundJungle(jungleID).setColor(5470985).func_76733_a(5470985).setTemperatureRainfall(1.35F, 0.9F).setBiomeName("Undergound Jungle");
 		underdesert = new BiomeGenUndergroundDesert(desertID).setColor(5470985).func_76733_a(5470985).setDisableRain().setTemperatureRainfall(2.2F, 0.2F).setBiomeName("Volcanic Desert");
-		undersavannah = new BiomeGenUndergroundSavannah(savannahID).setColor(5470985).func_76733_a(5470985).setDisableRain().setTemperatureRainfall(4.2F, 0.05F).setBiomeName("Subterranean Savannah");
-		cavern = new BiomeGenCavern(cavernID).setColor(5470985).func_76733_a(5470985).setDisableRain().setTemperatureRainfall(4.2F, 0.05F).setBiomeName("Cavern");
+		undersavannah = new BiomeGenUndergroundSavannah(savannahID).setColor(5470985).func_76733_a(5470985).setDisableRain().setTemperatureRainfall(0.85F, 0.05F).setBiomeName("Subterranean Savannah");
+		cavern = new BiomeGenCavern(cavernID).setColor(5470985).func_76733_a(5470985).setDisableRain().setTemperatureRainfall(2.2F, 0.05F).setBiomeName("Cavern");
 
 		registerBiomes();
 	}

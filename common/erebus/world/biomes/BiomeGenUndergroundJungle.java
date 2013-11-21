@@ -1,7 +1,6 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.entity.monster.EntitySpider;
@@ -65,6 +64,11 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 		// TODO fix mosquito lag
 		topBlock = (byte) Block.grass.blockID;
 		fillerBlock = (byte) Block.dirt.blockID;
+	}
+	
+	@Override
+	public float getSpawningChance() {
+		return 0.2F;
 	}
 
 	public int getRandomXZOffset(Random rand) {

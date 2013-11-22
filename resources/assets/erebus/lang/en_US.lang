@@ -223,6 +223,8 @@ entity.Firebrat - Erebus.name=Firebrat
 entity.Antlion - Erebus.name=Antlion
 entity.GlowWorm - Erebus.name=Glow worm
 entity.BombardierBeetle - Erebus.name=Bombardier Beetle
+entity.ErebusSpider - Erebus.name=Erebus Spider
+entity.MoneySpider - Erebus.name=Money Spider
 
 #Other
 itemGroup.erebus.block=Erebus Blocks

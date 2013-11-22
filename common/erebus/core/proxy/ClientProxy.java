@@ -14,7 +14,9 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
+
 import com.google.common.io.ByteArrayDataInput;
+
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -72,6 +74,7 @@ import erebus.client.render.item.BambooTorchItemRenderer;
 import erebus.client.render.item.ItemErebusAltarRenderer;
 import erebus.client.render.item.ItemGlowingJarRenderer;
 import erebus.client.render.item.ItemUmberFurnaceRenderer;
+import erebus.client.render.item.ScorpionPincerItemRenderer;
 import erebus.client.render.item.WandOfAnimationItemRenderer;
 import erebus.client.render.item.WaspDaggerItemRenderer;
 import erebus.client.render.item.WaspSwordItemRenderer;
@@ -123,7 +126,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerKeyHandlers() {
 		KeyBindingRegistry.registerKeyBinding(new KeyBindingHandler());
 	}
-	
+
 	@Override
 	public void registerRenderInformation() {
 		MinecraftForge.EVENT_BUS.register(new PortalOverlayHandler());
@@ -174,6 +177,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooTorch.blockID, new BambooTorchItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.wandOfAnimation.itemID, new WandOfAnimationItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.glowingJar.blockID, new ItemGlowingJarRenderer());
+		MinecraftForgeClient.registerItemRenderer(ModItems.scorpionPincer.itemID, new ScorpionPincerItemRenderer());
 	}
 
 	@Override

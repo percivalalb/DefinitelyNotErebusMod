@@ -81,6 +81,7 @@ public class ConfigurationHandler {
 			ModBlocks.erebusAltarRepairID = config.getBlock("Block ID of Erebus Altar of Repair", 2565).getInt(2565);
 			ModBlocks.glowingJarID = config.getBlock("Block ID of Glowing Jar", 2566).getInt(2566);
 			ModBlocks.reinExoID = config.getBlock("Block ID of Reinforced Exoskeleton Block", 2567).getInt(2567);
+			ModBlocks.bambooLadderID = config.getBlock("Block ID of BambooLadder", 2569).getInt(2569);
 
 			int id = 2527;
 			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];
@@ -106,7 +107,7 @@ public class ConfigurationHandler {
 			ModBlocks.spiderSpawnerID = config.getBlock("Block ID of Spider Spawners", 2552).getInt(2552);
 			ModBlocks.caveSpiderSpawnerID = config.getBlock("Block ID of Cave Spider Spawners", 2553).getInt(2553);
 
-			// latest ID used (please update after adding new blocks!) >>> 2568
+			// latest ID used (please update after adding new blocks!) >>> 2569
 
 			/*
 			 * Items

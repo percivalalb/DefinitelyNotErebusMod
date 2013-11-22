@@ -134,6 +134,7 @@ tile.erebusAltarXP.name=Altar of Experience
 tile.erebusAltarRepair.name=Altar of Repair
 tile.glowingJar.name=Glowing Jar
 tile.reinExo.name=Reinforced Exoskeleton Block
+tile.bambooLadder.name=Bamboo Ladder
 
 #Items
 item.helmetExo.name=Exoskeleton Helmet

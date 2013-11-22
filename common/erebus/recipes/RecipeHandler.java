@@ -140,7 +140,7 @@ public class RecipeHandler {
 		// ItemStack(ModBlocks.planksErebus, 1, BlockPlanksErebus.dataBamboo),
 		// 'b', new ItemStack(ModItems.erebusMaterials, 1, 3) });
 		// TODO removed until fixed
-
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.bambooLadder, 1), new Object[] { "BBB", "S S", "BBB", 'B', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBamboo), 'S', Item.silk });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.bambooTorch, 4), new Object[] { " C ", " B ", " B ", 'C', Item.coal, 'B', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBamboo) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.erebusAltar), new Object[] { "RRR", "SPS", "SSS", 'S', Block.stone, 'S', Block.pistonBase, 'R', Item.redstone });
 
@@ -166,7 +166,7 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.erebusAltar, 1), new Object[] { "XXX", "XOX", "XXX", 'O', Block.obsidian, 'X', new ItemStack(ModItems.erebusMaterials, 1, 15) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.glowingJar, 1), new Object[] { "XXX", "GBG", "GGG", 'X', Item.ingotIron, 'G', Block.glass, 'B', new ItemStack(ModItems.erebusMaterials, 1, 13) });
 		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.reinExo, 1), new Object[] { new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo), new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo),
-		new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo), new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo) });
+			new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo), new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo) });
 
 		// Furnace smelting
 		FurnaceRecipes.smelting().addSmelting(ModBlocks.blockAmber.blockID, 0, new ItemStack(ModBlocks.blockAmber, 1, 1), 0.3F);

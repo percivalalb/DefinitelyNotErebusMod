@@ -54,9 +54,9 @@ public class ModEntities {
 		registerEntity(EntityAntlion.class, "Antlion", 0x000000, 0xFFFFFF);
 		registerEntity(EntityBlackWidow.class, "BlackWidow", 0x000000, 0xFF0000);
 		registerEntity(EntityGlowWorm.class, "GlowWorm", 0xFFFF00, 0xFFFFFF);
-		registerEntity(EntityBombardierBeetle.class, "BombardierBeetle", 0xFFEEFF, 0xFF00AA);
-		registerEntity(EntityErebusSpider.class, "ErebusSpider", 0xFFFF00, 0xFFFFFF);
-		registerEntity(EntityErebusSpiderMoney.class, "MoneySpider", 0xFFEEFF, 0xFF00AA);
+		registerEntity(EntityBombardierBeetle.class, "BombardierBeetle", 0xFFEEFF, 0x9E0E0E);
+		registerEntity(EntityErebusSpider.class, "ErebusSpider", 0x0B4D49, 0xFFFFFF);
+		registerEntity(EntityErebusSpiderMoney.class, "MoneySpider", 0xF5C400, 0x0B4D49);
 
 		registerEntityWithoutEgg(EntityAnimatedBlock.class, "AnimatedBlock");
 		registerEntityWithoutEgg(EntityAnimatedChest.class, "AnimatedChest");

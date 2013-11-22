@@ -4,7 +4,6 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
-import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.SpawnListEntry;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -13,6 +12,7 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import erebus.ModBlocks;
 import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
+import erebus.entity.EntityErebusSpider;
 import erebus.entity.EntityFly;
 import erebus.world.feature.WorldGenBigMushroomErebus;
 import erebus.world.feature.WorldGenErebusMinable;
@@ -28,10 +28,10 @@ public class BiomeGenCavern extends BiomeGenBaseErebus {
 		spawnableWaterCreatureList.clear();
 		spawnableCaveCreatureList.clear();
 		spawnableMonsterList.add(new SpawnListEntry(EntityCentipede.class, 30, 1, 8));
-		spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 100, 1, 4));
+		spawnableMonsterList.add(new SpawnListEntry(EntityErebusSpider.class, 100, 1, 4));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityBotFly.class, 10, 4, 8));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityFly.class, 10, 8, 8));
-		spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 35, 1, 4));
+		spawnableMonsterList.add(new SpawnListEntry(EntityErebusSpider.class, 35, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityCaveSpider.class, 10, 1, 4));
 		topBlock = (byte) ModBlocks.umberstone.blockID;
 		fillerBlock = (byte) ModBlocks.umberstone.blockID;

@@ -48,53 +48,37 @@ public class BlockBambooCrate extends BlockContainer {
 		if (isCrate(world, x, y, z)) {
 			// BOTTOM
 			if (isCrate(world, x, y + 1, z) && isCrate(world, x + 1, y + 1, z) && isCrate(world, x + 1, y + 1, z + 1) && isCrate(world, x, y + 1, z + 1))
-				if (isCrate(world, x + 1, y, z) && isCrate(world, x + 1, y, z + 1) && isCrate(world, x, y, z + 1)) {
+				if (isCrate(world, x + 1, y, z) && isCrate(world, x + 1, y, z + 1) && isCrate(world, x, y, z + 1))
 					world.setBlockMetadataWithNotify(x, y, z, 1, 3); // BTL
-					System.out.println("1");
-				}
 
 			if (isCrate(world, x, y + 1, z) && isCrate(world, x - 1, y + 1, z) && isCrate(world, x - 1, y + 1, z + 1) && isCrate(world, x, y + 1, z + 1))
-				if (isCrate(world, x - 1, y, z) && isCrate(world, x - 1, y, z + 1) && isCrate(world, x, y, z + 1)) {
+				if (isCrate(world, x - 1, y, z) && isCrate(world, x - 1, y, z + 1) && isCrate(world, x, y, z + 1))
 					world.setBlockMetadataWithNotify(x, y, z, 2, 3); // BTR
-					System.out.println("2");
-				}
 
 			if (isCrate(world, x, y + 1, z) && isCrate(world, x + 1, y + 1, z) && isCrate(world, x + 1, y + 1, z - 1) && isCrate(world, x, y + 1, z - 1))
-				if (isCrate(world, x + 1, y, z) && isCrate(world, x + 1, y, z - 1) && isCrate(world, x, y, z - 1)) {
+				if (isCrate(world, x + 1, y, z) && isCrate(world, x + 1, y, z - 1) && isCrate(world, x, y, z - 1))
 					world.setBlockMetadataWithNotify(x, y, z, 3, 3); // BBL
-					System.out.println("3");
-				}
 
 			if (isCrate(world, x, y + 1, z) && isCrate(world, x - 1, y + 1, z) && isCrate(world, x - 1, y + 1, z - 1) && isCrate(world, x, y + 1, z - 1))
-				if (isCrate(world, x - 1, y, z) && isCrate(world, x - 1, y, z - 1) && isCrate(world, x, y, z - 1)) {
+				if (isCrate(world, x - 1, y, z) && isCrate(world, x - 1, y, z - 1) && isCrate(world, x, y, z - 1))
 					world.setBlockMetadataWithNotify(x, y, z, 4, 3); // BBR
-					System.out.println("4");
-				}
 
 			// TOP
 			if (isCrate(world, x, y - 1, z) && isCrate(world, x + 1, y - 1, z) && isCrate(world, x + 1, y - 1, z + 1) && isCrate(world, x, y - 1, z + 1))
-				if (isCrate(world, x + 1, y, z) && isCrate(world, x + 1, y, z + 1) && isCrate(world, x, y, z + 1)) {
+				if (isCrate(world, x + 1, y, z) && isCrate(world, x + 1, y, z + 1) && isCrate(world, x, y, z + 1))
 					world.setBlockMetadataWithNotify(x, y, z, 5, 3); // TTL
-					System.out.println("5");
-				}
 
 			if (isCrate(world, x, y - 1, z) && isCrate(world, x - 1, y - 1, z) && isCrate(world, x - 1, y - 1, z + 1) && isCrate(world, x, y - 1, z + 1))
-				if (isCrate(world, x - 1, y, z) && isCrate(world, x - 1, y, z + 1) && isCrate(world, x, y, z + 1)) {
+				if (isCrate(world, x - 1, y, z) && isCrate(world, x - 1, y, z + 1) && isCrate(world, x, y, z + 1))
 					world.setBlockMetadataWithNotify(x, y, z, 6, 3); // TTR
-					System.out.println("6");
-				}
 
 			if (isCrate(world, x, y - 1, z) && isCrate(world, x + 1, y - 1, z) && isCrate(world, x + 1, y - 1, z - 1) && isCrate(world, x, y - 1, z - 1))
-				if (isCrate(world, x + 1, y, z) && isCrate(world, x + 1, y, z - 1) && isCrate(world, x, y, z - 1)) {
+				if (isCrate(world, x + 1, y, z) && isCrate(world, x + 1, y, z - 1) && isCrate(world, x, y, z - 1))
 					world.setBlockMetadataWithNotify(x, y, z, 7, 3); // TBL
-					System.out.println("7");
-				}
 
 			if (isCrate(world, x, y - 1, z) && isCrate(world, x - 1, y - 1, z) && isCrate(world, x - 1, y - 1, z - 1) && isCrate(world, x, y - 1, z - 1))
-				if (isCrate(world, x - 1, y, z) && isCrate(world, x - 1, y, z - 1) && isCrate(world, x, y, z - 1)) {
+				if (isCrate(world, x - 1, y, z) && isCrate(world, x - 1, y, z - 1) && isCrate(world, x, y, z - 1))
 					world.setBlockMetadataWithNotify(x, y, z, 8, 3); // TBR
-					System.out.println("8");
-				}
 		}
 	}
 

@@ -2,7 +2,6 @@ package erebus.block;
 
 import java.util.List;
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -12,6 +11,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
@@ -149,7 +149,9 @@ public class BlockSaplingErebus extends BlockSapling {
 
 	@ForgeSubscribe
 	public void onBonemeal(BonemealEvent e) {
-		if (!e.world.isRemote && e.ID == blockID)
+		if (!e.world.isRemote && e.ID == blockID) {
 			growTree(e.world, e.X, e.Y, e.Z, e.world.rand);
+			e.setResult(Result.ALLOW);
+		}
 	}
 }

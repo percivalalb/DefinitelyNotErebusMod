@@ -29,7 +29,7 @@ public class BlockBambooCrop extends Block {
 
 	@Override
 	public int idDropped(int meta, Random rand, int fortune) {
-		return ModItems.erebusMaterials.itemID;
+		return meta>=8 && rand.nextInt(17)<=3? 0 : ModItems.erebusMaterials.itemID;
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class BlockBambooCrop extends Block {
 
 	@Override
 	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
-		if (metadata == 0 && world.rand.nextInt(20) == 0) {
+		if (metadata == 0 && world.rand.nextInt(metadata >= 8 ? 35 : 20) == 0) {
 			ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 			ret.add(new ItemStack(ModItems.erebusMaterials.itemID, 1, ItemErebusMaterial.dataBambooShoot));
 			return ret;
@@ -77,8 +77,12 @@ public class BlockBambooCrop extends Block {
 	
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand) {
-		if (world.getBlockMetadata(x,y,z) != 0) {
-			// TODO growing
+		int meta = world.getBlockMetadata(x,y,z);
+		
+		if ((meta & 7) != 0) {
+			if (BlockBambooShoot.calculateBambooHappiness(world, x, y, z, blockID) > rand.nextInt(110 - meta * 2)) {
+				world.setBlock(x, y + 1, z, blockID, meta - 1, 3);
+			}
 		}
 	}
 

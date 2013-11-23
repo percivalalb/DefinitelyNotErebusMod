@@ -15,7 +15,7 @@ import erebus.client.model.item.ModelScorpionPincer;
 @SideOnly(Side.CLIENT)
 public class ScorpionPincerItemRenderer implements IItemRenderer {
 	private final ModelScorpionPincer model;
-	public static ResourceLocation texture = new ResourceLocation("erebus:textures/mob/ModelScorpion.png");
+	public static ResourceLocation texture = new ResourceLocation("erebus:textures/item/ModelScorpionPincer.png");
 
 	public ScorpionPincerItemRenderer() {
 		model = new ModelScorpionPincer();
@@ -38,13 +38,13 @@ public class ScorpionPincerItemRenderer implements IItemRenderer {
 				renderPincer(0.0F, 1.0F, 0.0F, 2.5D);
 				break;
 			case EQUIPPED:
-				renderEquipped(0.35F, -2.0F, 0.8F, 2.5D);
+				renderEquipped(0.6F, -0.5F, 0.5F, 2.5D);
 				break;
 			case EQUIPPED_FIRST_PERSON:
-				renderPincerFirstPerson(0.0F, -2.0F, 0.0F, 2.5D);
+				renderPincerFirstPerson(0.0F, 0.5F, 0.5F, 2.5D);
 				break;
 			case INVENTORY:
-				renderPincerInventory(0F, -2F, 0F, 2.0D);
+				renderPincerInventory(0F, -0.5F, 0F, 2.0D);
 				break;
 			default:
 				break;
@@ -54,12 +54,13 @@ public class ScorpionPincerItemRenderer implements IItemRenderer {
 	private void renderEquipped(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
 		GL11.glPushMatrix();
+
+		GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
+		GL11.glRotatef(0.0F, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(-45.0F, 0.0F, 0.0F, 1.0F);
 		GL11.glTranslatef(x, y, z);
-		GL11.glRotatef(0.0F, 1.0F, 0.0F, 0.0F);
-		GL11.glRotatef(-35.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(0.0F, 0.0F, 0.0F, 1.0F);
 		GL11.glScaled(size, size, size);
-		model.render();
+		model.render(0.0625F);
 		GL11.glPopMatrix();
 	}
 
@@ -67,12 +68,12 @@ public class ScorpionPincerItemRenderer implements IItemRenderer {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
 		if (RenderItem.renderInFrame) {
 			GL11.glPushMatrix();
-			GL11.glTranslatef(x - 0.2F, y - 1.0F, z);
+			GL11.glTranslatef(x - 0.4F, y - 1.0F, z + 0.1F);
 			GL11.glRotatef(0F, 1F, 0, 0);
 			GL11.glRotatef(0F, 0, 1F, 0);
-			GL11.glRotatef(0F, 0, 0, 1F);
-			GL11.glScaled(0.3F, 0.3F, 0.3F);
-			model.render();
+			GL11.glRotatef(-60F, 0, 0, 1F);
+			GL11.glScaled(1.8F, 1.8F, 1.8F);
+			model.render(0.0625F);
 			GL11.glPopMatrix();
 		} else {
 			GL11.glPushMatrix();
@@ -81,7 +82,7 @@ public class ScorpionPincerItemRenderer implements IItemRenderer {
 			GL11.glRotatef(0F, 0, 1F, 0);
 			GL11.glRotatef(0F, 0, 0, 1F);
 			GL11.glScaled(size, size, size);
-			model.render();
+			model.render(0.0625F);
 			GL11.glPopMatrix();
 		}
 	}
@@ -90,10 +91,11 @@ public class ScorpionPincerItemRenderer implements IItemRenderer {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
 		GL11.glPushMatrix();
 		GL11.glTranslatef(x, y, z);
-		GL11.glRotatef(0F, 1F, 0, 0);
-		GL11.glRotatef(0F, 0, 1F, 0);
+		GL11.glRotatef(135.0F, 1.0F, 0.0F, 0.0F);
+		GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(225.0F, 0.0F, 0.0F, 1.0F);
 		GL11.glScaled(size, size, size);
-		model.render();
+		model.render(0.0625F);
 		GL11.glPopMatrix();
 	}
 
@@ -105,7 +107,7 @@ public class ScorpionPincerItemRenderer implements IItemRenderer {
 		GL11.glRotatef(0F, 0, 1F, 0);
 		GL11.glRotatef(0F, 0, 0, 1F);
 		GL11.glScaled(size, size, size);
-		model.render();
+		model.render(0.0625F);
 		GL11.glPopMatrix();
 	}
 }

@@ -48,6 +48,7 @@ import erebus.block.BlockUmberstone;
 import erebus.block.BlockWallErebus;
 import erebus.core.handler.ConfigurationHandler;
 import erebus.item.block.ItemBlockAmber;
+import erebus.item.block.ItemBlockColoredSingle;
 import erebus.item.block.ItemBlockErebusOreExtras;
 import erebus.item.block.ItemBlockLeavesErebus;
 import erebus.item.block.ItemBlockLogErebus1;
@@ -173,7 +174,7 @@ public class ModBlocks {
 		umberFurnace_on = new BlockUmberFurnace(umberFurnace_onID, true).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberFurnaceON");
 		umberPaver = new BlockUmberPaver(umberPaverID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("umberPaver");
 		insectRepellent = new BlockInsectRepellent(insectRepellentID, Material.air).setUnlocalizedName("insectRepellent");
-		bambooShoot = new BlockBambooShoot(bambooShootID).setUnlocalizedName("bambooShoot").setTextureName("erebus:bambooShoot");
+		bambooShoot = new BlockBambooShoot(bambooShootID).setCreativeTab(null).setUnlocalizedName("bambooShoot").setTextureName("erebus:bambooShoot");
 		bambooCrop = new BlockBambooCrop(bambooCropID).setHardness(1.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("bambooCrop").setTextureName("erebus:bambooCropBase");
 		bambooTorch = new BlockBambooTorch(bambooTorchID, Material.wood).setHardness(0.0F).setUnlocalizedName("bambooTorch").setTextureName("erebus:blockBambooTorch");
 		erebusAltar = new BlockErebusAltar(erebusAltarID).setUnlocalizedName("erebusAltar");
@@ -241,7 +242,7 @@ public class ModBlocks {
 
 		GameRegistry.registerBlock(erebusGrass, "erebus.erebusGrass");
 		GameRegistry.registerBlock(thorns, "erebus.thorns");
-		GameRegistry.registerBlock(fern, "erebus.fern");
+		GameRegistry.registerBlock(fern, ItemBlockColoredSingle.class, "erebus.fern");
 		GameRegistry.registerBlock(blockTurnip, "erebus.blockTurnip");
 		GameRegistry.registerBlock(fiddlehead, "erebus.fiddlehead");
 

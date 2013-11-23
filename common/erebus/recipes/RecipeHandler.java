@@ -200,18 +200,22 @@ public class RecipeHandler {
 		if (ConfigurationHandler.lead) {
 			OreDictionary.registerOre("ingotLead", new ItemStack(ModItems.metalIngot, 1, 1));
 			OreDictionary.registerOre("oreLead", new ItemStack(ModBlocks.erebusOreExtra, 1, 2));
+			FurnaceRecipes.smelting().addSmelting(ModBlocks.erebusOreExtra.blockID, 2, new ItemStack(ModItems.metalIngot, 1, 1), 1.0F);
 		}
 		if (ConfigurationHandler.silver) {
 			OreDictionary.registerOre("ingotSilver", new ItemStack(ModItems.metalIngot, 1, 2));
 			OreDictionary.registerOre("oreSilver", new ItemStack(ModBlocks.erebusOreExtra, 1, 3));
+			FurnaceRecipes.smelting().addSmelting(ModBlocks.erebusOreExtra.blockID, 3, new ItemStack(ModItems.metalIngot, 1, 2), 1.0F);
 		}
 		if (ConfigurationHandler.copper) {
 			OreDictionary.registerOre("ingotCopper", new ItemStack(ModItems.metalIngot, 1, 0));
 			OreDictionary.registerOre("oreCopper", new ItemStack(ModBlocks.erebusOreExtra, 1, 1));
+			FurnaceRecipes.smelting().addSmelting(ModBlocks.erebusOreExtra.blockID, 1, new ItemStack(ModItems.metalIngot, 1, 0), 1.0F);
 		}
 		if (ConfigurationHandler.tin) {
 			OreDictionary.registerOre("ingotTin", new ItemStack(ModItems.metalIngot, 1, 3));
 			OreDictionary.registerOre("oreTin", new ItemStack(ModBlocks.erebusOreExtra, 1, 4));
+			FurnaceRecipes.smelting().addSmelting(ModBlocks.erebusOreExtra.blockID, 4, new ItemStack(ModItems.metalIngot, 1, 3), 1.0F);
 		}
 		if (ConfigurationHandler.aluminium)
 			OreDictionary.registerOre("oreAluminum", new ItemStack(ModBlocks.erebusOreExtra, 1, 0));

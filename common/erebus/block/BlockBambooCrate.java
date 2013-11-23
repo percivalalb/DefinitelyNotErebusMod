@@ -1,7 +1,5 @@
 package erebus.block;
 
-import java.util.Random;
-
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -9,18 +7,30 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeDirection;
 import erebus.ErebusMod;
-import erebus.ModBlocks;
 import erebus.core.proxy.CommonProxy;
 import erebus.tileentity.TileEntityBambooCrate;
 import erebus.utils.Utils;
 
 public class BlockBambooCrate extends BlockContainer {
 
-	private final Random crateRand = new Random();
-
 	public BlockBambooCrate(int id) {
 		super(id, Material.wood);
+	}
+
+	private enum Offset {
+		Offset1(1, 2, 3);
+
+		private int x;
+		private int y;
+		private int z;
+
+		Offset(int x, int y, int z) {
+			this.x = x;
+			this.y = y;
+			this.z = z;
+		}
 	}
 
 	@Override
@@ -33,91 +43,106 @@ public class BlockBambooCrate extends BlockContainer {
 		blockIcon = reg.registerIcon("erebus:bambooCrate");
 	}
 
-	public static boolean isFullCrate(World world, int x, int y, int z) {
-		TileEntityBambooCrate master = getMasterTileEntity(world, x, y, z);
-		if (master != null) {
-			x = master.xCoord;
-			y = master.yCoord;
-			z = master.zCoord;
+	@Override
+	public void onBlockAdded(World world, int x, int y, int z) {
+		if (isCrate(world, x, y, z)) {
+			// BOTTOM
+			if (isCrate(world, x, y + 1, z) && isCrate(world, x + 1, y + 1, z) && isCrate(world, x + 1, y + 1, z + 1) && isCrate(world, x, y + 1, z + 1))
+				if (isCrate(world, x + 1, y, z) && isCrate(world, x + 1, y, z + 1) && isCrate(world, x, y, z + 1)) {
+					world.setBlockMetadataWithNotify(x, y, z, 1, 3); // BTL
+					System.out.println("1");
+				}
 
-			return checkPlain(world, x, y, z) && checkPlain(world, x, y + 1, z);
+			if (isCrate(world, x, y + 1, z) && isCrate(world, x - 1, y + 1, z) && isCrate(world, x - 1, y + 1, z + 1) && isCrate(world, x, y + 1, z + 1))
+				if (isCrate(world, x - 1, y, z) && isCrate(world, x - 1, y, z + 1) && isCrate(world, x, y, z + 1)) {
+					world.setBlockMetadataWithNotify(x, y, z, 2, 3); // BTR
+					System.out.println("2");
+				}
+
+			if (isCrate(world, x, y + 1, z) && isCrate(world, x + 1, y + 1, z) && isCrate(world, x + 1, y + 1, z - 1) && isCrate(world, x, y + 1, z - 1))
+				if (isCrate(world, x + 1, y, z) && isCrate(world, x + 1, y, z - 1) && isCrate(world, x, y, z - 1)) {
+					world.setBlockMetadataWithNotify(x, y, z, 3, 3); // BBL
+					System.out.println("3");
+				}
+
+			if (isCrate(world, x, y + 1, z) && isCrate(world, x - 1, y + 1, z) && isCrate(world, x - 1, y + 1, z - 1) && isCrate(world, x, y + 1, z - 1))
+				if (isCrate(world, x - 1, y, z) && isCrate(world, x - 1, y, z - 1) && isCrate(world, x, y, z - 1)) {
+					world.setBlockMetadataWithNotify(x, y, z, 4, 3); // BBR
+					System.out.println("4");
+				}
+
+			// TOP
+			if (isCrate(world, x, y - 1, z) && isCrate(world, x + 1, y - 1, z) && isCrate(world, x + 1, y - 1, z + 1) && isCrate(world, x, y - 1, z + 1))
+				if (isCrate(world, x + 1, y, z) && isCrate(world, x + 1, y, z + 1) && isCrate(world, x, y, z + 1)) {
+					world.setBlockMetadataWithNotify(x, y, z, 5, 3); // TTL
+					System.out.println("5");
+				}
+
+			if (isCrate(world, x, y - 1, z) && isCrate(world, x - 1, y - 1, z) && isCrate(world, x - 1, y - 1, z + 1) && isCrate(world, x, y - 1, z + 1))
+				if (isCrate(world, x - 1, y, z) && isCrate(world, x - 1, y, z + 1) && isCrate(world, x, y, z + 1)) {
+					world.setBlockMetadataWithNotify(x, y, z, 6, 3); // TTR
+					System.out.println("6");
+				}
+
+			if (isCrate(world, x, y - 1, z) && isCrate(world, x + 1, y - 1, z) && isCrate(world, x + 1, y - 1, z - 1) && isCrate(world, x, y - 1, z - 1))
+				if (isCrate(world, x + 1, y, z) && isCrate(world, x + 1, y, z - 1) && isCrate(world, x, y, z - 1)) {
+					world.setBlockMetadataWithNotify(x, y, z, 7, 3); // TBL
+					System.out.println("7");
+				}
+
+			if (isCrate(world, x, y - 1, z) && isCrate(world, x - 1, y - 1, z) && isCrate(world, x - 1, y - 1, z - 1) && isCrate(world, x, y - 1, z - 1))
+				if (isCrate(world, x - 1, y, z) && isCrate(world, x - 1, y, z - 1) && isCrate(world, x, y, z - 1)) {
+					world.setBlockMetadataWithNotify(x, y, z, 8, 3); // TBR
+					System.out.println("8");
+				}
 		}
-		return false;
-	}
-
-	private static boolean checkPlain(World world, int x, int y, int z) {
-		if (world.getBlockId(x, y, z) == ModBlocks.bambooCrate.blockID && !((TileEntityBambooCrate) world.getBlockTileEntity(x, y, z)).isTagged())
-			if (world.getBlockId(x, y, z + 1) == ModBlocks.bambooCrate.blockID && !((TileEntityBambooCrate) world.getBlockTileEntity(x, y, z + 1)).isTagged())
-				if (world.getBlockId(x + 1, y, z + 1) == ModBlocks.bambooCrate.blockID && !((TileEntityBambooCrate) world.getBlockTileEntity(x + 1, y, z + 1)).isTagged())
-					if (world.getBlockId(x + 1, y, z) == ModBlocks.bambooCrate.blockID && !((TileEntityBambooCrate) world.getBlockTileEntity(x + 1, y, z)).isTagged())
-						return true;
-
-		return false;
-	}
-
-	private void untagSingleCrate(TileEntity crate) {
-		if (crate != null && crate instanceof TileEntityBambooCrate)
-			((TileEntityBambooCrate) crate).untag();
-	}
-
-	public static TileEntityBambooCrate getMasterTileEntity(World world, int x, int y, int z) {
-		int newX = x, newY = y, newZ = z;
-		if (world.getBlockId(x, y - 1, z) == ModBlocks.bambooCrate.blockID)
-			newY--;
-		if (world.getBlockId(x - 1, y, z) == ModBlocks.bambooCrate.blockID)
-			newX--;
-		if (world.getBlockId(x, y, z - 1) == ModBlocks.bambooCrate.blockID)
-			newZ--;
-
-		if (world.getBlockId(newX, newY, newZ) == ModBlocks.bambooCrate.blockID)
-			return (TileEntityBambooCrate) world.getBlockTileEntity(newX, newY, newZ);
-		return null;
-	}
-
-	private void tagFullCrateComponents(World world, int x, int y, int z) {
-		TileEntityBambooCrate master = getMasterTileEntity(world, x, y, z);
-		if (master != null) {
-			x = master.xCoord;
-			y = master.yCoord;
-			z = master.zCoord;
-
-			tagSingleCrate(world.getBlockTileEntity(x, y, z));
-			tagSingleCrate(world.getBlockTileEntity(x, y, z + 1));
-			tagSingleCrate(world.getBlockTileEntity(x + 1, y, z + 1));
-			tagSingleCrate(world.getBlockTileEntity(x + 1, y, z));
-
-			tagSingleCrate(world.getBlockTileEntity(x, y + 1, z));
-			tagSingleCrate(world.getBlockTileEntity(x, y + 1, z + 1));
-			tagSingleCrate(world.getBlockTileEntity(x + 1, y + 1, z + 1));
-			tagSingleCrate(world.getBlockTileEntity(x + 1, y + 1, z));
-		}
-	}
-
-	private void tagSingleCrate(TileEntity crate) {
-		if (crate != null && crate instanceof TileEntityBambooCrate)
-			((TileEntityBambooCrate) crate).tag();
 	}
 
 	@Override
-	public void onBlockAdded(World world, int x, int y, int z) {
-		if (isFullCrate(world, x, y, z))
-			tagFullCrateComponents(world, x, y, z);
+	public void onNeighborBlockChange(World world, int x, int y, int z, int neighbourID) {
+		if (neighbourID == blockID)
+			for (int i = -1; i <= 1; i++)
+				for (int j = -1; j <= 1; j++)
+					for (int k = -1; k <= 1; k++)
+						if (world.getBlockId(x + i, y + k, z + j) == blockID)
+							onBlockAdded(world, x + i, y + k, z + j);
+	}
+
+	private boolean isCrate(World world, int x, int y, int z) {
+		return world.getBlockId(x, y, z) == blockID;
+	}
+
+	@Override
+	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
+		for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
+			int meta = world.getBlockMetadata(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
+			if (meta != 0)
+				return false;
+		}
+		return true;
 	}
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		if (world.isRemote)
 			return true;
-		else {
-			TileEntityBambooCrate tileCrate = (TileEntityBambooCrate) world.getBlockTileEntity(x, y, z);
-
-			if (tileCrate.isTagged()) {
-				tileCrate = getMasterTileEntity(world, x, y, z);
-				player.openGui(ErebusMod.instance, CommonProxy.GUI_ID_COLOSSAL_CRATE, world, tileCrate.xCoord, tileCrate.yCoord, tileCrate.zCoord);
-			} else if (tileCrate != null)
+		TileEntityBambooCrate tileCrate = (TileEntityBambooCrate) world.getBlockTileEntity(x, y, z);
+		if (tileCrate != null)
+			if (world.getBlockMetadata(x, y, z) == 0) {
+				ItemStack current = player.inventory.getCurrentItem();
+				if (current != null && current.itemID == blockID)
+					return false;
 				player.openGui(ErebusMod.instance, CommonProxy.GUI_ID_BAMBOO_CRATE, world, x, y, z);
-			return true;
-		}
+			} else
+				for (int i = -1; i <= 1; i++)
+					for (int j = -1; j <= 1; j++)
+						for (int k = -1; k <= 1; k++)
+							if (world.getBlockId(x + i, y + k, z + j) == blockID)
+								if (world.getBlockMetadata(x + i, y + k, z + j) == 1) {
+									player.openGui(ErebusMod.instance, CommonProxy.GUI_ID_COLOSSAL_CRATE, world, x + i, y + k, z + j);
+									return true;
+								}
+		return true;
 	}
 
 	@Override
@@ -137,27 +162,10 @@ public class BlockBambooCrate extends BlockContainer {
 
 	@Override
 	public void breakBlock(World world, int x, int y, int z, int par5, int par6) {
+		resetCrates(world, x, y, z, world.getBlockMetadata(x, y, z));
+
 		TileEntityBambooCrate tile = (TileEntityBambooCrate) world.getBlockTileEntity(x, y, z);
 		if (tile != null) {
-			if (tile.isTagged()) {
-				TileEntityBambooCrate master = getMasterTileEntity(world, x, y, z);
-				if (master != null) {
-					x = master.xCoord;
-					y = master.yCoord;
-					z = master.zCoord;
-
-					untagSingleCrate(world.getBlockTileEntity(x, y, z));
-					untagSingleCrate(world.getBlockTileEntity(x, y, z + 1));
-					untagSingleCrate(world.getBlockTileEntity(x + 1, y, z + 1));
-					untagSingleCrate(world.getBlockTileEntity(x + 1, y, z));
-
-					untagSingleCrate(world.getBlockTileEntity(x, y + 1, z));
-					untagSingleCrate(world.getBlockTileEntity(x, y + 1, z + 1));
-					untagSingleCrate(world.getBlockTileEntity(x + 1, y + 1, z + 1));
-					untagSingleCrate(world.getBlockTileEntity(x + 1, y + 1, z));
-				}
-			}
-
 			for (int i = 0; i < tile.getSizeInventory(); i++) {
 				ItemStack stack = tile.getStackInSlot(i);
 				if (stack != null)
@@ -166,5 +174,15 @@ public class BlockBambooCrate extends BlockContainer {
 			world.func_96440_m(x, y, z, par5);
 		}
 		super.breakBlock(world, x, y, z, par5, par6);
+	}
+
+	private void resetCrates(World world, int x, int y, int z, int meta) {
+		if (meta != 0)
+			for (int i = -1; i <= 1; i++)
+				for (int j = -1; j <= 1; j++)
+					for (int k = -1; k <= 1; k++)
+						if (world.getBlockId(x + i, y + k, z + j) == blockID && world.getBlockMetadata(x + i, y + k, z + j) != 0)
+							world.setBlockMetadataWithNotify(x + i, y + k, z + j, 0, 3);
+
 	}
 }

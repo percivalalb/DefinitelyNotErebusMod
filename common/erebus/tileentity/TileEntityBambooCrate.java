@@ -11,8 +11,6 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
 
 	private ItemStack[] crateContents = new ItemStack[27];
 
-	private boolean tag;
-
 	@Override
 	public int getSizeInventory() {
 		return crateContents.length;
@@ -87,8 +85,6 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
 			if (b0 >= 0 && b0 < crateContents.length)
 				crateContents[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
 		}
-
-		tag = data.getBoolean("tag");
 	}
 
 	@Override
@@ -105,8 +101,6 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
 			}
 
 		data.setTag("Items", nbttaglist);
-
-		data.setBoolean("tag", tag);
 	}
 
 	@Override
@@ -125,17 +119,5 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
 		return true;
-	}
-
-	public void tag() {
-		tag = true;
-	}
-
-	public void untag() {
-		tag = false;
-	}
-
-	public boolean isTagged() {
-		return tag;
 	}
 }

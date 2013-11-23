@@ -134,6 +134,7 @@ tile.erebusAltarXP.name=Altar of Experience
 tile.erebusAltarRepair.name=Altar of Repair
 tile.glowingJar.name=Glowing Jar
 tile.reinExo.name=Reinforced Exoskeleton Block
+tile.bambooLadder.name=Bamboo Ladder
 
 #Items
 item.helmetExo.name=Exoskeleton Helmet
@@ -201,6 +202,7 @@ item.metalIngot3.name=Tin Ingot
 item.sprayCan.name=Insect Repellent
 item.waspDagger.name=Wasp Dagger
 item.wandOfAnimation.name=Wand Of Animation
+item.scorpionPincer.name=Scorpion Pincer
 
 #Entities
 entity.BeetleLarva - Erebus.name=Beetle Larva
@@ -222,6 +224,8 @@ entity.Firebrat - Erebus.name=Firebrat
 entity.Antlion - Erebus.name=Antlion
 entity.GlowWorm - Erebus.name=Glow worm
 entity.BombardierBeetle - Erebus.name=Bombardier Beetle
+entity.ErebusSpider - Erebus.name=Erebus Spider
+entity.MoneySpider - Erebus.name=Money Spider
 
 #Other
 itemGroup.erebus.block=Erebus Blocks

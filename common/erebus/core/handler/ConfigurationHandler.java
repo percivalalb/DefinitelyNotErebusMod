@@ -2,6 +2,7 @@ package erebus.core.handler;
 
 import java.io.File;
 import java.util.logging.Level;
+
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.FMLLog;
 import erebus.ModBiomes;
@@ -80,6 +81,7 @@ public class ConfigurationHandler {
 			ModBlocks.erebusAltarRepairID = config.getBlock("Block ID of Erebus Altar of Repair", 2565).getInt(2565);
 			ModBlocks.glowingJarID = config.getBlock("Block ID of Glowing Jar", 2566).getInt(2566);
 			ModBlocks.reinExoID = config.getBlock("Block ID of Reinforced Exoskeleton Block", 2567).getInt(2567);
+			ModBlocks.bambooLadderID = config.getBlock("Block ID of BambooLadder", 2569).getInt(2569);
 
 			int id = 2527;
 			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];
@@ -105,7 +107,7 @@ public class ConfigurationHandler {
 			ModBlocks.spiderSpawnerID = config.getBlock("Block ID of Spider Spawners", 2552).getInt(2552);
 			ModBlocks.caveSpiderSpawnerID = config.getBlock("Block ID of Cave Spider Spawners", 2553).getInt(2553);
 
-			// latest ID used (please update after adding new blocks!) >>> 2568
+			// latest ID used (please update after adding new blocks!) >>> 2569
 
 			/*
 			 * Items
@@ -139,6 +141,7 @@ public class ConfigurationHandler {
 			ModItems.waspSwordID = config.getItem("Item ID of Wasp Sword", 9728).getInt(9728);
 			ModItems.maxSpeedBowID = config.getItem("Item ID of MaxSpeed Bow", 9729).getInt(9729);
 			ModItems.waspDaggerID = config.getItem("Item ID of Wasp Dagger", 9733).getInt(9733);
+			ModItems.scorpionPincerID = config.getItem("Item ID of Scorpion Pincer", 9741).getInt(9741);
 
 			ModItems.compoundGogglesID = config.getItem("Item ID of Compound Goggles", 9730).getInt(9730);
 			ModItems.reinCompoundGogglesID = config.getItem("Item ID of Reinforced Compound Goggles", 9740).getInt(9740);
@@ -151,7 +154,7 @@ public class ConfigurationHandler {
 			ModItems.reinExoskeletonLegsID = config.getItem("Item ID of Reinforced Exoskeleton Leggings", 9738).getInt(9738);
 			ModItems.reinExoskeletonBootsID = config.getItem("Item ID of Reinforced Exoskeleton Boots", 9739).getInt(9739);
 
-			// latest ID used (please update after adding new items!) >>> 9740
+			// latest ID used (please update after adding new items!) >>> 9741
 
 			/*
 			 * Biomes & misc

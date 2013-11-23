@@ -8,7 +8,6 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.block.BlockBambooCrate;
 import erebus.client.model.block.ModelBambooCrate;
 import erebus.client.model.block.ModelColossalCrate;
 import erebus.tileentity.TileEntityBambooCrate;
@@ -23,19 +22,17 @@ public class TileEntityRenderBambooCrate extends TileEntitySpecialRenderer {
 	public static ResourceLocation colossalCrateResource = new ResourceLocation("erebus:textures/item/colossalcrate.png");
 
 	public void renderCrate(TileEntityBambooCrate crate, float x, float y, float z) {
-		if (crate.isTagged()) {
-			TileEntityBambooCrate master = BlockBambooCrate.getMasterTileEntity(crate.worldObj, crate.xCoord, crate.yCoord, crate.zCoord);
-			if(master != null)
-				if (master.xCoord == crate.xCoord && master.yCoord == crate.yCoord && master.zCoord == crate.zCoord) {
-					bindTexture(colossalCrateResource);
+		if (crate.getBlockMetadata() != 0) {
+			if (crate.getBlockMetadata() == 1) {
+				bindTexture(colossalCrateResource);
 
-					GL11.glPushMatrix();
-					GL11.glTranslatef(x + 1.5F, y + 1.5F, z + 1.5F);
-					GL11.glRotatef(0, 0.0F, 1.0F, 0.0F);
-					GL11.glScalef(1.0F, -1F, -1F);
-					colossalCrateModel.renderModel();
-					GL11.glPopMatrix();
-				}
+				GL11.glPushMatrix();
+				GL11.glTranslatef(x + 1.5F, y + 1.5F, z + 1.5F);
+				GL11.glRotatef(0, 0.0F, 1.0F, 0.0F);
+				GL11.glScalef(1.0F, -1F, -1F);
+				colossalCrateModel.renderModel();
+				GL11.glPopMatrix();
+			}
 		} else {
 			bindTexture(bambooCrateResource);
 

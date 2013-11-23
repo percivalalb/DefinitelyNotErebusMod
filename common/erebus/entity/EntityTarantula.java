@@ -4,7 +4,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -12,7 +11,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import erebus.ModItems;
 
-public class EntityTarantula extends EntitySpider {
+public class EntityTarantula extends EntityErebusSpider {
 
 	public EntityTarantula(World par1World) {
 		super(par1World);

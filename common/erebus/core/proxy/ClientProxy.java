@@ -14,7 +14,9 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
+
 import com.google.common.io.ByteArrayDataInput;
+
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -55,11 +57,13 @@ import erebus.client.render.entity.RenderBlackWidow;
 import erebus.client.render.entity.RenderBombardierBeetle;
 import erebus.client.render.entity.RenderBotFly;
 import erebus.client.render.entity.RenderCentipede;
+import erebus.client.render.entity.RenderErebusSpider;
 import erebus.client.render.entity.RenderFirebrat;
 import erebus.client.render.entity.RenderFly;
 import erebus.client.render.entity.RenderGlowWorm;
 import erebus.client.render.entity.RenderGrasshopper;
 import erebus.client.render.entity.RenderLocust;
+import erebus.client.render.entity.RenderMoneySpider;
 import erebus.client.render.entity.RenderMosquito;
 import erebus.client.render.entity.RenderMoth;
 import erebus.client.render.entity.RenderScorpion;
@@ -72,6 +76,7 @@ import erebus.client.render.item.BambooTorchItemRenderer;
 import erebus.client.render.item.ItemErebusAltarRenderer;
 import erebus.client.render.item.ItemGlowingJarRenderer;
 import erebus.client.render.item.ItemUmberFurnaceRenderer;
+import erebus.client.render.item.ScorpionPincerItemRenderer;
 import erebus.client.render.item.WandOfAnimationItemRenderer;
 import erebus.client.render.item.WaspDaggerItemRenderer;
 import erebus.client.render.item.WaspSwordItemRenderer;
@@ -95,6 +100,8 @@ import erebus.entity.EntityBlackWidow;
 import erebus.entity.EntityBombardierBeetle;
 import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
+import erebus.entity.EntityErebusSpider;
+import erebus.entity.EntityErebusSpiderMoney;
 import erebus.entity.EntityFirebrat;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityGlowWorm;
@@ -123,7 +130,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerKeyHandlers() {
 		KeyBindingRegistry.registerKeyBinding(new KeyBindingHandler());
 	}
-	
+
 	@Override
 	public void registerRenderInformation() {
 		MinecraftForge.EVENT_BUS.register(new PortalOverlayHandler());
@@ -152,6 +159,9 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityAnimatedChest.class, new RenderAnimatedChest(new ModelAnimatedChest(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityGlowWorm.class, new RenderGlowWorm(new ModelGlowWorm(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBombardierBeetle.class, new RenderBombardierBeetle(new ModelBombardierBeetle(), 0.3F));
+		RenderingRegistry.registerEntityRenderingHandler(EntityErebusSpider.class, new RenderErebusSpider());
+		RenderingRegistry.registerEntityRenderingHandler(EntityErebusSpiderMoney.class, new RenderMoneySpider());
+
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityErebusAltar.class, new TileEntityErebusAltarRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityErebusAltarLightning.class, new TileEntityErebusAltarLightningRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityErebusAltarHealing.class, new TileEntityErebusAltarHealingRenderer());
@@ -174,6 +184,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooTorch.blockID, new BambooTorchItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.wandOfAnimation.itemID, new WandOfAnimationItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.glowingJar.blockID, new ItemGlowingJarRenderer());
+		MinecraftForgeClient.registerItemRenderer(ModItems.scorpionPincer.itemID, new ScorpionPincerItemRenderer());
 	}
 
 	@Override

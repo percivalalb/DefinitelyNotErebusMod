@@ -105,6 +105,8 @@ public class BlockBambooCrate extends BlockContainer {
 				int meta = world.getBlockMetadata(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
 				if (meta != 0)
 					return false;
+				if (world.getBlockId(x + dir.getOpposite().offsetX, y + dir.getOpposite().offsetY, z + dir.getOpposite().offsetZ) == blockID)
+					return false;
 			}
 		return true;
 	}

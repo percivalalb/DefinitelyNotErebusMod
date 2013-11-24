@@ -40,7 +40,6 @@ public class TileEntityRenderBambooCrate extends TileEntitySpecialRenderer {
 			bambooCrateModel.renderModel();
 			GL11.glPopMatrix();
 		}
-
 	}
 
 	@Override

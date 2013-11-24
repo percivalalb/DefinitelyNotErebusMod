@@ -45,6 +45,7 @@ import erebus.client.model.entity.ModelSolifuge;
 import erebus.client.model.entity.ModelTarantula;
 import erebus.client.model.entity.ModelVelvetWorm;
 import erebus.client.model.entity.ModelWasp;
+import erebus.client.model.item.ModelScorpionPincer;
 import erebus.client.model.item.ModelWaspDagger;
 import erebus.client.render.block.BlockBambooCropRender;
 import erebus.client.render.block.BlockHollowLogRender;
@@ -110,6 +111,7 @@ import erebus.entity.EntityLocust;
 import erebus.entity.EntityMosquito;
 import erebus.entity.EntityMoth;
 import erebus.entity.EntityScorpion;
+import erebus.entity.EntityScorpionPincer;
 import erebus.entity.EntitySolifuge;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityVelvetWorm;
@@ -161,6 +163,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityBombardierBeetle.class, new RenderBombardierBeetle(new ModelBombardierBeetle(), 0.3F));
 		RenderingRegistry.registerEntityRenderingHandler(EntityErebusSpider.class, new RenderErebusSpider());
 		RenderingRegistry.registerEntityRenderingHandler(EntityErebusSpiderMoney.class, new RenderMoneySpider());
+		RenderingRegistry.registerEntityRenderingHandler(EntityScorpionPincer.class, new ScorpionPincerItemRenderer(new ModelScorpionPincer(), 0.3F));
 
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityErebusAltar.class, new TileEntityErebusAltarRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityErebusAltarLightning.class, new TileEntityErebusAltarLightningRenderer());
@@ -184,7 +187,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooTorch.blockID, new BambooTorchItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.wandOfAnimation.itemID, new WandOfAnimationItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.glowingJar.blockID, new ItemGlowingJarRenderer());
-		MinecraftForgeClient.registerItemRenderer(ModItems.scorpionPincer.itemID, new ScorpionPincerItemRenderer());
+		MinecraftForgeClient.registerItemRenderer(ModItems.scorpionPincer.itemID, new ScorpionPincerItemRenderer(new ModelScorpionPincer(), 0.3F));
 	}
 
 	@Override

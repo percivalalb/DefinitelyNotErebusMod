@@ -100,11 +100,12 @@ public class BlockBambooCrate extends BlockContainer {
 
 	@Override
 	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
-		for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
-			int meta = world.getBlockMetadata(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
-			if (meta != 0)
-				return false;
-		}
+		for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
+			if (world.getBlockId(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ) == blockID) {
+				int meta = world.getBlockMetadata(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
+				if (meta != 0)
+					return false;
+			}
 		return true;
 	}
 

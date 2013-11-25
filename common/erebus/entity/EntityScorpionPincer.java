@@ -1,5 +1,6 @@
 package erebus.entity;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
@@ -8,8 +9,7 @@ import net.minecraft.world.World;
 
 public class EntityScorpionPincer extends EntityThrowable {
 
-	private boolean shouldReturn;
-
+	public EntityLivingBase shootingEntity;
 	public EntityScorpionPincer(World par1World) {
 		super(par1World);
 	}
@@ -24,10 +24,43 @@ public class EntityScorpionPincer extends EntityThrowable {
 
 	@Override
 	protected void onImpact(MovingObjectPosition MovingObjectPosition) {
-		if (MovingObjectPosition.entityHit != null) {
-			byte byte0 = 6;
-			if (!MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), byte0))
-				;
+		if (!worldObj.isRemote) {
+			if (MovingObjectPosition.entityHit != null) {
+				if (!MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), 4))
+					;
+				if (!MovingObjectPosition.entityHit.isImmuneToFire())
+					MovingObjectPosition.entityHit.setFire(5);
+			} else {
+				int i = MovingObjectPosition.blockX;
+				int j = MovingObjectPosition.blockY;
+				int k = MovingObjectPosition.blockZ;
+
+				switch (MovingObjectPosition.sideHit) {
+					case 0:
+						--j;
+						break;
+					case 1:
+						++j;
+						break;
+					case 2:
+						--k;
+						break;
+					case 3:
+						++k;
+						break;
+					case 4:
+						--i;
+						break;
+					case 5:
+						++i;
+				}
+
+				if (worldObj.isAirBlock(i, j, k))
+					worldObj.setBlock(i, j, k, Block.fire.blockID);
+				worldObj.createExplosion(this, i, j, k, 1, true);
+			}
+
+			setDead();
 		}
 	}
 

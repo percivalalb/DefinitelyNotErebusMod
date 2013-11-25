@@ -124,8 +124,8 @@ public class ScorpionPincerItemRenderer extends Render implements IItemRenderer 
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) par2, (float) par4, (float) par6);
 		GL11.glRotatef(par1EntityScorpionPincer.prevRotationYaw + (par1EntityScorpionPincer.rotationYaw - par1EntityScorpionPincer.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(par1EntityScorpionPincer.prevRotationPitch + (par1EntityScorpionPincer.rotationPitch - par1EntityScorpionPincer.prevRotationPitch) * par9, 0.0F, 0.0F, 1.0F);
-		GL11.glScaled(0.4F, 0.4F, 0.4F);
+		GL11.glRotatef(par1EntityScorpionPincer.prevRotationPitch + (par1EntityScorpionPincer.rotationPitch - par1EntityScorpionPincer.prevRotationPitch) * par9 - 90.0F, 0.0F, 0.0F, 1.0F);
+		GL11.glScaled(1.5F, 1.5F, 1.5F);
 		model.render(0.0625F);
 		GL11.glPopMatrix();
 	}

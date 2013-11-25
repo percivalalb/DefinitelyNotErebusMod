@@ -28,11 +28,13 @@ public class ItemScorpionPincer extends ItemSword {
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
-		world.playSoundAtEntity(entityplayer, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
+		if (!player.capabilities.isCreativeMode)
+			itemstack.stackSize--;
+		world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 		if (!world.isRemote)
-			world.spawnEntityInWorld(new EntityScorpionPincer(world, entityplayer));
-		entityplayer.swingItem();
+			world.spawnEntityInWorld(new EntityScorpionPincer(world, player));
+		player.swingItem();
 		return itemstack;
 	}
 }

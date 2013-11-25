@@ -1,8 +1,6 @@
 package erebus.client.render.item;
 
-import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
@@ -13,10 +11,9 @@ import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.item.ModelScorpionPincer;
-import erebus.entity.EntityScorpionPincer;
 
 @SideOnly(Side.CLIENT)
-public class ScorpionPincerItemRenderer extends Render implements IItemRenderer {
+public class ScorpionPincerItemRenderer implements IItemRenderer {
 	private final ModelScorpionPincer model;
 	public static ResourceLocation texture = new ResourceLocation("erebus:textures/item/ModelScorpionPincer.png");
 
@@ -114,24 +111,4 @@ public class ScorpionPincerItemRenderer extends Render implements IItemRenderer 
 		GL11.glPopMatrix();
 	}
 
-	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
-		renderScorpionPincer((EntityScorpionPincer) par1Entity, par2, par4, par6, par8, par9);
-	}
-
-	public void renderScorpionPincer(EntityScorpionPincer par1EntityScorpionPincer, double par2, double par4, double par6, float par8, float par9) {
-		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float) par2, (float) par4, (float) par6);
-		GL11.glRotatef(par1EntityScorpionPincer.prevRotationYaw + (par1EntityScorpionPincer.rotationYaw - par1EntityScorpionPincer.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(par1EntityScorpionPincer.prevRotationPitch + (par1EntityScorpionPincer.rotationPitch - par1EntityScorpionPincer.prevRotationPitch) * par9 - 90.0F, 0.0F, 0.0F, 1.0F);
-		GL11.glScaled(1.5F, 1.5F, 1.5F);
-		model.render(0.0625F);
-		GL11.glPopMatrix();
-	}
-
-	@Override
-	protected ResourceLocation getEntityTexture(Entity entity) {
-		return texture;
-	}
 }

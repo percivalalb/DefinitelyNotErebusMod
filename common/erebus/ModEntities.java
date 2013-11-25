@@ -23,7 +23,6 @@ import erebus.entity.EntityLocust;
 import erebus.entity.EntityMosquito;
 import erebus.entity.EntityMoth;
 import erebus.entity.EntityScorpion;
-import erebus.entity.EntityScorpionPincer;
 import erebus.entity.EntitySolifuge;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityWasp;
@@ -68,7 +67,6 @@ public class ModEntities {
 
 		// Entity Items
 		registerEntityWithoutEgg(EntityWaspDagger.class, "WaspDagger");
-		registerEntityWithoutEgg(EntityScorpionPincer.class, "ScorpionPincer");
 	}
 
 	private static void registerEntity(Class<? extends Entity> entityClass, String saveName, int backgroundEggColour, int foregroundEggColour) {

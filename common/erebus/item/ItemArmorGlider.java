@@ -75,7 +75,6 @@ public class ItemArmorGlider extends ItemArmor {
 	@SideOnly(Side.CLIENT)
 	public void onPlayerRenderPre(RenderPlayerEvent.Pre e){
 		GL11.glPushMatrix();
-
 		EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
 		ItemStack chestPlate = player.inventory.armorInventory[2];
 		if (chestPlate != null && chestPlate.getItem().itemID == ModItems.armorGlider.itemID) {
@@ -83,12 +82,17 @@ public class ItemArmorGlider extends ItemArmor {
 				chestPlate.stackTagCompound = new NBTTagCompound();
 				return;
 			}
-
 			if (chestPlate.getTagCompound().getBoolean("isGliding") && !player.onGround) {
-				GL11.glTranslated(0D, -player.height / 2, 0D);
-				GL11.glRotated(60D,1F,0F,0F);
+				// Unimplemented for the time being.
+				// Method is fixed but rotations need working out!
+				// GL11.glRotatef(-60.0F, 1.0F, 0.0F, 0.0F);
 			}
 		}
+	}
+
+	@SideOnly(Side.CLIENT)
+	@ForgeSubscribe
+	public void onPlayerRenderPost(RenderPlayerEvent.Post e) {
 		GL11.glPopMatrix();
 	}
 }

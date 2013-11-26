@@ -77,15 +77,15 @@ public class ItemArmorGlider extends ItemArmor {
 		GL11.glPushMatrix();
 
 		EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
-		ItemStack chestPlate = player.inventory.armorInventory[3];
-		if (chestPlate != null && chestPlate.getItem() == ModItems.armorGlider) {
+		ItemStack chestPlate = player.inventory.armorInventory[2];
+		if (chestPlate != null && chestPlate.getItem().itemID == ModItems.armorGlider.itemID) {
 			if (!chestPlate.hasTagCompound()) {
 				chestPlate.stackTagCompound = new NBTTagCompound();
 				return;
 			}
 
-			if (chestPlate.getTagCompound().getBoolean("isGliding") && !e.entityPlayer.onGround) {
-				GL11.glTranslated(0D, -e.entityPlayer.height / 2, 0D);
+			if (chestPlate.getTagCompound().getBoolean("isGliding") && !player.onGround) {
+				GL11.glTranslated(0D, -player.height / 2, 0D);
 				GL11.glRotated(60D,1F,0F,0F);
 			}
 		}

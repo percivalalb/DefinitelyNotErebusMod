@@ -31,11 +31,11 @@ public class ItemScorpionPincer extends ItemSword {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
-		if (!player.capabilities.isCreativeMode)
+		if (!player.capabilities.isCreativeMode && player.inventory.hasItem(Item.fireballCharge.itemID))
 			itemstack.damageItem(10, player);
 		if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.fireballCharge.itemID))
 		{
-			world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+			world.playSoundAtEntity(player, "mob.ghast.fireball", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 			if (!world.isRemote) {
 				Vec3 look = player.getLookVec();
 				double direction = Math.toRadians(player.renderYawOffset);

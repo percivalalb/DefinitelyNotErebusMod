@@ -16,8 +16,11 @@ public class ItemWaspDagger extends ItemSword {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
-		if (!entityplayer.capabilities.isCreativeMode)
+		int repairDamage = itemstack.getItemDamage();
+		if (!entityplayer.capabilities.isCreativeMode) {
 			itemstack.stackSize--;
+			itemstack.getItem().setDamage(itemstack, -repairDamage);
+		}
 		world.playSoundAtEntity(entityplayer, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 		if (!world.isRemote)
 			world.spawnEntityInWorld(new EntityWaspDagger(world, entityplayer));

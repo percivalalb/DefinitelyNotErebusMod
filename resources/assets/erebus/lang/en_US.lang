@@ -182,6 +182,7 @@ item.erebusMaterials.14.name=Supernatural-Velocity
 item.erebusMaterials.15.name=Altar Fragment
 item.erebusMaterials.16.name=Reinforced Exoskeleton Plate
 item.erebusMaterials.17.name=Glider Wing
+item.erebusMaterials.18.name=Scorpion Pincer
 item.erebusFood.0.name=Beetle Larva
 item.erebusFood.1.name=Cooked Beetle Larva
 item.erebusFood.2.name=Grasshopper Leg
@@ -202,7 +203,7 @@ item.metalIngot3.name=Tin Ingot
 item.sprayCan.name=Insect Repellent
 item.waspDagger.name=Wasp Dagger
 item.wandOfAnimation.name=Wand Of Animation
-item.scorpionPincer.name=Scorpion Pincer
+item.scorpionPincer.name=Augmented Scorpion Pincer
 
 #Entities
 entity.BeetleLarva - Erebus.name=Beetle Larva

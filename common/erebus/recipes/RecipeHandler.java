@@ -124,7 +124,7 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModItems.armorGlider), new Object[] { "   ", "GXG", "   ", 'G', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataGliderWing), 'X', new ItemStack(ModItems.reinExoskeletonBody, 1) });
 
 		GameRegistry.addRecipe(new ItemStack(ModItems.scorpionPincer), new Object[] { "I I", "XIX", "XPX", 'I', Item.ingotIron, 'X', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataReinforcedPlateExo), 'P',
-		new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataScorpPincer) });
+			new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataScorpPincer) });
 
 		GameRegistry.addRecipe(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataGliderWing), new Object[] { "SSS", "FFF", "FFF", 'S', Item.stick, 'F', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataFlyWing) });
 
@@ -138,11 +138,7 @@ public class RecipeHandler {
 		// Bamboo
 		GameRegistry.addRecipe(new ItemStack(ModItems.bamBucket, 1, 0), new Object[] { "S", "B", 'S', Item.silk, 'B', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBamboo) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.planksErebus, 1, BlockPlanksErebus.dataBamboo), new Object[] { "##", "##", '#', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBamboo) });
-		// GameRegistry.addRecipe(new ItemStack(ModBlocks.bambooCrate, 1, 1),
-		// new Object[] { "bpb", "p p", "bpb", 'p', new
-		// ItemStack(ModBlocks.planksErebus, 1, BlockPlanksErebus.dataBamboo),
-		// 'b', new ItemStack(ModItems.erebusMaterials, 1, 3) });
-		// TODO removed until fixed
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.bambooCrate, 1, 1), new Object[] { "bpb", "p p", "bpb", 'p', new ItemStack(ModBlocks.planksErebus, 1, BlockPlanksErebus.dataBamboo), 'b', new ItemStack(ModItems.erebusMaterials, 1, 3) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.bambooLadder, 1), new Object[] { "BBB", "S S", "BBB", 'B', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBamboo), 'S', Item.silk });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.bambooTorch, 4), new Object[] { " C ", " B ", " B ", 'C', Item.coal, 'B', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBamboo) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.erebusAltar), new Object[] { "RRR", "SPS", "SSS", 'S', Block.stone, 'S', Block.pistonBase, 'R', Item.redstone });

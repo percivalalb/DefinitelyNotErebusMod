@@ -2,12 +2,15 @@ package erebus.core.proxy;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
 import com.google.common.io.ByteArrayDataInput;
+
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -26,8 +29,11 @@ import erebus.tileentity.TileEntityErebusAltarHealing;
 import erebus.tileentity.TileEntityErebusAltarLightning;
 import erebus.tileentity.TileEntityErebusAltarRepair;
 import erebus.tileentity.TileEntityErebusAltarXP;
+import erebus.tileentity.TileEntityGlowingJar;
+import erebus.tileentity.TileEntityLadder;
 import erebus.tileentity.TileEntitySpawner;
 import erebus.tileentity.TileEntityUmberFurnace;
+import erebus.tileentity.TileEntityUmberGolemStatue;
 
 public class CommonProxy implements IGuiHandler {
 
@@ -43,7 +49,7 @@ public class CommonProxy implements IGuiHandler {
 	public void registerKeyHandlers() {
 		// Unused server side. -- see ClientProxy for implementation
 	}
-	
+
 	public void registerRenderInformation() {
 		// Unused server side. -- see ClientProxy for implementation
 	}
@@ -58,6 +64,9 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntityErebusAltarLightning.class, "Altar - Lightning (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityErebusAltarRepair.class, "Altar - Repair (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityErebusAltarXP.class, "Altar - XP (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityGlowingJar.class, "Glowing Jar (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityLadder.class, "Bamboo Ladder (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityUmberGolemStatue.class, "Umber Golem Statue (Erebus)");
 	}
 
 	public void handleParticlePacket(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data) {

@@ -22,23 +22,20 @@ public class TileEntityRenderBambooCrate extends TileEntitySpecialRenderer {
 	public static ResourceLocation colossalCrateResource = new ResourceLocation("erebus:textures/item/colossalcrate.png");
 
 	public void renderCrate(TileEntityBambooCrate crate, float x, float y, float z) {
+
 		if (crate.getBlockMetadata() != 0) {
 			if (crate.getBlockMetadata() == 1) {
 				bindTexture(colossalCrateResource);
-
 				GL11.glPushMatrix();
 				GL11.glTranslatef(x + 1.5F, y + 1.5F, z + 1.5F);
-				GL11.glRotatef(0, 0.0F, 1.0F, 0.0F);
 				GL11.glScalef(1.0F, -1F, -1F);
 				colossalCrateModel.renderModel();
 				GL11.glPopMatrix();
 			}
 		} else {
 			bindTexture(bambooCrateResource);
-
 			GL11.glPushMatrix();
 			GL11.glTranslatef(x + 0.5F, y + 1.5F, z + 0.5F);
-			GL11.glRotatef(0, 0.0F, 1.0F, 0.0F);
 			GL11.glScalef(1.0F, -1F, -1F);
 			bambooCrateModel.renderModel();
 			GL11.glPopMatrix();

@@ -17,7 +17,7 @@ public class ScorpionPincerItemRenderer implements IItemRenderer {
 	private final ModelScorpionPincer model;
 	public static ResourceLocation texture = new ResourceLocation("erebus:textures/item/ModelScorpionPincer.png");
 
-	public ScorpionPincerItemRenderer() {
+	public ScorpionPincerItemRenderer(ModelScorpionPincer par1ModelBase, float par2) {
 		model = new ModelScorpionPincer();
 	}
 
@@ -110,4 +110,5 @@ public class ScorpionPincerItemRenderer implements IItemRenderer {
 		model.render(0.0625F);
 		GL11.glPopMatrix();
 	}
+
 }

@@ -69,21 +69,21 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 		boolean flag = furnaceBurnTime > 0;
 		boolean flag1 = false;
 		if (furnaceBurnTime > 0)
-			--furnaceBurnTime;
+			furnaceBurnTime--;
 		if (!worldObj.isRemote) {
 			if (furnaceBurnTime == 0 && canSmelt()) {
 				currentItemBurnTime = furnaceBurnTime = TileEntityFurnace.getItemBurnTime(inventory[FUEL_SLOT]);
 				if (furnaceBurnTime > 0) {
 					flag1 = true;
 					if (inventory[FUEL_SLOT] != null) {
-						--inventory[FUEL_SLOT].stackSize;
+						inventory[FUEL_SLOT].stackSize--;
 						if (inventory[FUEL_SLOT].stackSize == 0)
 							inventory[FUEL_SLOT] = inventory[FUEL_SLOT].getItem().getContainerItemStack(inventory[FUEL_SLOT]);
 					}
 				}
 			}
 			if (isBurning() && canSmelt()) {
-				++furnaceCookTime;
+				furnaceCookTime++;
 				if (furnaceCookTime >= cookTime) {
 					furnaceCookTime = 0;
 					smeltItem();
@@ -277,7 +277,7 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 		switch (id) {
 			case 1:
 				if (tank.getFluid() == null)
-					tank.setFluid(new FluidStack(0, value));
+					tank.setFluid(new FluidStack(FluidRegistry.LAVA, value));
 				else
 					tank.getFluid().amount = value;
 				break;
@@ -290,6 +290,9 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 			case 4:
 				cookTime = value;
 				break;
+			case 5:
+				currentItemBurnTime = value;
+				break;
 		}
 	}
 
@@ -298,12 +301,14 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 		craft.sendProgressBarUpdate(furnace, 2, furnaceBurnTime);
 		craft.sendProgressBarUpdate(furnace, 3, furnaceCookTime);
 		craft.sendProgressBarUpdate(furnace, 4, cookTime);
+		craft.sendProgressBarUpdate(furnace, 5, currentItemBurnTime);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public int getBurnTimeRemainingScaled(int scale) {
 		if (currentItemBurnTime == 0)
 			currentItemBurnTime = cookTime;
+
 		return furnaceBurnTime * scale / currentItemBurnTime;
 	}
 

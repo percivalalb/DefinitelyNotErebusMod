@@ -2,8 +2,11 @@ package erebus.item;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntitySmallFireball;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import erebus.ErebusMod;
 import erebus.entity.EntityScorpion;
@@ -27,9 +30,27 @@ public class ItemScorpionPincer extends ItemSword {
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer) {
-		// TODO : Something interesting here
+	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
+		if (!player.capabilities.isCreativeMode && player.inventory.hasItem(Item.fireballCharge.itemID))
+			itemstack.damageItem(10, player);
+		if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.fireballCharge.itemID))
+		{
+			world.playSoundAtEntity(player, "mob.ghast.fireball", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+			if (!world.isRemote) {
+				Vec3 look = player.getLookVec();
+				double direction = Math.toRadians(player.renderYawOffset);
+				double directionY = Math.toRadians(player.cameraPitch);
+				EntitySmallFireball fireball = new EntitySmallFireball(world, player, 1, 1, 1);
+				fireball.setPosition(player.posX + -Math.sin(direction) * 1, player.posY + Math.cos(directionY) * 1.2D, player.posZ + Math.cos(direction) * 1);
+				fireball.accelerationX = look.xCoord * 0.1;
+				fireball.accelerationY = look.yCoord * 0.1;
+				fireball.accelerationZ = look.zCoord * 0.1;
+				world.spawnEntityInWorld(fireball);
+			}
+			player.inventory.consumeInventoryItem(Item.fireballCharge.itemID);
+		}
+		player.swingItem();
 		return itemstack;
-
 	}
+
 }

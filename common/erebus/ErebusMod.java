@@ -1,13 +1,16 @@
 package erebus;
 
 import java.io.File;
+
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
+
 import com.google.common.reflect.ClassPath;
 import com.google.common.reflect.ClassPath.ClassInfo;
+
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -60,7 +63,7 @@ public class ErebusMod {
 	public static EnumToolMaterial toolJADE = EnumHelper.addToolMaterial("JADE", 2, 863, 10.0F, 2.0F, 18);
 	public static EnumToolMaterial toolJADEPAXEL = EnumHelper.addToolMaterial("JADEPAXEL", 2, 1079, 8.0F, 4.0F, 14);
 	public static EnumToolMaterial toolCAVEMANCLUB = EnumHelper.addToolMaterial("CAVEMANCLUB", 0, 131, 4.0F, 2.0F, 12);
-	public static EnumToolMaterial weaponWaspDagger = EnumHelper.addToolMaterial("WASPDAGGER", 0, 16, 1.0F, 0.0F, 12);
+	public static EnumToolMaterial weaponWaspDagger = EnumHelper.addToolMaterial("WASPDAGGER", 0, 1, 1.0F, 0.0F, 12);
 	public static EnumToolMaterial weaponWaspSword = EnumHelper.addToolMaterial("WASPSWORD", 0, 863, 1.0F, 4.0F, 18);
 	public static EnumToolMaterial weaponScorpionPincer = EnumHelper.addToolMaterial("SCORPIONPINCER", 0, 863, 1.0F, 4.0F, 2);
 

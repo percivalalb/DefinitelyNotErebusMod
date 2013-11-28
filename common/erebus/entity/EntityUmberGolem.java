@@ -1,5 +1,6 @@
 package erebus.entity;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLivingBase;
@@ -9,6 +10,7 @@ import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
@@ -21,7 +23,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import erebus.ModBlocks;
 import erebus.ModItems;
-import erebus.item.ItemErebusMaterial;
 
 public class EntityUmberGolem extends EntityCreature implements IMob {
 
@@ -30,9 +31,10 @@ public class EntityUmberGolem extends EntityCreature implements IMob {
 		super(par1World);
 		isImmuneToFire = true;
 		setSize(1.0F, 1.0F);
-		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityMob.class, 0.5D, false));
-		tasks.addTask(2, new EntityAIWander(this, 0.5D));
+		tasks.addTask(0, new EntityAITempt(this, 0.5D, ModItems.wandOfAnimation.itemID, false));
+		tasks.addTask(1, new EntityAISwimming(this));
+		tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityMob.class, 0.5D, false));
+		tasks.addTask(3, new EntityAIWander(this, 0.5D));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
 		targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityMob.class, 0, true));
 		experienceValue = 0;
@@ -61,21 +63,18 @@ public class EntityUmberGolem extends EntityCreature implements IMob {
 		return EnumCreatureAttribute.ARTHROPOD;
 	}
 
-	/*protected String getLivingSound()
-{
-	return "umbergolem:umbergolemsound";
-}
-
-protected String getHurtSound()
-{
-	return "umbergolem:umbergolemhurt";
-}
-
-protected String getDeathSound()
-{
-	return "umbergolem:squish";
-}
+	/*
+	 * protected String getLivingSound() { return "erebus:umbergolemsound"; }
+	 * 
+	 * protected String getHurtSound() { return "erebus:umbergolemhurt"; }
 	 */
+
+	@Override
+	protected String getDeathSound()
+	{
+		return "erebus:squish";
+	}
+
 	@Override
 	protected void playStepSound(int par1, int par2, int par3, int par4) {
 		worldObj.playSoundAtEntity(this, "mob.zombie.step", 0.15F, 1.0F);
@@ -83,10 +82,7 @@ protected String getDeathSound()
 
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
-		int var3 = rand.nextInt(4) + rand.nextInt(1 + par2);
-		int var4;
-		for (var4 = 0; var4 < var3; ++var4)
-			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate), 0.0F);
+		entityDropItem(new ItemStack(Block.stone, 5, 0), 0.0F);
 	}
 
 	public boolean isClimbing() {

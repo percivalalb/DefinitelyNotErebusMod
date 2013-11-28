@@ -19,20 +19,22 @@ public class WorldGenSpiderDungeons extends WorldGenerator {
 
 	//@formatter:off
 	public static final WeightedLootList chestLoot = new WeightedLootList(
-		new LootItemStack(Item.silk).setAmount(5, 10).setWeight(13),
-		new LootItemStack(Block.web).setAmount(3, 8).setWeight(13),
-		new LootItemStack(Item.stick).setAmount(1, 8).setWeight(12),
-		new LootItemStack(Item.goldNugget).setAmount(3, 11).setWeight(12),
-		new LootItemStack(ModItems.erebusMaterials).setAmount(3, 8).setDamage(ItemErebusMaterial.dataBoneShard).setWeight(12),
-		new LootItemStack(Item.bone).setAmount(1, 3).setWeight(11),
-		new LootItemStack(Item.ingotIron).setAmount(1, 3).setWeight(10),
-		new LootItemStack(Item.ingotGold).setAmount(1, 2).setWeight(10),
-		new LootItemStack(ModItems.erebusMaterials).setAmount(1, 5).setDamage(ItemErebusMaterial.dataFlyWing).setWeight(10),
-		new LootItemStack(ModItems.erebusMaterials).setAmount(1).setDamage(ItemErebusMaterial.dataJade).setWeight(9),
-		new LootItemStack(ModItems.erebusMaterials).setAmount(3, 6).setDamage(ItemErebusMaterial.dataExoPlate).setWeight(8),
-		new LootItemStack(ModItems.erebusMaterials).setAmount(2, 6).setDamage(ItemErebusMaterial.dataCompoundEyes).setWeight(7),
-		new LootItemStack(ModItems.erebusMaterials).setAmount(1, 1).setDamage(ItemErebusMaterial.dataCompoundLens).setWeight(2),
-		new LootItemStack(ModItems.maxSpeedBow).setAmount(1).setWeight(1)
+	new LootItemStack(Item.silk).setAmount(5, 10).setWeight(13),
+	new LootItemStack(Block.web).setAmount(3, 8).setWeight(13),
+	new LootItemStack(Item.stick).setAmount(1, 8).setWeight(12),
+	new LootItemStack(Item.goldNugget).setAmount(3, 11).setWeight(12),
+	new LootItemStack(ModItems.erebusMaterials).setAmount(3, 8).setDamage(ItemErebusMaterial.dataBoneShard).setWeight(12),
+	new LootItemStack(Item.bone).setAmount(1, 3).setWeight(11),
+	new LootItemStack(Item.ingotIron).setAmount(1, 3).setWeight(10),
+	new LootItemStack(Item.ingotGold).setAmount(1, 2).setWeight(10),
+	new LootItemStack(ModItems.erebusMaterials).setAmount(1, 5).setDamage(ItemErebusMaterial.dataFlyWing).setWeight(10),
+	new LootItemStack(ModItems.erebusMaterials).setAmount(1).setDamage(ItemErebusMaterial.dataJade).setWeight(9),
+	new LootItemStack(ModItems.erebusMaterials).setAmount(3, 6).setDamage(ItemErebusMaterial.dataExoPlate).setWeight(8),
+	new LootItemStack(ModItems.erebusMaterials).setAmount(2, 6).setDamage(ItemErebusMaterial.dataCompoundEyes).setWeight(7),
+	new LootItemStack(ModItems.erebusMaterials).setAmount(1, 1).setDamage(ItemErebusMaterial.dataCompoundLens).setWeight(2),
+	new LootItemStack(ModItems.maxSpeedBow).setAmount(1).setWeight(1),
+	new LootItemStack(ModItems.waspSword).setAmount(1).setWeight(1),
+	new LootItemStack(ModBlocks.umberGolemStatue).setAmount(1).setWeight(1)
 	);
 	//@formatter:on
 
@@ -85,38 +87,38 @@ public class WorldGenSpiderDungeons extends WorldGenerator {
 				while (true) {
 					if (l1 < 3)
 						label101: {
-							i2 = par3 + par2Random.nextInt(l * 2 + 1) - l;
-							int j2 = par5 + par2Random.nextInt(i1 * 2 + 1) - i1;
+						i2 = par3 + par2Random.nextInt(l * 2 + 1) - l;
+						int j2 = par5 + par2Random.nextInt(i1 * 2 + 1) - i1;
 
-							if (par1World.isAirBlock(i2, par4, j2)) {
-								int k2 = 0;
+						if (par1World.isAirBlock(i2, par4, j2)) {
+							int k2 = 0;
 
-								if (par1World.getBlockMaterial(i2 - 1, par4, j2).isSolid())
-									++k2;
+							if (par1World.getBlockMaterial(i2 - 1, par4, j2).isSolid())
+								++k2;
 
-								if (par1World.getBlockMaterial(i2 + 1, par4, j2).isSolid())
-									++k2;
+							if (par1World.getBlockMaterial(i2 + 1, par4, j2).isSolid())
+								++k2;
 
-								if (par1World.getBlockMaterial(i2, par4, j2 - 1).isSolid())
-									++k2;
+							if (par1World.getBlockMaterial(i2, par4, j2 - 1).isSolid())
+								++k2;
 
-								if (par1World.getBlockMaterial(i2, par4, j2 + 1).isSolid())
-									++k2;
+							if (par1World.getBlockMaterial(i2, par4, j2 + 1).isSolid())
+								++k2;
 
-								if (k2 == 1) {
-									par1World.setBlock(i2, par4, j2, Block.chest.blockID, 0, 2);
-									TileEntityChest tileentitychest = (TileEntityChest) par1World.getBlockTileEntity(i2, par4, j2);
+							if (k2 == 1) {
+								par1World.setBlock(i2, par4, j2, Block.chest.blockID, 0, 2);
+								TileEntityChest tileentitychest = (TileEntityChest) par1World.getBlockTileEntity(i2, par4, j2);
 
-									if (tileentitychest != null)
-										LootUtil.generateLoot(tileentitychest, par2Random, chestLoot, 3, 10);
+								if (tileentitychest != null)
+									LootUtil.generateLoot(tileentitychest, par2Random, chestLoot, 3, 10);
 
-									break label101;
-								}
+								break label101;
 							}
-
-							++l1;
-							continue;
 						}
+
+						++l1;
+						continue;
+					}
 
 					++k1;
 					break;

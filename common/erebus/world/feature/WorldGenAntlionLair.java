@@ -27,48 +27,50 @@ public class WorldGenAntlionLair extends WorldGenerator {
 
 	//@formatter:off
 	public static final WeightedLootList chestLoot = new WeightedLootList(
-		new LootItemStack(Item.book).setAmount(1, 4).setWeight(18),
-		new LootItemStack(Item.paper).setAmount(2, 6).setWeight(16),
-		new LootItemStack(Block.web).setAmount(2, 7).setWeight(13),
-		new LootItemStack(ModItems.erebusMaterials).setAmount(1, 3).setDamage(ItemErebusMaterial.dataJade).setWeight(10),
-		new LootItemStack(ModItems.erebusMaterials).setAmount(4, 8).setDamage(ItemErebusMaterial.dataExoPlate).setWeight(9),
-		new LootItemStack(Item.enchantedBook).setWeight(8),
-		
-		new LootItemStack(Item.pickaxeGold).setWeight(3),
-		new LootItemStack(Item.pickaxeIron).setWeight(2),
-		new LootItemStack(ModItems.jadePickaxe).setWeight(1),
-		new LootItemStack(Item.pickaxeStone).setWeight(1),
-		
-		new LootItemStack(Item.shovelGold).setWeight(3),
-		new LootItemStack(Item.shovelIron).setWeight(2),
-		new LootItemStack(ModItems.jadeShovel).setWeight(1),
-		new LootItemStack(Item.shovelStone).setWeight(1),
-		
-		new LootItemStack(Item.axeGold).setWeight(3),
-		new LootItemStack(Item.axeIron).setWeight(2),
-		new LootItemStack(ModItems.jadeAxe).setWeight(1),
-		new LootItemStack(Item.axeStone).setWeight(1),
-		
-		new LootItemStack(Item.swordGold).setWeight(3),
-		new LootItemStack(Item.swordIron).setWeight(2),
-		new LootItemStack(ModItems.jadeSword).setWeight(1),
-		new LootItemStack(Item.swordStone).setWeight(1),
-		
-		new LootItemStack(Item.plateIron).setWeight(2),
-		new LootItemStack(ModItems.jadeBody).setWeight(1),
-		new LootItemStack(Item.plateGold).setWeight(1),
-		
-		new LootItemStack(Item.helmetIron).setWeight(2),
-		new LootItemStack(ModItems.jadeHelmet).setWeight(1),
-		new LootItemStack(Item.helmetGold).setWeight(1),
-		
-		new LootItemStack(Item.legsIron).setWeight(2),
-		new LootItemStack(ModItems.jadeLegs).setWeight(1),
-		new LootItemStack(Item.legsGold).setWeight(1),
-		
-		new LootItemStack(Item.bootsIron).setWeight(2),
-		new LootItemStack(ModItems.jadeBoots).setWeight(1),
-		new LootItemStack(Item.bootsGold).setWeight(1)
+	new LootItemStack(Item.book).setAmount(1, 4).setWeight(18),
+	new LootItemStack(Item.paper).setAmount(2, 6).setWeight(16),
+	new LootItemStack(Block.web).setAmount(2, 7).setWeight(13),
+	new LootItemStack(ModItems.erebusMaterials).setAmount(1, 3).setDamage(ItemErebusMaterial.dataJade).setWeight(10),
+	new LootItemStack(ModItems.erebusMaterials).setAmount(4, 8).setDamage(ItemErebusMaterial.dataExoPlate).setWeight(9),
+	new LootItemStack(Item.enchantedBook).setWeight(8),
+	new LootItemStack(ModBlocks.umberGolemStatue).setAmount(1).setWeight(1),
+	new LootItemStack(ModItems.waspSword).setAmount(1).setWeight(1),
+
+	new LootItemStack(Item.pickaxeGold).setWeight(3),
+	new LootItemStack(Item.pickaxeIron).setWeight(2),
+	new LootItemStack(ModItems.jadePickaxe).setWeight(1),
+	new LootItemStack(Item.pickaxeStone).setWeight(1),
+
+	new LootItemStack(Item.shovelGold).setWeight(3),
+	new LootItemStack(Item.shovelIron).setWeight(2),
+	new LootItemStack(ModItems.jadeShovel).setWeight(1),
+	new LootItemStack(Item.shovelStone).setWeight(1),
+
+	new LootItemStack(Item.axeGold).setWeight(3),
+	new LootItemStack(Item.axeIron).setWeight(2),
+	new LootItemStack(ModItems.jadeAxe).setWeight(1),
+	new LootItemStack(Item.axeStone).setWeight(1),
+
+	new LootItemStack(Item.swordGold).setWeight(3),
+	new LootItemStack(Item.swordIron).setWeight(2),
+	new LootItemStack(ModItems.jadeSword).setWeight(1),
+	new LootItemStack(Item.swordStone).setWeight(1),
+
+	new LootItemStack(Item.plateIron).setWeight(2),
+	new LootItemStack(ModItems.jadeBody).setWeight(1),
+	new LootItemStack(Item.plateGold).setWeight(1),
+
+	new LootItemStack(Item.helmetIron).setWeight(2),
+	new LootItemStack(ModItems.jadeHelmet).setWeight(1),
+	new LootItemStack(Item.helmetGold).setWeight(1),
+
+	new LootItemStack(Item.legsIron).setWeight(2),
+	new LootItemStack(ModItems.jadeLegs).setWeight(1),
+	new LootItemStack(Item.legsGold).setWeight(1),
+
+	new LootItemStack(Item.bootsIron).setWeight(2),
+	new LootItemStack(ModItems.jadeBoots).setWeight(1),
+	new LootItemStack(Item.bootsGold).setWeight(1)
 	).setPostProcessor(new IPostProcess(){
 		@Override
 		public ItemStack postProcessItem(ItemStack is, Random rand){

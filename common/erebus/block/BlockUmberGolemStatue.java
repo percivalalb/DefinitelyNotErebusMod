@@ -75,19 +75,14 @@ public class BlockUmberGolemStatue extends BlockContainer {
 					EntityUmberGolem entityUmberGolem;
 					entityUmberGolem = new EntityUmberGolem(world);
 					world.setBlockToAir(x, y, z);
-					entityUmberGolem.setLocationAndAngles(x + 0.5D, y, z + 0.5D, MathHelper.wrapAngleTo180_float(player.rotationYaw * 360.0F), 0.0F);
-					entityUmberGolem.rotationYawHead = entityUmberGolem.rotationYaw;
-					entityUmberGolem.renderYawOffset = entityUmberGolem.rotationYaw;
-					world.spawnEntityInWorld(entityUmberGolem);
 					world.playSoundEffect(x, y, z, "erebus:altaroffering", 0.2F, 1.0F);
+					entityUmberGolem.setPositionAndRotation(x + 0.5D, y, z + 0.5D, MathHelper.wrapAngleTo180_float(player.rotationYaw * 360.0F), 0.0F);
+					world.spawnEntityInWorld(entityUmberGolem);
 				}
-
 				return true;
 			}
-
 		return false;
 	}
-
 
 	@Override
 	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
@@ -95,13 +90,10 @@ public class BlockUmberGolemStatue extends BlockContainer {
 		int l1 = MathHelper.floor_double(par5EntityLivingBase.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
 		if (l1 == 0)
 			b0 = 2;
-
 		if (l1 == 1)
 			b0 = 5;
-
 		if (l1 == 2)
 			b0 = 3;
-
 		if (l1 == 3)
 			b0 = 4;
 		par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 3);
@@ -109,8 +101,8 @@ public class BlockUmberGolemStatue extends BlockContainer {
 
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int i, int j, int k) {
-		float f = 0.0625F;
-		return AxisAlignedBB.getBoundingBox(i + f, j, k + f, i + 1 - f, j + 1 - f, k + 1 - f);
+
+		return AxisAlignedBB.getBoundingBox(i, j, k, i + 1, j + 1, k + 1);
 	}
 
 

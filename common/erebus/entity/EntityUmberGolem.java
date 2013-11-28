@@ -12,12 +12,14 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import erebus.ModBlocks;
 import erebus.ModItems;
 import erebus.item.ItemErebusMaterial;
 
@@ -126,6 +128,30 @@ protected String getDeathSound()
 			return true;
 		}
 		return true;
+	}
+
+	@Override
+	public boolean interact(EntityPlayer player) {
+		ItemStack stack = player.inventory.getCurrentItem();
+		if (!worldObj.isRemote && stack != null && stack.itemID == ModItems.wandOfAnimation.itemID) {
+			setDead();
+			byte b0 = 0;
+			int l1 = MathHelper.floor_double(player.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
+			if (l1 == 0)
+				b0 = 2;
+
+			if (l1 == 1)
+				b0 = 5;
+
+			if (l1 == 2)
+				b0 = 3;
+
+			if (l1 == 3)
+				b0 = 4;
+			worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), ModBlocks.umberGolemStatueID, b0, 3);
+			return true;
+		} else
+			return false;
 	}
 }
 

@@ -3,22 +3,27 @@ package erebus.block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 import erebus.entity.EntityUmberGolem;
 import erebus.tileentity.TileEntityUmberGolemStatue;
 
 public class BlockUmberGolemStatue extends BlockContainer {
 
+	@SideOnly(Side.CLIENT)
+	private Icon a, b;
 	public BlockUmberGolemStatue(int id) {
 		super(id, Material.rock);
-		setTextureName("erebus:blockErebusAltarBreak");
 	}
 
 	@Override
@@ -47,9 +52,21 @@ public class BlockUmberGolemStatue extends BlockContainer {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int side, int meta) {
+		return side == 0 ? b : side == 1 ? a : blockIcon;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister reg) {
+		blockIcon = reg.registerIcon("erebus:blockErebusAltarBreak");
+		a = reg.registerIcon("erebus:blockErebusAltarBreak");
+		b = reg.registerIcon("erebus:blockErebusAltarBreak");
+	}
+
+	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-		if (world.isRemote)
-			return false;
 		TileEntityUmberGolemStatue te = (TileEntityUmberGolemStatue) world.getBlockTileEntity(x, y, z);
 		if (player.getCurrentEquippedItem() != null)
 			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID) {
@@ -95,4 +112,6 @@ public class BlockUmberGolemStatue extends BlockContainer {
 		float f = 0.0625F;
 		return AxisAlignedBB.getBoundingBox(i + f, j, k + f, i + 1 - f, j + 1 - f, k + 1 - f);
 	}
+
+
 }

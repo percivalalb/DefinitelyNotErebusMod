@@ -25,6 +25,7 @@ import erebus.entity.EntityMoth;
 import erebus.entity.EntityScorpion;
 import erebus.entity.EntitySolifuge;
 import erebus.entity.EntityTarantula;
+import erebus.entity.EntityUmberGolem;
 import erebus.entity.EntityWasp;
 import erebus.entity.EntityWaspDagger;
 
@@ -60,6 +61,7 @@ public class ModEntities {
 
 		registerEntityWithoutEgg(EntityAnimatedBlock.class, "AnimatedBlock");
 		registerEntityWithoutEgg(EntityAnimatedChest.class, "AnimatedChest");
+		registerEntityWithoutEgg(EntityUmberGolem.class, "UmberGolem");
 
 
 		// Extra Mob spawn conditions

@@ -107,7 +107,7 @@ public class ModelUmberGolem extends ModelBase
 		MandibleR1.mirror = true;
 		setRotation(MandibleR1, 0.2617994F, 0F, 0F);
 		MandibleR2 = new ModelRenderer(this, 31, 75);
-		MandibleR2.addBox(-2.5F, 1F, -11.5F, 2, 1, 2);
+		MandibleR2.addBox(-1.5F, 1F, -11.5F, 1, 1, 2);
 		MandibleR2.setRotationPoint(0F, 5F, -5F);
 		MandibleR2.setTextureSize(64, 128);
 		MandibleR2.mirror = true;
@@ -119,7 +119,7 @@ public class ModelUmberGolem extends ModelBase
 		MandibleL1.mirror = true;
 		setRotation(MandibleL1, 0.2617994F, 0F, 0F);
 		MandibleL2 = new ModelRenderer(this, 31, 81);
-		MandibleL2.addBox(0.5F, 1F, -11.5F, 2, 1, 2);
+		MandibleL2.addBox(0.5F, 1F, -11.5F, 1, 1, 2);
 		MandibleL2.setRotationPoint(0F, 5F, -5F);
 		MandibleL2.setTextureSize(64, 128);
 		MandibleL2.mirror = true;

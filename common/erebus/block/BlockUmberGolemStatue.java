@@ -3,28 +3,27 @@ package erebus.block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ModItems;
+import erebus.entity.EntityUmberGolem;
 import erebus.tileentity.TileEntityUmberGolemStatue;
 
 public class BlockUmberGolemStatue extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	private Icon a, b;
-	private int item;
 	private int meta;
-	String message;
+	private float rotation;
 	public BlockUmberGolemStatue(int id) {
 		super(id, Material.rock);
 	}
@@ -70,13 +69,38 @@ public class BlockUmberGolemStatue extends BlockContainer {
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-		message = "ssshhh...not yet Technomancer.";
-		if (world.isRemote){
-			Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText(message.toString()));
-			return true;
-		}
+		TileEntityUmberGolemStatue te = (TileEntityUmberGolemStatue) world.getBlockTileEntity(x, y, z);
+		meta = world.getBlockMetadata(x, y, z);
+		if (player.getCurrentEquippedItem() != null)
+			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID) {
+				player.getCurrentEquippedItem().damageItem(1, player);
+				if (!world.isRemote) {
+					EntityUmberGolem entityUmberGolem;
+					entityUmberGolem = new EntityUmberGolem(world);
+
+					if(meta==2)
+						rotation = 180F;
+					if(meta==3)
+						rotation=0F;
+					if(meta==4)
+						rotation = 90F;
+					if(meta==5)
+						rotation = -90F;
+					System.out.println(meta + ":" + rotation);
+					world.setBlockToAir(x, y, z);
+					entityUmberGolem.setLocationAndAngles((double) x + 0.5F, y, (double) z + 0.5F, rotation, 0.0F);
+					world.spawnEntityInWorld(entityUmberGolem);
+					world.playSoundEffect(x, y, z, "erebus:altaroffering", 0.2F, 1.0F);
+					entityUmberGolem.faceEntity(player, 0F, 0F);
+
+				}
+
+				return true;
+			}
+
 		return false;
 	}
+
 
 	@Override
 	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {

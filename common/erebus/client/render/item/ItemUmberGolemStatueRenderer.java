@@ -1,5 +1,6 @@
 package erebus.client.render.item;
 
+import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
@@ -48,13 +49,22 @@ public class ItemUmberGolemStatueRenderer implements IItemRenderer {
 
 	private void renderBlock(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(new ResourceLocation("erebus:textures/blocks/ModelUmberGolemStatue.png"));
-		GL11.glPushMatrix();
-		GL11.glTranslatef(x, y, z);
-		GL11.glRotatef(180F, 1F, 0, 0);
-		GL11.glRotatef(90F, 0, 1F, 0);
-		GL11.glScaled(size, size * 1.25F, size);
-		ModelUmberGolemStatue.render();
-		GL11.glPopMatrix();
+		if (RenderItem.renderInFrame) {
+			GL11.glPushMatrix();
+			GL11.glTranslatef(x, y - 1.1F, z);
+			GL11.glRotatef(180F, 1F, 0, 0);
+			GL11.glScaled(0.5F, 0.625F, 0.5F);
+			ModelUmberGolemStatue.render();
+			GL11.glPopMatrix();
+		} else {
+			GL11.glPushMatrix();
+			GL11.glTranslatef(x, y, z);
+			GL11.glRotatef(180F, 1F, 0, 0);
+			GL11.glRotatef(90F, 0, 1F, 0);
+			GL11.glScaled(size, size * 1.25F, size);
+			ModelUmberGolemStatue.render();
+			GL11.glPopMatrix();
+		}
 	}
 
 	private void renderEquipped(float x, float y, float z, double size) {

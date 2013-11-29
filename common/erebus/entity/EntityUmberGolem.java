@@ -63,6 +63,11 @@ public class EntityUmberGolem extends EntityCreature implements IMob {
 		return EnumCreatureAttribute.ARTHROPOD;
 	}
 
+	@Override
+	public boolean canDespawn() {
+		return false;
+	}
+
 	/*
 	 * protected String getLivingSound() { return "erebus:umbergolemsound"; }
 	 * 

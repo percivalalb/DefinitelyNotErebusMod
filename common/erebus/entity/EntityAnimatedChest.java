@@ -62,6 +62,7 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 		ItemStack stack = player.inventory.getCurrentItem();
 		if (stack != null && stack.itemID == ModItems.wandOfAnimation.itemID) {
 			setDead();
+			worldObj.playSoundEffect(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), "erebus:altaroffering", 0.2F, 1.0F);
 			worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), blockID, blockMeta, 3);
 			TileEntityChest chest = (TileEntityChest) worldObj.getBlockTileEntity(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ));
 			for(int i = 0; i < 27; i++)

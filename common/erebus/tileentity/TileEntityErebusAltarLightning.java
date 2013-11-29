@@ -1,6 +1,7 @@
 package erebus.tileentity;
 
 import java.util.List;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -11,6 +12,8 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
+import erebus.entity.EntityMobBlock;
+import erebus.entity.EntityUmberGolem;
 
 public class TileEntityErebusAltarLightning extends TileEntityErebusAltar {
 
@@ -18,7 +21,7 @@ public class TileEntityErebusAltarLightning extends TileEntityErebusAltar {
 	public boolean active;
 	public int fuzz;
 	private int spawnTicks;
-	
+
 	@Override
 	public void updateEntity() {
 		findEnemyToAttack();
@@ -85,7 +88,7 @@ public class TileEntityErebusAltarLightning extends TileEntityErebusAltar {
 				Entity entity = (Entity) list.get(i);
 				if (entity != null)
 					if (entity instanceof EntityLivingBase)
-						if (((EntityLivingBase) entity).getCreatureAttribute().equals(EnumCreatureAttribute.ARTHROPOD)) {
+						if (((EntityLivingBase) entity).getCreatureAttribute().equals(EnumCreatureAttribute.ARTHROPOD) && !(entity instanceof EntityMobBlock) && !(entity instanceof EntityUmberGolem)) {
 							double a = entity.posX;
 							double b = entity.boundingBox.minY;
 							double c = entity.posZ;

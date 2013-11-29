@@ -163,6 +163,7 @@ public class EntityAnimatedBlock extends EntityMobBlock implements IEntityAdditi
 		if (!worldObj.isRemote && stack != null && stack.itemID == ModItems.wandOfAnimation.itemID) {
 			setDead();
 			worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), blockID, blockMeta, 3);
+			worldObj.playSoundEffect(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), "erebus:altaroffering", 0.2F, 1.0F);
 			return true;
 		} else
 			return false;

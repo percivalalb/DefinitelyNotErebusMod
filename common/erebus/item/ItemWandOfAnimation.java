@@ -39,6 +39,7 @@ public class ItemWandOfAnimation extends Item {
 				entityAnimatedBlock.setLocationAndAngles((double) x + 0.5F, y, (double) z + 0.5F, 0.0F, 0.0F);
 				entityAnimatedBlock.setBlock(blockID, blockMeta);
 				world.spawnEntityInWorld(entityAnimatedBlock);
+				world.playSoundEffect(x, y, z, "erebus:altaroffering", 0.2F, 1.0F);
 				stack.damageItem(1, player);
 				return true;
 			}

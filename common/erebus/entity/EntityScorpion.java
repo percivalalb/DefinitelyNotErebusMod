@@ -143,7 +143,7 @@ public class EntityScorpion extends EntityMob {
 			player.addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 10, 0));
 			setisStinging(true);
 		}
-		if (!worldObj.isRemote && !captured())
+		if (!player.capabilities.isCreativeMode && !worldObj.isRemote && !captured())
 			player.mountEntity(this);
 	}
 

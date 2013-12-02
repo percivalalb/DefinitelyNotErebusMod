@@ -14,7 +14,7 @@ import erebus.entity.ai.IEntityAIAttackOnCollide;
 
 public class EntityPrayingMantis extends EntityMob {
 
-	static float transparency;
+	public static float transparency;
 
 	public EntityPrayingMantis(World par1World) {
 		super(par1World);
@@ -73,26 +73,17 @@ public class EntityPrayingMantis extends EntityMob {
 
 	@Override
 	public void onUpdate() {
-		super.onUpdate();
 		if (!worldObj.isRemote && getAttackTarget() != null) {
 			double d1 = getDistance(getAttackTarget().posX, getAttackTarget().boundingBox.minY, getAttackTarget().posZ);
 			if (d1 >= 4.0D)
-				setTransparency((16.0F - (float) d1) * 0.03125F);
+				transparency = (16.0F - (float) d1) * 0.03125F;
+
 			if (d1 < 4.0D)
-				setTransparency((16.0F - (float) d1) * 0.0625F);
+				transparency = (16.0F - (float) d1) * 0.0625F;
 		}
-		if (!worldObj.isRemote && getAttackTarget() == null)
-			setTransparency(1.0F);
-	}
-
-	public void setTransparency(float d) {
-		transparency = d;
-		if (transparency > 0.8F)
+		if (!worldObj.isRemote && getAttackTarget() == null || transparency > 0.8F)
 			transparency = 1.0F;
-	}
-
-	public float getTransparency() {
-		return transparency;
+		super.onUpdate();
 	}
 
 }

@@ -334,15 +334,14 @@ public class ModelPrayingMantis extends ModelBase
 	}
 
 	@Override
-	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(par1Entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
-		EntityPrayingMantis entityPrayingMantis = (EntityPrayingMantis) par1Entity;
+	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
+		super.render(entity, par2, par3, par4, par5, par6, par7);
+		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
+		EntityPrayingMantis entityPrayingMantis = (EntityPrayingMantis) entity;
 		GL11.glPushMatrix();
 		GL11.glEnable(3042);
-		float transparency = entityPrayingMantis.getTransparency();
 		GL11.glBlendFunc(770, 771);
-		GL11.glColor4f(0.8F, 0.8F, 0.8F, transparency);
+		GL11.glColor4f(0.8F, 0.8F, 0.8F, entityPrayingMantis.transparency);
 		Head1.render(par7);
 		Head2.render(par7);
 		Head3.render(par7);

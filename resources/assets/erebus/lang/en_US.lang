@@ -228,6 +228,7 @@ entity.GlowWorm - Erebus.name=Glow worm
 entity.BombardierBeetle - Erebus.name=Bombardier Beetle
 entity.ErebusSpider - Erebus.name=Erebus Spider
 entity.MoneySpider - Erebus.name=Money Spider
+entity.PrayingMantis - Erebus.name=Praying Mantis
 
 #Other
 itemGroup.erebus.block=Erebus Blocks

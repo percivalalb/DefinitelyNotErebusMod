@@ -22,6 +22,7 @@ import erebus.entity.EntityGrasshopper;
 import erebus.entity.EntityLocust;
 import erebus.entity.EntityMosquito;
 import erebus.entity.EntityMoth;
+import erebus.entity.EntityPrayingMantis;
 import erebus.entity.EntityScorpion;
 import erebus.entity.EntitySolifuge;
 import erebus.entity.EntityTarantula;
@@ -58,6 +59,7 @@ public class ModEntities {
 		registerEntity(EntityBombardierBeetle.class, "BombardierBeetle", 0xFFEEFF, 0x9E0E0E);
 		registerEntity(EntityErebusSpider.class, "ErebusSpider", 0x0B4D49, 0xFFFFFF);
 		registerEntity(EntityErebusSpiderMoney.class, "MoneySpider", 0xF5C400, 0x0B4D49);
+		registerEntity(EntityPrayingMantis.class, "PrayingMantis", 0x06B900, 0x06B900);
 
 		registerEntityWithoutEgg(EntityAnimatedBlock.class, "AnimatedBlock");
 		registerEntityWithoutEgg(EntityAnimatedChest.class, "AnimatedChest");

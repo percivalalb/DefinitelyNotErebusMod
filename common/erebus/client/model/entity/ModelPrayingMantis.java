@@ -341,7 +341,7 @@ public class ModelPrayingMantis extends ModelBase
 		GL11.glPushMatrix();
 		GL11.glEnable(3042);
 		GL11.glBlendFunc(770, 771);
-		GL11.glColor4f(0.8F, 0.8F, 0.8F, entityPrayingMantis.transparency);
+		GL11.glColor4f(0.8F, 0.8F, 0.8F, entityPrayingMantis.getDataWatcher().getWatchableObjectFloat(20));
 		Head1.render(par7);
 		Head2.render(par7);
 		Head3.render(par7);
@@ -389,7 +389,6 @@ public class ModelPrayingMantis extends ModelBase
 		LBLeg6.render(par7);
 		GL11.glDisable(3042);
 		GL11.glPopMatrix();
-
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z)

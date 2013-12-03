@@ -5,6 +5,10 @@ import net.minecraft.client.model.ModelRenderer;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+@SideOnly(Side.CLIENT)
 public class ModelGlowingJar extends ModelBase
 {
 	ModelRenderer Jar;
@@ -49,6 +53,7 @@ public class ModelGlowingJar extends ModelBase
 
 	}
 
+	@SideOnly(Side.CLIENT)
 	public void render() {
 		Lid.render(0.0625F);
 		GL11.glPushMatrix();
@@ -59,11 +64,13 @@ public class ModelGlowingJar extends ModelBase
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 		GL11.glEnable(3042);
+		GL11.glDepthMask(false);
 		float transparency = 0.6F;
 		GL11.glBlendFunc(770, 771);
 		GL11.glColor4f(0.8F, 0.8F, 0.8F, transparency);
 		Neck.render(0.0625F);
 		Jar.render(0.0625F);
+		GL11.glDepthMask(true);
 		GL11.glDisable(3042);
 		GL11.glPopMatrix();
 	}

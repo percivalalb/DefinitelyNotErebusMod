@@ -20,7 +20,7 @@ public class EntityPrayingMantis extends EntityMob {
 		setSize(2.0F, 2.5F);
 		getNavigator().setAvoidsWater(true);
 		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(1, new IEntityAIAttackOnCollide(this, EntityPlayer.class, 0.3D, false));
+		tasks.addTask(1, new IEntityAIAttackOnCollide(this, EntityPlayer.class, 0.6D, false));
 		tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		tasks.addTask(3, new EntityAIWander(this, 0.3D));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
@@ -46,7 +46,7 @@ public class EntityPrayingMantis extends EntityMob {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.5D); // Movespeed
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.6D); // Movespeed
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D); // MaxHealth
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D); // atkDmg
 		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
@@ -60,14 +60,6 @@ public class EntityPrayingMantis extends EntityMob {
 	@Override
 	public boolean isOnLadder() {
 		return isCollidedHorizontally;
-	}
-
-	@Override
-	public boolean getCanSpawnHere() {
-		float f1 = getBrightness(1.0F);
-		if (f1 > 0.5F)
-			return true;
-		return super.getCanSpawnHere();
 	}
 
 	@Override

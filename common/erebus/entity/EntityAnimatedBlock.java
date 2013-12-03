@@ -47,12 +47,6 @@ public class EntityAnimatedBlock extends EntityMobBlock implements IEntityAdditi
 	public void setBlock(int blockID, int blockMeta) {
 		this.blockID = blockID;
 		this.blockMeta = blockMeta;
-		updateAttributes(Block.blocksList[blockID]);
-	}
-
-	// TODO make this right
-	protected void updateAttributes(Block block) {
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(block.blockHardness > 0 ? block.blockHardness : 1.0D);
 	}
 
 	@Override

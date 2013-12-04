@@ -16,6 +16,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ModItems;
 
 public class ItemBambucket extends Item {
 
@@ -110,7 +111,8 @@ public class ItemBambucket extends Item {
 			if (!world.isRemote)
 				player.curePotionEffects(new ItemStack(Item.bucketMilk));
 
-			return stack.stackSize <= 0 ? new ItemStack(Item.bucketEmpty) : stack;
+			player.inventory.addItemStackToInventory(new ItemStack(ModItems.bamBucket));
+			return stack;
 		} else
 			return super.onEaten(stack, world, player);
 	}

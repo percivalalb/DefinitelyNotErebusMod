@@ -141,7 +141,6 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.bambooCrate), new Object[] { "bpb", "p p", "bpb", 'p', new ItemStack(ModBlocks.planksErebus, 1, BlockPlanksErebus.dataBamboo), 'b', new ItemStack(ModItems.erebusMaterials, 1, 3) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.bambooLadder, 1), new Object[] { "BBB", "S S", "BBB", 'B', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBamboo), 'S', Item.silk });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.bambooTorch, 4), new Object[] { " C ", " B ", " B ", 'C', Item.coal, 'B', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBamboo) });
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.erebusAltar), new Object[] { "RRR", "SPS", "SSS", 'S', Block.stone, 'S', Block.pistonBase, 'R', Item.redstone });
 
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.erebusFood, 1, ItemErebusFood.dataBambooSoup), new Object[] { new ItemStack(Item.bowlEmpty), new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBamboo),
 			new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBambooShoot) });

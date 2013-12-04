@@ -196,6 +196,7 @@ item.erebusFood.8.name=Sparkly Melonade
 item.erebusFood.9.name=Larvae-on-a-Stick
 item.bamBucket.0.name=Bambucket
 item.bamBucket.1.name=Water Bambucket
+item.bamBucket.2.name=Bambucket Of Beetle Juice
 item.waspSword.name=Wasp Sword
 item.metalIngot0.name=Copper Ingot
 item.metalIngot1.name=Lead Ingot
@@ -205,6 +206,7 @@ item.sprayCan.name=Insect Repellent
 item.waspDagger.name=Wasp Dagger
 item.wandOfAnimation.name=Wand Of Animation
 item.scorpionPincer.name=Augmented Scorpion Pincer
+item.bucketOfBeetleJuice.name=Bucket Of Beetle Juice
 
 #Entities
 entity.BeetleLarva - Erebus.name=Beetle Larva

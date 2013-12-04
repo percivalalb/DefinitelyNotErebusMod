@@ -80,6 +80,28 @@ public class EntityBeetle extends EntityCreature {
 	}
 
 	@Override
+	public boolean interact(EntityPlayer par1EntityPlayer) {
+		ItemStack itemstack = par1EntityPlayer.inventory.getCurrentItem();
+
+		if (itemstack != null) {
+			if (itemstack.itemID == Item.bucketEmpty.itemID && !par1EntityPlayer.capabilities.isCreativeMode)
+				if (itemstack.stackSize-- == 1)
+					par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, new ItemStack(ModItems.bucketOfBeetleJuice));
+				else if (!par1EntityPlayer.inventory.addItemStackToInventory(new ItemStack(ModItems.bucketOfBeetleJuice)))
+					par1EntityPlayer.dropPlayerItem(new ItemStack(ModItems.bucketOfBeetleJuice.itemID, 1, 0));
+
+			if (itemstack.itemID == ModItems.bamBucket.itemID && itemstack.getItemDamage() == 0 && !par1EntityPlayer.capabilities.isCreativeMode)
+				if (itemstack.stackSize-- == 1)
+					par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, new ItemStack(ModItems.bamBucket, 1, 2));
+				else if (!par1EntityPlayer.inventory.addItemStackToInventory(new ItemStack(ModItems.bamBucket, 1, 2)))
+					par1EntityPlayer.dropPlayerItem(new ItemStack(ModItems.bamBucket.itemID, 1, 2));
+
+			return true;
+		} else
+			return super.interact(par1EntityPlayer);
+	}
+
+	@Override
 	protected void dropFewItems(boolean par1, int par2) {
 		int var3 = rand.nextInt(4) + rand.nextInt(1 + par2);
 		for (int a = 0; a < var3; ++a)

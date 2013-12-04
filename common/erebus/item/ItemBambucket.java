@@ -23,48 +23,53 @@ public class ItemBambucket extends Item {
 	public Icon waterBambucket;
 	public Icon bambucketOfBeetleJuice;
 
-	public ItemBambucket(int par1) {
-		super(par1);
+	public ItemBambucket(int id) {
+		super(id);
 		maxStackSize = 16;
 		setHasSubtypes(true);
 		setMaxDamage(0);
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		boolean flag = par1ItemStack.getItemDamage() == 0;
-		MovingObjectPosition movingobjectposition = getMovingObjectPositionFromPlayer(par2World, par3EntityPlayer, flag);
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+		if (stack.getItemDamage() == 2) {
+			player.setItemInUse(stack, getMaxItemUseDuration(stack));
+			return stack;
+		}
+
+		boolean flag = stack.getItemDamage() == 0;
+		MovingObjectPosition movingobjectposition = getMovingObjectPositionFromPlayer(world, player, flag);
 
 		if (movingobjectposition == null)
-			return par1ItemStack;
+			return stack;
 		else if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE) {
 			int i = movingobjectposition.blockX;
 			int j = movingobjectposition.blockY;
 			int k = movingobjectposition.blockZ;
 
-			if (!par2World.canMineBlock(par3EntityPlayer, i, j, k))
-				return par1ItemStack;
+			if (!world.canMineBlock(player, i, j, k))
+				return stack;
 
-			if (par1ItemStack.getItemDamage() == 0) {
-				if (!par3EntityPlayer.canPlayerEdit(i, j, k, movingobjectposition.sideHit, par1ItemStack))
-					return par1ItemStack;
+			if (stack.getItemDamage() == 0) {
+				if (!player.canPlayerEdit(i, j, k, movingobjectposition.sideHit, stack))
+					return stack;
 
-				if (par2World.getBlockMaterial(i, j, k) == Material.water && par2World.getBlockMetadata(i, j, k) == 0) {
-					par2World.setBlockToAir(i, j, k);
+				if (world.getBlockMaterial(i, j, k) == Material.water && world.getBlockMetadata(i, j, k) == 0) {
+					world.setBlockToAir(i, j, k);
 
-					if (par3EntityPlayer.capabilities.isCreativeMode)
-						return par1ItemStack;
+					if (player.capabilities.isCreativeMode)
+						return stack;
 
-					if (--par1ItemStack.stackSize <= 0)
+					if (--stack.stackSize <= 0)
 						return new ItemStack(itemID, 1, 1);
 
-					if (!par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(itemID, 1, 1)))
-						par3EntityPlayer.dropPlayerItem(new ItemStack(itemID, 1, 1));
+					if (!player.inventory.addItemStackToInventory(new ItemStack(itemID, 1, 1)))
+						player.dropPlayerItem(new ItemStack(itemID, 1, 1));
 
-					return par1ItemStack;
+					return stack;
 				}
 			} else {
-				if (par1ItemStack.getItemDamage() < 0)
+				if (stack.getItemDamage() < 0)
 					return new ItemStack(itemID, 1, 0);
 
 				if (movingobjectposition.sideHit == 0)
@@ -85,23 +90,29 @@ public class ItemBambucket extends Item {
 				if (movingobjectposition.sideHit == 5)
 					++i;
 
-				if (!par3EntityPlayer.canPlayerEdit(i, j, k, movingobjectposition.sideHit, par1ItemStack))
-					return par1ItemStack;
+				if (!player.canPlayerEdit(i, j, k, movingobjectposition.sideHit, stack))
+					return stack;
 
-				if (tryPlaceContainedLiquid(par2World, i, j, k, par1ItemStack) && !par3EntityPlayer.capabilities.isCreativeMode)
-					if (--par1ItemStack.stackSize <= 0)
-						return par1ItemStack;
+				if (tryPlaceContainedLiquid(world, i, j, k, stack) && !player.capabilities.isCreativeMode)
+					if (--stack.stackSize <= 0)
+						return stack;
 			}
 		}
-		if (par1ItemStack.getItemDamage() == 2) {
-			par3EntityPlayer.setItemInUse(par1ItemStack, getMaxItemUseDuration(par1ItemStack));
-			if (!par3EntityPlayer.capabilities.isCreativeMode)
-				--par1ItemStack.stackSize;
-			if (!par2World.isRemote)
-				par3EntityPlayer.curePotionEffects(par1ItemStack);
-			return par1ItemStack.stackSize <= 0 ? new ItemStack(itemID, 1, 0) : par1ItemStack;
-		}
-		return par1ItemStack;
+		return stack;
+	}
+
+	@Override
+	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
+		if (stack.getItemDamage() == 2) {
+			if (!player.capabilities.isCreativeMode)
+				stack.stackSize--;
+
+			if (!world.isRemote)
+				player.curePotionEffects(new ItemStack(Item.bucketMilk));
+
+			return stack.stackSize <= 0 ? new ItemStack(Item.bucketEmpty) : stack;
+		} else
+			return super.onEaten(stack, world, player);
 	}
 
 	public boolean tryPlaceContainedLiquid(World par1World, int par2, int par3, int par4, ItemStack item) {

@@ -7,6 +7,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumMovingObjectType;
@@ -20,6 +21,7 @@ public class ItemBambucket extends Item {
 
 	public Icon bambucket;
 	public Icon waterBambucket;
+	public Icon bambucketOfBeetleJuice;
 
 	public ItemBambucket(int par1) {
 		super(par1);
@@ -35,76 +37,80 @@ public class ItemBambucket extends Item {
 
 		if (movingobjectposition == null)
 			return par1ItemStack;
-		else {
-			if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE) {
-				int i = movingobjectposition.blockX;
-				int j = movingobjectposition.blockY;
-				int k = movingobjectposition.blockZ;
+		else if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE) {
+			int i = movingobjectposition.blockX;
+			int j = movingobjectposition.blockY;
+			int k = movingobjectposition.blockZ;
 
-				if (!par2World.canMineBlock(par3EntityPlayer, i, j, k))
+			if (!par2World.canMineBlock(par3EntityPlayer, i, j, k))
+				return par1ItemStack;
+
+			if (par1ItemStack.getItemDamage() == 0) {
+				if (!par3EntityPlayer.canPlayerEdit(i, j, k, movingobjectposition.sideHit, par1ItemStack))
 					return par1ItemStack;
 
-				if (par1ItemStack.getItemDamage() == 0) {
-					if (!par3EntityPlayer.canPlayerEdit(i, j, k, movingobjectposition.sideHit, par1ItemStack))
+				if (par2World.getBlockMaterial(i, j, k) == Material.water && par2World.getBlockMetadata(i, j, k) == 0) {
+					par2World.setBlockToAir(i, j, k);
+
+					if (par3EntityPlayer.capabilities.isCreativeMode)
 						return par1ItemStack;
 
-					if (par2World.getBlockMaterial(i, j, k) == Material.water && par2World.getBlockMetadata(i, j, k) == 0) {
-						par2World.setBlockToAir(i, j, k);
+					if (--par1ItemStack.stackSize <= 0)
+						return new ItemStack(itemID, 1, 1);
 
-						if (par3EntityPlayer.capabilities.isCreativeMode)
-							return par1ItemStack;
+					if (!par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(itemID, 1, 1)))
+						par3EntityPlayer.dropPlayerItem(new ItemStack(itemID, 1, 1));
 
-						if (--par1ItemStack.stackSize <= 0)
-							return new ItemStack(itemID, 1, 1);
-
-						if (!par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(itemID, 1, 1)))
-							par3EntityPlayer.dropPlayerItem(new ItemStack(itemID, 1, 1));
-
-						return par1ItemStack;
-					}
-				} else {
-					if (par1ItemStack.getItemDamage() < 0)
-						return new ItemStack(itemID, 1, 0);
-
-					if (movingobjectposition.sideHit == 0)
-						--j;
-
-					if (movingobjectposition.sideHit == 1)
-						++j;
-
-					if (movingobjectposition.sideHit == 2)
-						--k;
-
-					if (movingobjectposition.sideHit == 3)
-						++k;
-
-					if (movingobjectposition.sideHit == 4)
-						--i;
-
-					if (movingobjectposition.sideHit == 5)
-						++i;
-
-					if (!par3EntityPlayer.canPlayerEdit(i, j, k, movingobjectposition.sideHit, par1ItemStack))
-						return par1ItemStack;
-
-					if (tryPlaceContainedLiquid(par2World, i, j, k, par1ItemStack) && !par3EntityPlayer.capabilities.isCreativeMode)
-						if (--par1ItemStack.stackSize <= 0)
-							return par1ItemStack;
+					return par1ItemStack;
 				}
-			}
+			} else {
+				if (par1ItemStack.getItemDamage() < 0)
+					return new ItemStack(itemID, 1, 0);
 
-			return par1ItemStack;
+				if (movingobjectposition.sideHit == 0)
+					--j;
+
+				if (movingobjectposition.sideHit == 1)
+					++j;
+
+				if (movingobjectposition.sideHit == 2)
+					--k;
+
+				if (movingobjectposition.sideHit == 3)
+					++k;
+
+				if (movingobjectposition.sideHit == 4)
+					--i;
+
+				if (movingobjectposition.sideHit == 5)
+					++i;
+
+				if (!par3EntityPlayer.canPlayerEdit(i, j, k, movingobjectposition.sideHit, par1ItemStack))
+					return par1ItemStack;
+
+				if (tryPlaceContainedLiquid(par2World, i, j, k, par1ItemStack) && !par3EntityPlayer.capabilities.isCreativeMode)
+					if (--par1ItemStack.stackSize <= 0)
+						return par1ItemStack;
+			}
 		}
+		if (par1ItemStack.getItemDamage() == 2) {
+			par3EntityPlayer.setItemInUse(par1ItemStack, getMaxItemUseDuration(par1ItemStack));
+			if (!par3EntityPlayer.capabilities.isCreativeMode)
+				--par1ItemStack.stackSize;
+			if (!par2World.isRemote)
+				par3EntityPlayer.curePotionEffects(par1ItemStack);
+			return par1ItemStack.stackSize <= 0 ? new ItemStack(itemID, 1, 0) : par1ItemStack;
+		}
+		return par1ItemStack;
 	}
 
 	public boolean tryPlaceContainedLiquid(World par1World, int par2, int par3, int par4, ItemStack item) {
 		Material material = par1World.getBlockMaterial(par2, par3, par4);
 		boolean flag = !material.isSolid();
-
-		if (!par1World.isAirBlock(par2, par3, par4) && !flag)
-			return false;
-		else {
-			if (par1World.provider.isHellWorld && item.getItemDamage() == 1) {
+		if (!par1World.isRemote && item.getItemDamage() != 2)
+			if (!par1World.isAirBlock(par2, par3, par4) && !flag)
+				return false;
+			else if (par1World.provider.isHellWorld && item.getItemDamage() == 1) {
 				par1World.playSoundEffect(par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, "random.fizz", 0.5F, 2.6F + (par1World.rand.nextFloat() - par1World.rand.nextFloat()) * 0.8F);
 
 				for (int l = 0; l < 8; ++l)
@@ -115,15 +121,34 @@ public class ItemBambucket extends Item {
 
 				par1World.setBlock(par2, par3, par4, Block.waterMoving.blockID, 0, 3);
 			}
+		return true;
+	}
 
-			return true;
-		}
+	@Override
+	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+		int x;
+		if (par1ItemStack.getItemDamage() == 2)
+			x = 32;
+		else
+			x = super.getMaxItemUseDuration(par1ItemStack);
+		return x;
+	}
+
+	@Override
+	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
+		EnumAction x;
+		if (par1ItemStack.getItemDamage() == 2)
+			x= EnumAction.drink;
+		else
+			x= EnumAction.block;
+		return x;
 	}
 
 	@Override
 	public void registerIcons(IconRegister iconRegister) {
 		bambucket = iconRegister.registerIcon("erebus:bambucket");
 		waterBambucket = iconRegister.registerIcon("erebus:bambucketWater");
+		bambucketOfBeetleJuice = iconRegister.registerIcon("erebus:bambucketOfBeetleJuice");
 	}
 
 	@Override
@@ -133,6 +158,8 @@ public class ItemBambucket extends Item {
 				return bambucket;
 			case 1:
 				return waterBambucket;
+			case 2:
+				return bambucketOfBeetleJuice;
 			default:
 				return null;
 		}
@@ -143,6 +170,7 @@ public class ItemBambucket extends Item {
 	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
 		par3List.add(new ItemStack(par1, 1, 0));
 		par3List.add(new ItemStack(par1, 1, 1));
+		par3List.add(new ItemStack(par1, 1, 2));
 	}
 
 	@Override

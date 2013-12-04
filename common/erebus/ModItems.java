@@ -17,6 +17,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import erebus.core.handler.ConfigurationHandler;
 import erebus.item.ItemArmorGlider;
 import erebus.item.ItemBambucket;
+import erebus.item.ItemBucketOfBeetleJuice;
 import erebus.item.ItemCavemanClub;
 import erebus.item.ItemCompoundGoggles;
 import erebus.item.ItemErebusFood;
@@ -49,6 +50,7 @@ public class ModItems {
 	public static Item turnip;							public static int turnipID;
 	public static Item sprayCan;						public static int sprayCanID;
 	public static Item wandOfAnimation;					public static int wandOfAnimationID;
+	public static Item bucketOfBeetleJuice;				public static int bucketOfBeetleJuiceID;
 
 	// JADE STUFF
 	public static Item jadeHelmet;						public static int jadeHelmetID;
@@ -102,6 +104,7 @@ public class ModItems {
 		turnip = new ItemSeedFood(turnipID, 4, 0.6F, ModBlocks.blockTurnip.blockID, Block.tilledField.blockID).setUnlocalizedName("turnips").setTextureName("erebus:turnips");
 		sprayCan = new ItemSprayCan(sprayCanID).setUnlocalizedName("sprayCan").setTextureName("erebus:sprayCan");
 		wandOfAnimation = new ItemWandOfAnimation(wandOfAnimationID).setUnlocalizedName("wandOfAnimation");
+		bucketOfBeetleJuice = new ItemBucketOfBeetleJuice(bucketOfBeetleJuiceID).setUnlocalizedName("bucketOfBeetleJuice").setTextureName("erebus:bucketOfBeetleJuice");
 
 		jadeHelmet = new ItemJadeArmor(jadeHelmetID, 0).setUnlocalizedName("helmetJade").setTextureName("erebus:helmetJade");
 		jadeBody = new ItemJadeArmor(jadeBodyID, 1).setUnlocalizedName("chestplateJade").setTextureName("erebus:chestplateJade");
@@ -137,7 +140,7 @@ public class ModItems {
 		armorGlider = new ItemArmorGlider(armorGliderID, 1).setUnlocalizedName("armorGlider").setTextureName("erebus:armorGlider");
 
 		// Creative tabs
-		ErebusMod.tabErebusItem.add(portalActivator, erebusMaterials, erebusFood, turnip, wandOfAnimation);
+		ErebusMod.tabErebusItem.add(portalActivator, erebusMaterials, erebusFood, bucketOfBeetleJuice, turnip, wandOfAnimation);
 		if (ConfigurationHandler.lead || ConfigurationHandler.silver || ConfigurationHandler.copper || ConfigurationHandler.tin || ConfigurationHandler.aluminium)
 			ErebusMod.tabErebusItem.add(metalIngot);
 		ErebusMod.tabErebusGear.add(bamBucket, sprayCan);
@@ -162,6 +165,7 @@ public class ModItems {
 		GameRegistry.registerItem(turnip, "erebus.turnips");
 		GameRegistry.registerItem(sprayCan, "erebus.sprayCan");
 		GameRegistry.registerItem(wandOfAnimation, "erebus.wandOfAnimation");
+		GameRegistry.registerItem(bucketOfBeetleJuice, "bucketOfBeetleJuice");
 
 		GameRegistry.registerItem(jadeHelmet, "erebus.helmetJade");
 		GameRegistry.registerItem(jadeBody, "erebus.chestplateJade");

@@ -21,7 +21,10 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
+import erebus.ErebusMod;
+import erebus.ModBlocks;
 import erebus.ModItems;
+import erebus.core.proxy.CommonProxy;
 import erebus.utils.Utils;
 
 public class EntityAnimatedBlock extends EntityMobBlock implements IEntityAdditionalSpawnData {
@@ -158,6 +161,9 @@ public class EntityAnimatedBlock extends EntityMobBlock implements IEntityAdditi
 			setDead();
 			worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), blockID, blockMeta, 3);
 			worldObj.playSoundEffect(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), "erebus:altaroffering", 0.2F, 1.0F);
+			return true;
+		} else if (blockID == ModBlocks.petrifiedCraftingTable.blockID) {
+			player.openGui(ErebusMod.instance, CommonProxy.GUI_ID_PETRIFIED_CRAFT, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 			return true;
 		} else
 			return false;

@@ -1,7 +1,6 @@
 package erebus.item;
 
 import java.util.List;
-
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -66,9 +65,9 @@ public class ItemErebusFood extends ItemFood {
 	public float getSaturationModifier(ItemStack stack, World world, EntityPlayer player) {
 		switch (stack.getItemDamage()) {
 			case dataLarvaRaw:
-				return 0.7F;
+				return 0.65F;
 			case dataLarvaCooked:
-				return 0.9F;
+				return 0.85F;
 			case dataGrasshopperLegRaw:
 				return 0.8F;
 			case dataGrasshopperLegCooked:
@@ -119,13 +118,19 @@ public class ItemErebusFood extends ItemFood {
 		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 		onFoodEaten(stack, world, player);
 
-		if (stack.getItemDamage() == dataBambooSoup)
-			if (stack.stackSize == 0)
-				return new ItemStack(Item.bowlEmpty);
-			else
-				player.inventory.addItemStackToInventory(new ItemStack(Item.bowlEmpty));
-
-		return stack;
+		int damage=stack.getItemDamage();
+		Item item=null;
+		
+		if (damage == dataBambooSoup)
+			item=Item.bowlEmpty;
+		else if (damage == dataMelonade || damage == dataMelonadeSparkly)
+			item=Item.glassBottle;
+		else return stack;
+		
+		if (stack.stackSize != 0)
+			player.inventory.addItemStackToInventory(new ItemStack(item));
+		
+		return stack.stackSize == 0 ? new ItemStack(item) : stack;
 	}
 
 	@Override

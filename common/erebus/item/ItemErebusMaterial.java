@@ -27,12 +27,12 @@ public class ItemErebusMaterial extends Item {
 		"plateExo", "jade", "shardBone", "bamboo", "compoundEyes", "compoundLens", "flyWing",
 		"itemPetrifiedWood", "biovelocity", "elasticFibre", "waspSting", "bambooShoot",
 		"redGem", "bioluminescence", "supernaturalvelocity", "altarFragment",
-		"reinforcedPlateExo", "gliderWing", "scorpionPincer"
+		"reinforcedPlateExo", "gliderWing", "scorpionPincer", "camoPowder"
 	};
 
 	public static final short dataExoPlate = 0, dataJade = 1, dataBoneShard = 2, dataBamboo = 3, dataCompoundEyes = 4, dataCompoundLens = 5,
 	dataFlyWing = 6, dataPetrifiedWood = 7, dataBioVelocity = 8, dataElasticFibre = 9, dataWaspSting = 10, dataBambooShoot = 11, dataRedGem = 12,
-	dataBioluminescence = 13, dataSupernaturalVelocity = 14, dataAltarFragment = 15, dataReinforcedPlateExo = 16, dataGliderWing = 17, dataScorpPincer = 18;
+	dataBioluminescence = 13, dataSupernaturalVelocity = 14, dataAltarFragment = 15, dataReinforcedPlateExo = 16, dataGliderWing = 17, dataScorpPincer = 18, dataCamoPowder = 19;
 
 	@SideOnly(Side.CLIENT)
 	public static Icon[] icons;
@@ -74,6 +74,16 @@ public class ItemErebusMaterial extends Item {
 					);
 				}
 				else return stack;
+			}
+
+			if (damage == dataCamoPowder) {
+				PotionEffect currentVisibility = player.getActivePotionEffect(Potion.invisibility);
+
+				if (currentVisibility == null || damage == dataCamoPowder && currentVisibility.getAmplifier() < 3) {
+					player.addPotionEffect(new PotionEffect(Potion.invisibility.id, damage == dataCamoPowder ? 280 : 210, damage == dataCamoPowder ? 1 : 3, true));
+					PacketDispatcher.sendPacketToAllAround(player.posX, player.posY, player.posZ, 32D, player.dimension, PacketHandler.buildPacket(3, PacketSound.SOUND_CAMO_USE, player.posX, player.posY, player.posZ, 1.2F, 1F));
+				} else
+					return stack;
 			}
 			else return stack;
 

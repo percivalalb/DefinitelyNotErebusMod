@@ -9,8 +9,11 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import erebus.ModItems;
 import erebus.entity.ai.IEntityAIAttackOnCollide;
+import erebus.item.ItemErebusMaterial;
 
 public class EntityPrayingMantis extends EntityMob {
 
@@ -53,6 +56,21 @@ public class EntityPrayingMantis extends EntityMob {
 	}
 
 	@Override
+	protected String getLivingSound() {
+		return "erebus:MantisSound";
+	}
+
+	@Override
+	protected String getHurtSound() {
+		return "erebus:MantisHurt";
+	}
+
+	@Override
+	protected String getDeathSound() {
+		return "erebus:squish";
+	}
+
+	@Override
 	protected void playStepSound(int par1, int par2, int par3, int par4) {
 		worldObj.playSoundAtEntity(this, "mob.zombie.step", 0.15F, 1.0F);
 	}
@@ -60,6 +78,11 @@ public class EntityPrayingMantis extends EntityMob {
 	@Override
 	public boolean isOnLadder() {
 		return isCollidedHorizontally;
+	}
+
+	@Override
+	protected void dropFewItems(boolean hitByPlayer, int looting) {
+		entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataCamoPowder), 0.0F);
 	}
 
 	@Override

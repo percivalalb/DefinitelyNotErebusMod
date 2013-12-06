@@ -47,6 +47,8 @@ import erebus.block.BlockUmberGolemStatue;
 import erebus.block.BlockUmberPaver;
 import erebus.block.BlockUmberstone;
 import erebus.block.BlockWallErebus;
+import erebus.block.BlockWaspNest;
+import erebus.block.BlockWaspSpawner;
 import erebus.core.handler.ConfigurationHandler;
 import erebus.item.block.ItemBlockAmber;
 import erebus.item.block.ItemBlockColoredSingle;
@@ -135,6 +137,8 @@ public class ModBlocks {
 	// DUNGEONS
 	public static Block spiderSpawner;     				public static int spiderSpawnerID;
 	public static Block caveSpiderSpawner;    			public static int caveSpiderSpawnerID;
+	public static Block waspSpawner;    				public static int waspSpawnerID;
+	public static Block waspNestBlock;    				public static int waspNestBlockID;
 
 	//@formatter:on
 
@@ -188,6 +192,7 @@ public class ModBlocks {
 		reinExo = new BlockReinExo(reinExoID).setHardness(1.5F).setResistance(2000.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("reinExo").setTextureName("erebus:reinExo");
 		bambooLadder = new BlockBambooLadder(bambooLadderID).setHardness(0.4F).setStepSound(Block.soundLadderFootstep).setUnlocalizedName("bambooLadder").setTextureName("erebus:bamboo_ladder3");
 		umberGolemStatue = new BlockUmberGolemStatue(umberGolemStatueID).setUnlocalizedName("umberGolemStatue");
+		waspNestBlock = new BlockWaspNest(waspNestBlockID).setHardness(50.0F).setResistance(2000.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("waspNestBlock").setTextureName("erebus:waspNestBlock");
 
 		umbercobbleStairs = new Block[BlockUmberstone.iconPaths.length];
 		for (int i = 0; i < umbercobbleStairs.length; i++)
@@ -210,12 +215,13 @@ public class ModBlocks {
 
 		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, "Spider").setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner");
 		caveSpiderSpawner = new BlockSpiderSpawner(caveSpiderSpawnerID, "CaveSpider").setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner");
+		waspSpawner = new BlockWaspSpawner(waspSpawnerID, "Wasp").setUnlocalizedName("waspSpawner").setTextureName("erebus:waspNestSpawner");
 
 		// Creative tabs
 		ErebusMod.tabErebusBlock.add(umberstone, umberOreBlock, oreFossil, erebusOreExtra, redGem, blockAmber, quickSand, ghostSand);
 		ErebusMod.tabErebusBlock.add(logErebusGroup1, logErebusGroup2, hollowLogAcacia, planksErebus, leavesErebus, erebusSapling);
 		ErebusMod.tabErebusBlock.add(erebusGrass, fern, fiddlehead, thorns);
-		ErebusMod.tabErebusBlock.add(blockSilk, mirBrick, petrifiedWoodPlanks, petrifiedCraftingTable, bambooCrop, bambooCrate, bambooLadder, bambooTorch, glowingJar, umberstoneButton, umberFurnace, umberPaver, erebusAltar, reinExo);
+		ErebusMod.tabErebusBlock.add(blockSilk, mirBrick, petrifiedWoodPlanks, petrifiedCraftingTable, bambooCrop, bambooCrate, bambooLadder, bambooTorch, glowingJar, umberstoneButton, umberFurnace, umberPaver, erebusAltar, reinExo, waspNestBlock);
 		for (Block b : umbercobbleStairs)
 			ErebusMod.tabErebusBlock.add(b);
 		for (Block b : plankStairs)
@@ -269,6 +275,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(reinExo, "erebus.reinExo");
 		GameRegistry.registerBlock(bambooLadder, "erebus.bambooLadder");
 		GameRegistry.registerBlock(umberGolemStatue, "erebus.umberGolemStatue");
+		GameRegistry.registerBlock(waspNestBlock, "erebus.waspNestBlock");
 
 		for (int i = 0; i < umbercobbleStairs.length; i++)
 			GameRegistry.registerBlock(umbercobbleStairs[i], "erebus.umbercobbleStairs" + i);
@@ -288,6 +295,7 @@ public class ModBlocks {
 
 		GameRegistry.registerBlock(spiderSpawner, "erebus.spiderSpawner");
 		GameRegistry.registerBlock(caveSpiderSpawner, "erebus.caveSpiderSpawner");
+		GameRegistry.registerBlock(waspSpawner, "erebus.waspSpawner");
 
 		// Mining levels
 		MinecraftForge.setBlockHarvestLevel(blockAmber, "pickaxe", 0);

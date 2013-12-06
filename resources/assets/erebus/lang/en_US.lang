@@ -71,6 +71,7 @@ tile.cobbleWebbed.name=Webbed Cobblestone
 tile.blockSilk.name=Silk
 tile.mirbrick.name=Mirbrick
 tile.spiderSpawner.name=Spider Spawner
+tile.waspSpawner.name=Wasp Spawner
 tile.blockSpiderSilk.name=Silk
 tile.thorns.name=Thorns
 tile.erebusFern.name=Fern
@@ -136,6 +137,7 @@ tile.glowingJar.name=Glowing Jar
 tile.reinExo.name=Reinforced Exoskeleton Block
 tile.bambooLadder.name=Bamboo Ladder
 tile.umberGolemStatue.name=Umber Golem Statue
+tile.waspNestBlock.name=Wasp Nest Block
 
 #Items
 item.helmetExo.name=Exoskeleton Helmet

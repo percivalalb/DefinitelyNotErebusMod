@@ -132,7 +132,6 @@ public class EntityMosquito extends EntityMob {
 				ridingEntity.attackEntityFrom(DamageSource.causeMobDamage(this), getDamage());
 				drainage = 0;
 				setBloodConsumed(getBloodConsumed() + 1);
-				System.out.println("Blood Level " + getBloodConsumed());
 			}
 		}
 		if (m == Block.waterStill.blockID && rand.nextInt(10) == 0 && (motionX > 0.05D || motionZ > 0.05D || motionX < -0.05D || motionZ < -0.05D))

@@ -83,7 +83,7 @@ public class ConfigurationHandler {
 			ModBlocks.reinExoID = config.getBlock("Block ID of Reinforced Exoskeleton Block", 2567).getInt(2567);
 			ModBlocks.bambooLadderID = config.getBlock("Block ID of Bamboo Ladder", 2569).getInt(2569);
 			ModBlocks.umberGolemStatueID = config.getBlock("Block ID of Umber Golem Statue", 2570).getInt(2570);
-			ModBlocks.waspNestBlockID = config.getBlock("Block ID of Umber Wasp Nest Block", 2571).getInt(2571);
+			ModBlocks.waspNestBlockID = config.getBlock("Block ID of Wasp Nest Block", 2571).getInt(2571);
 
 			int id = 2527;
 			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];
@@ -104,7 +104,8 @@ public class ConfigurationHandler {
 			ModBlocks.petrifiedWoodSlabID = new int[2];
 			for (int i = 0; i < ModBlocks.petrifiedWoodSlabID.length; i++)
 				ModBlocks.petrifiedWoodSlabID[i] = config.getBlock("Block ID of Petrified Wood Slab" + i, 2556 + i).getInt(2556 + i);
-			ModBlocks.amberBrickStairsID = config.getBlock("Amber Brick Stairs ID", 2558).getInt(2558);
+			ModBlocks.amberBrickStairsID = config.getBlock("Block ID of Amber Brick Stairs", 2558).getInt(2558);
+			ModBlocks.waspNestStairsID = config.getBlock("Block ID of Wasp Nest Stairs", 2573).getInt(2573);
 
 			ModBlocks.spiderSpawnerID = config.getBlock("Block ID of Spider Spawners", 2552).getInt(2552);
 			ModBlocks.caveSpiderSpawnerID = config.getBlock("Block ID of Cave Spider Spawners", 2553).getInt(2553);

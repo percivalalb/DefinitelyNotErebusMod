@@ -22,6 +22,7 @@ import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
 import erebus.entity.EntityErebusSpider;
 import erebus.entity.EntityFly;
+import erebus.entity.EntityMosquito;
 import erebus.entity.EntityMoth;
 import erebus.entity.EntityPrayingMantis;
 import erebus.entity.EntityTarantula;
@@ -62,9 +63,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 		spawnableCreatureList.add(new SpawnListEntry(EntityBeetle.class, 50, 4, 8));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityFly.class, 10, 8, 8));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityMoth.class, 5, 4, 4));
-		// spawnableCaveCreatureList.add(new
-		// SpawnListEntry(EntityMosquito.class, 60, 1, 3));
-		// TODO fix mosquito lag
+		spawnableCaveCreatureList.add(new SpawnListEntry(EntityMosquito.class, 60, 1, 3));
 		topBlock = (byte) Block.grass.blockID;
 		fillerBlock = (byte) Block.dirt.blockID;
 	}

@@ -133,6 +133,7 @@ public class ModBlocks {
 	public static Block wallErebus;						public static int wallErebusID;
 	public static Block[] petrifiedWoodSlab;			public static int[] petrifiedWoodSlabID;
 	public static Block amberBrickStairs;				public static int amberBrickStairsID;
+	public static Block waspNestStairs;    				public static int waspNestStairsID;
 
 	// DUNGEONS
 	public static Block spiderSpawner;     				public static int spiderSpawnerID;
@@ -212,7 +213,8 @@ public class ModBlocks {
 		for (int i = 0; i < petrifiedWoodSlab.length; i++)
 			petrifiedWoodSlab[i] = new BlockSlabPetrifiedWood(petrifiedWoodSlabID[i], i == 1).setUnlocalizedName("petrifiedWoodSlab");
 		amberBrickStairs = new BlockStairsErebus(amberBrickStairsID, blockAmber, 2).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("amberBrickStairs");
-
+		waspNestStairs = new BlockStairsErebus(waspNestStairsID, waspNestBlock, 2).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("waspNestStairs");
+		//
 		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, "ErebusSpider - Erebus").setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner");
 		caveSpiderSpawner = new BlockSpiderSpawner(caveSpiderSpawnerID, "CaveSpider").setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner");
 		waspSpawner = new BlockWaspSpawner(waspSpawnerID, "Wasp - Erebus").setUnlocalizedName("waspSpawner").setTextureName("erebus:waspNestSpawner");
@@ -226,7 +228,7 @@ public class ModBlocks {
 			ErebusMod.tabErebusBlock.add(b);
 		for (Block b : plankStairs)
 			ErebusMod.tabErebusBlock.add(b);
-		ErebusMod.tabErebusBlock.add(petrifiedWoodStairs, amberBrickStairs, stoneSlabs[0], plankSlabs[0], plankSlabs[2], petrifiedWoodSlab[0], wallErebus);
+		ErebusMod.tabErebusBlock.add(petrifiedWoodStairs, amberBrickStairs, waspNestStairs, stoneSlabs[0], plankSlabs[0], plankSlabs[2], petrifiedWoodSlab[0], wallErebus);
 
 		// Registering blocks
 		GameRegistry.registerBlock(portalErebus, "erebus.portal");
@@ -289,6 +291,7 @@ public class ModBlocks {
 		for (int i = 0; i < petrifiedWoodSlab.length; i++)
 			GameRegistry.registerBlock(petrifiedWoodSlab[i], ItemBlockSlabPetrifiedWood.class, "erebus.petrifiedWoodSlab" + i);
 		GameRegistry.registerBlock(amberBrickStairs, "erebus.amberBrickStairs");
+		GameRegistry.registerBlock(waspNestStairs, "erebus.waspNestStairs");
 
 		GameRegistry.registerBlock(wallErebus, ItemBlockWallErebus.class, "erebus.wallErebus");
 		GameRegistry.registerBlock(insectRepellent, "erebus.blockInsectRepellent");

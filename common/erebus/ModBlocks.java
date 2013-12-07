@@ -213,9 +213,9 @@ public class ModBlocks {
 			petrifiedWoodSlab[i] = new BlockSlabPetrifiedWood(petrifiedWoodSlabID[i], i == 1).setUnlocalizedName("petrifiedWoodSlab");
 		amberBrickStairs = new BlockStairsErebus(amberBrickStairsID, blockAmber, 2).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("amberBrickStairs");
 
-		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, "Spider").setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner");
+		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, "ErebusSpider - Erebus").setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner");
 		caveSpiderSpawner = new BlockSpiderSpawner(caveSpiderSpawnerID, "CaveSpider").setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner");
-		waspSpawner = new BlockWaspSpawner(waspSpawnerID, "Wasp").setUnlocalizedName("waspSpawner").setTextureName("erebus:waspNestSpawner");
+		waspSpawner = new BlockWaspSpawner(waspSpawnerID, "Wasp - Erebus").setUnlocalizedName("waspSpawner").setTextureName("erebus:waspNestSpawner");
 
 		// Creative tabs
 		ErebusMod.tabErebusBlock.add(umberstone, umberOreBlock, oreFossil, erebusOreExtra, redGem, blockAmber, quickSand, ghostSand);
@@ -303,6 +303,7 @@ public class ModBlocks {
 		MinecraftForge.setBlockHarvestLevel(mirBrick, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(spiderSpawner, 0, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(caveSpiderSpawner, 0, "pickaxe", 0);
+		MinecraftForge.setBlockHarvestLevel(waspSpawner, 0, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(umberstone, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(umberPaver, "pickaxe", 0);
 		for (int i = 0; i < stoneSlabs.length; i++)

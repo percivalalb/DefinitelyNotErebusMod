@@ -71,6 +71,7 @@ tile.cobbleWebbed.name=Webbed Cobblestone
 tile.blockSilk.name=Silk
 tile.mirbrick.name=Mirbrick
 tile.spiderSpawner.name=Spider Spawner
+tile.caveSpiderSpawner.name=Cave Spider Spawner
 tile.waspSpawner.name=Wasp Spawner
 tile.blockSpiderSilk.name=Silk
 tile.thorns.name=Thorns

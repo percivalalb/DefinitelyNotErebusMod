@@ -55,7 +55,7 @@ public class CommonProxy implements IGuiHandler {
 	}
 
 	public void registerTileEntities() {
-		GameRegistry.registerTileEntityWithAlternatives(TileEntitySpawner.class, "Custom Spawner (Erebus)", "Spider Spawner (Erebus)");
+		GameRegistry.registerTileEntityWithAlternatives(TileEntitySpawner.class, "Custom Spawner (Erebus)", "Spider Spawner (Erebus)", "Wasp Spawner (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityBambooCrate.class, "Bamboo Crate (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityUmberFurnace.class, "Umber Furnace (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityErebusAltar.class, "Tile Entity Bug Zapper (Erebus)");

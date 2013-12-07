@@ -8,6 +8,7 @@ import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,14 +35,15 @@ public class EntityAnimatedBlock extends EntityMobBlock implements IEntityAdditi
 	protected final EntityAIWander aiWander = new EntityAIWander(this, 0.5D);
 	protected final EntityAINearestAttackableTarget aiAttackNearestTarget = new EntityAINearestAttackableTarget(this, EntityMob.class, 0, true);
 	protected final EntityAIAttackOnCollide aiAttackOnCollide = new EntityAIAttackOnCollide(this, EntityMob.class, 0.5D, false);
-
+	protected final EntityAITempt aiTempt = new EntityAITempt(this, 1.0D, ModItems.wandOfAnimation.itemID, false);
 	public EntityAnimatedBlock(World world) {
 		super(world);
 		setSize(1.0F, 1.5F);
 		setBlock(Block.stone.blockID, 0);
 		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(1, aiAttackOnCollide);
-		tasks.addTask(2, aiWander);
+		// tasks.addTask(1, aiTempt);
+		tasks.addTask(2, aiAttackOnCollide);
+		tasks.addTask(3, aiWander);
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
 		targetTasks.addTask(1, aiAttackNearestTarget);
 		experienceValue = 0;
@@ -162,7 +164,7 @@ public class EntityAnimatedBlock extends EntityMobBlock implements IEntityAdditi
 			worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), blockID, blockMeta, 3);
 			worldObj.playSoundEffect(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), "erebus:altaroffering", 0.2F, 1.0F);
 			return true;
-		} else if (blockID == ModBlocks.petrifiedCraftingTable.blockID) {
+		} else if (blockID == ModBlocks.petrifiedCraftingTable.blockID && stack == null) {
 			player.openGui(ErebusMod.instance, CommonProxy.GUI_ID_PETRIFIED_CRAFT, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 			return true;
 		} else
@@ -186,6 +188,11 @@ public class EntityAnimatedBlock extends EntityMobBlock implements IEntityAdditi
 		return atk;
 	}
 
+	public void setCanBeTempted() {
+		if (blockID == ModBlocks.petrifiedCraftingTable.blockID)
+			tasks.addTask(1, aiTempt);
+	}
+
 	@Override
 	public void writeEntityToNBT(NBTTagCompound data) {
 		super.writeEntityToNBT(data);
@@ -198,6 +205,7 @@ public class EntityAnimatedBlock extends EntityMobBlock implements IEntityAdditi
 		super.readEntityFromNBT(data);
 		blockID = data.getInteger("blockID");
 		blockMeta = data.getInteger("blockMeta");
+		setCanBeTempted();
 	}
 
 	@Override

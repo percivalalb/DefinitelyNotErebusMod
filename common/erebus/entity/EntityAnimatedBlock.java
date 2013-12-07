@@ -41,7 +41,6 @@ public class EntityAnimatedBlock extends EntityMobBlock implements IEntityAdditi
 		setSize(1.0F, 1.5F);
 		setBlock(Block.stone.blockID, 0);
 		tasks.addTask(0, new EntityAISwimming(this));
-		// tasks.addTask(1, aiTempt);
 		tasks.addTask(2, aiAttackOnCollide);
 		tasks.addTask(3, aiWander);
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));

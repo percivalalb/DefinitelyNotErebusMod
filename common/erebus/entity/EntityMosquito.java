@@ -5,11 +5,10 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.EntityFlying;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,30 +16,23 @@ import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import erebus.client.render.entity.AnimationMathHelper;
 
-public class EntityMosquito extends EntityFlying implements IMob {
+public class EntityMosquito extends EntityMob {
 
-	public int courseChangeCooldown;
-
-	public double waypointX;
-	public double waypointY;
-	public double waypointZ;
-
+	private ChunkCoordinates currentFlightTarget;
+	private float heightOffset = 1.5F;
 	private int drainage;
-
-	Entity entityToAttack;
-
+	EntityLivingBase entityToAttack;
 	AnimationMathHelper mathWings = new AnimationMathHelper();
 	AnimationMathHelper mathSucking = new AnimationMathHelper();
 	public float wingFloat;
 	public float suckFloat;
-
 	public boolean firstTickCheck;
-
 	private final int maxBloodLevel = 5;
 	public int hitInterval = 30;
 	Class[] preys = { EntityPig.class, EntityCow.class, EntityBeetleLarva.class };
@@ -69,7 +61,8 @@ public class EntityMosquito extends EntityFlying implements IMob {
 			ridingEntity = null;
 			firstTickCheck = true;
 		}
-
+		if (worldObj.getWorldTime() % 2400 == 0)
+			setBloodConsumed(0);
 		if (ridingEntity != null) {
 			suckFloat = 1.0F + mathSucking.swing(1.0F, 0.15F);
 			if (rand.nextInt(10) == 0)
@@ -80,17 +73,20 @@ public class EntityMosquito extends EntityFlying implements IMob {
 			suckFloat = 1.0F;
 			wingFloat = mathWings.swing(4.0F, 0.1F);
 		}
-
-		if (findPlayerToAttack() != null && getBloodConsumed() < maxBloodLevel)
-			entityToAttack = findPlayerToAttack();
-		else if (findEnemyToAttack() != null && getBloodConsumed() < maxBloodLevel)
-			entityToAttack = findEnemyToAttack();
-		else
-			entityToAttack = null;
-
-		if (entityToAttack != null && ridingEntity == null && getDistanceToEntity(entityToAttack) <= 1.2D && !worldObj.isRemote && entityToAttack.riddenByEntity == null && getBloodConsumed() < maxBloodLevel)
-			mountEntity(entityToAttack);
-
+		if (!worldObj.isRemote) {
+			if (findPlayerToAttack() != null && getBloodConsumed() < maxBloodLevel)
+				entityToAttack = (EntityLivingBase) findPlayerToAttack();
+			else if (findEnemyToAttack() != null && getBloodConsumed() < maxBloodLevel)
+				entityToAttack = (EntityLivingBase) findEnemyToAttack();
+			else
+				entityToAttack = null;
+			if (entityToAttack != null && ridingEntity == null && getDistanceToEntity(entityToAttack) <= 1.2D && !worldObj.isRemote && entityToAttack.riddenByEntity == null && getBloodConsumed() < maxBloodLevel)
+				mountEntity(entityToAttack);
+			if (ridingEntity != null && ridingEntity instanceof EntityLivingBase && getBloodConsumed() == maxBloodLevel) {
+				entityToAttack = null;
+				mountEntity(null);
+			}
+		}
 		super.onUpdate();
 	}
 
@@ -104,57 +100,41 @@ public class EntityMosquito extends EntityFlying implements IMob {
 			return yOffset;
 	}
 
+	protected void flyAbout() {
+		if (!worldObj.isRemote) {
+			if (currentFlightTarget != null && (!worldObj.isAirBlock(currentFlightTarget.posX, currentFlightTarget.posY, currentFlightTarget.posZ) || currentFlightTarget.posY < 1))
+				currentFlightTarget = null;
+			if (currentFlightTarget == null || rand.nextInt(30) == 0 || currentFlightTarget.getDistanceSquared((int) posX, (int) posY, (int) posZ) < 4.0F)
+				currentFlightTarget = new ChunkCoordinates((int) posX + rand.nextInt(7) - rand.nextInt(7), (int) posY + rand.nextInt(6) - 2, (int) posZ + rand.nextInt(7) - rand.nextInt(7));
+			double var1 = currentFlightTarget.posX + 0.5D - posX;
+			double var3 = currentFlightTarget.posY + 1.D - posY;
+			double var5 = currentFlightTarget.posZ + 0.5D - posZ;
+			motionX += (Math.signum(var1) * 0.5D - motionX) * 0.10000000149011612D;
+			motionY += (Math.signum(var3) * 0.699999988079071D - motionY) * 0.10000000149011612D;
+			motionZ += (Math.signum(var5) * 0.5D - motionZ) * 0.10000000149011612D;
+			float var7 = (float) (Math.atan2(motionZ, motionX) * 180.0D / Math.PI) - 90.0F;
+			float var8 = MathHelper.wrapAngleTo180_float(var7 - rotationYaw);
+			moveForward = 0.5F;
+			rotationYaw += var8;
+		}
+	}
+
 	@Override
 	protected void updateEntityActionState() {
 		super.updateEntityActionState();
-		double d = waypointX - posX;
-		double d1 = waypointY - posY;
-		double d2 = waypointZ - posZ;
-		double d3 = MathHelper.sqrt_double(d * d + d1 * d1 + d2 * d2);
-		int i = worldObj.getHeightValue((int) waypointX, (int) waypointZ);
 		int j = MathHelper.floor_double(posX);
 		int k = MathHelper.floor_double(posY);
 		int l = MathHelper.floor_double(posZ);
 		int m = worldObj.getBlockId(j, k - 1, l);
-
-		if (d3 < 1.0D || d3 > 60D || waypointY > i + 5 || waypointY <= i + 1 && waypointY > i - 1) {
-			waypointX = posX + (rand.nextFloat() * 2.0F - 1.0F) * 2F;
-			waypointY = posY + (rand.nextFloat() * 2.0F - 1.0F) * 2F;
-			waypointZ = posZ + (rand.nextFloat() * 2.0F - 1.0F) * 2F;
-		}
-
-		if (entityToAttack != null) {
-			waypointX = entityToAttack.posX;
-			waypointY = entityToAttack.posY;
-			waypointZ = entityToAttack.posZ;
-		}
-
-		if (ridingEntity != null && ridingEntity instanceof EntityLiving && getBloodConsumed() < maxBloodLevel) {
+		if (ridingEntity != null && ridingEntity instanceof EntityLivingBase && getBloodConsumed() < maxBloodLevel) {
 			drainage++;
 			if (drainage >= hitInterval) {
 				ridingEntity.attackEntityFrom(DamageSource.causeMobDamage(this), getDamage());
 				drainage = 0;
 				setBloodConsumed(getBloodConsumed() + 1);
-			}
-		} else if (ridingEntity != null && ridingEntity instanceof EntityLiving && getBloodConsumed() >= maxBloodLevel) {
-			entityToAttack = null;
-			mountEntity(ridingEntity);
-		}
-
-		if (courseChangeCooldown-- <= 0) {
-			courseChangeCooldown = 1;
-
-			if (isCourseTraversable(waypointX, waypointY, waypointZ, d3)) {
-				motionX += d / d3 * 0.1D;
-				motionY += d1 / d3 * 0.1D;
-				motionZ += d2 / d3 * 0.1D;
-			} else {
-				waypointX = posX;
-				waypointY = posY;
-				waypointZ = posZ;
+				System.out.println("Blood Level " + getBloodConsumed());
 			}
 		}
-
 		if (m == Block.waterStill.blockID && rand.nextInt(10) == 0 && (motionX > 0.05D || motionZ > 0.05D || motionX < -0.05D || motionZ < -0.05D))
 			motionY = 0.25D;
 	}
@@ -165,26 +145,25 @@ public class EntityMosquito extends EntityFlying implements IMob {
 
 	@Override
 	public void onLivingUpdate() {
-		float var7 = (float) (Math.atan2(motionZ, motionX) * 180.0D / Math.PI) - 90.0F;
-		float var8 = MathHelper.wrapAngleTo180_float(var7 - rotationYaw);
-		rotationYaw += var8;
-		super.onLivingUpdate();
-	}
-
-	private boolean isCourseTraversable(double d, double d1, double d2, double d3) {
-		double d4 = (waypointX - posX) / d3;
-		double d5 = (waypointY - posY) / d3;
-		double d6 = (waypointZ - posZ) / d3;
-		AxisAlignedBB axisalignedbb = boundingBox.copy();
-
-		for (int i = 1; i < d3; i++) {
-			axisalignedbb.offset(d4, d5, d6);
-
-			if (worldObj.getCollidingBoundingBoxes(this, axisalignedbb).size() > 0)
-				return false;
+		if (!worldObj.isRemote) {
+			heightOffset = 1.0F + (float) rand.nextGaussian() * 5.0F;
+			if (entityToAttack != null && entityToAttack.posY + entityToAttack.getEyeHeight() > posY + getEyeHeight() + heightOffset) {
+				double var1 = entityToAttack.posX + 0.5D - posX;
+				double var3 = entityToAttack.posY + 1.D - posY;
+				double var5 = entityToAttack.posZ + 0.5D - posZ;
+				motionY += (0.350000011920929D - motionY) * 0.350000011920929D;
+				motionX += (Math.signum(var1) * 0.5D - motionX) * 0.10000000149011612D;
+				motionY += (Math.signum(var3) * 0.699999988079071D - motionY) * 0.10000000149011612D;
+				motionZ += (Math.signum(var5) * 0.5D - motionZ) * 0.10000000149011612D;
+				float var7 = (float) (Math.atan2(motionZ, motionX) * 180.0D / Math.PI) - 90.0F;
+				float var8 = MathHelper.wrapAngleTo180_float(var7 - rotationYaw);
+				moveForward = 0.5F;
+				rotationYaw += var8;
+			}
+			if (entityToAttack == null)
+				flyAbout();
 		}
-
-		return true;
+		super.onLivingUpdate();
 	}
 
 	@Override
@@ -193,11 +172,9 @@ public class EntityMosquito extends EntityFlying implements IMob {
 			return false;
 		else if (super.attackEntityFrom(par1DamageSource, par2)) {
 			Entity var3 = par1DamageSource.getEntity();
-
 			if (riddenByEntity != var3 && ridingEntity != var3) {
 				if (var3 != this)
-					entityToAttack = var3;
-
+					entityToAttack = (EntityLivingBase) var3;
 				return true;
 			} else if (ridingEntity == var3 && !worldObj.isRemote) {
 				mountEntity(ridingEntity);
@@ -214,6 +191,7 @@ public class EntityMosquito extends EntityFlying implements IMob {
 		return true;
 	}
 
+	@Override
 	protected Entity findPlayerToAttack() {
 		EntityPlayer var1 = worldObj.getClosestVulnerablePlayerToEntity(this, 10.0D);
 		return var1 != null && canEntityBeSeen(var1) ? var1 : null;
@@ -227,19 +205,16 @@ public class EntityMosquito extends EntityFlying implements IMob {
 
 	protected Entity findEnemyToAttack() {
 		List list = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.expand(10D, 10D, 10D));
-
 		for (int i = 0; i < list.size(); i++) {
 			Entity entity = (Entity) list.get(i);
 			if (entity != null) {
 				if (!(entity instanceof EntityCreature))
 					continue;
-
 				for (int j = 0; j < preys.length; j++)
 					if (entity.getClass() == preys[j] && entity.riddenByEntity == null)
 						return canEntityBeSeen(entity) ? entity : null;
 			}
 		}
-
 		return null;
 	}
 
@@ -257,15 +232,11 @@ public class EntityMosquito extends EntityFlying implements IMob {
 
 	public int getDamage() {
 		int var2 = 2;
-
 		if (this.isPotionActive(Potion.damageBoost))
 			var2 += 3 << getActivePotionEffect(Potion.damageBoost).getAmplifier();
-
 		if (this.isPotionActive(Potion.weakness))
 			var2 -= 2 << getActivePotionEffect(Potion.weakness).getAmplifier();
-
 		return var2;
-
 	}
 
 	@Override
@@ -318,28 +289,22 @@ public class EntityMosquito extends EntityFlying implements IMob {
 
 	@Override
 	public boolean getCanSpawnHere() {
-		{
-			AxisAlignedBB axisalignedbb = boundingBox.expand(5D, 5D, 5D);
-			int n = MathHelper.floor_double(axisalignedbb.minX);
-			int o = MathHelper.floor_double(axisalignedbb.maxX + 1.0D);
-			int p = MathHelper.floor_double(axisalignedbb.minY);
-			int q = MathHelper.floor_double(axisalignedbb.maxY + 1.0D);
-			int n1 = MathHelper.floor_double(axisalignedbb.minZ);
-			int o1 = MathHelper.floor_double(axisalignedbb.maxZ + 1.0D);
-
-			for (int p1 = n; p1 < o; p1++)
-				for (int q1 = p; q1 < q; q1++)
-					for (int n2 = n1; n2 < o1; n2++) {
-						int o2 = worldObj.getBlockId(p1, q1, n2);
-
-						if (o2 == 0)
-							continue;
-
-						if (o2 == Block.waterStill.blockID)
-							return true;
-					}
-		}
-
+		AxisAlignedBB axisalignedbb = boundingBox.expand(5D, 5D, 5D);
+		int n = MathHelper.floor_double(axisalignedbb.minX);
+		int o = MathHelper.floor_double(axisalignedbb.maxX + 1.0D);
+		int p = MathHelper.floor_double(axisalignedbb.minY);
+		int q = MathHelper.floor_double(axisalignedbb.maxY + 1.0D);
+		int n1 = MathHelper.floor_double(axisalignedbb.minZ);
+		int o1 = MathHelper.floor_double(axisalignedbb.maxZ + 1.0D);
+		for (int p1 = n; p1 < o; p1++)
+			for (int q1 = p; q1 < q; q1++)
+				for (int n2 = n1; n2 < o1; n2++) {
+					int o2 = worldObj.getBlockId(p1, q1, n2);
+					if (o2 == 0)
+						continue;
+					if (o2 == Block.waterStill.blockID)
+						return true;
+				}
 		return false;
 	}
 }

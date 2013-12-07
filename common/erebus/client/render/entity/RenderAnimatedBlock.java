@@ -60,6 +60,15 @@ public class RenderAnimatedBlock extends RenderLiving {
 			GL11.glRotatef(90.0F, -1.0F, 0.0F, 0.0F);
 	}
 
+	protected float setBlockDeathMaxRotation(EntityAnimatedBlock par1EntityAnimatedBlock) {
+		return 0F;
+	}
+
+	@Override
+	protected float getDeathMaxRotation(EntityLivingBase par1EntityLivingBase) {
+		return setBlockDeathMaxRotation((EntityAnimatedBlock) par1EntityLivingBase);
+	}
+
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		EntityAnimatedBlock animatedblock = (EntityAnimatedBlock) entity;

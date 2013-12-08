@@ -22,6 +22,8 @@ import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
 import erebus.ModBlocks;
 import erebus.ModItems;
@@ -120,23 +122,29 @@ public class EntityAnimatedBlock extends EntityMobBlock implements IEntityAdditi
 		super.onLivingUpdate();
 		if (worldObj.isRemote)
 			if (worldObj.getSunBrightness(1.0F) < 0.5F)
-				lightUp();
+				lightUp(worldObj, MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ));
 			else
 				switchOff();
 	}
 
-	private void lightUp() {
-		if ((int) posX != lastX || (int) posY != lastY || (int) posZ != lastZ || isDead) {
-			worldObj.setLightValue(EnumSkyBlock.Block, (int) posX, (int) posY, (int) posZ, Block.lightValue[blockID]);
-			worldObj.updateLightByType(EnumSkyBlock.Block, lastX, lastY, lastZ);
-			lastX = (int) posX;
-			lastY = (int) posY;
-			lastZ = (int) posZ;
-		}
+	@SideOnly(Side.CLIENT)
+	private void lightUp(World world, int x, int y, int z) {
+		world.setLightValue(EnumSkyBlock.Block, x, y, z, Block.lightValue[blockID]);
+		for (int i = -1; i < 2; i++)
+			for (int j = -1; j < 2; j++)
+				for (int k = -1; k < 2; k++)
+					if (x + i != lastX || y + j != lastY || z + k != lastZ || isDead) {
+						world.updateLightByType(EnumSkyBlock.Block, lastX + i, lastY + j, lastZ + k);
+						lastX = x;
+						lastY = y;
+						lastZ = z;
+					}
 	}
 
+	@SideOnly(Side.CLIENT)
 	private void switchOff() {
 		worldObj.updateLightByType(EnumSkyBlock.Block, lastX, lastY, lastZ);
+		worldObj.updateLightByType(EnumSkyBlock.Block, MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ));
 	}
 
 	@Override

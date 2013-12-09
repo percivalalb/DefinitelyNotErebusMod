@@ -101,8 +101,9 @@ public class EntityAnimatedBlock extends EntityMobBlock implements IEntityAdditi
 		return "";
 	}
 
-	protected void getStepSound(int par1, int par2, int par3, int par4) {
-		worldObj.playSoundAtEntity(this, "mob.zombie.wood", 0.15F, 1.0F);
+	@Override
+	protected void playStepSound(int par1, int par2, int par3, int par4) {
+		worldObj.playSoundAtEntity(this, "mob.zombie.step", 0.15F, 1.0F);
 	}
 
 	@Override
@@ -171,7 +172,8 @@ public class EntityAnimatedBlock extends EntityMobBlock implements IEntityAdditi
 			worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), blockID, blockMeta, 3);
 			worldObj.playSoundEffect(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), "erebus:altaroffering", 0.2F, 1.0F);
 			return true;
-		} else if (blockID == ModBlocks.petrifiedCraftingTable.blockID && stack == null) {
+		}
+ else if (blockID == ModBlocks.petrifiedCraftingTable.blockID && stack == null) {
 			player.openGui(ErebusMod.instance, CommonProxy.GUI_ID_PETRIFIED_CRAFT, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
 			return true;
 		} else

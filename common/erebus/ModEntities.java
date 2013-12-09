@@ -4,6 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import erebus.entity.EntityAnimatedBambooCrate;
 import erebus.entity.EntityAnimatedBlock;
 import erebus.entity.EntityAnimatedChest;
 import erebus.entity.EntityAntlion;
@@ -63,6 +64,7 @@ public class ModEntities {
 
 		registerEntityWithoutEgg(EntityAnimatedBlock.class, "AnimatedBlock");
 		registerEntityWithoutEgg(EntityAnimatedChest.class, "AnimatedChest");
+		registerEntityWithoutEgg(EntityAnimatedBambooCrate.class, "AnimatedBambooCrate");
 		registerEntityWithoutEgg(EntityUmberGolem.class, "UmberGolem");
 
 

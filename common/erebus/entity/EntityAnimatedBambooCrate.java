@@ -1,0 +1,43 @@
+package erebus.entity;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
+import erebus.ErebusMod;
+import erebus.ModItems;
+import erebus.core.proxy.CommonProxy;
+import erebus.tileentity.TileEntityBambooCrate;
+
+public class EntityAnimatedBambooCrate extends EntityAnimatedChest {
+
+	public EntityAnimatedBambooCrate(World world) {
+		super(world);
+
+	}
+
+	@Override
+	public void onLivingUpdate() {
+		super.onLivingUpdate();
+	}
+
+	@Override
+	public boolean interact(EntityPlayer player) {
+		if (worldObj.isRemote)
+			return true;
+		ItemStack stack = player.inventory.getCurrentItem();
+		if (stack != null && stack.itemID == ModItems.wandOfAnimation.itemID) {
+			setDead();
+			worldObj.playSoundEffect(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), "erebus:altaroffering", 0.2F, 1.0F);
+			worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), blockID, blockMeta, 3);
+			TileEntityBambooCrate chest = (TileEntityBambooCrate) worldObj.getBlockTileEntity(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ));
+			for (int i = 0; i < 27; i++)
+				chest.setInventorySlotContents(i, inventory[i]);
+			return true;
+		} else if (stack == null) {
+			player.openGui(ErebusMod.instance, CommonProxy.GUI_ID_BAMBOO_CRATE, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
+			return true;
+		} else
+			return false;
+	}
+}

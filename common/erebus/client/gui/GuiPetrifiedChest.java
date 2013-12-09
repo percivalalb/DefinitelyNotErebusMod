@@ -25,10 +25,10 @@ public class GuiPetrifiedChest extends GuiContainer {
 		upperChestInventory = par1IInventory;
 		lowerChestInventory = par2IInventory;
 		allowUserInput = false;
-		short short1 = 222;
-		int i = short1 - 108;
+		short short1 = 256;
+		int i = short1 - 83;
 		inventoryRows = par2IInventory.getSizeInventory() / 9;
-		ySize = i + inventoryRows * 18;
+		ySize = 112 + inventoryRows * 18;
 	}
 
 	@Override
@@ -44,6 +44,6 @@ public class GuiPetrifiedChest extends GuiContainer {
 		int k = (width - xSize) / 2;
 		int l = (height - ySize) / 2;
 		drawTexturedModalRect(k, l, 0, 0, xSize, inventoryRows * 18 + 17);
-		drawTexturedModalRect(k, l + inventoryRows * 18 + 17, 0, 126, xSize, 96);
+		drawTexturedModalRect(k, l + inventoryRows * 18 + 17, 0, 124 + 36, xSize, 96);
 	}
 }

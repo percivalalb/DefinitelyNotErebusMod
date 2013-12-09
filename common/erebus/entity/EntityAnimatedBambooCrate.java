@@ -17,11 +17,6 @@ public class EntityAnimatedBambooCrate extends EntityAnimatedChest {
 	}
 
 	@Override
-	public void onLivingUpdate() {
-		super.onLivingUpdate();
-	}
-
-	@Override
 	public boolean interact(EntityPlayer player) {
 		if (worldObj.isRemote)
 			return true;
@@ -35,9 +30,16 @@ public class EntityAnimatedBambooCrate extends EntityAnimatedChest {
 				chest.setInventorySlotContents(i, inventory[i]);
 			return true;
 		} else if (stack == null) {
-			player.openGui(ErebusMod.instance, CommonProxy.GUI_ID_BAMBOO_CRATE, player.worldObj, (int) player.posX, (int) player.posY, (int) player.posZ);
+			player.openGui(ErebusMod.instance, CommonProxy.GUI_ID_ANIMATED_BAMBOO_CRATE, player.worldObj, entityId, 0, 0);
 			return true;
 		} else
 			return false;
+	}
+
+	public TileEntityBambooCrate getTile() {
+		TileEntityBambooCrate crate = new TileEntityBambooCrate();
+		for (int i = 0; i < 27; i++)
+			crate.setInventorySlotContents(i, inventory[i]);
+		return crate;
 	}
 }

@@ -3,6 +3,7 @@ package erebus.core.proxy;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.network.INetworkManager;
@@ -21,6 +22,7 @@ import erebus.client.gui.GuiColossalCrate;
 import erebus.client.gui.GuiPetrifiedChest;
 import erebus.client.gui.GuiPetrifiedWorkbench;
 import erebus.client.gui.GuiUmberFurnace;
+import erebus.entity.EntityAnimatedBambooCrate;
 import erebus.inventory.ContainerBambooCrate;
 import erebus.inventory.ContainerColossalCrate;
 import erebus.inventory.ContainerPetrifiedCraftingTable;
@@ -47,6 +49,7 @@ public class CommonProxy implements IGuiHandler {
 	public static final int GUI_ID_PETRIFIED_CRAFT = 3;
 	public static final int GUI_ID_UMBER_FURNACE = 4;
 	public static final int GUI_ID_PETRIFIED_CHEST = 5;
+	public static final int GUI_ID_ANIMATED_BAMBOO_CRATE = 6;
 	public final int bambooCropRenderID = RenderingRegistry.getNextAvailableRenderId();
 	public final int hollowLogRenderID = RenderingRegistry.getNextAvailableRenderId();
 
@@ -123,6 +126,12 @@ public class CommonProxy implements IGuiHandler {
 			return new ContainerPetrifiedWoodChest(player.inventory, inventory);
 		}
 
+		else if (ID == GUI_ID_ANIMATED_BAMBOO_CRATE) {
+			Entity entity = world.getEntityByID(x);
+			if (entity != null && entity instanceof EntityAnimatedBambooCrate)
+				return new ContainerBambooCrate(player.inventory, ((EntityAnimatedBambooCrate) entity).getTile());
+		}
+
 		return null;
 	}
 
@@ -157,6 +166,12 @@ public class CommonProxy implements IGuiHandler {
 		else if (ID == GUI_ID_PETRIFIED_CHEST) {
 			IInventory inventory = BlockPetrifiedChest.getInventory(world, x, y, z);
 			return new GuiPetrifiedChest(player.inventory, inventory);
+		}
+
+		else if (ID == GUI_ID_ANIMATED_BAMBOO_CRATE) {
+			Entity entity = world.getEntityByID(x);
+			if (entity != null && entity instanceof EntityAnimatedBambooCrate)
+				return new GuiBambooCrate(player.inventory, ((EntityAnimatedBambooCrate) entity).getTile());
 		}
 
 		return null;

@@ -13,6 +13,8 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ModBlocks;
+import erebus.client.model.block.ModelBambooCrate;
 import erebus.client.model.entity.ModelAnimatedBlock;
 import erebus.entity.EntityAnimatedBlock;
 
@@ -20,24 +22,34 @@ import erebus.entity.EntityAnimatedBlock;
 public class RenderAnimatedBlock extends RenderLiving {
 
 	private final RenderBlocks blockRenderer = new RenderBlocks();
-
+	private final ModelBambooCrate bambooCrateModel = new ModelBambooCrate();
 	public RenderAnimatedBlock(ModelAnimatedBlock model, float scale) {
 		super(model, scale);
 	}
 
 	public void renderAnimatedBlock(EntityAnimatedBlock entity, double x, double y, double z, float par8, float par9) {
-		GL11.glPushMatrix();
-		GL11.glDisable(GL11.GL_LIGHTING);
-		GL11.glDisable(GL11.GL_CULL_FACE);
-		GL11.glTranslatef((float) x, (float) y, (float) z);
-		GL11.glTranslatef(0.0F, 0.75F, 0.0F);
-		GL11.glRotatef(-entity.renderYawOffset, 0.0F, 1.0F, 0.0F);
-		bindTexture(TextureMap.locationBlocksTexture);
-		renderBlocks.renderBlockAsItem(Block.blocksList[entity.blockID], entity.blockMeta, 1.0F);
-		GL11.glEnable(GL11.GL_CULL_FACE);
-		GL11.glEnable(GL11.GL_LIGHTING);
-		GL11.glPopMatrix();
-
+		if (entity.blockID == ModBlocks.bambooCrate.blockID) {
+			bindTexture(new ResourceLocation("erebus:textures/item/bambooCrate.png"));
+			GL11.glPushMatrix();
+			GL11.glTranslated(x, y + 1.75F, z);
+			GL11.glScalef(1.0F, -1F, -1F);
+			GL11.glRotatef(entity.renderYawOffset, 0.0F, 1.0F, 0.0F);
+			bambooCrateModel.renderModel();
+			GL11.glPopMatrix();
+		}
+		else {
+			GL11.glPushMatrix();
+			GL11.glDisable(GL11.GL_LIGHTING);
+			GL11.glDisable(GL11.GL_CULL_FACE);
+			GL11.glTranslatef((float) x, (float) y, (float) z);
+			GL11.glTranslatef(0.0F, 0.75F, 0.0F);
+			GL11.glRotatef(-entity.renderYawOffset, 0.0F, 1.0F, 0.0F);
+			bindTexture(TextureMap.locationBlocksTexture);
+			renderBlocks.renderBlockAsItem(Block.blocksList[entity.blockID], entity.blockMeta, 1.0F);
+			GL11.glEnable(GL11.GL_CULL_FACE);
+			GL11.glEnable(GL11.GL_LIGHTING);
+			GL11.glPopMatrix();
+		}
 		super.doRenderLiving(entity, x, y, z, par8, par9);
 	}
 

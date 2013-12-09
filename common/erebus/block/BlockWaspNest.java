@@ -52,8 +52,8 @@ public class BlockWaspNest extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		blockIcon = reg.registerIcon("erebus:waspnestBlock");// Side
-		Top = reg.registerIcon("erebus:waspnestBlock");// Top
-		Bottom = reg.registerIcon("erebus:waspnestBlock");
+		blockIcon = reg.registerIcon("erebus:waspNestBlock");// Side
+		Top = reg.registerIcon("erebus:waspNestBlock");// Top
+		Bottom = reg.registerIcon("erebus:waspNestBlock");
 	}
 }

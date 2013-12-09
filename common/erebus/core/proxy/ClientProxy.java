@@ -80,6 +80,7 @@ import erebus.client.render.item.BambooCrateItemRenderer;
 import erebus.client.render.item.BambooTorchItemRenderer;
 import erebus.client.render.item.ItemErebusAltarRenderer;
 import erebus.client.render.item.ItemGlowingJarRenderer;
+import erebus.client.render.item.ItemPetrifiedWoodChestRenderer;
 import erebus.client.render.item.ItemUmberFurnaceRenderer;
 import erebus.client.render.item.ItemUmberGolemStatueRenderer;
 import erebus.client.render.item.ScorpionPincerItemRenderer;
@@ -207,6 +208,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.glowingJar.blockID, new ItemGlowingJarRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.scorpionPincer.itemID, new ScorpionPincerItemRenderer(new ModelScorpionPincer(), 0.3F));
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.umberGolemStatue.blockID, new ItemUmberGolemStatueRenderer());
+		MinecraftForgeClient.registerItemRenderer(ModBlocks.petrifiedWoodChest.blockID, new ItemPetrifiedWoodChestRenderer());
 
 	}
 

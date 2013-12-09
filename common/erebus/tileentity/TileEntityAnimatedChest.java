@@ -10,9 +10,11 @@ import erebus.entity.EntityAnimatedChest;
 public class TileEntityAnimatedChest extends TileEntity implements IInventory {
 
 	private final ItemStack[] chestContents;
+	protected EntityAnimatedChest chester;
 
 	public TileEntityAnimatedChest(EntityAnimatedChest chest) {
 		chestContents = chest.inventory;
+		chester = chest;
 	}
 
 	@Override
@@ -22,12 +24,12 @@ public class TileEntityAnimatedChest extends TileEntity implements IInventory {
 
 	@Override
 	public void openChest() {
-
+		chester.setOpen(true);
 	}
 
 	@Override
 	public void closeChest() {
-
+		chester.setOpen(false);
 	}
 
 	@Override
@@ -65,6 +67,7 @@ public class TileEntityAnimatedChest extends TileEntity implements IInventory {
 
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
+		// closeChest();
 		if (chestContents[slot] != null) {
 			ItemStack itemstack = chestContents[slot];
 			chestContents[slot] = null;

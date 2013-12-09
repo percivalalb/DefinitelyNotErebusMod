@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
@@ -14,13 +15,16 @@ import com.google.common.io.ByteArrayDataInput;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
+import erebus.block.BlockPetrifiedChest;
 import erebus.client.gui.GuiBambooCrate;
 import erebus.client.gui.GuiColossalCrate;
+import erebus.client.gui.GuiPetrifiedChest;
 import erebus.client.gui.GuiPetrifiedWorkbench;
 import erebus.client.gui.GuiUmberFurnace;
 import erebus.inventory.ContainerBambooCrate;
 import erebus.inventory.ContainerColossalCrate;
 import erebus.inventory.ContainerPetrifiedCraftingTable;
+import erebus.inventory.ContainerPetrifiedWoodChest;
 import erebus.inventory.ContainerUmberFurnace;
 import erebus.tileentity.TileEntityBambooCrate;
 import erebus.tileentity.TileEntityErebusAltar;
@@ -31,6 +35,7 @@ import erebus.tileentity.TileEntityErebusAltarRepair;
 import erebus.tileentity.TileEntityErebusAltarXP;
 import erebus.tileentity.TileEntityGlowingJar;
 import erebus.tileentity.TileEntityLadder;
+import erebus.tileentity.TileEntityPetrifiedWoodChest;
 import erebus.tileentity.TileEntitySpawner;
 import erebus.tileentity.TileEntityUmberFurnace;
 import erebus.tileentity.TileEntityUmberGolemStatue;
@@ -41,6 +46,7 @@ public class CommonProxy implements IGuiHandler {
 	public static final int GUI_ID_COLOSSAL_CRATE = 2;
 	public static final int GUI_ID_PETRIFIED_CRAFT = 3;
 	public static final int GUI_ID_UMBER_FURNACE = 4;
+	public static final int GUI_ID_PETRIFIED_CHEST = 5;
 	public final int bambooCropRenderID = RenderingRegistry.getNextAvailableRenderId();
 	public final int hollowLogRenderID = RenderingRegistry.getNextAvailableRenderId();
 
@@ -67,6 +73,7 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntityGlowingJar.class, "Glowing Jar (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityLadder.class, "Bamboo Ladder (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityUmberGolemStatue.class, "Umber Golem Statue (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityPetrifiedWoodChest.class, "Petrified Wood Chest (Erebus)");
 	}
 
 	public void handleParticlePacket(INetworkManager manager, Packet250CustomPayload packet, EntityPlayer player, ByteArrayDataInput data) {
@@ -105,10 +112,15 @@ public class CommonProxy implements IGuiHandler {
 		else if (ID == GUI_ID_PETRIFIED_CRAFT)
 			return new ContainerPetrifiedCraftingTable(player.inventory, world, x, y, z);
 
-		if (ID == GUI_ID_UMBER_FURNACE) {
+		else if (ID == GUI_ID_UMBER_FURNACE) {
 			TileEntity tileentity = world.getBlockTileEntity(x, y, z);
 			if (tileentity instanceof TileEntityUmberFurnace)
 				return new ContainerUmberFurnace(player.inventory, (TileEntityUmberFurnace) tileentity);
+		}
+
+		else if(ID == GUI_ID_PETRIFIED_CHEST) {
+			IInventory inventory = BlockPetrifiedChest.getInventory(world, x, y, z);
+			return new ContainerPetrifiedWoodChest(player.inventory, inventory);
 		}
 
 		return null;
@@ -136,10 +148,15 @@ public class CommonProxy implements IGuiHandler {
 
 		else if (ID == GUI_ID_PETRIFIED_CRAFT)
 			return new GuiPetrifiedWorkbench(player.inventory, world, x, y, z);
-		if (ID == GUI_ID_UMBER_FURNACE) {
+		else if (ID == GUI_ID_UMBER_FURNACE) {
 			TileEntity tileentity = world.getBlockTileEntity(x, y, z);
 			if (tileentity instanceof TileEntityUmberFurnace)
 				return new GuiUmberFurnace(player.inventory, (TileEntityUmberFurnace) tileentity);
+		}
+
+		else if (ID == GUI_ID_PETRIFIED_CHEST) {
+			IInventory inventory = BlockPetrifiedChest.getInventory(world, x, y, z);
+			return new GuiPetrifiedChest(player.inventory, inventory);
 		}
 
 		return null;

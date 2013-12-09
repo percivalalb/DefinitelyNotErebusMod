@@ -28,6 +28,7 @@ import erebus.block.BlockInsectRepellent;
 import erebus.block.BlockLeavesErebus;
 import erebus.block.BlockLogErebus;
 import erebus.block.BlockOreFossil;
+import erebus.block.BlockPetrifiedChest;
 import erebus.block.BlockPetrifiedCraftingTable;
 import erebus.block.BlockPlanksErebus;
 import erebus.block.BlockPortalErebus;
@@ -123,6 +124,7 @@ public class ModBlocks {
 	public static Block reinExo;						public static int reinExoID;
 	public static Block bambooLadder;					public static int bambooLadderID;
 	public static Block umberGolemStatue;				public static int umberGolemStatueID;
+	public static Block petrifiedWoodChest;				public static int petrifiedWoodChestID;
 
 	// STAIRS, SLABS, WALLS
 	public static Block[] umbercobbleStairs;			public static int[] umbercobbleStairsID;
@@ -194,6 +196,7 @@ public class ModBlocks {
 		bambooLadder = new BlockBambooLadder(bambooLadderID).setHardness(0.4F).setStepSound(Block.soundLadderFootstep).setUnlocalizedName("bambooLadder").setTextureName("erebus:bamboo_ladder3");
 		umberGolemStatue = new BlockUmberGolemStatue(umberGolemStatueID).setUnlocalizedName("umberGolemStatue");
 		waspNestBlock = new BlockWaspNest(waspNestBlockID).setHardness(50.0F).setResistance(2000.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("waspNestBlock").setTextureName("erebus:waspNestBlock");
+		petrifiedWoodChest = new BlockPetrifiedChest(petrifiedWoodChestID).setHardness(2.0F).setUnlocalizedName("petrifiedWoodChest").setTextureName("erebus:petrifiedWoodPlanks");
 
 		umbercobbleStairs = new Block[BlockUmberstone.iconPaths.length];
 		for (int i = 0; i < umbercobbleStairs.length; i++)
@@ -278,6 +281,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(bambooLadder, "erebus.bambooLadder");
 		GameRegistry.registerBlock(umberGolemStatue, "erebus.umberGolemStatue");
 		GameRegistry.registerBlock(waspNestBlock, "erebus.waspNestBlock");
+		GameRegistry.registerBlock(petrifiedWoodChest, "erebus.petrifiedWoodChest");
 
 		for (int i = 0; i < umbercobbleStairs.length; i++)
 			GameRegistry.registerBlock(umbercobbleStairs[i], "erebus.umbercobbleStairs" + i);
@@ -324,6 +328,7 @@ public class ModBlocks {
 		MinecraftForge.setBlockHarvestLevel(quickSand, "shovel", 2);
 		MinecraftForge.setBlockHarvestLevel(ghostSand, "shovel", 0);
 		MinecraftForge.setBlockHarvestLevel(reinExo, "pickaxe", 2);
+		MinecraftForge.setBlockHarvestLevel(petrifiedWoodChest, "pickaxe", 0);
 
 		if (ConfigurationHandler.aluminium)
 			MinecraftForge.setBlockHarvestLevel(erebusOreExtra, 0, "pickaxe", 1);

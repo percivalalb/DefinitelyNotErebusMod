@@ -25,7 +25,7 @@ import erebus.inventory.ContainerUmberFurnace;
 
 public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler, ISidedInventory {
 
-	ItemStack[] inventory = new ItemStack[4];
+	private ItemStack[] inventory = new ItemStack[4];
 	private final FluidTank tank = new FluidTank(FluidContainerRegistry.BUCKET_VOLUME * 16);
 	private final int BUCKET_SLOT = 0;
 	private final int SMELT_SLOT = 1;

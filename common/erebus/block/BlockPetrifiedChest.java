@@ -8,7 +8,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,20 +16,22 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ErebusMod;
+import erebus.ModBlocks;
+import erebus.core.proxy.CommonProxy;
+import erebus.tileentity.TileEntityPetrifiedWoodChest;
 import erebus.utils.Utils;
 
 public class BlockPetrifiedChest extends BlockContainer {
 
-	protected BlockPetrifiedChest(int par1) {
-		super(par1, Material.rock);
-		setCreativeTab(CreativeTabs.tabDecorations);
+	public BlockPetrifiedChest(int id) {
+		super(id, Material.rock);
 		setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
 	}
 
@@ -129,7 +130,7 @@ public class BlockPetrifiedChest extends BlockContainer {
 		}
 
 		if (par6ItemStack.hasDisplayName())
-			((TileEntityChest) par1World.getBlockTileEntity(par2, par3, par4)).setChestGuiName(par6ItemStack.getDisplayName());
+			((TileEntityPetrifiedWoodChest) par1World.getBlockTileEntity(par2, par3, par4)).setChestGuiName(par6ItemStack.getDisplayName());
 	}
 
 	public void unifyAdjacentChests(World par1World, int par2, int par3, int par4) {
@@ -232,7 +233,7 @@ public class BlockPetrifiedChest extends BlockContainer {
 	@Override
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
 		super.onNeighborBlockChange(par1World, par2, par3, par4, par5);
-		TileEntityChest tileentitychest = (TileEntityChest) par1World.getBlockTileEntity(par2, par3, par4);
+		TileEntityPetrifiedWoodChest tileentitychest = (TileEntityPetrifiedWoodChest) par1World.getBlockTileEntity(par2, par3, par4);
 
 		if (tileentitychest != null)
 			tileentitychest.updateContainingBlockInfo();
@@ -240,7 +241,7 @@ public class BlockPetrifiedChest extends BlockContainer {
 
 	@Override
 	public void breakBlock(World world, int x, int y, int z, int par5, int par6) {
-		TileEntityChest tile = (TileEntityChest) world.getBlockTileEntity(x, y, z);
+		TileEntityPetrifiedWoodChest tile = (TileEntityPetrifiedWoodChest) world.getBlockTileEntity(x, y, z);
 		if (tile != null) {
 			for (int i = 0; i < tile.getSizeInventory(); i++) {
 				ItemStack stack = tile.getStackInSlot(i);
@@ -253,21 +254,18 @@ public class BlockPetrifiedChest extends BlockContainer {
 	}
 
 	@Override
-	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-		if (par1World.isRemote)
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+		if (world.isRemote)
 			return true;
 		else {
-			IInventory iinventory = getInventory(par1World, par2, par3, par4);
-
-			if (iinventory != null)
-				par5EntityPlayer.displayGUIChest(iinventory);
-
+			player.openGui(ErebusMod.instance, CommonProxy.GUI_ID_PETRIFIED_CHEST, world, x, y, z);
 			return true;
 		}
 	}
 
-	public IInventory getInventory(World par1World, int par2, int par3, int par4) {
+	public static IInventory getInventory(World par1World, int par2, int par3, int par4) {
 		Object object = par1World.getBlockTileEntity(par2, par3, par4);
+		int blockID = ModBlocks.petrifiedWoodChest.blockID;
 
 		if (object == null)
 			return null;
@@ -285,16 +283,16 @@ public class BlockPetrifiedChest extends BlockContainer {
 			return null;
 		else {
 			if (par1World.getBlockId(par2 - 1, par3, par4) == blockID)
-				object = new InventoryLargeChest("container.chestDouble", (TileEntityChest) par1World.getBlockTileEntity(par2 - 1, par3, par4), (IInventory) object);
+				object = new InventoryLargeChest("container.petrifiedChestDouble", (TileEntityPetrifiedWoodChest) par1World.getBlockTileEntity(par2 - 1, par3, par4), (IInventory) object);
 
 			if (par1World.getBlockId(par2 + 1, par3, par4) == blockID)
-				object = new InventoryLargeChest("container.chestDouble", (IInventory) object, (TileEntityChest) par1World.getBlockTileEntity(par2 + 1, par3, par4));
+				object = new InventoryLargeChest("container.petrifiedChestDouble", (IInventory) object, (TileEntityPetrifiedWoodChest) par1World.getBlockTileEntity(par2 + 1, par3, par4));
 
 			if (par1World.getBlockId(par2, par3, par4 - 1) == blockID)
-				object = new InventoryLargeChest("container.chestDouble", (TileEntityChest) par1World.getBlockTileEntity(par2, par3, par4 - 1), (IInventory) object);
+				object = new InventoryLargeChest("container.petrifiedChestDouble", (TileEntityPetrifiedWoodChest) par1World.getBlockTileEntity(par2, par3, par4 - 1), (IInventory) object);
 
 			if (par1World.getBlockId(par2, par3, par4 + 1) == blockID)
-				object = new InventoryLargeChest("container.chestDouble", (IInventory) object, (TileEntityChest) par1World.getBlockTileEntity(par2, par3, par4 + 1));
+				object = new InventoryLargeChest("container.petrifiedChestDouble", (IInventory) object, (TileEntityPetrifiedWoodChest) par1World.getBlockTileEntity(par2, par3, par4 + 1));
 
 			return (IInventory) object;
 		}
@@ -302,7 +300,7 @@ public class BlockPetrifiedChest extends BlockContainer {
 
 	@Override
 	public TileEntity createNewTileEntity(World par1World) {
-		return new TileEntityChest();
+		return new TileEntityPetrifiedWoodChest();
 	}
 
 	public static boolean isOcelotBlockingChest(World par0World, int par1, int par2, int par3) {

@@ -47,6 +47,7 @@ public class RecipeHandler {
 		// Petrified Wood stuffs
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedWoodPlanks), new Object[] { "xx", "xx", 'x', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataPetrifiedWood) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedCraftingTable), new Object[] { "xx", "xx", 'x', ModBlocks.petrifiedWoodPlanks });
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.petrifiedWoodChest), new Object[] { "xxx", "xyx", "xxx", 'x', ModBlocks.petrifiedWoodPlanks, 'y', Item.ingotGold });
 
 		// Stairs, slabs, walls
 		for (int i = 0; i < ModBlocks.umbercobbleStairs.length; i++)

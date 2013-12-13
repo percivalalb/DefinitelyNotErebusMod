@@ -165,6 +165,7 @@ public class ThaumcraftIntegration implements IModIntegration{
 			for(Object o:aspectData){
 				if ((index&1)==0)currentAspect=(Aspect)o;
 				else list.add(currentAspect,(Integer)o);
+				++index;
 			}
 		}
 		catch(Exception e){

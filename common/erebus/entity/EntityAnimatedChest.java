@@ -1,6 +1,5 @@
 package erebus.entity;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -20,7 +19,7 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 	boolean isOpen;
 	boolean canClose;
 	float openticks;
-	EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+
 	public EntityAnimatedChest(World world) {
 		super(world);
 		inventory = new ItemStack[27];
@@ -40,8 +39,8 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 		if (chest == null)
 			return this;
 
-		inventory = new ItemStack[27];
-		for (int i = 0; i < 27; i++) {
+		inventory = new ItemStack[chest.getSizeInventory()];
+		for (int i = 0; i < chest.getSizeInventory(); i++) {
 			if (chest.getStackInSlot(i) == null)
 				continue;
 			inventory[i] = chest.getStackInSlot(i).copy();
@@ -89,7 +88,7 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 			worldObj.playSoundEffect(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), "erebus:altaroffering", 0.2F, 1.0F);
 			worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), blockID, blockMeta, 3);
 			TileEntityChest chest = (TileEntityChest) worldObj.getBlockTileEntity(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ));
-			for(int i = 0; i < 27; i++)
+			for(int i = 0; i < chest.getSizeInventory(); i++)
 				chest.setInventorySlotContents(i, inventory[i]);
 			return true;
 		} else if (stack == null) {

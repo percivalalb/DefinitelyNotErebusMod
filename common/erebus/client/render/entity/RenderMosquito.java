@@ -6,9 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelMosquito;
@@ -40,10 +38,9 @@ public class RenderMosquito extends RenderLiving {
 
 	@Override
 	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
-		EntityMosquito mosquito = (EntityMosquito) entityliving;
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
 		GL11.glTranslatef(0.0F, -1.4F, -0.5F);
-		if (mosquito.ridingEntity != null)
+		if (entityliving.ridingEntity != null)
 			GL11.glTranslatef(0.0F, 0.0F, 0.5F);
 	}
 

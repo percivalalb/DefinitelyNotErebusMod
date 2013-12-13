@@ -1,7 +1,6 @@
 package erebus.entity;
 
 import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
@@ -23,17 +22,18 @@ import net.minecraft.world.World;
 import erebus.client.render.entity.AnimationMathHelper;
 
 public class EntityMosquito extends EntityMob {
+	private final static int maxBloodLevel = 5;
 
 	private ChunkCoordinates currentFlightTarget;
 	private float heightOffset = 1.5F;
 	private int drainage;
+	private short consumptionTimer = 0;
 	EntityLivingBase entityToAttack;
 	AnimationMathHelper mathWings = new AnimationMathHelper();
 	AnimationMathHelper mathSucking = new AnimationMathHelper();
 	public float wingFloat;
 	public float suckFloat;
 	public boolean firstTickCheck;
-	private final int maxBloodLevel = 5;
 	public int hitInterval = 30;
 	Class[] preys = { EntityPig.class, EntityCow.class, EntityBeetleLarva.class };
 
@@ -61,8 +61,9 @@ public class EntityMosquito extends EntityMob {
 			ridingEntity = null;
 			firstTickCheck = true;
 		}
-		if (worldObj.getWorldTime() % 2400 == 0)
-			setBloodConsumed(0);
+		if (consumptionTimer > 0) {
+			if (--consumptionTimer == 0) setBloodConsumed(0);
+		}
 		if (ridingEntity != null) {
 			suckFloat = 1.0F + mathSucking.swing(1.0F, 0.15F);
 			if (rand.nextInt(10) == 0)
@@ -270,8 +271,9 @@ public class EntityMosquito extends EntityMob {
 		return dataWatcher.getWatchableObjectByte(15);
 	}
 
-	public void setBloodConsumed(int par1) {
-		dataWatcher.updateObject(15, Byte.valueOf((byte) par1));
+	public void setBloodConsumed(int amount) {
+		consumptionTimer=2400;
+		dataWatcher.updateObject(15, Byte.valueOf((byte) amount));
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package erebus.world.feature;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -39,7 +38,7 @@ public class WorldGenSavannaRock extends WorldGenerator {
 				z += rand.nextInt(2) * 2 - 1;
 		}
 
-		if (rand.nextInt(22) == 0)
+		if (rand.nextInt(26) == 0)
 			for (int attempt = 0, diamonds = 0, diamondAmount = rand.nextInt(2) + 1, iradX = (int) Math.ceil(radX), iradY = (int) Math.ceil(radY), iradZ = (int) Math.ceil(radZ); attempt < 10 && diamonds < diamondAmount; attempt++) {
 				int xx = x + rand.nextInt(iradX * 2) - iradX, yy = y + rand.nextInt(iradY * 2) - iradY, zz = z + rand.nextInt(iradZ * 2) - iradZ;
 				int id = world.getBlockId(xx, yy, zz);

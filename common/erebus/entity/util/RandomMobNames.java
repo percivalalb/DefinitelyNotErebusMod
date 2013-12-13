@@ -20,14 +20,14 @@ public final class RandomMobNames {
 	private static final Map<Class<? extends EntityLiving>, NameData> names = new HashMap<Class<? extends EntityLiving>, NameData>();
 	
 	static {
-		names.put(EntityBotFly.class, new NameData(350, new String[]{ "Butt Fly" }));
-		names.put(EntityGrasshopper.class, new NameData(340, new String[]{ "Grasshumper", "Jimminey" }));
-		names.put(EntityBeetleLarva.class, new NameData(290, new String[]{ "Trampoline" }));
+		names.put(EntityBotFly.class, new NameData(380, new String[]{ "Butt Fly" }));
+		names.put(EntityGrasshopper.class, new NameData(360, new String[]{ "Grasshumper", "Jimminey" }));
+		names.put(EntityBeetleLarva.class, new NameData(320, new String[]{ "Trampoline" }));
 		names.put(EntityBeetle.class, new NameData(280, new String[]{ "John Lennon", "Paul McCartney", "George Harisson", "Ringo Starr" }));
-		names.put(EntityCentipede.class, new NameData(200, new String[]{ "Centipaedo" }));
+		names.put(EntityCentipede.class, new NameData(220, new String[]{ "Centipaedo" }));
 		names.put(EntitySolifuge.class, new NameData(220, new String[]{ "Fast & Furious" }));
 		names.put(EntityFirebrat.class, new NameData(200, new String[]{ "Firebra", "Ginger Silverfish" }));
-		names.put(EntityScorpion.class, new NameData(160, new String[]{ "Nippletwister" }));
+		names.put(EntityScorpion.class, new NameData(150, new String[]{ "Nippletwister" }));
 	};
 	
 	private RandomMobNames(){}

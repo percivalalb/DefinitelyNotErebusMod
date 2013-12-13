@@ -403,10 +403,10 @@ public class ModelPrayingMantis extends ModelBase
 
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
-		// super.setRotationAngles(par1, par2, par3, par4, par5, par6,
-		// par7Entity);
-		float cos1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.5F * par2;
-		float cos2 = MathHelper.cos(par1 * 1.0F) * 0.5F * par2;
+
+		float cos1 = MathHelper.cos(par1 + (float) Math.PI) * 0.3F * par2;
+		float cos2 = MathHelper.cos(par1) * 0.3F * par2;
+		float cosxnz1 = MathHelper.cos(par1 * 0.5F + (float) Math.PI) * 0.7F * par2;
 
 		LBLeg1.rotateAngleX = cos1;
 		LBLeg2.rotateAngleX = cos1;
@@ -437,10 +437,16 @@ public class ModelPrayingMantis extends ModelBase
 		RFLeg5.rotateAngleX = cos1;
 		RFLeg6.rotateAngleX = cos1;
 
-		// LBLeg3.rotateAngleZ = cos1 - 1.920F;
-		// LFLeg1.rotateAngleY = cos1 - 2.617994F;
-		// RBLeg1.rotateAngleY = -cos2 + 0.3490659F;
-		// RFLeg1.rotateAngleY = -cos2 - 0.3490659F;
+		LArm1.rotateAngleX = cosxnz1 + 0.3490659F;
+		LArm2.rotateAngleX = cosxnz1 - 2.268928F;
+		LArm3.rotateAngleX = cosxnz1 + 0.3490659F;
+		LArm4.rotateAngleX = cosxnz1 + 0.3490659F;
+
+		RArm1.rotateAngleX = -cosxnz1 + 0.3490659F;
+		RArm2.rotateAngleX = -cosxnz1 - 2.268928F;
+		RArm3.rotateAngleX = -cosxnz1 + 0.3490659F;
+		RArm4.rotateAngleX = -cosxnz1 + 0.3490659F;
+
 	}
 
 }

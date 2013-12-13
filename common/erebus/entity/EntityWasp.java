@@ -92,11 +92,6 @@ public class EntityWasp extends EntityMob {
 	}
 
 	@Override
-	public boolean isOnLadder() {
-		return isCollidedHorizontally;
-	}
-
-	@Override
 	public void onUpdate() {
 		if (!isFlying())
 			wingFloat = 0.0F;

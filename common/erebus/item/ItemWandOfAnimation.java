@@ -7,8 +7,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.world.World;
+import erebus.ModBlocks;
+import erebus.entity.EntityAnimatedBambooCrate;
 import erebus.entity.EntityAnimatedBlock;
 import erebus.entity.EntityAnimatedChest;
+import erebus.tileentity.TileEntityBambooCrate;
 
 public class ItemWandOfAnimation extends Item {
 
@@ -33,6 +36,8 @@ public class ItemWandOfAnimation extends Item {
 				EntityAnimatedBlock entityAnimatedBlock;
 				if (block.blockID == Block.chest.blockID)
 					entityAnimatedBlock = new EntityAnimatedChest(world).setContents((TileEntityChest) world.getBlockTileEntity(x, y, z));
+				else if (block.blockID == ModBlocks.bambooCrate.blockID)
+					entityAnimatedBlock = new EntityAnimatedBambooCrate(world).setContents((TileEntityBambooCrate) world.getBlockTileEntity(x, y, z));
 				else
 					entityAnimatedBlock = new EntityAnimatedBlock(world);
 				world.setBlockToAir(x, y, z);
@@ -48,7 +53,8 @@ public class ItemWandOfAnimation extends Item {
 	}
 
 	private boolean canAnimate(Block block) {
-		return block.blockID == Block.chest.blockID || !(block instanceof BlockContainer) && block.blockHardness >= 0 && block.getBlockBoundsMaxX() - block.getBlockBoundsMinX() >= 0.7F && block.getBlockBoundsMaxZ() - block.getBlockBoundsMinZ() >= 0.7F &&
+		return block.blockID == Block.chest.blockID || block.blockID == ModBlocks.bambooCrate.blockID || !(block instanceof BlockContainer) && block.blockHardness >= 0 && block.getBlockBoundsMaxX() - block.getBlockBoundsMinX() >= 0.7F &&
+		block.getBlockBoundsMaxZ() - block.getBlockBoundsMinZ() >= 0.7F &&
 		block.getBlockBoundsMaxY() - block.getBlockBoundsMinY() >= 0.7F;
 	}
 }

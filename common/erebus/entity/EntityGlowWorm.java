@@ -39,19 +39,16 @@ public class EntityGlowWorm extends EntityCreature
 	}
 
 	@Override
-	public boolean isAIEnabled()
-	{
+	public boolean isAIEnabled() {
 		return true;
 	}
 
-	public boolean canDeSpawn()
-	{
+	public boolean canDeSpawn() {
 		return false;
 	}
 
 	@Override
-	protected void entityInit()
-	{
+	protected void entityInit() {
 		super.entityInit();
 	}
 
@@ -63,26 +60,22 @@ public class EntityGlowWorm extends EntityCreature
 	}
 
 	@Override
-	public EnumCreatureAttribute getCreatureAttribute()
-	{
+	public EnumCreatureAttribute getCreatureAttribute() {
 		return EnumCreatureAttribute.ARTHROPOD;
 	}
 
 	@Override
-	protected String getLivingSound()
-	{
+	protected String getLivingSound() {
 		return "erebus:glowwormsound";
 	}
 
 	@Override
-	protected String getHurtSound()
-	{
+	protected String getHurtSound() {
 		return "erebus:glowwormhurt";
 	}
 
 	@Override
-	protected String getDeathSound()
-	{
+	protected String getDeathSound() {
 		return "erebus:squish";
 	}
 
@@ -97,8 +90,7 @@ public class EntityGlowWorm extends EntityCreature
 	}
 
 	@Override
-	public void onUpdate()
-	{
+	public void onUpdate() {
 		if (worldObj.isRemote && isGlowing())
 			lightUp(worldObj, MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ));
 		if (worldObj.isRemote && !isGlowing())
@@ -108,7 +100,7 @@ public class EntityGlowWorm extends EntityCreature
 
 	@SideOnly(Side.CLIENT)
 	private void lightUp(World world, int x, int y, int z) {
-		worldObj.setLightValue(EnumSkyBlock.Block, x, y, z, 9);
+		world.setLightValue(EnumSkyBlock.Block, x, y, z, 9);
 		for (int i = -1; i < 2; i++)
 			for (int j = -1; j < 2; j++)
 				for (int k = -1; k < 2; k++)
@@ -126,8 +118,7 @@ public class EntityGlowWorm extends EntityCreature
 		worldObj.updateLightByType(EnumSkyBlock.Block, MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ));
 	}
 
-	public boolean isGlowing()
-	{
+	public boolean isGlowing() {
 		return worldObj.getSunBrightness(1.0F) < 0.5F;
 	}
 

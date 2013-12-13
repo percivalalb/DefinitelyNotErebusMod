@@ -1,5 +1,6 @@
 package erebus.entity;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -16,7 +17,10 @@ import erebus.utils.Utils;
 public class EntityAnimatedChest extends EntityAnimatedBlock {
 
 	public ItemStack[] inventory;
-
+	boolean isOpen;
+	boolean canClose;
+	float openticks;
+	EntityPlayer player = Minecraft.getMinecraft().thePlayer;
 	public EntityAnimatedChest(World world) {
 		super(world);
 		inventory = new ItemStack[27];
@@ -24,6 +28,12 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 		tasks.removeTask(aiAttackOnCollide);
 		tasks.removeTask(aiAttackNearestTarget);
 		tasks.addTask(1, new EntityAITempt(this, 1.0D, ModItems.wandOfAnimation.itemID, false));
+	}
+
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		dataWatcher.addObject(21, 0.0F);
 	}
 
 	public EntityAnimatedChest setContents(IInventory chest) {
@@ -52,8 +62,22 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 	@Override
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
-
+		if (isOpen)
+			if (openticks >= -1.570F){
+				openticks = openticks - 0.19625F;
+				dataWatcher.updateObject(21, openticks);
+			}
+		if (!isOpen) {
+			if (openticks < 0F) {
+				openticks = openticks + 0.19625F;
+				dataWatcher.updateObject(21, openticks);
+				System.out.println("openticks " + openticks);
+			}
+			if (openticks == -1.5699999F)
+				worldObj.playSoundEffect(posX, posY + 0.5D, posZ, "random.chestclosed", 0.5F, 0.9F);
+		}
 	}
+
 
 	@Override
 	public boolean interact(EntityPlayer player) {
@@ -69,10 +93,15 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 				chest.setInventorySlotContents(i, inventory[i]);
 			return true;
 		} else if (stack == null) {
+			worldObj.playSoundEffect(posX, posY + 0.5D, posZ, "random.chestopen", 0.5F, 0.9F);
 			player.displayGUIChest(new TileEntityAnimatedChest(this));
 			return true;
 		} else
 			return false;
+	}
+
+	public void setOpen(boolean open) {
+		isOpen = open;
 	}
 
 	@Override

@@ -71,12 +71,7 @@ public class EntityBeetle extends EntityCreature {
 
 	@Override
 	protected String getDeathSound() {
-		return null;
-	}
-
-	@Override
-	protected float getSoundVolume() {
-		return 0.4F;
+		return "erebus:squish";
 	}
 
 	@Override

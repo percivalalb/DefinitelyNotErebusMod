@@ -1,6 +1,7 @@
 package erebus.world.biomes;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.world.World;
@@ -21,7 +22,9 @@ import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
 import erebus.entity.EntityErebusSpider;
 import erebus.entity.EntityFly;
+import erebus.entity.EntityMosquito;
 import erebus.entity.EntityMoth;
+import erebus.entity.EntityPrayingMantis;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityWasp;
 import erebus.world.feature.WorldGenAmberGround;
@@ -50,6 +53,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 		spawnableCaveCreatureList.clear();
 		spawnableMonsterList.add(new SpawnListEntry(EntityWasp.class, 30, 4, 8));
 		spawnableMonsterList.add(new SpawnListEntry(EntityCentipede.class, 10, 4, 8));
+		spawnableMonsterList.add(new SpawnListEntry(EntityPrayingMantis.class, 10, 4, 8));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityBotFly.class, 10, 4, 8));
 		// spawnableCaveCreatureList.add(newSpawnListEntry(EntityVelvetWorm.class,10,2,4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityErebusSpider.class, 35, 1, 4));
@@ -59,9 +63,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 		spawnableCreatureList.add(new SpawnListEntry(EntityBeetle.class, 50, 4, 8));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityFly.class, 10, 8, 8));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityMoth.class, 5, 4, 4));
-		// spawnableCaveCreatureList.add(new
-		// SpawnListEntry(EntityMosquito.class, 60, 1, 3));
-		// TODO fix mosquito lag
+		spawnableCaveCreatureList.add(new SpawnListEntry(EntityMosquito.class, 60, 1, 3));
 		topBlock = (byte) Block.grass.blockID;
 		fillerBlock = (byte) Block.dirt.blockID;
 	}

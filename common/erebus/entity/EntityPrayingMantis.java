@@ -9,8 +9,11 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import erebus.ModItems;
 import erebus.entity.ai.IEntityAIAttackOnCollide;
+import erebus.item.ItemErebusMaterial;
 
 public class EntityPrayingMantis extends EntityMob {
 
@@ -47,9 +50,24 @@ public class EntityPrayingMantis extends EntityMob {
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.6D); // Movespeed
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D); // MaxHealth
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D); // atkDmg
 		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
+	}
+
+	@Override
+	protected String getLivingSound() {
+		return "erebus:MantisSound";
+	}
+
+	@Override
+	protected String getHurtSound() {
+		return "erebus:MantisHurt";
+	}
+
+	@Override
+	protected String getDeathSound() {
+		return "erebus:squish";
 	}
 
 	@Override
@@ -60,6 +78,11 @@ public class EntityPrayingMantis extends EntityMob {
 	@Override
 	public boolean isOnLadder() {
 		return isCollidedHorizontally;
+	}
+
+	@Override
+	protected void dropFewItems(boolean hitByPlayer, int looting) {
+		entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataCamoPowder), 0.0F);
 	}
 
 	@Override

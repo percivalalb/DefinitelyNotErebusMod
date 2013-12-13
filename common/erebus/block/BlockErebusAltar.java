@@ -125,31 +125,35 @@ public class BlockErebusAltar extends BlockContainer {
 	private void chooseAltar(World world, int x, int y, int z) {
 		switch (meta) {
 			case 8:
-				if (!world.isRemote) {
+				if (!world.isRemote)
 					world.setBlock(x, y, z, ModBlocks.erebusAltarXP.blockID, 0, 3);
+				if (world.isRemote)
 					message = "Altar of Experience Summoned.";
-					break;
-				}
+				break;
+
 			case 9:
-				if (!world.isRemote) {
+				if (!world.isRemote)
 					world.setBlock(x, y, z, ModBlocks.erebusAltarRepair.blockID, 0, 3);
+				if (world.isRemote)
 					message = "Altar of Repair Summoned.";
-					break;
-				}
+				break;
+
 			case 12:
-				if (!world.isRemote) {
+				if (!world.isRemote)
 					world.setBlock(x, y, z, ModBlocks.erebusAltarLightning.blockID, 0, 3);
+				if (world.isRemote)
 					message = "Altar of Lightning Summoned.";
-					break;
-				}
+				break;
+
 			case 13:
-				if (!world.isRemote) {
+				if (!world.isRemote)
 					world.setBlock(x, y, z, ModBlocks.erebusAltarHealing.blockID, 0, 3);
+				if (world.isRemote)
 					message = "Altar of Healing Summoned.";
-					break;
-				}
+				break;
 		}
 	}
+
 
 	private void setItemOffering(int itemID, int metadata) {
 		item = itemID;

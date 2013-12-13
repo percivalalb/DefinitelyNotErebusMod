@@ -5,31 +5,31 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import erebus.entity.EntityAnimatedChest;
+import erebus.ModBlocks;
+import erebus.entity.EntityAnimatedBambooCrate;
 
-public class TileEntityAnimatedChest extends TileEntity implements IInventory {
+public class TileEntityAnimatedBambooCrate extends TileEntity implements IInventory {
 
 	private final ItemStack[] chestContents;
-	protected EntityAnimatedChest chester;
+	protected EntityAnimatedBambooCrate bamber;
 
-	public TileEntityAnimatedChest(EntityAnimatedChest chest) {
-		chestContents = chest.inventory;
-		chester = chest;
+	public TileEntityAnimatedBambooCrate(EntityAnimatedBambooCrate crate) {
+		chestContents = crate.inventory;
+		bamber = crate;
 	}
 
 	@Override
 	public Block getBlockType() {
-		return Block.chest;
+		return ModBlocks.bambooCrate;
 	}
 
 	@Override
 	public void openChest() {
-		chester.setOpen(true);
+
 	}
 
 	@Override
 	public void closeChest() {
-		chester.setOpen(false);
 	}
 
 	@Override
@@ -67,7 +67,6 @@ public class TileEntityAnimatedChest extends TileEntity implements IInventory {
 
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
-		// closeChest();
 		if (chestContents[slot] != null) {
 			ItemStack itemstack = chestContents[slot];
 			chestContents[slot] = null;
@@ -86,7 +85,7 @@ public class TileEntityAnimatedChest extends TileEntity implements IInventory {
 
 	@Override
 	public String getInvName() {
-		return "Chester";
+		return "Bamber";
 	}
 
 	@Override

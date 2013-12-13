@@ -58,6 +58,10 @@ public class EntitySoundEvent {
 			event.manager.addSound("erebus:BombardierBeetleSound.ogg");
 			event.manager.addSound("erebus:BombardierBeetleHurt.ogg");
 
+			// Praying Mantis
+			event.manager.addSound("erebus:MantisSound.ogg");
+			event.manager.addSound("erebus:MantisHurt.ogg");
+
 			// Insect Repellent
 			event.manager.addSound("erebus:SprayCanSound.ogg");
 

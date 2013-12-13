@@ -5,6 +5,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
+import erebus.entity.EntityAnimatedChest;
 
 public class ModelAnimatedChest extends ModelBase
 {
@@ -247,7 +248,7 @@ public class ModelAnimatedChest extends ModelBase
 
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
-
+		EntityAnimatedChest chest = (EntityAnimatedChest) par7Entity;
 		LBL1.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 + 0.25F;
 		LBL2.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 + 0.25F;
 		LBL3.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 + 0.3F;
@@ -273,7 +274,8 @@ public class ModelAnimatedChest extends ModelBase
 		RFL3.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.3F;
 		RFL4.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.334F;
 
-		Lid.rotateAngleX = 0F;
-		Lock.rotateAngleX = 0F;
+		Lid.rotateAngleX = chest.getDataWatcher().getWatchableObjectFloat(21);
+		Lock.rotateAngleX = chest.getDataWatcher().getWatchableObjectFloat(21);
+
 	}
 }

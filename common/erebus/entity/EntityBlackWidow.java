@@ -54,7 +54,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	@Override
 	protected Entity findPlayerToAttack() {
 		EntityPlayer var1 = worldObj.getClosestVulnerablePlayerToEntity(this, 16.0D);
-		return var1 != null && canEntityBeSeen(var1) ? var1 : null;
+		return var1;
 	}
 
 	protected Entity findEnemyToAttack() {
@@ -156,7 +156,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 
 	@Override
 	protected void attackEntity(Entity par1Entity, float par2) {
-		if (attackTime <= 0 && par2 < 1.0F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY) {
+		if (attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY) {
 			attackTime = 20;
 			attackEntityAsMob(par1Entity);
 		} else if (par2 > 5.0F & par2 < 8.0F)

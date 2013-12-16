@@ -3,6 +3,7 @@ package erebus.tileentity;
 import java.util.Iterator;
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryLargeChest;
@@ -182,18 +183,28 @@ public class TileEntityPetrifiedWoodChest extends TileEntity implements IInvento
 			adjacentChestXNeg = null;
 			adjacentChestZPosition = null;
 
+			if (func_94044_a(xCoord - 1, yCoord, zCoord))
+				adjacentChestXNeg = (TileEntityPetrifiedWoodChest) worldObj.getBlockTileEntity(xCoord - 1, yCoord, zCoord);
+			if (func_94044_a(xCoord + 1, yCoord, zCoord))
+				adjacentChestXPos = (TileEntityPetrifiedWoodChest) worldObj.getBlockTileEntity(xCoord + 1, yCoord, zCoord);
+			if (func_94044_a(xCoord, yCoord, zCoord - 1))
+				adjacentChestZNeg = (TileEntityPetrifiedWoodChest)worldObj.getBlockTileEntity(xCoord, yCoord, zCoord - 1);
+			if (func_94044_a(xCoord, yCoord, zCoord + 1))
+				adjacentChestZPosition = (TileEntityPetrifiedWoodChest)worldObj.getBlockTileEntity(xCoord, yCoord, zCoord + 1);
 			if (adjacentChestZNeg != null)
 				adjacentChestZNeg.func_90009_a(this, 0);
-
 			if (adjacentChestZPosition != null)
 				adjacentChestZPosition.func_90009_a(this, 2);
-
 			if (adjacentChestXPos != null)
 				adjacentChestXPos.func_90009_a(this, 1);
-
 			if (adjacentChestXNeg != null)
 				adjacentChestXNeg.func_90009_a(this, 3);
 		}
+	}
+
+	private boolean func_94044_a(int par1, int par2, int par3) {
+		Block block = Block.blocksList[worldObj.getBlockId(par1, par2, par3)];
+		return block != null && block instanceof BlockPetrifiedChest;
 	}
 
 	@Override

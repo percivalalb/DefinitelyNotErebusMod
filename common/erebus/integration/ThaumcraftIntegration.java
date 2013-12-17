@@ -21,8 +21,11 @@ public class ThaumcraftIntegration implements IModIntegration{
 		registerBlock(ModBlocks.blockAmber, 0, Aspect.STONE,2, Aspect.CRYSTAL,2, Aspect.SLIME,1);
 		registerBlock(ModBlocks.blockAmber, 1, Aspect.STONE,2, Aspect.CRYSTAL,5);
 		registerBlock(ModBlocks.blockAmber, 2, Aspect.STONE,2, Aspect.CRYSTAL,2, Aspect.SLIME,1);
-		
-		// wood, walls, slabs, stairs
+
+		registerBlock(ModBlocks.logErebusGroup1, -1, Aspect.TREE,4, Aspect.PLANT,2, Aspect.ELDRITCH,1, Aspect.CRAFT,3, Aspect.LIFE,1, Aspect.EARTH,1);
+		registerBlock(ModBlocks.logErebusGroup2, -1, Aspect.TREE,4, Aspect.PLANT,2, Aspect.ELDRITCH,1, Aspect.CRAFT,3, Aspect.LIFE,1, Aspect.EARTH,1);
+		// planks, leaves
+		registerBlock(ModBlocks.erebusSapling, -1, Aspect.TREE,1, Aspect.SEED,2, Aspect.LIFE,1);
 		
 		registerBlock(ModBlocks.blockSilk, -1, Aspect.CLOTH,4);
 		registerBlock(ModBlocks.mirBrick, -1, Aspect.STONE,2, Aspect.MIND,1);
@@ -35,7 +38,12 @@ public class ThaumcraftIntegration implements IModIntegration{
 		registerBlock(ModBlocks.ghostSand, -1, Aspect.TRAP,4, Aspect.VOID,3);
 		registerBlock(ModBlocks.hollowLogAcacia, -1, Aspect.SLIME,1, Aspect.TREE,3);
 		
-		// ores
+		registerBlock(ModBlocks.umberOreBlock, BlockErebusOre.dataCoal, Aspect.EARTH,1, Aspect.ENERGY,4, Aspect.FIRE,2, Aspect.STONE,3);
+		registerBlock(ModBlocks.umberOreBlock, BlockErebusOre.dataIron, Aspect.EARTH,1, Aspect.MECHANISM,2, Aspect.CRAFT,2, Aspect.METAL,4, Aspect.STONE,3);
+		registerBlock(ModBlocks.umberOreBlock, BlockErebusOre.dataGold, Aspect.EARTH,1, Aspect.GREED,4, Aspect.METAL,4, Aspect.STONE,3);
+		registerBlock(ModBlocks.umberOreBlock, BlockErebusOre.dataDiamond, Aspect.EARTH,1, Aspect.CRYSTAL,8, Aspect.ORDER,4, Aspect.STONE,3);
+		registerBlock(ModBlocks.umberOreBlock, BlockErebusOre.dataEmerald, Aspect.EARTH,1, Aspect.GREED,16, Aspect.CRYSTAL,8, Aspect.STONE,3);
+		registerBlock(ModBlocks.umberOreBlock, BlockErebusOre.dataLapis, Aspect.EARTH,1, Aspect.GREED,8, Aspect.CRYSTAL,2, Aspect.STONE,3);
 		registerBlock(ModBlocks.umberOreBlock, BlockErebusOre.dataJade, Aspect.GREED,4, Aspect.CRYSTAL,3, Aspect.EARTH,2);
 		registerBlock(ModBlocks.umberOreBlock, BlockErebusOre.dataPetrifiedWood, Aspect.EARTH,1, Aspect.TREE,2, Aspect.STONE,2);
 		registerBlock(ModBlocks.oreFossil, -1, Aspect.DEATH,1, Aspect.BEAST,1, Aspect.EARTH,1);
@@ -44,6 +52,21 @@ public class ThaumcraftIntegration implements IModIntegration{
 		registerBlock(ModBlocks.umberstone, 2, Aspect.EARTH,1, Aspect.STONE,2, Aspect.PLANT,2);
 		registerBlock(ModBlocks.umberstone, 3, Aspect.EARTH,1, Aspect.STONE,2, Aspect.BEAST,1);
 		registerBlock(ModBlocks.umberstone, 4, Aspect.STONE,2);
+		
+		// stairs, slabs, walls
+		for (int i = 0; i < ModBlocks.umbercobbleStairs.length; i++)
+			registerBlock(ModBlocks.umbercobbleStairs[i], -1, Aspect.EARTH,1, Aspect.STONE,2, Aspect.TRAVEL,1);
+		//for (int i = 0; i < ModBlocks.plankStairs.length; i++)
+		//	registerBlock(ModBlocks.plankStairs[i], -1);
+		for (int i = 0; i < ModBlocks.stoneSlabs.length; i++)
+			registerBlock(ModBlocks.stoneSlabs[i], -1, Aspect.EARTH,1, Aspect.STONE,1);
+		//for (int i = 0; i < ModBlocks.plankSlabs.length; i++)
+		//	registerBlock(ModBlocks.plankSlabs[i], -1);
+		registerBlock(ModBlocks.petrifiedWoodStairs, -1, Aspect.TREE,1, Aspect.STONE,1, Aspect.TRAVEL,1);
+		for (int i = 0; i < ModBlocks.petrifiedWoodSlab.length; i++)
+			registerBlock(ModBlocks.petrifiedWoodSlab[i], -1, Aspect.TREE,1, Aspect.STONE,1);
+		//registerBlock(ModBlocks.amberBrickStairs, -1);
+		//registerBlock(ModBlocks.waspNestStairs, -1);
 		
 		registerBlock(ModBlocks.bambooCrop, -1, Aspect.PLANT,2, Aspect.CROP,2, Aspect.CRAFT,1);
 		registerBlock(ModBlocks.bambooCrate, -1, Aspect.PLANT,4, Aspect.VOID,3, Aspect.CRAFT,2);
@@ -62,8 +85,8 @@ public class ThaumcraftIntegration implements IModIntegration{
 		registerBlock(ModBlocks.fiddlehead, -1, Aspect.PLANT,2);
 		registerBlock(ModBlocks.insectRepellent, -1, Aspect.POISON,1, Aspect.AURA,2);
 		registerBlock(ModBlocks.bambooTorch, -1, Aspect.LIGHT,2, Aspect.PLANT,1);
-		registerBlock(ModBlocks.erebusAltar, 0, Aspect.MAGIC,2, Aspect.ELDRITCH,3, Aspect.STONE,2);
-		// lightning altar
+		registerBlock(ModBlocks.erebusAltar, -1, Aspect.MAGIC,2, Aspect.ELDRITCH,3, Aspect.STONE,2);
+		registerBlock(ModBlocks.erebusAltarLightning, -1, Aspect.MAGIC,2, Aspect.ELDRITCH,3, Aspect.STONE,2, Aspect.ENERGY,2);
 		
 		registerItem(ModItems.portalActivator, -1, Aspect.MAGIC,2, Aspect.ELDRITCH,3);
 		

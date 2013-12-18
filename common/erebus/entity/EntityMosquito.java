@@ -1,6 +1,7 @@
 package erebus.entity;
 
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
@@ -61,9 +62,8 @@ public class EntityMosquito extends EntityMob {
 			ridingEntity = null;
 			firstTickCheck = true;
 		}
-		if (consumptionTimer > 0) {
+		if (consumptionTimer > 0)
 			if (--consumptionTimer == 0) setBloodConsumed(0);
-		}
 		if (ridingEntity != null) {
 			suckFloat = 1.0F + mathSucking.swing(1.0F, 0.15F);
 			if (rand.nextInt(10) == 0)
@@ -189,6 +189,10 @@ public class EntityMosquito extends EntityMob {
 	@Override
 	public boolean canDespawn() {
 		return true;
+	}
+
+	@Override
+	protected void fall(float par1) {
 	}
 
 	@Override

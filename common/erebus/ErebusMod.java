@@ -1,16 +1,13 @@
 package erebus;
 
 import java.io.File;
-
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.EnumHelper;
 import net.minecraftforge.common.MinecraftForge;
-
 import com.google.common.reflect.ClassPath;
 import com.google.common.reflect.ClassPath.ClassInfo;
-
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -30,7 +27,6 @@ import erebus.client.sound.EntitySoundEvent;
 import erebus.core.handler.CommonTickHandler;
 import erebus.core.handler.ConfigurationHandler;
 import erebus.core.handler.PlayerTeleportHandler;
-import erebus.core.handler.VersionCheckTickHandler;
 import erebus.core.helper.LogHelper;
 import erebus.core.proxy.CommonProxy;
 import erebus.creativetab.CreativeTabErebus;
@@ -43,7 +39,6 @@ import erebus.lib.Reference;
 import erebus.network.PacketHandler;
 import erebus.recipes.BCFacadeManager;
 import erebus.recipes.RecipeHandler;
-import erebus.utils.VersionHelper;
 import erebus.world.WorldProviderErebus;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, dependencies = Reference.MOD_DEPENDENCIES)
@@ -87,8 +82,8 @@ public class ErebusMod {
 		ConfigurationHandler.loadConfig(new File(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + Reference.MOD_ID + ".cfg"));
 
 		if (ConfigurationHandler.shouldDoVersionCheck) {
-			VersionHelper.execute();
-			TickRegistry.registerTickHandler(new VersionCheckTickHandler(), Side.CLIENT);
+			//VersionHelper.execute();
+			//TickRegistry.registerTickHandler(new VersionCheckTickHandler(), Side.CLIENT);
 		}
 
 		ModBlocks.init();

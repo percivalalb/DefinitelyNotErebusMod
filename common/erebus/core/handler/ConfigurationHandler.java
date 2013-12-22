@@ -2,7 +2,6 @@ package erebus.core.handler;
 
 import java.io.File;
 import java.util.logging.Level;
-
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.FMLLog;
 import erebus.ModBiomes;
@@ -159,8 +158,10 @@ public class ConfigurationHandler {
 			ModItems.reinExoskeletonBodyID = config.getItem("Item ID of Reinforced Exoskeleton Chestplate", 9737).getInt(9737);
 			ModItems.reinExoskeletonLegsID = config.getItem("Item ID of Reinforced Exoskeleton Leggings", 9738).getInt(9738);
 			ModItems.reinExoskeletonBootsID = config.getItem("Item ID of Reinforced Exoskeleton Boots", 9739).getInt(9739);
+			
+			ModItems.spawnEggsID = config.getItem("Item ID of Spawn Eggs", 9743).getInt(9743);
 
-			// latest ID used (please update after adding new items!) >>> 9742
+			// latest ID used (please update after adding new items!) >>> 9743
 
 			/*
 			 * Biomes & misc

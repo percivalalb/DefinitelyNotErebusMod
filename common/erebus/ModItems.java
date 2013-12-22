@@ -31,6 +31,7 @@ import erebus.item.ItemPaxel;
 import erebus.item.ItemPortalActivator;
 import erebus.item.ItemReinExoskeletonArmor;
 import erebus.item.ItemScorpionPincer;
+import erebus.item.ItemSpawnEggs;
 import erebus.item.ItemSprayCan;
 import erebus.item.ItemSprintLeggings;
 import erebus.item.ItemWandOfAnimation;
@@ -88,6 +89,9 @@ public class ModItems {
 	public static Item sprintLeggings;					public static int sprintLeggingsID;
 	public static Item jumpBoots;						public static int jumpBootsID;
 	public static Item armorGlider;						public static int armorGliderID;
+	
+	// CREATIVE
+	public static Item spawnEggs;						public static int spawnEggsID;
 
 	//@formatter:on
 
@@ -138,11 +142,15 @@ public class ModItems {
 		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorREINEXOSPECIAL, 2).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
 		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorREINEXOSPECIAL, 3).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
 		armorGlider = new ItemArmorGlider(armorGliderID, 1).setUnlocalizedName("armorGlider").setTextureName("erebus:armorGlider");
+		
+		spawnEggs = new ItemSpawnEggs(spawnEggsID).setUnlocalizedName("monsterPlacer").setTextureName("spawn_egg");
 
 		// Creative tabs
 		ErebusMod.tabErebusItem.add(portalActivator, erebusMaterials, erebusFood, bucketOfBeetleJuice, turnip, wandOfAnimation);
 		if (ConfigurationHandler.lead || ConfigurationHandler.silver || ConfigurationHandler.copper || ConfigurationHandler.tin || ConfigurationHandler.aluminium)
 			ErebusMod.tabErebusItem.add(metalIngot);
+		ErebusMod.tabErebusItem.add(spawnEggs);
+		
 		ErebusMod.tabErebusGear.add(bamBucket, sprayCan);
 		ErebusMod.tabErebusGear.add(jadeHelmet, jadeBody, jadeLegs, jadeBoots, jadeSword, jadePickaxe, jadeAxe, jadeShovel, jadePaxel, jadeHoe);
 		ErebusMod.tabErebusGear.add(exoskeletonHelmet, exoskeletonBody, exoskeletonLegs, exoskeletonBoots, reinExoskeletonHelmet, reinExoskeletonBody, reinExoskeletonLegs, reinExoskeletonBoots);

@@ -20,25 +20,25 @@ public class GuiColossalCrate extends GuiContainer {
 
 	public static final boolean hasInventoryTweaks = Loader.isModLoaded("inventorytweaks");
 	private static final ResourceLocation GUI_BAMBOO_CRATE = new ResourceLocation("erebus:textures/gui/collosalcrate.png");
-	public TileEntityBambooCrate crate1;
+	/*public TileEntityBambooCrate crate1;
 	public TileEntityBambooCrate crate2;
 	public TileEntityBambooCrate crate3;
 	public TileEntityBambooCrate crate4;
 	public TileEntityBambooCrate crate5;
 	public TileEntityBambooCrate crate6;
 	public TileEntityBambooCrate crate7;
-	public TileEntityBambooCrate crate8;
+	public TileEntityBambooCrate crate8;*/
 
 	public GuiColossalCrate(InventoryPlayer playerInventory, List<TileEntityBambooCrate> list) {
 		super(new ContainerColossalCrate(playerInventory, list));
-		crate1 = list.get(0);
+		/*crate1 = list.get(0);
 		crate2 = list.get(1);
 		crate3 = list.get(2);
 		crate4 = list.get(3);
 		crate5 = list.get(4);
 		crate6 = list.get(5);
 		crate7 = list.get(6);
-		crate8 = list.get(7);
+		crate8 = list.get(7);*/
 		allowUserInput = false;
 		ySize = 220;
 		xSize = 230;

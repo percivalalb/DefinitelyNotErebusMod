@@ -18,9 +18,6 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 	private final int maxDToWood = 8;// this variable has a childish name.
 	// he-he.
 	protected EntityLiving theEntity;
-	protected double entityPosX;
-	protected double entityPosY;
-	protected double entityPosZ;
 	public int WoodX, WoodY, WoodZ = -1;
 	private final double moveSpeed;
 	private int ticksSpent = 0;

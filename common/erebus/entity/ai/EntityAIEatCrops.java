@@ -14,9 +14,6 @@ public class EntityAIEatCrops extends EntityAIBase {
 	private final int maxTicks = 240;// approx 30 tick/sec +- processing delays
 	private final int maxDistance = 8;// higher numbers increase load
 	protected EntityLiving theEntity;
-	protected double entityPosX;
-	protected double entityPosY;
-	protected double entityPosZ;
 	public int PlantX;
 	public int PlantY;
 	public int PlantZ;

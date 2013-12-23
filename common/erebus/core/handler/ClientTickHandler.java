@@ -1,11 +1,14 @@
 package erebus.core.handler;
 
 import java.util.EnumSet;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+
 import org.lwjgl.input.Keyboard;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
@@ -50,12 +53,13 @@ public class ClientTickHandler implements ITickHandler {
 			}
 
 			float ticks = ((Float) tickData[0]).floatValue();
-			
-			float time = TeleportClient.prevTimeInPortal + (TeleportClient.timeInPortal - TeleportClient.prevTimeInPortal) * ticks;
-			
-			if (!(time > 0F && TeleportClient.mc.currentScreen == null) && TeleportClient.mc.thePlayer != null)
-				TeleportClient.mc.thePlayer.removePotionEffect(Potion.confusion.id);
 
+			float time = TeleportClient.prevTimeInPortal + (TeleportClient.timeInPortal - TeleportClient.prevTimeInPortal) * ticks;
+
+			int fixThisShit;
+			if (!(time > 0F && TeleportClient.mc.currentScreen == null) && TeleportClient.mc.thePlayer != null)
+				// TeleportClient.mc.thePlayer.removePotionEffect(Potion.confusion.id);
+				fixThisShit = 0;
 			/*if (TeleportClient.mc.thePlayer != null) {
 				// TODO TeleportErebusClient.renderGameOverlay(1);
 			}*/
@@ -63,9 +67,8 @@ public class ClientTickHandler implements ITickHandler {
 		else if (type.equals(EnumSet.of(TickType.CLIENT))) {
 
 		}
-		else if (type.equals(EnumSet.of(TickType.PLAYER))) {
+		else if (type.equals(EnumSet.of(TickType.PLAYER)))
 			TeleportClient.onTick((EntityPlayer) tickData[0]);
-		}
 	}
 
 	@Override

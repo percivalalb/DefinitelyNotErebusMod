@@ -1,7 +1,6 @@
 package erebus.entity;
 
 import java.util.List;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -13,10 +12,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
-
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 
 public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpawnData {
@@ -231,6 +228,8 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 
 	@Override
 	public void readSpawnData(ByteArrayDataInput data) {
-		WidowSize = data.readFloat();
+		try{ // a safe net... for some reason, it crashes under very special circumstances (wtf bullshit)
+			WidowSize = data.readFloat();
+		}catch(Exception e){}
 	}
 }

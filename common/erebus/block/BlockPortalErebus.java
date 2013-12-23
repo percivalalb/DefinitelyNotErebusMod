@@ -66,7 +66,7 @@ public class BlockPortalErebus extends BlockBreakable {
 			}
 		} else if (side == Side.CLIENT && entity instanceof EntityPlayer) {
 			TeleportClient.setInPortal();
-			((EntityPlayer) entity).addPotionEffect(new PotionEffect(Potion.confusion.id, 80, 0));
+			((EntityPlayer) entity).addPotionEffect(new PotionEffect(Potion.confusion.id, 80, 69));
 		}
 	}
 

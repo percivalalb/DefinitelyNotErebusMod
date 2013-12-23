@@ -9,13 +9,6 @@ import erebus.ErebusMod;
 import erebus.ModItems;
 
 public class RecipePaxel implements IRecipe {
-
-	private final ItemStack result;
-
-	public RecipePaxel() {
-		result = new ItemStack(ModItems.jadePaxel);
-	}
-
 	@Override
 	public boolean matches(InventoryCrafting matrix, World world) {
 		return checkItemInSlot(matrix, 0, ModItems.jadeAxe.itemID) && checkItemInSlot(matrix, 1, ModItems.jadeShovel.itemID) && checkItemInSlot(matrix, 2, ModItems.jadePickaxe.itemID) && checkItemInSlot(matrix, 4, Item.stick.itemID) && checkItemInSlot(matrix, 7, Item.stick.itemID);
@@ -46,6 +39,6 @@ public class RecipePaxel implements IRecipe {
 
 	@Override
 	public ItemStack getRecipeOutput() {
-		return result;
+		return new ItemStack(ModItems.jadePaxel);
 	}
 }

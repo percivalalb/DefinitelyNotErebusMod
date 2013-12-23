@@ -121,7 +121,7 @@ public class RecipeHandler {
 		GameRegistry.addRecipe(new ItemStack(ModItems.compoundGoggles, 1), new Object[] { "XXX", "OXO", "   ", 'O', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataCompoundLens), 'X', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate) });
 		GameRegistry.addRecipe(new ItemStack(ModItems.reinCompoundGoggles, 1), new Object[] { "XXX", "XOX", "   ", 'O', new ItemStack(ModItems.compoundGoggles, 1), 'X', new ItemStack(ModItems.erebusMaterials, 16, ItemErebusMaterial.dataReinforcedPlateExo) });
 		GameRegistry.addRecipe(new ItemStack(ModItems.jumpBoots), new Object[] { "F F", "BXB", "B B", 'F', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataFlyWing), 'B', new ItemStack(ModItems.erebusMaterials, 1, 9), 'X', new ItemStack(ModItems.reinExoskeletonBoots, 1) });
-		GameRegistry.addRecipe(new ItemStack(ModItems.sprintLeggings), new Object[] { "BBB", "BXB", "BBB", 'B', new ItemStack(ModItems.erebusMaterials, 1, 8), 'X', new ItemStack(ModItems.reinExoskeletonLegs, 1) });
+		GameRegistry.addRecipe(new ItemStack(ModItems.sprintLeggings), new Object[] { "BBB", "BXB", "BBB", 'B', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBioVelocity), 'X', new ItemStack(ModItems.reinExoskeletonLegs, 1) });
 		GameRegistry.addRecipe(new ItemStack(ModItems.armorGlider), new Object[] { "   ", "GXG", "   ", 'G', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataGliderWing), 'X', new ItemStack(ModItems.reinExoskeletonBody, 1) });
 
 		GameRegistry.addRecipe(new ItemStack(ModItems.scorpionPincer), new Object[] { "I I", "XIX", "XPX", 'I', Item.ingotIron, 'X', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataReinforcedPlateExo), 'P',
@@ -131,6 +131,8 @@ public class RecipeHandler {
 
 		GameRegistry.addRecipe(new ItemStack(ModItems.waspDagger), new Object[] { "   ", " W ", " S ", 'W', new ItemStack(ModItems.erebusMaterials, 1, 10), 'S', new ItemStack(Item.stick) });
 
+		GameRegistry.addRecipe(new RecipeSprintLeggingsUpgrades());
+		
 		// Red Gem
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.redstone, 2, 0), new Object[] { new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataRedGem) });
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.redGem, 1, 0), new Object[] { "##", "##", '#', new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataRedGem) });

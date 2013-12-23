@@ -1,6 +1,7 @@
 package erebus.entity;
 
 import java.util.List;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -12,15 +13,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import com.google.common.io.ByteArrayDataInput;
-import com.google.common.io.ByteArrayDataOutput;
-import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
-import erebus.core.helper.LogHelper;
 
-public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpawnData {
+public class EntityBlackWidow extends EntityMob {
 
 	private int shouldDo;
-	public float WidowSize = 0.4F + rand.nextFloat();
 	Class[] preys = { EntityFly.class, EntityBotFly.class };
 
 	public EntityBlackWidow(World world) {
@@ -32,7 +28,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		dataWatcher.addObject(16, new Byte((byte) 0));
+		dataWatcher.addObject(16, 0.4F + rand.nextFloat());
 	}
 
 	@Override
@@ -42,11 +38,6 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D); // atkDmg
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.75D); // Movespeed
 		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
-	}
-
-	@Override
-	public boolean getCanSpawnHere() {
-		return super.getCanSpawnHere();
 	}
 
 	@Override
@@ -72,16 +63,16 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 
 	@Override
 	public void onUpdate() {
-		setSize(WidowSize * 2.0F, WidowSize);
-		if (!worldObj.isRemote && WidowSize <= 0.7F) {
+		setSize(getWidowSize() * 2.0F, getWidowSize());
+		if (!worldObj.isRemote && getWidowSize() <= 0.7F) {
 			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(15.0D); // MaxHealth
 			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D); // atkDmg
 		}
-		if (!worldObj.isRemote && WidowSize > 0.7F && WidowSize <= 1.0F) {
+		if (!worldObj.isRemote && getWidowSize() > 0.7F && getWidowSize() <= 1.0F) {
 			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D); // MaxHealth
 			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.5D); // atkDmg
 		}
-		if (!worldObj.isRemote && WidowSize > 1.0F) {
+		if (!worldObj.isRemote && getWidowSize() > 1.0F) {
 			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
 			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D); // atkDmg
 		}
@@ -100,7 +91,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	}
 
 	@Override
-	protected void fall(float par1) {
+	protected void fall(float distance) {
 	}
 
 	@Override
@@ -146,18 +137,18 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2) {
-		super.dropFewItems(par1, par2);
-		if (par1 && (rand.nextInt(3) == 0 || rand.nextInt(1 + par2) > 0))
+	protected void dropFewItems(boolean attackedByPlayer, int looting) {
+		super.dropFewItems(attackedByPlayer, looting);
+		if (attackedByPlayer && (rand.nextInt(3) == 0 || rand.nextInt(1 + looting) > 0))
 			dropItem(Item.spiderEye.itemID, 1);
 	}
 
 	@Override
-	protected void attackEntity(Entity entity, float par2) {
-		if (attackTime <= 0 && par2 < 2.0F && entity.boundingBox.maxY > boundingBox.minY && entity.boundingBox.minY < boundingBox.maxY) {
+	protected void attackEntity(Entity entity, float damage) {
+		if (attackTime <= 0 && damage < 2.0F && entity.boundingBox.maxY > boundingBox.minY && entity.boundingBox.minY < boundingBox.maxY) {
 			attackTime = 20;
 			attackEntityAsMob(entity);
-		} else if (par2 > 5.0F & par2 < 8.0F)
+		} else if (damage > 5.0F & damage < 8.0F)
 			if (attackTime == 0) {
 				++shouldDo;
 				if (shouldDo == 1)
@@ -168,7 +159,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 					attackTime = 100;
 					shouldDo = 0;
 				}
-				if (shouldDo > 1 && WidowSize > 0.7F && entity instanceof EntityPlayer) {
+				if (shouldDo > 1 && getWidowSize() > 0.7F && entity instanceof EntityPlayer) {
 					worldObj.playSoundAtEntity(this, getWebSlingThrowSound(), 1.0F, 1.0F);
 					for (int var10 = 0; var10 < 1; ++var10) {
 						EntityWebSling var11 = new EntityWebSling(worldObj, this);
@@ -203,37 +194,22 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	@Override
 	public void writeEntityToNBT(NBTTagCompound nbt) {
 		super.writeEntityToNBT(nbt);
-		nbt.setFloat("WidowSize", WidowSize);
+		nbt.setFloat("size", getWidowSize());
 
 	}
 
 	@Override
 	public void readEntityFromNBT(NBTTagCompound nbt) {
 		super.readEntityFromNBT(nbt);
-		if (nbt.hasKey("WidowSize"))
-			setWidowSize(nbt.getFloat("WidowSize"));
+		if (nbt.hasKey("size"))
+			setWidowSize(nbt.getFloat("size"));
 	}
 
-	protected void setWidowSize(float par1) {
-		WidowSize = par1;
-		dataWatcher.updateObject(16, Byte.valueOf((byte) 1));
-		worldObj.setEntityState(this, (byte) 16);
+	private void setWidowSize(float size) {
+		dataWatcher.updateObject(16, size);
 	}
 
-	// This is a much easier method to get the required data than custom packet
-	// handling - thanks Forge!
-	@Override
-	public void writeSpawnData(ByteArrayDataOutput data) {
-		data.writeFloat(WidowSize);
-	}
-
-	@Override
-	public void readSpawnData(ByteArrayDataInput data) {
-		try{ // a safe net... for some reason, it crashes under very special circumstances (wtf bullshit)
-			WidowSize = data.readFloat();
-		}catch(Exception e){
-			e.printStackTrace();
-			LogHelper.logSevere("Error reading Black Widow size data!");
-		}
+	public float getWidowSize() {
+		return dataWatcher.getWatchableObjectFloat(16);
 	}
 }

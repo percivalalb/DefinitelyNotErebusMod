@@ -16,51 +16,51 @@ public class ContainerBambooCrate extends Container {
 	private final TileEntityBambooCrate bambooCrateInventory;
 	public int numRows = 3;
 
-	public ContainerBambooCrate(InventoryPlayer par1InventoryPlayer, TileEntityBambooCrate par2TileEntityBambooCrate) {
-		bambooCrateInventory = par2TileEntityBambooCrate;
-		par2TileEntityBambooCrate.openChest();
+	public ContainerBambooCrate(InventoryPlayer playerInventory, TileEntityBambooCrate tile) {
+		bambooCrateInventory = tile;
+		tile.openChest();
 		int i = (numRows - 4) * 18;
 		int j;
 		int k;
 
 		for (j = 0; j < numRows; ++j)
 			for (k = 0; k < 9; ++k)
-				addSlotToContainer(new Slot(par2TileEntityBambooCrate, k + j * 9, 8 + k * 18, 18 + j * 18));
+				addSlotToContainer(new Slot(tile, k + j * 9, 8 + k * 18, 18 + j * 18));
 
 		for (j = 0; j < 3; ++j)
 			for (k = 0; k < 9; ++k)
-				addSlotToContainer(new Slot(par1InventoryPlayer, k + j * 9 + 9, 8 + k * 18, 104 + j * 18 + i));
+				addSlotToContainer(new Slot(playerInventory, k + j * 9 + 9, 8 + k * 18, 104 + j * 18 + i));
 
 		for (j = 0; j < 9; ++j)
-			addSlotToContainer(new Slot(par1InventoryPlayer, j, 8 + j * 18, 162 + i));
+			addSlotToContainer(new Slot(playerInventory, j, 8 + j * 18, 162 + i));
 	}
 
 	@Override
-	public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
-		return bambooCrateInventory.isUseableByPlayer(par1EntityPlayer);
+	public boolean canInteractWith(EntityPlayer player) {
+		return bambooCrateInventory.isUseableByPlayer(player);
 	}
 
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
-		ItemStack itemstack = null;
+	public ItemStack transferStackInSlot(EntityPlayer player, int par2) {
+		ItemStack is = null;
 		Slot slot = (Slot) inventorySlots.get(par2);
 
 		if (slot != null && slot.getHasStack()) {
-			ItemStack itemstack1 = slot.getStack();
-			itemstack = itemstack1.copy();
+			ItemStack is1 = slot.getStack();
+			is = is1.copy();
 
 			if (par2 < numRows * 9) {
-				if (!mergeItemStack(itemstack1, numRows * 9, inventorySlots.size(), true))
+				if (!mergeItemStack(is1, numRows * 9, inventorySlots.size(), true))
 					return null;
-			} else if (!mergeItemStack(itemstack1, 0, numRows * 9, false))
+			} else if (!mergeItemStack(is1, 0, numRows * 9, false))
 				return null;
 
-			if (itemstack1.stackSize == 0)
+			if (is1.stackSize == 0)
 				slot.putStack((ItemStack) null);
 			else
 				slot.onSlotChanged();
 		}
 
-		return itemstack;
+		return is;
 	}
 }

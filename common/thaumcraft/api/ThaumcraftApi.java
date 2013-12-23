@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
@@ -252,7 +251,7 @@ public class ThaumcraftApi {
 				if (ri.getPages()==null) continue;
 				for (int a=0;a<ri.getPages().length;a++) {
 					ResearchPage page = ri.getPages()[a];
-					if (page.recipeOutput!=null && stack !=null && page.recipeOutput.isItemEqual(stack)) {
+					if (page.recipeOutput!=null && page.recipeOutput.isItemEqual(stack)) {
 						keyCache.put(key,new Object[] {ri.key,a});
 						if (ThaumcraftApiHelper.isResearchComplete(player.username, ri.key))
 							return new Object[] {ri.key,a};

@@ -24,16 +24,16 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
 	@Override
 	public ItemStack decrStackSize(int slot, int size) {
 		if (crateContents[slot] != null) {
-			ItemStack itemstack;
+			ItemStack is;
 			if (crateContents[slot].stackSize <= size) {
-				itemstack = crateContents[slot];
+				is = crateContents[slot];
 				crateContents[slot] = null;
-				return itemstack;
+				return is;
 			} else {
-				itemstack = crateContents[slot].splitStack(size);
+				is = crateContents[slot].splitStack(size);
 				if (crateContents[slot].stackSize == 0)
 					crateContents[slot] = null;
-				return itemstack;
+				return is;
 			}
 		} else
 			return null;
@@ -42,19 +42,19 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
 		if (crateContents[slot] != null) {
-			ItemStack itemstack = crateContents[slot];
+			ItemStack is = crateContents[slot];
 			crateContents[slot] = null;
-			return itemstack;
+			return is;
 		} else
 			return null;
 	}
 
 	@Override
-	public void setInventorySlotContents(int slot, ItemStack stack) {
-		crateContents[slot] = stack;
+	public void setInventorySlotContents(int slot, ItemStack is) {
+		crateContents[slot] = is;
 
-		if (stack != null && stack.stackSize > getInventoryStackLimit())
-			stack.stackSize = getInventoryStackLimit();
+		if (is != null && is.stackSize > getInventoryStackLimit())
+			is.stackSize = getInventoryStackLimit();
 	}
 
 	@Override
@@ -117,7 +117,7 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
 	}
 
 	@Override
-	public boolean isItemValidForSlot(int slot, ItemStack stack) {
+	public boolean isItemValidForSlot(int slot, ItemStack is) {
 		return true;
 	}
 }

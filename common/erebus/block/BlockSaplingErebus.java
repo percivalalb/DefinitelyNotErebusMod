@@ -140,11 +140,11 @@ public class BlockSaplingErebus extends BlockSapling {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister iconRegister) {
 		iconArray = new Icon[saplingTypes.length];
 
 		for (int i = 0; i < iconArray.length; i++)
-			iconArray[i] = par1IconRegister.registerIcon("erebus:sapling_" + saplingTypes[i]);
+			iconArray[i] = iconRegister.registerIcon("erebus:sapling_" + saplingTypes[i]);
 	}
 
 	@ForgeSubscribe

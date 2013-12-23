@@ -106,7 +106,7 @@ public class BlockBambooCrop extends Block {
 	}
 
 	@Override
-	public boolean canPlaceBlockOnSide(World world, int x, int y, int z, int side, ItemStack stack) {
+	public boolean canPlaceBlockOnSide(World world, int x, int y, int z, int side, ItemStack is) {
 		Block block = Block.blocksList[world.getBlockId(x, y - 1, z)];
 		if (!(world.getBlockId(x, y - 1, z) == blockID && world.getBlockMetadata(x, y - 1, z) == 0 || block != null && block.isBlockSolidOnSide(world, x, y, z, ForgeDirection.UP)))
 			return false;
@@ -115,7 +115,7 @@ public class BlockBambooCrop extends Block {
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLivingBase, ItemStack is) {
 		Block block = Block.blocksList[world.getBlockId(x, y - 1, z)];
 		if (!(world.getBlockId(x, y - 1, z) == blockID && world.getBlockMetadata(x, y - 1, z) == 0 || block != null && block.isBlockSolidOnSide(world, x, y, z, ForgeDirection.UP)))
 			world.setBlockToAir(x, y, z);

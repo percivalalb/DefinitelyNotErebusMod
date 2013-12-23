@@ -12,7 +12,7 @@ public class SlotFluidContainer extends Slot {
 	}
 
 	@Override
-	public boolean isItemValid(ItemStack stack) {
-		return FluidContainerRegistry.isContainer(stack);
+	public boolean isItemValid(ItemStack is) {
+		return FluidContainerRegistry.isContainer(is);
 	}
 }

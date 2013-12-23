@@ -10,16 +10,16 @@ import net.minecraft.world.World;
 
 public class EntityWebSling extends EntitySnowball {
 
-	public EntityWebSling(World par1World) {
-		super(par1World);
+	public EntityWebSling(World world) {
+		super(world);
 	}
 
-	public EntityWebSling(World par1World, EntityLiving par2EntityLiving) {
-		super(par1World, par2EntityLiving);
+	public EntityWebSling(World world, EntityLiving par2EntityLiving) {
+		super(world, par2EntityLiving);
 	}
 
-	public EntityWebSling(World par1World, double par2, double par4, double par6) {
-		super(par1World, par2, par4, par6);
+	public EntityWebSling(World world, double x, double y, double z) {
+		super(world, x, y, z);
 	}
 
 	protected String getWebSlingSplatSound() {
@@ -27,15 +27,15 @@ public class EntityWebSling extends EntitySnowball {
 	}
 
 	@Override
-	protected void onImpact(MovingObjectPosition par1MovingObjectPosition) {
+	protected void onImpact(MovingObjectPosition mop) {
 		if (!worldObj.isRemote) {
 			int var1 = MathHelper.floor_double(posX);
 			int var2 = MathHelper.floor_double(posY);
 			int var3 = MathHelper.floor_double(posZ);
 
-			if (par1MovingObjectPosition.entityHit != null)
+			if (mop.entityHit != null)
 				worldObj.setBlock(var1, var2, var3, Block.web.blockID);
-			else if (par1MovingObjectPosition.entityHit == null && Block.web.canPlaceBlockAt(worldObj, var1, var2, var3))
+			else if (mop.entityHit == null && Block.web.canPlaceBlockAt(worldObj, var1, var2, var3))
 				worldObj.setBlock(var1, var2, var3, Block.web.blockID);
 			if (!worldObj.isRemote)
 				setDead();
@@ -48,7 +48,7 @@ public class EntityWebSling extends EntitySnowball {
 		return false;
 	}
 
-	public boolean attackEntityFrom(DamageSource par1DamageSource, int par2) {
+	public boolean attackEntityFrom(DamageSource source, int par2) {
 		return false;
 	}
 }

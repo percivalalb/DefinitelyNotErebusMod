@@ -59,12 +59,12 @@ public class BlockFern extends BlockUndergroundFlower implements IShearable{
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister){
-		blockIcon=par1IconRegister.registerIcon("erebus:erebusfern");
+	public void registerIcons(IconRegister iconRegister){
+		blockIcon=iconRegister.registerIcon("erebus:erebusfern");
 	}
 
 	@Override
-	public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int i, int j, int k, int l){
+	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side){
 		return true;
 	}
 }

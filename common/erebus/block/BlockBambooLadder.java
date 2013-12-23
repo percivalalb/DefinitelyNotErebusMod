@@ -4,9 +4,7 @@ import static net.minecraftforge.common.ForgeDirection.EAST;
 import static net.minecraftforge.common.ForgeDirection.NORTH;
 import static net.minecraftforge.common.ForgeDirection.SOUTH;
 import static net.minecraftforge.common.ForgeDirection.WEST;
-
 import java.util.Random;
-
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,7 +23,7 @@ public class BlockBambooLadder extends BlockContainer {
 	}
 
 	@Override
-	public int idDropped(int par1, Random par2Random, int par3) {
+	public int idDropped(int meta, Random rand, int fortune) {
 		return blockID;
 	}
 

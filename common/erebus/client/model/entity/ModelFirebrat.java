@@ -47,8 +47,8 @@ public class ModelFirebrat extends ModelBase {
 	 * Sets the models various rotation angles then renders the model.
 	 */
 	@Override
-	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
+	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
+		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
 		int i;
 
 		for (i = 0; i < firebratBodyParts.length; ++i)
@@ -59,7 +59,7 @@ public class ModelFirebrat extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
 		for (int i = 0; i < firebratBodyParts.length; ++i) {
 			firebratBodyParts[i].rotateAngleY = MathHelper.cos(par3 * 0.9F + i * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + Math.abs(i - 2));
 			firebratBodyParts[i].rotationPointX = MathHelper.sin(par3 * 0.9F + i * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * Math.abs(i - 2);

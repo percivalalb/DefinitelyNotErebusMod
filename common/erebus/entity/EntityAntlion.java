@@ -19,10 +19,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
-
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import erebus.ModBlocks;
 import erebus.ModItems;
@@ -88,7 +86,8 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 		return "erebus:squish";
 	}
 
-	protected void getStepSound(int par1, int par2, int par3, int par4) {
+	@Override
+	protected void playStepSound(int par1, int par2, int par3, int par4) {
 		playSound("mob.spider.step", 0.15F, 1.0F);
 	}
 
@@ -145,16 +144,16 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 	}
 
 	@Override
-	protected void attackEntity(Entity par1Entity, float par2) {
-		super.attackEntity(par1Entity, par2);
+	protected void attackEntity(Entity entity, float par2) {
+		super.attackEntity(entity, par2);
 		if (par2 > 0.0F && par2 < 2.0F)
-			attackEntityAsMob(par1Entity);
+			attackEntityAsMob(entity);
 	}
 
 	@Override
-	public boolean attackEntityAsMob(Entity par1Entity) {
-		if (super.attackEntityAsMob(par1Entity)) {
-			if (par1Entity instanceof EntityLiving) {
+	public boolean attackEntityAsMob(Entity entity) {
+		if (super.attackEntityAsMob(entity)) {
+			if (entity instanceof EntityLiving) {
 				byte var2 = 0;
 				byte var3 = 5;
 				if (worldObj.difficultySetting > 1)
@@ -163,9 +162,9 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 					else if (worldObj.difficultySetting == 3)
 						var2 = 15;
 				if (var2 > 0 && !isBoss())
-					((EntityLiving) par1Entity).addPotionEffect(new PotionEffect(Potion.weakness.id, var2 * 20, 0));
+					((EntityLiving) entity).addPotionEffect(new PotionEffect(Potion.weakness.id, var2 * 20, 0));
 				else if (var2 > 0 && isBoss())
-					((EntityLiving) par1Entity).addPotionEffect(new PotionEffect(Potion.weakness.id, var2 + var3 * 20, 0));
+					((EntityLiving) entity).addPotionEffect(new PotionEffect(Potion.weakness.id, var2 + var3 * 20, 0));
 			}
 			return true;
 		} else

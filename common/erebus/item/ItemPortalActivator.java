@@ -16,7 +16,7 @@ public class ItemPortalActivator extends Item {
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
+	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
 		if (par7 == 0)
 			--par5;
 
@@ -35,22 +35,22 @@ public class ItemPortalActivator extends Item {
 		if (par7 == 5)
 			++par4;
 
-		if (!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack))
+		if (!player.canPlayerEdit(par4, par5, par6, par7, is))
 			return false;
 		else {
-			int var11 = par3World.getBlockId(par4, par5, par6);
+			int var11 = world.getBlockId(par4, par5, par6);
 
 			if (var11 == 0) {
-				par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-				onBlockAdded(par3World, par4, par5, par6);
+				world.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+				onBlockAdded(world, par4, par5, par6);
 			}
 
-			par1ItemStack.damageItem(1, par2EntityPlayer);
+			is.damageItem(1, player);
 			return true;
 		}
 	}
 
-	public void onBlockAdded(World par1World, int par2, int par3, int par4) {
-		ModBlocks.portalErebus.tryToCreatePortal(par1World, par2, par3, par4);
+	public void onBlockAdded(World world, int par2, int par3, int par4) {
+		ModBlocks.portalErebus.tryToCreatePortal(world, par2, par3, par4);
 	}
 }

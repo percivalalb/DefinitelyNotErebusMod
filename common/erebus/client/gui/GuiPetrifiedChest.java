@@ -4,9 +4,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.inventory.ContainerPetrifiedWoodChest;
@@ -20,14 +18,12 @@ public class GuiPetrifiedChest extends GuiContainer {
 
 	private final int inventoryRows;
 
-	public GuiPetrifiedChest(IInventory par1IInventory, IInventory par2IInventory) {
-		super(new ContainerPetrifiedWoodChest(par1IInventory, par2IInventory));
-		upperChestInventory = par1IInventory;
-		lowerChestInventory = par2IInventory;
+	public GuiPetrifiedChest(IInventory upperInventory, IInventory lowerInventory) {
+		super(new ContainerPetrifiedWoodChest(upperInventory, lowerInventory));
+		upperChestInventory = upperInventory;
+		lowerChestInventory = lowerInventory;
 		allowUserInput = false;
-		short short1 = 256;
-		int i = short1 - 83;
-		inventoryRows = par2IInventory.getSizeInventory() / 9;
+		inventoryRows = lowerInventory.getSizeInventory() / 9;
 		ySize = 112 + inventoryRows * 18;
 	}
 

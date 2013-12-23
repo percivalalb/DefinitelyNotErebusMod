@@ -5,40 +5,35 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import erebus.client.model.entity.ModelUmberGolem;
 import erebus.entity.EntityUmberGolem;
 
 
 public class RenderUmberGolem extends RenderLiving
 {
-	protected ModelUmberGolem model;
-
 	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/UmberGolem.png");
 
-	public RenderUmberGolem(ModelUmberGolem par1ModelBase, float par2)
+	public RenderUmberGolem(ModelUmberGolem model, float shadowSize)
 	{
-		super(par1ModelBase, par2);
-		model =(ModelUmberGolem)mainModel;
+		super(model, shadowSize);
 
 	}
-	public void renderUmberGolem(EntityUmberGolem par1EntityUmberGolem, double par2, double par4, double par6, float par8, float par9)
+	public void renderUmberGolem(EntityUmberGolem entityUmberGolem, double par2, double par4, double par6, float par8, float par9)
 	{
-		super.doRenderLiving(par1EntityUmberGolem, par2, par4, par6, par8, par9);
-	}
-
-	@Override
-	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
-	{
-		renderUmberGolem((EntityUmberGolem)par1EntityLiving, par2, par4, par6, par8, par9);
+		super.doRenderLiving(entityUmberGolem, par2, par4, par6, par8, par9);
 	}
 
 	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9)
 	{
-		renderUmberGolem((EntityUmberGolem)par1Entity, par2, par4, par6, par8, par9);
+		renderUmberGolem((EntityUmberGolem)entityLiving, par2, par4, par6, par8, par9);
+	}
+
+	@Override
+	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
+	{
+		renderUmberGolem((EntityUmberGolem)entity, par2, par4, par6, par8, par9);
 	}
 
 	@Override

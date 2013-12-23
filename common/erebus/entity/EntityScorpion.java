@@ -17,8 +17,8 @@ public class EntityScorpion extends EntityMob {
 	private boolean poisoned;
 	public static float stingticks;
 
-	public EntityScorpion(World par1World) {
-		super(par1World);
+	public EntityScorpion(World world) {
+		super(world);
 		stepHeight = 0.1F;
 		isImmuneToFire = true;
 		setSize(2.0F, 2.0F);

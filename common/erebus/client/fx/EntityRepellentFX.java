@@ -11,12 +11,12 @@ public class EntityRepellentFX extends EntityFX {
 
 	float repellentParticleScale;
 
-	public EntityRepellentFX(World par1World, double par2, double par4, double par6, float par8, float par9, float par10) {
-		this(par1World, par2, par4, par6, 1.0F, par8, par9, par10);
+	public EntityRepellentFX(World world, double par2, double par4, double par6, float par8, float par9, float par10) {
+		this(world, par2, par4, par6, 1.0F, par8, par9, par10);
 	}
 
-	public EntityRepellentFX(World par1World, double par2, double par4, double par6, float par8, float par9, float par10, float par11) {
-		super(par1World, par2, par4, par6, 0.0D, 0.0D, 0.0D);
+	public EntityRepellentFX(World world, double par2, double par4, double par6, float par8, float par9, float par10, float par11) {
+		super(world, par2, par4, par6, 0.0D, 0.0D, 0.0D);
 		motionX *= 0.10000000149011612D;
 		motionY *= 0.10000000149011612D;
 		motionZ *= 0.10000000149011612D;
@@ -37,7 +37,7 @@ public class EntityRepellentFX extends EntityFX {
 	}
 
 	@Override
-	public void renderParticle(Tessellator par1Tessellator, float par2, float par3, float par4, float par5, float par6, float par7) {
+	public void renderParticle(Tessellator tessellator, float par2, float par3, float par4, float par5, float par6, float par7) {
 		float f6 = (particleAge + par2) / particleMaxAge * 32.0F;
 
 		if (f6 < 0.0F)
@@ -47,7 +47,7 @@ public class EntityRepellentFX extends EntityFX {
 			f6 = 1.0F;
 
 		particleScale = repellentParticleScale * f6;
-		super.renderParticle(par1Tessellator, par2, par3, par4, par5, par6, par7);
+		super.renderParticle(tessellator, par2, par3, par4, par5, par6, par7);
 	}
 
 	/**

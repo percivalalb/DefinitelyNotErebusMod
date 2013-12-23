@@ -1,16 +1,13 @@
 package erebus.client.gui;
 
 import java.util.List;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -32,8 +29,8 @@ public class GuiColossalCrate extends GuiContainer {
 	public TileEntityBambooCrate crate7;
 	public TileEntityBambooCrate crate8;
 
-	public GuiColossalCrate(InventoryPlayer par1InventoryPlayer, List<TileEntityBambooCrate> list) {
-		super(new ContainerColossalCrate(par1InventoryPlayer, list));
+	public GuiColossalCrate(InventoryPlayer playerInventory, List<TileEntityBambooCrate> list) {
+		super(new ContainerColossalCrate(playerInventory, list));
 		crate1 = list.get(0);
 		crate2 = list.get(1);
 		crate3 = list.get(2);

@@ -12,7 +12,7 @@ public class SlotFuel extends Slot {
 	}
 
 	@Override
-	public boolean isItemValid(ItemStack stack) {
-		return TileEntityFurnace.isItemFuel(stack);
+	public boolean isItemValid(ItemStack is) {
+		return TileEntityFurnace.isItemFuel(is);
 	}
 }

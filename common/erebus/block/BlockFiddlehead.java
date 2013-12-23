@@ -11,7 +11,7 @@ public class BlockFiddlehead extends BlockFern {
 	}
 
 	@Override
-	public void registerIcons(IconRegister par1IconRegister) {
-		blockIcon = par1IconRegister.registerIcon("erebus:Fiddlehead");
+	public void registerIcons(IconRegister iconRegister) {
+		blockIcon = iconRegister.registerIcon("erebus:Fiddlehead");
 	}
 }

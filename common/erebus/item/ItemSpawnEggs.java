@@ -103,9 +103,10 @@ public class ItemSpawnEggs extends ItemMonsterPlacer{
 
 	static class EggData{
 		private final short id;
-		private String entityName;
+		String entityName;
 		private Class<? extends EntityLiving> entityClass;
-		private int primaryColor,secondaryColor;
+		int primaryColor;
+		int secondaryColor;
 		
 		EggData(int id, String entityName, Class<? extends EntityLiving> entityClass, int[] rgbPrimaryColor, int[] rgbSecondaryColor){
 			this(id,entityName,entityClass,(rgbPrimaryColor[0]<<16)|(rgbPrimaryColor[1]<<8)|rgbPrimaryColor[2],(rgbSecondaryColor[0]<<16)|(rgbSecondaryColor[1]<<8)|rgbSecondaryColor[2]);

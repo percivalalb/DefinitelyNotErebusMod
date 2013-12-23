@@ -5,9 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelGlowWorm;
@@ -16,31 +14,31 @@ import erebus.entity.EntityGlowWorm;
 @SideOnly(Side.CLIENT)
 public class RenderGlowWorm extends RenderLiving
 {
-	protected ModelGlowWorm model;
-	private static ResourceLocation Texture;
-	public RenderGlowWorm(ModelGlowWorm par1ModelBase, float par2)
+	private static final ResourceLocation texGlowing = new ResourceLocation("erebus:textures/mob/ModelGlowWormGlow.png"),
+										  texNormal = new ResourceLocation("erebus:textures/mob/ModelGlowWorm.png");
+	
+	public RenderGlowWorm(ModelGlowWorm model, float shadowSize)
 	{
-		super(par1ModelBase, par2);
-		model =(ModelGlowWorm)mainModel;
+		super(model, shadowSize);
 
 		setRenderPassModel(new ModelGlowWorm());
 	}
 
-	public void renderGlowWorm(EntityGlowWorm par1EntityGlowWorm, double par2, double par4, double par6, float par8, float par9)
+	public void renderGlowWorm(EntityGlowWorm entityGlowWorm, double par2, double par4, double par6, float par8, float par9)
 	{
-		super.doRenderLiving(par1EntityGlowWorm, par2, par4, par6, par8, par9);
+		super.doRenderLiving(entityGlowWorm, par2, par4, par6, par8, par9);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
+	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9)
 	{
-		renderGlowWorm((EntityGlowWorm)par1EntityLiving, par2, par4, par6, par8, par9);
+		renderGlowWorm((EntityGlowWorm)entityLiving, par2, par4, par6, par8, par9);
 	}
 
 	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
 	{
-		renderGlowWorm((EntityGlowWorm)par1Entity, par2, par4, par6, par8, par9);
+		renderGlowWorm((EntityGlowWorm)entity, par2, par4, par6, par8, par9);
 	}
 
 	@Override
@@ -62,11 +60,6 @@ public class RenderGlowWorm extends RenderLiving
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		EntityGlowWorm glowworm = (EntityGlowWorm) entity;
-		if (glowworm.isGlowing())
-			Texture = new ResourceLocation("erebus:textures/mob/ModelGlowWormGlow.png");
-		if (!glowworm.isGlowing())
-			Texture = new ResourceLocation("erebus:textures/mob/ModelGlowWorm.png");
-		return Texture;
+		return ((EntityGlowWorm)entity).isGlowing()?texGlowing:texNormal;
 	}
 }

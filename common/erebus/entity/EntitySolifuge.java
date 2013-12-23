@@ -22,8 +22,8 @@ public class EntitySolifuge extends EntityMob {
 
 	protected EntityLiving theEntity;
 
-	public EntitySolifuge(World par1World) {
-		super(par1World);
+	public EntitySolifuge(World world) {
+		super(world);
 		isImmuneToFire = true;
 		setSize(2.0F, 1.0F);
 		tasks.addTask(0, new EntityAISwimming(this));
@@ -114,17 +114,17 @@ public class EntitySolifuge extends EntityMob {
 	}
 
 	@Override
-	protected void attackEntity(Entity par1Entity, float par2) {
+	protected void attackEntity(Entity entity, float par2) {
 		if (par2 > 2.0F && par2 < 6.0F && rand.nextInt(10) == 0) {
 			if (onGround) {
-				double d0 = par1Entity.posX - posX;
-				double d1 = par1Entity.posZ - posZ;
+				double d0 = entity.posX - posX;
+				double d1 = entity.posZ - posZ;
 				float f2 = MathHelper.sqrt_double(d0 * d0 + d1 * d1);
 				motionX = d0 / f2 * 0.5D * 0.900000011920929D + motionX * 0.60000000298023224D;
 				motionZ = d1 / f2 * 0.5D * 0.900000011920929D + motionZ * 0.60000000298023224D;
 				motionY = 0.5000000059604645D;
 			}
 		} else
-			super.attackEntity(par1Entity, par2);
+			super.attackEntity(entity, par2);
 	}
 }

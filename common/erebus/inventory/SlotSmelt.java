@@ -12,7 +12,7 @@ public class SlotSmelt extends Slot {
 	}
 
 	@Override
-	public boolean isItemValid(ItemStack stack) {
-		return FurnaceRecipes.smelting().getSmeltingResult(stack) != null;
+	public boolean isItemValid(ItemStack is) {
+		return FurnaceRecipes.smelting().getSmeltingResult(is) != null;
 	}
 }

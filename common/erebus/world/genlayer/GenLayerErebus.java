@@ -25,7 +25,7 @@ public abstract class GenLayerErebus extends GenLayer {
 	private long chunkSeed;
 	private long baseSeed;
 
-	public static GenLayer[] initializeAllBiomeGenerators(long par0, WorldType par2WorldType) {
+	public static GenLayer[] initializeAllBiomeGenerators(long par0, WorldType worldType) {
 		GenLayerIsland genlayerisland = new GenLayerIsland(1L);
 		GenLayerFuzzyZoom genlayerfuzzyzoom = new GenLayerFuzzyZoom(2000L, genlayerisland);
 		GenLayerAddIsland genlayeraddisland = new GenLayerAddIsland(1L, genlayerfuzzyzoom);
@@ -39,9 +39,9 @@ public abstract class GenLayerErebus extends GenLayer {
 		GenLayerAddMushroomIsland genlayeraddmushroomisland = new GenLayerAddMushroomIsland(5L, genlayeraddisland);
 		byte b0 = 4;
 
-		if (par2WorldType == WorldType.LARGE_BIOMES)
+		if (worldType == WorldType.LARGE_BIOMES)
 			b0 = 6;
-		b0 = getModdedBiomeSize(par2WorldType, b0);
+		b0 = getModdedBiomeSize(worldType, b0);
 
 		GenLayer genlayer = GenLayerZoom.magnify(1000L, genlayeraddmushroomisland, 0);
 		GenLayerRiverInit genlayerriverinit = new GenLayerRiverInit(100L, genlayer);

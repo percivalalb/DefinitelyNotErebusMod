@@ -37,7 +37,7 @@ public class ItemFocusBasic extends Item  implements IWandFocus {
 	}
 	
 	@Override
-	public boolean isItemTool(ItemStack par1ItemStack)
+	public boolean isItemTool(ItemStack is)
     {
         return true;
     }

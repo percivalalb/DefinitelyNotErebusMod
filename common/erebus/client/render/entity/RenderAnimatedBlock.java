@@ -1,16 +1,13 @@
 package erebus.client.render.entity;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
@@ -21,7 +18,6 @@ import erebus.entity.EntityAnimatedBlock;
 @SideOnly(Side.CLIENT)
 public class RenderAnimatedBlock extends RenderLiving {
 
-	private final RenderBlocks blockRenderer = new RenderBlocks();
 	private final ModelBambooCrate bambooCrateModel = new ModelBambooCrate();
 	public RenderAnimatedBlock(ModelAnimatedBlock model, float scale) {
 		super(model, scale);
@@ -72,13 +68,9 @@ public class RenderAnimatedBlock extends RenderLiving {
 			GL11.glRotatef(90.0F, -1.0F, 0.0F, 0.0F);
 	}
 
-	protected float setBlockDeathMaxRotation(EntityAnimatedBlock par1EntityAnimatedBlock) {
-		return 0F;
-	}
-
 	@Override
-	protected float getDeathMaxRotation(EntityLivingBase par1EntityLivingBase) {
-		return setBlockDeathMaxRotation((EntityAnimatedBlock) par1EntityLivingBase);
+	protected float getDeathMaxRotation(EntityLivingBase entityLivingBase) {
+		return 0F;
 	}
 
 	@Override

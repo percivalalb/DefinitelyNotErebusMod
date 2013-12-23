@@ -75,7 +75,7 @@ public class TileEntitySpawner extends TileEntity {
 					double z = zCoord + (worldObj.rand.nextDouble() - worldObj.rand.nextDouble()) * spawnRange;
 					entity.setLocationAndAngles(x, y, z, worldObj.rand.nextFloat() * 360.0F, 0.0F);
 
-					if (entity != null && entity instanceof EntityLiving) {
+					if (entity instanceof EntityLiving) {
 						spawnEntity(entity);
 						worldObj.playAuxSFX(2004, xCoord, yCoord, zCoord, 0);
 						((EntityLiving) entity).spawnExplosionParticle();

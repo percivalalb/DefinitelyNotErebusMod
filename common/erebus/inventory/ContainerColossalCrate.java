@@ -1,9 +1,7 @@
 package erebus.inventory;
 
 import invtweaks.api.container.ChestContainer;
-
 import java.util.List;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -27,8 +25,8 @@ public class ContainerColossalCrate extends Container {
 
 	public int page = 1;
 
-	public ContainerColossalCrate(InventoryPlayer par1InventoryPlayer, List<TileEntityBambooCrate> list) {
-		playerInventory = par1InventoryPlayer;
+	public ContainerColossalCrate(InventoryPlayer playerInventory, List<TileEntityBambooCrate> list) {
+		this.playerInventory = playerInventory;
 		crate1 = list.get(0);
 		crate2 = list.get(1);
 		crate3 = list.get(2);
@@ -70,32 +68,32 @@ public class ContainerColossalCrate extends Container {
 	}
 
 	@Override
-	public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
-		return crate1.isUseableByPlayer(par1EntityPlayer);
+	public boolean canInteractWith(EntityPlayer player) {
+		return crate1.isUseableByPlayer(player);
 	}
 
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
-		ItemStack itemstack = null;
+	public ItemStack transferStackInSlot(EntityPlayer player, int par2) {
+		ItemStack is = null;
 		Slot slot = (Slot) inventorySlots.get(par2);
 
 		if (slot != null && slot.getHasStack()) {
-			ItemStack itemstack1 = slot.getStack();
-			itemstack = itemstack1.copy();
+			ItemStack is1 = slot.getStack();
+			is = is1.copy();
 
 			if (par2 < 72) {
-				if (!mergeItemStack(itemstack1, 72, inventorySlots.size(), true))
+				if (!mergeItemStack(is1, 72, inventorySlots.size(), true))
 					return null;
-			} else if (!mergeItemStack(itemstack1, 0, 72, false))
+			} else if (!mergeItemStack(is1, 0, 72, false))
 				return null;
 
-			if (itemstack1.stackSize == 0)
+			if (is1.stackSize == 0)
 				slot.putStack((ItemStack) null);
 			else
 				slot.onSlotChanged();
 		}
 
-		return itemstack;
+		return is;
 	}
 
 	public int getCrateNumberFromSlotNo(int slot) {

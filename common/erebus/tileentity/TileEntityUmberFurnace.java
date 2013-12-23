@@ -104,26 +104,26 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 		if (inventory[SMELT_SLOT] == null)
 			return false;
 		else {
-			ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(inventory[SMELT_SLOT]);
-			if (itemstack == null)
+			ItemStack is = FurnaceRecipes.smelting().getSmeltingResult(inventory[SMELT_SLOT]);
+			if (is == null)
 				return false;
 			if (inventory[RESULT_SLOT] == null)
 				return true;
-			if (!inventory[RESULT_SLOT].isItemEqual(itemstack))
+			if (!inventory[RESULT_SLOT].isItemEqual(is))
 				return false;
-			int result = inventory[RESULT_SLOT].stackSize + itemstack.stackSize;
-			return result <= getInventoryStackLimit() && result <= itemstack.getMaxStackSize();
+			int result = inventory[RESULT_SLOT].stackSize + is.stackSize;
+			return result <= getInventoryStackLimit() && result <= is.getMaxStackSize();
 		}
 	}
 
 	private void smeltItem() {
 		if (canSmelt()) {
-			ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(inventory[SMELT_SLOT]);
+			ItemStack is = FurnaceRecipes.smelting().getSmeltingResult(inventory[SMELT_SLOT]);
 
 			if (inventory[RESULT_SLOT] == null)
-				inventory[RESULT_SLOT] = itemstack.copy();
-			else if (inventory[RESULT_SLOT].isItemEqual(itemstack))
-				inventory[RESULT_SLOT].stackSize += itemstack.stackSize;
+				inventory[RESULT_SLOT] = is.copy();
+			else if (inventory[RESULT_SLOT].isItemEqual(is))
+				inventory[RESULT_SLOT].stackSize += is.stackSize;
 
 			tank.drain(FluidContainerRegistry.BUCKET_VOLUME / 10, true);
 			--inventory[SMELT_SLOT].stackSize;
@@ -150,16 +150,16 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 	@Override
 	public ItemStack decrStackSize(int slot, int size) {
 		if (inventory[slot] != null) {
-			ItemStack itemstack;
+			ItemStack is;
 			if (inventory[slot].stackSize <= size) {
-				itemstack = inventory[slot];
+				is = inventory[slot];
 				inventory[slot] = null;
-				return itemstack;
+				return is;
 			} else {
-				itemstack = inventory[slot].splitStack(size);
+				is = inventory[slot].splitStack(size);
 				if (inventory[slot].stackSize == 0)
 					inventory[slot] = null;
-				return itemstack;
+				return is;
 			}
 		} else
 			return null;
@@ -168,18 +168,18 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
 		if (inventory[slot] != null) {
-			ItemStack itemstack = inventory[slot];
+			ItemStack is = inventory[slot];
 			inventory[slot] = null;
-			return itemstack;
+			return is;
 		} else
 			return null;
 	}
 
 	@Override
-	public void setInventorySlotContents(int slot, ItemStack stack) {
-		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit())
-			stack.stackSize = getInventoryStackLimit();
+	public void setInventorySlotContents(int slot, ItemStack is) {
+		inventory[slot] = is;
+		if (is != null && is.stackSize > getInventoryStackLimit())
+			is.stackSize = getInventoryStackLimit();
 	}
 
 	@Override
@@ -213,8 +213,8 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 	}
 
 	@Override
-	public boolean isItemValidForSlot(int slot, ItemStack stack) {
-		return slot == BUCKET_SLOT ? FluidContainerRegistry.isContainer(stack) : slot == FUEL_SLOT ? TileEntityFurnace.isItemFuel(stack) : slot == SMELT_SLOT ? FurnaceRecipes.smelting().getSmeltingResult(stack) != null : false;
+	public boolean isItemValidForSlot(int slot, ItemStack is) {
+		return slot == BUCKET_SLOT ? FluidContainerRegistry.isContainer(is) : slot == FUEL_SLOT ? TileEntityFurnace.isItemFuel(is) : slot == SMELT_SLOT ? FurnaceRecipes.smelting().getSmeltingResult(is) != null : false;
 	}
 
 	@Override
@@ -223,13 +223,13 @@ public class TileEntityUmberFurnace extends TileEntity implements IFluidHandler,
 	}
 
 	@Override
-	public boolean canInsertItem(int slot, ItemStack stack, int side) {
-		return isItemValidForSlot(slot, stack);
+	public boolean canInsertItem(int slot, ItemStack is, int side) {
+		return isItemValidForSlot(slot, is);
 	}
 
 	@Override
-	public boolean canExtractItem(int slot, ItemStack stack, int side) {
-		return slot == BUCKET_SLOT ? FluidContainerRegistry.isEmptyContainer(stack) : true;
+	public boolean canExtractItem(int slot, ItemStack is, int side) {
+		return slot == BUCKET_SLOT ? FluidContainerRegistry.isEmptyContainer(is) : true;
 	}
 
 	@Override

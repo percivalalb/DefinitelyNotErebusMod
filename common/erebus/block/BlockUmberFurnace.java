@@ -1,7 +1,6 @@
 package erebus.block;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -71,8 +70,8 @@ public class BlockUmberFurnace extends BlockContainer {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2) {
-		return par1 == 1 ? furnaceIconTop : par1 == 0 ? furnaceIconTop : par1 != par2 ? blockIcon : furnaceIconFront;
+	public Icon getIcon(int side, int meta) {
+		return side == 1 ? furnaceIconTop : side == 0 ? furnaceIconTop : side != meta ? blockIcon : furnaceIconFront;
 	}
 
 	@Override
@@ -156,12 +155,12 @@ public class BlockUmberFurnace extends BlockContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World par1World) {
+	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityUmberFurnace();
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack stack) {
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack is) {
 		int l = MathHelper.floor_double(player.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
 		if (l == 0)
 			world.setBlockMetadataWithNotify(x, y, z, 2, 2);
@@ -181,24 +180,24 @@ public class BlockUmberFurnace extends BlockContainer {
 
 			if (tile != null) {
 				for (int j1 = 0; j1 < tile.getSizeInventory(); ++j1) {
-					ItemStack itemstack = tile.getStackInSlot(j1);
+					ItemStack is = tile.getStackInSlot(j1);
 
-					if (itemstack != null) {
+					if (is != null) {
 						float f = furnaceRand.nextFloat() * 0.8F + 0.1F;
 						float f1 = furnaceRand.nextFloat() * 0.8F + 0.1F;
 						float f2 = furnaceRand.nextFloat() * 0.8F + 0.1F;
 
-						while (itemstack.stackSize > 0) {
+						while (is.stackSize > 0) {
 							int k1 = furnaceRand.nextInt(21) + 10;
 
-							if (k1 > itemstack.stackSize)
-								k1 = itemstack.stackSize;
+							if (k1 > is.stackSize)
+								k1 = is.stackSize;
 
-							itemstack.stackSize -= k1;
-							EntityItem entityitem = new EntityItem(world, x + f, y + f1, z + f2, new ItemStack(itemstack.itemID, k1, itemstack.getItemDamage()));
+							is.stackSize -= k1;
+							EntityItem entityitem = new EntityItem(world, x + f, y + f1, z + f2, new ItemStack(is.itemID, k1, is.getItemDamage()));
 
-							if (itemstack.hasTagCompound())
-								entityitem.getEntityItem().setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
+							if (is.hasTagCompound())
+								entityitem.getEntityItem().setTagCompound((NBTTagCompound) is.getTagCompound().copy());
 
 							float f3 = 0.05F;
 							entityitem.motionX = (float) furnaceRand.nextGaussian() * f3;
@@ -220,13 +219,13 @@ public class BlockUmberFurnace extends BlockContainer {
 	}
 
 	@Override
-	public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5) {
-		return Container.calcRedstoneFromInventory((IInventory) par1World.getBlockTileEntity(par2, par3, par4));
+	public int getComparatorInputOverride(World world, int par2, int par3, int par4, int par5) {
+		return Container.calcRedstoneFromInventory((IInventory) world.getBlockTileEntity(par2, par3, par4));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int idPicked(World par1World, int par2, int par3, int par4) {
+	public int idPicked(World world, int par2, int par3, int par4) {
 		return ModBlocks.umberFurnace.blockID;
 	}
 }

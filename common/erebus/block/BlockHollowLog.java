@@ -2,7 +2,6 @@ package erebus.block;
 
 import java.util.List;
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -74,7 +73,7 @@ public class BlockHollowLog extends Block {
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack stack) {
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack is) {
 		int l = MathHelper.floor_double(player.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
 
 		world.setBlockMetadataWithNotify(x, y, z, l == 0 || l == 2 ? 0 : 1, 2);
@@ -91,17 +90,17 @@ public class BlockHollowLog extends Block {
 	}
 
 	@Override
-	public int idDropped(int par1, Random par2Random, int par3) {
+	public int idDropped(int meta, Random rand, int fortune) {
 		return Item.stick.itemID;
 	}
 
 	@Override
-	public int quantityDropped(Random par1Random) {
-		return 1 + par1Random.nextInt(4);
+	public int quantityDropped(Random rand) {
+		return 1 + rand.nextInt(4);
 	}
 
 	@Override
-	public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int i, int j, int k, int l) {
+	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side) {
 		return true;
 	}
 }

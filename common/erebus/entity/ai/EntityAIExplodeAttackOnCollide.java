@@ -19,14 +19,14 @@ public class EntityAIExplodeAttackOnCollide extends EntityAIBase {
 	private int field_75445_i;
 	private int failedPathFindingPenalty;
 
-	public EntityAIExplodeAttackOnCollide(EntityCreature par1EntityCreature, Class par2Class, double par3, boolean par5) {
-		this(par1EntityCreature, par3, par5);
+	public EntityAIExplodeAttackOnCollide(EntityCreature entityCreature, Class par2Class, double par3, boolean par5) {
+		this(entityCreature, par3, par5);
 		classTarget = par2Class;
 	}
 
-	public EntityAIExplodeAttackOnCollide(EntityCreature par1EntityCreature, double par2, boolean par4) {
-		attacker = par1EntityCreature;
-		worldObj = par1EntityCreature.worldObj;
+	public EntityAIExplodeAttackOnCollide(EntityCreature entityCreature, double par2, boolean par4) {
+		attacker = entityCreature;
+		worldObj = entityCreature.worldObj;
 		speedTowardsTarget = par2;
 		longMemory = par4;
 		setMutexBits(3);

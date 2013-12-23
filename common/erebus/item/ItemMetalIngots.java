@@ -23,8 +23,8 @@ public class ItemMetalIngots extends Item {
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-		return "item.metalIngot" + stack.getItemDamage();
+	public String getUnlocalizedName(ItemStack is) {
+		return "item.metalIngot" + is.getItemDamage();
 	}
 
 	@Override

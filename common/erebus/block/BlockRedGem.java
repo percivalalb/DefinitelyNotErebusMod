@@ -2,7 +2,6 @@ package erebus.block;
 
 import java.util.List;
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -29,12 +28,12 @@ public class BlockRedGem extends Block {
 	}
 
 	@Override
-	public void registerIcons(IconRegister reg) {
+	public void registerIcons(IconRegister iconRegister) {
 		icons = new Icon[iconPaths.length];
 
 		int i = 0;
 		for (String path : iconPaths)
-			icons[i++] = reg.registerIcon("erebus:" + path);
+			icons[i++] = iconRegister.registerIcon("erebus:" + path);
 	}
 
 	@Override
@@ -46,9 +45,9 @@ public class BlockRedGem extends Block {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		par3List.add(new ItemStack(par1, 1, 0));
-		par3List.add(new ItemStack(par1, 1, 1));
+	public void getSubBlocks(int id, CreativeTabs tab, List list) {
+		list.add(new ItemStack(id, 1, 0));
+		list.add(new ItemStack(id, 1, 1));
 	}
 
 	@Override
@@ -91,30 +90,30 @@ public class BlockRedGem extends Block {
 	}
 
 	@Override
-	public void onBlockAdded(World par1World, int par2, int par3, int par4) {
-		int meta = par1World.getBlockMetadata(par2, par3, par4);
-		if (!par1World.isRemote && (meta == 1 || meta == 2))
-			if (meta == 2 && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4))
-				par1World.scheduleBlockUpdate(par2, par3, par4, blockID, 4);
-			else if (meta != 2 && par1World.isBlockIndirectlyGettingPowered(par2, par3, par4))
-				par1World.setBlock(par2, par3, par4, blockID, 2, 2);
+	public void onBlockAdded(World world, int x, int y, int z) {
+		int meta = world.getBlockMetadata(x, y, z);
+		if (!world.isRemote && (meta == 1 || meta == 2))
+			if (meta == 2 && !world.isBlockIndirectlyGettingPowered(x, y, z))
+				world.scheduleBlockUpdate(x, y, z, blockID, 4);
+			else if (meta != 2 && world.isBlockIndirectlyGettingPowered(x, y, z))
+				world.setBlock(x, y, z, blockID, 2, 2);
 	}
 
 	@Override
-	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
-		int meta = par1World.getBlockMetadata(par2, par3, par4);
-		if (!par1World.isRemote && (meta == 1 || meta == 2))
-			if (meta == 2 && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4))
-				par1World.scheduleBlockUpdate(par2, par3, par4, blockID, 4);
-			else if (meta != 2 && par1World.isBlockIndirectlyGettingPowered(par2, par3, par4))
-				par1World.setBlock(par2, par3, par4, blockID, meta + 1, 2);
+	public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID) {
+		int meta = world.getBlockMetadata(x, y, z);
+		if (!world.isRemote && (meta == 1 || meta == 2))
+			if (meta == 2 && !world.isBlockIndirectlyGettingPowered(x, y, z))
+				world.scheduleBlockUpdate(x, y, z, blockID, 4);
+			else if (meta != 2 && world.isBlockIndirectlyGettingPowered(x, y, z))
+				world.setBlock(x, y, z, blockID, meta + 1, 2);
 	}
 
 	@Override
-	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
-		int meta = par1World.getBlockMetadata(par2, par3, par4);
-		if (!par1World.isRemote && (meta == 1 || meta == 2) && meta == 2 && !par1World.isBlockIndirectlyGettingPowered(par2, par3, par4))
-			par1World.setBlock(par2, par3, par4, blockID, 1, 2);
+	public void updateTick(World world, int x, int y, int z, Random rand) {
+		int meta = world.getBlockMetadata(x, y, z);
+		if (!world.isRemote && (meta == 1 || meta == 2) && meta == 2 && !world.isBlockIndirectlyGettingPowered(x, y, z)) // TODO what should it do? lol
+			world.setBlock(x, y, z, blockID, 1, 2);
 	}
 
 	@Override

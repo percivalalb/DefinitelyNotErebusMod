@@ -4,9 +4,7 @@ import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -17,7 +15,7 @@ public class ScorpionPincerItemRenderer implements IItemRenderer {
 	private final ModelScorpionPincer model;
 	public static ResourceLocation texture = new ResourceLocation("erebus:textures/item/ModelScorpionPincer.png");
 
-	public ScorpionPincerItemRenderer(ModelScorpionPincer par1ModelBase, float par2) {
+	public ScorpionPincerItemRenderer() {
 		model = new ModelScorpionPincer();
 	}
 

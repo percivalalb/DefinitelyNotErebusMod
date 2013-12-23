@@ -23,8 +23,8 @@ public class EntityFly extends EntityAmbientCreature {
 	public float wingFloat;
 	AnimationMathHelper mathWings = new AnimationMathHelper();
 
-	public EntityFly(World par1World) {
-		super(par1World);
+	public EntityFly(World world) {
+		super(world);
 		setSize(0.5F, 0.9F);
 		setIsFlyHanging(false);
 	}
@@ -78,7 +78,7 @@ public class EntityFly extends EntityAmbientCreature {
 	}
 
 	@Override
-	protected void collideWithEntity(Entity par1Entity) {
+	protected void collideWithEntity(Entity entity) {
 	}
 
 	public boolean getIsFlyHanging() {
@@ -172,27 +172,27 @@ public class EntityFly extends EntityAmbientCreature {
 	}
 
 	@Override
-	public boolean attackEntityFrom(DamageSource par1DamageSource, float par2) {
+	public boolean attackEntityFrom(DamageSource source, float par2) {
 		if (isEntityInvulnerable())
 			return false;
 		else {
 			if (!worldObj.isRemote && getIsFlyHanging())
 				setIsFlyHanging(false);
 
-			return super.attackEntityFrom(par1DamageSource, par2);
+			return super.attackEntityFrom(source, par2);
 		}
 	}
 
 	@Override
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
-		super.readEntityFromNBT(par1NBTTagCompound);
-		dataWatcher.updateObject(16, Byte.valueOf(par1NBTTagCompound.getByte("BatFlags")));
+	public void readEntityFromNBT(NBTTagCompound nbt) {
+		super.readEntityFromNBT(nbt);
+		dataWatcher.updateObject(16, Byte.valueOf(nbt.getByte("BatFlags")));
 	}
 
 	@Override
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
-		super.writeEntityToNBT(par1NBTTagCompound);
-		par1NBTTagCompound.setByte("BatFlags", dataWatcher.getWatchableObjectByte(16));
+	public void writeEntityToNBT(NBTTagCompound nbt) {
+		super.writeEntityToNBT(nbt);
+		nbt.setByte("BatFlags", dataWatcher.getWatchableObjectByte(16));
 	}
 
 	@Override

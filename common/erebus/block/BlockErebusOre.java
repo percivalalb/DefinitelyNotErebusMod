@@ -2,7 +2,6 @@ package erebus.block;
 
 import java.util.List;
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -113,18 +112,19 @@ public class BlockErebusOre extends Block {
 	}
 
 	@Override
-	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int par5, float par6, int par7) {
-		super.dropBlockAsItemWithChance(world, x, y, z, par5, par6, par7);
-		int meta = world.getBlockMetadata(x, y, z);
+	public void dropBlockAsItemWithChance(World world, int x, int y, int z, int meta, float chance, int fortune) {
+		super.dropBlockAsItemWithChance(world, x, y, z, meta, chance, fortune);
 
-		if (idDropped(par5, world.rand, par7) != blockID) {
+		if (idDropped(meta, world.rand, fortune) != blockID) {
 			int j1 = 0;
 
 			switch (meta) {
 				case 0:
 					j1 = MathHelper.getRandomIntegerInRange(world.rand, 0, 2);
+					break;
 				case 3:
 					j1 = MathHelper.getRandomIntegerInRange(world.rand, 2, 5);
+					break;
 				case 4:
 				case 5:
 				case 6:

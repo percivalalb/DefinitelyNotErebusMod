@@ -28,13 +28,13 @@ public class ItemArmorGlider extends ItemArmor {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
+	public String getArmorTexture(ItemStack is, Entity entity, int slot, int layer) {
 		return "erebus:textures/armor/ModelArmorGlider.png";
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public ModelBiped getArmorModel(EntityLivingBase player, ItemStack stack, int slot) {
+	public ModelBiped getArmorModel(EntityLivingBase player, ItemStack is, int slot) {
 		ModelArmorGlider model = new ModelArmorGlider();
 		model.bipedHead.showModel = false;
 		model.bipedHeadwear.showModel = false;
@@ -43,8 +43,8 @@ public class ItemArmorGlider extends ItemArmor {
 		model.bipedLeftArm.showModel = false;
 		model.bipedRightLeg.showModel = false;
 		model.bipedLeftLeg.showModel = false;
-		if (stack.hasTagCompound())
-			model.isGliding = stack.getTagCompound().getBoolean("isGliding");
+		if (is.hasTagCompound())
+			model.isGliding = is.getTagCompound().getBoolean("isGliding");
 
 		return model;
 	}
@@ -65,10 +65,10 @@ public class ItemArmorGlider extends ItemArmor {
 	}
 
 	@Override
-	public void onCreated(ItemStack stack, World world, EntityPlayer player) {
-		if (!stack.hasTagCompound())
-			stack.setTagCompound(new NBTTagCompound());
-		stack.stackTagCompound.setBoolean("isGliding", false);
+	public void onCreated(ItemStack is, World world, EntityPlayer player) {
+		if (!is.hasTagCompound())
+			is.setTagCompound(new NBTTagCompound());
+		is.stackTagCompound.setBoolean("isGliding", false);
 	}
 
 	@ForgeSubscribe

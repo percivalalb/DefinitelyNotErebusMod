@@ -6,9 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -20,7 +18,7 @@ public class WaspDaggerItemRenderer extends Render implements IItemRenderer {
 	private final ModelWaspDagger ModelWaspDagger;
 	public static ResourceLocation texture = new ResourceLocation("erebus:textures/item/ModelWaspSword.png");
 
-	public WaspDaggerItemRenderer(ModelWaspDagger par1ModelBase, float par2) {
+	public WaspDaggerItemRenderer() {
 		ModelWaspDagger = new ModelWaspDagger();
 	}
 
@@ -115,16 +113,16 @@ public class WaspDaggerItemRenderer extends Render implements IItemRenderer {
 	}
 
 	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
-		renderWaspDagger((EntityWaspDagger) par1Entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
+		renderWaspDagger((EntityWaspDagger) entity, par2, par4, par6, par8, par9);
 	}
 
-	public void renderWaspDagger(EntityWaspDagger par1EntityWaspDagger, double par2, double par4, double par6, float par8, float par9) {
+	public void renderWaspDagger(EntityWaspDagger entityWaspDagger, double par2, double par4, double par6, float par8, float par9) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) par2, (float) par4, (float) par6);
-		GL11.glRotatef(par1EntityWaspDagger.prevRotationYaw + (par1EntityWaspDagger.rotationYaw - par1EntityWaspDagger.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(par1EntityWaspDagger.prevRotationPitch + (par1EntityWaspDagger.rotationPitch - par1EntityWaspDagger.prevRotationPitch) * par9 - EntityWaspDagger.rotationticks, 0.0F, 0.0F, 1.0F);
+		GL11.glRotatef(entityWaspDagger.prevRotationYaw + (entityWaspDagger.rotationYaw - entityWaspDagger.prevRotationYaw) * par9 - 90.0F, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(entityWaspDagger.prevRotationPitch + (entityWaspDagger.rotationPitch - entityWaspDagger.prevRotationPitch) * par9 - EntityWaspDagger.rotationticks, 0.0F, 0.0F, 1.0F);
 		GL11.glScaled(0.4F, 0.4F, 0.4F);
 		ModelWaspDagger.render(0.0625F);
 		GL11.glPopMatrix();

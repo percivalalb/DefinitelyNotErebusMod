@@ -14,8 +14,8 @@ import net.minecraft.world.World;
 
 public class EntityErebusSpider extends EntityMob
 {
-	public EntityErebusSpider(World par1World) {
-		super(par1World);
+	public EntityErebusSpider(World world) {
+		super(world);
 		setSize(1.75F, 1.125F);
 	}
 
@@ -72,22 +72,22 @@ public class EntityErebusSpider extends EntityMob
 	}
 
 	@Override
-	protected void attackEntity(Entity par1Entity, float par2) {
+	protected void attackEntity(Entity entity, float par2) {
 		float f1 = getBrightness(1.0F);
 
 		if (f1 > 0.5F && rand.nextInt(100) == 0)
 			entityToAttack = null;
 		else if (par2 > 2.0F && par2 < 6.0F && rand.nextInt(10) == 0) {
 			if (onGround) {
-				double d0 = par1Entity.posX - posX;
-				double d1 = par1Entity.posZ - posZ;
+				double d0 = entity.posX - posX;
+				double d1 = entity.posZ - posZ;
 				float f2 = MathHelper.sqrt_double(d0 * d0 + d1 * d1);
 				motionX = d0 / f2 * 0.5D * 0.800000011920929D + motionX * 0.20000000298023224D;
 				motionZ = d1 / f2 * 0.5D * 0.800000011920929D + motionZ * 0.20000000298023224D;
 				motionY = 0.4000000059604645D;
 			}
 		} else
-			super.attackEntity(par1Entity, par2);
+			super.attackEntity(entity, par2);
 	}
 
 	@Override
@@ -138,9 +138,9 @@ public class EntityErebusSpider extends EntityMob
 	}
 
 	@Override
-	public EntityLivingData onSpawnWithEgg(EntityLivingData par1EntityLivingData)
+	public EntityLivingData onSpawnWithEgg(EntityLivingData entityLivingData)
 	{
-		Object par1EntityLivingData1 = super.onSpawnWithEgg(par1EntityLivingData);
+		Object entityLivingData1 = super.onSpawnWithEgg(entityLivingData);
 
 		if (worldObj.rand.nextInt(100) == 0) {
 			EntityErebusSpiderMoney entityspidermoney = new EntityErebusSpiderMoney(worldObj);
@@ -150,20 +150,20 @@ public class EntityErebusSpider extends EntityMob
 			entityspidermoney.mountEntity(this);
 		}
 
-		if (par1EntityLivingData1 == null) {
-			par1EntityLivingData1 = new SpiderEffectsGroupData();
+		if (entityLivingData1 == null) {
+			entityLivingData1 = new SpiderEffectsGroupData();
 
 			if (worldObj.difficultySetting > 2 && worldObj.rand.nextFloat() < 0.1F * worldObj.getLocationTensionFactor(posX, posY, posZ))
-				((SpiderEffectsGroupData) par1EntityLivingData1).func_111104_a(worldObj.rand);
+				((SpiderEffectsGroupData) entityLivingData1).func_111104_a(worldObj.rand);
 		}
 
-		if (par1EntityLivingData1 instanceof SpiderEffectsGroupData) {
-			int i = ((SpiderEffectsGroupData) par1EntityLivingData1).field_111105_a;
+		if (entityLivingData1 instanceof SpiderEffectsGroupData) {
+			int i = ((SpiderEffectsGroupData) entityLivingData1).field_111105_a;
 
 			if (i > 0 && Potion.potionTypes[i] != null)
 				addPotionEffect(new PotionEffect(i, Integer.MAX_VALUE));
 		}
 
-		return (EntityLivingData) par1EntityLivingData1;
+		return (EntityLivingData) entityLivingData1;
 	}
 }

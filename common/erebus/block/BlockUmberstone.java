@@ -2,7 +2,6 @@ package erebus.block;
 
 import java.util.List;
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -41,9 +40,9 @@ public class BlockUmberstone extends Block {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubBlocks(int id, CreativeTabs tab, List list) {
 		for (int a = 0; a < icons.length; a++)
-			par3List.add(new ItemStack(par1, 1, a));
+			list.add(new ItemStack(id, 1, a));
 	}
 
 	@Override
@@ -60,7 +59,7 @@ public class BlockUmberstone extends Block {
 	}
 
 	@Override
-	public int idDropped(int metadata, Random random, int fortune) {
+	public int idDropped(int meta, Random random, int fortune) {
 		return blockID;
 	}
 

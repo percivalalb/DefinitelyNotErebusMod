@@ -21,12 +21,10 @@ import erebus.item.ItemErebusMaterial;
 
 public class EntityBombardierBeetle extends EntityMob{
 	private final float explosionRadius = 1;
-	private final double moveSpeed;
 	private int collideTick;
 
-	public EntityBombardierBeetle(World par1World) {
-		super(par1World);
-		moveSpeed = 1.0D;
+	public EntityBombardierBeetle(World world) {
+		super(world);
 		stepHeight = 1.0F;
 		setSize(2.0F, 1.3F);
 		tasks.addTask(0, new EntityAISwimming(this));

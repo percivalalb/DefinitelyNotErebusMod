@@ -2,7 +2,6 @@ package erebus.block;
 
 import java.util.List;
 import java.util.Random;
-
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -51,7 +50,7 @@ public class BlockSlabPlanksErebus extends BlockHalfSlab {
 
 	@Override
 	public String getFullSlabName(int meta) {
-		return super.getUnlocalizedName() + "." + slabTypes[getPlankMeta(meta)];
+		return super.getUnlocalizedName() + "." + slabTypes[slabGroup][getPlankMeta(meta)];
 	}
 
 	private int getPlankMeta(int meta) {

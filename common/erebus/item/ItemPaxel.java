@@ -25,16 +25,16 @@ public class ItemPaxel extends ItemTool {
 	}
 
 	@Override
-	public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+	public float getStrVsBlock(ItemStack is, Block par2Block) {
 		float oldSpeedPickaxe = ((ItemTool) Item.pickaxeIron).efficiencyOnProperMaterial;
 		float oldSpeedAxe = ((ItemTool) Item.axeIron).efficiencyOnProperMaterial;
 		float oldSpeedShovel = ((ItemTool) Item.shovelIron).efficiencyOnProperMaterial;
 		((ItemTool) Item.pickaxeIron).efficiencyOnProperMaterial = efficiencyOnProperMaterial;
 		((ItemTool) Item.axeIron).efficiencyOnProperMaterial = efficiencyOnProperMaterial;
 		((ItemTool) Item.shovelIron).efficiencyOnProperMaterial = efficiencyOnProperMaterial;
-		float pickaxeSpeed = Item.pickaxeIron.getStrVsBlock(par1ItemStack, par2Block);
-		float axeSpeed = Item.axeIron.getStrVsBlock(par1ItemStack, par2Block);
-		float shovelSpeed = Item.shovelIron.getStrVsBlock(par1ItemStack, par2Block);
+		float pickaxeSpeed = Item.pickaxeIron.getStrVsBlock(is, par2Block);
+		float axeSpeed = Item.axeIron.getStrVsBlock(is, par2Block);
+		float shovelSpeed = Item.shovelIron.getStrVsBlock(is, par2Block);
 		((ItemTool) Item.pickaxeIron).efficiencyOnProperMaterial = oldSpeedPickaxe;
 		((ItemTool) Item.axeIron).efficiencyOnProperMaterial = oldSpeedAxe;
 		((ItemTool) Item.shovelIron).efficiencyOnProperMaterial = oldSpeedShovel;
@@ -48,10 +48,10 @@ public class ItemPaxel extends ItemTool {
 	}
 
 	@Override
-	public float getStrVsBlock(ItemStack stack, Block block, int meta) {
+	public float getStrVsBlock(ItemStack is, Block block, int meta) {
 		if (isToolEffective(block, meta))
 			return efficiencyOnProperMaterial;
-		return getStrVsBlock(stack, block);
+		return getStrVsBlock(is, block);
 	}
 
 	public static boolean isToolEffective(Block block, int metadata) {

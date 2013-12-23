@@ -7,35 +7,32 @@ import net.minecraft.util.ResourceLocation;
 import erebus.client.model.entity.ModelAnimatedChest;
 import erebus.entity.EntityAnimatedChest;
 
-
 public class RenderAnimatedChest extends RenderLiving
 {
-	protected ModelAnimatedChest model;
-
 	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelAnimatedChest.png");
 
-	public RenderAnimatedChest(ModelAnimatedChest par1ModelBase, float par2)
+	public RenderAnimatedChest(ModelAnimatedChest model, float shadowSize)
 	{
-		super(par1ModelBase, par2);
-		model = (ModelAnimatedChest) mainModel;
+		super(model, shadowSize);
 	}
 
-	public void renderAnimatedChest(EntityAnimatedChest par1EntityAnimatedChest, double par2, double par4, double par6, float par8, float par9)
+	public void renderAnimatedChest(EntityAnimatedChest entityAnimatedChest, double x, double y, double z, float rotationYaw, float partialTickTime)
 	{
-		super.doRenderLiving(par1EntityAnimatedChest, par2, par4, par6, par8, par9);
-	}
-
-	@Override
-	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
-	{
-		renderAnimatedChest((EntityAnimatedChest)par1EntityLiving, par2, par4, par6, par8, par9);
+		super.doRenderLiving(entityAnimatedChest, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime)
 	{
-		renderAnimatedChest((EntityAnimatedChest)par1Entity, par2, par4, par6, par8, par9);
+		renderAnimatedChest((EntityAnimatedChest)entityLiving, x, y, z, rotationYaw, partialTickTime);
 	}
+
+	@Override
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime)
+	{
+		renderAnimatedChest((EntityAnimatedChest)entity, x, y, z, rotationYaw, partialTickTime);
+	}
+	
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		return Texture;

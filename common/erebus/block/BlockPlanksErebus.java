@@ -43,10 +43,10 @@ public class BlockPlanksErebus extends Block {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister iconRegister) {
 		iconArray = new Icon[plankTypes.length];
 
 		for (int i = 0; i < iconArray.length; i++)
-			iconArray[i] = par1IconRegister.registerIcon("erebus:wood_" + plankTypes[i]);
+			iconArray[i] = iconRegister.registerIcon("erebus:wood_" + plankTypes[i]);
 	}
 }

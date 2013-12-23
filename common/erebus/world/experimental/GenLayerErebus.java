@@ -9,7 +9,7 @@ public abstract class GenLayerErebus extends GenLayer {
 		super(par1);
 	}
 
-	public static GenLayerErebus[] initializeAllBiomeGenerators(long par0, WorldType par2WorldType) {
+	public static GenLayerErebus[] initializeAllBiomeGenerators(long par0, WorldType worldType) {
 		GenLayerErebusIsland var3 = new GenLayerErebusIsland(1L);
 		GenLayerErebusFuzzyZoom var9 = new GenLayerErebusFuzzyZoom(2000L, var3);
 		GenLayerErebusAddIsland var10 = new GenLayerErebusAddIsland(1L, var9);
@@ -23,9 +23,9 @@ public abstract class GenLayerErebus extends GenLayer {
 		GenLayerErebusAddMushroomIsland var16 = new GenLayerErebusAddMushroomIsland(5L, var10);
 		byte var4 = 4;
 
-		if (par2WorldType == WorldType.LARGE_BIOMES)
+		if (worldType == WorldType.LARGE_BIOMES)
 			var4 = 6;
-		var4 = getModdedBiomeSize(par2WorldType, var4);
+		var4 = getModdedBiomeSize(worldType, var4);
 
 		GenLayerErebus var5 = GenLayerErebusZoom.func_75915_a(1000L, var16, 0);
 		GenLayerErebusRiverInit var13 = new GenLayerErebusRiverInit(100L, var5);
@@ -33,7 +33,7 @@ public abstract class GenLayerErebus extends GenLayer {
 		GenLayerErebusRiver var14 = new GenLayerErebusRiver(1L, var5);
 		GenLayerErebusSmooth var15 = new GenLayerErebusSmooth(1000L, var14);
 		GenLayerErebus var6 = GenLayerErebusZoom.func_75915_a(1000L, var16, 0);
-		GenLayerErebusBiome var17 = new GenLayerErebusBiome(200L, var6, par2WorldType);
+		GenLayerErebusBiome var17 = new GenLayerErebusBiome(200L, var6, worldType);
 		var6 = GenLayerErebusZoom.func_75915_a(1000L, var17, 2);
 		Object var18 = new GenLayerErebusHills(1000L, var6);
 

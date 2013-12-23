@@ -38,8 +38,8 @@ public class EntityMosquito extends EntityMob {
 	public int hitInterval = 30;
 	Class[] preys = { EntityPig.class, EntityCow.class, EntityBeetleLarva.class };
 
-	public EntityMosquito(World par1World) {
-		super(par1World);
+	public EntityMosquito(World world) {
+		super(world);
 		drainage = 0;
 		entityToAttack = null;
 		setSize(1.0F, 1.8F);
@@ -167,11 +167,11 @@ public class EntityMosquito extends EntityMob {
 	}
 
 	@Override
-	public boolean attackEntityFrom(DamageSource par1DamageSource, float par2) {
+	public boolean attackEntityFrom(DamageSource source, float par2) {
 		if (isEntityInvulnerable())
 			return false;
-		else if (super.attackEntityFrom(par1DamageSource, par2)) {
-			Entity var3 = par1DamageSource.getEntity();
+		else if (super.attackEntityFrom(source, par2)) {
+			Entity var3 = source.getEntity();
 			if (riddenByEntity != var3 && ridingEntity != var3) {
 				if (var3 != this)
 					entityToAttack = (EntityLivingBase) var3;

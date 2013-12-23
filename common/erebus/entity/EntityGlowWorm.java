@@ -24,9 +24,9 @@ public class EntityGlowWorm extends EntityCreature
 	public int lastY;
 	public int lastZ;
 
-	public EntityGlowWorm(World par1World)
+	public EntityGlowWorm(World world)
 	{
-		super(par1World);
+		super(world);
 		stepHeight = 0.0F;
 		isImmuneToFire = true;
 		setSize(1.5F, 0.5F);

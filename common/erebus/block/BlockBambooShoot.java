@@ -48,8 +48,8 @@ public class BlockBambooShoot extends BlockFlower implements IPlantable {
 		int perfectWaterAmount=(int)Math.floor(35D*(Math.pow(biome.temperature+1D,2)/4D)*(biome.canSpawnLightningBolt()?1D:1.75D));
 		double waterFound=0D;
 		
-		for(int a=0,xx,yy,zz; a<150; a++){
-			if (world.getBlockMaterial(xx=x+world.rand.nextInt(10)-5,yy=bottomY+world.rand.nextInt(4)-2,zz=z+world.rand.nextInt(10)-5)==Material.water){
+		for(int a=0,xx,zz; a<150; a++){
+			if (world.getBlockMaterial(xx=x+world.rand.nextInt(10)-5,bottomY+world.rand.nextInt(4)-2,zz=z+world.rand.nextInt(10)-5)==Material.water){
 				waterFound+=8D-Math.sqrt(Math.pow(xx-x,2)+Math.pow(zz-z,2));
 			}
 		}

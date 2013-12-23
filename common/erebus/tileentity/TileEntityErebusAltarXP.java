@@ -58,8 +58,8 @@ public class TileEntityErebusAltarXP extends TileEntity {
 		spawnTicks = i;
 	}
 
-	public void setUses(int stackSize) {
-		uses = stackSize;
+	public void setUses(int isSize) {
+		uses = isSize;
 	}
 
 	public int getUses() {

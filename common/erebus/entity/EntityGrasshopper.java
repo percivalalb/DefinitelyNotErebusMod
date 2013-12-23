@@ -29,8 +29,8 @@ public class EntityGrasshopper extends EntityCreature {
 	public boolean isEating;
 	public boolean canJump = true;
 
-	public EntityGrasshopper(World par1World) {
-		super(par1World);
+	public EntityGrasshopper(World world) {
+		super(world);
 		stepHeight = 1.0F;
 		jumpMovementFactor = 0.1F;
 		setSize(1.3F, 0.5F);
@@ -164,7 +164,7 @@ public class EntityGrasshopper extends EntityCreature {
 			posZ,
 			64D,
 			dimension,
-			PacketHandler.buildPacket(2, PacketParticle.GRASSHOPPER_EAT, entityId, aiEatCrops.PlantX, aiEatCrops.PlantY, aiEatCrops.PlantZ, worldObj.getBlockId(aiEatCrops.PlantX, aiEatCrops.PlantY, aiEatCrops.PlantZ),
+			PacketHandler.buildPacket(2, PacketParticle.BEETLE_LARVA_AND_GRASSHOPPER_EAT, entityId, aiEatCrops.PlantX, aiEatCrops.PlantY, aiEatCrops.PlantZ, worldObj.getBlockId(aiEatCrops.PlantX, aiEatCrops.PlantY, aiEatCrops.PlantZ),
 			Byte.valueOf((byte) worldObj.getBlockMetadata(aiEatCrops.PlantX, aiEatCrops.PlantY, aiEatCrops.PlantZ))));
 	}
 

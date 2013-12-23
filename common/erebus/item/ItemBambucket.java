@@ -1,7 +1,6 @@
 package erebus.item;
 
 import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -32,45 +31,45 @@ public class ItemBambucket extends Item {
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		if (stack.getItemDamage() == 2) {
-			player.setItemInUse(stack, getMaxItemUseDuration(stack));
-			return stack;
+	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
+		if (is.getItemDamage() == 2) {
+			player.setItemInUse(is, getMaxItemUseDuration(is));
+			return is;
 		}
 
-		boolean flag = stack.getItemDamage() == 0;
+		boolean flag = is.getItemDamage() == 0;
 		MovingObjectPosition movingobjectposition = getMovingObjectPositionFromPlayer(world, player, flag);
 
 		if (movingobjectposition == null)
-			return stack;
+			return is;
 		else if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE) {
 			int i = movingobjectposition.blockX;
 			int j = movingobjectposition.blockY;
 			int k = movingobjectposition.blockZ;
 
 			if (!world.canMineBlock(player, i, j, k))
-				return stack;
+				return is;
 
-			if (stack.getItemDamage() == 0) {
-				if (!player.canPlayerEdit(i, j, k, movingobjectposition.sideHit, stack))
-					return stack;
+			if (is.getItemDamage() == 0) {
+				if (!player.canPlayerEdit(i, j, k, movingobjectposition.sideHit, is))
+					return is;
 
 				if (world.getBlockMaterial(i, j, k) == Material.water && world.getBlockMetadata(i, j, k) == 0) {
 					world.setBlockToAir(i, j, k);
 
 					if (player.capabilities.isCreativeMode)
-						return stack;
+						return is;
 
-					if (--stack.stackSize <= 0)
+					if (--is.stackSize <= 0)
 						return new ItemStack(itemID, 1, 1);
 
 					if (!player.inventory.addItemStackToInventory(new ItemStack(itemID, 1, 1)))
 						player.dropPlayerItem(new ItemStack(itemID, 1, 1));
 
-					return stack;
+					return is;
 				}
 			} else {
-				if (stack.getItemDamage() < 0)
+				if (is.getItemDamage() < 0)
 					return new ItemStack(itemID, 1, 0);
 
 				if (movingobjectposition.sideHit == 0)
@@ -91,66 +90,66 @@ public class ItemBambucket extends Item {
 				if (movingobjectposition.sideHit == 5)
 					++i;
 
-				if (!player.canPlayerEdit(i, j, k, movingobjectposition.sideHit, stack))
-					return stack;
+				if (!player.canPlayerEdit(i, j, k, movingobjectposition.sideHit, is))
+					return is;
 
-				if (tryPlaceContainedLiquid(world, i, j, k, stack) && !player.capabilities.isCreativeMode)
-					if (--stack.stackSize <= 0)
-						return stack;
+				if (tryPlaceContainedLiquid(world, i, j, k, is) && !player.capabilities.isCreativeMode)
+					if (--is.stackSize <= 0)
+						return is;
 			}
 		}
-		return stack;
+		return is;
 	}
 
 	@Override
-	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
-		if (stack.getItemDamage() == 2) {
+	public ItemStack onEaten(ItemStack is, World world, EntityPlayer player) {
+		if (is.getItemDamage() == 2) {
 			if (!player.capabilities.isCreativeMode)
-				stack.stackSize--;
+				is.stackSize--;
 
 			if (!world.isRemote)
 				player.curePotionEffects(new ItemStack(Item.bucketMilk));
 
 			player.inventory.addItemStackToInventory(new ItemStack(ModItems.bamBucket));
-			return stack;
+			return is;
 		} else
-			return super.onEaten(stack, world, player);
+			return super.onEaten(is, world, player);
 	}
 
-	public boolean tryPlaceContainedLiquid(World par1World, int par2, int par3, int par4, ItemStack item) {
-		Material material = par1World.getBlockMaterial(par2, par3, par4);
+	public boolean tryPlaceContainedLiquid(World world, int par2, int par3, int par4, ItemStack item) {
+		Material material = world.getBlockMaterial(par2, par3, par4);
 		boolean flag = !material.isSolid();
-		if (!par1World.isRemote && item.getItemDamage() != 2)
-			if (!par1World.isAirBlock(par2, par3, par4) && !flag)
+		if (!world.isRemote && item.getItemDamage() != 2)
+			if (!world.isAirBlock(par2, par3, par4) && !flag)
 				return false;
-			else if (par1World.provider.isHellWorld && item.getItemDamage() == 1) {
-				par1World.playSoundEffect(par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, "random.fizz", 0.5F, 2.6F + (par1World.rand.nextFloat() - par1World.rand.nextFloat()) * 0.8F);
+			else if (world.provider.isHellWorld && item.getItemDamage() == 1) {
+				world.playSoundEffect(par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 
 				for (int l = 0; l < 8; ++l)
-					par1World.spawnParticle("largesmoke", par2 + Math.random(), par3 + Math.random(), par4 + Math.random(), 0.0D, 0.0D, 0.0D);
+					world.spawnParticle("largesmoke", par2 + Math.random(), par3 + Math.random(), par4 + Math.random(), 0.0D, 0.0D, 0.0D);
 			} else {
-				if (!par1World.isRemote && flag && !material.isLiquid())
-					par1World.destroyBlock(par2, par3, par4, true);
+				if (!world.isRemote && flag && !material.isLiquid())
+					world.destroyBlock(par2, par3, par4, true);
 
-				par1World.setBlock(par2, par3, par4, Block.waterMoving.blockID, 0, 3);
+				world.setBlock(par2, par3, par4, Block.waterMoving.blockID, 0, 3);
 			}
 		return true;
 	}
 
 	@Override
-	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+	public int getMaxItemUseDuration(ItemStack is) {
 		int x;
-		if (par1ItemStack.getItemDamage() == 2)
+		if (is.getItemDamage() == 2)
 			x = 32;
 		else
-			x = super.getMaxItemUseDuration(par1ItemStack);
+			x = super.getMaxItemUseDuration(is);
 		return x;
 	}
 
 	@Override
-	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
+	public EnumAction getItemUseAction(ItemStack is) {
 		EnumAction x;
-		if (par1ItemStack.getItemDamage() == 2)
+		if (is.getItemDamage() == 2)
 			x= EnumAction.drink;
 		else
 			x= EnumAction.block;
@@ -180,15 +179,15 @@ public class ItemBambucket extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		par3List.add(new ItemStack(par1, 1, 0));
-		par3List.add(new ItemStack(par1, 1, 1));
-		par3List.add(new ItemStack(par1, 1, 2));
+	public void getSubItems(int id, CreativeTabs tab, List list) {
+		list.add(new ItemStack(id, 1, 0));
+		list.add(new ItemStack(id, 1, 1));
+		list.add(new ItemStack(id, 1, 2));
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack par1ItemStack) {
-		int i = par1ItemStack.getItemDamage();
+	public String getUnlocalizedName(ItemStack is) {
+		int i = is.getItemDamage();
 		return super.getUnlocalizedName() + "." + i;
 	}
 }

@@ -67,7 +67,6 @@ public class BlockUmberGolemStatue extends BlockContainer {
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-		TileEntityUmberGolemStatue te = (TileEntityUmberGolemStatue) world.getBlockTileEntity(x, y, z);
 		if (player.getCurrentEquippedItem() != null)
 			if (player.getCurrentEquippedItem().itemID == ModItems.wandOfAnimation.itemID) {
 				player.getCurrentEquippedItem().damageItem(1, player);
@@ -85,9 +84,9 @@ public class BlockUmberGolemStatue extends BlockContainer {
 	}
 
 	@Override
-	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLivingBase, ItemStack is) {
 		byte b0 = 0;
-		int l1 = MathHelper.floor_double(par5EntityLivingBase.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
+		int l1 = MathHelper.floor_double(entityLivingBase.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
 		if (l1 == 0)
 			b0 = 2;
 		if (l1 == 1)
@@ -96,7 +95,7 @@ public class BlockUmberGolemStatue extends BlockContainer {
 			b0 = 3;
 		if (l1 == 3)
 			b0 = 4;
-		par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 3);
+		world.setBlockMetadataWithNotify(x, y, z, b0, 3);
 	}
 
 	@Override

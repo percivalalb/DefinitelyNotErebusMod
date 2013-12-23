@@ -32,8 +32,8 @@ public class EntityBeetleLarva extends EntityCreature {
 	private final double moveSpeed;
 	public boolean isSquashed;
 
-	public EntityBeetleLarva(World par1World) {
-		super(par1World);
+	public EntityBeetleLarva(World world) {
+		super(world);
 		setSize(0.9F, 0.5F);
 		moveSpeed = 0.35D;
 		getNavigator().setAvoidsWater(true);
@@ -79,11 +79,11 @@ public class EntityBeetleLarva extends EntityCreature {
 	}
 
 	@Override
-	public void onCollideWithPlayer(EntityPlayer par1EntityPlayer) {
-		super.onCollideWithPlayer(par1EntityPlayer);
+	public void onCollideWithPlayer(EntityPlayer player) {
+		super.onCollideWithPlayer(player);
 		byte var2 = 0;
-		if (!worldObj.isRemote && par1EntityPlayer.boundingBox.maxY >= boundingBox.minY && par1EntityPlayer.boundingBox.minY <= boundingBox.maxY && par1EntityPlayer.boundingBox.maxX >= boundingBox.minX && par1EntityPlayer.boundingBox.minX <= boundingBox.maxX &&
-		par1EntityPlayer.boundingBox.maxZ >= boundingBox.minZ && par1EntityPlayer.boundingBox.minZ <= boundingBox.maxZ && par1EntityPlayer.lastTickPosY > par1EntityPlayer.posY) {
+		if (!worldObj.isRemote && player.boundingBox.maxY >= boundingBox.minY && player.boundingBox.minY <= boundingBox.maxY && player.boundingBox.maxX >= boundingBox.minX && player.boundingBox.minX <= boundingBox.maxX &&
+		player.boundingBox.maxZ >= boundingBox.minZ && player.boundingBox.minZ <= boundingBox.maxZ && player.lastTickPosY > player.posY) {
 			if (worldObj.difficultySetting > 1)
 				if (worldObj.difficultySetting == 2)
 					var2 = 7;
@@ -91,7 +91,7 @@ public class EntityBeetleLarva extends EntityCreature {
 					var2 = 15;
 
 			if (var2 > 0)
-				par1EntityPlayer.addPotionEffect(new PotionEffect(Potion.confusion.id, var2 * 20, 0));
+				player.addPotionEffect(new PotionEffect(Potion.confusion.id, var2 * 20, 0));
 			setisSquashed(true);
 			setDead();
 			onDeathUpdate();
@@ -162,14 +162,14 @@ public class EntityBeetleLarva extends EntityCreature {
 	}
 
 	@Override
-	public boolean interact(EntityPlayer par1EntityPlayer) {
-		ItemStack itemstack = par1EntityPlayer.inventory.getCurrentItem();
-		if (!worldObj.isRemote && itemstack != null && itemstack.itemID == Item.wheat.itemID) {
+	public boolean interact(EntityPlayer player) {
+		ItemStack is = player.inventory.getCurrentItem();
+		if (!worldObj.isRemote && is != null && is.itemID == Item.wheat.itemID) {
 			System.out.println("Should do something here");
 			return true;
 		}
 
-		return super.interact(par1EntityPlayer);
+		return super.interact(player);
 	}
 
 	public void setMoveTasks(boolean par1) {
@@ -196,7 +196,7 @@ public class EntityBeetleLarva extends EntityCreature {
 			posZ,
 			64D,
 			dimension,
-			PacketHandler.buildPacket(2, PacketParticle.BEETLE_LARVA_EAT, entityId, aiEatWoodItem.WoodX, aiEatWoodItem.WoodY, aiEatWoodItem.WoodZ, worldObj.getBlockId(aiEatWoodItem.WoodX, aiEatWoodItem.WoodY, aiEatWoodItem.WoodZ),
+			PacketHandler.buildPacket(2, PacketParticle.BEETLE_LARVA_AND_GRASSHOPPER_EAT, entityId, aiEatWoodItem.WoodX, aiEatWoodItem.WoodY, aiEatWoodItem.WoodZ, worldObj.getBlockId(aiEatWoodItem.WoodX, aiEatWoodItem.WoodY, aiEatWoodItem.WoodZ),
 			Byte.valueOf((byte) worldObj.getBlockMetadata(aiEatWoodItem.WoodX, aiEatWoodItem.WoodY, aiEatWoodItem.WoodZ))));
 	}
 

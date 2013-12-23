@@ -16,18 +16,18 @@ public class ItemWaspDagger extends ItemSword {
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
+	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 		if (!player.capabilities.isCreativeMode)
-			itemstack.stackSize--;
+			is.stackSize--;
 		world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 		if (!world.isRemote)
 			world.spawnEntityInWorld(new EntityWaspDagger(world, player));
-		return itemstack;
+		return is;
 	}
 
 	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase entity, EntityLivingBase player) {
-		stack.damageItem(2, player);
+	public boolean hitEntity(ItemStack is, EntityLivingBase entity, EntityLivingBase player) {
+		is.damageItem(2, player);
 		return true;
 	}
 }

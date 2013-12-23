@@ -5,9 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelAntlion;
@@ -16,22 +14,20 @@ import erebus.entity.EntityAntlion;
 @SideOnly(Side.CLIENT)
 public class RenderAntlion extends RenderLiving {
 
-	protected ModelAntlion model;
 	private static ResourceLocation Texture;
-	public RenderAntlion(ModelAntlion par1ModelBase, float par2) {
-		super(par1ModelBase, par2);
-		model = (ModelAntlion) mainModel;
+	public RenderAntlion(ModelAntlion model, float par2) {
+		super(model, par2);
 
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(par1EntityLiving, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
+		super.doRenderLiving(entityLiving, par2, par4, par6, par8, par9);
 	}
 
 	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving((EntityAntlion) par1Entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
+		super.doRenderLiving((EntityAntlion) entity, par2, par4, par6, par8, par9);
 	}
 
 	@Override
@@ -45,7 +41,7 @@ public class RenderAntlion extends RenderLiving {
 			float f1 = 0.75F;
 			shadowSize = f1;
 			GL11.glScalef(f1, f1, f1);
-		} else if (entityAntlion.isBoss()) {
+		} else {
 			float f1 = 1.0F;
 			shadowSize = f1;
 			GL11.glScalef(f1, f1, f1);

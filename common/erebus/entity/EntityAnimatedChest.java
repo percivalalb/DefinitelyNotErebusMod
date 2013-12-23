@@ -53,9 +53,9 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 	public void onUpdate() {
 		super.onUpdate();
 		if (!worldObj.isRemote && isDead)
-			for (ItemStack stack : inventory)
-				if (stack != null)
-					Utils.dropStack(worldObj, (int) posX, (int) posY, (int) posZ, stack);
+			for (ItemStack is : inventory)
+				if (is != null)
+					Utils.dropStack(worldObj, (int) posX, (int) posY, (int) posZ, is);
 	}
 
 	@Override
@@ -82,8 +82,8 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 	public boolean interact(EntityPlayer player) {
 		if (worldObj.isRemote)
 			return true;
-		ItemStack stack = player.inventory.getCurrentItem();
-		if (stack != null && stack.itemID == ModItems.wandOfAnimation.itemID) {
+		ItemStack is = player.inventory.getCurrentItem();
+		if (is != null && is.itemID == ModItems.wandOfAnimation.itemID) {
 			setDead();
 			worldObj.playSoundEffect(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), "erebus:altaroffering", 0.2F, 1.0F);
 			worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), blockID, blockMeta, 3);
@@ -91,7 +91,7 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 			for(int i = 0; i < chest.getSizeInventory(); i++)
 				chest.setInventorySlotContents(i, inventory[i]);
 			return true;
-		} else if (stack == null) {
+		} else if (is == null) {
 			worldObj.playSoundEffect(posX, posY + 0.5D, posZ, "random.chestopen", 0.5F, 0.9F);
 			player.displayGUIChest(new TileEntityAnimatedChest(this));
 			return true;

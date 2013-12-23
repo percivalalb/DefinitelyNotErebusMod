@@ -17,8 +17,8 @@ import erebus.item.ItemErebusMaterial;
 
 public class EntityPrayingMantis extends EntityMob {
 
-	public EntityPrayingMantis(World par1World) {
-		super(par1World);
+	public EntityPrayingMantis(World world) {
+		super(world);
 		isImmuneToFire = true;
 		setSize(2.0F, 2.5F);
 		getNavigator().setAvoidsWater(true);

@@ -11,8 +11,8 @@ import net.minecraft.world.World;
 
 public class EntityFirebrat extends EntityMob {
 
-	public EntityFirebrat(World par1World) {
-		super(par1World);
+	public EntityFirebrat(World world) {
+		super(world);
 		setSize(0.3F, 0.7F);
 		isImmuneToFire = true;
 	}
@@ -52,10 +52,10 @@ public class EntityFirebrat extends EntityMob {
 	}
 
 	@Override
-	protected void attackEntity(Entity par1Entity, float par2) {
-		if (par2 < 1.2F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY) {
-			par1Entity.setFire(5);
-			attackEntityAsMob(par1Entity);
+	protected void attackEntity(Entity entity, float par2) {
+		if (par2 < 1.2F && entity.boundingBox.maxY > boundingBox.minY && entity.boundingBox.minY < boundingBox.maxY) {
+			entity.setFire(5);
+			attackEntityAsMob(entity);
 		}
 	}
 

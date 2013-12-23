@@ -1,7 +1,6 @@
 package erebus.item;
 
 import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -60,9 +59,9 @@ public class ItemErebusMaterial extends Item {
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player){
+	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player){
 		if (!world.isRemote){
-			int damage=stack.getItemDamage();
+			int damage=is.getItemDamage();
 
 			if (damage==dataBioVelocity||damage==dataSupernaturalVelocity){
 				PotionEffect currentSpeed=player.getActivePotionEffect(Potion.moveSpeed);
@@ -73,7 +72,7 @@ public class ItemErebusMaterial extends Item {
 					PacketHandler.buildPacket(3,PacketSound.SOUND_VELOCITY_USE,player.posX,player.posY,player.posZ,1.2F,1F)
 					);
 				}
-				else return stack;
+				else return is;
 			}
 
 			if (damage == dataCamoPowder) {
@@ -83,14 +82,14 @@ public class ItemErebusMaterial extends Item {
 					player.addPotionEffect(new PotionEffect(Potion.invisibility.id, damage == dataCamoPowder ? 280 : 210, damage == dataCamoPowder ? 1 : 3, true));
 					PacketDispatcher.sendPacketToAllAround(player.posX, player.posY, player.posZ, 32D, player.dimension, PacketHandler.buildPacket(3, PacketSound.SOUND_CAMO_USE, player.posX, player.posY, player.posZ, 1.2F, 1F));
 				} else
-					return stack;
+					return is;
 			}
-			else return stack;
+			else return is;
 
-			if (!player.capabilities.isCreativeMode)--stack.stackSize;
+			if (!player.capabilities.isCreativeMode)--is.stackSize;
 		}
 
-		return stack;
+		return is;
 	}
 
 	@Override
@@ -112,14 +111,14 @@ public class ItemErebusMaterial extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubItems(int id, CreativeTabs tab, List list) {
 		for (int a = 0; a < iconPaths.length; a++)
-			par3List.add(new ItemStack(par1, 1, a));
+			list.add(new ItemStack(id, 1, a));
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack par1ItemStack) {
-		int i = par1ItemStack.getItemDamage();
+	public String getUnlocalizedName(ItemStack is) {
+		int i = is.getItemDamage();
 		return super.getUnlocalizedName() + "." + i;
 	}
 }

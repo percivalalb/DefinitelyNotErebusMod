@@ -21,8 +21,8 @@ public class EntityCentipede extends EntityMob {
 
 	public int skin = rand.nextInt(3);
 
-	public EntityCentipede(World par1World) {
-		super(par1World);
+	public EntityCentipede(World world) {
+		super(world);
 		setSize(1.0F, 0.8F);
 		getNavigator().setAvoidsWater(true);
 		tasks.addTask(0, new EntityAISwimming(this));

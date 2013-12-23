@@ -24,8 +24,8 @@ public class EntityAIEatCrops extends EntityAIBase {
 	private int ticksSpent = 0;
 	private int reproCap = 0;
 
-	public EntityAIEatCrops(EntityLiving par1EntityLiving, double d) {
-		theEntity = par1EntityLiving;
+	public EntityAIEatCrops(EntityLiving entityLiving, double d) {
+		theEntity = entityLiving;
 		moveSpeed = d;
 		setMutexBits(1);
 	}

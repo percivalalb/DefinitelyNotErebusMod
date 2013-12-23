@@ -18,7 +18,7 @@ public class BlockOreFossil extends Block {
 	}
 
 	@Override
-	public int idDropped(int par1, Random par2Random, int par3) {
+	public int idDropped(int meta, Random rand, int fortune) {
 		return Item.bone.itemID;
 	}
 

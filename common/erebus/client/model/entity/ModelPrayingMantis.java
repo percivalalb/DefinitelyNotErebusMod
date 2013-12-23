@@ -402,7 +402,7 @@ public class ModelPrayingMantis extends ModelBase
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
 
 		float cos1 = MathHelper.cos(par1 + (float) Math.PI) * 0.3F * par2;
 		float cos2 = MathHelper.cos(par1) * 0.3F * par2;

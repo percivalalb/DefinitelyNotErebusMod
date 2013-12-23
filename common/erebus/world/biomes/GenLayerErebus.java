@@ -24,7 +24,7 @@ public abstract class GenLayerErebus extends GenLayer {
 		super(par1);
 	}
 
-	public static GenLayer[] initializeAllBiomeGenerators(long par0, WorldType par2WorldType) {
+	public static GenLayer[] initializeAllBiomeGenerators(long par0, WorldType worldType) {
 		GenLayerIsland genlayerisland = new GenLayerIsland(1L);
 		GenLayerFuzzyZoom genlayerfuzzyzoom = new GenLayerFuzzyZoom(2000L, genlayerisland);
 		GenLayerAddIsland genlayeraddisland = new GenLayerAddIsland(1L, genlayerfuzzyzoom);
@@ -38,9 +38,9 @@ public abstract class GenLayerErebus extends GenLayer {
 		GenLayerAddMushroomIsland genlayeraddmushroomisland = new GenLayerAddMushroomIsland(5L, genlayeraddisland);
 		byte b0 = 4;
 
-		if (par2WorldType == WorldType.LARGE_BIOMES)
+		if (worldType == WorldType.LARGE_BIOMES)
 			b0 = 6;
-		b0 = getModdedBiomeSize(par2WorldType, b0);
+		b0 = getModdedBiomeSize(worldType, b0);
 
 		GenLayer genlayer = GenLayerZoom.magnify(1000L, genlayeraddmushroomisland, 0);
 		GenLayerRiverInit genlayerriverinit = new GenLayerRiverInit(100L, genlayer);
@@ -48,7 +48,7 @@ public abstract class GenLayerErebus extends GenLayer {
 		GenLayerRiver genlayerriver = new GenLayerRiver(1L, genlayer);
 		GenLayerSmooth genlayersmooth = new GenLayerSmooth(1000L, genlayerriver);
 		GenLayer genlayer1 = GenLayerZoom.magnify(1000L, genlayeraddmushroomisland, 0);
-		GenLayerBiome genlayerbiome = new GenLayerBiome(200L, genlayer1, par2WorldType);
+		GenLayerBiome genlayerbiome = new GenLayerBiome(200L, genlayer1, worldType);
 		genlayer1 = GenLayerZoom.magnify(1000L, genlayerbiome, 2);
 		Object object = new GenLayerHills(1000L, genlayer1);
 

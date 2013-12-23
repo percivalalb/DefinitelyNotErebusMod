@@ -1,7 +1,6 @@
 package thaumcraft.api;
 
 import java.lang.reflect.Method;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.aspects.Aspect;
@@ -16,7 +15,7 @@ public class ThaumcraftApiHelper {
 			if (tag!=null)
 				temp2.add(tag, temp.getAmount(tag));
 		}
-		while (temp2!=null && temp2.size()>10) {
+		while (temp2.size()>10) {
 			Aspect lowest = null;
 			int low = Integer.MAX_VALUE;
 			for (Aspect tag:temp2.getAspects()) {

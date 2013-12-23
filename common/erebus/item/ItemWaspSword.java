@@ -16,8 +16,8 @@ public class ItemWaspSword extends ItemSword {
 	}
 
 	@Override
-	public boolean hitEntity(ItemStack stack, EntityLivingBase entity, EntityLivingBase player) {
-		stack.damageItem(1, player);
+	public boolean hitEntity(ItemStack is, EntityLivingBase entity, EntityLivingBase player) {
+		is.damageItem(1, player);
 		if (!(entity instanceof EntityWasp))
 			entity.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 0));
 		return true;

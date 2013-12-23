@@ -382,10 +382,10 @@ public class ModelGlowWorm extends ModelBase
 
 
 	@Override
-	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
+	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7)
 	{
-		super.render(par1Entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
+		super.render(entity, par2, par3, par4, par5, par6, par7);
+		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
 		Head1.render(par7);
 		Head2.render(par7);
 		LMandible.render(par7);
@@ -450,7 +450,7 @@ public class ModelGlowWorm extends ModelBase
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity)
 	{
 		Head1.rotateAngleY = par4 / (180F / (float)Math.PI);
 		Head2.rotateAngleY = par4 / (180F / (float)Math.PI);

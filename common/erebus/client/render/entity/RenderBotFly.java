@@ -5,9 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelBotFly;
@@ -15,27 +13,24 @@ import erebus.entity.EntityBotFly;
 
 @SideOnly(Side.CLIENT)
 public class RenderBotFly extends RenderLiving {
-
-	protected ModelBotFly model;
 	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelBotFly.png");
 
-	public RenderBotFly(ModelBotFly par1ModelBase, float par2) {
-		super(par1ModelBase, par2);
-		model = (ModelBotFly) mainModel;
+	public RenderBotFly(ModelBotFly model, float par2) {
+		super(model, par2);
 	}
 
-	public void renderBotFly(EntityBotFly par1EntityBotFly, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(par1EntityBotFly, par2, par4, par6, par8, par9);
-	}
-
-	@Override
-	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderBotFly((EntityBotFly) par1EntityLiving, par2, par4, par6, par8, par9);
+	public void renderBotFly(EntityBotFly entityBotFly, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving(entityBotFly, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
-		renderBotFly((EntityBotFly) par1Entity, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderBotFly((EntityBotFly) entityLiving, x, y, z, rotationYaw, partialTickTime);
+	}
+
+	@Override
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderBotFly((EntityBotFly) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

@@ -6,7 +6,6 @@ import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.potion.Potion;
@@ -39,19 +38,13 @@ public class BlockPortalErebus extends BlockBreakable {
 			for(yy=y; !world.doesBlockHaveSolidTopSurface(x,yy,z)&&yy>0; --yy);
 
 			if (yy>0&&!world.isBlockNormalCube(x,yy+1,z)){
-				EntityLiving entity=null;
-				
-				if (rand.nextInt(2)==0)entity=new EntityBeetle(world);
-				else entity=new EntityBeetleLarva(world);
-				
-				if (entity!=null){
-					entity.setLocationAndAngles(x+0.5D, yy+1.1D, z+0.5D, MathHelper.wrapAngleTo180_float(world.rand.nextFloat() * 360.0F), 0.0F);
-					entity.rotationYawHead=entity.renderYawOffset = entity.rotationYaw;
-					entity.onSpawnWithEgg((EntityLivingData)null);
-					world.spawnEntityInWorld(entity);
-                    entity.playLivingSound();
-					entity.timeUntilPortal=entity.getPortalCooldown();
-				}
+				EntityLiving entity=rand.nextInt(2)==0?new EntityBeetle(world):new EntityBeetleLarva(world);		
+				entity.setLocationAndAngles(x+0.5D, yy+1.1D, z+0.5D, MathHelper.wrapAngleTo180_float(world.rand.nextFloat() * 360.0F), 0.0F);
+				entity.rotationYawHead=entity.renderYawOffset = entity.rotationYaw;
+				entity.onSpawnWithEgg(null);
+				world.spawnEntityInWorld(entity);
+                entity.playLivingSound();
+				entity.timeUntilPortal=entity.getPortalCooldown();
 			}
 		}
 	}
@@ -71,13 +64,13 @@ public class BlockPortalErebus extends BlockBreakable {
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int i, int j, int k) {
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
 		return null;
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess iblockaccess, int i, int j, int k) {
-		if (iblockaccess.getBlockId(i - 1, j, k) != blockID && iblockaccess.getBlockId(i + 1, j, k) != blockID) {
+	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
+		if (world.getBlockId(x - 1, y, z) != blockID && world.getBlockId(x + 1, y, z) != blockID) {
 			float f = 0.125F;
 			float f2 = 0.5F;
 			setBlockBounds(0.5F - f, 0.0F, 0.5F - f2, 0.5F + f, 1.0F, 0.5F + f2);
@@ -99,58 +92,58 @@ public class BlockPortalErebus extends BlockBreakable {
 	}
 
 	@Override
-	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
+	public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID) {
 		byte b0 = 0;
 		byte b1 = 1;
 
-		if (par1World.getBlockId(par2 - 1, par3, par4) == blockID || par1World.getBlockId(par2 + 1, par3, par4) == blockID) {
+		if (world.getBlockId(x - 1, y, z) == blockID || world.getBlockId(x + 1, y, z) == blockID) {
 			b0 = 1;
 			b1 = 0;
 		}
 
 		int i1;
 
-		for (i1 = par3; par1World.getBlockId(par2, i1 - 1, par4) == blockID; --i1) {
+		for (i1 = y; world.getBlockId(x, i1 - 1, z) == blockID; --i1) {
 		}
 
-		if (par1World.getBlockId(par2, i1 - 1, par4) != Block.stoneBrick.blockID)
-			par1World.setBlockToAir(par2, par3, par4);
+		if (world.getBlockId(x, i1 - 1, z) != Block.stoneBrick.blockID)
+			world.setBlockToAir(x, y, z);
 		else {
 			int j1;
 
-			for (j1 = 1; j1 < 4 && par1World.getBlockId(par2, i1 + j1, par4) == blockID; ++j1) {
+			for (j1 = 1; j1 < 4 && world.getBlockId(x, i1 + j1, z) == blockID; ++j1) {
 			}
 
-			if (j1 == 3 && par1World.getBlockId(par2, i1 + j1, par4) == Block.stoneBrick.blockID) {
-				boolean flag = par1World.getBlockId(par2 - 1, par3, par4) == blockID || par1World.getBlockId(par2 + 1, par3, par4) == blockID;
-				boolean flag1 = par1World.getBlockId(par2, par3, par4 - 1) == blockID || par1World.getBlockId(par2, par3, par4 + 1) == blockID;
+			if (j1 == 3 && world.getBlockId(x, i1 + j1, z) == Block.stoneBrick.blockID) {
+				boolean flag = world.getBlockId(x - 1, y, z) == blockID || world.getBlockId(x + 1, y, z) == blockID;
+				boolean flag1 = world.getBlockId(x, y, z - 1) == blockID || world.getBlockId(x, y, z + 1) == blockID;
 
 				if (flag && flag1)
-					par1World.setBlockToAir(par2, par3, par4);
-				else if ((par1World.getBlockId(par2 + b0, par3, par4 + b1) != Block.stoneBrick.blockID || par1World.getBlockId(par2 - b0, par3, par4 - b1) != blockID) &&
-				(par1World.getBlockId(par2 - b0, par3, par4 - b1) != Block.stoneBrick.blockID || par1World.getBlockId(par2 + b0, par3, par4 + b1) != blockID))
-					par1World.setBlockToAir(par2, par3, par4);
+					world.setBlockToAir(x, y, z);
+				else if ((world.getBlockId(x + b0, y, z + b1) != Block.stoneBrick.blockID || world.getBlockId(x - b0, y, z - b1) != blockID) &&
+				(world.getBlockId(x - b0, y, z - b1) != Block.stoneBrick.blockID || world.getBlockId(x + b0, y, z + b1) != blockID))
+					world.setBlockToAir(x, y, z);
 			} else
-				par1World.setBlockToAir(par2, par3, par4);
+				world.setBlockToAir(x, y, z);
 		}
 	}
 
-	public boolean tryToCreatePortal(World par1World, int par2, int par3, int par4) {
+	public boolean tryToCreatePortal(World world, int x, int y, int z) {
 		byte b0 = 0;
 		byte b1 = 0;
 
-		if (par1World.getBlockId(par2 - 1, par3, par4) == Block.stoneBrick.blockID || par1World.getBlockId(par2 + 1, par3, par4) == Block.stoneBrick.blockID)
+		if (world.getBlockId(x - 1, y, z) == Block.stoneBrick.blockID || world.getBlockId(x + 1, y, z) == Block.stoneBrick.blockID)
 			b0 = 1;
 
-		if (par1World.getBlockId(par2, par3, par4 - 1) == Block.stoneBrick.blockID || par1World.getBlockId(par2, par3, par4 + 1) == Block.stoneBrick.blockID)
+		if (world.getBlockId(x, y, z - 1) == Block.stoneBrick.blockID || world.getBlockId(x, y, z + 1) == Block.stoneBrick.blockID)
 			b1 = 1;
 
 		if (b0 == b1)
 			return false;
 		else {
-			if (par1World.getBlockId(par2 - b0, par3, par4 - b1) == 0) {
-				par2 -= b0;
-				par4 -= b1;
+			if (world.getBlockId(x - b0, y, z - b1) == 0) {
+				x -= b0;
+				z -= b1;
 			}
 
 			int l;
@@ -161,7 +154,7 @@ public class BlockPortalErebus extends BlockBreakable {
 					boolean flag = l == -1 || l == 2 || i1 == -1 || i1 == 3;
 
 					if (l != -1 && l != 2 || i1 != -1 && i1 != 3) {
-						int j1 = par1World.getBlockId(par2 + b0 * l, par3 + i1, par4 + b1 * l);
+						int j1 = world.getBlockId(x + b0 * l, y + i1, z + b1 * l);
 
 						if (flag) {
 							if (j1 != Block.stoneBrick.blockID)
@@ -173,7 +166,7 @@ public class BlockPortalErebus extends BlockBreakable {
 
 			for (l = 0; l < 2; ++l)
 				for (i1 = 0; i1 < 3; ++i1)
-					par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, ModBlocks.portalErebus.blockID, 0, 2);
+					world.setBlock(x + b0 * l, y + i1, z + b1 * l, ModBlocks.portalErebus.blockID, 0, 2);
 
 			return true;
 		}
@@ -181,22 +174,22 @@ public class BlockPortalErebus extends BlockBreakable {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int i, int j, int k, int l) {
-		if (iblockaccess.getBlockId(i, j, k) == blockID)
+	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side) {
+		if (world.getBlockId(x, y, z) == blockID)
 			return false;
 		else {
-			boolean flag = iblockaccess.getBlockId(i - 1, j, k) == blockID && iblockaccess.getBlockId(i - 2, j, k) != blockID;
-			boolean flag1 = iblockaccess.getBlockId(i + 1, j, k) == blockID && iblockaccess.getBlockId(i + 2, j, k) != blockID;
-			boolean flag2 = iblockaccess.getBlockId(i, j, k - 1) == blockID && iblockaccess.getBlockId(i, j, k - 2) != blockID;
-			boolean flag3 = iblockaccess.getBlockId(i, j, k + 1) == blockID && iblockaccess.getBlockId(i, j, k + 2) != blockID;
+			boolean flag = world.getBlockId(x - 1, y, z) == blockID && world.getBlockId(x - 2, y, z) != blockID;
+			boolean flag1 = world.getBlockId(x + 1, y, z) == blockID && world.getBlockId(x + 2, y, z) != blockID;
+			boolean flag2 = world.getBlockId(x, y, z - 1) == blockID && world.getBlockId(x, y, z - 2) != blockID;
+			boolean flag3 = world.getBlockId(x, y, z + 1) == blockID && world.getBlockId(x, y, z + 2) != blockID;
 			boolean flag4 = flag || flag1;
 			boolean flag5 = flag2 || flag3;
-			return !flag4 || l != 4 ? !flag4 || l != 5 ? !flag5 || l != 2 ? flag5 && l == 3 : true : true : true;
+			return !flag4 || side != 4 ? !flag4 || side != 5 ? !flag5 || side != 2 ? flag5 && side == 3 : true : true : true;
 		}
 	}
 
 	@Override
-	public int quantityDropped(Random random) {
+	public int quantityDropped(Random rand) {
 		return 0;
 	}
 
@@ -208,29 +201,29 @@ public class BlockPortalErebus extends BlockBreakable {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void randomDisplayTick(World world, int i, int j, int k, Random random) {
-		if (random.nextInt(100) == 0) {
-			// TODO world.playSoundEffect((double)i + 0.5D, (double)j + 0.5D,
-			// (double)k + 0.5D, "portalambiance", 0.5F, random.nextFloat() *
+	public void randomDisplayTick(World world, int x, int y, int z, Random rand) {
+		if (rand.nextInt(100) == 0) {
+			// TODO world.playSoundEffect((double)x + 0.5D, (double)y + 0.5D,
+			// (double)z + 0.5D, "portalambiance", 0.5F, rand.nextFloat() *
 			// 0.4F + 0.8F);
 		}
 		for (int l = 0; l < 4; l++) {
-			double d = i + random.nextFloat();
-			double d1 = j + random.nextFloat();
-			double d2 = k + random.nextFloat();
+			double d = x + rand.nextFloat();
+			double d1 = y + rand.nextFloat();
+			double d2 = z + rand.nextFloat();
 			double d3 = 0.0D;
 			double d4 = 0.0D;
 			double d5 = 0.0D;
-			int i1 = random.nextInt(2) * 2 - 1;
-			d3 = (random.nextFloat() - 0.5D) * 0.5D;
-			d4 = (random.nextFloat() - 0.5D) * 0.5D;
-			d5 = (random.nextFloat() - 0.5D) * 0.5D;
-			if (world.getBlockId(i - 1, j, k) != blockID && world.getBlockId(i + 1, j, k) != blockID) {
-				d = i + 0.5D + 0.25D * i1;
-				d3 = random.nextFloat() * 2.0F * i1;
+			int i1 = rand.nextInt(2) * 2 - 1;
+			d3 = (rand.nextFloat() - 0.5D) * 0.5D;
+			d4 = (rand.nextFloat() - 0.5D) * 0.5D;
+			d5 = (rand.nextFloat() - 0.5D) * 0.5D;
+			if (world.getBlockId(x - 1, y, z) != blockID && world.getBlockId(x + 1, y, z) != blockID) {
+				d = x + 0.5D + 0.25D * i1;
+				d3 = rand.nextFloat() * 2.0F * i1;
 			} else {
-				d2 = k + 0.5D + 0.25D * i1;
-				d5 = random.nextFloat() * 2.0F * i1;
+				d2 = z + 0.5D + 0.25D * i1;
+				d5 = rand.nextFloat() * 2.0F * i1;
 			}
 			world.spawnParticle("smoke", d, d1, d2, d3 / 4D, d4 / 4D, d5 / 4D);
 		}

@@ -5,9 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelBombardierBeetle;
@@ -16,31 +14,29 @@ import erebus.entity.EntityBombardierBeetle;
 @SideOnly(Side.CLIENT)
 public class RenderBombardierBeetle extends RenderLiving
 {
-	protected ModelBombardierBeetle model;
 	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelBombardierBeetle.png");
 
-
-	public RenderBombardierBeetle(ModelBombardierBeetle par1ModelBase, float par2)
+	public RenderBombardierBeetle(ModelBombardierBeetle model, float shadowSize)
 	{
-		super(par1ModelBase, par2);
-		model =(ModelBombardierBeetle)mainModel;
+		super(model, shadowSize);
 
 	}
-	public void renderBombardierBeetle(EntityBombardierBeetle par1EntityBombardierBeetle, double par2, double par4, double par6, float par8, float par9)
+	
+	public void renderBombardierBeetle(EntityBombardierBeetle entityBombardierBeetle, double x, double y, double z, float rotationYaw, float partialTickTime)
 	{
-		super.doRenderLiving(par1EntityBombardierBeetle, par2, par4, par6, par8, par9);
-	}
-
-	@Override
-	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9)
-	{
-		renderBombardierBeetle((EntityBombardierBeetle)par1EntityLiving, par2, par4, par6, par8, par9);
+		super.doRenderLiving(entityBombardierBeetle, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9)
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime)
 	{
-		renderBombardierBeetle((EntityBombardierBeetle)par1Entity, par2, par4, par6, par8, par9);
+		renderBombardierBeetle((EntityBombardierBeetle)entityLiving, x, y, z, rotationYaw, partialTickTime);
+	}
+
+	@Override
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime)
+	{
+		renderBombardierBeetle((EntityBombardierBeetle)entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
@@ -54,6 +50,7 @@ public class RenderBombardierBeetle extends RenderLiving
 		shadowSize = 0.6F;
 		GL11.glScalef(f1, f1, f1);
 	}
+	
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		return Texture;

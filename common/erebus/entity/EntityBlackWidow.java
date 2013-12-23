@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
+import erebus.core.helper.LogHelper;
 
 public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpawnData {
 
@@ -22,8 +23,8 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	public float WidowSize = 0.4F + rand.nextFloat();
 	Class[] preys = { EntityFly.class, EntityBotFly.class };
 
-	public EntityBlackWidow(World par1World) {
-		super(par1World);
+	public EntityBlackWidow(World world) {
+		super(world);
 		setSize(1.0F, 1.0F);
 		isImmuneToFire = true;
 	}
@@ -152,10 +153,10 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	}
 
 	@Override
-	protected void attackEntity(Entity par1Entity, float par2) {
-		if (attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY) {
+	protected void attackEntity(Entity entity, float par2) {
+		if (attackTime <= 0 && par2 < 2.0F && entity.boundingBox.maxY > boundingBox.minY && entity.boundingBox.minY < boundingBox.maxY) {
 			attackTime = 20;
-			attackEntityAsMob(par1Entity);
+			attackEntityAsMob(entity);
 		} else if (par2 > 5.0F & par2 < 8.0F)
 			if (attackTime == 0) {
 				++shouldDo;
@@ -167,7 +168,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 					attackTime = 100;
 					shouldDo = 0;
 				}
-				if (shouldDo > 1 && WidowSize > 0.7F && par1Entity instanceof EntityPlayer) {
+				if (shouldDo > 1 && WidowSize > 0.7F && entity instanceof EntityPlayer) {
 					worldObj.playSoundAtEntity(this, getWebSlingThrowSound(), 1.0F, 1.0F);
 					for (int var10 = 0; var10 < 1; ++var10) {
 						EntityWebSling var11 = new EntityWebSling(worldObj, this);
@@ -179,9 +180,9 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	}
 
 	@Override
-	public boolean attackEntityAsMob(Entity par1Entity) {
-		if (super.attackEntityAsMob(par1Entity)) {
-			if (par1Entity instanceof EntityLivingBase) {
+	public boolean attackEntityAsMob(Entity entity) {
+		if (super.attackEntityAsMob(entity)) {
+			if (entity instanceof EntityLivingBase) {
 				byte var2 = 0;
 				if (worldObj.difficultySetting > 1)
 					if (worldObj.difficultySetting == 2)
@@ -191,7 +192,7 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 				if (var2 > 0) {
 					int chanceFiftyFifty = rand.nextInt(2);
 					if (chanceFiftyFifty == 1)
-						((EntityLivingBase) par1Entity).addPotionEffect(new PotionEffect(Potion.wither.id, var2 * 20, 0));
+						((EntityLivingBase) entity).addPotionEffect(new PotionEffect(Potion.wither.id, var2 * 20, 0));
 				}
 			}
 			return true;
@@ -200,17 +201,17 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	}
 
 	@Override
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
-		super.writeEntityToNBT(par1NBTTagCompound);
-		par1NBTTagCompound.setFloat("WidowSize", WidowSize);
+	public void writeEntityToNBT(NBTTagCompound nbt) {
+		super.writeEntityToNBT(nbt);
+		nbt.setFloat("WidowSize", WidowSize);
 
 	}
 
 	@Override
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
-		super.readEntityFromNBT(par1NBTTagCompound);
-		if (par1NBTTagCompound.hasKey("WidowSize"))
-			setWidowSize(par1NBTTagCompound.getFloat("WidowSize"));
+	public void readEntityFromNBT(NBTTagCompound nbt) {
+		super.readEntityFromNBT(nbt);
+		if (nbt.hasKey("WidowSize"))
+			setWidowSize(nbt.getFloat("WidowSize"));
 	}
 
 	protected void setWidowSize(float par1) {
@@ -230,6 +231,9 @@ public class EntityBlackWidow extends EntityMob implements IEntityAdditionalSpaw
 	public void readSpawnData(ByteArrayDataInput data) {
 		try{ // a safe net... for some reason, it crashes under very special circumstances (wtf bullshit)
 			WidowSize = data.readFloat();
-		}catch(Exception e){}
+		}catch(Exception e){
+			e.printStackTrace();
+			LogHelper.logSevere("Error reading Black Widow size data!");
+		}
 	}
 }

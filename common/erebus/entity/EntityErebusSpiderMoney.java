@@ -7,8 +7,8 @@ import net.minecraft.world.World;
 
 public class EntityErebusSpiderMoney extends EntityErebusSpider
 {
-	public EntityErebusSpiderMoney(World par1World) {
-		super(par1World);
+	public EntityErebusSpiderMoney(World world) {
+		super(world);
 		setSize(0.6F, 0.4F);
 	}
 
@@ -33,7 +33,7 @@ public class EntityErebusSpiderMoney extends EntityErebusSpider
 	}
 
 	@Override
-	public EntityLivingData onSpawnWithEgg(EntityLivingData par1EntityLivingData) {
-		return par1EntityLivingData;
+	public EntityLivingData onSpawnWithEgg(EntityLivingData entityLivingData) {
+		return entityLivingData;
 	}
 }

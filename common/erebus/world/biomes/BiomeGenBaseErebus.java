@@ -17,7 +17,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 		super(par1);
 	}
 
-	public abstract void generateTerrain(World worldObj, Random rand, IChunkProvider par1IChunkProvider, int x, int z);
+	public abstract void generateTerrain(World worldObj, Random rand, IChunkProvider chunkProvider, int x, int z);
 
 	public void generateDefault(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) {
 		boolean extraOres = ConfigurationHandler.lead || ConfigurationHandler.silver || ConfigurationHandler.copper || ConfigurationHandler.tin || ConfigurationHandler.aluminium;

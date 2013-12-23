@@ -9,16 +9,16 @@ import net.minecraft.world.World;
 public class EntityWaspDagger extends EntityThrowable {
 	public static float rotationticks;
 
-	public EntityWaspDagger(World par1World) {
-		super(par1World);
+	public EntityWaspDagger(World world) {
+		super(world);
 	}
 
-	public EntityWaspDagger(World par1World, EntityLivingBase par2EntityLiving) {
-		super(par1World, par2EntityLiving);
+	public EntityWaspDagger(World world, EntityLivingBase par2EntityLiving) {
+		super(world, par2EntityLiving);
 	}
 
-	public EntityWaspDagger(World par1World, double par2, double par4, double par6) {
-		super(par1World, par2, par4, par6);
+	public EntityWaspDagger(World world, double par2, double par4, double par6) {
+		super(world, par2, par4, par6);
 	}
 
 	@Override

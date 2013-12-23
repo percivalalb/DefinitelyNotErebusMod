@@ -409,10 +409,10 @@ public class ModelUmberGolem extends ModelBase
 	}
 
 	@Override
-	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
+	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7)
 	{
-		super.render(par1Entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
+		super.render(entity, par2, par3, par4, par5, par6, par7);
+		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
 		HeadTop.render(par7);
 		HeadMain.render(par7);
 		HeadFront.render(par7);
@@ -473,14 +473,13 @@ public class ModelUmberGolem extends ModelBase
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity)
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity)
 	{
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
+		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
 
 		float movcos1= MathHelper.cos(par1 * 0.7F) * 0.3F * par2;
 		float movsin1= MathHelper.sin(par1 * 0.7F) * 1.2F * par2;
 		float movsin2= MathHelper.sin(par1 * 0.0F) * 0.0F * par2;
-		float movsin3= MathHelper.sin(par1 * 0.2F) * 0.3F * par2;
 		float x=0.2617994F;
 		float lx=1.047198F;
 		float ex=0.6981317F;

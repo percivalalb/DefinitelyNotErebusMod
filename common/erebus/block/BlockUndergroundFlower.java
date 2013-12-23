@@ -1,9 +1,7 @@
 package erebus.block;
 
 import static net.minecraftforge.common.EnumPlantType.Plains;
-
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.AxisAlignedBB;
@@ -22,40 +20,40 @@ public class BlockUndergroundFlower extends Block implements IPlantable {
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-		return super.canPlaceBlockAt(par1World, par2, par3, par4) && canBlockStay(par1World, par2, par3, par4);
+	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
+		return super.canPlaceBlockAt(world, x, y, z) && canBlockStay(world, x, y, z);
 	}
 
-	protected boolean canThisPlantGrowOnThisBlockID(int par1) {
-		return par1 == Block.grass.blockID || par1 == Block.dirt.blockID || par1 == Block.tilledField.blockID;
-	}
-
-	@Override
-	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
-		super.onNeighborBlockChange(par1World, par2, par3, par4, par5);
-		checkFlowerChange(par1World, par2, par3, par4);
+	protected boolean canThisPlantGrowOnThisBlockID(int blockID) {
+		return blockID == Block.grass.blockID || blockID == Block.dirt.blockID || blockID == Block.tilledField.blockID;
 	}
 
 	@Override
-	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random) {
-		checkFlowerChange(par1World, par2, par3, par4);
+	public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID) {
+		super.onNeighborBlockChange(world, x, y, z, neighborID);
+		checkFlowerChange(world, x, y, z);
 	}
 
-	protected final void checkFlowerChange(World par1World, int par2, int par3, int par4) {
-		if (!canBlockStay(par1World, par2, par3, par4)) {
-			dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
-			par1World.setBlockToAir(par2, par3, par4);
+	@Override
+	public void updateTick(World world, int x, int y, int z, Random rand) {
+		checkFlowerChange(world, x, y, z);
+	}
+
+	protected final void checkFlowerChange(World world, int x, int y, int z) {
+		if (!canBlockStay(world, x, y, z)) {
+			dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+			world.setBlockToAir(x, y, z);
 		}
 	}
 
 	@Override
-	public boolean canBlockStay(World par1World, int par2, int par3, int par4) {
-		Block soil = blocksList[par1World.getBlockId(par2, par3 - 1, par4)];
-		return soil != null && soil.canSustainPlant(par1World, par2, par3 - 1, par4, ForgeDirection.UP, this);
+	public boolean canBlockStay(World world, int x, int y, int z) {
+		Block soil = blocksList[world.getBlockId(x, y - 1, z)];
+		return soil != null && soil.canSustainPlant(world, x, y - 1, z, ForgeDirection.UP, this);
 	}
 
 	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z) {
 		return null;
 	}
 

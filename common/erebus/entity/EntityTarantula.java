@@ -13,8 +13,8 @@ import erebus.ModItems;
 
 public class EntityTarantula extends EntityErebusSpider {
 
-	public EntityTarantula(World par1World) {
-		super(par1World);
+	public EntityTarantula(World world) {
+		super(world);
 		setSize(1.3F, 0.6F);
 	}
 
@@ -69,11 +69,11 @@ public class EntityTarantula extends EntityErebusSpider {
 	public int skin = rand.nextInt(99);
 
 	@Override
-	public boolean attackEntityAsMob(Entity par1Entity) {
+	public boolean attackEntityAsMob(Entity entity) {
 
-		if (super.attackEntityAsMob(par1Entity)) {
+		if (super.attackEntityAsMob(entity)) {
 
-			if (par1Entity instanceof EntityLiving) {
+			if (entity instanceof EntityLiving) {
 				byte var2 = 0;
 
 				if (worldObj.difficultySetting > 1 && rand.nextInt(19) == 0)
@@ -83,7 +83,7 @@ public class EntityTarantula extends EntityErebusSpider {
 						var2 = 10;
 
 				if (var2 > 0)
-					((EntityLiving) par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
+					((EntityLiving) entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
 			}
 
 			return true;

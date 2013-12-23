@@ -32,18 +32,18 @@ public class ItemMaxSpeedBow extends Item {
 	}
 
 	@Override
-	public void onPlayerStoppedUsing(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer, int par4) {
-		int var6 = getMaxItemUseDuration(par1ItemStack) - par4;
+	public void onPlayerStoppedUsing(ItemStack is, World world, EntityPlayer player, int par4) {
+		int var6 = getMaxItemUseDuration(is) - par4;
 
-		ArrowLooseEvent event = new ArrowLooseEvent(par3EntityPlayer, par1ItemStack, var6);
+		ArrowLooseEvent event = new ArrowLooseEvent(player, is, var6);
 		MinecraftForge.EVENT_BUS.post(event);
 		if (event.isCanceled())
 			return;
 		var6 = event.charge;
 
-		boolean var5 = par3EntityPlayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0;
+		boolean var5 = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, is) > 0;
 
-		if (var5 || par3EntityPlayer.inventory.hasItem(Item.arrow.itemID)) {
+		if (var5 || player.inventory.hasItem(Item.arrow.itemID)) {
 			float var7 = var6 / 20.0F;
 			var7 = (var7 * var7 + var7 * 2.0F) / 1.0F;
 
@@ -53,93 +53,93 @@ public class ItemMaxSpeedBow extends Item {
 			if (var7 > 1.0F)
 				var7 = 1.0F;
 
-			EntityArrow var8 = new EntityArrow(par2World, par3EntityPlayer, var7 * 2.0F);
+			EntityArrow var8 = new EntityArrow(world, player, var7 * 2.0F);
 
 			if (var7 == 1.0F)
 				var8.setIsCritical(true);
 
-			int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
+			int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, is);
 
 			if (var9 > 0)
 				var8.setDamage(var8.getDamage() + var9 * 0.5D + 0.5D);
 
-			int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
+			int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, is);
 
 			if (var10 > 0)
 				var8.setKnockbackStrength(var10);
 
-			if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, par1ItemStack) > 0)
+			if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, is) > 0)
 				var8.setFire(100);
 
-			par1ItemStack.damageItem(1, par3EntityPlayer);
-			par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + var7 * 0.5F);
+			is.damageItem(1, player);
+			world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + var7 * 0.5F);
 
 			if (var5)
 				var8.canBePickedUp = 2;
 			else
-				par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.itemID);
+				player.inventory.consumeInventoryItem(Item.arrow.itemID);
 
-			if (!par2World.isRemote)
-				par2World.spawnEntityInWorld(var8);
+			if (!world.isRemote)
+				world.spawnEntityInWorld(var8);
 		}
 	}
 
-	public ItemStack onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		return par1ItemStack;
+	public ItemStack onFoodEaten(ItemStack is, World world, EntityPlayer player) {
+		return is;
 	}
 
 	@Override
-	public int getMaxItemUseDuration(ItemStack par1ItemStack) {
+	public int getMaxItemUseDuration(ItemStack is) {
 		return 72000;
 	}
 
 	@Override
-	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
+	public EnumAction getItemUseAction(ItemStack is) {
 		return EnumAction.bow;
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		boolean sneak = par3EntityPlayer.isSneaking();
-		boolean var5 = par3EntityPlayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, par1ItemStack) > 0;
+	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
+		boolean sneak = player.isSneaking();
+		boolean var5 = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, is) > 0;
 
 		if (sneak == false) {
-			if (var5 || par3EntityPlayer.inventory.hasItem(Item.arrow.itemID)) {
-				EntityArrow var8 = new EntityArrow(par2World, par3EntityPlayer, 1.0F * 2.0F);
+			if (var5 || player.inventory.hasItem(Item.arrow.itemID)) {
+				EntityArrow var8 = new EntityArrow(world, player, 1.0F * 2.0F);
 
-				if (par2World.rand.nextInt(4) == 0)
+				if (world.rand.nextInt(4) == 0)
 					var8.setIsCritical(true);
 
-				int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, par1ItemStack);
+				int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, is);
 
 				if (var9 > 0)
 					var8.setDamage(var8.getDamage() + var9 * 0.5D + 0.5D);
 
-				int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, par1ItemStack);
+				int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, is);
 
 				if (var10 > 0)
 					var8.setKnockbackStrength(var10);
 
-				if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, par1ItemStack) > 0)
+				if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, is) > 0)
 					var8.setFire(100);
 
-				par1ItemStack.damageItem(1, par3EntityPlayer);
-				par2World.playSoundAtEntity(par3EntityPlayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 1.0F * 0.5F);
+				is.damageItem(1, player);
+				world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 1.0F * 0.5F);
 
 				if (var5)
 					var8.canBePickedUp = 2;
 				else
-					par3EntityPlayer.inventory.consumeInventoryItem(Item.arrow.itemID);
+					player.inventory.consumeInventoryItem(Item.arrow.itemID);
 
-				if (!par2World.isRemote)
-					par2World.spawnEntityInWorld(var8);
+				if (!world.isRemote)
+					world.spawnEntityInWorld(var8);
 			}
 		}
 
 		else if (sneak == true)
-			par3EntityPlayer.setItemInUse(par1ItemStack, getMaxItemUseDuration(par1ItemStack));
+			player.setItemInUse(is, getMaxItemUseDuration(is));
 
-		return par1ItemStack;
+		return is;
 	}
 
 	@Override
@@ -149,12 +149,12 @@ public class ItemMaxSpeedBow extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
-		super.registerIcons(par1IconRegister);
+	public void registerIcons(IconRegister iconRegister) {
+		super.registerIcons(iconRegister);
 		iconArray = new Icon[bowPullIconNameArray.length];
 
 		for (int i = 0; i < iconArray.length; ++i)
-			iconArray[i] = par1IconRegister.registerIcon("erebus:" + bowPullIconNameArray[i]);
+			iconArray[i] = iconRegister.registerIcon("erebus:" + bowPullIconNameArray[i]);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -163,7 +163,7 @@ public class ItemMaxSpeedBow extends Item {
 	}
 
 	@Override
-	public Icon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
+	public Icon getIcon(ItemStack is, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
 		if (usingItem != null && usingItem.getItem().itemID == ModItems.maxSpeedBow.itemID) {
 			int k = usingItem.getMaxItemUseDuration() - useRemaining;
 			if (k >= 6)
@@ -177,7 +177,7 @@ public class ItemMaxSpeedBow extends Item {
 	}
 
 	@Override
-	public boolean hasEffect(ItemStack par1ItemStack) {
+	public boolean hasEffect(ItemStack is) {
 		return true;
 	}
 }

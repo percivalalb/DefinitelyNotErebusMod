@@ -5,9 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelCentipede;
@@ -15,45 +13,36 @@ import erebus.entity.EntityCentipede;
 
 @SideOnly(Side.CLIENT)
 public class RenderCentipede extends RenderLiving {
+	private static final ResourceLocation resource1 = new ResourceLocation("erebus:textures/mob/Centipede.png");
+	private static final ResourceLocation resource2 = new ResourceLocation("erebus:textures/mob/ModelCentipede.png");
+	private static final ResourceLocation resource3 = new ResourceLocation("erebus:textures/mob/CentipedeBlack.png");
 
-	protected ModelCentipede model;
-	private final ResourceLocation resource1 = new ResourceLocation("erebus:textures/mob/Centipede.png");
-	private final ResourceLocation resource2 = new ResourceLocation("erebus:textures/mob/ModelCentipede.png");
-	private final ResourceLocation resource3 = new ResourceLocation("erebus:textures/mob/CentipedeBlack.png");
-
-	public RenderCentipede(ModelCentipede par1ModelBase, float par2) {
-		super(par1ModelBase, par2);
-		model = (ModelCentipede) mainModel;
+	public RenderCentipede(ModelCentipede model, float shadowSize) {
+		super(model, shadowSize);
 
 	}
 
-	public void renderCentipede(EntityCentipede par1EntityCentipede, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(par1EntityCentipede, par2, par4, par6, par8, par9);
+	public void renderCentipede(EntityCentipede entityCentipede, double par2, double par4, double par6, float par8, float par9) {
+		super.doRenderLiving(entityCentipede, par2, par4, par6, par8, par9);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderCentipede((EntityCentipede) par1EntityLiving, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
+		renderCentipede((EntityCentipede) entityLiving, par2, par4, par6, par8, par9);
 	}
 
 	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
-		renderCentipede((EntityCentipede) par1Entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
+		renderCentipede((EntityCentipede) entity, par2, par4, par6, par8, par9);
 	}
 
 	@Override
 	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
-		scaleCentipede((EntityCentipede) entityliving, f);
-	}
-
-	protected void rotateCentipede(EntityLivingBase entityliving) {
-		GL11.glRotatef(90.0F, -1.0F, 0.0F, 0.0F);
-	}
-
-	protected void scaleCentipede(EntityCentipede entityCentipede, float f) {
-		float f1 = 1.0F;
 		shadowSize = 0.5F;
-		GL11.glScalef(f1, f1, f1);
+	}
+
+	protected void rotateCentipede() { // TODO unused
+		GL11.glRotatef(90.0F, -1.0F, 0.0F, 0.0F);
 	}
 
 	@Override

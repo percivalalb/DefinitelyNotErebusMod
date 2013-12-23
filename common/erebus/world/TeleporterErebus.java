@@ -28,10 +28,10 @@ public class TeleporterErebus extends Teleporter {
 	private final LongHashMap destinationCoordinateCache = new LongHashMap();
 	private final List destinationCoordinateKeys = new ArrayList();
 
-	private TeleporterErebus(WorldServer par1WorldServer) {
-		super(par1WorldServer);
-		worldServerInstance = par1WorldServer;
-		random = new Random(par1WorldServer.getSeed());
+	private TeleporterErebus(WorldServer worldServer) {
+		super(worldServer);
+		worldServerInstance = worldServer;
+		random = new Random(worldServer.getSeed());
 	}
 
 	@Override

@@ -400,9 +400,9 @@ public class ModelWasp extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(par1Entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
+	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
+		super.render(entity, par2, par3, par4, par5, par6, par7);
+		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
 
 		Thx.render(par7);
 		ThxS.render(par7);
@@ -474,8 +474,8 @@ public class ModelWasp extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
+		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
 		float heady = par4 / (180F / (float) Math.PI);
 		float headx = par5 / (180F / (float) Math.PI) - 1.0F;
 		HeadA.rotateAngleY = heady;
@@ -502,7 +502,7 @@ public class ModelWasp extends ModelBase {
 		RMandibleB.rotateAngleX = headx;
 		LMandibleA.rotateAngleX = headx;
 		LMandibleB.rotateAngleX = headx;
-		EntityWasp var8 = (EntityWasp) par7Entity;
+		EntityWasp var8 = (EntityWasp) entity;
 		if (var8.onGround) {
 			float legx1 = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
 			float legx2 = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;

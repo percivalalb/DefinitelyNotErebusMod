@@ -26,7 +26,6 @@ public class BlockErebusAltarXP extends BlockContainer {
 	private Icon a, b;
 	private int item;
 	private int meta;
-	private int uses;
 
 	public BlockErebusAltarXP(int id) {
 		super(id, Material.rock);
@@ -88,14 +87,14 @@ public class BlockErebusAltarXP extends BlockContainer {
 		TileEntityErebusAltarXP te = (TileEntityErebusAltarXP) world.getBlockTileEntity(x, y, z);
 		double offsetY = 0.9D;
 		if (entity instanceof EntityItem && entity.boundingBox.minY >= y + offsetY && te.active) {
-			ItemStack itemstack = ((EntityItem) entity).getEntityItem();
-			int metadata = itemstack.getItemDamage();
-			setItemOffering(itemstack.itemID, metadata);
+			ItemStack is = ((EntityItem) entity).getEntityItem();
+			int metadata = is.getItemDamage();
+			setItemOffering(is.itemID, metadata);
 			if (item == ModItems.erebusMaterials.itemID) {
-				te.setUses(te.getUses() + itemstack.stackSize);
+				te.setUses(te.getUses() + is.stackSize);
 				entity.setDead();
 				if (!world.isRemote)
-					world.spawnEntityInWorld(new EntityXPOrb(world, x + 0.5D, y + 1.8D, z + 0.5D, itemstack.stackSize * 5));
+					world.spawnEntityInWorld(new EntityXPOrb(world, x + 0.5D, y + 1.8D, z + 0.5D, is.stackSize * 5));
 				if (te.getUses() > 165)
 					te.setSpawnTicks(0);
 				if(te.getExcess()>0)

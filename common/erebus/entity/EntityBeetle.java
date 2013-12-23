@@ -20,8 +20,8 @@ public class EntityBeetle extends EntityCreature {
 
 	public int skin = rand.nextInt(51);
 
-	public EntityBeetle(World par1World) {
-		super(par1World);
+	public EntityBeetle(World world) {
+		super(world);
 		setSize(0.9F, 0.9F);
 		getNavigator().setAvoidsWater(true);
 		tasks.addTask(0, new EntityAISwimming(this));
@@ -75,25 +75,25 @@ public class EntityBeetle extends EntityCreature {
 	}
 
 	@Override
-	public boolean interact(EntityPlayer par1EntityPlayer) {
-		ItemStack itemstack = par1EntityPlayer.inventory.getCurrentItem();
+	public boolean interact(EntityPlayer player) {
+		ItemStack is = player.inventory.getCurrentItem();
 
-		if (itemstack != null) {
-			if (itemstack.itemID == Item.bucketEmpty.itemID && !par1EntityPlayer.capabilities.isCreativeMode)
-				if (itemstack.stackSize-- == 1)
-					par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, new ItemStack(ModItems.bucketOfBeetleJuice));
-				else if (!par1EntityPlayer.inventory.addItemStackToInventory(new ItemStack(ModItems.bucketOfBeetleJuice)))
-					par1EntityPlayer.dropPlayerItem(new ItemStack(ModItems.bucketOfBeetleJuice.itemID, 1, 0));
+		if (is != null) {
+			if (is.itemID == Item.bucketEmpty.itemID && !player.capabilities.isCreativeMode)
+				if (is.stackSize-- == 1)
+					player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(ModItems.bucketOfBeetleJuice));
+				else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.bucketOfBeetleJuice)))
+					player.dropPlayerItem(new ItemStack(ModItems.bucketOfBeetleJuice.itemID, 1, 0));
 
-			if (itemstack.itemID == ModItems.bamBucket.itemID && itemstack.getItemDamage() == 0 && !par1EntityPlayer.capabilities.isCreativeMode)
-				if (itemstack.stackSize-- == 1)
-					par1EntityPlayer.inventory.setInventorySlotContents(par1EntityPlayer.inventory.currentItem, new ItemStack(ModItems.bamBucket, 1, 2));
-				else if (!par1EntityPlayer.inventory.addItemStackToInventory(new ItemStack(ModItems.bamBucket, 1, 2)))
-					par1EntityPlayer.dropPlayerItem(new ItemStack(ModItems.bamBucket.itemID, 1, 2));
+			if (is.itemID == ModItems.bamBucket.itemID && is.getItemDamage() == 0 && !player.capabilities.isCreativeMode)
+				if (is.stackSize-- == 1)
+					player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(ModItems.bamBucket, 1, 2));
+				else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.bamBucket, 1, 2)))
+					player.dropPlayerItem(new ItemStack(ModItems.bamBucket.itemID, 1, 2));
 
 			return true;
 		} else
-			return super.interact(par1EntityPlayer);
+			return super.interact(player);
 	}
 
 	@Override

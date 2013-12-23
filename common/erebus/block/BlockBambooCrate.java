@@ -156,9 +156,9 @@ public class BlockBambooCrate extends BlockContainer {
 		TileEntityBambooCrate tile = (TileEntityBambooCrate) world.getBlockTileEntity(x, y, z);
 		if (tile != null) {
 			for (int i = 0; i < tile.getSizeInventory(); i++) {
-				ItemStack stack = tile.getStackInSlot(i);
-				if (stack != null)
-					Utils.dropStack(world, x, y, z, stack);
+				ItemStack is = tile.getStackInSlot(i);
+				if (is != null)
+					Utils.dropStack(world, x, y, z, is);
 			}
 			world.func_96440_m(x, y, z, par5);
 		}

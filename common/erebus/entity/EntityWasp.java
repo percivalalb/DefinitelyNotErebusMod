@@ -24,8 +24,8 @@ public class EntityWasp extends EntityMob {
 	AnimationMathHelper mathWings = new AnimationMathHelper();
 	Class[] preys = { EntityGrasshopper.class };
 
-	public EntityWasp(World par1World) {
-		super(par1World);
+	public EntityWasp(World world) {
+		super(world);
 		setSize(1.5F, 1.5F);
 	}
 
@@ -147,9 +147,9 @@ public class EntityWasp extends EntityMob {
 	}
 
 	@Override
-	public boolean attackEntityAsMob(Entity par1Entity) {
-		if (super.attackEntityAsMob(par1Entity)) {
-			if (par1Entity instanceof EntityLivingBase) {
+	public boolean attackEntityAsMob(Entity entity) {
+		if (super.attackEntityAsMob(entity)) {
+			if (entity instanceof EntityLivingBase) {
 				byte var2 = 0;
 				if (worldObj.difficultySetting > 1)
 					if (worldObj.difficultySetting == 2)
@@ -157,7 +157,7 @@ public class EntityWasp extends EntityMob {
 					else if (worldObj.difficultySetting == 3)
 						var2 = 15;
 				if (var2 > 0)
-					((EntityLivingBase) par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
+					((EntityLivingBase) entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
 			}
 			return true;
 		}
@@ -165,8 +165,8 @@ public class EntityWasp extends EntityMob {
 	}
 
 	@Override
-	protected void attackEntity(Entity par1Entity, float par2) {
-		if (par2 < 2.0F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY)
-			attackEntityAsMob(par1Entity);
+	protected void attackEntity(Entity entity, float par2) {
+		if (par2 < 2.0F && entity.boundingBox.maxY > boundingBox.minY && entity.boundingBox.minY < boundingBox.maxY)
+			attackEntityAsMob(entity);
 	}
 }

@@ -91,9 +91,9 @@ public class BlockErebusAltar extends BlockContainer {
 		double offsetY = 0.9D;
 		if (entity instanceof EntityItem)
 			if (entity.boundingBox.minY >= y + offsetY) {
-				ItemStack itemstack = ((EntityItem) entity).getEntityItem();
-				int metadata = itemstack.getItemDamage();
-				setItemOffering(itemstack.itemID, metadata);
+				ItemStack is = ((EntityItem) entity).getEntityItem();
+				int metadata = is.getItemDamage();
+				setItemOffering(is.itemID, metadata);
 				if (item == ModItems.erebusMaterials.itemID && isValidOffering())
 					if (world.getWorldTime() % 80 == 0) {
 						chooseAltar(world, x, y, z);

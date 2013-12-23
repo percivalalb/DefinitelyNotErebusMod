@@ -35,8 +35,8 @@ public class ItemErebusFood extends ItemFood {
 		setMaxDamage(0);
 	}
 
-	public int getHealAmount(ItemStack stack, World world, EntityPlayer player) {
-		switch (stack.getItemDamage()) {
+	public int getHealAmount(ItemStack is, World world, EntityPlayer player) {
+		switch (is.getItemDamage()) {
 			case dataLarvaRaw:
 				return 2;
 			case dataLarvaCooked:
@@ -62,8 +62,8 @@ public class ItemErebusFood extends ItemFood {
 		}
 	}
 
-	public float getSaturationModifier(ItemStack stack, World world, EntityPlayer player) {
-		switch (stack.getItemDamage()) {
+	public float getSaturationModifier(ItemStack is, World world, EntityPlayer player) {
+		switch (is.getItemDamage()) {
 			case dataLarvaRaw:
 				return 0.65F;
 			case dataLarvaCooked:
@@ -89,8 +89,8 @@ public class ItemErebusFood extends ItemFood {
 		}
 	}
 
-	public PotionEffect getPotionEffect(ItemStack stack, World world, EntityPlayer player) {
-		switch (stack.getItemDamage()) {
+	public PotionEffect getPotionEffect(ItemStack is, World world, EntityPlayer player) {
+		switch (is.getItemDamage()) {
 			case dataLarvaRaw:
 				return world.rand.nextFloat() > 0.75 ? new PotionEffect(Potion.confusion.id, 30 * 20, 0) : null;
 			case dataMelonadeSparkly:
@@ -101,8 +101,8 @@ public class ItemErebusFood extends ItemFood {
 	}
 
 	@Override
-	public EnumAction getItemUseAction(ItemStack stack) {
-		switch (stack.getItemDamage()) {
+	public EnumAction getItemUseAction(ItemStack is) {
+		switch (is.getItemDamage()) {
 			case dataMelonade:
 			case dataMelonadeSparkly:
 				return EnumAction.drink;
@@ -112,30 +112,30 @@ public class ItemErebusFood extends ItemFood {
 	}
 
 	@Override
-	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
-		--stack.stackSize;
-		player.getFoodStats().addStats(getHealAmount(stack, world, player), getSaturationModifier(stack, world, player));
+	public ItemStack onEaten(ItemStack is, World world, EntityPlayer player) {
+		--is.stackSize;
+		player.getFoodStats().addStats(getHealAmount(is, world, player), getSaturationModifier(is, world, player));
 		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-		onFoodEaten(stack, world, player);
+		onFoodEaten(is, world, player);
 
-		int damage=stack.getItemDamage();
+		int damage=is.getItemDamage();
 		Item item=null;
 		
 		if (damage == dataBambooSoup)
 			item=Item.bowlEmpty;
 		else if (damage == dataMelonade || damage == dataMelonadeSparkly)
 			item=Item.glassBottle;
-		else return stack;
+		else return is;
 		
-		if (stack.stackSize != 0)
+		if (is.stackSize != 0)
 			player.inventory.addItemStackToInventory(new ItemStack(item));
 		
-		return stack.stackSize == 0 ? new ItemStack(item) : stack;
+		return is.stackSize == 0 ? new ItemStack(item) : is;
 	}
 
 	@Override
-	protected void onFoodEaten(ItemStack stack, World world, EntityPlayer player) {
-		PotionEffect effect = this.getPotionEffect(stack, world, player);
+	protected void onFoodEaten(ItemStack is, World world, EntityPlayer player) {
+		PotionEffect effect = this.getPotionEffect(is, world, player);
 		if (!world.isRemote && effect != null)
 			player.addPotionEffect(effect);
 	}
@@ -157,14 +157,14 @@ public class ItemErebusFood extends ItemFood {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List) {
+	public void getSubItems(int id, CreativeTabs tab, List list) {
 		for (int a = 0; a < iconPaths.length; a++)
-			par3List.add(new ItemStack(par1, 1, a));
+			list.add(new ItemStack(id, 1, a));
 	}
 
 	@Override
-	public String getUnlocalizedName(ItemStack par1ItemStack) {
-		int i = par1ItemStack.getItemDamage();
+	public String getUnlocalizedName(ItemStack is) {
+		int i = is.getItemDamage();
 		return super.getUnlocalizedName() + "." + i;
 	}
 }

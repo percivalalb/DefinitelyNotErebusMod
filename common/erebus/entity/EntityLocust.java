@@ -18,8 +18,8 @@ public class EntityLocust extends EntityMob {
 	protected EntityLiving theEntity;
 	public boolean canJump = true;
 
-	public EntityLocust(World par1World) {
-		super(par1World);
+	public EntityLocust(World world) {
+		super(world);
 		stepHeight = 1.0F;
 		jumpMovementFactor = 0.05F;
 		setSize(2F, 1F);
@@ -104,13 +104,13 @@ public class EntityLocust extends EntityMob {
 	}
 
 	@Override
-	public boolean attackEntityAsMob(Entity par1Entity) {
+	public boolean attackEntityAsMob(Entity entity) {
 
-		if (super.attackEntityAsMob(par1Entity))
+		if (super.attackEntityAsMob(entity))
 
 		{
 
-			if (par1Entity instanceof EntityLiving) {
+			if (entity instanceof EntityLiving) {
 				byte var2 = 0;
 
 				if (worldObj.difficultySetting > 1)
@@ -120,7 +120,7 @@ public class EntityLocust extends EntityMob {
 						var2 = 15;
 
 				if (var2 > 0)
-					((EntityLiving) par1Entity).addPotionEffect(new PotionEffect(Potion.hunger.id, var2 * 20, 0));
+					((EntityLiving) entity).addPotionEffect(new PotionEffect(Potion.hunger.id, var2 * 20, 0));
 			}
 
 			return true;
@@ -130,8 +130,8 @@ public class EntityLocust extends EntityMob {
 	}
 
 	@Override
-	protected void attackEntity(Entity par1Entity, float par2) {
-		if (par2 < 2.0F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY)
-			attackEntityAsMob(par1Entity);
+	protected void attackEntity(Entity entity, float par2) {
+		if (par2 < 2.0F && entity.boundingBox.maxY > boundingBox.minY && entity.boundingBox.minY < boundingBox.maxY)
+			attackEntityAsMob(entity);
 	}
 }

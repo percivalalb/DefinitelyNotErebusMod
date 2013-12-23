@@ -13,8 +13,8 @@ public class ItemReinExoskeletonArmor extends ItemArmor {
 	}
 
 	@Override
-	public String getArmorTexture(ItemStack stack, Entity entity, int slot, int layer) {
-		if (stack.itemID == ModItems.reinExoskeletonHelmet.itemID || stack.itemID == ModItems.reinExoskeletonBody.itemID || stack.itemID == ModItems.reinExoskeletonBoots.itemID)
+	public String getArmorTexture(ItemStack is, Entity entity, int slot, int layer) {
+		if (is.itemID == ModItems.reinExoskeletonHelmet.itemID || is.itemID == ModItems.reinExoskeletonBody.itemID || is.itemID == ModItems.reinExoskeletonBoots.itemID)
 			return "erebus:textures/armor/reinforcedExoskeleton_1.png";
 		else
 			return "erebus:textures/armor/reinforcedExoskeleton_2.png";

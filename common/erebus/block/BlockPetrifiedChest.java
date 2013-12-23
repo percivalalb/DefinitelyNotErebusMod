@@ -1,9 +1,7 @@
 package erebus.block;
 
 import static net.minecraftforge.common.ForgeDirection.DOWN;
-
 import java.util.Iterator;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -48,49 +46,49 @@ public class BlockPetrifiedChest extends BlockContainer {
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4) {
-		if (par1IBlockAccess.getBlockId(par2, par3, par4 - 1) == blockID)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
+		if (world.getBlockId(x, y, z - 1) == blockID)
 			setBlockBounds(0.0625F, 0.0F, 0.0F, 0.9375F, 0.875F, 0.9375F);
-		else if (par1IBlockAccess.getBlockId(par2, par3, par4 + 1) == blockID)
+		else if (world.getBlockId(x, y, z + 1) == blockID)
 			setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 1.0F);
-		else if (par1IBlockAccess.getBlockId(par2 - 1, par3, par4) == blockID)
+		else if (world.getBlockId(x - 1, y, z) == blockID)
 			setBlockBounds(0.0F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
-		else if (par1IBlockAccess.getBlockId(par2 + 1, par3, par4) == blockID)
+		else if (world.getBlockId(x + 1, y, z) == blockID)
 			setBlockBounds(0.0625F, 0.0F, 0.0625F, 1.0F, 0.875F, 0.9375F);
 		else
 			setBlockBounds(0.0625F, 0.0F, 0.0625F, 0.9375F, 0.875F, 0.9375F);
 	}
 
 	@Override
-	public void onBlockAdded(World par1World, int par2, int par3, int par4) {
-		super.onBlockAdded(par1World, par2, par3, par4);
-		unifyAdjacentChests(par1World, par2, par3, par4);
-		int l = par1World.getBlockId(par2, par3, par4 - 1);
-		int i1 = par1World.getBlockId(par2, par3, par4 + 1);
-		int j1 = par1World.getBlockId(par2 - 1, par3, par4);
-		int k1 = par1World.getBlockId(par2 + 1, par3, par4);
+	public void onBlockAdded(World world, int x, int y, int z) {
+		super.onBlockAdded(world, x, y, z);
+		unifyAdjacentChests(world, x, y, z);
+		int l = world.getBlockId(x, y, z - 1);
+		int i1 = world.getBlockId(x, y, z + 1);
+		int j1 = world.getBlockId(x - 1, y, z);
+		int k1 = world.getBlockId(x + 1, y, z);
 
 		if (l == blockID)
-			unifyAdjacentChests(par1World, par2, par3, par4 - 1);
+			unifyAdjacentChests(world, x, y, z - 1);
 
 		if (i1 == blockID)
-			unifyAdjacentChests(par1World, par2, par3, par4 + 1);
+			unifyAdjacentChests(world, x, y, z + 1);
 
 		if (j1 == blockID)
-			unifyAdjacentChests(par1World, par2 - 1, par3, par4);
+			unifyAdjacentChests(world, x - 1, y, z);
 
 		if (k1 == blockID)
-			unifyAdjacentChests(par1World, par2 + 1, par3, par4);
+			unifyAdjacentChests(world, x + 1, y, z);
 	}
 
 	@Override
-	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase, ItemStack par6ItemStack) {
-		int l = par1World.getBlockId(par2, par3, par4 - 1);
-		int i1 = par1World.getBlockId(par2, par3, par4 + 1);
-		int j1 = par1World.getBlockId(par2 - 1, par3, par4);
-		int k1 = par1World.getBlockId(par2 + 1, par3, par4);
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLivingBase, ItemStack is) {
+		int l = world.getBlockId(x, y, z - 1);
+		int i1 = world.getBlockId(x, y, z + 1);
+		int j1 = world.getBlockId(x - 1, y, z);
+		int k1 = world.getBlockId(x + 1, y, z);
 		byte b0 = 0;
-		int l1 = MathHelper.floor_double(par5EntityLivingBase.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
+		int l1 = MathHelper.floor_double(entityLivingBase.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
 
 		if (l1 == 0)
 			b0 = 2;
@@ -105,41 +103,39 @@ public class BlockPetrifiedChest extends BlockContainer {
 			b0 = 4;
 
 		if (l != blockID && i1 != blockID && j1 != blockID && k1 != blockID)
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 3);
+			world.setBlockMetadataWithNotify(x, y, z, b0, 3);
 		else {
 			if ((l == blockID || i1 == blockID) && (b0 == 4 || b0 == 5)) {
 				if (l == blockID)
-					par1World.setBlockMetadataWithNotify(par2, par3, par4 - 1, b0, 3);
+					world.setBlockMetadataWithNotify(x, y, z - 1, b0, 3);
 				else
-					par1World.setBlockMetadataWithNotify(par2, par3, par4 + 1, b0, 3);
+					world.setBlockMetadataWithNotify(x, y, z + 1, b0, 3);
 
-				par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 3);
+				world.setBlockMetadataWithNotify(x, y, z, b0, 3);
 			}
 
 			if ((j1 == blockID || k1 == blockID) && (b0 == 2 || b0 == 3)) {
 				if (j1 == blockID)
-					par1World.setBlockMetadataWithNotify(par2 - 1, par3, par4, b0, 3);
+					world.setBlockMetadataWithNotify(x - 1, y, z, b0, 3);
 				else
-					par1World.setBlockMetadataWithNotify(par2 + 1, par3, par4, b0, 3);
+					world.setBlockMetadataWithNotify(x + 1, y, z, b0, 3);
 
-				par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 3);
+				world.setBlockMetadataWithNotify(x, y, z, b0, 3);
 			}
 		}
 
-		if (par6ItemStack.hasDisplayName())
-			((TileEntityPetrifiedWoodChest) par1World.getBlockTileEntity(par2, par3, par4)).setChestGuiName(par6ItemStack.getDisplayName());
+		if (is.hasDisplayName())
+			((TileEntityPetrifiedWoodChest) world.getBlockTileEntity(x, y, z)).setChestGuiName(is.getDisplayName());
 	}
 
-	public void unifyAdjacentChests(World par1World, int par2, int par3, int par4) {
-		if (!par1World.isRemote) {
-			int l = par1World.getBlockId(par2, par3, par4 - 1);
-			int i1 = par1World.getBlockId(par2, par3, par4 + 1);
-			int j1 = par1World.getBlockId(par2 - 1, par3, par4);
-			int k1 = par1World.getBlockId(par2 + 1, par3, par4);
-			boolean flag = true;
+	public void unifyAdjacentChests(World world, int x, int y, int z) {
+		if (!world.isRemote) {
+			int l = world.getBlockId(x, y, z - 1);
+			int i1 = world.getBlockId(x, y, z + 1);
+			int j1 = world.getBlockId(x - 1, y, z);
+			int k1 = world.getBlockId(x + 1, y, z);
 			int l1;
 			int i2;
-			boolean flag1;
 			byte b0;
 			int j2;
 
@@ -159,15 +155,14 @@ public class BlockPetrifiedChest extends BlockContainer {
 					if (Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[j1])
 						b0 = 4;
 				} else {
-					l1 = par1World.getBlockId(j1 == blockID ? par2 - 1 : par2 + 1, par3, par4 - 1);
-					i2 = par1World.getBlockId(j1 == blockID ? par2 - 1 : par2 + 1, par3, par4 + 1);
+					l1 = world.getBlockId(j1 == blockID ? x - 1 : x + 1, y, z - 1);
+					i2 = world.getBlockId(j1 == blockID ? x - 1 : x + 1, y, z + 1);
 					b0 = 3;
-					flag1 = true;
 
 					if (j1 == blockID)
-						j2 = par1World.getBlockMetadata(par2 - 1, par3, par4);
+						j2 = world.getBlockMetadata(x - 1, y, z);
 					else
-						j2 = par1World.getBlockMetadata(par2 + 1, par3, par4);
+						j2 = world.getBlockMetadata(x + 1, y, z);
 
 					if (j2 == 2)
 						b0 = 2;
@@ -179,15 +174,14 @@ public class BlockPetrifiedChest extends BlockContainer {
 						b0 = 2;
 				}
 			} else {
-				l1 = par1World.getBlockId(par2 - 1, par3, l == blockID ? par4 - 1 : par4 + 1);
-				i2 = par1World.getBlockId(par2 + 1, par3, l == blockID ? par4 - 1 : par4 + 1);
+				l1 = world.getBlockId(x - 1, y, l == blockID ? z - 1 : z + 1);
+				i2 = world.getBlockId(x + 1, y, l == blockID ? z - 1 : z + 1);
 				b0 = 5;
-				flag1 = true;
 
 				if (l == blockID)
-					j2 = par1World.getBlockMetadata(par2, par3, par4 - 1);
+					j2 = world.getBlockMetadata(x, y, z - 1);
 				else
-					j2 = par1World.getBlockMetadata(par2, par3, par4 + 1);
+					j2 = world.getBlockMetadata(x, y, z + 1);
 
 				if (j2 == 4)
 					b0 = 4;
@@ -199,38 +193,38 @@ public class BlockPetrifiedChest extends BlockContainer {
 					b0 = 4;
 			}
 
-			par1World.setBlockMetadataWithNotify(par2, par3, par4, b0, 3);
+			world.setBlockMetadataWithNotify(x, y, z, b0, 3);
 		}
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
+	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
 		int l = 0;
 
-		if (par1World.getBlockId(par2 - 1, par3, par4) == blockID)
+		if (world.getBlockId(x - 1, y, z) == blockID)
 			++l;
 
-		if (par1World.getBlockId(par2 + 1, par3, par4) == blockID)
+		if (world.getBlockId(x + 1, y, z) == blockID)
 			++l;
 
-		if (par1World.getBlockId(par2, par3, par4 - 1) == blockID)
+		if (world.getBlockId(x, y, z - 1) == blockID)
 			++l;
 
-		if (par1World.getBlockId(par2, par3, par4 + 1) == blockID)
+		if (world.getBlockId(x, y, z + 1) == blockID)
 			++l;
 
-		return l > 1 ? false : isThereANeighborChest(par1World, par2 - 1, par3, par4) ? false : isThereANeighborChest(par1World, par2 + 1, par3, par4) ? false : isThereANeighborChest(par1World, par2, par3, par4 - 1) ? false : !isThereANeighborChest(par1World, par2, par3, par4 + 1);
+		return l > 1 ? false : isThereANeighborChest(world, x - 1, y, z) ? false : isThereANeighborChest(world, x + 1, y, z) ? false : isThereANeighborChest(world, x, y, z - 1) ? false : !isThereANeighborChest(world, x, y, z + 1);
 	}
 
-	private boolean isThereANeighborChest(World par1World, int par2, int par3, int par4) {
-		return par1World.getBlockId(par2, par3, par4) != blockID ? false : par1World.getBlockId(par2 - 1, par3, par4) == blockID ? true : par1World.getBlockId(par2 + 1, par3, par4) == blockID ? true : par1World.getBlockId(par2, par3, par4 - 1) == blockID ? true : par1World.getBlockId(par2, par3,
-		par4 + 1) == blockID;
+	private boolean isThereANeighborChest(World world, int x, int y, int z) {
+		return world.getBlockId(x, y, z) != blockID ? false : world.getBlockId(x - 1, y, z) == blockID ? true : world.getBlockId(x + 1, y, z) == blockID ? true : world.getBlockId(x, y, z - 1) == blockID ? true : world.getBlockId(x, y,
+		z + 1) == blockID;
 	}
 
 	@Override
-	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
-		super.onNeighborBlockChange(par1World, par2, par3, par4, par5);
-		TileEntityPetrifiedWoodChest tileentitychest = (TileEntityPetrifiedWoodChest) par1World.getBlockTileEntity(par2, par3, par4);
+	public void onNeighborBlockChange(World world, int x, int y, int z, int par5) {
+		super.onNeighborBlockChange(world, x, y, z, par5);
+		TileEntityPetrifiedWoodChest tileentitychest = (TileEntityPetrifiedWoodChest) world.getBlockTileEntity(x, y, z);
 
 		if (tileentitychest != null)
 			tileentitychest.updateContainingBlockInfo();
@@ -241,9 +235,9 @@ public class BlockPetrifiedChest extends BlockContainer {
 		TileEntityPetrifiedWoodChest tile = (TileEntityPetrifiedWoodChest) world.getBlockTileEntity(x, y, z);
 		if (tile != null) {
 			for (int i = 0; i < tile.getSizeInventory(); i++) {
-				ItemStack stack = tile.getStackInSlot(i);
-				if (stack != null)
-					Utils.dropStack(world, x, y, z, stack);
+				ItemStack is = tile.getStackInSlot(i);
+				if (is != null)
+					Utils.dropStack(world, x, y, z, is);
 			}
 			world.func_96440_m(x, y, z, par5);
 		}
@@ -260,48 +254,48 @@ public class BlockPetrifiedChest extends BlockContainer {
 		}
 	}
 
-	public static IInventory getInventory(World par1World, int par2, int par3, int par4) {
-		Object object = par1World.getBlockTileEntity(par2, par3, par4);
+	public static IInventory getInventory(World world, int x, int y, int z) {
+		Object object = world.getBlockTileEntity(x, y, z);
 		int blockID = ModBlocks.petrifiedWoodChest.blockID;
 
 		if (object == null)
 			return null;
-		else if (par1World.isBlockSolidOnSide(par2, par3 + 1, par4, DOWN))
+		else if (world.isBlockSolidOnSide(x, y + 1, z, DOWN))
 			return null;
-		else if (isOcelotBlockingChest(par1World, par2, par3, par4))
+		else if (isOcelotBlockingChest(world, x, y, z))
 			return null;
-		else if (par1World.getBlockId(par2 - 1, par3, par4) == blockID && (par1World.isBlockSolidOnSide(par2 - 1, par3 + 1, par4, DOWN) || isOcelotBlockingChest(par1World, par2 - 1, par3, par4)))
+		else if (world.getBlockId(x - 1, y, z) == blockID && (world.isBlockSolidOnSide(x - 1, y + 1, z, DOWN) || isOcelotBlockingChest(world, x - 1, y, z)))
 			return null;
-		else if (par1World.getBlockId(par2 + 1, par3, par4) == blockID && (par1World.isBlockSolidOnSide(par2 + 1, par3 + 1, par4, DOWN) || isOcelotBlockingChest(par1World, par2 + 1, par3, par4)))
+		else if (world.getBlockId(x + 1, y, z) == blockID && (world.isBlockSolidOnSide(x + 1, y + 1, z, DOWN) || isOcelotBlockingChest(world, x + 1, y, z)))
 			return null;
-		else if (par1World.getBlockId(par2, par3, par4 - 1) == blockID && (par1World.isBlockSolidOnSide(par2, par3 + 1, par4 - 1, DOWN) || isOcelotBlockingChest(par1World, par2, par3, par4 - 1)))
+		else if (world.getBlockId(x, y, z - 1) == blockID && (world.isBlockSolidOnSide(x, y + 1, z - 1, DOWN) || isOcelotBlockingChest(world, x, y, z - 1)))
 			return null;
-		else if (par1World.getBlockId(par2, par3, par4 + 1) == blockID && (par1World.isBlockSolidOnSide(par2, par3 + 1, par4 + 1, DOWN) || isOcelotBlockingChest(par1World, par2, par3, par4 + 1)))
+		else if (world.getBlockId(x, y, z + 1) == blockID && (world.isBlockSolidOnSide(x, y + 1, z + 1, DOWN) || isOcelotBlockingChest(world, x, y, z + 1)))
 			return null;
 		else {
-			if (par1World.getBlockId(par2 - 1, par3, par4) == blockID)
-				object = new InventoryLargeChest("container.petrifiedChestDouble", (TileEntityPetrifiedWoodChest) par1World.getBlockTileEntity(par2 - 1, par3, par4), (IInventory) object);
+			if (world.getBlockId(x - 1, y, z) == blockID)
+				object = new InventoryLargeChest("container.petrifiedChestDouble", (TileEntityPetrifiedWoodChest) world.getBlockTileEntity(x - 1, y, z), (IInventory) object);
 
-			if (par1World.getBlockId(par2 + 1, par3, par4) == blockID)
-				object = new InventoryLargeChest("container.petrifiedChestDouble", (IInventory) object, (TileEntityPetrifiedWoodChest) par1World.getBlockTileEntity(par2 + 1, par3, par4));
+			if (world.getBlockId(x + 1, y, z) == blockID)
+				object = new InventoryLargeChest("container.petrifiedChestDouble", (IInventory) object, (TileEntityPetrifiedWoodChest) world.getBlockTileEntity(x + 1, y, z));
 
-			if (par1World.getBlockId(par2, par3, par4 - 1) == blockID)
-				object = new InventoryLargeChest("container.petrifiedChestDouble", (TileEntityPetrifiedWoodChest) par1World.getBlockTileEntity(par2, par3, par4 - 1), (IInventory) object);
+			if (world.getBlockId(x, y, z - 1) == blockID)
+				object = new InventoryLargeChest("container.petrifiedChestDouble", (TileEntityPetrifiedWoodChest) world.getBlockTileEntity(x, y, z - 1), (IInventory) object);
 
-			if (par1World.getBlockId(par2, par3, par4 + 1) == blockID)
-				object = new InventoryLargeChest("container.petrifiedChestDouble", (IInventory) object, (TileEntityPetrifiedWoodChest) par1World.getBlockTileEntity(par2, par3, par4 + 1));
+			if (world.getBlockId(x, y, z + 1) == blockID)
+				object = new InventoryLargeChest("container.petrifiedChestDouble", (IInventory) object, (TileEntityPetrifiedWoodChest) world.getBlockTileEntity(x, y, z + 1));
 
 			return (IInventory) object;
 		}
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World par1World) {
+	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityPetrifiedWoodChest();
 	}
 
-	public static boolean isOcelotBlockingChest(World par0World, int par1, int par2, int par3) {
-		Iterator iterator = par0World.getEntitiesWithinAABB(EntityOcelot.class, AxisAlignedBB.getAABBPool().getAABB(par1, par2 + 1, par3, par1 + 1, par2 + 2, par3 + 1)).iterator();
+	public static boolean isOcelotBlockingChest(World world, int x, int y, int z) {
+		Iterator iterator = world.getEntitiesWithinAABB(EntityOcelot.class, AxisAlignedBB.getAABBPool().getAABB(x, y + 1, z, x + 1, y + 2, z + 1)).iterator();
 		EntityOcelot entityocelot;
 
 		do {

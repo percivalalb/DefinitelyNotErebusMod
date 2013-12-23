@@ -14,8 +14,8 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
 public abstract class EntityMobBlock extends EntityCreature implements IMob {
-	public EntityMobBlock(World par1World) {
-		super(par1World);
+	public EntityMobBlock(World world) {
+		super(world);
 		experienceValue = 5;
 	}
 
@@ -61,11 +61,11 @@ public abstract class EntityMobBlock extends EntityCreature implements IMob {
 	 * Called when the entity is attacked.
 	 */
 	@Override
-	public boolean attackEntityFrom(DamageSource par1DamageSource, float par2) {
+	public boolean attackEntityFrom(DamageSource source, float par2) {
 		if (isEntityInvulnerable())
 			return false;
-		else if (super.attackEntityFrom(par1DamageSource, par2)) {
-			Entity entity = par1DamageSource.getEntity();
+		else if (super.attackEntityFrom(source, par2)) {
+			Entity entity = source.getEntity();
 
 			if (riddenByEntity != entity && ridingEntity != entity) {
 				if (entity != this)
@@ -79,20 +79,20 @@ public abstract class EntityMobBlock extends EntityCreature implements IMob {
 	}
 
 	@Override
-	public boolean attackEntityAsMob(Entity par1Entity) {
+	public boolean attackEntityAsMob(Entity entity) {
 		float f = (float) getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();
 		int i = 0;
 
-		if (par1Entity instanceof EntityLivingBase) {
-			f += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLivingBase) par1Entity);
-			i += EnchantmentHelper.getKnockbackModifier(this, (EntityLivingBase) par1Entity);
+		if (entity instanceof EntityLivingBase) {
+			f += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLivingBase) entity);
+			i += EnchantmentHelper.getKnockbackModifier(this, (EntityLivingBase) entity);
 		}
 
-		boolean flag = par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), f);
+		boolean flag = entity.attackEntityFrom(DamageSource.causeMobDamage(this), f);
 
 		if (flag) {
 			if (i > 0) {
-				par1Entity.addVelocity(-MathHelper.sin(rotationYaw * (float) Math.PI / 180.0F) * i * 0.5F, 0.1D, MathHelper.cos(rotationYaw * (float) Math.PI / 180.0F) * i * 0.5F);
+				entity.addVelocity(-MathHelper.sin(rotationYaw * (float) Math.PI / 180.0F) * i * 0.5F, 0.1D, MathHelper.cos(rotationYaw * (float) Math.PI / 180.0F) * i * 0.5F);
 				motionX *= 0.6D;
 				motionZ *= 0.6D;
 			}
@@ -100,10 +100,10 @@ public abstract class EntityMobBlock extends EntityCreature implements IMob {
 			int j = EnchantmentHelper.getFireAspectModifier(this);
 
 			if (j > 0)
-				par1Entity.setFire(j * 4);
+				entity.setFire(j * 4);
 
-			if (par1Entity instanceof EntityLivingBase)
-				EnchantmentThorns.func_92096_a(this, (EntityLivingBase) par1Entity, rand);
+			if (entity instanceof EntityLivingBase)
+				EnchantmentThorns.func_92096_a(this, (EntityLivingBase) entity, rand);
 		}
 
 		return flag;
@@ -114,10 +114,10 @@ public abstract class EntityMobBlock extends EntityCreature implements IMob {
 	 * by each mob to define their attack.
 	 */
 	@Override
-	protected void attackEntity(Entity par1Entity, float par2) {
-		if (attackTime <= 0 && par2 < 2.0F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY) {
+	protected void attackEntity(Entity entity, float par2) {
+		if (attackTime <= 0 && par2 < 2.0F && entity.boundingBox.maxY > boundingBox.minY && entity.boundingBox.minY < boundingBox.maxY) {
 			attackTime = 20;
-			attackEntityAsMob(par1Entity);
+			attackEntityAsMob(entity);
 		}
 	}
 

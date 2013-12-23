@@ -246,9 +246,9 @@ public class ModelBeetle extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(par1Entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
+	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
+		super.render(entity, par2, par3, par4, par5, par6, par7);
+		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
 		backbody.render(par7);
 		body.render(par7);
 		head.render(par7);
@@ -269,8 +269,8 @@ public class ModelBeetle extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, par7Entity);
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
+		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
 		float cos1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.5F * par2;
 		float cos2 = MathHelper.cos(par1 * 1.0F) * 0.5F * par2;
 		LBL1.rotateAngleX = cos1;

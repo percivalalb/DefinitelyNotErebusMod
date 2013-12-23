@@ -343,9 +343,9 @@ public class ModelLocust extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(par1Entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, par1Entity);
+	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
+		super.render(entity, par2, par3, par4, par5, par6, par7);
+		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
 		LAnt.render(par7);
 		RAnt.render(par7);
 		LEye.render(par7);
@@ -408,7 +408,7 @@ public class ModelLocust extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity par7Entity) {
+	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
 		float heady = par4 / (180F / (float) Math.PI);
 		float headx = par5 / (180F / (float) Math.PI);
 		float legx1 = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
@@ -449,7 +449,7 @@ public class ModelLocust extends ModelBase {
 		RFL2.rotateAngleX = legx1;
 		RFL3.rotateAngleX = legx1;
 		RFL4.rotateAngleX = legx1;
-		EntityLocust var8 = (EntityLocust) par7Entity;
+		EntityLocust var8 = (EntityLocust) entity;
 		if (!var8.onGround) {
 			LBL4.setRotationPoint(2F, 22.0F, 14F);
 			LBL5.setRotationPoint(2F, 22.0F, 14F);

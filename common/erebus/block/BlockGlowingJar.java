@@ -1,13 +1,11 @@
 package erebus.block;
 import java.util.Random;
-
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -16,8 +14,6 @@ import erebus.tileentity.TileEntityGlowingJar;
 
 public class BlockGlowingJar extends BlockContainer
 {
-	@SideOnly(Side.CLIENT)
-	private Icon a, b;
 	public BlockGlowingJar(int id) {
 		super(id, Material.glass);
 		setCreativeTab(CreativeTabs.tabBlock);
@@ -26,7 +22,7 @@ public class BlockGlowingJar extends BlockContainer
 	}
 
 	@Override
-	public int idDropped(int par1, Random par2Random, int par3)
+	public int idDropped(int meta, Random rand, int fortune)
 	{
 		return ModBlocks.glowingJarID;
 	}
@@ -47,15 +43,15 @@ public class BlockGlowingJar extends BlockContainer
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World par1World)
+	public TileEntity createNewTileEntity(World world)
 	{
 		return new TileEntityGlowingJar();
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
+	public boolean canPlaceBlockAt(World world, int x, int y, int z)
 	{
-		return par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) || BlockFence.isIdAFence(par1World.getBlockId(par2, par3 - 1, par4)) || isIdAJar(par1World.getBlockId(par2, par3 - 1, par4));
+		return world.doesBlockHaveSolidTopSurface(x, y - 1, z) || BlockFence.isIdAFence(world.getBlockId(x, y - 1, z)) || isIdAJar(world.getBlockId(x, y - 1, z));
 	}
 
 	public static boolean isIdAJar(int id)
@@ -67,8 +63,6 @@ public class BlockGlowingJar extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
 		blockIcon = reg.registerIcon("erebus:blockBioJarBreak");
-		a = reg.registerIcon("erebus:blockBioJarBreak");
-		b = reg.registerIcon("erebus:blockBioJarBreak");
 	}
 }
 

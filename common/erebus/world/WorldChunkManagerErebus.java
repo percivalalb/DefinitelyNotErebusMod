@@ -104,7 +104,7 @@ public class WorldChunkManagerErebus extends WorldChunkManager {
 	}
 
 	@Override
-	public ChunkPosition findBiomePosition(int par1, int par2, int par3, List par4List, Random par5Random) {
+	public ChunkPosition findBiomePosition(int par1, int par2, int par3, List par4List, Random rand) {
 		IntCache.resetIntCache();
 		int var6 = par1 - par3 >> 2;
 		int var7 = par2 - par3 >> 2;
@@ -121,7 +121,7 @@ public class WorldChunkManagerErebus extends WorldChunkManager {
 			int var17 = var7 + var15 / var10 << 2;
 			BiomeGenBase var18 = BiomeGenBase.biomeList[var12[var15]];
 
-			if (par4List.contains(var18) && (var13 == null || par5Random.nextInt(var14 + 1) == 0)) {
+			if (par4List.contains(var18) && (var13 == null || rand.nextInt(var14 + 1) == 0)) {
 				var13 = new ChunkPosition(var16, 0, var17);
 				++var14;
 			}

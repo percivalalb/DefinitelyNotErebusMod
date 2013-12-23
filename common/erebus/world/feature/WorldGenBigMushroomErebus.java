@@ -21,13 +21,13 @@ public class WorldGenBigMushroomErebus extends WorldGenerator {
 	}
 
 	@Override
-	public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5) {
-		int var6 = par2Random.nextInt(2);
+	public boolean generate(World world, Random rand, int par3, int par4, int par5) {
+		int var6 = rand.nextInt(2);
 
 		if (mushroomType >= 0)
 			var6 = mushroomType;
 
-		int var7 = par2Random.nextInt(3) + 4;
+		int var7 = rand.nextInt(3) + 4;
 		boolean var8 = true;
 
 		if (par4 >= 1 && par4 + var7 + 1 < 256) {
@@ -45,11 +45,11 @@ public class WorldGenBigMushroomErebus extends WorldGenerator {
 				for (var11 = par3 - var10; var11 <= par3 + var10 && var8; ++var11)
 					for (var12 = par5 - var10; var12 <= par5 + var10 && var8; ++var12)
 						if (var9 >= 0 && var9 < 256) {
-							var13 = par1World.getBlockId(var11, var9, var12);
+							var13 = world.getBlockId(var11, var9, var12);
 
 							Block block = Block.blocksList[var13];
 
-							if (var13 != 0 && block != null && !block.isLeaves(par1World, var11, var9, var12))
+							if (var13 != 0 && block != null && !block.isLeaves(world, var11, var9, var12))
 								var8 = false;
 						} else
 							var8 = false;
@@ -58,7 +58,7 @@ public class WorldGenBigMushroomErebus extends WorldGenerator {
 			if (!var8)
 				return false;
 			else {
-				var9 = par1World.getBlockId(par3, par4 - 1, par5);
+				var9 = world.getBlockId(par3, par4 - 1, par5);
 
 				if (var9 != ModBlocks.umberstone.blockID && var9 != Block.obsidian.blockID && var9 != Block.glowStone.blockID)
 					return false;
@@ -125,20 +125,20 @@ public class WorldGenBigMushroomErebus extends WorldGenerator {
 								if (var15 == 5 && var11 < par4 + var7)
 									var15 = 0;
 
-								Block block = Block.blocksList[par1World.getBlockId(var13, var11, var14)];
+								Block block = Block.blocksList[world.getBlockId(var13, var11, var14)];
 
-								if ((var15 != 0 || par4 >= par4 + var7 - 1) && (block == null || block.canBeReplacedByLeaves(par1World, var13, var11, var14)))
-									setBlockAndMetadata(par1World, var13, var11, var14, Block.mushroomCapBrown.blockID + var6, var15);
+								if ((var15 != 0 || par4 >= par4 + var7 - 1) && (block == null || block.canBeReplacedByLeaves(world, var13, var11, var14)))
+									setBlockAndMetadata(world, var13, var11, var14, Block.mushroomCapBrown.blockID + var6, var15);
 							}
 					}
 
 					for (var11 = 0; var11 < var7; ++var11) {
-						var12 = par1World.getBlockId(par3, par4 + var11, par5);
+						var12 = world.getBlockId(par3, par4 + var11, par5);
 
 						Block block = Block.blocksList[var12];
 
-						if (block == null || block.canBeReplacedByLeaves(par1World, par3, par4 + var11, par5))
-							setBlockAndMetadata(par1World, par3, par4 + var11, par5, Block.mushroomCapBrown.blockID + var6, 10);
+						if (block == null || block.canBeReplacedByLeaves(world, par3, par4 + var11, par5))
+							setBlockAndMetadata(world, par3, par4 + var11, par5, Block.mushroomCapBrown.blockID + var6, 10);
 					}
 
 					return true;

@@ -26,9 +26,9 @@ import erebus.ModItems;
 
 public class EntityUmberGolem extends EntityCreature implements IMob {
 
-	public EntityUmberGolem(World par1World)
+	public EntityUmberGolem(World world)
 	{
-		super(par1World);
+		super(world);
 		isImmuneToFire = true;
 		setSize(1.0F, 1.0F);
 		tasks.addTask(0, new EntityAITempt(this, 0.5D, ModItems.wandOfAnimation.itemID, false));
@@ -109,23 +109,23 @@ public class EntityUmberGolem extends EntityCreature implements IMob {
 		return Attack(entity);
 	}
 
-	protected boolean Attack(Entity par1Entity) {
+	protected boolean Attack(Entity entity) {
 		if (!worldObj.isRemote)
 		{
 			if (onGround)
 			{
-				double d0 = par1Entity.posX - posX;
-				double d1 = par1Entity.posZ - posZ;
+				double d0 = entity.posX - posX;
+				double d1 = entity.posZ - posZ;
 				float f2 = MathHelper.sqrt_double(d0 * d0 + d1 * d1);
 				motionX = d0 / f2 * 0.5D * 0.800000011920929D + motionX * 0.20000000298023224D;
 				motionZ = d1 / f2 * 0.5D * 0.800000011920929D + motionZ * 0.20000000298023224D;
 				motionY = 0.4000000059604645D;
 			}
 			int Knockback = 1;
-			par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), 2.0F + 3);
-			par1Entity.addVelocity(-MathHelper.sin(rotationYaw * 3.141593F / 180.0F) * Knockback * 0.5F, 0.4D, MathHelper.cos(rotationYaw * 3.141593F / 180.0F) * Knockback * 0.5F);
-			worldObj.playSoundAtEntity(par1Entity, "damage.fallbig", 1.0F, 1.0F);
-			((EntityLivingBase) par1Entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, worldObj.difficultySetting * 50, 0));
+			entity.attackEntityFrom(DamageSource.causeMobDamage(this), 2.0F + 3);
+			entity.addVelocity(-MathHelper.sin(rotationYaw * 3.141593F / 180.0F) * Knockback * 0.5F, 0.4D, MathHelper.cos(rotationYaw * 3.141593F / 180.0F) * Knockback * 0.5F);
+			worldObj.playSoundAtEntity(entity, "damage.fallbig", 1.0F, 1.0F);
+			((EntityLivingBase) entity).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, worldObj.difficultySetting * 50, 0));
 			return true;
 		}
 		return true;
@@ -133,8 +133,8 @@ public class EntityUmberGolem extends EntityCreature implements IMob {
 
 	@Override
 	public boolean interact(EntityPlayer player) {
-		ItemStack stack = player.inventory.getCurrentItem();
-		if (!worldObj.isRemote && stack != null && stack.itemID == ModItems.wandOfAnimation.itemID) {
+		ItemStack is = player.inventory.getCurrentItem();
+		if (!worldObj.isRemote && is != null && is.itemID == ModItems.wandOfAnimation.itemID) {
 			setDead();
 			byte b0 = 0;
 			int l1 = MathHelper.floor_double(player.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;

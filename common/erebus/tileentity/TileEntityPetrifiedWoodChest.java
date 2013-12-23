@@ -2,7 +2,6 @@ package erebus.tileentity;
 
 import java.util.Iterator;
 import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -42,21 +41,21 @@ public class TileEntityPetrifiedWoodChest extends TileEntity implements IInvento
 	@Override
 	public ItemStack decrStackSize(int par1, int par2) {
 		if (chestContents[par1] != null) {
-			ItemStack itemstack;
+			ItemStack is;
 
 			if (chestContents[par1].stackSize <= par2) {
-				itemstack = chestContents[par1];
+				is = chestContents[par1];
 				chestContents[par1] = null;
 				onInventoryChanged();
-				return itemstack;
+				return is;
 			} else {
-				itemstack = chestContents[par1].splitStack(par2);
+				is = chestContents[par1].splitStack(par2);
 
 				if (chestContents[par1].stackSize == 0)
 					chestContents[par1] = null;
 
 				onInventoryChanged();
-				return itemstack;
+				return is;
 			}
 		} else
 			return null;
@@ -65,19 +64,19 @@ public class TileEntityPetrifiedWoodChest extends TileEntity implements IInvento
 	@Override
 	public ItemStack getStackInSlotOnClosing(int par1) {
 		if (chestContents[par1] != null) {
-			ItemStack itemstack = chestContents[par1];
+			ItemStack is = chestContents[par1];
 			chestContents[par1] = null;
-			return itemstack;
+			return is;
 		} else
 			return null;
 	}
 
 	@Override
-	public void setInventorySlotContents(int par1, ItemStack par2ItemStack) {
-		chestContents[par1] = par2ItemStack;
+	public void setInventorySlotContents(int par1, ItemStack is) {
+		chestContents[par1] = is;
 
-		if (par2ItemStack != null && par2ItemStack.stackSize > getInventoryStackLimit())
-			par2ItemStack.stackSize = getInventoryStackLimit();
+		if (is != null && is.stackSize > getInventoryStackLimit())
+			is.stackSize = getInventoryStackLimit();
 
 		onInventoryChanged();
 	}
@@ -92,18 +91,18 @@ public class TileEntityPetrifiedWoodChest extends TileEntity implements IInvento
 		return customName != null && customName.length() > 0;
 	}
 
-	public void setChestGuiName(String par1Str) {
-		customName = par1Str;
+	public void setChestGuiName(String name) {
+		customName = name;
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
-		super.readFromNBT(par1NBTTagCompound);
-		NBTTagList nbttaglist = par1NBTTagCompound.getTagList("Items");
+	public void readFromNBT(NBTTagCompound nbt) {
+		super.readFromNBT(nbt);
+		NBTTagList nbttaglist = nbt.getTagList("Items");
 		chestContents = new ItemStack[getSizeInventory()];
 
-		if (par1NBTTagCompound.hasKey("CustomName"))
-			customName = par1NBTTagCompound.getString("CustomName");
+		if (nbt.hasKey("CustomName"))
+			customName = nbt.getString("CustomName");
 
 		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
 			NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.tagAt(i);
@@ -115,8 +114,8 @@ public class TileEntityPetrifiedWoodChest extends TileEntity implements IInvento
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
-		super.writeToNBT(par1NBTTagCompound);
+	public void writeToNBT(NBTTagCompound nbt) {
+		super.writeToNBT(nbt);
 		NBTTagList nbttaglist = new NBTTagList();
 
 		for (int i = 0; i < chestContents.length; ++i)
@@ -127,10 +126,10 @@ public class TileEntityPetrifiedWoodChest extends TileEntity implements IInvento
 				nbttaglist.appendTag(nbttagcompound1);
 			}
 
-		par1NBTTagCompound.setTag("Items", nbttaglist);
+		nbt.setTag("Items", nbttaglist);
 
 		if (isInvNameLocalized())
-			par1NBTTagCompound.setString("CustomName", customName);
+			nbt.setString("CustomName", customName);
 	}
 
 	@Override
@@ -139,8 +138,8 @@ public class TileEntityPetrifiedWoodChest extends TileEntity implements IInvento
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) != this ? false : par1EntityPlayer.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64.0D;
+	public boolean isUseableByPlayer(EntityPlayer player) {
+		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) != this ? false : player.getDistanceSq(xCoord + 0.5D, yCoord + 0.5D, zCoord + 0.5D) <= 64.0D;
 	}
 
 	@Override
@@ -149,28 +148,28 @@ public class TileEntityPetrifiedWoodChest extends TileEntity implements IInvento
 		adjacentChestChecked = false;
 	}
 
-	private void func_90009_a(TileEntityPetrifiedWoodChest par1TileEntityPetrifiedWoodChest, int par2) {
-		if (par1TileEntityPetrifiedWoodChest.isInvalid())
+	private void func_90009_a(TileEntityPetrifiedWoodChest chest, int par2) {
+		if (chest.isInvalid())
 			adjacentChestChecked = false;
 		else if (adjacentChestChecked)
 			switch (par2) {
 				case 0:
-					if (adjacentChestZPosition != par1TileEntityPetrifiedWoodChest)
+					if (adjacentChestZPosition != chest)
 						adjacentChestChecked = false;
 
 					break;
 				case 1:
-					if (adjacentChestXNeg != par1TileEntityPetrifiedWoodChest)
+					if (adjacentChestXNeg != chest)
 						adjacentChestChecked = false;
 
 					break;
 				case 2:
-					if (adjacentChestZNeg != par1TileEntityPetrifiedWoodChest)
+					if (adjacentChestZNeg != chest)
 						adjacentChestChecked = false;
 
 					break;
 				case 3:
-					if (adjacentChestXPos != par1TileEntityPetrifiedWoodChest)
+					if (adjacentChestXPos != chest)
 						adjacentChestChecked = false;
 			}
 	}
@@ -311,7 +310,7 @@ public class TileEntityPetrifiedWoodChest extends TileEntity implements IInvento
 	}
 
 	@Override
-	public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack) {
+	public boolean isItemValidForSlot(int slot, ItemStack is) {
 		return true;
 	}
 

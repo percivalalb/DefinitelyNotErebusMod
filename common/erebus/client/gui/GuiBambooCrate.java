@@ -4,9 +4,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.inventory.ContainerBambooCrate;
@@ -18,21 +16,21 @@ public class GuiBambooCrate extends GuiContainer {
 	private static final ResourceLocation GUI_BAMBOO_CRATE = new ResourceLocation("erebus:textures/gui/bambooCrate.png");
 	private TileEntityBambooCrate bambooCrateInventory;
 
-	public GuiBambooCrate(InventoryPlayer par1InventoryPlayer, TileEntityBambooCrate par2TileEntityBambooCrate) {
-		super(new ContainerBambooCrate(par1InventoryPlayer, par2TileEntityBambooCrate));
-		bambooCrateInventory = par2TileEntityBambooCrate;
+	public GuiBambooCrate(InventoryPlayer playerInventory, TileEntityBambooCrate tile) {
+		super(new ContainerBambooCrate(playerInventory, tile));
+		bambooCrateInventory = tile;
 		allowUserInput = false;
 		ySize = 168;
 	}
 
 	@Override
-	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+	protected void drawGuiContainerForegroundLayer(int x, int y) {
 		fontRenderer.drawString(bambooCrateInventory.isInvNameLocalized() ? bambooCrateInventory.getInvName() : I18n.getString(bambooCrateInventory.getInvName()), 8, 6, 4210752);
 		fontRenderer.drawString(I18n.getString("container.inventory"), 8, ySize - 96 + 2, 4210752);
 	}
 
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
+	protected void drawGuiContainerBackgroundLayer(float partialTickTime, int x, int y) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.getTextureManager().bindTexture(GUI_BAMBOO_CRATE);
 		int k = (width - xSize) / 2;

@@ -14,13 +14,13 @@ public class ItemBucketOfBeetleJuice extends ItemBucketMilk {
 	}
 
 	@Override
-	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
+	public ItemStack onEaten(ItemStack is, World world, EntityPlayer player) {
 		if (!player.capabilities.isCreativeMode)
-			stack.stackSize--;
+			is.stackSize--;
 
 		if (!world.isRemote)
 			player.curePotionEffects(new ItemStack(Item.bucketMilk));
 
-		return stack.stackSize <= 0 ? new ItemStack(Item.bucketEmpty) : stack;
+		return is.stackSize <= 0 ? new ItemStack(Item.bucketEmpty) : is;
 	}
 }

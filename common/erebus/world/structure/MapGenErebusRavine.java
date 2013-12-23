@@ -1,7 +1,6 @@
 package erebus.world.structure;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -170,7 +169,6 @@ public class MapGenErebusRavine extends MapGenBase {
 		BiomeGenBase biome = worldObj.getBiomeGenForCoords(x + chunkX * 16, z + chunkZ * 16);
 		int top = biome.topBlock;
 		int filler = biome.fillerBlock;
-		int block = blocks[index];
 
 		if (y < 3)
 			blocks[index] = (byte) Block.bedrock.blockID;

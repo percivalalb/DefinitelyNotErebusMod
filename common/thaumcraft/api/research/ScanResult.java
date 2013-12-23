@@ -36,4 +36,9 @@ public class ScanResult {
 		return true;
 	}
 
+	@Override
+	public int hashCode(){
+		return super.hashCode();
+	}
+
 }

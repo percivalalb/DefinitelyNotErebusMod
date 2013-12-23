@@ -1,7 +1,6 @@
 package erebus.block;
 
 import java.util.ArrayList;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -23,12 +22,12 @@ public class BlockTurnip extends BlockCrops {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2) {
-		if (par2 < 7) {
-			if (par2 == 6)
-				par2 = 5;
+	public Icon getIcon(int side, int meta) {
+		if (meta < 7) {
+			if (meta == 6)
+				meta = 5;
 
-			return iconArray[par2 >> 1];
+			return iconArray[meta >> 1];
 		} else
 			return iconArray[3];
 	}
@@ -56,8 +55,8 @@ public class BlockTurnip extends BlockCrops {
 	}
 
 	@Override
-	public boolean canBlockStay(World par1World, int par2, int par3, int par4) {
-		Block soil = blocksList[par1World.getBlockId(par2, par3 - 1, par4)];
+	public boolean canBlockStay(World world, int x, int y, int z) {
+		Block soil = blocksList[world.getBlockId(x, y - 1, z)];
 		return soil != null && soil == Block.grass || soil == Block.tilledField || soil == Block.dirt;
 	}
 
@@ -68,10 +67,10 @@ public class BlockTurnip extends BlockCrops {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {
+	public void registerIcons(IconRegister iconRegister) {
 		iconArray = new Icon[4];
 
 		for (int i = 0; i < iconArray.length; ++i)
-			iconArray[i] = par1IconRegister.registerIcon("erebus:turnips_" + i);
+			iconArray[i] = iconRegister.registerIcon("erebus:turnips_" + i);
 	}
 }

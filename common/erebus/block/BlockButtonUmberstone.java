@@ -1,10 +1,9 @@
 package erebus.block;
+import net.minecraft.block.BlockButtonStone;
+import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockButtonStone;
-import net.minecraft.util.Icon;
 
 public class BlockButtonUmberstone extends BlockButtonStone{
 	public BlockButtonUmberstone(int id){
@@ -13,7 +12,7 @@ public class BlockButtonUmberstone extends BlockButtonStone{
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2){
+	public Icon getIcon(int side, int meta){
 		return ModBlocks.umberstone.getBlockTextureFromSide(1);
 	}
 }

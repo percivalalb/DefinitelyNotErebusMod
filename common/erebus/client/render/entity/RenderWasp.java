@@ -5,9 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelWasp;
@@ -15,29 +13,25 @@ import erebus.entity.EntityWasp;
 
 @SideOnly(Side.CLIENT)
 public class RenderWasp extends RenderLiving {
-
-	protected ModelWasp model;
-
 	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelWasp.png");
 
-	public RenderWasp(ModelWasp par1ModelBase, float par2) {
-		super(par1ModelBase, par2);
-		model = (ModelWasp) mainModel;
+	public RenderWasp(ModelWasp model, float shadowSize) {
+		super(model, shadowSize);
 
 	}
 
-	public void renderWasp(EntityWasp par1EntityWasp, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(par1EntityWasp, par2, par4, par6, par8, par9);
-	}
-
-	@Override
-	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderWasp((EntityWasp) par1EntityLiving, par2, par4, par6, par8, par9);
+	public void renderWasp(EntityWasp entityWasp, double par2, double par4, double par6, float par8, float par9) {
+		super.doRenderLiving(entityWasp, par2, par4, par6, par8, par9);
 	}
 
 	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
-		renderWasp((EntityWasp) par1Entity, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
+		renderWasp((EntityWasp) entityLiving, par2, par4, par6, par8, par9);
+	}
+
+	@Override
+	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
+		renderWasp((EntityWasp) entity, par2, par4, par6, par8, par9);
 	}
 
 	@Override

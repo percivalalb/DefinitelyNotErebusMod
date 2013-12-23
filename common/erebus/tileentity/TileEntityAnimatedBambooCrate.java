@@ -50,16 +50,16 @@ public class TileEntityAnimatedBambooCrate extends TileEntity implements IInvent
 	@Override
 	public ItemStack decrStackSize(int slot, int size) {
 		if (chestContents[slot] != null) {
-			ItemStack itemstack;
+			ItemStack is;
 			if (chestContents[slot].stackSize <= size) {
-				itemstack = chestContents[slot];
+				is = chestContents[slot];
 				chestContents[slot] = null;
-				return itemstack;
+				return is;
 			} else {
-				itemstack = chestContents[slot].splitStack(size);
+				is = chestContents[slot].splitStack(size);
 				if (chestContents[slot].stackSize == 0)
 					chestContents[slot] = null;
-				return itemstack;
+				return is;
 			}
 		} else
 			return null;
@@ -68,19 +68,19 @@ public class TileEntityAnimatedBambooCrate extends TileEntity implements IInvent
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
 		if (chestContents[slot] != null) {
-			ItemStack itemstack = chestContents[slot];
+			ItemStack is = chestContents[slot];
 			chestContents[slot] = null;
-			return itemstack;
+			return is;
 		} else
 			return null;
 	}
 
 	@Override
-	public void setInventorySlotContents(int slot, ItemStack stack) {
-		chestContents[slot] = stack;
+	public void setInventorySlotContents(int slot, ItemStack is) {
+		chestContents[slot] = is;
 
-		if (stack != null && stack.stackSize > getInventoryStackLimit())
-			stack.stackSize = getInventoryStackLimit();
+		if (is != null && is.stackSize > getInventoryStackLimit())
+			is.stackSize = getInventoryStackLimit();
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package erebus.block;
 
 import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.creativetab.CreativeTabs;
@@ -25,13 +24,11 @@ public class BlockErebusGrass extends BlockTallGrass {
 	}
 
 	@Override
-	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-
-	}
+	public void getSubBlocks(int id, CreativeTabs tab, List list) {}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int getRenderColor(int par1) {
+	public int getRenderColor(int meta) {
 		return ColorizerFoliage.getFoliageColorBasic();
 	}
 
@@ -42,7 +39,7 @@ public class BlockErebusGrass extends BlockTallGrass {
 	}
 
 	@Override
-	public int getDamageValue(World par1World, int par2, int par3, int par4) {
+	public int getDamageValue(World world, int x, int y, int z) {
 		return 1;
 	}
 }

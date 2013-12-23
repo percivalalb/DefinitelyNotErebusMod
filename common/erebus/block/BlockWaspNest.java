@@ -1,7 +1,6 @@
 package erebus.block;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -29,12 +28,12 @@ public class BlockWaspNest extends Block {
 	}
 
 	@Override
-	public int idDropped(int par1, Random par2Random, int par3) {
+	public int idDropped(int meta, Random rand, int fortune) {
 		return 0;
 	}
 
 	@Override
-	public int quantityDropped(Random par1Random) {
+	public int quantityDropped(Random rand) {
 		return 0;
 	}
 
@@ -45,8 +44,8 @@ public class BlockWaspNest extends Block {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2) {
-		return par1 == 0 ? Bottom : par1 == 1 ? Top : blockIcon;
+	public Icon getIcon(int side, int meta) {
+		return side == 0 ? Bottom : side == 1 ? Top : blockIcon;
 	}
 
 	@Override

@@ -14,22 +14,22 @@ public class RenderBeetle extends RenderLiving {
 
 	private static ResourceLocation Texture;
 
-	public RenderBeetle(ModelBase par1ModelBase, float par2) {
-		super(par1ModelBase, par2);
+	public RenderBeetle(ModelBase model, float par2) {
+		super(model, par2);
 	}
 
-	public void renderBeetle(EntityBeetle par1EntityBeetle, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(par1EntityBeetle, par2, par4, par6, par8, par9);
-	}
-
-	@Override
-	public void doRenderLiving(EntityLiving par1EntityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderBeetle((EntityBeetle) par1EntityLiving, par2, par4, par6, par8, par9);
+	public void renderBeetle(EntityBeetle entityBeetle, double par2, double par4, double par6, float par8, float par9) {
+		super.doRenderLiving(entityBeetle, par2, par4, par6, par8, par9);
 	}
 
 	@Override
-	public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
-		renderBeetle((EntityBeetle) par1Entity, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
+		renderBeetle((EntityBeetle) entityLiving, par2, par4, par6, par8, par9);
+	}
+
+	@Override
+	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
+		renderBeetle((EntityBeetle) entity, par2, par4, par6, par8, par9);
 	}
 
 	@Override

@@ -25,8 +25,8 @@ public class ItemWandOfAnimation extends Item {
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
-		if (!player.canPlayerEdit(x, y, z, side, stack))
+	public boolean onItemUse(ItemStack is, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+		if (!player.canPlayerEdit(x, y, z, side, is))
 			return false;
 		else {
 			int blockID = world.getBlockId(x, y, z);
@@ -45,7 +45,7 @@ public class ItemWandOfAnimation extends Item {
 				entityAnimatedBlock.setBlock(blockID, blockMeta);
 				world.spawnEntityInWorld(entityAnimatedBlock);
 				world.playSoundEffect(x, y, z, "erebus:altaroffering", 0.2F, 1.0F);
-				stack.damageItem(1, player);
+				is.damageItem(1, player);
 				return true;
 			}
 		}

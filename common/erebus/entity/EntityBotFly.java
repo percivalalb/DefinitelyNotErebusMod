@@ -26,8 +26,8 @@ public class EntityBotFly extends EntityMob {
 	public float wingFloat;
 	private final AnimationMathHelper mathWings = new AnimationMathHelper();
 
-	public EntityBotFly(World par1World) {
-		super(par1World);
+	public EntityBotFly(World world) {
+		super(world);
 		setSize(0.9F, 0.75F);
 		setIsFlyHanging(false);
 	}
@@ -83,7 +83,7 @@ public class EntityBotFly extends EntityMob {
 	}
 
 	@Override
-	protected void collideWithEntity(Entity par1Entity) {
+	protected void collideWithEntity(Entity entity) {
 	}
 
 	public boolean getIsFlyHanging() {
@@ -196,27 +196,27 @@ public class EntityBotFly extends EntityMob {
 	}
 
 	@Override
-	public boolean attackEntityFrom(DamageSource par1DamageSource, float par2) {
+	public boolean attackEntityFrom(DamageSource source, float par2) {
 		if (isEntityInvulnerable())
 			return false;
 		else {
 			if (!worldObj.isRemote && getIsFlyHanging())
 				setIsFlyHanging(false);
 
-			return super.attackEntityFrom(par1DamageSource, par2);
+			return super.attackEntityFrom(source, par2);
 		}
 	}
 
 	@Override
-	public void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {
-		super.readEntityFromNBT(par1NBTTagCompound);
-		dataWatcher.updateObject(16, Byte.valueOf(par1NBTTagCompound.getByte("BotFly")));
+	public void readEntityFromNBT(NBTTagCompound nbt) {
+		super.readEntityFromNBT(nbt);
+		dataWatcher.updateObject(16, Byte.valueOf(nbt.getByte("BotFly")));
 	}
 
 	@Override
-	public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
-		super.writeEntityToNBT(par1NBTTagCompound);
-		par1NBTTagCompound.setByte("BotFly", dataWatcher.getWatchableObjectByte(16));
+	public void writeEntityToNBT(NBTTagCompound nbt) {
+		super.writeEntityToNBT(nbt);
+		nbt.setByte("BotFly", dataWatcher.getWatchableObjectByte(16));
 	}
 
 	@Override
@@ -251,9 +251,9 @@ public class EntityBotFly extends EntityMob {
 	}
 
 	@Override
-	public boolean attackEntityAsMob(Entity par1Entity) {
-		if (super.attackEntityAsMob(par1Entity)) {
-			if (par1Entity instanceof EntityLivingBase) {
+	public boolean attackEntityAsMob(Entity entity) {
+		if (super.attackEntityAsMob(entity)) {
+			if (entity instanceof EntityLivingBase) {
 				byte var2 = 0;
 
 				if (worldObj.difficultySetting > 1)
@@ -263,7 +263,7 @@ public class EntityBotFly extends EntityMob {
 						var2 = 15;
 
 				if (var2 > 0)
-					((EntityLivingBase) par1Entity).addPotionEffect(new PotionEffect(Potion.hunger.id, var2 * 20, 0));
+					((EntityLivingBase) entity).addPotionEffect(new PotionEffect(Potion.hunger.id, var2 * 20, 0));
 			}
 
 			return true;
@@ -273,8 +273,8 @@ public class EntityBotFly extends EntityMob {
 	}
 
 	@Override
-	protected void attackEntity(Entity par1Entity, float par2) {
-		if (par2 < 1.2F && par1Entity.boundingBox.maxY > boundingBox.minY && par1Entity.boundingBox.minY < boundingBox.maxY)
-			attackEntityAsMob(par1Entity);
+	protected void attackEntity(Entity entity, float par2) {
+		if (par2 < 1.2F && entity.boundingBox.maxY > boundingBox.minY && entity.boundingBox.minY < boundingBox.maxY)
+			attackEntityAsMob(entity);
 	}
 }

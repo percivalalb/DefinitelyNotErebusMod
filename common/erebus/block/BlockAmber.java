@@ -1,7 +1,6 @@
 package erebus.block;
 
 import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -31,8 +30,8 @@ public class BlockAmber extends Block {
 	"sidingleft_t", "sidingleft_b", "sidingleft_tb", "sidingright_t", "sidingright_b", "sidingright_tb" // 45
 	};
 
-	public BlockAmber(int par1) {
-		super(par1, Material.rock);
+	public BlockAmber(int id) {
+		super(id, Material.rock);
 	}
 
 	@Override
@@ -226,9 +225,9 @@ public class BlockAmber extends Block {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List) {
-		par3List.add(new ItemStack(par1, 1, 0));
-		par3List.add(new ItemStack(par1, 1, 1));
-		par3List.add(new ItemStack(par1, 1, 2));
+	public void getSubBlocks(int id, CreativeTabs tab, List list) {
+		list.add(new ItemStack(id, 1, 0));
+		list.add(new ItemStack(id, 1, 1));
+		list.add(new ItemStack(id, 1, 2));
 	}
 }

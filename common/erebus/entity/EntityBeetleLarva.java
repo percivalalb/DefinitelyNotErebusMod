@@ -164,10 +164,8 @@ public class EntityBeetleLarva extends EntityCreature {
 	@Override
 	public boolean interact(EntityPlayer player) {
 		ItemStack is = player.inventory.getCurrentItem();
-		if (!worldObj.isRemote && is != null && is.itemID == Item.wheat.itemID) {
-			System.out.println("Should do something here");
+		if (!worldObj.isRemote && is != null && is.itemID == Item.wheat.itemID)
 			return true;
-		}
 
 		return super.interact(player);
 	}

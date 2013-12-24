@@ -70,7 +70,6 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 			if (openticks < 0F) {
 				openticks = openticks + 0.19625F;
 				dataWatcher.updateObject(21, openticks);
-				System.out.println("openticks " + openticks);
 			}
 			if (openticks == -1.5699999F)
 				worldObj.playSoundEffect(posX, posY + 0.5D, posZ, "random.chestclosed", 0.5F, 0.9F);

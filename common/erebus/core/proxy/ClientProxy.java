@@ -14,7 +14,9 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
+
 import com.google.common.io.ByteArrayDataInput;
+
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.KeyBindingRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -74,6 +76,7 @@ import erebus.client.render.entity.RenderVelvetWorm;
 import erebus.client.render.entity.RenderWasp;
 import erebus.client.render.item.BambooCrateItemRenderer;
 import erebus.client.render.item.BambooTorchItemRenderer;
+import erebus.client.render.item.ItemBoneBlockRenderer;
 import erebus.client.render.item.ItemErebusAltarRenderer;
 import erebus.client.render.item.ItemGlowingJarRenderer;
 import erebus.client.render.item.ItemPetrifiedWoodChestRenderer;
@@ -83,6 +86,7 @@ import erebus.client.render.item.ScorpionPincerItemRenderer;
 import erebus.client.render.item.WandOfAnimationItemRenderer;
 import erebus.client.render.item.WaspDaggerItemRenderer;
 import erebus.client.render.item.WaspSwordItemRenderer;
+import erebus.client.render.tileentity.TileEntityBoneBlockRenderer;
 import erebus.client.render.tileentity.TileEntityErebusAltarHealingRenderer;
 import erebus.client.render.tileentity.TileEntityErebusAltarLightningRenderer;
 import erebus.client.render.tileentity.TileEntityErebusAltarRenderer;
@@ -126,6 +130,7 @@ import erebus.entity.EntityWasp;
 import erebus.entity.EntityWaspDagger;
 import erebus.network.packet.PacketParticle;
 import erebus.tileentity.TileEntityBambooCrate;
+import erebus.tileentity.TileEntityBones;
 import erebus.tileentity.TileEntityErebusAltar;
 import erebus.tileentity.TileEntityErebusAltarHealing;
 import erebus.tileentity.TileEntityErebusAltarLightning;
@@ -188,6 +193,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLadder.class, new TileEntityLadderRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityUmberGolemStatue.class, new TileEntityUmberGolemStatueRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPetrifiedWoodChest.class, new TileEntityPetrifiedWoodChestRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBones.class, new TileEntityBoneBlockRenderer());
 
 		RenderingRegistry.registerBlockHandler(bambooCropRenderID, new BlockBambooCropRender());
 		RenderingRegistry.registerBlockHandler(hollowLogRenderID, new BlockHollowLogRender());
@@ -207,7 +213,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModItems.scorpionPincer.itemID, new ScorpionPincerItemRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.umberGolemStatue.blockID, new ItemUmberGolemStatueRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.petrifiedWoodChest.blockID, new ItemPetrifiedWoodChestRenderer());
-
+		MinecraftForgeClient.registerItemRenderer(ModBlocks.blockBones.blockID, new ItemBoneBlockRenderer());
 	}
 
 	@Override

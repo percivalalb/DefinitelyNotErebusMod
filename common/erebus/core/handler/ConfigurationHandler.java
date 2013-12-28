@@ -2,6 +2,7 @@ package erebus.core.handler;
 
 import java.io.File;
 import java.util.logging.Level;
+
 import net.minecraftforge.common.Configuration;
 import cpw.mods.fml.common.FMLLog;
 import erebus.ModBiomes;
@@ -84,7 +85,7 @@ public class ConfigurationHandler {
 			ModBlocks.umberGolemStatueID = config.getBlock("Block ID of Umber Golem Statue", 2570).getInt(2570);
 			ModBlocks.waspNestBlockID = config.getBlock("Block ID of Wasp Nest Block", 2571).getInt(2571);
 			ModBlocks.petrifiedWoodChestID = config.getBlock("Block ID of Petrified Wood Chest", 2574).getInt(2574);
-
+			ModBlocks.blockBonesID = config.getBlock("Block ID of Block o' Bones", 2575).getInt(2575);
 			int id = 2527;
 			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];
 			for (int i = 0; i < ModBlocks.umbercobbleStairsID.length; i++)
@@ -111,7 +112,7 @@ public class ConfigurationHandler {
 			ModBlocks.caveSpiderSpawnerID = config.getBlock("Block ID of Cave Spider Spawners", 2553).getInt(2553);
 			ModBlocks.waspSpawnerID = config.getBlock("Block ID of Cave Wasp Spawners", 2572).getInt(2572);
 
-			// latest ID used (please update after adding new blocks!) >>> 2574
+			// latest ID used (please update after adding new blocks!) >>> 2575
 
 			/*
 			 * Items
@@ -158,7 +159,7 @@ public class ConfigurationHandler {
 			ModItems.reinExoskeletonBodyID = config.getItem("Item ID of Reinforced Exoskeleton Chestplate", 9737).getInt(9737);
 			ModItems.reinExoskeletonLegsID = config.getItem("Item ID of Reinforced Exoskeleton Leggings", 9738).getInt(9738);
 			ModItems.reinExoskeletonBootsID = config.getItem("Item ID of Reinforced Exoskeleton Boots", 9739).getInt(9739);
-			
+
 			ModItems.spawnEggsID = config.getItem("Item ID of Spawn Eggs", 9743).getInt(9743);
 
 			// latest ID used (please update after adding new items!) >>> 9743

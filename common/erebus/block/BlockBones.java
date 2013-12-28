@@ -25,6 +25,7 @@ public class BlockBones extends BlockContainer {
 	private Icon a, b;
 	public BlockBones(int id) {
 		super(id, Material.rock);
+		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.6875F, 1.0F);
 	}
 
 	@Override
@@ -61,9 +62,9 @@ public class BlockBones extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		blockIcon = reg.registerIcon("erebus:blockErebusAltarBreak");
-		a = reg.registerIcon("erebus:blockErebusAltarBreak");
-		b = reg.registerIcon("erebus:blockErebusAltarBreak");
+		blockIcon = reg.registerIcon("erebus:blockBonesBreak");
+		a = reg.registerIcon("erebus:blockBonesBreak");
+		b = reg.registerIcon("erebus:blockBonesBreak");
 	}
 
 	@Override
@@ -83,27 +84,22 @@ public class BlockBones extends BlockContainer {
 
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int i, int j, int k) {
-
 		return AxisAlignedBB.getBoundingBox(i, j, k, i + 1, j + 1, k + 1);
 	}
 
 	@Override
 	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-
 		int count = 1 + world.rand.nextInt(3);
-
 		for (int i = 0; i < count; i++) {
 			int id = -1;
 			int damage = 0;
-
 			if (world.rand.nextInt(3) == 0)
 				id = Item.bone.itemID;
 			else {
 				id = ModItems.erebusMaterials.itemID;
 				damage = 2;
 			}
-
 			if (id > 0)
 				ret.add(new ItemStack(id, 1, damage));
 		}

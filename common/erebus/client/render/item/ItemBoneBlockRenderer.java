@@ -34,13 +34,13 @@ public class ItemBoneBlockRenderer implements IItemRenderer {
 				renderBlock(0.0F, 1.75F, 0.0F, 1.0D);
 				break;
 			case EQUIPPED:
-				renderEquipped(0.3F, 2.3F, 0.7F, 1.0D);
+				renderEquipped(0.4F, 2.0F, 1.25F, 1.0D);
 				break;
 			case EQUIPPED_FIRST_PERSON:
 				renderFirstPerson(0.5F, 2.0F, 0.5F, 1.0D);
 				break;
 			case INVENTORY:
-				renderInventory(-0.25F, 0.75F, 0.0F, 0.8D);
+				renderInventory(0.1F, 1.5F, 0.0F, 1.4D);
 				break;
 			default:
 				break;
@@ -51,9 +51,9 @@ public class ItemBoneBlockRenderer implements IItemRenderer {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(new ResourceLocation("erebus:textures/blocks/ModelBoneBlock.png"));
 		if (RenderItem.renderInFrame) {
 			GL11.glPushMatrix();
-			GL11.glTranslatef(x, y - 1.1F, z);
-			GL11.glRotatef(180F, 1F, 0, 0);
-			GL11.glScaled(0.5F, 0.625F, 0.5F);
+			GL11.glTranslatef(x, y - 1.5F, z + 1.5F);
+			GL11.glRotatef(-90F, 1F, 0, 0);
+			GL11.glScaled(1F, 1F, 1F);
 			ModelBoneBlock.render();
 			GL11.glPopMatrix();
 		} else {
@@ -61,7 +61,7 @@ public class ItemBoneBlockRenderer implements IItemRenderer {
 			GL11.glTranslatef(x, y, z);
 			GL11.glRotatef(180F, 1F, 0, 0);
 			GL11.glRotatef(90F, 0, 1F, 0);
-			GL11.glScaled(size, size * 1.25F, size);
+			GL11.glScaled(size, size, size);
 			ModelBoneBlock.render();
 			GL11.glPopMatrix();
 		}
@@ -73,7 +73,7 @@ public class ItemBoneBlockRenderer implements IItemRenderer {
 		GL11.glTranslatef(x, y, z);
 		GL11.glRotatef(180F, 1F, 0, 0);
 		GL11.glRotatef(90F, 0, 1F, 0);
-		GL11.glScaled(size, size * 1.25F, size);
+		GL11.glScaled(size, size, size);
 		ModelBoneBlock.render();
 		GL11.glPopMatrix();
 	}
@@ -84,7 +84,7 @@ public class ItemBoneBlockRenderer implements IItemRenderer {
 		GL11.glTranslatef(x, y, z);
 		GL11.glRotatef(180F, 1F, 0, 0);
 		GL11.glRotatef(90F, 0, 1F, 0);
-		GL11.glScaled(size, size * 1.25F, size);
+		GL11.glScaled(size, size, size);
 		ModelBoneBlock.render();
 		GL11.glPopMatrix();
 	}
@@ -92,10 +92,10 @@ public class ItemBoneBlockRenderer implements IItemRenderer {
 	private void renderInventory(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(new ResourceLocation("erebus:textures/blocks/ModelBoneBlock.png"));
 		GL11.glPushMatrix();
-		GL11.glTranslatef(x, y, z);
+		GL11.glTranslatef(x, y + 0.2F, z);
 		GL11.glRotatef(180F, 1F, 0, 0);
 		GL11.glRotatef(-90F, 0, 1F, 0);
-		GL11.glScaled(size, size * 1.25F, size);
+		GL11.glScaled(size, size, size);
 		ModelBoneBlock.render();
 		GL11.glPopMatrix();
 	}

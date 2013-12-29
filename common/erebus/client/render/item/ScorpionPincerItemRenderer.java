@@ -4,7 +4,9 @@ import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -52,9 +54,7 @@ public class ScorpionPincerItemRenderer implements IItemRenderer {
 	private void renderEquipped(float x, float y, float z, double size) {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
 		GL11.glPushMatrix();
-
 		GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
-		GL11.glRotatef(0.0F, 0.0F, 1.0F, 0.0F);
 		GL11.glRotatef(-45.0F, 0.0F, 0.0F, 1.0F);
 		GL11.glTranslatef(x, y, z);
 		GL11.glScaled(size, size, size);
@@ -67,8 +67,6 @@ public class ScorpionPincerItemRenderer implements IItemRenderer {
 		if (RenderItem.renderInFrame) {
 			GL11.glPushMatrix();
 			GL11.glTranslatef(x - 0.4F, y - 1.0F, z + 0.1F);
-			GL11.glRotatef(0F, 1F, 0, 0);
-			GL11.glRotatef(0F, 0, 1F, 0);
 			GL11.glRotatef(-60F, 0, 0, 1F);
 			GL11.glScaled(1.8F, 1.8F, 1.8F);
 			model.render(0.0625F);
@@ -76,9 +74,6 @@ public class ScorpionPincerItemRenderer implements IItemRenderer {
 		} else {
 			GL11.glPushMatrix();
 			GL11.glTranslatef(x, y, z);
-			GL11.glRotatef(0F, 1F, 0, 0);
-			GL11.glRotatef(0F, 0, 1F, 0);
-			GL11.glRotatef(0F, 0, 0, 1F);
 			GL11.glScaled(size, size, size);
 			model.render(0.0625F);
 			GL11.glPopMatrix();
@@ -101,9 +96,6 @@ public class ScorpionPincerItemRenderer implements IItemRenderer {
 		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(texture);
 		GL11.glPushMatrix();
 		GL11.glTranslatef(x, y, z);
-		GL11.glRotatef(0F, 1F, 0, 0);
-		GL11.glRotatef(0F, 0, 1F, 0);
-		GL11.glRotatef(0F, 0, 0, 1F);
 		GL11.glScaled(size, size, size);
 		model.render(0.0625F);
 		GL11.glPopMatrix();

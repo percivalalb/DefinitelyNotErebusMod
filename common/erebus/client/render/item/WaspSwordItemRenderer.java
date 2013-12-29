@@ -57,7 +57,6 @@ public class WaspSwordItemRenderer implements IItemRenderer {
 		GL11.glTranslatef(x, y + 0.6F, z + 0.5F);
 		GL11.glRotatef(20.0F, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(225.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(0.0F, 0.0F, 0.0F, 1.0F);
 		GL11.glScaled(-size, -size, size);
 		model.render();
 		GL11.glPopMatrix();
@@ -69,7 +68,6 @@ public class WaspSwordItemRenderer implements IItemRenderer {
 			GL11.glPushMatrix();
 			GL11.glTranslatef(x - 0.2F, y - 1.0F, z);
 			GL11.glRotatef(180F, 1F, 0, 0);
-			GL11.glRotatef(0F, 0, 1F, 0);
 			GL11.glRotatef(45F, 0, 0, 1F);
 			GL11.glScaled(0.3F, 0.3F, 0.3F);
 			model.render();

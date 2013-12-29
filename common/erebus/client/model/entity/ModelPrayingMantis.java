@@ -341,7 +341,7 @@ public class ModelPrayingMantis extends ModelBase
 		RFLeg5.rotateAngleX = cos1;
 		RFLeg6.rotateAngleX = cos1;
 
-		if (entityPrayingMantis.getDataWatcher().getWatchableObjectByte(22) == 1) {
+		if (entityPrayingMantis.getDataWatcher().getWatchableObjectByte(22) == 2) {
 			LArm1.rotateAngleX = cosxnz1 + 0.3490659F;
 			LArm2.rotateAngleX = cosxnz1 - 2.268928F;
 			LArm3.rotateAngleX = cosxnz1 + 0.3490659F;
@@ -350,33 +350,52 @@ public class ModelPrayingMantis extends ModelBase
 			RArm2.rotateAngleX = -cosxnz1 - 2.268928F;
 			RArm3.rotateAngleX = -cosxnz1 + 0.3490659F;
 			RArm4.rotateAngleX = -cosxnz1 + 0.3490659F;
-			LArm1.rotateAngleY = 0.0F;
-			LArm2.rotateAngleY = 0.0F;
-			LArm3.rotateAngleY = 0.0F;
-			LArm4.rotateAngleY = 0.0F;
-			RArm1.rotateAngleY = 0.0F;
-			RArm2.rotateAngleY = 0.0F;
-			RArm3.rotateAngleY = 0.0F;
-			RArm4.rotateAngleY = 0.0F;
+			LArm1.rotateAngleY = 0F;
+			LArm2.rotateAngleY = 0F;
+			LArm3.rotateAngleY = 0F;
+			LArm4.rotateAngleY = 0F;
+			RArm1.rotateAngleY = 0F;
+			RArm2.rotateAngleY = 0F;
+			RArm3.rotateAngleY = 0F;
+			RArm4.rotateAngleY = 0F;
+		}
+
+		if (entityPrayingMantis.getDataWatcher().getWatchableObjectByte(22) == 1) {
+			LArm1.rotateAngleX = -1.222F;
+			LArm2.rotateAngleX = 2.443F;
+			LArm3.rotateAngleX = -1.222F;
+			LArm4.rotateAngleX = -1.222F;
+			RArm1.rotateAngleX = -1.222F;
+			RArm2.rotateAngleX = 2.443F;
+			RArm3.rotateAngleX = -1.222F;
+			RArm4.rotateAngleX = -1.222F;
+			LArm1.rotateAngleY += 0.04F;
+			LArm2.rotateAngleY += 0.04F;
+			LArm3.rotateAngleY += 0.04F;
+			LArm4.rotateAngleY += 0.04F;
+			RArm1.rotateAngleY -= 0.04F;
+			RArm2.rotateAngleY -= 0.04F;
+			RArm3.rotateAngleY -= 0.04F;
+			RArm4.rotateAngleY -= 0.04F;
 		}
 
 		if (entityPrayingMantis.getDataWatcher().getWatchableObjectByte(22) == 0) {
-			LArm1.rotateAngleX = -0.873F;
-			LArm2.rotateAngleX = 2.793F;
-			LArm3.rotateAngleX = -0.873F;
-			LArm4.rotateAngleX = -0.873F;
-			RArm1.rotateAngleX = -0.873F;
-			RArm2.rotateAngleX = 2.793F;
-			RArm3.rotateAngleX = -0.873F;
-			RArm4.rotateAngleX = -0.873F;
-			LArm1.rotateAngleY = -1.0F;
-			LArm2.rotateAngleY = -1.0F;
-			LArm3.rotateAngleY = -1.0F;
-			LArm4.rotateAngleY = -1.0F;
-			RArm1.rotateAngleY = 1.0F;
-			RArm2.rotateAngleY = 1.0F;
-			RArm3.rotateAngleY = 1.0F;
-			RArm4.rotateAngleY = 1.0F;
+			LArm1.rotateAngleX = -1.222F;
+			LArm2.rotateAngleX = 2.443F;
+			LArm3.rotateAngleX = -1.222F;
+			LArm4.rotateAngleX = -1.222F;
+			RArm1.rotateAngleX = -1.222F;
+			RArm2.rotateAngleX = 2.443F;
+			RArm3.rotateAngleX = -1.222F;
+			RArm4.rotateAngleX = -1.222F;
+			LArm1.rotateAngleY -= 0.04F;
+			LArm2.rotateAngleY -= 0.04F;
+			LArm3.rotateAngleY -= 0.04F;
+			LArm4.rotateAngleY -= 0.04F;
+			RArm1.rotateAngleY += 0.04F;
+			RArm2.rotateAngleY += 0.04F;
+			RArm3.rotateAngleY += 0.04F;
+			RArm4.rotateAngleY += 0.04F;
 		}
 	}
 }

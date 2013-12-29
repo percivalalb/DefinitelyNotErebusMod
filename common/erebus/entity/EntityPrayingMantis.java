@@ -17,7 +17,7 @@ import erebus.item.ItemErebusMaterial;
 
 public class EntityPrayingMantis extends EntityMob {
 
-	private int attackAnimation;
+	int attackAnimation;
 
 	public EntityPrayingMantis(World world) {
 		super(world);
@@ -36,7 +36,7 @@ public class EntityPrayingMantis extends EntityMob {
 	protected void entityInit() {
 		super.entityInit();
 		dataWatcher.addObject(20, 0.0F);
-		dataWatcher.addObject(22, new Byte((byte) 1));
+		dataWatcher.addObject(22, new Byte((byte) 2));
 	}
 
 	@Override
@@ -100,10 +100,13 @@ public class EntityPrayingMantis extends EntityMob {
 		if (!worldObj.isRemote && getAttackTarget() == null || dataWatcher.getWatchableObjectFloat(20) > 0.8F)
 			dataWatcher.updateObject(20, 1.0F);
 		if (!worldObj.isRemote) {
-			if (attackAnimation < 10 && dataWatcher.getWatchableObjectByte(22) == 0)
+			if (attackAnimation < 5 && dataWatcher.getWatchableObjectByte(22) == 0)
 				setAttackAnimation(attackAnimation + 1, (byte) 0);
-			if (attackAnimation == 10)
-				setAttackAnimation(10, (byte) 1);
+			if (attackAnimation >= 5 && attackAnimation < 10)
+				setAttackAnimation(attackAnimation + 1, (byte) 1);
+			if (attackAnimation == 10 && dataWatcher.getWatchableObjectByte(22) == 1)
+				setAttackAnimation(0, (byte) 2);
+
 		}
 		super.onUpdate();
 	}

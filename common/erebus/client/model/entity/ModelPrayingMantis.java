@@ -403,7 +403,7 @@ public class ModelPrayingMantis extends ModelBase
 
 	@Override
 	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-
+		EntityPrayingMantis entityPrayingMantis = (EntityPrayingMantis) entity;
 		float cos1 = MathHelper.cos(par1 + (float) Math.PI) * 0.3F * par2;
 		float cos2 = MathHelper.cos(par1) * 0.3F * par2;
 		float cosxnz1 = MathHelper.cos(par1 * 0.5F + (float) Math.PI) * 0.7F * par2;
@@ -437,16 +437,49 @@ public class ModelPrayingMantis extends ModelBase
 		RFLeg5.rotateAngleX = cos1;
 		RFLeg6.rotateAngleX = cos1;
 
-		LArm1.rotateAngleX = cosxnz1 + 0.3490659F;
-		LArm2.rotateAngleX = cosxnz1 - 2.268928F;
-		LArm3.rotateAngleX = cosxnz1 + 0.3490659F;
-		LArm4.rotateAngleX = cosxnz1 + 0.3490659F;
+		if (entityPrayingMantis.getDataWatcher().getWatchableObjectByte(22) == 1) {
+			LArm1.rotateAngleX = cosxnz1 + 0.3490659F;
+			LArm2.rotateAngleX = cosxnz1 - 2.268928F;
+			LArm3.rotateAngleX = cosxnz1 + 0.3490659F;
+			LArm4.rotateAngleX = cosxnz1 + 0.3490659F;
 
-		RArm1.rotateAngleX = -cosxnz1 + 0.3490659F;
-		RArm2.rotateAngleX = -cosxnz1 - 2.268928F;
-		RArm3.rotateAngleX = -cosxnz1 + 0.3490659F;
-		RArm4.rotateAngleX = -cosxnz1 + 0.3490659F;
+			RArm1.rotateAngleX = -cosxnz1 + 0.3490659F;
+			RArm2.rotateAngleX = -cosxnz1 - 2.268928F;
+			RArm3.rotateAngleX = -cosxnz1 + 0.3490659F;
+			RArm4.rotateAngleX = -cosxnz1 + 0.3490659F;
+
+			LArm1.rotateAngleY = 0.0F;
+			LArm2.rotateAngleY = 0.0F;
+			LArm3.rotateAngleY = 0.0F;
+			LArm4.rotateAngleY = 0.0F;
+
+			RArm1.rotateAngleY = 0.0F;
+			RArm2.rotateAngleY = 0.0F;
+			RArm3.rotateAngleY = 0.0F;
+			RArm4.rotateAngleY = 0.0F;
+		}
+
+		if (entityPrayingMantis.getDataWatcher().getWatchableObjectByte(22) == 0) {
+			LArm1.rotateAngleX = -0.873F;
+			LArm2.rotateAngleX = +2.793F;
+			LArm3.rotateAngleX = -0.873F;
+			LArm4.rotateAngleX = -0.873F;
+
+			RArm1.rotateAngleX = -0.873F;
+			RArm2.rotateAngleX = +2.793F;
+			RArm3.rotateAngleX = -0.873F;
+			RArm4.rotateAngleX = -0.873F;
+
+			LArm1.rotateAngleY = -1.0F;
+			LArm2.rotateAngleY = -1.0F;
+			LArm3.rotateAngleY = -1.0F;
+			LArm4.rotateAngleY = -1.0F;
+
+			RArm1.rotateAngleY = +1.0F;
+			RArm2.rotateAngleY = +1.0F;
+			RArm3.rotateAngleY = +1.0F;
+			RArm4.rotateAngleY = +1.0F;
+		}
 
 	}
-
 }

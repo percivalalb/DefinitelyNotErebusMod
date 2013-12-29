@@ -12,10 +12,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import erebus.ModItems;
-import erebus.entity.ai.IEntityAIAttackOnCollide;
+import erebus.entity.ai.EntityErebusAIAttackOnCollide;
 import erebus.item.ItemErebusMaterial;
 
 public class EntityPrayingMantis extends EntityMob {
+
+	private int attackAnimation;
 
 	public EntityPrayingMantis(World world) {
 		super(world);
@@ -23,7 +25,7 @@ public class EntityPrayingMantis extends EntityMob {
 		setSize(2.0F, 2.5F);
 		getNavigator().setAvoidsWater(true);
 		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(1, new IEntityAIAttackOnCollide(this, EntityPlayer.class, 0.6D, false));
+		tasks.addTask(1, new EntityErebusAIAttackOnCollide(this, EntityPlayer.class, 0.6D, false));
 		tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		tasks.addTask(3, new EntityAIWander(this, 0.3D));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));
@@ -34,6 +36,7 @@ public class EntityPrayingMantis extends EntityMob {
 	protected void entityInit() {
 		super.entityInit();
 		dataWatcher.addObject(20, 0.0F);
+		dataWatcher.addObject(22, new Byte((byte) 1));
 	}
 
 	@Override
@@ -91,13 +94,22 @@ public class EntityPrayingMantis extends EntityMob {
 			double d1 = getDistance(getAttackTarget().posX, getAttackTarget().boundingBox.minY, getAttackTarget().posZ);
 			if (d1 >= 4.0D)
 				dataWatcher.updateObject(20, (16.0F - (float) d1) * 0.03125F);
-
 			if (d1 < 4.0D)
 				dataWatcher.updateObject(20, (16.0F - (float) d1) * 0.0625F);
 		}
 		if (!worldObj.isRemote && getAttackTarget() == null || dataWatcher.getWatchableObjectFloat(20) > 0.8F)
 			dataWatcher.updateObject(20, 1.0F);
+		if (!worldObj.isRemote) {
+			if (attackAnimation < 10 && dataWatcher.getWatchableObjectByte(22) == 0)
+				setAttackAnimation(attackAnimation + 1, (byte) 0);
+			if (attackAnimation == 10)
+				setAttackAnimation(10, (byte) 1);
+		}
 		super.onUpdate();
 	}
 
+	public void setAttackAnimation(int count, byte action) {
+		attackAnimation = count;
+		dataWatcher.updateObject(22, action);
+	}
 }

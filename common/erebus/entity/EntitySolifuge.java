@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import erebus.ModItems;
-import erebus.entity.ai.IEntityAIAttackOnCollide;
+import erebus.entity.ai.EntityErebusAIAttackOnCollide;
 import erebus.item.ItemErebusMaterial;
 
 public class EntitySolifuge extends EntityMob {
@@ -27,7 +27,7 @@ public class EntitySolifuge extends EntityMob {
 		isImmuneToFire = true;
 		setSize(2.0F, 1.0F);
 		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(1, new IEntityAIAttackOnCollide(this, EntityPlayer.class, 0.3D, false));
+		tasks.addTask(1, new EntityErebusAIAttackOnCollide(this, EntityPlayer.class, 0.3D, false));
 		tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		tasks.addTask(3, new EntityAIWander(this, 0.3D));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));

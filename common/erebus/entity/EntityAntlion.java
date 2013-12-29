@@ -24,7 +24,7 @@ import com.google.common.io.ByteArrayDataOutput;
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import erebus.ModBlocks;
 import erebus.ModItems;
-import erebus.entity.ai.IEntityAIAttackOnCollide;
+import erebus.entity.ai.EntityErebusAIAttackOnCollide;
 import erebus.item.ItemErebusMaterial;
 
 public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnData {
@@ -35,7 +35,7 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 		isImmuneToFire = true;
 		experienceValue = 17;
 		tasks.addTask(0, new EntityAISwimming(this));
-		tasks.addTask(1, new IEntityAIAttackOnCollide(this, EntityPlayer.class, 0.7D, false));
+		tasks.addTask(1, new EntityErebusAIAttackOnCollide(this, EntityPlayer.class, 0.7D, false));
 		tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		tasks.addTask(3, new EntityAIWander(this, 0.7D));
 		targetTasks.addTask(0, new EntityAIHurtByTarget(this, false));

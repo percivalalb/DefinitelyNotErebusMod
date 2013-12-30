@@ -104,7 +104,7 @@ public class EntityPrayingMantis extends EntityMob {
 				setAttackAnimation(attackAnimation + 1, (byte) 0);
 			if (attackAnimation >= 5 && attackAnimation < 10)
 				setAttackAnimation(attackAnimation + 1, (byte) 1);
-			if (attackAnimation == 10 && dataWatcher.getWatchableObjectByte(22) == 1)
+			if (attackAnimation == 10)
 				setAttackAnimation(0, (byte) 2);
 
 		}

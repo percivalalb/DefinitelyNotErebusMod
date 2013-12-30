@@ -5,8 +5,11 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.pathfinding.PathPoint;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import erebus.entity.EntityAntlion;
 import erebus.entity.EntityPrayingMantis;
 
 public class EntityErebusAIAttackOnCollide extends EntityAIBase {
@@ -94,6 +97,11 @@ public class EntityErebusAIAttackOnCollide extends EntityAIBase {
 					attacker.swingItem();
 				if (attacker instanceof EntityPrayingMantis)
 					((EntityPrayingMantis) attacker).setAttackAnimation(0, (byte) 0);
+				if (attacker instanceof EntityAntlion)
+					if (!((EntityAntlion) attacker).isBoss())
+						entitylivingbase.addPotionEffect(new PotionEffect(Potion.weakness.id, 10 * 20, 0));
+					else if (((EntityAntlion) attacker).isBoss())
+						entitylivingbase.addPotionEffect(new PotionEffect(Potion.weakness.id, 10 + 5 * 20, 0));
 				attacker.attackEntityAsMob(entitylivingbase);
 			}
 	}

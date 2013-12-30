@@ -2,7 +2,6 @@ package erebus.entity;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -14,13 +13,13 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
+
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import erebus.ModBlocks;
 import erebus.ModItems;
@@ -122,6 +121,10 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
+		if (findPlayerToAttack() != null)
+			entityToAttack = findPlayerToAttack();
+		else
+			entityToAttack = null;
 		if (isBoss()) { // a hack to keep boss antlions alive even on peaceful
 			int difficulty = worldObj.difficultySetting;
 			if (difficulty == 0)
@@ -130,10 +133,16 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 			worldObj.difficultySetting = difficulty;
 		} else
 			getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.5D);
-		if (!worldObj.isRemote && entityToAttack == null && isOnSand() && !isBoss())
+		if (!worldObj.isRemote && getEntityToAttack() == null && isOnSand() && !isBoss())
 			yOffset = -1;
 		else
 			yOffset = 0;
+	}
+
+	@Override
+	protected Entity findPlayerToAttack() {
+		EntityPlayer var1 = worldObj.getClosestVulnerablePlayerToEntity(this, 16.0D);
+		return var1;
 	}
 
 	@Override
@@ -141,34 +150,6 @@ public class EntityAntlion extends EntityMob implements IEntityAdditionalSpawnDa
 		if (source.equals(DamageSource.inWall) || source.equals(DamageSource.drown))
 			return false;
 		return super.attackEntityFrom(source, damage);
-	}
-
-	@Override
-	protected void attackEntity(Entity entity, float par2) {
-		super.attackEntity(entity, par2);
-		if (par2 > 0.0F && par2 < 2.0F)
-			attackEntityAsMob(entity);
-	}
-
-	@Override
-	public boolean attackEntityAsMob(Entity entity) {
-		if (super.attackEntityAsMob(entity)) {
-			if (entity instanceof EntityLiving) {
-				byte var2 = 0;
-				byte var3 = 5;
-				if (worldObj.difficultySetting > 1)
-					if (worldObj.difficultySetting == 2)
-						var2 = 7;
-					else if (worldObj.difficultySetting == 3)
-						var2 = 15;
-				if (var2 > 0 && !isBoss())
-					((EntityLiving) entity).addPotionEffect(new PotionEffect(Potion.weakness.id, var2 * 20, 0));
-				else if (var2 > 0 && isBoss())
-					((EntityLiving) entity).addPotionEffect(new PotionEffect(Potion.weakness.id, var2 + var3 * 20, 0));
-			}
-			return true;
-		} else
-			return false;
 	}
 
 	@Override

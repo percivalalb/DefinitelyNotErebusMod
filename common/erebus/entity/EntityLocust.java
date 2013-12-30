@@ -15,7 +15,6 @@ import erebus.item.ItemErebusMaterial;
 public class EntityLocust extends EntityMob {
 
 	private float heightOffset = 0.5F;
-	protected EntityLiving theEntity;
 	public boolean canJump = true;
 
 	public EntityLocust(World world) {
@@ -30,10 +29,11 @@ public class EntityLocust extends EntityMob {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D); // Movespeed
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50.0D); // MaxHealth
-		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D); // atkDmg
-		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(50.0D);
+		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D);
+		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D);
+		getEntityAttribute(SharedMonsterAttributes.knockbackResistance).setAttribute(0.5D);
 	}
 
 	@Override
@@ -88,14 +88,14 @@ public class EntityLocust extends EntityMob {
 		if (!worldObj.isRemote && onGround && randJump() && canJump)
 			jump();
 		if (!worldObj.isRemote && !canJump) {
-			heightOffset = 0.5F + (float) rand.nextGaussian() * 3.0F;
-			if (getEntityToAttack() != null && getEntityToAttack().posY + getEntityToAttack().getEyeHeight() > posY + getEyeHeight() + heightOffset)
-				motionY += (Math.signum(getEntityToAttack().posY) * 0.699999988079071D - motionY) * 0.10000000149011612D;
+			heightOffset = 0.5F + (float) rand.nextGaussian() * 5.0F;
+			if (getEntityToAttack() != null && getEntityToAttack().posY + getEntityToAttack().getEyeHeight() > posY + getEyeHeight() + heightOffset) {
+				motionY += (Math.signum(getEntityToAttack().posY + 1.D - posY) * 0.699999988079071D - motionY) * 0.10000000149011612D;
+				moveForward = 0.5F;
+			}
 		}
-
 		if (!canJump && !onGround && motionY < 0.0D)
 			motionY *= 0.5D;
-
 		if (onGround) {
 			setCanJump(true);
 			heightOffset = 0F;
@@ -105,33 +105,25 @@ public class EntityLocust extends EntityMob {
 
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
-
-		if (super.attackEntityAsMob(entity))
-
-		{
-
+		if (super.attackEntityAsMob(entity)) {
 			if (entity instanceof EntityLiving) {
 				byte var2 = 0;
-
 				if (worldObj.difficultySetting > 1)
 					if (worldObj.difficultySetting == 2)
 						var2 = 7;
 					else if (worldObj.difficultySetting == 3)
 						var2 = 15;
-
 				if (var2 > 0)
 					((EntityLiving) entity).addPotionEffect(new PotionEffect(Potion.hunger.id, var2 * 20, 0));
 			}
-
 			return true;
 		} else
 			return false;
-
 	}
 
 	@Override
 	protected void attackEntity(Entity entity, float par2) {
-		if (par2 < 2.0F && entity.boundingBox.maxY > boundingBox.minY && entity.boundingBox.minY < boundingBox.maxY)
+		if (par2 <= 3.0F && entity.boundingBox.maxY > boundingBox.minY && entity.boundingBox.minY < boundingBox.maxY)
 			attackEntityAsMob(entity);
 	}
 }

@@ -23,6 +23,7 @@ import erebus.item.ItemCompoundGoggles;
 import erebus.item.ItemErebusFood;
 import erebus.item.ItemErebusMaterial;
 import erebus.item.ItemExoskeletonArmor;
+import erebus.item.ItemHornOfSummoning;
 import erebus.item.ItemJadeArmor;
 import erebus.item.ItemJumpBoots;
 import erebus.item.ItemMaxSpeedBow;
@@ -52,6 +53,7 @@ public class ModItems {
 	public static Item sprayCan;						public static int sprayCanID;
 	public static Item wandOfAnimation;					public static int wandOfAnimationID;
 	public static Item bucketOfBeetleJuice;				public static int bucketOfBeetleJuiceID;
+	public static Item hornOfSummoning;					public static int hornOfSummoningID;
 
 	// JADE STUFF
 	public static Item jadeHelmet;						public static int jadeHelmetID;
@@ -89,7 +91,7 @@ public class ModItems {
 	public static Item sprintLeggings;					public static int sprintLeggingsID;
 	public static Item jumpBoots;						public static int jumpBootsID;
 	public static Item armorGlider;						public static int armorGliderID;
-	
+
 	// CREATIVE
 	public static Item spawnEggs;						public static int spawnEggsID;
 
@@ -109,6 +111,7 @@ public class ModItems {
 		sprayCan = new ItemSprayCan(sprayCanID).setUnlocalizedName("sprayCan").setTextureName("erebus:sprayCan");
 		wandOfAnimation = new ItemWandOfAnimation(wandOfAnimationID).setUnlocalizedName("wandOfAnimation");
 		bucketOfBeetleJuice = new ItemBucketOfBeetleJuice(bucketOfBeetleJuiceID).setUnlocalizedName("bucketOfBeetleJuice").setTextureName("erebus:bucketOfBeetleJuice");
+		hornOfSummoning = new ItemHornOfSummoning(hornOfSummoningID).setUnlocalizedName("hornOfSummoning").setTextureName("erebus:hornOfSummoning");
 
 		jadeHelmet = new ItemJadeArmor(jadeHelmetID, 0).setUnlocalizedName("helmetJade").setTextureName("erebus:helmetJade");
 		jadeBody = new ItemJadeArmor(jadeBodyID, 1).setUnlocalizedName("chestplateJade").setTextureName("erebus:chestplateJade");
@@ -142,7 +145,7 @@ public class ModItems {
 		sprintLeggings = new ItemSprintLeggings(sprintLeggingsID, ErebusMod.armorREINEXOSPECIAL, 2).setUnlocalizedName("sprintLeggings").setTextureName("erebus:sprintLeggings");
 		jumpBoots = new ItemJumpBoots(jumpBootsID, ErebusMod.armorREINEXOSPECIAL, 3).setUnlocalizedName("jumpBoots").setTextureName("erebus:jumpBoots");
 		armorGlider = new ItemArmorGlider(armorGliderID, 1).setUnlocalizedName("armorGlider").setTextureName("erebus:armorGlider");
-		
+
 		spawnEggs = new ItemSpawnEggs(spawnEggsID).setUnlocalizedName("monsterPlacer").setTextureName("spawn_egg");
 
 		// Creative tabs
@@ -150,8 +153,8 @@ public class ModItems {
 		if (ConfigurationHandler.lead || ConfigurationHandler.silver || ConfigurationHandler.copper || ConfigurationHandler.tin || ConfigurationHandler.aluminium)
 			ErebusMod.tabErebusItem.add(metalIngot);
 		ErebusMod.tabErebusItem.add(spawnEggs);
-		
-		ErebusMod.tabErebusGear.add(bamBucket, sprayCan);
+
+		ErebusMod.tabErebusGear.add(bamBucket, sprayCan, hornOfSummoning);
 		ErebusMod.tabErebusGear.add(jadeHelmet, jadeBody, jadeLegs, jadeBoots, jadeSword, jadePickaxe, jadeAxe, jadeShovel, jadePaxel, jadeHoe);
 		ErebusMod.tabErebusGear.add(exoskeletonHelmet, exoskeletonBody, exoskeletonLegs, exoskeletonBoots, reinExoskeletonHelmet, reinExoskeletonBody, reinExoskeletonLegs, reinExoskeletonBoots);
 		ErebusMod.tabErebusGear.add(fossilClub, waspSword, waspDagger, maxSpeedBow, scorpionPincer);
@@ -174,6 +177,7 @@ public class ModItems {
 		GameRegistry.registerItem(sprayCan, "erebus.sprayCan");
 		GameRegistry.registerItem(wandOfAnimation, "erebus.wandOfAnimation");
 		GameRegistry.registerItem(bucketOfBeetleJuice, "bucketOfBeetleJuice");
+		GameRegistry.registerItem(hornOfSummoning, "hornOfSummoning");
 
 		GameRegistry.registerItem(jadeHelmet, "erebus.helmetJade");
 		GameRegistry.registerItem(jadeBody, "erebus.chestplateJade");

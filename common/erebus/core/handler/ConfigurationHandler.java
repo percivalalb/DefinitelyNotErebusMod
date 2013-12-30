@@ -126,6 +126,7 @@ public class ConfigurationHandler {
 			ModItems.sprayCanID = config.getItem("Item ID of Insect Repellent", 9712).getInt(9712);
 			ModItems.wandOfAnimationID = config.getItem("ItemID of Wand of Animation", 9734).getInt(9734);
 			ModItems.bucketOfBeetleJuiceID = config.getItem("ItemID of Bucket Of Beetle Juice", 9742).getInt(9742);
+			ModItems.hornOfSummoningID = config.getItem("ItemID of Horn Of Summoning", 9744).getInt(9744);
 
 			ModItems.jadeHelmetID = config.getItem("Item ID of Jade Helmet", 9713).getInt(9713);
 			ModItems.jadeBodyID = config.getItem("Item ID of Jade Chestplate", 9714).getInt(9714);
@@ -162,7 +163,7 @@ public class ConfigurationHandler {
 
 			ModItems.spawnEggsID = config.getItem("Item ID of Spawn Eggs", 9743).getInt(9743);
 
-			// latest ID used (please update after adding new items!) >>> 9743
+			// latest ID used (please update after adding new items!) >>> 9744
 
 			/*
 			 * Biomes & misc

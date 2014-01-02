@@ -24,13 +24,13 @@ public class ItemHornOfSummoning extends Item {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack is) {
-		return 32;
+		return 60;
 	}
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 		player.setItemInUse(is, getMaxItemUseDuration(is));
-		world.playSoundAtEntity(player, "erebus:locustspawn", 1.0F, 1.0F);
+		world.playSoundAtEntity(player, "erebus:hornblow", 1.0F, 1.0F);
 		return is;
 	}
 

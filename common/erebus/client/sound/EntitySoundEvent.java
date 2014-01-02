@@ -69,6 +69,9 @@ public class EntitySoundEvent {
 			event.manager.addSound("erebus:altarchangestate.ogg");
 			event.manager.addSound("erebus:altaroffering.ogg");
 
+			// Horn of the Swarm
+			event.manager.addSound("erebus:hornblow.ogg");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.err.println("Erebus had a problem loading its sounds. Please report it to the authors.");

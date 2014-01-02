@@ -21,6 +21,7 @@ public class ConfigurationHandler {
 	public static byte beetleLarvaEating = 0;
 	public static boolean bombardierBlockDestroy = true;
 	public static boolean randomNames = true;
+	public static boolean playCustomSongs = true;
 
 	public static boolean lead = false;
 	public static boolean silver = false;
@@ -179,6 +180,7 @@ public class ConfigurationHandler {
 			ConfigurationHandler.shouldDoVersionCheck = config.get(Configuration.CATEGORY_GENERAL, "Should do version check?", true).getBoolean(true);
 			ConfigurationHandler.bombardierBlockDestroy = config.get(Configuration.CATEGORY_GENERAL, "Bombardier Beetle Block destruction", true, "This will not stop block destruction for player attacks only collided with blocks!").getBoolean(true);
 			ConfigurationHandler.randomNames = config.get(Configuration.CATEGORY_GENERAL, "Random mob names", true).getBoolean(true);
+			ConfigurationHandler.playCustomSongs = config.get(Configuration.CATEGORY_GENERAL, "Play erebus songs", true).getBoolean(true);
 
 			ConfigurationHandler.lead = config.get(Configuration.CATEGORY_GENERAL, "Should generate lead?", false).getBoolean(false);
 			ConfigurationHandler.silver = config.get(Configuration.CATEGORY_GENERAL, "Should generate silver?", false).getBoolean(false);

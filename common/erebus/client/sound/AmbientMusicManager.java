@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundManager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -69,13 +70,14 @@ public class AmbientMusicManager implements IScheduledTickHandler {
 
 	@Override
 	public void tickStart(EnumSet<TickType> type, Object... tickData) {
-		if (!sndMan.sndSystem.playing("BgMusic") && rand.nextInt(15) == 0 && ((EntityPlayer) tickData[0]).dimension == ConfigurationHandler.erebusDimensionID) {
-			List<Entry<String, URL>> entries = new ArrayList<Entry<String, URL>>(poolAmbient.entrySet());
-			if (entries.size() == 0)
-				return;
+		if (ConfigurationHandler.playCustomSongs)
+			if (!sndMan.sndSystem.playing("BgMusic") && rand.nextInt(15) == 0 && ((EntityPlayer) tickData[0]).dimension == ConfigurationHandler.erebusDimensionID) {
+				List<Entry<String, URL>> entries = new ArrayList<Entry<String, URL>>(poolAmbient.entrySet());
+				if (entries.size() == 0)
+					return;
 
-			play(entries.get(rand.nextInt(entries.size())));
-		}
+				play(entries.get(rand.nextInt(entries.size())));
+			}
 	}
 
 	public Entry<String, URL> getEntry(String name) {
@@ -89,9 +91,11 @@ public class AmbientMusicManager implements IScheduledTickHandler {
 	}
 
 	public void play(Entry<String, URL> entry) {
-		sndMan.sndSystem.backgroundMusic("BgMusic", entry.getValue(), entry.getKey(), false);
-		sndMan.sndSystem.setVolume("BgMusic", Minecraft.getMinecraft().gameSettings.musicVolume);
-		sndMan.sndSystem.play("BgMusic");
+		if (ConfigurationHandler.playCustomSongs) {
+			sndMan.sndSystem.backgroundMusic("BgMusic", entry.getValue(), entry.getKey(), false);
+			sndMan.sndSystem.setVolume("BgMusic", Minecraft.getMinecraft().gameSettings.musicVolume);
+			sndMan.sndSystem.play("BgMusic");
+		}
 	}
 
 	@Override

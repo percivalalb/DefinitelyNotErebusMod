@@ -453,17 +453,15 @@ public class ModelWasp extends ModelBase {
 		ThxRW.render(par7);
 		ThxLW.render(par7);
 		GL11.glPushMatrix();
-		GL11.glEnable(3042);
-		float transparency = 0.6F;
-		GL11.glBlendFunc(770, 771);
-		GL11.glColor4f(0.8F, 0.8F, 0.8F, transparency);
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_SRC_COLOR);
 		RWingBack.render(par7);
 		RWingMid.render(par7);
 		RWingFront.render(par7);
 		LWingBack.render(par7);
 		LWingMid.render(par7);
 		LWingFront.render(par7);
-		GL11.glDisable(3042);
+		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
 	}
 

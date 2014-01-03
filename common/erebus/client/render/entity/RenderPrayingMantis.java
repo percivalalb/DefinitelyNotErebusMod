@@ -5,7 +5,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelPrayingMantis;
@@ -43,6 +45,9 @@ public class RenderPrayingMantis extends RenderLiving {
 		float f1 = 1.0F;
 		shadowSize = 0.5F;
 		GL11.glScalef(f1, f1, f1);
+		GL11.glEnable(3042);
+		GL11.glBlendFunc(770, 771);
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, entityPrayingMantis.getDataWatcher().getWatchableObjectFloat(20));
 	}
 
 	@Override

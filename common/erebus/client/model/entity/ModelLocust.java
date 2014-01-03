@@ -392,7 +392,7 @@ public class ModelLocust extends ModelBase {
 		GL11.glEnable(3042);
 		float transparency = 0.6F;
 		GL11.glBlendFunc(770, 771);
-		GL11.glColor4f(0.8F, 0.8F, 0.8F, transparency);
+		GL11.glColor4f(1.0F, 0.0F, 0.0F, transparency);
 		LFWing.render(par7);
 		RFWing.render(par7);
 		LBWing.render(par7);

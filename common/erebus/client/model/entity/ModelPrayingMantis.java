@@ -4,9 +4,6 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.entity.EntityPrayingMantis;
@@ -249,11 +246,6 @@ public class ModelPrayingMantis extends ModelBase
 	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
 		super.render(entity, par2, par3, par4, par5, par6, par7);
 		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		EntityPrayingMantis entityPrayingMantis = (EntityPrayingMantis) entity;
-		GL11.glPushMatrix();
-		GL11.glEnable(3042);
-		GL11.glBlendFunc(770, 771);
-		GL11.glColor4f(0.8F, 0.8F, 0.8F, entityPrayingMantis.getDataWatcher().getWatchableObjectFloat(20));
 		Head1.render(par7);
 		Head2.render(par7);
 		Head3.render(par7);
@@ -299,8 +291,6 @@ public class ModelPrayingMantis extends ModelBase
 		LBLeg4.render(par7);
 		LBLeg5.render(par7);
 		LBLeg6.render(par7);
-		GL11.glDisable(3042);
-		GL11.glPopMatrix();
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -341,7 +331,7 @@ public class ModelPrayingMantis extends ModelBase
 		RFLeg5.rotateAngleX = cos1;
 		RFLeg6.rotateAngleX = cos1;
 
-		if (entityPrayingMantis.getDataWatcher().getWatchableObjectByte(22) == 2) {
+		if (entityPrayingMantis.getDataWatcher().getWatchableObjectByte(22) == 1) {
 			LArm1.rotateAngleX = cosxnz1 + 0.3490659F;
 			LArm2.rotateAngleX = cosxnz1 - 2.268928F;
 			LArm3.rotateAngleX = cosxnz1 + 0.3490659F;
@@ -350,33 +340,6 @@ public class ModelPrayingMantis extends ModelBase
 			RArm2.rotateAngleX = -cosxnz1 - 2.268928F;
 			RArm3.rotateAngleX = -cosxnz1 + 0.3490659F;
 			RArm4.rotateAngleX = -cosxnz1 + 0.3490659F;
-			LArm1.rotateAngleY = 0F;
-			LArm2.rotateAngleY = 0F;
-			LArm3.rotateAngleY = 0F;
-			LArm4.rotateAngleY = 0F;
-			RArm1.rotateAngleY = 0F;
-			RArm2.rotateAngleY = 0F;
-			RArm3.rotateAngleY = 0F;
-			RArm4.rotateAngleY = 0F;
-		}
-
-		if (entityPrayingMantis.getDataWatcher().getWatchableObjectByte(22) == 1) {
-			LArm1.rotateAngleX = -1.222F;
-			LArm2.rotateAngleX = 2.443F;
-			LArm3.rotateAngleX = -1.222F;
-			LArm4.rotateAngleX = -1.222F;
-			RArm1.rotateAngleX = -1.222F;
-			RArm2.rotateAngleX = 2.443F;
-			RArm3.rotateAngleX = -1.222F;
-			RArm4.rotateAngleX = -1.222F;
-			LArm1.rotateAngleY += 0.04F;
-			LArm2.rotateAngleY += 0.04F;
-			LArm3.rotateAngleY += 0.04F;
-			LArm4.rotateAngleY += 0.04F;
-			RArm1.rotateAngleY -= 0.04F;
-			RArm2.rotateAngleY -= 0.04F;
-			RArm3.rotateAngleY -= 0.04F;
-			RArm4.rotateAngleY -= 0.04F;
 		}
 
 		if (entityPrayingMantis.getDataWatcher().getWatchableObjectByte(22) == 0) {
@@ -388,14 +351,6 @@ public class ModelPrayingMantis extends ModelBase
 			RArm2.rotateAngleX = 2.443F;
 			RArm3.rotateAngleX = -1.222F;
 			RArm4.rotateAngleX = -1.222F;
-			LArm1.rotateAngleY -= 0.04F;
-			LArm2.rotateAngleY -= 0.04F;
-			LArm3.rotateAngleY -= 0.04F;
-			LArm4.rotateAngleY -= 0.04F;
-			RArm1.rotateAngleY += 0.04F;
-			RArm2.rotateAngleY += 0.04F;
-			RArm3.rotateAngleY += 0.04F;
-			RArm4.rotateAngleY += 0.04F;
 		}
 	}
 }

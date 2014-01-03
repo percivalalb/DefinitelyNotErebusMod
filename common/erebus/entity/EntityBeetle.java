@@ -98,7 +98,7 @@ public class EntityBeetle extends EntityCreature {
 
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
-		int var3 = rand.nextInt(4) + rand.nextInt(1 + par2);
+		int var3 = 1 + rand.nextInt(3) + rand.nextInt(1 + par2);
 		for (int a = 0; a < var3; ++a)
 			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate), 0.0F);
 	}

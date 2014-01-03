@@ -5,7 +5,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelWasp;
@@ -14,7 +16,7 @@ import erebus.entity.EntityWasp;
 @SideOnly(Side.CLIENT)
 public class RenderWasp extends RenderLiving {
 	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelWasp.png");
-
+	private final ModelWasp ModelWasp = new ModelWasp();
 	public RenderWasp(ModelWasp model, float shadowSize) {
 		super(model, shadowSize);
 

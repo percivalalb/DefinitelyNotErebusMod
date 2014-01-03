@@ -283,21 +283,6 @@ public class ModelBotFly extends ModelBase {
 		Ab2.render(par7);
 		Ab3.render(par7);
 		Ab4.render(par7);
-
-		GL11.glPushMatrix();
-		GL11.glEnable(3042);
-		float transparency = 0.6F;
-		GL11.glBlendFunc(770, 771);
-		GL11.glColor4f(0.8F, 0.8F, 0.8F, transparency);
-
-		RWing1.render(par7);
-		RWing2.render(par7);
-		LWing1.render(par7);
-		LWing2.render(par7);
-
-		GL11.glDisable(3042);
-		GL11.glPopMatrix();
-
 		LegRF1.render(par7);
 		LegRF2.render(par7);
 		LegRF3.render(par7);
@@ -316,6 +301,15 @@ public class ModelBotFly extends ModelBase {
 		LegLB1.render(par7);
 		LegLB2.render(par7);
 		LegLB3.render(par7);
+		GL11.glPushMatrix();
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_SRC_COLOR);
+		RWing1.render(par7);
+		RWing2.render(par7);
+		LWing1.render(par7);
+		LWing2.render(par7);
+		GL11.glDisable(GL11.GL_BLEND);
+		GL11.glPopMatrix();
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

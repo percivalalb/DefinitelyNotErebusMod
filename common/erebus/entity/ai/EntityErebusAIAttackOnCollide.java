@@ -90,9 +90,9 @@ public class EntityErebusAIAttackOnCollide extends EntityAIBase {
 		attackTick = Math.max(attackTick - 1, 0);
 		double d0 = attacker.width * attacker.width + entitylivingbase.width;
 
-		if (attacker.getDistanceSq(entitylivingbase.posX, entitylivingbase.boundingBox.minY, entitylivingbase.posZ) <= d0 + 1)
+		if (attacker.getDistanceSq(entitylivingbase.posX, entitylivingbase.boundingBox.minY, entitylivingbase.posZ) <= d0 + 2)
 			if (attackTick <= 0) {
-				attackTick = 20;
+				attackTick = 10;
 				if (attacker.getHeldItem() != null)
 					attacker.swingItem();
 				if (attacker instanceof EntityPrayingMantis)

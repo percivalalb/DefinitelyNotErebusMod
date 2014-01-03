@@ -17,7 +17,7 @@ import erebus.item.ItemErebusMaterial;
 
 public class EntityPrayingMantis extends EntityMob {
 
-	int attackAnimation;
+	private int attackAnimation;
 
 	public EntityPrayingMantis(World world) {
 		super(world);
@@ -36,7 +36,7 @@ public class EntityPrayingMantis extends EntityMob {
 	protected void entityInit() {
 		super.entityInit();
 		dataWatcher.addObject(20, 0.0F);
-		dataWatcher.addObject(22, new Byte((byte) 2));
+		dataWatcher.addObject(22, new Byte((byte) 0));
 	}
 
 	@Override
@@ -52,10 +52,10 @@ public class EntityPrayingMantis extends EntityMob {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.6D); // Movespeed
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
-		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D); // atkDmg
-		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.6D);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);
+		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D);
+		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D);
 	}
 
 	@Override
@@ -102,10 +102,8 @@ public class EntityPrayingMantis extends EntityMob {
 		if (!worldObj.isRemote) {
 			if (attackAnimation < 5 && dataWatcher.getWatchableObjectByte(22) == 0)
 				setAttackAnimation(attackAnimation + 1, (byte) 0);
-			if (attackAnimation >= 5 && attackAnimation < 10)
-				setAttackAnimation(attackAnimation + 1, (byte) 1);
-			if (attackAnimation == 10)
-				setAttackAnimation(0, (byte) 2);
+			if (attackAnimation == 5)
+				setAttackAnimation(0, (byte) 1);
 
 		}
 		super.onUpdate();

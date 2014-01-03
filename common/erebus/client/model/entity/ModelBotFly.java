@@ -303,7 +303,6 @@ public class ModelBotFly extends ModelBase {
 		LegLB3.render(par7);
 		GL11.glPushMatrix();
 		GL11.glEnable(GL11.GL_BLEND);
-		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_SRC_COLOR);
 		RWing1.render(par7);
 		RWing2.render(par7);
 		LWing1.render(par7);

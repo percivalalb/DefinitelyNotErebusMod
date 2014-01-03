@@ -389,15 +389,12 @@ public class ModelLocust extends ModelBase {
 		RBL5.render(par7);
 		RBL6.render(par7);
 		GL11.glPushMatrix();
-		GL11.glEnable(3042);
-		float transparency = 0.6F;
-		GL11.glBlendFunc(770, 771);
-		GL11.glColor4f(1.0F, 0.0F, 0.0F, transparency);
+		GL11.glEnable(GL11.GL_BLEND);
 		LFWing.render(par7);
 		RFWing.render(par7);
 		LBWing.render(par7);
 		RBWing.render(par7);
-		GL11.glDisable(3042);
+		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
 	}
 

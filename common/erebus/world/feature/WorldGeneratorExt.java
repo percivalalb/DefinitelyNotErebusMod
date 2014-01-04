@@ -38,7 +38,7 @@ public abstract class WorldGeneratorExt extends WorldGenerator{
 	}
 	
 	protected void linez(Block block, int z1, int z2, int x, int y){
-		linex(block,0,z1,z2,x,y);
+		linez(block,0,z1,z2,x,y);
 	}
 	
 	protected void linez(Block block, int metadata, int z1, int z2, int x, int y){
@@ -50,6 +50,6 @@ public abstract class WorldGeneratorExt extends WorldGenerator{
 	}
 	
 	protected void block(Block block, int metadata, int x, int z, int y){
-		world.setBlock(block==null?0:block.blockID,metadata,x,y,z,2);
+		world.setBlock(x,y,z,block==null?0:block.blockID,metadata,2);
 	}
 }

@@ -18,10 +18,10 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
-import erebus.world.feature.WorldGenErebusHugeTree;
-import erebus.world.feature.WorldGenErebusTrees;
 import erebus.world.feature.WorldGenEucalyptus;
 import erebus.world.feature.trees.WorldGenAsperTree;
+import erebus.world.feature.trees.WorldGenErebusHugeTree;
+import erebus.world.feature.trees.WorldGenErebusTrees;
 import erebus.world.feature.trees.WorldGenMossbarkTree;
 import erebus.world.feature.trees.WorldGenSavannaTree;
 

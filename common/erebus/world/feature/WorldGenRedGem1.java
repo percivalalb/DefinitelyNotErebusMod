@@ -1,7 +1,6 @@
 package erebus.world.feature;
 
 import java.util.Random;
-
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import erebus.ModBlocks;
@@ -9,18 +8,18 @@ import erebus.ModBlocks;
 public class WorldGenRedGem1 extends WorldGenerator {
 
 	@Override
-	public boolean generate(World world, Random rand, int par3, int par4, int par5) {
-		if (!world.isAirBlock(par3, par4, par5))
+	public boolean generate(World world, Random rand, int x, int y, int z) {
+		if (!world.isAirBlock(x, y, z))
 			return false;
-		else if (world.getBlockId(par3, par4 + 1, par5) != ModBlocks.umberstone.blockID)
+		else if (world.getBlockId(x, y + 1, z) != ModBlocks.umberstone.blockID)
 			return false;
 		else {
-			world.setBlock(par3, par4, par5, ModBlocks.redGem.blockID);
+			world.setBlock(x, y, z, ModBlocks.redGem.blockID);
 
 			for (int var6 = 0; var6 < 1500; ++var6) {
-				int var7 = par3 + rand.nextInt(8) - rand.nextInt(8);
-				int var8 = par4 - rand.nextInt(12);
-				int var9 = par5 + rand.nextInt(8) - rand.nextInt(8);
+				int var7 = x + rand.nextInt(8) - rand.nextInt(8);
+				int var8 = y - rand.nextInt(12);
+				int var9 = z + rand.nextInt(8) - rand.nextInt(8);
 
 				if (world.getBlockId(var7, var8, var9) == 0) {
 					int var10 = 0;

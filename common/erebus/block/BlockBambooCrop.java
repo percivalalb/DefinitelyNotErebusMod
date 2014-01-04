@@ -80,7 +80,7 @@ public class BlockBambooCrop extends Block {
 		int meta = world.getBlockMetadata(x,y,z);
 		
 		if ((meta & 7) != 0) {
-			if (BlockBambooShoot.calculateBambooHappiness(world, x, y, z, blockID) > rand.nextInt(110 - meta * 2)) {
+			if (BlockBambooShoot.calculateBambooHappiness(world, x, y, z, blockID) > rand.nextInt(110 - meta * 2) && world.isAirBlock(x,y+1,z)) {
 				world.setBlock(x, y + 1, z, blockID, meta - 1, 3);
 			}
 		}

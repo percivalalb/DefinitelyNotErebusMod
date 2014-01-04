@@ -1,7 +1,6 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.world.World;
@@ -30,8 +29,6 @@ import erebus.entity.EntityWasp;
 import erebus.world.feature.WorldGenAmberGround;
 import erebus.world.feature.WorldGenAmberUmberstone;
 import erebus.world.feature.WorldGenBamboo;
-import erebus.world.feature.WorldGenErebusHugeTree;
-import erebus.world.feature.WorldGenErebusTrees;
 import erebus.world.feature.WorldGenEucalyptus;
 import erebus.world.feature.WorldGenMelon;
 import erebus.world.feature.WorldGenPonds;
@@ -39,7 +36,10 @@ import erebus.world.feature.WorldGenQuickSand;
 import erebus.world.feature.WorldGenRedGem1;
 import erebus.world.feature.WorldGenRedGem2;
 import erebus.world.feature.WorldGenTurnips;
+import erebus.world.feature.WorldGenWaspDungeon;
 import erebus.world.feature.trees.WorldGenAsperTree;
+import erebus.world.feature.trees.WorldGenErebusHugeTree;
+import erebus.world.feature.trees.WorldGenErebusTrees;
 import erebus.world.feature.trees.WorldGenMossbarkTree;
 import erebus.world.feature.trees.WorldGenTallJungleTree;
 
@@ -102,6 +102,12 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				new WorldGenPonds(Block.waterMoving.blockID, Block.blockClay.blockID, (rand.nextDouble() + 1.0D) * 2D).generate(worldObj, rand, j2, l3, j5);
 		}
+		
+		if (rand.nextInt(4) == 0){
+			for(int attempt=0; attempt<5; attempt++){
+				if (new WorldGenWaspDungeon().generate(worldObj, rand, x + rand.nextInt(16) + 8, 127, z + rand.nextInt(16) + 8)) break;
+			}
+		}
 
 		if (rand.nextInt(5) == 0)
 			for (int attempt = 0; attempt < 4; attempt++)
@@ -113,15 +119,8 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				if (new WorldGenAmberUmberstone().generate(worldObj, rand, x + rand.nextInt(16) + 8, rand.nextInt(120), z + rand.nextInt(16) + 8))
 					break;
 
-		int i2 = x + getRandomXZOffset(rand);
-		int k3 = rand.nextInt(128);
-		int i5 = z + getRandomXZOffset(rand);
-		new WorldGenFlowers(Block.mushroomBrown.blockID).generate(worldObj, rand, i2, k3, i5);
-
-		int xx_ = x + getRandomXZOffset(rand);
-		int yy_ = rand.nextInt(128);
-		int zz_ = z + getRandomXZOffset(rand);
-		new WorldGenFlowers(Block.mushroomRed.blockID).generate(worldObj, rand, xx_, yy_, zz_);
+		new WorldGenFlowers(Block.mushroomBrown.blockID).generate(worldObj, rand, x + getRandomXZOffset(rand), rand.nextInt(128), z + getRandomXZOffset(rand));
+		new WorldGenFlowers(Block.mushroomRed.blockID).generate(worldObj, rand, x + getRandomXZOffset(rand), rand.nextInt(128), z + getRandomXZOffset(rand));
 
 		for (int c = 10; c > 0; c--) {
 			int j2 = x + getRandomXZOffset(rand);

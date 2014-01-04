@@ -22,11 +22,11 @@ public class WorldProviderErebus extends WorldProvider {
 
 	@Override
 	public boolean canRespawnHere() {
-		return true;
+		return false;
 	}
 
 	@Override
-	public boolean canCoordinateBeSpawn(int par1, int par2) {
+	public boolean canCoordinateBeSpawn(int x, int z) {
 		return true;
 	}
 

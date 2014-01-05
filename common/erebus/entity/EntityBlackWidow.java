@@ -12,23 +12,32 @@ import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityBlackWidow extends EntityMob {
 
 	private int shouldDo;
 	Class[] preys = { EntityFly.class, EntityBotFly.class };
+	public boolean firstTickCheck;
 
 	public EntityBlackWidow(World world) {
 		super(world);
-		setSize(1.0F, 1.0F);
+		int i = 1 << rand.nextInt(3);
+		setWidowSize(i);
 		isImmuneToFire = true;
+		firstTickCheck = false;
 	}
 
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		dataWatcher.addObject(16, 0.4F + rand.nextFloat());
+		dataWatcher.addObject(16, new Byte((byte) 1));
+	}
+
+	protected void setWidowSize(int par1) {
+		dataWatcher.updateObject(16, new Byte((byte) par1));
+		setSize(0.9F * par1, 0.4F * par1);
 	}
 
 	@Override
@@ -47,7 +56,7 @@ public class EntityBlackWidow extends EntityMob {
 	}
 
 	protected Entity findEnemyToAttack() {
-		List list = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.expand(10D, 10D, 10D));
+		List list = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.expand(8D, 10D, 8D));
 		for (int i = 0; i < list.size(); i++) {
 			Entity entity = (Entity) list.get(i);
 			if (entity != null) {
@@ -63,18 +72,12 @@ public class EntityBlackWidow extends EntityMob {
 
 	@Override
 	public void onUpdate() {
-		setSize(getWidowSize() * 2.0F, getWidowSize());
-		if (!worldObj.isRemote && getWidowSize() <= 0.7F) {
-			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(15.0D); // MaxHealth
-			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D); // atkDmg
-		}
-		if (!worldObj.isRemote && getWidowSize() > 0.7F && getWidowSize() <= 1.0F) {
-			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D); // MaxHealth
-			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.5D); // atkDmg
-		}
-		if (!worldObj.isRemote && getWidowSize() > 1.0F) {
-			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
-			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D); // atkDmg
+		super.onUpdate();
+		int i;
+		if (worldObj.isRemote) {
+			i = getWidowSize();
+			System.out.println("Client Size " + getWidowSize());
+			setSize(0.9F * i, 0.4F * i);
 		}
 		if (findPlayerToAttack() != null)
 			entityToAttack = findPlayerToAttack();
@@ -82,7 +85,19 @@ public class EntityBlackWidow extends EntityMob {
 			entityToAttack = findEnemyToAttack();
 		else
 			entityToAttack = null;
-		super.onUpdate();
+
+		if (!worldObj.isRemote && getWidowSize() == 1) {
+			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(15.0D); // MaxHealth
+			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D); // atkDmg
+		}
+		if (!worldObj.isRemote && getWidowSize() == 2) {
+			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(20.0D); // MaxHealth
+			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.5D); // atkDmg
+		}
+		if (!worldObj.isRemote && getWidowSize() == 4) {
+			getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
+			getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D); // atkDmg
+		}
 	}
 
 	@Override
@@ -144,11 +159,22 @@ public class EntityBlackWidow extends EntityMob {
 	}
 
 	@Override
-	protected void attackEntity(Entity entity, float damage) {
-		if (attackTime <= 0 && damage < 2.0F && entity.boundingBox.maxY > boundingBox.minY && entity.boundingBox.minY < boundingBox.maxY) {
-			attackTime = 20;
+	protected void attackEntity(Entity entity, float distance) {
+		int i;
+		i = getWidowSize();
+		if (distance < 0.9F * i)
 			attackEntityAsMob(entity);
-		} else if (damage > 5.0F & damage < 8.0F)
+		if (distance > 2.0F && distance < 6.0F && rand.nextInt(10) == 0)
+			if (onGround) {
+				double d0 = entity.posX - posX;
+				double d1 = entity.posZ - posZ;
+				float f2 = MathHelper.sqrt_double(d0 * d0 + d1 * d1);
+				motionX = d0 / f2 * 0.5D * 0.800000011920929D + motionX * 0.20000000298023224D;
+				motionZ = d1 / f2 * 0.5D * 0.800000011920929D + motionZ * 0.20000000298023224D;
+				motionY = 0.4000000059604645D;
+			}
+
+		if (distance >= 5 & distance < 8.0F)
 			if (attackTime == 0) {
 				++shouldDo;
 				if (shouldDo == 1)
@@ -156,10 +182,10 @@ public class EntityBlackWidow extends EntityMob {
 				else if (shouldDo <= 4)
 					attackTime = 6;
 				else {
-					attackTime = 100;
+					attackTime = 20;
 					shouldDo = 0;
 				}
-				if (shouldDo > 1 && getWidowSize() > 0.7F && entity instanceof EntityPlayer) {
+				if (shouldDo > 1 && getWidowSize() > 1 && entity instanceof EntityPlayer) {
 					worldObj.playSoundAtEntity(this, getWebSlingThrowSound(), 1.0F, 1.0F);
 					for (int var10 = 0; var10 < 1; ++var10) {
 						EntityWebSling var11 = new EntityWebSling(worldObj, this);
@@ -194,22 +220,19 @@ public class EntityBlackWidow extends EntityMob {
 	@Override
 	public void writeEntityToNBT(NBTTagCompound nbt) {
 		super.writeEntityToNBT(nbt);
-		nbt.setFloat("size", getWidowSize());
+		nbt.setInteger("Size", getWidowSize() - 1);
 
 	}
 
 	@Override
 	public void readEntityFromNBT(NBTTagCompound nbt) {
 		super.readEntityFromNBT(nbt);
-		if (nbt.hasKey("size"))
-			setWidowSize(nbt.getFloat("size"));
+		super.readEntityFromNBT(nbt);
+		setWidowSize(nbt.getInteger("Size") + 1);
 	}
 
-	private void setWidowSize(float size) {
-		dataWatcher.updateObject(16, size);
-	}
 
-	public float getWidowSize() {
-		return dataWatcher.getWatchableObjectFloat(16);
+	public int getWidowSize() {
+		return dataWatcher.getWatchableObjectByte(16);
 	}
 }

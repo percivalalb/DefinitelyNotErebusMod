@@ -43,7 +43,7 @@ public class RenderBlackWidow extends RenderLiving {
 
 	protected void scaleBlackWidow(EntityBlackWidow entityBlackWidow, float f) {
 		EntityBlackWidow var8 = entityBlackWidow;
-		float f1 = var8.getWidowSize();
+		float f1 = var8.getWidowSize() * 0.3F;
 		shadowSize = f1;
 		GL11.glScalef(f1, f1, f1);
 	}

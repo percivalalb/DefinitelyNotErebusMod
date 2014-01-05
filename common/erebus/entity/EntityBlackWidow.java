@@ -19,14 +19,12 @@ public class EntityBlackWidow extends EntityMob {
 
 	private int shouldDo;
 	Class[] preys = { EntityFly.class, EntityBotFly.class };
-	public boolean firstTickCheck;
 
 	public EntityBlackWidow(World world) {
 		super(world);
 		int i = 1 << rand.nextInt(3);
 		setWidowSize(i);
 		isImmuneToFire = true;
-		firstTickCheck = false;
 	}
 
 	@Override
@@ -76,7 +74,6 @@ public class EntityBlackWidow extends EntityMob {
 		int i;
 		if (worldObj.isRemote) {
 			i = getWidowSize();
-			System.out.println("Client Size " + getWidowSize());
 			setSize(0.9F * i, 0.4F * i);
 		}
 		if (findPlayerToAttack() != null)

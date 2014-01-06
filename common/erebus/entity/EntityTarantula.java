@@ -21,7 +21,7 @@ public class EntityTarantula extends EntityErebusSpider {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(30.0D);
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.7D);
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(5.0D);
 	}

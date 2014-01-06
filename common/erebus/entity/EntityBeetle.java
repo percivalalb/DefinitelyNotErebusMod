@@ -40,7 +40,7 @@ public class EntityBeetle extends EntityCreature {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D);
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(15.0D);
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.5D);
 	}
 

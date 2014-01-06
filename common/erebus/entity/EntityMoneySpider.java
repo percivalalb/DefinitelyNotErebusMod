@@ -2,12 +2,13 @@ package erebus.entity;
 
 import net.minecraft.entity.EntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
-public class EntityErebusSpiderMoney extends EntityErebusSpider
+public class EntityMoneySpider extends EntitySpider
 {
-	public EntityErebusSpiderMoney(World world) {
+	public EntityMoneySpider(World world) {
 		super(world);
 		setSize(0.6F, 0.4F);
 	}

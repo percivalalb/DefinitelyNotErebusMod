@@ -19,21 +19,21 @@ public class TileEntityErebusAltarLightningRenderer extends TileEntitySpecialRen
 	public void renderAModelAt(TileEntityErebusAltarLightning tile, double d, double d1, double d2, float f) {
 		TileEntityErebusAltarLightning te = tile;
 		if (te.animationTicks <= 5)
-			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa1.png"));
+			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa1.png"));
 		else if (te.animationTicks > 5 && te.animationTicks <= 10)
-			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa2.png"));
+			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa2.png"));
 		else if (te.animationTicks > 10 && te.animationTicks <= 15)
-			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa3.png"));
+			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa3.png"));
 		else if (te.animationTicks > 15 && te.animationTicks <= 20)
-			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa4.png"));
+			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa4.png"));
 		else if (te.animationTicks > 20 && te.animationTicks < 25)
-			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa5.png"));
+			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa5.png"));
 		else if (te.animationTicks == 25 && te.fuzz <= 5)
-			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa5.png"));
+			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa5.png"));
 		else if (te.animationTicks == 25 && te.fuzz > 5 && te.fuzz <= 10 || te.animationTicks == 25 && te.fuzz > 15 && te.fuzz <= 20)
-			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa6.png"));
+			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa6.png"));
 		else if (te.animationTicks == 25 && te.fuzz > 10 && te.fuzz <= 15)
-			bindTexture(new ResourceLocation("erebus:textures/mob/EngineOfIllapa7.png"));
+			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa7.png"));
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) d + 0.5F, (float) d1 + 0.75F, (float) d2 + 0.5F);
 		GL11.glScalef(0.5F, -0.5F, -0.5F);

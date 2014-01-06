@@ -6,17 +6,19 @@ import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.SpiderEffectsGroupData;
 import net.minecraft.entity.monster.EntityMob;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityErebusSpider extends EntityMob
-{
-	public EntityErebusSpider(World world) {
-		super(world);
-		setSize(1.75F, 1.125F);
+public class EntityScytodes extends EntityMob {
+	private int shouldDo;
+
+	public EntityScytodes(World par1World) {
+		super(par1World);
+		setSize(2F, 1F);
 	}
 
 	@Override
@@ -28,7 +30,6 @@ public class EntityErebusSpider extends EntityMob
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-
 		if (!worldObj.isRemote)
 			setBesideClimbableBlock(isCollidedHorizontally);
 	}
@@ -43,7 +44,6 @@ public class EntityErebusSpider extends EntityMob
 	@Override
 	protected Entity findPlayerToAttack() {
 		float f = getBrightness(1.0F);
-
 		if (f < 0.5F) {
 			double d0 = 16.0D;
 			return worldObj.getClosestVulnerablePlayerToEntity(this, d0);
@@ -71,13 +71,17 @@ public class EntityErebusSpider extends EntityMob
 		playSound("mob.spider.step", 0.15F, 1.0F);
 	}
 
-	@Override
-	protected void attackEntity(Entity entity, float par2) {
-		float f1 = getBrightness(1.0F);
+	protected String getWebSlingThrowSound() {
+		return "erebus:webslingthrow";
+	}
 
-		if (f1 > 0.5F && rand.nextInt(100) == 0)
-			entityToAttack = null;
-		else if (par2 > 2.0F && par2 < 6.0F && rand.nextInt(10) == 0) {
+	@Override
+	protected void attackEntity(Entity entity, float distance) {
+		if (distance <2.0F){
+			super.attackEntity(entity, distance);
+			attackEntityAsMob(entity);
+		}
+		if (distance > 2.0F && distance < 6.0F && rand.nextInt(10) == 0)
 			if (onGround) {
 				double d0 = entity.posX - posX;
 				double d1 = entity.posZ - posZ;
@@ -86,8 +90,26 @@ public class EntityErebusSpider extends EntityMob
 				motionZ = d1 / f2 * 0.5D * 0.800000011920929D + motionZ * 0.20000000298023224D;
 				motionY = 0.4000000059604645D;
 			}
-		} else
-			super.attackEntity(entity, par2);
+		if (distance >= 5 & distance < 8.0F)
+			if (attackTime == 0) {
+				++shouldDo;
+				if (shouldDo == 1)
+					attackTime = 60;
+				else if (shouldDo <= 4)
+					attackTime = 6;
+				else {
+					attackTime = 20;
+					shouldDo = 0;
+				}
+				if (shouldDo > 1 && entity instanceof EntityPlayer) {
+					worldObj.playSoundAtEntity(this, getWebSlingThrowSound(), 1.0F, 1.0F);
+					for (int var10 = 0; var10 < 1; ++var10) {
+						EntityWebSling var11 = new EntityWebSling(worldObj, this);
+						var11.posY = posY + height / 2.0F + 0.5D;
+						worldObj.spawnEntityInWorld(var11);
+					}
+				}
+			}
 	}
 
 	@Override
@@ -98,7 +120,6 @@ public class EntityErebusSpider extends EntityMob
 	@Override
 	protected void dropFewItems(boolean par1, int par2) {
 		super.dropFewItems(par1, par2);
-
 		if (par1 && (rand.nextInt(3) == 0 || rand.nextInt(1 + par2) > 0))
 			dropItem(Item.spiderEye.itemID, 1);
 	}
@@ -126,6 +147,7 @@ public class EntityErebusSpider extends EntityMob
 		return (dataWatcher.getWatchableObjectByte(16) & 1) != 0;
 	}
 
+
 	public void setBesideClimbableBlock(boolean par1) {
 		byte b0 = dataWatcher.getWatchableObjectByte(16);
 
@@ -138,32 +160,26 @@ public class EntityErebusSpider extends EntityMob
 	}
 
 	@Override
-	public EntityLivingData onSpawnWithEgg(EntityLivingData entityLivingData)
-	{
+	public EntityLivingData onSpawnWithEgg(EntityLivingData entityLivingData) {
 		Object entityLivingData1 = super.onSpawnWithEgg(entityLivingData);
 
 		if (worldObj.rand.nextInt(100) == 0) {
-			EntityErebusSpiderMoney entityspidermoney = new EntityErebusSpiderMoney(worldObj);
+			EntityMoneySpider entityspidermoney = new EntityMoneySpider(worldObj);
 			entityspidermoney.setLocationAndAngles(posX, posY, posZ, rotationYaw, 0.0F);
 			entityspidermoney.onSpawnWithEgg((EntityLivingData) null);
 			worldObj.spawnEntityInWorld(entityspidermoney);
 			entityspidermoney.mountEntity(this);
 		}
-
 		if (entityLivingData1 == null) {
 			entityLivingData1 = new SpiderEffectsGroupData();
-
 			if (worldObj.difficultySetting > 2 && worldObj.rand.nextFloat() < 0.1F * worldObj.getLocationTensionFactor(posX, posY, posZ))
 				((SpiderEffectsGroupData) entityLivingData1).func_111104_a(worldObj.rand);
 		}
-
 		if (entityLivingData1 instanceof SpiderEffectsGroupData) {
 			int i = ((SpiderEffectsGroupData) entityLivingData1).field_111105_a;
-
 			if (i > 0 && Potion.potionTypes[i] != null)
 				addPotionEffect(new PotionEffect(i, Integer.MAX_VALUE));
 		}
-
 		return (EntityLivingData) entityLivingData1;
 	}
 }

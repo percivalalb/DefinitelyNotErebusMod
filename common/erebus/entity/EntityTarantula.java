@@ -2,8 +2,11 @@ package erebus.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingData;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.SpiderEffectsGroupData;
+import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -11,7 +14,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import erebus.ModItems;
 
-public class EntityTarantula extends EntityErebusSpider {
+public class EntityTarantula extends EntitySpider {
 
 	public EntityTarantula(World world) {
 		super(world);
@@ -137,5 +140,34 @@ public class EntityTarantula extends EntityErebusSpider {
 			entityDropItem(new ItemStack(ModItems.erebusFood, legDrop + par2, 4), 0.0F);
 
 		dropItem(Item.spiderEye.itemID, chanceFiftyFifty + par2);
+	}
+
+	@Override
+	public EntityLivingData onSpawnWithEgg(EntityLivingData entityLivingData) {
+		Object entityLivingData1 = super.onSpawnWithEgg(entityLivingData);
+
+		if (worldObj.rand.nextInt(100) == 0) {
+			EntityMoneySpider entityspidermoney = new EntityMoneySpider(worldObj);
+			entityspidermoney.setLocationAndAngles(posX, posY, posZ, rotationYaw, 0.0F);
+			entityspidermoney.onSpawnWithEgg((EntityLivingData) null);
+			worldObj.spawnEntityInWorld(entityspidermoney);
+			entityspidermoney.mountEntity(this);
+		}
+
+		if (entityLivingData1 == null) {
+			entityLivingData1 = new SpiderEffectsGroupData();
+
+			if (worldObj.difficultySetting > 2 && worldObj.rand.nextFloat() < 0.1F * worldObj.getLocationTensionFactor(posX, posY, posZ))
+				((SpiderEffectsGroupData) entityLivingData1).func_111104_a(worldObj.rand);
+		}
+
+		if (entityLivingData1 instanceof SpiderEffectsGroupData) {
+			int i = ((SpiderEffectsGroupData) entityLivingData1).field_111105_a;
+
+			if (i > 0 && Potion.potionTypes[i] != null)
+				addPotionEffect(new PotionEffect(i, Integer.MAX_VALUE));
+		}
+
+		return (EntityLivingData) entityLivingData1;
 	}
 }

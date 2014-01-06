@@ -159,8 +159,11 @@ public class EntityBlackWidow extends EntityMob {
 	protected void attackEntity(Entity entity, float distance) {
 		int i;
 		i = getWidowSize();
-		if (distance < 0.9F * i)
+		if (distance < 0.9F * i) {
+			super.attackEntity(entity, distance);
 			attackEntityAsMob(entity);
+		}
+
 		if (distance > 2.0F && distance < 6.0F && rand.nextInt(10) == 0)
 			if (onGround) {
 				double d0 = entity.posX - posX;

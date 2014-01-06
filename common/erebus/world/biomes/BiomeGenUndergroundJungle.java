@@ -1,6 +1,7 @@
 package erebus.world.biomes;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.world.World;
@@ -19,11 +20,11 @@ import erebus.entity.EntityBeetle;
 import erebus.entity.EntityBeetleLarva;
 import erebus.entity.EntityBotFly;
 import erebus.entity.EntityCentipede;
-import erebus.entity.EntityErebusSpider;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityMosquito;
 import erebus.entity.EntityMoth;
 import erebus.entity.EntityPrayingMantis;
+import erebus.entity.EntityScytodes;
 import erebus.entity.EntityTarantula;
 import erebus.entity.EntityWasp;
 import erebus.world.feature.WorldGenAmberGround;
@@ -56,7 +57,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 		spawnableMonsterList.add(new SpawnListEntry(EntityPrayingMantis.class, 10, 4, 8));
 		spawnableCaveCreatureList.add(new SpawnListEntry(EntityBotFly.class, 10, 4, 8));
 		// spawnableCaveCreatureList.add(newSpawnListEntry(EntityVelvetWorm.class,10,2,4));
-		spawnableMonsterList.add(new SpawnListEntry(EntityErebusSpider.class, 35, 1, 4));
+		spawnableMonsterList.add(new SpawnListEntry(EntityScytodes.class, 35, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityCaveSpider.class, 10, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityTarantula.class, 5, 4, 8));
 		spawnableCreatureList.add(new SpawnListEntry(EntityBeetleLarva.class, 150, 1, 4));
@@ -102,12 +103,10 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 			if (worldObj.getBlockId(j2, l3, j5) == 0 && worldObj.getBlockId(j2, l3 - 1, j5) == Block.grass.blockID)
 				new WorldGenPonds(Block.waterMoving.blockID, Block.blockClay.blockID, (rand.nextDouble() + 1.0D) * 2D).generate(worldObj, rand, j2, l3, j5);
 		}
-		
-		if (rand.nextInt(4) == 0){
-			for(int attempt=0; attempt<5; attempt++){
+
+		if (rand.nextInt(4) == 0)
+			for(int attempt=0; attempt<5; attempt++)
 				if (new WorldGenWaspDungeon().generate(worldObj, rand, x + rand.nextInt(16) + 8, 127, z + rand.nextInt(16) + 8)) break;
-			}
-		}
 
 		if (rand.nextInt(5) == 0)
 			for (int attempt = 0; attempt < 4; attempt++)

@@ -109,9 +109,9 @@ public class ConfigurationHandler {
 			ModBlocks.amberBrickStairsID = config.getBlock("Block ID of Amber Brick Stairs", 2558).getInt(2558);
 			ModBlocks.waspNestStairsID = config.getBlock("Block ID of Wasp Nest Stairs", 2573).getInt(2573);
 
-			ModBlocks.spiderSpawnerID = config.getBlock("Block ID of Spider Spawners", 2552).getInt(2552);
+			ModBlocks.spiderSpawnerID = config.getBlock("Block ID of Scytodes Spawners", 2552).getInt(2552);
 			ModBlocks.caveSpiderSpawnerID = config.getBlock("Block ID of Cave Spider Spawners", 2553).getInt(2553);
-			ModBlocks.waspSpawnerID = config.getBlock("Block ID of Cave Wasp Spawners", 2572).getInt(2572);
+			ModBlocks.waspSpawnerID = config.getBlock("Block ID of Wasp Spawners", 2572).getInt(2572);
 
 			// latest ID used (please update after adding new blocks!) >>> 2575
 
@@ -127,7 +127,7 @@ public class ConfigurationHandler {
 			ModItems.sprayCanID = config.getItem("Item ID of Insect Repellent", 9712).getInt(9712);
 			ModItems.wandOfAnimationID = config.getItem("ItemID of Wand of Animation", 9734).getInt(9734);
 			ModItems.bucketOfBeetleJuiceID = config.getItem("ItemID of Bucket Of Beetle Juice", 9742).getInt(9742);
-			ModItems.hornOfSummoningID = config.getItem("ItemID of Horn Of Summoning", 9744).getInt(9744);
+			ModItems.hornOfSummoningID = config.getItem("ItemID of Horn of The Swarm", 9744).getInt(9744);
 
 			ModItems.jadeHelmetID = config.getItem("Item ID of Jade Helmet", 9713).getInt(9713);
 			ModItems.jadeBodyID = config.getItem("Item ID of Jade Chestplate", 9714).getInt(9714);

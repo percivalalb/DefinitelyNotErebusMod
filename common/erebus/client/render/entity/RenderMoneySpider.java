@@ -1,19 +1,41 @@
 package erebus.client.render.entity;
 
+import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.client.model.entity.ModelScytodes;
+import erebus.entity.EntityMoneySpider;
 
 @SideOnly(Side.CLIENT)
-public class RenderMoneySpider extends RenderErebusSpider
-{
-	private static final ResourceLocation caveSpiderTextures = new ResourceLocation("textures/entity/spider/cave_spider.png");
+public class RenderMoneySpider extends RenderLiving {
+	protected ModelScytodes model;
+	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelMoneySpider.png");
 
-	public RenderMoneySpider() {
+	public RenderMoneySpider(ModelScytodes model, float shadowSize) {
+		super(model, shadowSize);
+		model = (ModelScytodes) mainModel;
 		shadowSize *= 0.5F;
+	}
+
+	public void renderMoneySpider(EntityMoneySpider entityMoneySpider, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving(entityMoneySpider, x, y, z, rotationYaw, partialTickTime);
+	}
+
+	@Override
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderMoneySpider((EntityMoneySpider) entityLiving, x, y, z, rotationYaw, partialTickTime);
+	}
+
+	@Override
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderMoneySpider((EntityMoneySpider) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
@@ -23,6 +45,6 @@ public class RenderMoneySpider extends RenderErebusSpider
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return caveSpiderTextures;
+		return Texture;
 	}
 }

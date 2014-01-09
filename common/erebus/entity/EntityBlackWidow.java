@@ -190,6 +190,7 @@ public class EntityBlackWidow extends EntityMob {
 					for (int var10 = 0; var10 < 1; ++var10) {
 						EntityWebSling var11 = new EntityWebSling(worldObj, this);
 						var11.posY = posY + height / 2.0F + 0.5D;
+						var11.setType((byte) 1);
 						worldObj.spawnEntityInWorld(var11);
 					}
 				}

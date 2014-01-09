@@ -142,6 +142,7 @@ tile.umberGolemStatue.name=Umber Golem Statue
 tile.waspNestBlock.name=Wasp Nest Block
 tile.petrifiedWoodChest.name=Petrified Wood Chest
 tile.blockBones.name=Block o' Bones
+tile.witherWeb.name=Wither Web
 
 #Items
 item.helmetExo.name=Exoskeleton Helmet

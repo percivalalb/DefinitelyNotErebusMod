@@ -11,13 +11,13 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.ModBlocks;
 import erebus.entity.EntityWebSling;
 
 @SideOnly(Side.CLIENT)
 public class RenderWebSling extends Render {
 	private final RenderBlocks blockRenderer = new RenderBlocks();
-	public static ResourceLocation texture = new ResourceLocation("minecraft", "textures/blocks/web.png");
-
+	private static ResourceLocation texture;
 	@Override
 	public void doRender(Entity entity, double x, double y, double z, float yaw, float tick) {
 		renderWebSling((EntityWebSling) entity, x, y, z, yaw, tick);
@@ -30,12 +30,21 @@ public class RenderWebSling extends Render {
 		GL11.glRotatef(-90F, 0, 1F, 0);
 		GL11.glScaled(1.0D, 1.0D, 1.0D);
 		bindTexture(TextureMap.locationBlocksTexture);
-		blockRenderer.renderBlockAsItem(Block.web, 3, 1.0F);
+		if (entityWebSling.getDataWatcher().getWatchableObjectByte(24) == 0)
+			blockRenderer.renderBlockAsItem(Block.web, 3, 1.0F);
+		if (entityWebSling.getDataWatcher().getWatchableObjectByte(24) == 1)
+			blockRenderer.renderBlockAsItem(ModBlocks.blockWitherWeb, 3, 1.0F);
+		System.out.println("Render Type " + entityWebSling.getType());
 		GL11.glPopMatrix();
 	}
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
+		EntityWebSling entityWebSling = (EntityWebSling) entity;
+		if (entityWebSling.getDataWatcher().getWatchableObjectByte(24) == 0)
+			texture = new ResourceLocation("minecraft", "textures/blocks/web.png");
+		if (entityWebSling.getDataWatcher().getWatchableObjectByte(24) == 1)
+			texture = new ResourceLocation("erebus:textures/blocks/witherWeb.png");
 		return texture;
 	}
 }

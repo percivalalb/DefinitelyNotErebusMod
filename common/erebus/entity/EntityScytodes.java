@@ -106,6 +106,7 @@ public class EntityScytodes extends EntityMob {
 					for (int var10 = 0; var10 < 1; ++var10) {
 						EntityWebSling var11 = new EntityWebSling(worldObj, this);
 						var11.posY = posY + height / 2.0F + 0.5D;
+						var11.setType((byte) 0);
 						worldObj.spawnEntityInWorld(var11);
 					}
 				}

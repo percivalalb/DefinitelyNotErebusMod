@@ -17,11 +17,9 @@ public class RenderScytodes extends RenderLiving
 	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelScytodes.png");
 
 
-	public RenderScytodes(ModelScytodes model, float shadowSize)
-	{
+	public RenderScytodes(ModelScytodes model, float shadowSize) {
 		super(model, shadowSize);
 		model =(ModelScytodes)mainModel;
-
 	}
 
 	public void renderScytodes(EntityScytodes entityScytodes, double x, double y, double z, float rotationYaw, float partialTickTime) {
@@ -39,14 +37,13 @@ public class RenderScytodes extends RenderLiving
 	}
 
 	@Override
-	protected void preRenderCallback(EntityLivingBase entityliving, float f)
-	{
+	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
 		scaleScytodes((EntityScytodes) entityliving, f);
 	}
 
 	protected void scaleScytodes(EntityScytodes entityScytodes, float f) {
-		float f1 = 1.3F;
-		shadowSize = 0.5F;
+		float f1 = 1.0F;
+		shadowSize = f1;
 		GL11.glScalef(f1, f1, f1);
 	}
 

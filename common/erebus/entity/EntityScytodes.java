@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 public class EntityScytodes extends EntityMob {
 	private int shouldDo;
-
+	public int skin = rand.nextInt(4);
 	public EntityScytodes(World par1World) {
 		super(par1World);
 		setSize(2F, 1F);

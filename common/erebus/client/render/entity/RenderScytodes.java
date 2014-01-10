@@ -14,8 +14,7 @@ import erebus.entity.EntityScytodes;
 public class RenderScytodes extends RenderLiving
 {
 	protected ModelScytodes model;
-	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelScytodes.png");
-
+	private static ResourceLocation Texture;
 
 	public RenderScytodes(ModelScytodes model, float shadowSize) {
 		super(model, shadowSize);
@@ -49,6 +48,15 @@ public class RenderScytodes extends RenderLiving
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
+		EntityScytodes spider = (EntityScytodes) entity;
+		if (spider.skin == 0)
+			Texture = new ResourceLocation("erebus:textures/mob/ModelScytodes_1.png");
+		if (spider.skin == 1)
+			Texture = new ResourceLocation("erebus:textures/mob/ModelScytodes_2.png");
+		if (spider.skin == 2)
+			Texture = new ResourceLocation("erebus:textures/mob/ModelScytodes_3.png");
+		if (spider.skin == 3)
+			Texture = new ResourceLocation("erebus:textures/mob/ModelScytodes_4.png");
 		return Texture;
 	}
 }

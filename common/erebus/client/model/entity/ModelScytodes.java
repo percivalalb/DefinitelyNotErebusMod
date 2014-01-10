@@ -22,6 +22,7 @@ public class ModelScytodes extends ModelBase {
 	ModelRenderer HeadBack;
 	ModelRenderer HeadBotB;
 	ModelRenderer HeadBot;
+	ModelRenderer HeadCore;
 	ModelRenderer AbTop1;
 	ModelRenderer AbTop2;
 	ModelRenderer ABot1;
@@ -122,6 +123,10 @@ public class ModelScytodes extends ModelBase {
 		HeadBot.addBox(-4F, 2.3F, -0.8F, 8, 1, 8);
 		HeadBot.setRotationPoint(0F, 17F, -8F);
 		setRotation(HeadBot, 0F, 0F, 0F);
+		HeadCore = new ModelRenderer(this, 27, 113);
+		HeadCore.addBox(-5F, -2.5F, 0F, 10, 6, 7);
+		HeadCore.setRotationPoint(0F, 17F, -7F);
+		setRotation(HeadCore, 0.7853982F, 0F, 0F);
 		AbTop1 = new ModelRenderer(this, 0, 47);
 		AbTop1.addBox(-4F, 2.9F, 6.1F, 8, 6, 9);
 		AbTop1.setRotationPoint(0F, 17F, -7F);
@@ -368,6 +373,7 @@ public class ModelScytodes extends ModelBase {
 		HeadBack.render(ationTank);
 		HeadBotB.render(ationTank);
 		HeadBot.render(ationTank);
+		HeadCore.render(ationTank);
 		AbTop1.render(ationTank);
 		AbTop2.render(ationTank);
 		ABot1.render(ationTank);

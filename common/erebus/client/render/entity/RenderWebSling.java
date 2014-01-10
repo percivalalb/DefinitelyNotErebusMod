@@ -34,7 +34,6 @@ public class RenderWebSling extends Render {
 			blockRenderer.renderBlockAsItem(Block.web, 3, 1.0F);
 		if (entityWebSling.getDataWatcher().getWatchableObjectByte(24) == 1)
 			blockRenderer.renderBlockAsItem(ModBlocks.blockWitherWeb, 3, 1.0F);
-		System.out.println("Render Type " + entityWebSling.getType());
 		GL11.glPopMatrix();
 	}
 

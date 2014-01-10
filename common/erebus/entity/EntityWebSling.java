@@ -2,6 +2,7 @@ package erebus.entity;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -24,6 +25,10 @@ public class EntityWebSling extends EntityThrowable {
 
 	public EntityWebSling(World world, double x, double y, double z) {
 		super(world, x, y, z);
+	}
+
+	public EntityWebSling(World world, EntityPlayer player) {
+		super(world, player);
 	}
 
 	@Override
@@ -72,10 +77,6 @@ public class EntityWebSling extends EntityThrowable {
 	public void setType(byte webType) {
 		type = webType;
 		dataWatcher.updateObject(24, webType);
-		if (type == 1)
-			System.out.println("Black Web Set " + type);
-		if (type == 0)
-			System.out.println("White Web Set " + type);
 	}
 
 	public byte getType() {

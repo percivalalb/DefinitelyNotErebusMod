@@ -152,6 +152,7 @@ public class ConfigurationHandler {
 			ModItems.maxSpeedBowID = config.getItem("Item ID of MaxSpeed Bow", 9729).getInt(9729);
 			ModItems.waspDaggerID = config.getItem("Item ID of Wasp Dagger", 9733).getInt(9733);
 			ModItems.scorpionPincerID = config.getItem("Item ID of Scorpion Pincer", 9741).getInt(9741);
+			ModItems.webSlingerID = config.getItem("Item ID of Web Slinger", 9745).getInt(9745);
 
 			ModItems.compoundGogglesID = config.getItem("Item ID of Compound Goggles", 9730).getInt(9730);
 			ModItems.reinCompoundGogglesID = config.getItem("Item ID of Reinforced Compound Goggles", 9740).getInt(9740);
@@ -166,7 +167,7 @@ public class ConfigurationHandler {
 
 			ModItems.spawnEggsID = config.getItem("Item ID of Spawn Eggs", 9743).getInt(9743);
 
-			// latest ID used (please update after adding new items!) >>> 9744
+			// latest ID used (please update after adding new items!) >>> 9745
 
 			/*
 			 * Biomes & misc

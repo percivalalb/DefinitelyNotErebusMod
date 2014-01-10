@@ -38,6 +38,7 @@ import erebus.item.ItemSprintLeggings;
 import erebus.item.ItemWandOfAnimation;
 import erebus.item.ItemWaspDagger;
 import erebus.item.ItemWaspSword;
+import erebus.item.ItemWebSlinger;
 
 public class ModItems {
 
@@ -84,6 +85,7 @@ public class ModItems {
 	public static Item maxSpeedBow;						public static int maxSpeedBowID;
 	public static Item waspDagger;						public static int waspDaggerID;
 	public static Item scorpionPincer;					public static int scorpionPincerID;
+	public static Item webSlinger;						public static int webSlingerID;
 
 	// MISC ARMOR
 	public static Item reinCompoundGoggles;             public static int reinCompoundGogglesID;
@@ -139,6 +141,7 @@ public class ModItems {
 		maxSpeedBow = new ItemMaxSpeedBow(maxSpeedBowID).setUnlocalizedName("maxSpeedBow").setTextureName("erebus:maxSpeedBow");
 		waspDagger = new ItemWaspDagger(waspDaggerID).setUnlocalizedName("waspDagger");
 		scorpionPincer = new ItemScorpionPincer(scorpionPincerID).setUnlocalizedName("scorpionPincer").setTextureName("paper");
+		webSlinger = new ItemWebSlinger(webSlingerID).setUnlocalizedName("webSlinger").setTextureName("paper");
 
 		reinCompoundGoggles = new ItemCompoundGoggles(reinCompoundGogglesID, ErebusMod.armorREINEXOSKELETON, 2, 0).setUnlocalizedName("reinCompoundGoggles").setTextureName("erebus:reinCompoundGoggles");
 		compoundGoggles = new ItemCompoundGoggles(compoundGogglesID, ErebusMod.armorEXOSKELETON, 2, 0).setUnlocalizedName("compoundGoggles").setTextureName("erebus:compoundGoggles");
@@ -157,7 +160,7 @@ public class ModItems {
 		ErebusMod.tabErebusGear.add(bamBucket, sprayCan, hornOfSummoning);
 		ErebusMod.tabErebusGear.add(jadeHelmet, jadeBody, jadeLegs, jadeBoots, jadeSword, jadePickaxe, jadeAxe, jadeShovel, jadePaxel, jadeHoe);
 		ErebusMod.tabErebusGear.add(exoskeletonHelmet, exoskeletonBody, exoskeletonLegs, exoskeletonBoots, reinExoskeletonHelmet, reinExoskeletonBody, reinExoskeletonLegs, reinExoskeletonBoots);
-		ErebusMod.tabErebusGear.add(fossilClub, waspSword, waspDagger, maxSpeedBow, scorpionPincer);
+		ErebusMod.tabErebusGear.add(fossilClub, waspSword, waspDagger, maxSpeedBow, scorpionPincer, webSlinger);
 		ErebusMod.tabErebusGear.add(compoundGoggles, reinCompoundGoggles, armorGlider, sprintLeggings, jumpBoots);
 
 		// Tool classes
@@ -205,6 +208,7 @@ public class ModItems {
 		GameRegistry.registerItem(maxSpeedBow, "erebus.maxSpeedBow");
 		GameRegistry.registerItem(waspDagger, "erebus.waspDagger");
 		GameRegistry.registerItem(scorpionPincer, "erebus.scorpionPincer");
+		GameRegistry.registerItem(webSlinger, "erebus.webSlinger");
 
 		GameRegistry.registerItem(compoundGoggles, "erebus.compoundGoggles");
 		GameRegistry.registerItem(sprintLeggings, "erebus.sprintLeggings");

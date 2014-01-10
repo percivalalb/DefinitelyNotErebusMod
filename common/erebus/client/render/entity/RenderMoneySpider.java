@@ -21,7 +21,7 @@ public class RenderMoneySpider extends RenderLiving {
 	public RenderMoneySpider(ModelScytodes model, float shadowSize) {
 		super(model, shadowSize);
 		model = (ModelScytodes) mainModel;
-		shadowSize *= 0.5F;
+		shadowSize *= 0.3F;
 	}
 
 	public void renderMoneySpider(EntityMoneySpider entityMoneySpider, double x, double y, double z, float rotationYaw, float partialTickTime) {
@@ -40,7 +40,7 @@ public class RenderMoneySpider extends RenderLiving {
 
 	@Override
 	protected void preRenderCallback(EntityLivingBase entityLivingBase, float par2) {
-		GL11.glScalef(0.5F, 0.5F, 0.5F);
+		GL11.glScalef(0.3F, 0.3F, 0.3F);
 	}
 
 	@Override

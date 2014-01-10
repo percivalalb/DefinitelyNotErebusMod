@@ -34,6 +34,9 @@ public class ModelWebSlinger extends ModelBase
 	ModelRenderer BarrelDeco;
 	ModelRenderer Barrel;
 	ModelRenderer Grip;
+	ModelRenderer Greeble1;
+	ModelRenderer Greeble2;
+	ModelRenderer Greeble3;
 
 	public ModelWebSlinger()
 	{
@@ -46,12 +49,6 @@ public class ModelWebSlinger extends ModelBase
 		ShapeA.setTextureSize(64, 32);
 		ShapeA.mirror = true;
 		setRotation(ShapeA, 0F, 0F, -3.141593F);
-		ShapeB = new ModelRenderer(this, 0, 0);
-		ShapeB.addBox(0F, -1F, -0.5F, 13, 2, 1);
-		ShapeB.setRotationPoint(0F, 8F, 0F);
-		ShapeB.setTextureSize(64, 32);
-		ShapeB.mirror = true;
-		setRotation(ShapeB, 0.5759587F, 1.204277F, 0.5759587F);
 		ShapeC = new ModelRenderer(this, 0, 0);
 		ShapeC.addBox(-2.5F, -4.466667F, 2.5F, 5, 1, 1);
 		ShapeC.setRotationPoint(0F, 8F, -9F);
@@ -156,7 +153,7 @@ public class ModelWebSlinger extends ModelBase
 		setRotation(ShapeS, 0F, 0F, -2.094395F);
 		ShapeT = new ModelRenderer(this, 0, 0);
 		ShapeT.addBox(0F, -0.5F, -1F, 13, 1, 2);
-		ShapeT.setRotationPoint(0F, 8F, 0F);
+		ShapeT.setRotationPoint(0F, 8.1F, 0F);
 		ShapeT.setTextureSize(64, 32);
 		ShapeT.mirror = true;
 		setRotation(ShapeT, 0F, 2.251475F, 0F);
@@ -166,24 +163,6 @@ public class ModelWebSlinger extends ModelBase
 		ShapeU.setTextureSize(64, 32);
 		ShapeU.mirror = true;
 		setRotation(ShapeU, 0F, 0.9075712F, 0F);
-		ShapeV = new ModelRenderer(this, 0, 0);
-		ShapeV.addBox(0F, -1F, -0.5F, 13, 2, 1);
-		ShapeV.setRotationPoint(0F, 8F, 0F);
-		ShapeV.setTextureSize(64, 32);
-		ShapeV.mirror = true;
-		setRotation(ShapeV, 0.7853982F, -1.186824F, -2.600541F);
-		ShapeW = new ModelRenderer(this, 0, 0);
-		ShapeW.addBox(0F, -1F, -0.5F, 13, 2, 1);
-		ShapeW.setRotationPoint(0F, 8F, 0F);
-		ShapeW.setTextureSize(64, 32);
-		ShapeW.mirror = true;
-		setRotation(ShapeW, -0.4363323F, 1.937315F, 0.5759587F);
-		ShapeX = new ModelRenderer(this, 0, 0);
-		ShapeX.addBox(0F, -1F, -0.5F, 13, 2, 1);
-		ShapeX.setRotationPoint(0F, 8F, 0F);
-		ShapeX.setTextureSize(64, 32);
-		ShapeX.mirror = true;
-		setRotation(ShapeX, -0.6108652F, 1.204277F, -0.5759587F);
 		Back = new ModelRenderer(this, 0, 16);
 		Back.addBox(-2F, -2F, 7F, 4, 3, 6);
 		Back.setRotationPoint(0F, 8F, 0F);
@@ -208,12 +187,55 @@ public class ModelWebSlinger extends ModelBase
 		Grip.setTextureSize(64, 32);
 		Grip.mirror = true;
 		setRotation(Grip, 0.1396263F, 0F, 0F);
+		Greeble1 = new ModelRenderer(this, 32, 0);
+		Greeble1.addBox(-0.5F, -3F, -0.5F, 1, 3, 1);
+		Greeble1.setRotationPoint(0F, 7.5F, 12F);
+		Greeble1.setTextureSize(64, 32);
+		Greeble1.mirror = true;
+		setRotation(Greeble1, -0.5585054F, 0F, 0F);
+		Greeble2 = new ModelRenderer(this, 32, 0);
+		Greeble2.addBox(-0.5F, -3F, -0.5F, 1, 3, 1);
+		Greeble2.setRotationPoint(1.5F, 7.5F, 12F);
+		Greeble2.setTextureSize(64, 32);
+		Greeble2.mirror = true;
+		setRotation(Greeble2, -0.5585054F, 0.5585054F, 0F);
+		Greeble3 = new ModelRenderer(this, 32, 0);
+		Greeble3.addBox(-0.5F, -3F, -0.5F, 1, 3, 1);
+		Greeble3.setRotationPoint(-1.5F, 7.5F, 12F);
+		Greeble3.setTextureSize(64, 32);
+		Greeble3.mirror = true;
+		setRotation(Greeble3, -0.5585054F, -0.5585054F, 0F);
+		ShapeV = new ModelRenderer(this, 36, 9);
+		ShapeV.addBox(-0.5F, -13.5F, -1F, 1, 13, 2);
+		ShapeV.setRotationPoint(0F, 8.1F, 0F);
+		ShapeV.setTextureSize(64, 32);
+		ShapeV.mirror = true;
+		setRotation(ShapeV, 0.9075712F, 0F, 0.5235988F);
+		ShapeX = new ModelRenderer(this, 36, 9);
+		ShapeX.addBox(-0.5F, -13.5F, -1F, 1, 13, 2);
+		ShapeX.setRotationPoint(0F, 8.1F, 0F);
+		ShapeX.setTextureSize(64, 32);
+		ShapeX.mirror = true;
+		setRotation(ShapeX, 2.251475F, 0F, -0.5585054F);
+		ShapeB = new ModelRenderer(this, 36, 9);
+		ShapeB.addBox(-0.5F, -13.5F, -1F, 1, 13, 2);
+		ShapeB.setRotationPoint(0F, 8.1F, 0F);
+		ShapeB.setTextureSize(64, 32);
+		ShapeB.mirror = true;
+		setRotation(ShapeB, 0.9075712F, 0F, -0.5235988F);
+		ShapeW = new ModelRenderer(this, 36, 9);
+		ShapeW.addBox(-0.5F, -13.5F, -1F, 1, 13, 2);
+		ShapeW.setRotationPoint(0F, 8.1F, 0F);
+		ShapeW.setTextureSize(64, 32);
+		ShapeW.mirror = true;
+		setRotation(ShapeW, 2.251475F, 0F, 0.5235988F);
+
 	}
 
 	public void render()
 	{
 		ShapeA.render(0.0625F);
-
+		ShapeB.render(0.0625F);
 		ShapeC.render(0.0625F);
 		ShapeD.render(0.0625F);
 		ShapeE.render(0.0625F);
@@ -231,16 +253,19 @@ public class ModelWebSlinger extends ModelBase
 		ShapeQ.render(0.0625F);
 		ShapeR.render(0.0625F);
 		ShapeS.render(0.0625F);
-		// bad ShapeB.render(0.0625F);
-		// good ShapeT.render(0.0625F);
-		// good ShapeU.render(0.0625F);
-		// bad ShapeV.render(0.0625F);
-		// bad ShapeW.render(0.0625F);
-		// bad ShapeX.render(0.0625F);
+		ShapeT.render(0.0625F);
+		ShapeU.render(0.0625F);
+		ShapeV.render(0.0625F);
+		ShapeW.render(0.0625F);
+		ShapeX.render(0.0625F);
 		Back.render(0.0625F);
 		BarrelDeco.render(0.0625F);
 		Barrel.render(0.0625F);
 		Grip.render(0.0625F);
+		Greeble1.render(0.0625F);
+		Greeble2.render(0.0625F);
+		Greeble3.render(0.0625F);
+
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {

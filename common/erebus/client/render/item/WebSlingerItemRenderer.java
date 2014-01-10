@@ -44,7 +44,7 @@ public class WebSlingerItemRenderer implements IItemRenderer {
 				renderWebSlingerFirstPerson(1.0F, 1.0F, 0.0F, 2.5D);
 				break;
 			case INVENTORY:
-				renderWebSlingerInventory(-0.3F, 0.4F, 0F, 0.9D);
+				renderWebSlingerInventory(-0.3F, 0.3F, 0F, 0.9D);
 				break;
 			default:
 				break;

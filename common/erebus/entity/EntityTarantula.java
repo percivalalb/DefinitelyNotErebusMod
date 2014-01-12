@@ -6,19 +6,26 @@ import net.minecraft.entity.EntityLivingData;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.SpiderEffectsGroupData;
-import net.minecraft.entity.monster.EntitySpider;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import erebus.ModItems;
 
-public class EntityTarantula extends EntitySpider {
-
+public class EntityTarantula extends EntityMob {
+	public int skin = rand.nextInt(99);
 	public EntityTarantula(World world) {
 		super(world);
 		setSize(1.3F, 0.6F);
+	}
+
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		dataWatcher.addObject(16, new Byte((byte) 0));
 	}
 
 	@Override
@@ -40,16 +47,12 @@ public class EntityTarantula extends EntitySpider {
 	}
 
 	@Override
-	public void onUpdate() {
-		super.onUpdate();
-
-		if (!worldObj.isRemote)
-			setBesideClimbableBlock(isCollidedHorizontally);
+	public boolean isOnLadder() {
+		return isBesideClimbableBlock();
 	}
 
 	@Override
-	public boolean isOnLadder() {
-		return isBesideClimbableBlock();
+	public void setInWeb() {
 	}
 
 	@Override
@@ -58,18 +61,48 @@ public class EntityTarantula extends EntitySpider {
 	}
 
 	@Override
-	public void setBesideClimbableBlock(boolean par1) {
-		byte var2 = dataWatcher.getWatchableObjectByte(16);
-
-		if (par1)
-			var2 = (byte) (var2 | 1);
-		else
-			var2 &= -2;
-
-		dataWatcher.updateObject(16, Byte.valueOf(var2));
+	public boolean isPotionApplicable(PotionEffect potionEffect) {
+		return potionEffect.getPotionID() == Potion.poison.id ? false : super.isPotionApplicable(potionEffect);
 	}
 
-	public int skin = rand.nextInt(99);
+	public boolean isBesideClimbableBlock() {
+		return (dataWatcher.getWatchableObjectByte(16) & 1) != 0;
+	}
+
+	public void setBesideClimbableBlock(boolean par1) {
+		byte b0 = dataWatcher.getWatchableObjectByte(16);
+
+		if (par1)
+			b0 = (byte) (b0 | 1);
+		else
+			b0 &= -2;
+
+		dataWatcher.updateObject(16, Byte.valueOf(b0));
+	}
+
+	@Override
+	public void onUpdate() {
+		super.onUpdate();
+		if (!worldObj.isRemote)
+			setBesideClimbableBlock(isCollidedHorizontally);
+	}
+
+	@Override
+	protected void attackEntity(Entity entity, float distance) {
+		if (distance < 2.0F) {
+			super.attackEntity(entity, distance);
+			attackEntityAsMob(entity);
+		}
+		if (distance > 2.0F && distance < 6.0F && rand.nextInt(10) == 0)
+			if (onGround) {
+				double d0 = entity.posX - posX;
+				double d1 = entity.posZ - posZ;
+				float f2 = MathHelper.sqrt_double(d0 * d0 + d1 * d1);
+				motionX = d0 / f2 * 0.5D * 0.800000011920929D + motionX * 0.20000000298023224D;
+				motionZ = d1 / f2 * 0.5D * 0.800000011920929D + motionZ * 0.20000000298023224D;
+				motionY = 0.4000000059604645D;
+			}
+	}
 
 	@Override
 	public boolean attackEntityAsMob(Entity entity) {
@@ -88,7 +121,6 @@ public class EntityTarantula extends EntitySpider {
 				if (var2 > 0)
 					((EntityLiving) entity).addPotionEffect(new PotionEffect(Potion.poison.id, var2 * 20, 0));
 			}
-
 			return true;
 		} else
 			return false;
@@ -153,21 +185,16 @@ public class EntityTarantula extends EntitySpider {
 			worldObj.spawnEntityInWorld(entityspidermoney);
 			entityspidermoney.mountEntity(this);
 		}
-
 		if (entityLivingData1 == null) {
 			entityLivingData1 = new SpiderEffectsGroupData();
-
 			if (worldObj.difficultySetting > 2 && worldObj.rand.nextFloat() < 0.1F * worldObj.getLocationTensionFactor(posX, posY, posZ))
 				((SpiderEffectsGroupData) entityLivingData1).func_111104_a(worldObj.rand);
 		}
-
 		if (entityLivingData1 instanceof SpiderEffectsGroupData) {
 			int i = ((SpiderEffectsGroupData) entityLivingData1).field_111105_a;
-
 			if (i > 0 && Potion.potionTypes[i] != null)
 				addPotionEffect(new PotionEffect(i, Integer.MAX_VALUE));
 		}
-
 		return (EntityLivingData) entityLivingData1;
 	}
 }

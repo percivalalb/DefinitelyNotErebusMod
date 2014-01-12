@@ -55,7 +55,7 @@ public class EntityPrayingMantis extends EntityMob {
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.6D);
 		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(4.0D);
-		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D);
+		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(24.0D);
 	}
 
 	@Override
@@ -93,9 +93,9 @@ public class EntityPrayingMantis extends EntityMob {
 		if (!worldObj.isRemote && getAttackTarget() != null) {
 			double d1 = getDistance(getAttackTarget().posX, getAttackTarget().boundingBox.minY, getAttackTarget().posZ);
 			if (d1 >= 4.0D)
-				dataWatcher.updateObject(20, (16.0F - (float) d1) * 0.03125F);
+				dataWatcher.updateObject(20, (24.0F - (float) d1) * 0.0208333F);
 			if (d1 < 4.0D)
-				dataWatcher.updateObject(20, (16.0F - (float) d1) * 0.0625F);
+				dataWatcher.updateObject(20, (24.0F - (float) d1) * 0.041666F);
 		}
 		if (!worldObj.isRemote && getAttackTarget() == null || dataWatcher.getWatchableObjectFloat(20) > 0.8F)
 			dataWatcher.updateObject(20, 1.0F);

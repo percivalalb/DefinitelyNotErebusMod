@@ -1,7 +1,6 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCaveSpider;
 import net.minecraft.world.World;
@@ -104,7 +103,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 				new WorldGenPonds(Block.waterMoving.blockID, Block.blockClay.blockID, (rand.nextDouble() + 1.0D) * 2D).generate(worldObj, rand, j2, l3, j5);
 		}
 
-		if (rand.nextInt(4) == 0)
+		if (rand.nextInt(37) == 0)
 			for(int attempt=0; attempt<5; attempt++)
 				if (new WorldGenWaspDungeon().generate(worldObj, rand, x + rand.nextInt(16) + 8, 127, z + rand.nextInt(16) + 8)) break;
 

@@ -42,7 +42,7 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 				generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataDiamond, 1, worldObj, rand, x, z, 6, 112, 1);
 
 		if (rand.nextInt(2) == 0)
-			for (int a = 0; a < 1 + rand.nextInt(3); ++a)
+			for (int a = 0; a < 1 + rand.nextInt(4); ++a)
 				generateOreCluster(ModBlocks.umberOreBlock, BlockErebusOre.dataJade, 4, worldObj, rand, x, z, 6, 112, 2);
 
 		for (int a = 0; a < (extraOres ? 3 : 4) + rand.nextInt(2); ++a)

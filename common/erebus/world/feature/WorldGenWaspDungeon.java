@@ -10,10 +10,7 @@ public class WorldGenWaspDungeon extends WorldGeneratorExt{
 		for(; testY>60; testY--){
 			if (world.isAirBlock(x,testY,z))break;
 		}
-		System.out.println("y "+y+", testY "+testY+" ... "+(y-4-testY));
-		if (y-4-testY>4||true)return false; // not done yet
-		
-		System.out.println("gen at "+x+","+y+","+z);
+		if (y-4-testY>4||world.getBlockId(x,y-2,z)!=ModBlocks.umberstone.blockID||!world.isAirBlock(x,y-16,z))return false;
 		
 		// Layer 0 (starting from top)
 		
@@ -100,6 +97,8 @@ public class WorldGenWaspDungeon extends WorldGeneratorExt{
 		
 		for(int layer=0; layer<3; layer++){
 			for(int a=0; a<2; a++){
+				linex(null,x-3,x+3,z-5+10*a,y);
+				linez(null,z-3,z+3,x-5+10*a,y);
 				linex(ModBlocks.waspNestBlock,x-1,x+1,z-7+14*a,y);
 				linex(ModBlocks.waspNestBlock,x-3,x-2,z-6+12*a,y);
 				linex(ModBlocks.redGem,x-1,x+1,z-6+12*a,y);
@@ -107,12 +106,11 @@ public class WorldGenWaspDungeon extends WorldGeneratorExt{
 				linex(ModBlocks.waspNestBlock,x-5,x-4,z-5+10*a,y);
 				linex(ModBlocks.waspNestBlock,x+4,x+5,z-5+10*a,y);
 				block(ModBlocks.waspNestBlock,x-5,z-4+8*a,y);
+				block(ModBlocks.waspNestBlock,x+5,z-4+8*a,y);
 				linez(ModBlocks.waspNestBlock,z-3,z-2,x-6+12*a,y);
 				linez(ModBlocks.redGem,z-1,z+1,x-6+12*a,y);
 				linez(ModBlocks.waspNestBlock,z+2,z+3,x-6+12*a,y);
 				linez(ModBlocks.waspNestBlock,z-1,z+1,x-7+14*a,y);
-				linex(null,x-3,x+3,z-5+10*a,y);
-				linez(null,z-3,z+3,x-5+10*a,y);
 			}
 			rect(null,x-4,z-4,x+4,z+4,y);
 			--y;

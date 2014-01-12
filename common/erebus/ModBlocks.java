@@ -143,7 +143,7 @@ public class ModBlocks {
 
 	// DUNGEONS
 	public static Block spiderSpawner;     				public static int spiderSpawnerID;
-	public static Block caveSpiderSpawner;    			public static int caveSpiderSpawnerID;
+	public static Block jumpingSpiderSpawner;    		public static int jumpingSpiderSpawnerID;
 	public static Block waspSpawner;    				public static int waspSpawnerID;
 	public static Block waspNestBlock;    				public static int waspNestBlockID;
 
@@ -225,7 +225,7 @@ public class ModBlocks {
 		waspNestStairs = new BlockStairsErebus(waspNestStairsID, waspNestBlock, 2).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("waspNestStairs");
 		//
 		spiderSpawner = new BlockSpiderSpawner(spiderSpawnerID, "Scytodes - Erebus").setUnlocalizedName("spiderSpawner").setTextureName("erebus:spiderSpawner");
-		caveSpiderSpawner = new BlockSpiderSpawner(caveSpiderSpawnerID, "CaveSpider").setUnlocalizedName("caveSpiderSpawner").setTextureName("erebus:spiderSpawner");
+		jumpingSpiderSpawner = new BlockSpiderSpawner(jumpingSpiderSpawnerID, "JumpingSpider - Erebus").setUnlocalizedName("jumpingSpiderSpawner").setTextureName("erebus:spiderSpawner");
 		waspSpawner = new BlockWaspSpawner(waspSpawnerID, "Wasp - Erebus").setUnlocalizedName("waspSpawner").setTextureName("erebus:waspNestSpawner");
 
 		// Creative tabs
@@ -309,7 +309,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(insectRepellent, "erebus.blockInsectRepellent");
 
 		GameRegistry.registerBlock(spiderSpawner, "erebus.spiderSpawner");
-		GameRegistry.registerBlock(caveSpiderSpawner, "erebus.caveSpiderSpawner");
+		GameRegistry.registerBlock(jumpingSpiderSpawner, "erebus.jumpingSpiderSpawner");
 		GameRegistry.registerBlock(waspSpawner, "erebus.waspSpawner");
 
 		// Mining levels
@@ -317,7 +317,7 @@ public class ModBlocks {
 		MinecraftForge.setBlockHarvestLevel(oreFossil, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(mirBrick, "pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(spiderSpawner, 0, "pickaxe", 0);
-		MinecraftForge.setBlockHarvestLevel(caveSpiderSpawner, 0, "pickaxe", 0);
+		MinecraftForge.setBlockHarvestLevel(jumpingSpiderSpawner, 0, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(waspSpawner, 0, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(umberstone, "pickaxe", 0);
 		MinecraftForge.setBlockHarvestLevel(umberPaver, "pickaxe", 0);

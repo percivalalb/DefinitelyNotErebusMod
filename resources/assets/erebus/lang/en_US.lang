@@ -71,7 +71,7 @@ tile.cobbleWebbed.name=Webbed Cobblestone
 tile.blockSilk.name=Silk
 tile.mirbrick.name=Mirbrick
 tile.spiderSpawner.name=Spider Spawner
-tile.caveSpiderSpawner.name=Cave Spider Spawner
+tile.jumpingSpiderSpawner.name=Jumping Spider Spawner
 tile.waspSpawner.name=Wasp Spawner
 tile.blockSpiderSilk.name=Silk
 tile.thorns.name=Thorns
@@ -241,6 +241,7 @@ entity.Erebus.BombardierBeetle.name=Bombardier Beetle
 entity.Erebus.Scytodes.name=Scytodes
 entity.Erebus.MoneySpider.name=Money Spider
 entity.Erebus.PrayingMantis.name=Praying Mantis
+entity.Erebus.JumpingSpider.name=Jumping Spider
 
 #Other
 itemGroup.erebus.block=Erebus Blocks

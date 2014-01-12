@@ -20,6 +20,7 @@ import erebus.entity.EntityFirebrat;
 import erebus.entity.EntityFly;
 import erebus.entity.EntityGlowWorm;
 import erebus.entity.EntityGrasshopper;
+import erebus.entity.EntityJumpingSpider;
 import erebus.entity.EntityLocust;
 import erebus.entity.EntityMoneySpider;
 import erebus.entity.EntityMosquito;
@@ -60,6 +61,7 @@ public class ModEntities {
 		EntityList.stringToClassMapping.put("Scytodes - Erebus", EntityScytodes.class);
 		EntityList.stringToClassMapping.put("MoneySpider - Erebus", EntityMoneySpider.class);
 		EntityList.stringToClassMapping.put("PrayingMantis - Erebus", EntityPrayingMantis.class);
+		EntityList.stringToClassMapping.put("JumpingSpider - Erebus", EntityJumpingSpider.class);
 		EntityList.stringToClassMapping.put("AnimatedBlock", EntityAnimatedBlock.class);
 		EntityList.stringToClassMapping.put("AnimatedChest", EntityAnimatedChest.class);
 		EntityList.stringToClassMapping.put("AnimatedBambooCrate", EntityAnimatedBambooCrate.class);
@@ -89,6 +91,7 @@ public class ModEntities {
 		registerEntity(18, EntityScytodes.class, "Scytodes", 0x0B4D49, 0xFFFFFF);
 		registerEntity(19, EntityMoneySpider.class, "MoneySpider", 0xF5C400, 0x0B4D49);
 		registerEntity(20, EntityPrayingMantis.class, "PrayingMantis", 0x06B900, 0x06B900);
+		registerEntity(21, EntityJumpingSpider.class, "JumpingSpider", 0xE82066, 0x06B900);
 		// registerEntity(EntityVelvetWorm.class, "VelvetWorm", EntityRegistry.findGlobalUniqueEntityId(), 894731, 000000);
 
 		registerEntity(50, EntityAnimatedBlock.class, "AnimatedBlock");

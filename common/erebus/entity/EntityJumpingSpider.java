@@ -11,64 +11,65 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class EntityJumpingSpider extends EntitySpider
+ {
+	public int skin = rand.nextInt(3);
+public EntityJumpingSpider(World par1World)
 {
-	public EntityJumpingSpider(World par1World)
-	{
-		super(par1World);
-		setSize(0.7F, 0.5F);
-	}
+	super(par1World);
+	setSize(0.7F, 0.5F);
+}
 
-	@Override
-	protected void applyEntityAttributes()
-	{
-		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);
-	}
+@Override
+protected void applyEntityAttributes()
+{
+	super.applyEntityAttributes();
+	getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);
+}
 
-	@Override
-	protected void attackEntity(Entity entity, float distance) {
-		if (distance < 2.0F) {
-			super.attackEntity(entity, distance);
-			attackEntityAsMob(entity);
+@Override
+protected void attackEntity(Entity entity, float distance) {
+	if (distance < 2.0F) {
+		super.attackEntity(entity, distance);
+		attackEntityAsMob(entity);
+	}
+	if (distance > 2.0F && distance < 12.0F && rand.nextInt(10) == 0)
+		if (onGround) {
+			double d0 = entity.posX - posX;
+			double d1 = entity.posZ - posZ;
+			float f2 = MathHelper.sqrt_double(d0 * d0 + d1 * d1);
+			motionX = d0 / f2 * 0.5D * 1.900000011920929D + motionX * 0.70000000298023224D;
+			motionZ = d1 / f2 * 0.5D * 1.900000011920929D + motionZ * 0.70000000298023224D;
+			motionY = 0.5000000059604645D;
 		}
-		if (distance > 2.0F && distance < 12.0F && rand.nextInt(10) == 0)
-			if (onGround) {
-				double d0 = entity.posX - posX;
-				double d1 = entity.posZ - posZ;
-				float f2 = MathHelper.sqrt_double(d0 * d0 + d1 * d1);
-				motionX = d0 / f2 * 0.5D * 1.900000011920929D + motionX * 0.70000000298023224D;
-				motionZ = d1 / f2 * 0.5D * 1.900000011920929D + motionZ * 0.70000000298023224D;
-				motionY = 0.5000000059604645D;
-			}
-	}
+}
 
-	@Override
-	public boolean attackEntityAsMob(Entity par1Entity)
+@Override
+public boolean attackEntityAsMob(Entity par1Entity)
+{
+	if (super.attackEntityAsMob(par1Entity))
 	{
-		if (super.attackEntityAsMob(par1Entity))
+		if (par1Entity instanceof EntityLivingBase)
 		{
-			if (par1Entity instanceof EntityLivingBase)
-			{
-				byte b0 = 0;
+			byte b0 = 0;
 
-				if (worldObj.difficultySetting > 1)
-					if (worldObj.difficultySetting == 2)
-						b0 = 7;
-					else if (worldObj.difficultySetting == 3)
-						b0 = 15;
+			if (worldObj.difficultySetting > 1)
+				if (worldObj.difficultySetting == 2)
+					b0 = 7;
+				else if (worldObj.difficultySetting == 3)
+					b0 = 15;
 
-				if (b0 > 0)
-					((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, b0 * 20, 0));
-			}
+			if (b0 > 0)
+				((EntityLivingBase)par1Entity).addPotionEffect(new PotionEffect(Potion.poison.id, b0 * 20, 0));
+		}
 
-			return true;
-		} else
-			return false;
-	}
+		return true;
+	} else
+		return false;
+}
 
-	@Override
-	public EntityLivingData onSpawnWithEgg(EntityLivingData par1EntityLivingData)
-	{
-		return par1EntityLivingData;
-	}
+@Override
+public EntityLivingData onSpawnWithEgg(EntityLivingData par1EntityLivingData)
+{
+	return par1EntityLivingData;
+}
 }

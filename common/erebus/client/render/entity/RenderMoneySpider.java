@@ -16,7 +16,7 @@ import erebus.entity.EntityMoneySpider;
 @SideOnly(Side.CLIENT)
 public class RenderMoneySpider extends RenderLiving {
 	protected ModelScytodes model;
-	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelMoneySpider.png");
+	private static ResourceLocation Texture;
 
 	public RenderMoneySpider(ModelScytodes model, float shadowSize) {
 		super(model, shadowSize);
@@ -45,6 +45,13 @@ public class RenderMoneySpider extends RenderLiving {
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
+		EntityMoneySpider spider = (EntityMoneySpider) entity;
+		if (spider.skin == 0)
+			Texture = new ResourceLocation("erebus:textures/mob/ModelMoneySpider.png");
+		if (spider.skin == 1)
+			Texture = new ResourceLocation("erebus:textures/mob/ModelMoneySpider_euro.png");
+		if (spider.skin == 2)
+			Texture = new ResourceLocation("erebus:textures/mob/ModelMoneySpider_pound.png");
 		return Texture;
 	}
 }

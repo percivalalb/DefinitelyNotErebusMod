@@ -14,7 +14,7 @@ import erebus.entity.EntityJumpingSpider;
 public class RenderJumpingSpider extends RenderLiving
 {
 	protected ModelJumpingSpider model;
-	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelJumpingSpider.png");
+	private static ResourceLocation Texture;
 
 	public RenderJumpingSpider(ModelJumpingSpider model, float shadowSize) {
 		super(model, shadowSize);
@@ -48,6 +48,13 @@ public class RenderJumpingSpider extends RenderLiving
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
+		EntityJumpingSpider spider = (EntityJumpingSpider) entity;
+		if (spider.skin == 0)
+			Texture = new ResourceLocation("erebus:textures/mob/ModelJumpingSpider.png");
+		if (spider.skin == 1)
+			Texture = new ResourceLocation("erebus:textures/mob/ModelJumpingSpider_green.png");
+		if (spider.skin == 2)
+			Texture = new ResourceLocation("erebus:textures/mob/ModelJumpingSpider_red.png");
 		return Texture;
 	}
 }

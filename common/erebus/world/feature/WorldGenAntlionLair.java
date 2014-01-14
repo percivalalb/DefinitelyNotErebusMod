@@ -34,7 +34,6 @@ public class WorldGenAntlionLair extends WorldGenerator {
 	new LootItemStack(ModItems.erebusMaterials).setAmount(4, 8).setDamage(ItemErebusMaterial.dataExoPlate).setWeight(9),
 	new LootItemStack(Item.enchantedBook).setWeight(8),
 	new LootItemStack(ModBlocks.umberGolemStatue).setAmount(1).setWeight(1),
-	new LootItemStack(ModItems.waspSword).setAmount(1).setWeight(1),
 
 	new LootItemStack(Item.pickaxeGold).setWeight(3),
 	new LootItemStack(Item.pickaxeIron).setWeight(2),

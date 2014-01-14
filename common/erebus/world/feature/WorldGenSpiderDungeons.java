@@ -33,7 +33,6 @@ public class WorldGenSpiderDungeons extends WorldGenerator {
 	new LootItemStack(ModItems.erebusMaterials).setAmount(2, 6).setDamage(ItemErebusMaterial.dataCompoundEyes).setWeight(7),
 	new LootItemStack(ModItems.erebusMaterials).setAmount(1, 1).setDamage(ItemErebusMaterial.dataCompoundLens).setWeight(2),
 	new LootItemStack(ModItems.maxSpeedBow).setAmount(1).setWeight(1),
-	new LootItemStack(ModItems.waspSword).setAmount(1).setWeight(1),
 	new LootItemStack(ModBlocks.umberGolemStatue).setAmount(1).setWeight(1)
 	);
 	//@formatter:on

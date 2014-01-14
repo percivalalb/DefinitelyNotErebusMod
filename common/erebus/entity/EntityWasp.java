@@ -82,11 +82,6 @@ public class EntityWasp extends EntityMob {
 		entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3) + 1, ItemErebusMaterial.dataExoPlate), 0.0F);
 	}
 
-	@Override
-	protected void dropRareDrop(int par1) {
-		dropItem(ModItems.waspSwordID, 1);
-	}
-
 	public boolean isFlying() {
 		return !onGround;
 	}

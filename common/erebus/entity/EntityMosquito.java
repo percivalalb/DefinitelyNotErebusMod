@@ -40,6 +40,7 @@ public class EntityMosquito extends EntityMob {
 
 	public EntityMosquito(World world) {
 		super(world);
+		yOffset = 0.5F;
 		drainage = 0;
 		entityToAttack = null;
 		setSize(1.0F, 1.8F);

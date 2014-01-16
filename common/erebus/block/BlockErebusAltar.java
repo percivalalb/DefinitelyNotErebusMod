@@ -4,6 +4,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -13,6 +14,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.Icon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -123,41 +125,50 @@ public class BlockErebusAltar extends BlockContainer {
 	}
 
 	private void chooseAltar(World world, int x, int y, int z) {
+		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
+		byte rotation = 0;
+		int playerRotation = MathHelper.floor_double(player.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
+		if (playerRotation == 0)
+			rotation = 2;
+		if (playerRotation == 1)
+			rotation = 5;
+		if (playerRotation == 2)
+			rotation = 3;
+		if (playerRotation == 3)
+			rotation = 4;
 		switch (meta) {
 			case 8:
 				if (!world.isRemote)
-					world.setBlock(x, y, z, ModBlocks.erebusAltarXP.blockID, 0, 3);
+					world.setBlock(x, y, z, ModBlocks.erebusAltarXP.blockID, rotation, 3);
 				if (world.isRemote)
 					message = "Altar of Experience Summoned.";
 				break;
 
 			case 9:
 				if (!world.isRemote)
-					world.setBlock(x, y, z, ModBlocks.erebusAltarRepair.blockID, 0, 3);
+					world.setBlock(x, y, z, ModBlocks.erebusAltarRepair.blockID, rotation, 3);
 				if (world.isRemote)
 					message = "Altar of Repair Summoned.";
 				break;
 
 			case 12:
 				if (!world.isRemote)
-					world.setBlock(x, y, z, ModBlocks.erebusAltarLightning.blockID, 0, 3);
+					world.setBlock(x, y, z, ModBlocks.erebusAltarLightning.blockID, rotation, 3);
 				if (world.isRemote)
 					message = "Altar of Lightning Summoned.";
 				break;
 
 			case 13:
 				if (!world.isRemote)
-					world.setBlock(x, y, z, ModBlocks.erebusAltarHealing.blockID, 0, 3);
+					world.setBlock(x, y, z, ModBlocks.erebusAltarHealing.blockID, rotation, 3);
 				if (world.isRemote)
 					message = "Altar of Healing Summoned.";
 				break;
 		}
 	}
 
-
 	private void setItemOffering(int itemID, int metadata) {
 		item = itemID;
 		meta = metadata;
 	}
-
 }

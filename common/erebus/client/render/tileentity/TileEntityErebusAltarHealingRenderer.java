@@ -28,12 +28,41 @@ public class TileEntityErebusAltarHealingRenderer extends TileEntitySpecialRende
 			bindTexture(new ResourceLocation("erebus:textures/blocks/HealingAltar4.png"));
 		else if (te.animationTicks > 20 && te.animationTicks <= 25)
 			bindTexture(new ResourceLocation("erebus:textures/blocks/HealingAltar5.png"));
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float) d + 0.5F, (float) d1 + 0.75F, (float) d2 + 0.5F);
-		GL11.glScalef(0.5F, -0.5F, -0.5F);
-		GL11.glRotatef(0 * 90, 0.0F, 1.0F, 0.0F);
-		ModelAltarBlock.render(tile);
-		GL11.glPopMatrix();
+		int meta = tile.getBlockMetadata();
+		switch (meta) {
+			case 2:
+				GL11.glPushMatrix();
+				GL11.glTranslatef((float) d + 0.5F, (float) d1 + 0.75F, (float) d2 + 0.5F);
+				GL11.glScalef(0.5F, -0.5F, -0.5F);
+				GL11.glRotatef(180F, 0.0F, 1F, 0F);
+				ModelAltarBlock.render(tile);
+				GL11.glPopMatrix();
+				break;
+			case 3:
+				GL11.glPushMatrix();
+				GL11.glTranslatef((float) d + 0.5F, (float) d1 + 0.75F, (float) d2 + 0.5F);
+				GL11.glScalef(0.5F, -0.5F, -0.5F);
+				GL11.glRotatef(0F, 0.0F, 1F, 0F);
+				ModelAltarBlock.render(tile);
+				GL11.glPopMatrix();
+				break;
+			case 4:
+				GL11.glPushMatrix();
+				GL11.glTranslatef((float) d + 0.5F, (float) d1 + 0.75F, (float) d2 + 0.5F);
+				GL11.glScalef(0.5F, -0.5F, -0.5F);
+				GL11.glRotatef(90F, 0.0F, 1F, 0F);
+				ModelAltarBlock.render(tile);
+				GL11.glPopMatrix();
+				break;
+			case 5:
+				GL11.glPushMatrix();
+				GL11.glTranslatef((float) d + 0.5F, (float) d1 + 0.75F, (float) d2 + 0.5F);
+				GL11.glScalef(0.5F, -0.5F, -0.5F);
+				GL11.glRotatef(-90F, 0.0F, 1F, 0F);
+				ModelAltarBlock.render(tile);
+				GL11.glPopMatrix();
+				break;
+		}
 	}
 
 	@Override

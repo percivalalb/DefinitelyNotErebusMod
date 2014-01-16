@@ -5,7 +5,6 @@ import java.util.List;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -14,6 +13,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
 import erebus.entity.EntityMobBlock;
 import erebus.entity.EntityUmberGolem;
+import erebus.entity.effect.EntityErebusLightningBolt;
 
 public class TileEntityErebusAltarLightning extends TileEntityErebusAltar {
 
@@ -92,7 +92,7 @@ public class TileEntityErebusAltarLightning extends TileEntityErebusAltar {
 							double a = entity.posX;
 							double b = entity.boundingBox.minY;
 							double c = entity.posZ;
-							EntityLightningBolt entitybolt = new EntityLightningBolt(worldObj, 0D, 0D, 0D);
+							EntityErebusLightningBolt entitybolt = new EntityErebusLightningBolt(worldObj, 0D, 0D, 0D);
 							entitybolt.setLocationAndAngles(a, b, c, 0F, 0F);
 							worldObj.addWeatherEffect(entitybolt);
 						}

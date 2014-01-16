@@ -34,6 +34,7 @@ import erebus.entity.EntityUmberGolem;
 import erebus.entity.EntityWasp;
 import erebus.entity.EntityWaspDagger;
 import erebus.entity.EntityWebSling;
+import erebus.entity.effect.EntityErebusLightningBolt;
 import erebus.item.ItemSpawnEggs;
 
 public class ModEntities {
@@ -68,6 +69,7 @@ public class ModEntities {
 		EntityList.stringToClassMapping.put("UmberGolem", EntityUmberGolem.class);
 		EntityList.stringToClassMapping.put("WaspDagger", EntityWaspDagger.class);
 		EntityList.stringToClassMapping.put("WebSling", EntityWebSling.class);
+		EntityList.stringToClassMapping.put("ErebusLightning", EntityErebusLightningBolt.class);
 
 		// Entity registrations
 		registerEntity( 0, EntityBeetleLarva.class, "BeetleLarva", -1251634, -13032944);
@@ -101,6 +103,7 @@ public class ModEntities {
 
 		registerEntity(70, EntityWaspDagger.class, "WaspDagger");
 		registerEntity(71, EntityWebSling.class, "WebSling");
+		registerEntity(72, EntityErebusLightningBolt.class, "ErebusLightning");
 		// Spawn conditions
 		EntityRegistry.addSpawn(EntityBlackWidow.class, 100, 5, 10, EnumCreatureType.monster, BiomeGenBase.hell);
 	}

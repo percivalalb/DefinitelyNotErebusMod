@@ -75,6 +75,7 @@ public class ConfigurationHandler {
 			ModBlocks.bambooShootID = config.getBlock("Block ID of Bamboo Shoot Block", 2568).getInt(2568);
 			ModBlocks.bambooCropID = config.getBlock("Block ID of Bamboo Crop Block", 2554).getInt(2554);
 			ModBlocks.bambooTorchID = config.getBlock("Block ID of Bamboo Torch", 2559).getInt(2559);
+			ModBlocks.bambooBridgeID = config.getBlock("Block ID of BambooBridge", 2577).getInt(2577);
 			ModBlocks.erebusAltarID = config.getBlock("Block ID of Erebus Altar", 2560).getInt(2560);
 			ModBlocks.erebusAltarLightningID = config.getBlock("Block ID of Erebus Altar of Lightning", 2562).getInt(2562);
 			ModBlocks.erebusAltarHealingID = config.getBlock("Block ID of Erebus Altar of Healing", 2563).getInt(2563);
@@ -115,7 +116,7 @@ public class ConfigurationHandler {
 			ModBlocks.jumpingSpiderSpawnerID = config.getBlock("Block ID of Jumping Spider Spawners", 2553).getInt(2553);
 			ModBlocks.waspSpawnerID = config.getBlock("Block ID of Wasp Spawners", 2572).getInt(2572);
 
-			// latest ID used (please update after adding new blocks!) >>> 2576
+			// latest ID used (please update after adding new blocks!) >>> 2577
 
 			/*
 			 * Items

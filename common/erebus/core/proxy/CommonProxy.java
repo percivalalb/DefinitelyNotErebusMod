@@ -28,6 +28,7 @@ import erebus.inventory.ContainerColossalCrate;
 import erebus.inventory.ContainerPetrifiedCraftingTable;
 import erebus.inventory.ContainerPetrifiedWoodChest;
 import erebus.inventory.ContainerUmberFurnace;
+import erebus.tileentity.TileEntityBambooBridge;
 import erebus.tileentity.TileEntityBambooCrate;
 import erebus.tileentity.TileEntityBones;
 import erebus.tileentity.TileEntityErebusAltar;
@@ -76,6 +77,7 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntityErebusAltarXP.class, "Altar - XP (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityGlowingJar.class, "Glowing Jar (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityLadder.class, "Bamboo Ladder (Erebus)");
+		GameRegistry.registerTileEntity(TileEntityBambooBridge.class, "Bamboo Bridge (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityUmberGolemStatue.class, "Umber Golem Statue (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityPetrifiedWoodChest.class, "Petrified Wood Chest (Erebus)");
 		GameRegistry.registerTileEntity(TileEntityBones.class, "Block o' Bones (Erebus)");

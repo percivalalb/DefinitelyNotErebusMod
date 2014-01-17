@@ -4,9 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.entity.EntityWasp;
@@ -400,66 +398,66 @@ public class ModelWasp extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
 
-		Thx.render(par7);
-		ThxS.render(par7);
-		ThxTop.render(par7);
-		Ab.render(par7);
-		AbF.render(par7);
-		AbSide.render(par7);
-		AbTop.render(par7);
-		AbBack.render(par7);
-		Neck.render(par7);
-		HeadA.render(par7);
-		HeadB.render(par7);
-		HeadC.render(par7);
-		RMandibleA.render(par7);
-		RMandibleB.render(par7);
-		LMandibleA.render(par7);
-		LMandibleB.render(par7);
-		Eyes.render(par7);
-		AntLE.render(par7);
-		AntRE.render(par7);
-		AntRS.render(par7);
-		AntLS.render(par7);
-		LBLA.render(par7);
-		LBLB.render(par7);
-		LBLC.render(par7);
-		LBLD.render(par7);
-		LMLA.render(par7);
-		LMLB.render(par7);
-		LMLC.render(par7);
-		LMLD.render(par7);
-		LFLA.render(par7);
-		LFLB.render(par7);
-		LFLC.render(par7);
-		LFLD.render(par7);
-		RFLA.render(par7);
-		RFLB.render(par7);
-		RFLC.render(par7);
-		RFLD.render(par7);
-		RMLA.render(par7);
-		RMLB.render(par7);
-		RMLC.render(par7);
-		RMLD.render(par7);
-		RBLA.render(par7);
-		RBLB.render(par7);
-		RBLC.render(par7);
-		RBLD.render(par7);
-		Sting.render(par7);
-		ThxRW.render(par7);
-		ThxLW.render(par7);
+		Thx.render(unitPixel);
+		ThxS.render(unitPixel);
+		ThxTop.render(unitPixel);
+		Ab.render(unitPixel);
+		AbF.render(unitPixel);
+		AbSide.render(unitPixel);
+		AbTop.render(unitPixel);
+		AbBack.render(unitPixel);
+		Neck.render(unitPixel);
+		HeadA.render(unitPixel);
+		HeadB.render(unitPixel);
+		HeadC.render(unitPixel);
+		RMandibleA.render(unitPixel);
+		RMandibleB.render(unitPixel);
+		LMandibleA.render(unitPixel);
+		LMandibleB.render(unitPixel);
+		Eyes.render(unitPixel);
+		AntLE.render(unitPixel);
+		AntRE.render(unitPixel);
+		AntRS.render(unitPixel);
+		AntLS.render(unitPixel);
+		LBLA.render(unitPixel);
+		LBLB.render(unitPixel);
+		LBLC.render(unitPixel);
+		LBLD.render(unitPixel);
+		LMLA.render(unitPixel);
+		LMLB.render(unitPixel);
+		LMLC.render(unitPixel);
+		LMLD.render(unitPixel);
+		LFLA.render(unitPixel);
+		LFLB.render(unitPixel);
+		LFLC.render(unitPixel);
+		LFLD.render(unitPixel);
+		RFLA.render(unitPixel);
+		RFLB.render(unitPixel);
+		RFLC.render(unitPixel);
+		RFLD.render(unitPixel);
+		RMLA.render(unitPixel);
+		RMLB.render(unitPixel);
+		RMLC.render(unitPixel);
+		RMLD.render(unitPixel);
+		RBLA.render(unitPixel);
+		RBLB.render(unitPixel);
+		RBLC.render(unitPixel);
+		RBLD.render(unitPixel);
+		Sting.render(unitPixel);
+		ThxRW.render(unitPixel);
+		ThxLW.render(unitPixel);
 		GL11.glPushMatrix();
 		GL11.glEnable(GL11.GL_BLEND);
-		RWingBack.render(par7);
-		RWingMid.render(par7);
-		RWingFront.render(par7);
-		LWingBack.render(par7);
-		LWingMid.render(par7);
-		LWingFront.render(par7);
+		RWingBack.render(unitPixel);
+		RWingMid.render(unitPixel);
+		RWingFront.render(unitPixel);
+		LWingBack.render(unitPixel);
+		LWingMid.render(unitPixel);
+		LWingFront.render(unitPixel);
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
 	}
@@ -471,10 +469,10 @@ public class ModelWasp extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
-		float heady = par4 / (180F / (float) Math.PI);
-		float headx = par5 / (180F / (float) Math.PI) - 1.0F;
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
+		super.setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		float heady = rotationYaw / (180F / (float) Math.PI);
+		float headx = rotationPitch / (180F / (float) Math.PI) - 1.0F;
 		HeadA.rotateAngleY = heady;
 		HeadB.rotateAngleY = heady;
 		HeadC.rotateAngleY = heady;
@@ -501,8 +499,8 @@ public class ModelWasp extends ModelBase {
 		LMandibleB.rotateAngleX = headx;
 		EntityWasp var8 = (EntityWasp) entity;
 		if (var8.onGround) {
-			float legx1 = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-			float legx2 = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
+			float legx1 = MathHelper.cos(limbSwing * 2.0F + (float) Math.PI) * 0.7F * prevLimbSwing;
+			float legx2 = MathHelper.cos(limbSwing * 2.0F) * 0.7F * prevLimbSwing;
 			LBLA.rotateAngleX = legx1 + 0.25F;
 			LBLB.rotateAngleX = legx1 + 0.25F;
 			LBLC.rotateAngleX = legx1 + 0.5F;

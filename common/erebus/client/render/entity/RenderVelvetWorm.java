@@ -23,18 +23,18 @@ public class RenderVelvetWorm extends RenderLiving {
 		this.scale = scale;
 	}
 
-	public void renderEntityVelvetWorm(EntityVelvetWorm entityEntityVelvetWorm, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(entityEntityVelvetWorm, par2, par4, par6, par8, par9);
+	public void renderEntityVelvetWorm(EntityVelvetWorm entityEntityVelvetWorm, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving(entityEntityVelvetWorm, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderEntityVelvetWorm((EntityVelvetWorm) entityLiving, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderEntityVelvetWorm((EntityVelvetWorm) entityLiving, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-		renderEntityVelvetWorm((EntityVelvetWorm) entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderEntityVelvetWorm((EntityVelvetWorm) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

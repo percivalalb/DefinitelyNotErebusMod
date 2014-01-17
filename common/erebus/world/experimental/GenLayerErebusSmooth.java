@@ -4,9 +4,9 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerErebusSmooth extends GenLayerErebus {
 
-	public GenLayerErebusSmooth(long par1, GenLayerErebus par3GenLayerErebus) {
-		super(par1);
-		super.parent = par3GenLayerErebus;
+	public GenLayerErebusSmooth(long seed, GenLayerErebus parentGenLayer) {
+		super(seed);
+		super.parent = parentGenLayer;
 	}
 
 	@Override

@@ -45,8 +45,8 @@ import erebus.world.feature.trees.WorldGenTallJungleTree;
 
 public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 
-	public BiomeGenUndergroundJungle(int par1) {
-		super(par1);
+	public BiomeGenUndergroundJungle(int biomeID) {
+		super(biomeID);
 		spawnableMonsterList.clear();
 		spawnableCreatureList.clear();
 		spawnableWaterCreatureList.clear();
@@ -78,7 +78,7 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 	}
 
 	@Override
-	public void generateTerrain(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) {
+	public void generateTerrain(World worldObj, Random rand, IChunkProvider chunkProvider, int x, int z) {
 		/** Generating big lakes first to avoid complications **/
 		/**
 		 * TODO: Currently broken, generates into other chunks and causes

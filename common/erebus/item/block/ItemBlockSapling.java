@@ -9,14 +9,14 @@ public class ItemBlockSapling extends ItemBlockGeneric {
 
 	private final Block targetBlock;
 
-	public ItemBlockSapling(int par1) {
-		super(par1, "erebusSapling");
-		targetBlock = Block.blocksList[par1 + 256];
+	public ItemBlockSapling(int id) {
+		super(id, "erebusSapling");
+		targetBlock = Block.blocksList[id + 256];
 	}
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public Icon getIconFromDamage(int par1) {
-		return targetBlock.getIcon(2, par1);
+	public Icon getIconFromDamage(int damage) {
+		return targetBlock.getIcon(2, damage);
 	}
 }

@@ -21,18 +21,18 @@ public class RenderMoth extends RenderLiving {
 		super(model, shadowSize);
 	}
 
-	public void renderMoth(EntityMoth entityMoth, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(entityMoth, par2, par4, par6, par8, par9);
+	public void renderMoth(EntityMoth entityMoth, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving(entityMoth, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderMoth((EntityMoth) entityLiving, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderMoth((EntityMoth) entityLiving, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-		renderMoth((EntityMoth) entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderMoth((EntityMoth) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

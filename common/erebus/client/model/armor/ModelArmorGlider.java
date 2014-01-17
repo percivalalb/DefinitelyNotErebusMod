@@ -5,9 +5,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.FMLClientHandler;
 
 public class ModelArmorGlider extends ModelBiped {
@@ -72,28 +70,28 @@ public class ModelArmorGlider extends ModelBiped {
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
 		GL11.glPushMatrix();
 		GL11.glTranslatef(0.0F, -0.05F, 0.0F);
 		GL11.glScalef(1.1F, 1.2F, 1.3F);
-		Body.render(par7);
+		Body.render(unitPixel);
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 		GL11.glTranslatef(0.15F, -0.05F, 0.0F);
 		GL11.glScalef(1.5F, 1.2F, 1.3F);
-		RArm.render(par7);
+		RArm.render(unitPixel);
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 		GL11.glTranslatef(-0.15F, -0.05F, 0.0F);
 		GL11.glScalef(1.5F, 1.2F, 1.3F);
-		LArm.render(par7);
+		LArm.render(unitPixel);
 		GL11.glPopMatrix();
-		RWingbase.render(par7);
-		LWingbase.render(par7);
-		RWing.render(par7);
-		LWing.render(par7);
+		RWingbase.render(unitPixel);
+		LWingbase.render(unitPixel);
+		RWing.render(unitPixel);
+		LWing.render(unitPixel);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z)
@@ -104,11 +102,11 @@ public class ModelArmorGlider extends ModelBiped {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
+		super.setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
 		EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
-		RArm.rotateAngleX = MathHelper.cos(par1 * 0.6662F + (float) Math.PI) * 2.0F * par2 * 0.5F;
-		LArm.rotateAngleX = MathHelper.cos(par1 * 0.6662F) * 2.0F * par2 * 0.5F;
+		RArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * prevLimbSwing * 0.5F;
+		LArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * prevLimbSwing * 0.5F;
 		if (!isGliding){
 			RWing.rotateAngleZ = 0F;
 			LWing.rotateAngleZ = 0F;

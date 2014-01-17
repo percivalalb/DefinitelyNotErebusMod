@@ -116,22 +116,22 @@ public class ItemBambucket extends Item {
 			return super.onEaten(is, world, player);
 	}
 
-	public boolean tryPlaceContainedLiquid(World world, int par2, int par3, int par4, ItemStack item) {
-		Material material = world.getBlockMaterial(par2, par3, par4);
+	public boolean tryPlaceContainedLiquid(World world, int x, int y, int z, ItemStack item) {
+		Material material = world.getBlockMaterial(x, y, z);
 		boolean flag = !material.isSolid();
 		if (!world.isRemote && item.getItemDamage() != 2)
-			if (!world.isAirBlock(par2, par3, par4) && !flag)
+			if (!world.isAirBlock(x, y, z) && !flag)
 				return false;
 			else if (world.provider.isHellWorld && item.getItemDamage() == 1) {
-				world.playSoundEffect(par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
+				world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, "random.fizz", 0.5F, 2.6F + (world.rand.nextFloat() - world.rand.nextFloat()) * 0.8F);
 
 				for (int l = 0; l < 8; ++l)
-					world.spawnParticle("largesmoke", par2 + Math.random(), par3 + Math.random(), par4 + Math.random(), 0.0D, 0.0D, 0.0D);
+					world.spawnParticle("largesmoke", x + Math.random(), y + Math.random(), z + Math.random(), 0.0D, 0.0D, 0.0D);
 			} else {
 				if (!world.isRemote && flag && !material.isLiquid())
-					world.destroyBlock(par2, par3, par4, true);
+					world.destroyBlock(x, y, z, true);
 
-				world.setBlock(par2, par3, par4, Block.waterMoving.blockID, 0, 3);
+				world.setBlock(x, y, z, Block.waterMoving.blockID, 0, 3);
 			}
 		return true;
 	}

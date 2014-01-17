@@ -36,11 +36,11 @@ public class ModelScorpionPincer extends ModelBase
 		setRotation(ClawR5Bot, 0F, 0F, -0.3490659F);
 	}
 
-	public void render(float par7)
+	public void render(float unitPixel)
 	{
-		ClawR4.render(par7);
-		ClawR5Top.render(par7);
-		ClawR5Bot.render(par7);
+		ClawR4.render(unitPixel);
+		ClawR5Top.render(unitPixel);
+		ClawR5Bot.render(unitPixel);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z)

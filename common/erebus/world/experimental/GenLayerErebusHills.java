@@ -5,9 +5,9 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerErebusHills extends GenLayerErebus {
 
-	public GenLayerErebusHills(long par1, GenLayerErebus par3GenLayerErebus) {
-		super(par1);
-		parent = par3GenLayerErebus;
+	public GenLayerErebusHills(long seed, GenLayerErebus parentGenLayer) {
+		super(seed);
+		parent = parentGenLayer;
 	}
 
 	@Override

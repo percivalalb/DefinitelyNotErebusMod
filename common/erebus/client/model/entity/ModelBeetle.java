@@ -246,20 +246,20 @@ public class ModelBeetle extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		backbody.render(par7);
-		body.render(par7);
-		head.render(par7);
-		bum.render(par7);
-		head2.render(par7);
-		LBL1.render(par7);
-		LFL1.render(par7);
-		LML1.render(par7);
-		RFL1.render(par7);
-		RML1.render(par7);
-		RBL1.render(par7);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		backbody.render(unitPixel);
+		body.render(unitPixel);
+		head.render(unitPixel);
+		bum.render(unitPixel);
+		head2.render(unitPixel);
+		LBL1.render(unitPixel);
+		LFL1.render(unitPixel);
+		LML1.render(unitPixel);
+		RFL1.render(unitPixel);
+		RML1.render(unitPixel);
+		RBL1.render(unitPixel);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -269,10 +269,10 @@ public class ModelBeetle extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
-		float cos1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.5F * par2;
-		float cos2 = MathHelper.cos(par1 * 1.0F) * 0.5F * par2;
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
+		super.setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		float cos1 = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing;
+		float cos2 = MathHelper.cos(limbSwing * 1.0F) * 0.5F * prevLimbSwing;
 		LBL1.rotateAngleX = cos1;
 		LML1.rotateAngleX = cos2;
 		LFL1.rotateAngleX = cos1;

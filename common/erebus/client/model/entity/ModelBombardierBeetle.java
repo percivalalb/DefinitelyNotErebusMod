@@ -255,44 +255,43 @@ public class ModelBombardierBeetle extends ModelBase
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7)
-	{
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		torso1.render(par7);
-		torso2.render(par7);
-		torso3.render(par7);
-		torso4.render(par7);
-		torso5.render(par7);
-		spewer.render(par7);
-		breastpiece.render(par7);
-		head.render(par7);
-		neckpiece.render(par7);
-		eyeleft.render(par7);
-		eyeright.render(par7);
-		sensorleft.render(par7);
-		sensorright.render(par7);
-		jawleft.render(par7);
-		jawright.render(par7);
-		jawmid.render(par7);
-		frontlegleft1.render(par7);
-		frontlegright1.render(par7);
-		midlegleft1.render(par7);
-		midlegright1.render(par7);
-		hindlegleft1.render(par7);
-		hindlegright1.render(par7);
-		frontlegleft2.render(par7);
-		frontlegright2.render(par7);
-		midlegleft2.render(par7);
-		midlegright2.render(par7);
-		hindlegleft2.render(par7);
-		hindlegright2.render(par7);
-		frontleftclaw.render(par7);
-		frontrightclaw.render(par7);
-		midleftclaw.render(par7);
-		midrightclaw.render(par7);
-		hindleftclaw.render(par7);
-		hindrightclaw.render(par7);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		torso1.render(unitPixel);
+		torso2.render(unitPixel);
+		torso3.render(unitPixel);
+		torso4.render(unitPixel);
+		torso5.render(unitPixel);
+		spewer.render(unitPixel);
+		breastpiece.render(unitPixel);
+		head.render(unitPixel);
+		neckpiece.render(unitPixel);
+		eyeleft.render(unitPixel);
+		eyeright.render(unitPixel);
+		sensorleft.render(unitPixel);
+		sensorright.render(unitPixel);
+		jawleft.render(unitPixel);
+		jawright.render(unitPixel);
+		jawmid.render(unitPixel);
+		frontlegleft1.render(unitPixel);
+		frontlegright1.render(unitPixel);
+		midlegleft1.render(unitPixel);
+		midlegright1.render(unitPixel);
+		hindlegleft1.render(unitPixel);
+		hindlegright1.render(unitPixel);
+		frontlegleft2.render(unitPixel);
+		frontlegright2.render(unitPixel);
+		midlegleft2.render(unitPixel);
+		midlegright2.render(unitPixel);
+		hindlegleft2.render(unitPixel);
+		hindlegright2.render(unitPixel);
+		frontleftclaw.render(unitPixel);
+		frontrightclaw.render(unitPixel);
+		midleftclaw.render(unitPixel);
+		midrightclaw.render(unitPixel);
+		hindleftclaw.render(unitPixel);
+		hindrightclaw.render(unitPixel);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z)
@@ -303,12 +302,12 @@ public class ModelBombardierBeetle extends ModelBase
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity)
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity)
 	{
-		float heady = par4 / (180F / (float) Math.PI);
-		float cosy1 = MathHelper.cos(par1 * 0.7F) * 0.4F * par2;
-		float cosy2 = MathHelper.cos(par1 * 0.7F) * 0.7F * par2;
-		float cosz1 = MathHelper.cos(par1 * 0.7F) * 0.2F * par2;
+		float heady = rotationYaw / (180F / (float) Math.PI);
+		float cosy1 = MathHelper.cos(limbSwing * 0.7F) * 0.4F * prevLimbSwing;
+		float cosy2 = MathHelper.cos(limbSwing * 0.7F) * 0.7F * prevLimbSwing;
+		float cosz1 = MathHelper.cos(limbSwing * 0.7F) * 0.2F * prevLimbSwing;
 		head.rotateAngleY = heady;
 		neckpiece.rotateAngleY = heady;
 		eyeleft.rotateAngleY = heady;

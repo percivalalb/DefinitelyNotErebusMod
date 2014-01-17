@@ -5,9 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelBlackWidow;
@@ -17,23 +15,23 @@ import erebus.entity.EntityBlackWidow;
 public class RenderBlackWidow extends RenderLiving {
 	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelBlackWidow.png");
 
-	public RenderBlackWidow(ModelBlackWidow model, float par2) {
-		super(model, par2);
+	public RenderBlackWidow(ModelBlackWidow model, float shadowSize) {
+		super(model, shadowSize);
 
 	}
 
-	public void renderBlackWidow(EntityBlackWidow entityBlackWidow, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(entityBlackWidow, par2, par4, par6, par8, par9);
-	}
-
-	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderBlackWidow((EntityBlackWidow) entityLiving, par2, par4, par6, par8, par9);
+	public void renderBlackWidow(EntityBlackWidow entityBlackWidow, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving(entityBlackWidow, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-		renderBlackWidow((EntityBlackWidow) entity, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderBlackWidow((EntityBlackWidow) entityLiving, x, y, z, rotationYaw, partialTickTime);
+	}
+
+	@Override
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderBlackWidow((EntityBlackWidow) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

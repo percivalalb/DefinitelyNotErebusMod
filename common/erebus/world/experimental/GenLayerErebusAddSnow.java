@@ -5,9 +5,9 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerErebusAddSnow extends GenLayerErebus {
 
-	public GenLayerErebusAddSnow(long par1, GenLayerErebus par3GenLayerErebus) {
-		super(par1);
-		parent = par3GenLayerErebus;
+	public GenLayerErebusAddSnow(long seed, GenLayerErebus parentGenLayer) {
+		super(seed);
+		parent = parentGenLayer;
 	}
 
 	@Override

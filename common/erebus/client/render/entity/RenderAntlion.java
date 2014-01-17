@@ -15,19 +15,19 @@ import erebus.entity.EntityAntlion;
 public class RenderAntlion extends RenderLiving {
 
 	private static ResourceLocation Texture;
-	public RenderAntlion(ModelAntlion model, float par2) {
-		super(model, par2);
+	public RenderAntlion(ModelAntlion model, float shadowSize) {
+		super(model, shadowSize);
 
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(entityLiving, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving(entityLiving, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving((EntityAntlion) entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving((EntityAntlion) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

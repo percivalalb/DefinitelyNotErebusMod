@@ -77,7 +77,7 @@ public class EntityWasp extends EntityMob {
 	}
 
 	@Override
-	protected void dropFewItems(boolean hitByPlayer, int looting) {
+	protected void dropFewItems(boolean recentlyHit, int looting) {
 		entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataWaspSting), 0.0F);
 		entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3) + 1, ItemErebusMaterial.dataExoPlate), 0.0F);
 	}

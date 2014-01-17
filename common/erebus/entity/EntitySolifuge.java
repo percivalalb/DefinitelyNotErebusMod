@@ -93,12 +93,12 @@ public class EntitySolifuge extends EntityMob {
 	}
 
 	@Override
-	protected void playStepSound(int par1, int par2, int par3, int par4) {
+	protected void playStepSound(int x, int y, int z, int blockID) {
 		playSound("mob.spider.step", 0.15F, 1.0F);
 	}
 
 	@Override
-	protected void dropFewItems(boolean hitByPlayer, int looting) {
+	protected void dropFewItems(boolean recentlyHit, int looting) {
 		if (rand.nextInt(8)<=2+(looting>>1))entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBioVelocity), 0.0F);
 		entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3) + 1, ItemErebusMaterial.dataExoPlate), 0.0F);
 	}

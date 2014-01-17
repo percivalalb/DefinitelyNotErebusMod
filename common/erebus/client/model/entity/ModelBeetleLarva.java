@@ -159,30 +159,30 @@ public class ModelBeetleLarva extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
 
-		torso1.render(par7);
-		torso2.render(par7);
-		torso3.render(par7);
-		torso4.render(par7);
-		torso5.render(par7);
-		torso6.render(par7);
-		torso7.render(par7);
-		torso8.render(par7);
-		legleft1.render(par7);
-		legright1.render(par7);
-		legleft2.render(par7);
-		legright2.render(par7);
-		legleft3.render(par7);
-		legright3.render(par7);
-		head.render(par7);
-		jawleft.render(par7);
-		jawright.render(par7);
-		mouthjaw.render(par7);
-		sensorleft.render(par7);
-		sensorright.render(par7);
+		torso1.render(unitPixel);
+		torso2.render(unitPixel);
+		torso3.render(unitPixel);
+		torso4.render(unitPixel);
+		torso5.render(unitPixel);
+		torso6.render(unitPixel);
+		torso7.render(unitPixel);
+		torso8.render(unitPixel);
+		legleft1.render(unitPixel);
+		legright1.render(unitPixel);
+		legleft2.render(unitPixel);
+		legright2.render(unitPixel);
+		legleft3.render(unitPixel);
+		legright3.render(unitPixel);
+		head.render(unitPixel);
+		jawleft.render(unitPixel);
+		jawright.render(unitPixel);
+		mouthjaw.render(unitPixel);
+		sensorleft.render(unitPixel);
+		sensorright.render(unitPixel);
 
 	}
 
@@ -193,13 +193,13 @@ public class ModelBeetleLarva extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-		float ba = MathHelper.cos(par1 * 1.0F) * 1.5F * par2;
-		float bb = MathHelper.cos(par1 + 1.0F * 1.0F) * 2.25F * par2;
-		float bc = MathHelper.cos(par1 + 2.0F * 1.0F) * 3.F * par2;
-		float bd = MathHelper.cos(par1 + 3.0F * 1.0F) * 2.5F * par2;
-		float be = MathHelper.cos(par1 + 4.0F * 1.0F) * 1.5F * par2;
-		float bf = MathHelper.cos(par1 + 5.0F * 1.0F) * 0.75F * par2;
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
+		float ba = MathHelper.cos(limbSwing * 1.0F) * 1.5F * prevLimbSwing;
+		float bb = MathHelper.cos(limbSwing + 1.0F * 1.0F) * 2.25F * prevLimbSwing;
+		float bc = MathHelper.cos(limbSwing + 2.0F * 1.0F) * 3.F * prevLimbSwing;
+		float bd = MathHelper.cos(limbSwing + 3.0F * 1.0F) * 2.5F * prevLimbSwing;
+		float be = MathHelper.cos(limbSwing + 4.0F * 1.0F) * 1.5F * prevLimbSwing;
+		float bf = MathHelper.cos(limbSwing + 5.0F * 1.0F) * 0.75F * prevLimbSwing;
 
 		head.rotationPointX = bf;
 		jawleft.rotationPointX = bf;
@@ -229,23 +229,23 @@ public class ModelBeetleLarva extends ModelBase {
 		legright3.rotationPointY = bc + 21F;
 		legleft3.rotationPointY = bc + 21F;
 
-		legright1.rotateAngleX = -MathHelper.cos(par1 * 1.0F) * 1.3F * par2;
-		legleft1.rotateAngleX = MathHelper.cos(par1 * 1.0F) * 1.3F * par2;
+		legright1.rotateAngleX = -MathHelper.cos(limbSwing * 1.0F) * 1.3F * prevLimbSwing;
+		legleft1.rotateAngleX = MathHelper.cos(limbSwing * 1.0F) * 1.3F * prevLimbSwing;
 
-		legright1.rotateAngleY = -MathHelper.cos(par1 * 1.0F) * 0.5F * par2;
-		legleft1.rotateAngleY = MathHelper.cos(par1 * 1.0F) * 0.5F * par2;
+		legright1.rotateAngleY = -MathHelper.cos(limbSwing * 1.0F) * 0.5F * prevLimbSwing;
+		legleft1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.5F * prevLimbSwing;
 
-		legright2.rotateAngleX = -MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 1.3F * par2;
-		legleft2.rotateAngleX = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 1.3F * par2;
+		legright2.rotateAngleX = -MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 1.3F * prevLimbSwing;
+		legleft2.rotateAngleX = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 1.3F * prevLimbSwing;
 
-		legright2.rotateAngleY = -MathHelper.cos(par1 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par2;
-		legleft2.rotateAngleY = MathHelper.cos(par1 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par2;
+		legright2.rotateAngleY = -MathHelper.cos(limbSwing + 0.5F * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing;
+		legleft2.rotateAngleY = MathHelper.cos(limbSwing + 0.5F * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing;
 
-		legright3.rotateAngleX = -MathHelper.cos(par1 * 1.0F) * 1.3F * par2;
-		legleft3.rotateAngleX = MathHelper.cos(par1 * 1.0F) * 1.3F * par2;
+		legright3.rotateAngleX = -MathHelper.cos(limbSwing * 1.0F) * 1.3F * prevLimbSwing;
+		legleft3.rotateAngleX = MathHelper.cos(limbSwing * 1.0F) * 1.3F * prevLimbSwing;
 
-		legright3.rotateAngleY = -MathHelper.cos(par1 + 1.0F * 1.0F) * 0.5F * par2;
-		legleft3.rotateAngleY = MathHelper.cos(par1 + 1.0F * 1.0F) * 0.5F * par2;
+		legright3.rotateAngleY = -MathHelper.cos(limbSwing + 1.0F * 1.0F) * 0.5F * prevLimbSwing;
+		legleft3.rotateAngleY = MathHelper.cos(limbSwing + 1.0F * 1.0F) * 0.5F * prevLimbSwing;
 	}
 
 }

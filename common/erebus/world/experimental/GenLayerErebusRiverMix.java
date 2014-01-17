@@ -8,8 +8,8 @@ public class GenLayerErebusRiverMix extends GenLayerErebus {
 	private final GenLayerErebus biomePatternGeneratorChain;
 	private final GenLayerErebus riverPatternGeneratorChain;
 
-	public GenLayerErebusRiverMix(long par1, GenLayerErebus par3GenLayerErebus, GenLayerErebus par4GenLayerErebus) {
-		super(par1);
+	public GenLayerErebusRiverMix(long seed, GenLayerErebus par3GenLayerErebus, GenLayerErebus par4GenLayerErebus) {
+		super(seed);
 		biomePatternGeneratorChain = par3GenLayerErebus;
 		riverPatternGeneratorChain = par4GenLayerErebus;
 	}

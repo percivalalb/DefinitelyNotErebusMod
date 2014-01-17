@@ -22,18 +22,18 @@ public class RenderCentipede extends RenderLiving {
 
 	}
 
-	public void renderCentipede(EntityCentipede entityCentipede, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(entityCentipede, par2, par4, par6, par8, par9);
+	public void renderCentipede(EntityCentipede entityCentipede, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving(entityCentipede, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderCentipede((EntityCentipede) entityLiving, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderCentipede((EntityCentipede) entityLiving, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-		renderCentipede((EntityCentipede) entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderCentipede((EntityCentipede) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

@@ -19,18 +19,18 @@ public class RenderLocust extends RenderLiving {
 		super(model, shadowSize);
 	}
 
-	public void renderLocust(EntityLocust entityLocust, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(entityLocust, par2, par4, par6, par8, par9);
+	public void renderLocust(EntityLocust entityLocust, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving(entityLocust, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderLocust((EntityLocust) entityLiving, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderLocust((EntityLocust) entityLiving, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-		renderLocust((EntityLocust) entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderLocust((EntityLocust) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

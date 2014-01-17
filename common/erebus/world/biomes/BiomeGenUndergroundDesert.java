@@ -1,7 +1,6 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.SpawnListEntry;
@@ -24,8 +23,8 @@ import erebus.world.feature.trees.WorldGenScorchedTree;
 
 public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 
-	public BiomeGenUndergroundDesert(int par1) {
-		super(par1);
+	public BiomeGenUndergroundDesert(int biomeID) {
+		super(biomeID);
 		spawnableMonsterList.clear();
 		spawnableCreatureList.clear();
 		spawnableWaterCreatureList.clear();
@@ -45,7 +44,7 @@ public class BiomeGenUndergroundDesert extends BiomeGenBaseErebus {
 	}
 
 	@Override
-	public void generateTerrain(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) {
+	public void generateTerrain(World worldObj, Random rand, IChunkProvider chunkProvider, int x, int z) {
 		WorldGenerator gen = new WorldGenLakes(Block.lavaMoving.blockID);
 		for (int c = 35; c > 0; c--) {
 			int posX = x + rand.nextInt(16) + 8;

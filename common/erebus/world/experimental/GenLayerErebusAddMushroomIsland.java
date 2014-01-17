@@ -4,9 +4,9 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerErebusAddMushroomIsland extends GenLayerErebus {
-	public GenLayerErebusAddMushroomIsland(long par1, GenLayerErebus par3GenLayerErebus) {
-		super(par1);
-		parent = par3GenLayerErebus;
+	public GenLayerErebusAddMushroomIsland(long seed, GenLayerErebus parentGenLayer) {
+		super(seed);
+		parent = parentGenLayer;
 	}
 
 	/**

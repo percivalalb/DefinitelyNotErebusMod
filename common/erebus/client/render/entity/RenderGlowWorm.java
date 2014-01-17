@@ -24,21 +24,21 @@ public class RenderGlowWorm extends RenderLiving
 		setRenderPassModel(new ModelGlowWorm());
 	}
 
-	public void renderGlowWorm(EntityGlowWorm entityGlowWorm, double par2, double par4, double par6, float par8, float par9)
+	public void renderGlowWorm(EntityGlowWorm entityGlowWorm, double x, double y, double z, float rotationYaw, float partialTickTime)
 	{
-		super.doRenderLiving(entityGlowWorm, par2, par4, par6, par8, par9);
+		super.doRenderLiving(entityGlowWorm, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9)
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime)
 	{
-		renderGlowWorm((EntityGlowWorm)entityLiving, par2, par4, par6, par8, par9);
+		renderGlowWorm((EntityGlowWorm)entityLiving, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime)
 	{
-		renderGlowWorm((EntityGlowWorm)entity, par2, par4, par6, par8, par9);
+		renderGlowWorm((EntityGlowWorm)entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

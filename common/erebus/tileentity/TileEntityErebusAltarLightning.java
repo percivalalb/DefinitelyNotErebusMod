@@ -53,10 +53,10 @@ public class TileEntityErebusAltarLightning extends TileEntityErebusAltar {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void flameOn(World world, int par2, int par3, int par4) {
-		double d0 = par2 + 0.53125F;
-		double d1 = par3 + 1.25F;
-		double d2 = par4 + 0.53125F;
+	public void flameOn(World world, int x, int y, int z) {
+		double d0 = x + 0.53125F;
+		double d1 = y + 1.25F;
+		double d2 = z + 0.53125F;
 		world.spawnParticle("smoke", d0, d1, d2, 0.0D, 0.0D, 0.0D);
 		world.spawnParticle("flame", d0, d1, d2, 0.0D, 0.0D, 0.0D);
 		world.spawnParticle("smoke", d0, d1, d2 - 0.265625, 0.0D, 0.0D, 0.0D);

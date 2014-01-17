@@ -208,36 +208,36 @@ public class ModelAnimatedChest extends ModelBase
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		LBL1.render(par7);
-		LBL2.render(par7);
-		LBL3.render(par7);
-		LBL4.render(par7);
-		LML1.render(par7);
-		LML2.render(par7);
-		LML3.render(par7);
-		LML4.render(par7);
-		LFL1.render(par7);
-		LFL2.render(par7);
-		LFL3.render(par7);
-		LFL4.render(par7);
-		RBL1.render(par7);
-		RBL2.render(par7);
-		RBL3.render(par7);
-		RBL4.render(par7);
-		RML1.render(par7);
-		RML2.render(par7);
-		RML3.render(par7);
-		RML4.render(par7);
-		RFL1.render(par7);
-		RFL2.render(par7);
-		RFL3.render(par7);
-		RFL4.render(par7);
-		Lid.render(par7);
-		Body.render(par7);
-		Lock.render(par7);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		LBL1.render(unitPixel);
+		LBL2.render(unitPixel);
+		LBL3.render(unitPixel);
+		LBL4.render(unitPixel);
+		LML1.render(unitPixel);
+		LML2.render(unitPixel);
+		LML3.render(unitPixel);
+		LML4.render(unitPixel);
+		LFL1.render(unitPixel);
+		LFL2.render(unitPixel);
+		LFL3.render(unitPixel);
+		LFL4.render(unitPixel);
+		RBL1.render(unitPixel);
+		RBL2.render(unitPixel);
+		RBL3.render(unitPixel);
+		RBL4.render(unitPixel);
+		RML1.render(unitPixel);
+		RML2.render(unitPixel);
+		RML3.render(unitPixel);
+		RML4.render(unitPixel);
+		RFL1.render(unitPixel);
+		RFL2.render(unitPixel);
+		RFL3.render(unitPixel);
+		RFL4.render(unitPixel);
+		Lid.render(unitPixel);
+		Body.render(unitPixel);
+		Lock.render(unitPixel);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -247,32 +247,32 @@ public class ModelAnimatedChest extends ModelBase
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
 		EntityAnimatedChest chest = (EntityAnimatedChest) entity;
-		LBL1.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 + 0.25F;
-		LBL2.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 + 0.25F;
-		LBL3.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 + 0.3F;
-		LBL4.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 + 0.334F;
-		LML1.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-		LML2.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-		LML3.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-		LML4.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-		LFL1.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 - 0.25F;
-		LFL2.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 - 0.25F;
-		LFL3.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 - 0.3F;
-		LFL4.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2 - 0.334F;
-		RBL1.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 + 0.25F;
-		RBL2.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 + 0.25F;
-		RBL3.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 + 0.3F;
-		RBL4.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 + 0.334F;
-		RML1.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-		RML2.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-		RML3.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-		RML4.rotateAngleX = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
-		RFL1.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.25F;
-		RFL2.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.25F;
-		RFL3.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.3F;
-		RFL4.rotateAngleX = MathHelper.cos(par1 * 2.0F) * 0.7F * par2 - 0.334F;
+		LBL1.rotateAngleX = MathHelper.cos(limbSwing * 2.0F + (float) Math.PI) * 0.7F * prevLimbSwing + 0.25F;
+		LBL2.rotateAngleX = MathHelper.cos(limbSwing * 2.0F + (float) Math.PI) * 0.7F * prevLimbSwing + 0.25F;
+		LBL3.rotateAngleX = MathHelper.cos(limbSwing * 2.0F + (float) Math.PI) * 0.7F * prevLimbSwing + 0.3F;
+		LBL4.rotateAngleX = MathHelper.cos(limbSwing * 2.0F + (float) Math.PI) * 0.7F * prevLimbSwing + 0.334F;
+		LML1.rotateAngleX = MathHelper.cos(limbSwing * 2.0F) * 0.7F * prevLimbSwing;
+		LML2.rotateAngleX = MathHelper.cos(limbSwing * 2.0F) * 0.7F * prevLimbSwing;
+		LML3.rotateAngleX = MathHelper.cos(limbSwing * 2.0F) * 0.7F * prevLimbSwing;
+		LML4.rotateAngleX = MathHelper.cos(limbSwing * 2.0F) * 0.7F * prevLimbSwing;
+		LFL1.rotateAngleX = MathHelper.cos(limbSwing * 2.0F + (float) Math.PI) * 0.7F * prevLimbSwing - 0.25F;
+		LFL2.rotateAngleX = MathHelper.cos(limbSwing * 2.0F + (float) Math.PI) * 0.7F * prevLimbSwing - 0.25F;
+		LFL3.rotateAngleX = MathHelper.cos(limbSwing * 2.0F + (float) Math.PI) * 0.7F * prevLimbSwing - 0.3F;
+		LFL4.rotateAngleX = MathHelper.cos(limbSwing * 2.0F + (float) Math.PI) * 0.7F * prevLimbSwing - 0.334F;
+		RBL1.rotateAngleX = MathHelper.cos(limbSwing * 2.0F) * 0.7F * prevLimbSwing + 0.25F;
+		RBL2.rotateAngleX = MathHelper.cos(limbSwing * 2.0F) * 0.7F * prevLimbSwing + 0.25F;
+		RBL3.rotateAngleX = MathHelper.cos(limbSwing * 2.0F) * 0.7F * prevLimbSwing + 0.3F;
+		RBL4.rotateAngleX = MathHelper.cos(limbSwing * 2.0F) * 0.7F * prevLimbSwing + 0.334F;
+		RML1.rotateAngleX = MathHelper.cos(limbSwing * 2.0F + (float) Math.PI) * 0.7F * prevLimbSwing;
+		RML2.rotateAngleX = MathHelper.cos(limbSwing * 2.0F + (float) Math.PI) * 0.7F * prevLimbSwing;
+		RML3.rotateAngleX = MathHelper.cos(limbSwing * 2.0F + (float) Math.PI) * 0.7F * prevLimbSwing;
+		RML4.rotateAngleX = MathHelper.cos(limbSwing * 2.0F + (float) Math.PI) * 0.7F * prevLimbSwing;
+		RFL1.rotateAngleX = MathHelper.cos(limbSwing * 2.0F) * 0.7F * prevLimbSwing - 0.25F;
+		RFL2.rotateAngleX = MathHelper.cos(limbSwing * 2.0F) * 0.7F * prevLimbSwing - 0.25F;
+		RFL3.rotateAngleX = MathHelper.cos(limbSwing * 2.0F) * 0.7F * prevLimbSwing - 0.3F;
+		RFL4.rotateAngleX = MathHelper.cos(limbSwing * 2.0F) * 0.7F * prevLimbSwing - 0.334F;
 
 		Lid.rotateAngleX = chest.getDataWatcher().getWatchableObjectFloat(21);
 		Lock.rotateAngleX = chest.getDataWatcher().getWatchableObjectFloat(21);

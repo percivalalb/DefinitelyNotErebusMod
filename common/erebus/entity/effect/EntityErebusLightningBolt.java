@@ -1,7 +1,6 @@
 package erebus.entity.effect;
 
 import java.util.List;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.effect.EntityWeatherEffect;
@@ -30,10 +29,10 @@ public class EntityErebusLightningBolt extends EntityWeatherEffect
 	 */
 	private int boltLivingTime;
 
-	public EntityErebusLightningBolt(World par1World, double par2, double par4, double par6)
+	public EntityErebusLightningBolt(World world, double x, double y, double z)
 	{
-		super(par1World);
-		setLocationAndAngles(par2, par4, par6, 0.0F, 0.0F);
+		super(world);
+		setLocationAndAngles(x, y, z, 0.0F, 0.0F);
 		lightningState = 2;
 		boltVertex = rand.nextLong();
 		boltLivingTime = rand.nextInt(3) + 1;
@@ -97,13 +96,13 @@ public class EntityErebusLightningBolt extends EntityWeatherEffect
 	 * (abstract) Protected helper method to read subclass entity data from NBT.
 	 */
 	@Override
-	protected void readEntityFromNBT(NBTTagCompound par1NBTTagCompound) {}
+	protected void readEntityFromNBT(NBTTagCompound nbt) {}
 
 	/**
 	 * (abstract) Protected helper method to write subclass entity data to NBT.
 	 */
 	@Override
-	protected void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {}
+	protected void writeEntityToNBT(NBTTagCompound nbt) {}
 
 	@Override
 	@SideOnly(Side.CLIENT)
@@ -111,7 +110,7 @@ public class EntityErebusLightningBolt extends EntityWeatherEffect
 	/**
 	 * Checks using a Vec3d to determine if this entity is within range of that vector to be rendered. Args: vec3D
 	 */
-	public boolean isInRangeToRenderVec3D(Vec3 par1Vec3)
+	public boolean isInRangeToRenderVec3D(Vec3 vec)
 	{
 		return lightningState >= 0;
 	}

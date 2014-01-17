@@ -5,9 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelFly;
@@ -23,7 +21,7 @@ public class RenderFly extends RenderLiving {
 		renderedFlySize = ((ModelFly) mainModel).getFlySize();
 	}
 
-	public void func_82443_a(EntityFly entityFly, double par2, double par4, double par6, float par8, float par9) {
+	public void func_82443_a(EntityFly entityFly, double x, double y, double z, float rotationYaw, float partialTickTime) {
 		int var10 = ((ModelFly) mainModel).getFlySize();
 
 		if (var10 != renderedFlySize) {
@@ -31,15 +29,11 @@ public class RenderFly extends RenderLiving {
 			mainModel = new ModelFly();
 		}
 
-		super.doRenderLiving(entityFly, par2, par4, par6, par8, par9);
+		super.doRenderLiving(entityFly, x, y, z, rotationYaw, partialTickTime);
 	}
 
-	protected void func_82442_a(EntityFly entityFly, float par2) {
-		GL11.glScalef(0.35F, 0.35F, 0.35F);
-	}
-
-	protected void func_82445_a(EntityFly entityFly, double par2, double par4, double par6) {
-		super.renderLivingAt(entityFly, par2, par4, par6);
+	protected void func_82445_a(EntityFly entityFly, double x, double y, double z) {
+		super.renderLivingAt(entityFly, x, y, z);
 	}
 
 	protected void func_82444_a(EntityFly entityFly, float par2, float par3, float par4) {
@@ -51,26 +45,26 @@ public class RenderFly extends RenderLiving {
 		super.rotateCorpse(entityFly, par2, par3, par4);
 	}
 
-	protected void preRenderCallback(EntityLiving entityLiving, float par2) {
-		func_82442_a((EntityFly) entityLiving, par2);
+	protected void preRenderCallback(EntityLiving entityLiving, float partialTickTime) {
+		GL11.glScalef(0.35F, 0.35F, 0.35F);
 	}
 
 	protected void rotateCorpse(EntityLiving entityLiving, float par2, float par3, float par4) {
 		func_82444_a((EntityFly) entityLiving, par2, par3, par4);
 	}
 
-	protected void renderLivingAt(EntityLiving entityLiving, double par2, double par4, double par6) {
-		func_82445_a((EntityFly) entityLiving, par2, par4, par6);
+	protected void renderLivingAt(EntityLiving entityLiving, double x, double y, double z) {
+		func_82445_a((EntityFly) entityLiving, x, y, z);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
-		func_82443_a((EntityFly) entityLiving, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		func_82443_a((EntityFly) entityLiving, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-		func_82443_a((EntityFly) entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		func_82443_a((EntityFly) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	private final ResourceLocation resource = new ResourceLocation("erebus:textures/mob/Fly.png");

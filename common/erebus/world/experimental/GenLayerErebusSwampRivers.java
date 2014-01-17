@@ -5,9 +5,9 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerErebusSwampRivers extends GenLayerErebus {
 
-	public GenLayerErebusSwampRivers(long par1, GenLayerErebus par3GenLayerErebus) {
-		super(par1);
-		parent = par3GenLayerErebus;
+	public GenLayerErebusSwampRivers(long seed, GenLayerErebus parentGenLayer) {
+		super(seed);
+		parent = parentGenLayer;
 	}
 
 	@Override

@@ -14,22 +14,22 @@ public class RenderBeetle extends RenderLiving {
 
 	private static ResourceLocation Texture;
 
-	public RenderBeetle(ModelBase model, float par2) {
-		super(model, par2);
+	public RenderBeetle(ModelBase model, float shadowSize) {
+		super(model, shadowSize);
 	}
 
-	public void renderBeetle(EntityBeetle entityBeetle, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(entityBeetle, par2, par4, par6, par8, par9);
-	}
-
-	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderBeetle((EntityBeetle) entityLiving, par2, par4, par6, par8, par9);
+	public void renderBeetle(EntityBeetle entityBeetle, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving(entityBeetle, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-		renderBeetle((EntityBeetle) entity, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderBeetle((EntityBeetle) entityLiving, x, y, z, rotationYaw, partialTickTime);
+	}
+
+	@Override
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderBeetle((EntityBeetle) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

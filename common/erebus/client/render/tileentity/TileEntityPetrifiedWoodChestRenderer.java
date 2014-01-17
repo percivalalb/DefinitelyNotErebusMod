@@ -6,10 +6,8 @@ import net.minecraft.client.model.ModelLargeChest;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
-
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -113,7 +111,7 @@ public class TileEntityPetrifiedWoodChestRenderer extends TileEntitySpecialRende
 	}
 
 	@Override
-	public void renderTileEntityAt(TileEntity par1TileEntity, double par2, double par4, double par6, float par8) {
-		renderTileEntityPetrifiedWoodChestAt((TileEntityPetrifiedWoodChest) par1TileEntity, par2, par4, par6, par8);
+	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float partialTickTime) {
+		renderTileEntityPetrifiedWoodChestAt((TileEntityPetrifiedWoodChest) tile, x, y, z, partialTickTime);
 	}
 }

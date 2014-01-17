@@ -4,8 +4,8 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerErebusIsland extends GenLayerErebus {
 
-	public GenLayerErebusIsland(long par1) {
-		super(par1);
+	public GenLayerErebusIsland(long seed) {
+		super(seed);
 	}
 
 	@Override

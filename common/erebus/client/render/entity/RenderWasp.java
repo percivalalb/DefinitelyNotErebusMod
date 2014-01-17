@@ -5,9 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelWasp;
@@ -16,24 +14,24 @@ import erebus.entity.EntityWasp;
 @SideOnly(Side.CLIENT)
 public class RenderWasp extends RenderLiving {
 	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelWasp.png");
-	private final ModelWasp ModelWasp = new ModelWasp();
+	
 	public RenderWasp(ModelWasp model, float shadowSize) {
 		super(model, shadowSize);
 
 	}
 
-	public void renderWasp(EntityWasp entityWasp, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(entityWasp, par2, par4, par6, par8, par9);
+	public void renderWasp(EntityWasp entityWasp, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving(entityWasp, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderWasp((EntityWasp) entityLiving, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderWasp((EntityWasp) entityLiving, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-		renderWasp((EntityWasp) entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderWasp((EntityWasp) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

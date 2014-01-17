@@ -4,9 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -440,10 +438,10 @@ public class ModelScytodes extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
-		float cosZ = MathHelper.cos(par1 * 1.0F) * 0.3F * par2;
-		float cosY = MathHelper.cos(par1 * 1.0F) * 0.4F * par2;
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
+		super.setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		float cosZ = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing;
+		float cosY = MathHelper.cos(limbSwing * 1.0F) * 0.4F * prevLimbSwing;
 		float fixZ = 0.611F;
 		float PI = 3.141593F;
 		LBL1.rotateAngleZ = cosZ - fixZ;

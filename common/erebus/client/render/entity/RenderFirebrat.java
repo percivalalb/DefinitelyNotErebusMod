@@ -15,17 +15,17 @@ public class RenderFirebrat extends RenderLiving {
 
 	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelFirebrat.png");
 
-	public RenderFirebrat(ModelBase model, float par2) {
-		super(model, par2);
+	public RenderFirebrat(ModelBase model, float shadowSize) {
+		super(model, shadowSize);
 	}
 
-	public void renderFirebrat(EntityFirebrat entityFirebrat, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(entityFirebrat, par2, par4, par6, par8, par9);
+	public void renderFirebrat(EntityFirebrat entityFirebrat, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving(entityFirebrat, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderFirebrat((EntityFirebrat) entityLiving, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderFirebrat((EntityFirebrat) entityLiving, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class RenderFirebrat extends RenderLiving {
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-		renderFirebrat((EntityFirebrat) entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderFirebrat((EntityFirebrat) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 }

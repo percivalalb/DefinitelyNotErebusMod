@@ -19,18 +19,18 @@ public class RenderTarantula extends RenderLiving {
 		super(model, par2);
 	}
 
-	public void renderTarantula(EntityTarantula entityTarantula, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(entityTarantula, par2, par4, par6, par8, par9);
+	public void renderTarantula(EntityTarantula entityTarantula, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving(entityTarantula, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderTarantula((EntityTarantula) entityLiving, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderTarantula((EntityTarantula) entityLiving, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-		renderTarantula((EntityTarantula) entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderTarantula((EntityTarantula) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

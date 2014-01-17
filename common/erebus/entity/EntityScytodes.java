@@ -16,8 +16,8 @@ import net.minecraft.world.World;
 public class EntityScytodes extends EntityMob {
 	private int shouldDo;
 	public int skin = rand.nextInt(4);
-	public EntityScytodes(World par1World) {
-		super(par1World);
+	public EntityScytodes(World world) {
+		super(world);
 		setSize(2F, 1F);
 	}
 
@@ -67,7 +67,7 @@ public class EntityScytodes extends EntityMob {
 	}
 
 	@Override
-	protected void playStepSound(int par1, int par2, int par3, int par4) {
+	protected void playStepSound(int x, int y, int z, int blockID) {
 		playSound("mob.spider.step", 0.15F, 1.0F);
 	}
 
@@ -119,9 +119,9 @@ public class EntityScytodes extends EntityMob {
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2) {
-		super.dropFewItems(par1, par2);
-		if (par1 && (rand.nextInt(3) == 0 || rand.nextInt(1 + par2) > 0))
+	protected void dropFewItems(boolean recentlyHit, int looting) {
+		super.dropFewItems(recentlyHit, looting);
+		if (recentlyHit && (rand.nextInt(3) == 0 || rand.nextInt(1 + looting) > 0))
 			dropItem(Item.spiderEye.itemID, 1);
 	}
 
@@ -140,8 +140,8 @@ public class EntityScytodes extends EntityMob {
 	}
 
 	@Override
-	public boolean isPotionApplicable(PotionEffect par1PotionEffect) {
-		return par1PotionEffect.getPotionID() == Potion.poison.id ? false : super.isPotionApplicable(par1PotionEffect);
+	public boolean isPotionApplicable(PotionEffect potionEffect) {
+		return potionEffect.getPotionID() == Potion.poison.id ? false : super.isPotionApplicable(potionEffect);
 	}
 
 	public boolean isBesideClimbableBlock() {

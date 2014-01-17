@@ -11,28 +11,28 @@ public class EntityRepellentFX extends EntityFX {
 
 	float repellentParticleScale;
 
-	public EntityRepellentFX(World world, double par2, double par4, double par6, float par8, float par9, float par10) {
-		this(world, par2, par4, par6, 1.0F, par8, par9, par10);
+	public EntityRepellentFX(World world, double x, double y, double z, float red, float green, float blue) {
+		this(world, x, y, z, 1.0F, red, green, blue);
 	}
 
-	public EntityRepellentFX(World world, double par2, double par4, double par6, float par8, float par9, float par10, float par11) {
-		super(world, par2, par4, par6, 0.0D, 0.0D, 0.0D);
+	public EntityRepellentFX(World world, double x, double y, double z, float sizeMp, float red, float green, float blue) {
+		super(world, x, y, z, 0.0D, 0.0D, 0.0D);
 		motionX *= 0.10000000149011612D;
 		motionY *= 0.10000000149011612D;
 		motionZ *= 0.10000000149011612D;
 
-		if (par9 == 0.0F)
-			par9 = 1.0F;
+		if (red == 0.0F)
+			red = 1.0F;
 
 		float f4 = (float) Math.random() * 0.4F + 0.6F;
-		particleRed = ((float) (Math.random() * 0.20000000298023224D) + 0.8F) * par9 * f4;
+		particleRed = ((float) (Math.random() * 0.20000000298023224D) + 0.8F) * red * f4;
 		particleGreen = 255;
-		particleBlue = ((float) (Math.random() * 0.20000000298023224D) + 0.8F) * par11 * f4;
+		particleBlue = ((float) (Math.random() * 0.20000000298023224D) + 0.8F) * blue * f4;
 		particleScale *= 0.5F;
-		particleScale *= par8;
+		particleScale *= sizeMp;
 		repellentParticleScale = particleScale;
 		particleMaxAge = (int) (8.0D / (Math.random() * 0.8D + 0.2D));
-		particleMaxAge = (int) (particleMaxAge * par8);
+		particleMaxAge = (int) (particleMaxAge * sizeMp);
 		noClip = false;
 	}
 

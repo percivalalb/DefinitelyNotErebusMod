@@ -154,7 +154,7 @@ public class EntityBeetleLarva extends EntityCreature {
 	}
 
 	@Override
-	protected void dropFewItems(boolean hitByPlayer, int looting) {
+	protected void dropFewItems(boolean recentlyHit, int looting) {
 		if (isBurning())
 			entityDropItem(new ItemStack(ModItems.erebusFood, 1, 1), 0.0F);
 		else

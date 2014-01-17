@@ -225,7 +225,7 @@ public class BlockUmberFurnace extends BlockContainer {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int idPicked(World world, int par2, int par3, int par4) {
+	public int idPicked(World world, int x, int y, int z) {
 		return ModBlocks.umberFurnace.blockID;
 	}
 }

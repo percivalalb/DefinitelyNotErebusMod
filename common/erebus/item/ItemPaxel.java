@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
@@ -15,13 +14,13 @@ import erebus.core.helper.ReflectionHelper;
 
 public class ItemPaxel extends ItemTool {
 
-	public ItemPaxel(int par1, EnumToolMaterial par3EnumToolMaterial) {
-		super(par1, 1.0F, par3EnumToolMaterial, new Block[0]);
+	public ItemPaxel(int id, EnumToolMaterial material) {
+		super(id, 1.0F, material, new Block[0]);
 	}
 
 	@Override
-	public boolean canHarvestBlock(Block par1Block) {
-		return Item.axeIron.canHarvestBlock(par1Block) || Item.pickaxeIron.canHarvestBlock(par1Block) || Item.shovelIron.canHarvestBlock(par1Block);
+	public boolean canHarvestBlock(Block block) {
+		return Item.axeIron.canHarvestBlock(block) || Item.pickaxeIron.canHarvestBlock(block) || Item.shovelIron.canHarvestBlock(block);
 	}
 
 	@Override

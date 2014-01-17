@@ -4,9 +4,9 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerErebusZoom extends GenLayerErebus {
 
-	public GenLayerErebusZoom(long par1, GenLayerErebus par3GenLayerErebus) {
-		super(par1);
-		super.parent = par3GenLayerErebus;
+	public GenLayerErebusZoom(long seed, GenLayerErebus parentGenLayer) {
+		super(seed);
+		super.parent = parentGenLayer;
 	}
 
 	@Override

@@ -25,7 +25,7 @@ public abstract class GenLayerErebus extends GenLayer {
 	private long chunkSeed;
 	private long baseSeed;
 
-	public static GenLayer[] initializeAllBiomeGenerators(long par0, WorldType worldType) {
+	public static GenLayer[] initializeAllBiomeGenerators(long seed, WorldType worldType) {
 		GenLayerIsland genlayerisland = new GenLayerIsland(1L);
 		GenLayerFuzzyZoom genlayerfuzzyzoom = new GenLayerFuzzyZoom(2000L, genlayerisland);
 		GenLayerAddIsland genlayeraddisland = new GenLayerAddIsland(1L, genlayerfuzzyzoom);
@@ -74,21 +74,21 @@ public abstract class GenLayerErebus extends GenLayer {
 		GenLayerSmooth genlayersmooth1 = new GenLayerSmooth(1000L, (GenLayer) object);
 		GenLayerRiverMix genlayerrivermix = new GenLayerRiverMix(100L, genlayersmooth1, genlayersmooth);
 		GenLayerVoronoiZoom genlayervoronoizoom = new GenLayerVoronoiZoom(10L, genlayerrivermix);
-		genlayerrivermix.initWorldGenSeed(par0);
-		genlayervoronoizoom.initWorldGenSeed(par0);
+		genlayerrivermix.initWorldGenSeed(seed);
+		genlayervoronoizoom.initWorldGenSeed(seed);
 		return new GenLayer[] { genlayerrivermix, genlayervoronoizoom, genlayerrivermix };
 	}
 
-	public GenLayerErebus(long par1) {
-		super(par1);
+	public GenLayerErebus(long seed) {
+		super(seed);
 	}
 
 	@Override
-	public void initWorldGenSeed(long par1) {
-		worldGenSeed = par1;
+	public void initWorldGenSeed(long seed) {
+		worldGenSeed = seed;
 
 		if (parent != null)
-			parent.initWorldGenSeed(par1);
+			parent.initWorldGenSeed(seed);
 
 		worldGenSeed *= worldGenSeed * 6364136223846793005L + 1442695040888963407L;
 		worldGenSeed += baseSeed;

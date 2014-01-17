@@ -47,22 +47,22 @@ public class ModelFirebrat extends ModelBase {
 	 * Sets the models various rotation angles then renders the model.
 	 */
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
 		int i;
 
 		for (i = 0; i < firebratBodyParts.length; ++i)
-			firebratBodyParts[i].render(par7);
+			firebratBodyParts[i].render(unitPixel);
 
 		for (i = 0; i < firebratWings.length; ++i)
-			firebratWings[i].render(par7);
+			firebratWings[i].render(unitPixel);
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
 		for (int i = 0; i < firebratBodyParts.length; ++i) {
-			firebratBodyParts[i].rotateAngleY = MathHelper.cos(par3 * 0.9F + i * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + Math.abs(i - 2));
-			firebratBodyParts[i].rotationPointX = MathHelper.sin(par3 * 0.9F + i * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * Math.abs(i - 2);
+			firebratBodyParts[i].rotateAngleY = MathHelper.cos(entityTickTime * 0.9F + i * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (1 + Math.abs(i - 2));
+			firebratBodyParts[i].rotationPointX = MathHelper.sin(entityTickTime * 0.9F + i * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * Math.abs(i - 2);
 		}
 
 		firebratWings[0].rotateAngleY = firebratBodyParts[2].rotateAngleY;

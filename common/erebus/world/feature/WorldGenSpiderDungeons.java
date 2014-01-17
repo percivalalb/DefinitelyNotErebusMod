@@ -39,7 +39,7 @@ public class WorldGenSpiderDungeons extends WorldGenerator {
 	//@formatter:on
 
 	@Override
-	public boolean generate(World world, Random rand, int par3, int par4, int par5) {
+	public boolean generate(World world, Random rand, int x, int y, int z) {
 		byte b0 = 3;
 		int l = rand.nextInt(2) + 2;
 		int i1 = rand.nextInt(2) + 2;
@@ -48,33 +48,33 @@ public class WorldGenSpiderDungeons extends WorldGenerator {
 		int l1;
 		int i2;
 
-		for (k1 = par3 - l - 1; k1 <= par3 + l + 1; ++k1)
-			for (l1 = par4 - 1; l1 <= par4 + b0 + 1; ++l1)
-				for (i2 = par5 - i1 - 1; i2 <= par5 + i1 + 1; ++i2) {
+		for (k1 = x - l - 1; k1 <= x + l + 1; ++k1)
+			for (l1 = y - 1; l1 <= y + b0 + 1; ++l1)
+				for (i2 = z - i1 - 1; i2 <= z + i1 + 1; ++i2) {
 					Material material = world.getBlockMaterial(k1, l1, i2);
 
-					if (l1 == par4 - 1 && !material.isSolid())
+					if (l1 == y - 1 && !material.isSolid())
 						return false;
 
-					if (l1 == par4 + b0 + 1 && !material.isSolid())
+					if (l1 == y + b0 + 1 && !material.isSolid())
 						return false;
 
-					if ((k1 == par3 - l - 1 || k1 == par3 + l + 1 || i2 == par5 - i1 - 1 || i2 == par5 + i1 + 1) && l1 == par4 && world.isAirBlock(k1, l1, i2) && world.isAirBlock(k1, l1 + 1, i2))
+					if ((k1 == x - l - 1 || k1 == x + l + 1 || i2 == z - i1 - 1 || i2 == z + i1 + 1) && l1 == y && world.isAirBlock(k1, l1, i2) && world.isAirBlock(k1, l1 + 1, i2))
 						++j1;
 				}
 
 		if (j1 >= 1 && j1 <= 5) {
-			for (k1 = par3 - l - 1; k1 <= par3 + l + 1; ++k1)
-				for (l1 = par4 + b0; l1 >= par4 - 1; --l1)
-					for (i2 = par5 - i1 - 1; i2 <= par5 + i1 + 1; ++i2)
-						if (k1 != par3 - l - 1 && l1 != par4 - 1 && i2 != par5 - i1 - 1 && k1 != par3 + l + 1 && l1 != par4 + b0 + 1 && i2 != par5 + i1 + 1)
+			for (k1 = x - l - 1; k1 <= x + l + 1; ++k1)
+				for (l1 = y + b0; l1 >= y - 1; --l1)
+					for (i2 = z - i1 - 1; i2 <= z + i1 + 1; ++i2)
+						if (k1 != x - l - 1 && l1 != y - 1 && i2 != z - i1 - 1 && k1 != x + l + 1 && l1 != y + b0 + 1 && i2 != z + i1 + 1)
 							world.setBlockToAir(k1, l1, i2);
 						else if (l1 >= 0 && !world.getBlockMaterial(k1, l1 - 1, i2).isSolid())
 							world.setBlockToAir(k1, l1, i2);
 						else if (world.getBlockMaterial(k1, l1, i2).isSolid())
-							if (l1 == par4 - 1 && rand.nextInt(4) == 0)
+							if (l1 == y - 1 && rand.nextInt(4) == 0)
 								world.setBlock(k1, l1, i2, ModBlocks.umberstone.blockID, 3, 2); // umbercobbleWebbed
-							else if (l1 == par4 - 1 && rand.nextInt(4) != 0)
+							else if (l1 == y - 1 && rand.nextInt(4) != 0)
 								world.setBlock(k1, l1, i2, ModBlocks.umberstone.blockID, 2, 2); // umbercobbleMossy
 							else
 								world.setBlock(k1, l1, i2, ModBlocks.umberstone.blockID, 1, 2); // umbercobble
@@ -87,27 +87,27 @@ public class WorldGenSpiderDungeons extends WorldGenerator {
 				while (true) {
 					if (l1 < 3)
 						label101: {
-						i2 = par3 + rand.nextInt(l * 2 + 1) - l;
-						int j2 = par5 + rand.nextInt(i1 * 2 + 1) - i1;
+						i2 = x + rand.nextInt(l * 2 + 1) - l;
+						int j2 = z + rand.nextInt(i1 * 2 + 1) - i1;
 
-						if (world.isAirBlock(i2, par4, j2)) {
+						if (world.isAirBlock(i2, y, j2)) {
 							int k2 = 0;
 
-							if (world.getBlockMaterial(i2 - 1, par4, j2).isSolid())
+							if (world.getBlockMaterial(i2 - 1, y, j2).isSolid())
 								++k2;
 
-							if (world.getBlockMaterial(i2 + 1, par4, j2).isSolid())
+							if (world.getBlockMaterial(i2 + 1, y, j2).isSolid())
 								++k2;
 
-							if (world.getBlockMaterial(i2, par4, j2 - 1).isSolid())
+							if (world.getBlockMaterial(i2, y, j2 - 1).isSolid())
 								++k2;
 
-							if (world.getBlockMaterial(i2, par4, j2 + 1).isSolid())
+							if (world.getBlockMaterial(i2, y, j2 + 1).isSolid())
 								++k2;
 
 							if (k2 == 1) {
-								world.setBlock(i2, par4, j2, Block.chest.blockID, 0, 2);
-								TileEntityChest tileentitychest = (TileEntityChest) world.getBlockTileEntity(i2, par4, j2);
+								world.setBlock(i2, y, j2, Block.chest.blockID, 0, 2);
+								TileEntityChest tileentitychest = (TileEntityChest) world.getBlockTileEntity(i2, y, j2);
 
 								if (tileentitychest != null)
 									LootUtil.generateLoot(tileentitychest, rand, chestLoot, 3, 10);
@@ -125,14 +125,14 @@ public class WorldGenSpiderDungeons extends WorldGenerator {
 				}
 			}
 
-			world.setBlock(par3 + 1, par4, par5, Block.web.blockID, 0, 2);
-			world.setBlock(par3 - 1, par4, par5, Block.web.blockID, 0, 2);
-			world.setBlock(par3, par4, par5 - 1, Block.web.blockID, 0, 2);
-			world.setBlock(par3, par4, par5 + 1, Block.web.blockID, 0, 2);
-			world.setBlock(par3, par4 + 1, par5, Block.web.blockID, 0, 2);
-			world.setBlock(par3, par4 - 1, par5, Block.web.blockID, 0, 2);
+			world.setBlock(x + 1, y, z, Block.web.blockID, 0, 2);
+			world.setBlock(x - 1, y, z, Block.web.blockID, 0, 2);
+			world.setBlock(x, y, z - 1, Block.web.blockID, 0, 2);
+			world.setBlock(x, y, z + 1, Block.web.blockID, 0, 2);
+			world.setBlock(x, y + 1, z, Block.web.blockID, 0, 2);
+			world.setBlock(x, y - 1, z, Block.web.blockID, 0, 2);
 
-			world.setBlock(par3, par4, par5, ModBlocks.spiderSpawner.blockID, 0, 2);
+			world.setBlock(x, y, z, ModBlocks.spiderSpawner.blockID, 0, 2);
 			return true;
 		} else
 			return false;

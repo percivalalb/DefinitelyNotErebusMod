@@ -158,29 +158,29 @@ public class ModelVelvetWorm extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		Head1.render(par7);
-		Head2.render(par7);
-		BodA1.render(par7);
-		RLA1.render(par7);
-		LLA1.render(par7);
-		BodB1.render(par7);
-		RLB1.render(par7);
-		LLB1.render(par7);
-		BodC1.render(par7);
-		RLC1.render(par7);
-		LLC1.render(par7);
-		BodD1.render(par7);
-		RLD1.render(par7);
-		LLD1.render(par7);
-		BodE1.render(par7);
-		RLE1.render(par7);
-		LLE1.render(par7);
-		BodF1.render(par7);
-		RAnt.render(par7);
-		LAnt.render(par7);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		Head1.render(unitPixel);
+		Head2.render(unitPixel);
+		BodA1.render(unitPixel);
+		RLA1.render(unitPixel);
+		LLA1.render(unitPixel);
+		BodB1.render(unitPixel);
+		RLB1.render(unitPixel);
+		LLB1.render(unitPixel);
+		BodC1.render(unitPixel);
+		RLC1.render(unitPixel);
+		LLC1.render(unitPixel);
+		BodD1.render(unitPixel);
+		RLD1.render(unitPixel);
+		LLD1.render(unitPixel);
+		BodE1.render(unitPixel);
+		RLE1.render(unitPixel);
+		LLE1.render(unitPixel);
+		BodF1.render(unitPixel);
+		RAnt.render(unitPixel);
+		LAnt.render(unitPixel);
 
 	}
 
@@ -191,14 +191,14 @@ public class ModelVelvetWorm extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
 
-		float ba = MathHelper.cos(par1 * 1.0F) * 1.0F * par2;
-		float bb = MathHelper.cos(par1 + 1.0F * 1.0F) * 2.0F * par2;
-		float bc = MathHelper.cos(par1 + 2.0F * 1.0F) * 2.6F * par2;
-		float bd = MathHelper.cos(par1 + 3.0F * 1.0F) * 2.0F * par2;
-		float be = MathHelper.cos(par1 + 4.0F * 1.0F) * 1.0F * par2;
-		float bf = MathHelper.cos(par1 + 5.0F * 1.0F) * 0.35F * par2;
+		float ba = MathHelper.cos(limbSwing * 1.0F) * 1.0F * prevLimbSwing;
+		float bb = MathHelper.cos(limbSwing + 1.0F * 1.0F) * 2.0F * prevLimbSwing;
+		float bc = MathHelper.cos(limbSwing + 2.0F * 1.0F) * 2.6F * prevLimbSwing;
+		float bd = MathHelper.cos(limbSwing + 3.0F * 1.0F) * 2.0F * prevLimbSwing;
+		float be = MathHelper.cos(limbSwing + 4.0F * 1.0F) * 1.0F * prevLimbSwing;
+		float bf = MathHelper.cos(limbSwing + 5.0F * 1.0F) * 0.35F * prevLimbSwing;
 
 		Head1.rotationPointX = bf;
 		Head2.rotationPointX = bf;
@@ -232,29 +232,29 @@ public class ModelVelvetWorm extends ModelBase {
 		RLE1.rotationPointY = be + 21.5F;
 		LLE1.rotationPointY = be + 21F;
 
-		RLA1.rotateAngleY = -MathHelper.cos(par1 * 1.0F) * 1.0F * par2;
-		LLA1.rotateAngleY = MathHelper.cos(par1 * 1.0F) * 1.0F * par2;
+		RLA1.rotateAngleY = -MathHelper.cos(limbSwing * 1.0F) * 1.0F * prevLimbSwing;
+		LLA1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 1.0F * prevLimbSwing;
 
-		RLB1.rotateAngleY = MathHelper.cos(par1 * 1.0F) * 1.0F * par2;
-		LLB1.rotateAngleY = -MathHelper.cos(par1 * 1.0F) * 1.0F * par2;
+		RLB1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 1.0F * prevLimbSwing;
+		LLB1.rotateAngleY = -MathHelper.cos(limbSwing * 1.0F) * 1.0F * prevLimbSwing;
 
-		RLC1.rotateAngleY = -MathHelper.cos(par1 * 1.0F) * 1.0F * par2;
-		LLC1.rotateAngleY = MathHelper.cos(par1 * 1.0F) * 1.0F * par2;
+		RLC1.rotateAngleY = -MathHelper.cos(limbSwing * 1.0F) * 1.0F * prevLimbSwing;
+		LLC1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 1.0F * prevLimbSwing;
 
-		RLD1.rotateAngleY = MathHelper.cos(par1 * 1.0F) * 1.0F * par2;
-		LLD1.rotateAngleY = -MathHelper.cos(par1 * 1.0F) * 1.0F * par2;
+		RLD1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 1.0F * prevLimbSwing;
+		LLD1.rotateAngleY = -MathHelper.cos(limbSwing * 1.0F) * 1.0F * prevLimbSwing;
 
-		RLE1.rotateAngleY = -MathHelper.cos(par1 * 1.0F) * 1.0F * par2;
-		LLE1.rotateAngleY = MathHelper.cos(par1 * 1.0F) * 1.0F * par2;
+		RLE1.rotateAngleY = -MathHelper.cos(limbSwing * 1.0F) * 1.0F * prevLimbSwing;
+		LLE1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 1.0F * prevLimbSwing;
 
-		Head1.rotateAngleY = par4 / (180F / (float) Math.PI);
-		Head2.rotateAngleY = par4 / (180F / (float) Math.PI);
-		RAnt.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.175F;
-		LAnt.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.175F;
+		Head1.rotateAngleY = rotationYaw / (180F / (float) Math.PI);
+		Head2.rotateAngleY = rotationYaw / (180F / (float) Math.PI);
+		RAnt.rotateAngleY = rotationYaw / (180F / (float) Math.PI) + 0.175F;
+		LAnt.rotateAngleY = rotationYaw / (180F / (float) Math.PI) - 0.175F;
 
-		Head1.rotateAngleX = par5 / (180F / (float) Math.PI);
-		Head2.rotateAngleX = par5 / (180F / (float) Math.PI);
-		RAnt.rotateAngleX = par5 / (180F / (float) Math.PI);
-		LAnt.rotateAngleX = par5 / (180F / (float) Math.PI);
+		Head1.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		Head2.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		RAnt.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		LAnt.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
 	}
 }

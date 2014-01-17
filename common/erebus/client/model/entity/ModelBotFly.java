@@ -3,9 +3,7 @@ package erebus.client.model.entity;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.entity.EntityBotFly;
@@ -267,46 +265,46 @@ public class ModelBotFly extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		Head.render(par7);
-		HeadFront.render(par7);
-		HeadTop.render(par7);
-		HeadBottom.render(par7);
-		EyeR.render(par7);
-		EveL.render(par7);
-		Thorax1.render(par7);
-		Thorax2.render(par7);
-		Thorax3.render(par7);
-		Ab1.render(par7);
-		Ab2.render(par7);
-		Ab3.render(par7);
-		Ab4.render(par7);
-		LegRF1.render(par7);
-		LegRF2.render(par7);
-		LegRF3.render(par7);
-		LegLF1.render(par7);
-		LegLF2.render(par7);
-		LegLF3.render(par7);
-		LegRM1.render(par7);
-		LegRM2.render(par7);
-		LegRM3.render(par7);
-		LegLM1.render(par7);
-		LegLM2.render(par7);
-		LegLM3.render(par7);
-		LegRB1.render(par7);
-		LegRB2.render(par7);
-		LegRB3.render(par7);
-		LegLB1.render(par7);
-		LegLB2.render(par7);
-		LegLB3.render(par7);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		Head.render(unitPixel);
+		HeadFront.render(unitPixel);
+		HeadTop.render(unitPixel);
+		HeadBottom.render(unitPixel);
+		EyeR.render(unitPixel);
+		EveL.render(unitPixel);
+		Thorax1.render(unitPixel);
+		Thorax2.render(unitPixel);
+		Thorax3.render(unitPixel);
+		Ab1.render(unitPixel);
+		Ab2.render(unitPixel);
+		Ab3.render(unitPixel);
+		Ab4.render(unitPixel);
+		LegRF1.render(unitPixel);
+		LegRF2.render(unitPixel);
+		LegRF3.render(unitPixel);
+		LegLF1.render(unitPixel);
+		LegLF2.render(unitPixel);
+		LegLF3.render(unitPixel);
+		LegRM1.render(unitPixel);
+		LegRM2.render(unitPixel);
+		LegRM3.render(unitPixel);
+		LegLM1.render(unitPixel);
+		LegLM2.render(unitPixel);
+		LegLM3.render(unitPixel);
+		LegRB1.render(unitPixel);
+		LegRB2.render(unitPixel);
+		LegRB3.render(unitPixel);
+		LegLB1.render(unitPixel);
+		LegLB2.render(unitPixel);
+		LegLB3.render(unitPixel);
 		GL11.glPushMatrix();
 		GL11.glEnable(GL11.GL_BLEND);
-		RWing1.render(par7);
-		RWing2.render(par7);
-		LWing1.render(par7);
-		LWing2.render(par7);
+		RWing1.render(unitPixel);
+		RWing2.render(unitPixel);
+		LWing1.render(unitPixel);
+		LWing2.render(unitPixel);
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glPopMatrix();
 	}
@@ -318,8 +316,8 @@ public class ModelBotFly extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
+		super.setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
 		EntityBotFly var8 = (EntityBotFly) entity;
 		RWing1.rotateAngleX = var8.wingFloat;
 		RWing2.rotateAngleX = var8.wingFloat;

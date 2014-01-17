@@ -74,7 +74,7 @@ public class EntityPrayingMantis extends EntityMob {
 	}
 
 	@Override
-	protected void playStepSound(int par1, int par2, int par3, int par4) {
+	protected void playStepSound(int x, int y, int z, int blockID) {
 		worldObj.playSoundAtEntity(this, "mob.zombie.step", 0.15F, 1.0F);
 	}
 
@@ -84,7 +84,7 @@ public class EntityPrayingMantis extends EntityMob {
 	}
 
 	@Override
-	protected void dropFewItems(boolean hitByPlayer, int looting) {
+	protected void dropFewItems(boolean recentlyHit, int looting) {
 		entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataCamoPowder), 0.0F);
 	}
 

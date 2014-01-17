@@ -463,37 +463,37 @@ public class ModelScorpion extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		RMand.render(par7);
-		LMand.render(par7);
-		Head.render(par7);
-		EyeL.render(par7);
-		EyeR.render(par7);
-		Body1.render(par7);
-		Body2.render(par7);
-		RBL1.render(par7);
-		RML1.render(par7);
-		RFL1.render(par7);
-		RFFL1.render(par7);
-		LFFL1.render(par7);
-		LFL1.render(par7);
-		LML1.render(par7);
-		LBL1.render(par7);
-		ClawR1.render(par7);
-		ClawR2.render(par7);
-		ClawR3.render(par7);
-		ClawR4.render(par7);
-		ClawR5Top.render(par7);
-		ClawR5Bot.render(par7);
-		ClawL1.render(par7);
-		ClawL2.render(par7);
-		ClawL3.render(par7);
-		ClawL4.render(par7);
-		ClawL5Top.render(par7);
-		ClawL5Bot.render(par7);
-		Tail1.render(par7);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		RMand.render(unitPixel);
+		LMand.render(unitPixel);
+		Head.render(unitPixel);
+		EyeL.render(unitPixel);
+		EyeR.render(unitPixel);
+		Body1.render(unitPixel);
+		Body2.render(unitPixel);
+		RBL1.render(unitPixel);
+		RML1.render(unitPixel);
+		RFL1.render(unitPixel);
+		RFFL1.render(unitPixel);
+		LFFL1.render(unitPixel);
+		LFL1.render(unitPixel);
+		LML1.render(unitPixel);
+		LBL1.render(unitPixel);
+		ClawR1.render(unitPixel);
+		ClawR2.render(unitPixel);
+		ClawR3.render(unitPixel);
+		ClawR4.render(unitPixel);
+		ClawR5Top.render(unitPixel);
+		ClawR5Bot.render(unitPixel);
+		ClawL1.render(unitPixel);
+		ClawL2.render(unitPixel);
+		ClawL3.render(unitPixel);
+		ClawL4.render(unitPixel);
+		ClawL5Top.render(unitPixel);
+		ClawL5Bot.render(unitPixel);
+		Tail1.render(unitPixel);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -503,15 +503,15 @@ public class ModelScorpion extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
+		super.setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
 		EntityScorpion var8 = (EntityScorpion) entity;
-		float cosz1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.3F * par2;
-		float cosz2 = MathHelper.cos(par1 * 1.0F) * 0.3F * par2;
-		float cozy1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.4F * par2;
-		float cozy2 = MathHelper.cos(par1 * 1.0F) * 0.4F * par2;
-		float cosxnz1 = MathHelper.cos(par1 / 3.0F + (float) Math.PI) * 0.1F * par2;
-		float cosxnz2 = MathHelper.cos(par1 / 3.0F + (float) Math.PI) * 0.05F * par2;
+		float cosz1 = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.3F * prevLimbSwing;
+		float cosz2 = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing;
+		float cozy1 = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.4F * prevLimbSwing;
+		float cozy2 = MathHelper.cos(limbSwing * 1.0F) * 0.4F * prevLimbSwing;
+		float cosxnz1 = MathHelper.cos(limbSwing / 3.0F + (float) Math.PI) * 0.1F * prevLimbSwing;
+		float cosxnz2 = MathHelper.cos(limbSwing / 3.0F + (float) Math.PI) * 0.05F * prevLimbSwing;
 		LBL1.rotateAngleZ = cosz1 - 0.3F;
 		LML1.rotateAngleZ = cosz2 - 0.3F;
 		LFL1.rotateAngleZ = cosz1 - 0.3F;
@@ -602,7 +602,7 @@ public class ModelScorpion extends ModelBase {
 			ClawL5Bot.rotateAngleX = 0F + cosxnz2;
 			ClawL5Top.rotateAngleX = 0F + cosxnz2;
 		}
-		RMand.rotateAngleY = -MathHelper.cos(par1 * 0.5F) * 0.2F * par2 + 1.570796F;
-		LMand.rotateAngleY = -MathHelper.cos(par1 * 0.5F + (float) Math.PI) * 0.2F * par2 + 1.570796F;
+		RMand.rotateAngleY = -MathHelper.cos(limbSwing * 0.5F) * 0.2F * prevLimbSwing + 1.570796F;
+		LMand.rotateAngleY = -MathHelper.cos(limbSwing * 0.5F + (float) Math.PI) * 0.2F * prevLimbSwing + 1.570796F;
 	}
 }

@@ -1,7 +1,6 @@
 package erebus.world.biomes;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.SpawnListEntry;
@@ -21,8 +20,8 @@ import erebus.world.feature.WorldGenRedGem2;
 
 public class BiomeGenCavern extends BiomeGenBaseErebus {
 
-	public BiomeGenCavern(int par1) {
-		super(par1);
+	public BiomeGenCavern(int biomeID) {
+		super(biomeID);
 		spawnableMonsterList.clear();
 		spawnableCreatureList.clear();
 		spawnableWaterCreatureList.clear();
@@ -193,7 +192,7 @@ public class BiomeGenCavern extends BiomeGenBaseErebus {
 	}
 
 	@Override
-	public void generateTerrain(World worldObj, Random rand, IChunkProvider par1iChunkProvider, int x, int z) {
+	public void generateTerrain(World worldObj, Random rand, IChunkProvider chunkProvider, int x, int z) {
 		/** Generating jungle vines **/
 		for (int i1 = 0; i1 < 250; i1++) {
 			int posX3 = x + rand.nextInt(16);

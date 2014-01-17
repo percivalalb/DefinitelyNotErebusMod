@@ -23,7 +23,7 @@ public class RenderAnimatedBlock extends RenderLiving {
 		super(model, scale);
 	}
 
-	public void renderAnimatedBlock(EntityAnimatedBlock entity, double x, double y, double z, float par8, float par9) {
+	public void renderAnimatedBlock(EntityAnimatedBlock entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
 		if (entity.blockID == ModBlocks.bambooCrate.blockID) {
 			bindTexture(new ResourceLocation("erebus:textures/item/bambooCrate.png"));
 			GL11.glPushMatrix();
@@ -46,17 +46,17 @@ public class RenderAnimatedBlock extends RenderLiving {
 			GL11.glEnable(GL11.GL_LIGHTING);
 			GL11.glPopMatrix();
 		}
-		super.doRenderLiving(entity, x, y, z, par8, par9);
+		super.doRenderLiving(entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving entity, double x, double y, double z, float par8, float par9) {
-		renderAnimatedBlock((EntityAnimatedBlock) entity, x, y, z, par8, par9);
+	public void doRenderLiving(EntityLiving entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderAnimatedBlock((EntityAnimatedBlock) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double x, double y, double z, float par8, float par9) {
-		renderAnimatedBlock((EntityAnimatedBlock) entity, x, y, z, par8, par9);
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderAnimatedBlock((EntityAnimatedBlock) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

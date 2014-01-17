@@ -262,25 +262,25 @@ public class ModelTarantula extends ModelBase {
 	private final float legSpeed = 1.1F;
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, null);
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
+		super.setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, null);
 
-		Head.rotateAngleY = par4 / (180F / (float) Math.PI);
-		Head.rotateAngleX = par5 / (180F / (float) Math.PI);
+		Head.rotateAngleY = rotationYaw / (180F / (float) Math.PI);
+		Head.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
 
-		float varY = MathHelper.sin(par1 * legSpeed) * 1.4F * par2;
-		float varZ = Math.abs(MathHelper.cos(par1 * legSpeed)) * 0.8F * par2;
+		float varY = MathHelper.sin(limbSwing * legSpeed) * 1.4F * prevLimbSwing;
+		float varZ = Math.abs(MathHelper.cos(limbSwing * legSpeed)) * 0.8F * prevLimbSwing;
 
-		// float varEY = MathHelper.sin(par1 * legSpeed) * 1.4F * par2;
-		// float varEZ = Math.abs(MathHelper.cos(par1 * legSpeed)) * 0.8F *
-		// par2;
+		// float varEY = MathHelper.sin(limbSwing * legSpeed) * 1.4F * prevLimbSwing;
+		// float varEZ = Math.abs(MathHelper.cos(limbSwing * legSpeed)) * 0.8F *
+		// prevLimbSwing;
 		float varEY = 0;
 		float varEZ = 0;
 		/*
-		 * float varEY = MathHelper.sin(par1 * legSpeed) * 1.4F * par2; float
-		 * varEZ = Math.abs(MathHelper.cos(par1 * legSpeed)) * 0.8F * par2;
-		 * float varY = Math.abs(MathHelper.sin(par1 * legSpeed)) * 1.4F * par2;
-		 * float varZ = MathHelper.sin(par1 * legSpeed) * 1.4F * par2;
+		 * float varEY = MathHelper.sin(limbSwing * legSpeed) * 1.4F * prevLimbSwing; float
+		 * varEZ = Math.abs(MathHelper.cos(limbSwing * legSpeed)) * 0.8F * prevLimbSwing;
+		 * float varY = Math.abs(MathHelper.sin(limbSwing * legSpeed)) * 1.4F * prevLimbSwing;
+		 * float varZ = MathHelper.sin(limbSwing * legSpeed) * 1.4F * prevLimbSwing;
 		 */
 
 		// Normal Legs

@@ -23,16 +23,16 @@ public class WorldGenPonds extends WorldGenerator {
 	}
 
 	@Override
-	public boolean generate(World world, Random rand, int par3, int par4, int par5) {
-		par3 -= 8;
+	public boolean generate(World world, Random rand, int x, int y, int z) {
+		x -= 8;
 
-		for (par5 -= 8; par4 > 5 && world.isAirBlock(par3, par4, par5); --par4) {
+		for (z -= 8; y > 5 && world.isAirBlock(x, y, z); --y) {
 		}
 
-		if (par4 <= 4)
+		if (y <= 4)
 			return false;
 		else {
-			par4 -= 4;
+			y -= 4;
 			boolean[] aboolean = new boolean[2048];
 			int l = rand.nextInt(4) + 4;
 			int i1;
@@ -70,12 +70,12 @@ public class WorldGenPonds extends WorldGenerator {
 						aboolean[(i1 * 16 + j2) * 8 + i2 - 1]);
 
 						if (flag) {
-							Material material = world.getBlockMaterial(par3 + i1, par4 + i2, par5 + j2);
+							Material material = world.getBlockMaterial(x + i1, y + i2, z + j2);
 
 							if (i2 >= 4 && material.isLiquid())
 								return false;
 
-							if (i2 < 4 && !material.isSolid() && world.getBlockId(par3 + i1, par4 + i2, par5 + j2) != blockIndex)
+							if (i2 < 4 && !material.isSolid() && world.getBlockId(x + i1, y + i2, z + j2) != blockIndex)
 								return false;
 						}
 					}
@@ -84,18 +84,18 @@ public class WorldGenPonds extends WorldGenerator {
 				for (j2 = 0; j2 < 16; ++j2)
 					for (i2 = 0; i2 < 8; ++i2)
 						if (aboolean[(i1 * 16 + j2) * 8 + i2])
-							world.setBlock(par3 + i1, par4 + i2, par5 + j2, i2 >= 4 ? 0 : blockIndex, 0, 2);
+							world.setBlock(x + i1, y + i2, z + j2, i2 >= 4 ? 0 : blockIndex, 0, 2);
 
 			for (i1 = 0; i1 < 16; ++i1)
 				for (j2 = 0; j2 < 16; ++j2)
 					for (i2 = 4; i2 < 8; ++i2)
-						if (aboolean[(i1 * 16 + j2) * 8 + i2] && world.getBlockId(par3 + i1, par4 + i2 - 1, par5 + j2) == Block.dirt.blockID && world.getSavedLightValue(EnumSkyBlock.Sky, par3 + i1, par4 + i2, par5 + j2) > 0) {
-							BiomeGenBase biomegenbase = world.getBiomeGenForCoords(par3 + i1, par5 + j2);
+						if (aboolean[(i1 * 16 + j2) * 8 + i2] && world.getBlockId(x + i1, y + i2 - 1, z + j2) == Block.dirt.blockID && world.getSavedLightValue(EnumSkyBlock.Sky, x + i1, y + i2, z + j2) > 0) {
+							BiomeGenBase biomegenbase = world.getBiomeGenForCoords(x + i1, z + j2);
 
 							if (biomegenbase.topBlock == Block.mycelium.blockID)
-								world.setBlock(par3 + i1, par4 + i2 - 1, par5 + j2, Block.mycelium.blockID, 0, 2);
+								world.setBlock(x + i1, y + i2 - 1, z + j2, Block.mycelium.blockID, 0, 2);
 							else
-								world.setBlock(par3 + i1, par4 + i2 - 1, par5 + j2, Block.grass.blockID, 0, 2);
+								world.setBlock(x + i1, y + i2 - 1, z + j2, Block.grass.blockID, 0, 2);
 						}
 
 			if (Block.blocksList[blockIndex].blockMaterial == Material.water)
@@ -103,8 +103,8 @@ public class WorldGenPonds extends WorldGenerator {
 					for (j2 = 0; j2 < 16; ++j2) {
 						byte b0 = 4;
 
-						if (world.isBlockFreezable(par3 + i1, par4 + b0, par5 + j2))
-							world.setBlock(par3 + i1, par4 + b0, par5 + j2, Block.ice.blockID, 0, 2);
+						if (world.isBlockFreezable(x + i1, y + b0, z + j2))
+							world.setBlock(x + i1, y + b0, z + j2, Block.ice.blockID, 0, 2);
 					}
 
 			/** Generating ground **/
@@ -116,14 +116,14 @@ public class WorldGenPonds extends WorldGenerator {
 							(i1 < 15 && aboolean[((i1 + 1) * 16 + j2) * 8 + i2] || i1 > 0 && aboolean[((i1 - 1) * 16 + j2) * 8 + i2] || j2 < 15 && aboolean[(i1 * 16 + j2 + 1) * 8 + i2] || j2 > 0 && aboolean[(i1 * 16 + j2 - 1) * 8 + i2] || i2 < 7 && aboolean[(i1 * 16 + j2) * 8 + i2 + 1] || i2 > 0 &&
 							aboolean[(i1 * 16 + j2) * 8 + i2 - 1]);
 
-							if (flag && (i2 < 4 || rand.nextInt(2) != 0) && world.getBlockMaterial(par3 + i1, par4 + i2, par5 + j2).isSolid())
-								world.setBlock(par3 + i1, par4 + i2, par5 + j2, groundIndex, 0, 2);
+							if (flag && (i2 < 4 || rand.nextInt(2) != 0) && world.getBlockMaterial(x + i1, y + i2, z + j2).isSolid())
+								world.setBlock(x + i1, y + i2, z + j2, groundIndex, 0, 2);
 						}
 
 			/** Generates waterlilies **/
 			WorldGenWaterlily waterlily = new WorldGenWaterlily();
 			for (int c = 0; c < 5; ++c)
-				waterlily.generate(world, rand, par3 + rand.nextInt(8) - rand.nextInt(8) + 8, par4 + 2 + rand.nextInt(6), par5 + rand.nextInt(8) - rand.nextInt(8) + 8);
+				waterlily.generate(world, rand, x + rand.nextInt(8) - rand.nextInt(8) + 8, y + 2 + rand.nextInt(6), z + rand.nextInt(8) - rand.nextInt(8) + 8);
 
 			return true;
 		}

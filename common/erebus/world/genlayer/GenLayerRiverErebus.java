@@ -5,9 +5,9 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerRiverErebus extends GenLayer {
 
-	public GenLayerRiverErebus(long par1, GenLayer par3GenLayer) {
-		super(par1);
-		super.parent = par3GenLayer;
+	public GenLayerRiverErebus(long seed, GenLayer parentGenLayer) {
+		super(seed);
+		super.parent = parentGenLayer;
 	}
 
 	@Override

@@ -1,7 +1,6 @@
 package erebus.entity;
 
 import java.util.Calendar;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
@@ -196,14 +195,14 @@ public class EntityBotFly extends EntityMob {
 	}
 
 	@Override
-	public boolean attackEntityFrom(DamageSource source, float par2) {
+	public boolean attackEntityFrom(DamageSource source, float amount) {
 		if (isEntityInvulnerable())
 			return false;
 		else {
 			if (!worldObj.isRemote && getIsFlyHanging())
 				setIsFlyHanging(false);
 
-			return super.attackEntityFrom(source, par2);
+			return super.attackEntityFrom(source, amount);
 		}
 	}
 
@@ -243,7 +242,7 @@ public class EntityBotFly extends EntityMob {
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2) {
+	protected void dropFewItems(boolean recentlyHit, int looting) {
 		if (rand.nextInt(4) == 0)
 			entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(2) + 1, ItemErebusMaterial.dataFlyWing), 0.0F);
 		if (rand.nextInt(8) == 0)

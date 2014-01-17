@@ -34,25 +34,25 @@ public class TileEntityPetrifiedWoodChest extends TileEntity implements IInvento
 	}
 
 	@Override
-	public ItemStack getStackInSlot(int par1) {
-		return chestContents[par1];
+	public ItemStack getStackInSlot(int slot) {
+		return chestContents[slot];
 	}
 
 	@Override
-	public ItemStack decrStackSize(int par1, int par2) {
-		if (chestContents[par1] != null) {
+	public ItemStack decrStackSize(int slot, int amount) {
+		if (chestContents[slot] != null) {
 			ItemStack is;
 
-			if (chestContents[par1].stackSize <= par2) {
-				is = chestContents[par1];
-				chestContents[par1] = null;
+			if (chestContents[slot].stackSize <= amount) {
+				is = chestContents[slot];
+				chestContents[slot] = null;
 				onInventoryChanged();
 				return is;
 			} else {
-				is = chestContents[par1].splitStack(par2);
+				is = chestContents[slot].splitStack(amount);
 
-				if (chestContents[par1].stackSize == 0)
-					chestContents[par1] = null;
+				if (chestContents[slot].stackSize == 0)
+					chestContents[slot] = null;
 
 				onInventoryChanged();
 				return is;
@@ -62,18 +62,18 @@ public class TileEntityPetrifiedWoodChest extends TileEntity implements IInvento
 	}
 
 	@Override
-	public ItemStack getStackInSlotOnClosing(int par1) {
-		if (chestContents[par1] != null) {
-			ItemStack is = chestContents[par1];
-			chestContents[par1] = null;
+	public ItemStack getStackInSlotOnClosing(int slot) {
+		if (chestContents[slot] != null) {
+			ItemStack is = chestContents[slot];
+			chestContents[slot] = null;
 			return is;
 		} else
 			return null;
 	}
 
 	@Override
-	public void setInventorySlotContents(int par1, ItemStack is) {
-		chestContents[par1] = is;
+	public void setInventorySlotContents(int slot, ItemStack is) {
+		chestContents[slot] = is;
 
 		if (is != null && is.stackSize > getInventoryStackLimit())
 			is.stackSize = getInventoryStackLimit();
@@ -201,8 +201,8 @@ public class TileEntityPetrifiedWoodChest extends TileEntity implements IInvento
 		}
 	}
 
-	private boolean func_94044_a(int par1, int par2, int par3) {
-		Block block = Block.blocksList[worldObj.getBlockId(par1, par2, par3)];
+	private boolean func_94044_a(int x, int y, int z) {
+		Block block = Block.blocksList[worldObj.getBlockId(x, y, z)];
 		return block != null && block instanceof BlockPetrifiedChest;
 	}
 
@@ -280,12 +280,12 @@ public class TileEntityPetrifiedWoodChest extends TileEntity implements IInvento
 	}
 
 	@Override
-	public boolean receiveClientEvent(int par1, int par2) {
-		if (par1 == 1) {
-			numUsingPlayers = par2;
+	public boolean receiveClientEvent(int eventId, int data) {
+		if (eventId == 1) {
+			numUsingPlayers = data;
 			return true;
 		} else
-			return super.receiveClientEvent(par1, par2);
+			return super.receiveClientEvent(eventId, data);
 	}
 
 	@Override

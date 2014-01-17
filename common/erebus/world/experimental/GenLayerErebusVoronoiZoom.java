@@ -4,9 +4,9 @@ import net.minecraft.world.gen.layer.IntCache;
 
 public class GenLayerErebusVoronoiZoom extends GenLayerErebus {
 
-	public GenLayerErebusVoronoiZoom(long par1, GenLayerErebus par3GenLayerErebus) {
-		super(par1);
-		super.parent = par3GenLayerErebus;
+	public GenLayerErebusVoronoiZoom(long seed, GenLayerErebus parentGenLayer) {
+		super(seed);
+		super.parent = parentGenLayer;
 	}
 
 	@Override

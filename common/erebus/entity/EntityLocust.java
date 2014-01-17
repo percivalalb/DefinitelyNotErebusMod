@@ -61,7 +61,7 @@ public class EntityLocust extends EntityMob {
 	}
 
 	@Override
-	protected void dropFewItems(boolean hitByPlayer, int looting) {
+	protected void dropFewItems(boolean recentlyHit, int looting) {
 		entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataElasticFibre), 0.0F);
 	}
 

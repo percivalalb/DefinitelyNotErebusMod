@@ -243,54 +243,54 @@ public class ModelPrayingMantis extends ModelBase
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		Head1.render(par7);
-		Head2.render(par7);
-		Head3.render(par7);
-		REye.render(par7);
-		LEye.render(par7);
-		RAnt.render(par7);
-		LAnt1.render(par7);
-		Neck.render(par7);
-		Thorax1.render(par7);
-		Ab1.render(par7);
-		Ab2.render(par7);
-		Ab3.render(par7);
-		Ab4.render(par7);
-		LArm1.render(par7);
-		LArm2.render(par7);
-		LArm3.render(par7);
-		LArm4.render(par7);
-		RArm1.render(par7);
-		RArm2.render(par7);
-		RArm3.render(par7);
-		RArm4.render(par7);
-		RFLeg1.render(par7);
-		RFLeg2.render(par7);
-		RFLeg3.render(par7);
-		RFLeg4.render(par7);
-		RFLeg5.render(par7);
-		RFLeg6.render(par7);
-		LFLeg1.render(par7);
-		LFLeg2.render(par7);
-		LFLeg3.render(par7);
-		LFLeg4.render(par7);
-		LFLeg5.render(par7);
-		LFLeg6.render(par7);
-		RBLeg1.render(par7);
-		RBLeg2.render(par7);
-		RBLeg3.render(par7);
-		RBLeg4.render(par7);
-		RBLeg5.render(par7);
-		RBLeg6.render(par7);
-		LBLeg1.render(par7);
-		LBLeg2.render(par7);
-		LBLeg3.render(par7);
-		LBLeg4.render(par7);
-		LBLeg5.render(par7);
-		LBLeg6.render(par7);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		Head1.render(unitPixel);
+		Head2.render(unitPixel);
+		Head3.render(unitPixel);
+		REye.render(unitPixel);
+		LEye.render(unitPixel);
+		RAnt.render(unitPixel);
+		LAnt1.render(unitPixel);
+		Neck.render(unitPixel);
+		Thorax1.render(unitPixel);
+		Ab1.render(unitPixel);
+		Ab2.render(unitPixel);
+		Ab3.render(unitPixel);
+		Ab4.render(unitPixel);
+		LArm1.render(unitPixel);
+		LArm2.render(unitPixel);
+		LArm3.render(unitPixel);
+		LArm4.render(unitPixel);
+		RArm1.render(unitPixel);
+		RArm2.render(unitPixel);
+		RArm3.render(unitPixel);
+		RArm4.render(unitPixel);
+		RFLeg1.render(unitPixel);
+		RFLeg2.render(unitPixel);
+		RFLeg3.render(unitPixel);
+		RFLeg4.render(unitPixel);
+		RFLeg5.render(unitPixel);
+		RFLeg6.render(unitPixel);
+		LFLeg1.render(unitPixel);
+		LFLeg2.render(unitPixel);
+		LFLeg3.render(unitPixel);
+		LFLeg4.render(unitPixel);
+		LFLeg5.render(unitPixel);
+		LFLeg6.render(unitPixel);
+		RBLeg1.render(unitPixel);
+		RBLeg2.render(unitPixel);
+		RBLeg3.render(unitPixel);
+		RBLeg4.render(unitPixel);
+		RBLeg5.render(unitPixel);
+		RBLeg6.render(unitPixel);
+		LBLeg1.render(unitPixel);
+		LBLeg2.render(unitPixel);
+		LBLeg3.render(unitPixel);
+		LBLeg4.render(unitPixel);
+		LBLeg5.render(unitPixel);
+		LBLeg6.render(unitPixel);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -300,11 +300,11 @@ public class ModelPrayingMantis extends ModelBase
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
 		EntityPrayingMantis entityPrayingMantis = (EntityPrayingMantis) entity;
-		float cos1 = MathHelper.cos(par1 + (float) Math.PI) * 0.3F * par2;
-		float cos2 = MathHelper.cos(par1) * 0.3F * par2;
-		float cosxnz1 = MathHelper.cos(par1 * 0.5F + (float) Math.PI) * 0.7F * par2;
+		float cos1 = MathHelper.cos(limbSwing + (float) Math.PI) * 0.3F * prevLimbSwing;
+		float cos2 = MathHelper.cos(limbSwing) * 0.3F * prevLimbSwing;
+		float cosxnz1 = MathHelper.cos(limbSwing * 0.5F + (float) Math.PI) * 0.7F * prevLimbSwing;
 		LBLeg1.rotateAngleX = cos1;
 		LBLeg2.rotateAngleX = cos1;
 		LBLeg3.rotateAngleX = cos1;

@@ -92,7 +92,7 @@ public class EntityGrasshopper extends EntityCreature {
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2) {
+	protected void dropFewItems(boolean recentlyHit, int looting) {
 		if (isBurning())
 			entityDropItem(new ItemStack(ModItems.erebusFood, 1, 3), 0.0F);
 		else
@@ -108,8 +108,8 @@ public class EntityGrasshopper extends EntityCreature {
 		motionY = 0.61999998688697815D;
 	}
 
-	public void setIsEating(boolean par1) {
-		isEating = par1;
+	public void setIsEating(boolean isEating) {
+		this.isEating = isEating;
 	}
 
 	public void setMoveTasks(boolean par1) {
@@ -120,8 +120,8 @@ public class EntityGrasshopper extends EntityCreature {
 			tasks.addTask(2, aiWander);
 	}
 
-	public void setCanJump(boolean par1) {
-		canJump = par1;
+	public void setCanJump(boolean canJump) {
+		this.canJump = canJump;
 	}
 
 	@Override

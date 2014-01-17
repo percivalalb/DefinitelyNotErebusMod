@@ -19,21 +19,21 @@ public class RenderUmberGolem extends RenderLiving
 		super(model, shadowSize);
 
 	}
-	public void renderUmberGolem(EntityUmberGolem entityUmberGolem, double par2, double par4, double par6, float par8, float par9)
+	public void renderUmberGolem(EntityUmberGolem entityUmberGolem, double x, double y, double z, float rotationYaw, float partialTickTime)
 	{
-		super.doRenderLiving(entityUmberGolem, par2, par4, par6, par8, par9);
+		super.doRenderLiving(entityUmberGolem, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9)
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime)
 	{
-		renderUmberGolem((EntityUmberGolem)entityLiving, par2, par4, par6, par8, par9);
+		renderUmberGolem((EntityUmberGolem)entityLiving, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9)
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime)
 	{
-		renderUmberGolem((EntityUmberGolem)entity, par2, par4, par6, par8, par9);
+		renderUmberGolem((EntityUmberGolem)entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

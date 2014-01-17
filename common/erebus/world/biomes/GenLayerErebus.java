@@ -20,11 +20,11 @@ import net.minecraft.world.gen.layer.GenLayerZoom;
 
 public abstract class GenLayerErebus extends GenLayer {
 
-	public GenLayerErebus(long par1) {
-		super(par1);
+	public GenLayerErebus(long seed) {
+		super(seed);
 	}
 
-	public static GenLayer[] initializeAllBiomeGenerators(long par0, WorldType worldType) {
+	public static GenLayer[] initializeAllBiomeGenerators(long seed, WorldType worldType) {
 		GenLayerIsland genlayerisland = new GenLayerIsland(1L);
 		GenLayerFuzzyZoom genlayerfuzzyzoom = new GenLayerFuzzyZoom(2000L, genlayerisland);
 		GenLayerAddIsland genlayeraddisland = new GenLayerAddIsland(1L, genlayerfuzzyzoom);
@@ -68,8 +68,8 @@ public abstract class GenLayerErebus extends GenLayer {
 		GenLayerSmooth genlayersmooth1 = new GenLayerSmooth(1000L, (GenLayer) object);
 		GenLayerRiverMix genlayerrivermix = new GenLayerRiverMix(100L, genlayersmooth1, genlayersmooth);
 		GenLayerVoronoiZoom genlayervoronoizoom = new GenLayerVoronoiZoom(10L, genlayerrivermix);
-		genlayerrivermix.initWorldGenSeed(par0);
-		genlayervoronoizoom.initWorldGenSeed(par0);
+		genlayerrivermix.initWorldGenSeed(seed);
+		genlayervoronoizoom.initWorldGenSeed(seed);
 		return new GenLayer[] { genlayerrivermix, genlayervoronoizoom, genlayerrivermix };
 	}
 }

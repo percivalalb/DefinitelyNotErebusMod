@@ -313,51 +313,51 @@ public class ModelGrasshopper extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		LAnt.render(par7);
-		RAnt.render(par7);
-		LEye.render(par7);
-		REye.render(par7);
-		Head1.render(par7);
-		Head2.render(par7);
-		Head3.render(par7);
-		HeadLBot.render(par7);
-		HeadCBot.render(par7);
-		HeadRBot.render(par7);
-		Thorax1.render(par7);
-		Thorax2.render(par7);
-		Ab1.render(par7);
-		Ab2.render(par7);
-		LFL1.render(par7);
-		LFL2.render(par7);
-		LFL3.render(par7);
-		LFL4.render(par7);
-		RFL1.render(par7);
-		RFL2.render(par7);
-		RFL3.render(par7);
-		RFL4.render(par7);
-		LML1.render(par7);
-		LML2.render(par7);
-		LML3.render(par7);
-		LML4.render(par7);
-		RML1.render(par7);
-		RML2.render(par7);
-		RML3.render(par7);
-		RML4.render(par7);
-		LBL1.render(par7);
-		LBL2.render(par7);
-		LBL3.render(par7);
-		LBL4.render(par7);
-		LBL5.render(par7);
-		LBL6.render(par7);
-		RBL1.render(par7);
-		RBL2.render(par7);
-		RBL3.render(par7);
-		RBL4.render(par7);
-		RBL5.render(par7);
-		RBL6.render(par7);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		LAnt.render(unitPixel);
+		RAnt.render(unitPixel);
+		LEye.render(unitPixel);
+		REye.render(unitPixel);
+		Head1.render(unitPixel);
+		Head2.render(unitPixel);
+		Head3.render(unitPixel);
+		HeadLBot.render(unitPixel);
+		HeadCBot.render(unitPixel);
+		HeadRBot.render(unitPixel);
+		Thorax1.render(unitPixel);
+		Thorax2.render(unitPixel);
+		Ab1.render(unitPixel);
+		Ab2.render(unitPixel);
+		LFL1.render(unitPixel);
+		LFL2.render(unitPixel);
+		LFL3.render(unitPixel);
+		LFL4.render(unitPixel);
+		RFL1.render(unitPixel);
+		RFL2.render(unitPixel);
+		RFL3.render(unitPixel);
+		RFL4.render(unitPixel);
+		LML1.render(unitPixel);
+		LML2.render(unitPixel);
+		LML3.render(unitPixel);
+		LML4.render(unitPixel);
+		RML1.render(unitPixel);
+		RML2.render(unitPixel);
+		RML3.render(unitPixel);
+		RML4.render(unitPixel);
+		LBL1.render(unitPixel);
+		LBL2.render(unitPixel);
+		LBL3.render(unitPixel);
+		LBL4.render(unitPixel);
+		LBL5.render(unitPixel);
+		LBL6.render(unitPixel);
+		RBL1.render(unitPixel);
+		RBL2.render(unitPixel);
+		RBL3.render(unitPixel);
+		RBL4.render(unitPixel);
+		RBL5.render(unitPixel);
+		RBL6.render(unitPixel);
 
 	}
 
@@ -368,11 +368,11 @@ public class ModelGrasshopper extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-		float heady = par4 / (180F / (float) Math.PI);
-		float headx = par5 / (180F / (float) Math.PI);
-		float legx1 = MathHelper.cos(par1 * 2.0F) * 0.7F * par2;
-		float legx2 = MathHelper.cos(par1 * 2.0F + (float) Math.PI) * 0.7F * par2;
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
+		float heady = rotationYaw / (180F / (float) Math.PI);
+		float headx = rotationPitch / (180F / (float) Math.PI);
+		float legx1 = MathHelper.cos(limbSwing * 2.0F) * 0.7F * prevLimbSwing;
+		float legx2 = MathHelper.cos(limbSwing * 2.0F + (float) Math.PI) * 0.7F * prevLimbSwing;
 		Head1.rotateAngleY = heady;
 		Head2.rotateAngleY = heady;
 		Head3.rotateAngleY = heady;

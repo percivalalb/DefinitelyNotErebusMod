@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
@@ -29,77 +28,77 @@ public class WorldChunkManagerErebus extends WorldChunkManager {
 
 	private final float rainfall;
 
-	public WorldChunkManagerErebus(float par2, float par3, World world) {
+	public WorldChunkManagerErebus(float temperature, float rain, World world) {
 		biomesToSpawnIn = new ArrayList(allowedBiomes);
-		hellTemperature = par2;
-		rainfall = par3;
+		hellTemperature = temperature;
+		rainfall = rain;
 		biomeCache = new BiomeCache(this);
-		GenLayer[] var4 = GenLayerErebus.initializeAllBiomeGenerators(world.getSeed(), world.getWorldInfo().getTerrainType());
-		var4 = getModdedBiomeGenerators(world.getWorldInfo().getTerrainType(), world.getSeed(), var4);
-		genBiomes = var4[0];
-		biomeIndexLayer = var4[1];
+		GenLayer[] layers = GenLayerErebus.initializeAllBiomeGenerators(world.getSeed(), world.getWorldInfo().getTerrainType());
+		layers = getModdedBiomeGenerators(world.getWorldInfo().getTerrainType(), world.getSeed(), layers);
+		genBiomes = layers[0];
+		biomeIndexLayer = layers[1];
 	}
 
 	@Override
-	public BiomeGenBase getBiomeGenAt(int par1, int par2) {
-		return biomeCache.getBiomeGenAt(par1, par2);
+	public BiomeGenBase getBiomeGenAt(int chunkX, int chunkZ) {
+		return biomeCache.getBiomeGenAt(chunkX, chunkZ);
 	}
 
 	@Override
-	public BiomeGenBase[] getBiomesForGeneration(BiomeGenBase par1ArrayOfBiomeGenBase[], int par2, int par3, int par4, int par5) {
+	public BiomeGenBase[] getBiomesForGeneration(BiomeGenBase biomesForGeneration[], int x, int z, int sizeX, int sizeZ) {
 		IntCache.resetIntCache();
 
-		if (par1ArrayOfBiomeGenBase == null || par1ArrayOfBiomeGenBase.length < par4 * par5)
-			par1ArrayOfBiomeGenBase = new BiomeGenBase[par4 * par5];
+		if (biomesForGeneration == null || biomesForGeneration.length < sizeX * sizeZ)
+			biomesForGeneration = new BiomeGenBase[sizeX * sizeZ];
 
-		int[] var6 = genBiomes.getInts(par2, par3, par4, par5);
+		int[] var6 = genBiomes.getInts(x, z, sizeX, sizeZ);
 
-		for (int var7 = 0; var7 < par4 * par5; ++var7)
-			par1ArrayOfBiomeGenBase[var7] = BiomeGenBase.biomeList[var6[var7]];
+		for (int var7 = 0; var7 < sizeX * sizeZ; ++var7)
+			biomesForGeneration[var7] = BiomeGenBase.biomeList[var6[var7]];
 
-		return par1ArrayOfBiomeGenBase;
+		return biomesForGeneration;
 	}
 
 	@Override
-	public float[] getTemperatures(float par1ArrayOfFloat[], int par2, int par3, int par4, int par5) {
-		if (par1ArrayOfFloat == null || par1ArrayOfFloat.length < par4 * par5)
-			par1ArrayOfFloat = new float[par4 * par5];
+	public float[] getTemperatures(float temperatureArray[], int x, int z, int sizeX, int sizeZ) {
+		if (temperatureArray == null || temperatureArray.length < sizeX * sizeZ)
+			temperatureArray = new float[sizeX * sizeZ];
 
-		Arrays.fill(par1ArrayOfFloat, 0, par4 * par5, hellTemperature);
-		return par1ArrayOfFloat;
+		Arrays.fill(temperatureArray, 0, sizeX * sizeZ, hellTemperature);
+		return temperatureArray;
 	}
 
 	@Override
-	public float[] getRainfall(float par1ArrayOfFloat[], int par2, int par3, int par4, int par5) {
-		if (par1ArrayOfFloat == null || par1ArrayOfFloat.length < par4 * par5)
-			par1ArrayOfFloat = new float[par4 * par5];
+	public float[] getRainfall(float rainfallArray[], int x, int z, int sizeX, int sizeZ) {
+		if (rainfallArray == null || rainfallArray.length < sizeX * sizeZ)
+			rainfallArray = new float[sizeX * sizeZ];
 
-		Arrays.fill(par1ArrayOfFloat, 0, par4 * par5, rainfall);
-		return par1ArrayOfFloat;
+		Arrays.fill(rainfallArray, 0, sizeX * sizeZ, rainfall);
+		return rainfallArray;
 	}
 
 	@Override
-	public BiomeGenBase[] loadBlockGeneratorData(BiomeGenBase par1ArrayOfBiomeGenBase[], int par2, int par3, int par4, int par5) {
-		return this.getBiomeGenAt(par1ArrayOfBiomeGenBase, par2, par3, par4, par5, true);
+	public BiomeGenBase[] loadBlockGeneratorData(BiomeGenBase biomesForGeneration[], int x, int z, int sizeX, int sizeZ) {
+		return this.getBiomeGenAt(biomesForGeneration, x, z, sizeX, sizeZ, true);
 	}
 
 	@Override
-	public BiomeGenBase[] getBiomeGenAt(BiomeGenBase[] par1ArrayOfBiomeGenBase, int par2, int par3, int par4, int par5, boolean par6) {
+	public BiomeGenBase[] getBiomeGenAt(BiomeGenBase[] biomesForGeneration, int x, int z, int sizeX, int sizeZ, boolean useCache) {
 		IntCache.resetIntCache();
 
-		if (par1ArrayOfBiomeGenBase == null || par1ArrayOfBiomeGenBase.length < par4 * par5)
-			par1ArrayOfBiomeGenBase = new BiomeGenBase[par4 * par5];
+		if (biomesForGeneration == null || biomesForGeneration.length < sizeX * sizeZ)
+			biomesForGeneration = new BiomeGenBase[sizeX * sizeZ];
 
-		if (par6 && par4 == 16 && par5 == 16 && (par2 & 15) == 0 && (par3 & 15) == 0) {
-			BiomeGenBase[] var9 = biomeCache.getCachedBiomes(par2, par3);
-			System.arraycopy(var9, 0, par1ArrayOfBiomeGenBase, 0, par4 * par5);
-			return par1ArrayOfBiomeGenBase;
+		if (useCache && sizeX == 16 && sizeZ == 16 && (x & 15) == 0 && (z & 15) == 0) {
+			BiomeGenBase[] var9 = biomeCache.getCachedBiomes(x, z);
+			System.arraycopy(var9, 0, biomesForGeneration, 0, sizeX * sizeZ);
+			return biomesForGeneration;
 		} else {
-			int[] var7 = biomeIndexLayer.getInts(par2, par3, par4, par5);
-			for (int var8 = 0; var8 < par4 * par5; ++var8)
-				par1ArrayOfBiomeGenBase[var8] = BiomeGenBase.biomeList[var7[var8]];
+			int[] var7 = biomeIndexLayer.getInts(x, z, sizeX, sizeZ);
+			for (int var8 = 0; var8 < sizeX * sizeZ; ++var8)
+				biomesForGeneration[var8] = BiomeGenBase.biomeList[var7[var8]];
 
-			return par1ArrayOfBiomeGenBase;
+			return biomesForGeneration;
 		}
 	}
 

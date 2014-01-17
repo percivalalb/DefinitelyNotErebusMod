@@ -345,38 +345,38 @@ public class ModelAntlion extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		Head.render(par7);
-		Neck1.render(par7);
-		Neck2.render(par7);
-		HR2.render(par7);
-		HL2.render(par7);
-		ThxR2.render(par7);
-		ThxL2.render(par7);
-		ThxR3.render(par7);
-		ThxL3.render(par7);
-		ThxR4.render(par7);
-		ThxL4.render(par7);
-		ThxR5.render(par7);
-		ThxL5.render(par7);
-		ThxR6.render(par7);
-		ThxL6.render(par7);
-		ThxR7.render(par7);
-		ThxL7.render(par7);
-		ThxR9.render(par7);
-		ThxL9.render(par7);
-		ThxR10.render(par7);
-		ThxL10.render(par7);
-		Thx11.render(par7);
-		Thx12.render(par7);
-		RF1.render(par7);
-		RM1.render(par7);
-		RB1.render(par7);
-		LF1.render(par7);
-		LM1.render(par7);
-		LB1.render(par7);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		Head.render(unitPixel);
+		Neck1.render(unitPixel);
+		Neck2.render(unitPixel);
+		HR2.render(unitPixel);
+		HL2.render(unitPixel);
+		ThxR2.render(unitPixel);
+		ThxL2.render(unitPixel);
+		ThxR3.render(unitPixel);
+		ThxL3.render(unitPixel);
+		ThxR4.render(unitPixel);
+		ThxL4.render(unitPixel);
+		ThxR5.render(unitPixel);
+		ThxL5.render(unitPixel);
+		ThxR6.render(unitPixel);
+		ThxL6.render(unitPixel);
+		ThxR7.render(unitPixel);
+		ThxL7.render(unitPixel);
+		ThxR9.render(unitPixel);
+		ThxL9.render(unitPixel);
+		ThxR10.render(unitPixel);
+		ThxL10.render(unitPixel);
+		Thx11.render(unitPixel);
+		Thx12.render(unitPixel);
+		RF1.render(unitPixel);
+		RM1.render(unitPixel);
+		RB1.render(unitPixel);
+		LF1.render(unitPixel);
+		LM1.render(unitPixel);
+		LB1.render(unitPixel);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -386,12 +386,12 @@ public class ModelAntlion extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
-		float cos1 = MathHelper.cos(par1 * 1.0F + (float) Math.PI) * 0.5F * par2;
-		float cos2 = MathHelper.cos(par1 * 1.0F) * 0.5F * par2;
-		float heady = par4 / (180F / (float) Math.PI);
-		float headx = par5 / (180F / (float) Math.PI);
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
+		super.setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		float cos1 = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing;
+		float cos2 = MathHelper.cos(limbSwing * 1.0F) * 0.5F * prevLimbSwing;
+		float heady = rotationYaw / (180F / (float) Math.PI);
+		float headx = rotationPitch / (180F / (float) Math.PI);
 		Head.rotateAngleY = heady;
 		Neck1.rotateAngleY = heady;
 		Head.rotateAngleX = headx;
@@ -408,11 +408,11 @@ public class ModelAntlion extends ModelBase {
 		RB1.rotateAngleY = -cos2 + 3.8397247F;
 		RM1.rotateAngleY = -cos1 + 3.141593F;
 		RF1.rotateAngleY = -cos2 + 2.6179942F;
-		MandR1.rotateAngleY = -MathHelper.cos(par1 * 0.75F) * 0.2F * par2 + 0.35F;
-		MandR2.rotateAngleY = -MathHelper.cos(par1 * 0.75F) * 0.2F * par2 + 0.35F;
-		MandR3.rotateAngleY = -MathHelper.cos(par1 * 0.75F) * 0.2F * par2 - 0.35F;
-		MandL1.rotateAngleY = -MathHelper.cos(par1 * 0.75F + (float) Math.PI) * 0.2F * par2 - 0.35F;
-		MandL2.rotateAngleY = -MathHelper.cos(par1 * 0.75F + (float) Math.PI) * 0.2F * par2 - 0.35F;
-		MandL3.rotateAngleY = -MathHelper.cos(par1 * 0.75F + (float) Math.PI) * 0.2F * par2 + 0.35F;
+		MandR1.rotateAngleY = -MathHelper.cos(limbSwing * 0.75F) * 0.2F * prevLimbSwing + 0.35F;
+		MandR2.rotateAngleY = -MathHelper.cos(limbSwing * 0.75F) * 0.2F * prevLimbSwing + 0.35F;
+		MandR3.rotateAngleY = -MathHelper.cos(limbSwing * 0.75F) * 0.2F * prevLimbSwing - 0.35F;
+		MandL1.rotateAngleY = -MathHelper.cos(limbSwing * 0.75F + (float) Math.PI) * 0.2F * prevLimbSwing - 0.35F;
+		MandL2.rotateAngleY = -MathHelper.cos(limbSwing * 0.75F + (float) Math.PI) * 0.2F * prevLimbSwing - 0.35F;
+		MandL3.rotateAngleY = -MathHelper.cos(limbSwing * 0.75F + (float) Math.PI) * 0.2F * prevLimbSwing + 0.35F;
 	}
 }

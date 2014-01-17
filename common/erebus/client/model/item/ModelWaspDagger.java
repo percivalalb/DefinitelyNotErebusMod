@@ -54,13 +54,13 @@ public class ModelWaspDagger extends ModelBase {
 		setRotation(Jewel, 0F, 0F, 0.7853982F);
 	}
 
-	public void render(float par7) {
-		Point.render(par7);
-		Blade.render(par7);
-		Tang.render(par7);
-		Hilt.render(par7);
-		Pommel.render(par7);
-		Jewel.render(par7);
+	public void render(float unitPixel) {
+		Point.render(unitPixel);
+		Blade.render(unitPixel);
+		Tang.render(unitPixel);
+		Hilt.render(unitPixel);
+		Pommel.render(unitPixel);
+		Jewel.render(unitPixel);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -70,7 +70,7 @@ public class ModelWaspDagger extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
 	}
 
 }

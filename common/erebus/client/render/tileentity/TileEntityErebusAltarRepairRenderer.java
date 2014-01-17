@@ -3,9 +3,7 @@ package erebus.client.render.tileentity;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.block.ModelAltarRepair;
@@ -66,8 +64,8 @@ public class TileEntityErebusAltarRepairRenderer extends TileEntitySpecialRender
 	}
 
 	@Override
-	public void renderTileEntityAt(TileEntity par1TileEntity, double par2, double par4, double par6, float par8) {
-		renderAModelAt((TileEntityErebusAltarRepair) par1TileEntity, par2, par4, par6, par8);
+	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float partialTickTime) {
+		renderAModelAt((TileEntityErebusAltarRepair) tile, x, y, z, partialTickTime);
 	}
 
 }

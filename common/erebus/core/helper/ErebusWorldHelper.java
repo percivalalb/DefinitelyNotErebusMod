@@ -4,13 +4,13 @@ import net.minecraft.world.World;
 
 public class ErebusWorldHelper {
 
-	public static void setBlockIfEmpty(int par1, int par2, int par3, int par4, int par5, int par6, World world) {
-		if (world.isAirBlock(par1, par2, par3))
-			world.setBlock(par1, par2, par3, par4, par5, par6);
+	public static void setBlockIfEmpty(int x, int y, int z, int blockID, int metadata, int flags, World world) {
+		if (world.isAirBlock(x, y, z))
+			world.setBlock(x, y, z, blockID, metadata, flags);
 	}
 
-	public static void setBlockUnderSky(int par1, int par2, int par3, int par4, int par5, int par6, World world) {
-		if (world.canBlockSeeTheSky(par1, par2, par3))
-			world.setBlock(par1, par2, par3, par4, par5, par6);
+	public static void setBlockUnderSky(int x, int y, int z, int blockID, int metadata, int flags, World world) {
+		if (world.canBlockSeeTheSky(x, y, z))
+			world.setBlock(x, y, z, blockID, metadata, flags);
 	}
 }

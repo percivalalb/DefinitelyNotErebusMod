@@ -5,9 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelPrayingMantis;
@@ -22,18 +20,18 @@ public class RenderPrayingMantis extends RenderLiving {
 
 	}
 
-	public void renderPrayingMantis(EntityPrayingMantis entityPrayingMantis, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(entityPrayingMantis, par2, par4, par6, par8, par9);
+	public void renderPrayingMantis(EntityPrayingMantis entityPrayingMantis, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving(entityPrayingMantis, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderPrayingMantis((EntityPrayingMantis) entityLiving, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderPrayingMantis((EntityPrayingMantis) entityLiving, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-		renderPrayingMantis((EntityPrayingMantis) entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderPrayingMantis((EntityPrayingMantis) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

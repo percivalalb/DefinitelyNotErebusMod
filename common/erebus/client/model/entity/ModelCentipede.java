@@ -433,68 +433,68 @@ public class ModelCentipede extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		Head1.render(par7);
-		Head3.render(par7);
-		BodA1.render(par7);
-		BodA2.render(par7);
-		RLA1.render(par7);
-		RLA2.render(par7);
-		RLA3.render(par7);
-		LLA1.render(par7);
-		LLA2.render(par7);
-		LLA3.render(par7);
-		BodB1.render(par7);
-		BodB2.render(par7);
-		RLB1.render(par7);
-		RLB2.render(par7);
-		RLB3.render(par7);
-		LLB1.render(par7);
-		LLB2.render(par7);
-		LLB3.render(par7);
-		BodC1.render(par7);
-		BodC2.render(par7);
-		RLC1.render(par7);
-		RLC2.render(par7);
-		RLC3.render(par7);
-		LLC1.render(par7);
-		LLC2.render(par7);
-		LLC3.render(par7);
-		BodD1.render(par7);
-		BodD2.render(par7);
-		RLD1.render(par7);
-		RLD2.render(par7);
-		RLD3.render(par7);
-		LLD1.render(par7);
-		LLD2.render(par7);
-		LLD3.render(par7);
-		BodE1.render(par7);
-		BodE2.render(par7);
-		RLE1.render(par7);
-		RLE2.render(par7);
-		RLE3.render(par7);
-		LLE1.render(par7);
-		LLE2.render(par7);
-		LLE3.render(par7);
-		BodF1.render(par7);
-		BodF2.render(par7);
-		RLF1.render(par7);
-		RLF2.render(par7);
-		RLF3.render(par7);
-		LLF1.render(par7);
-		LLF2.render(par7);
-		LLF3.render(par7);
-		RMand1.render(par7);
-		RMand2.render(par7);
-		RMand3.render(par7);
-		LMand1.render(par7);
-		LMand2.render(par7);
-		LMand3.render(par7);
-		RAnt.render(par7);
-		LAnt.render(par7);
-		Neck.render(par7);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		Head1.render(unitPixel);
+		Head3.render(unitPixel);
+		BodA1.render(unitPixel);
+		BodA2.render(unitPixel);
+		RLA1.render(unitPixel);
+		RLA2.render(unitPixel);
+		RLA3.render(unitPixel);
+		LLA1.render(unitPixel);
+		LLA2.render(unitPixel);
+		LLA3.render(unitPixel);
+		BodB1.render(unitPixel);
+		BodB2.render(unitPixel);
+		RLB1.render(unitPixel);
+		RLB2.render(unitPixel);
+		RLB3.render(unitPixel);
+		LLB1.render(unitPixel);
+		LLB2.render(unitPixel);
+		LLB3.render(unitPixel);
+		BodC1.render(unitPixel);
+		BodC2.render(unitPixel);
+		RLC1.render(unitPixel);
+		RLC2.render(unitPixel);
+		RLC3.render(unitPixel);
+		LLC1.render(unitPixel);
+		LLC2.render(unitPixel);
+		LLC3.render(unitPixel);
+		BodD1.render(unitPixel);
+		BodD2.render(unitPixel);
+		RLD1.render(unitPixel);
+		RLD2.render(unitPixel);
+		RLD3.render(unitPixel);
+		LLD1.render(unitPixel);
+		LLD2.render(unitPixel);
+		LLD3.render(unitPixel);
+		BodE1.render(unitPixel);
+		BodE2.render(unitPixel);
+		RLE1.render(unitPixel);
+		RLE2.render(unitPixel);
+		RLE3.render(unitPixel);
+		LLE1.render(unitPixel);
+		LLE2.render(unitPixel);
+		LLE3.render(unitPixel);
+		BodF1.render(unitPixel);
+		BodF2.render(unitPixel);
+		RLF1.render(unitPixel);
+		RLF2.render(unitPixel);
+		RLF3.render(unitPixel);
+		LLF1.render(unitPixel);
+		LLF2.render(unitPixel);
+		LLF3.render(unitPixel);
+		RMand1.render(unitPixel);
+		RMand2.render(unitPixel);
+		RMand3.render(unitPixel);
+		LMand1.render(unitPixel);
+		LMand2.render(unitPixel);
+		LMand3.render(unitPixel);
+		RAnt.render(unitPixel);
+		LAnt.render(unitPixel);
+		Neck.render(unitPixel);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -504,13 +504,13 @@ public class ModelCentipede extends ModelBase {
 	}
 
 	@Override
-	public void setLivingAnimations(EntityLivingBase entityLiving, float par2, float par3, float par4) {
-		float ba = MathHelper.cos(par2 * 1.0F) * 1.5F * par3;
-		float bb = MathHelper.cos(par2 + 1.0F * 1.0F) * 2.25F * par3;
-		float bc = MathHelper.cos(par2 + 2.0F * 1.0F) * 3.F * par3;
-		float bd = MathHelper.cos(par2 + 3.0F * 1.0F) * 2.5F * par3;
-		float be = MathHelper.cos(par2 + 4.0F * 1.0F) * 1.5F * par3;
-		float bf = MathHelper.cos(par2 + 5.0F * 1.0F) * 0.75F * par3;
+	public void setLivingAnimations(EntityLivingBase entityLiving, float limbSwing, float prevLimbSwing, float partialTickTime) {
+		float ba = MathHelper.cos(limbSwing * 1.0F) * 1.5F * prevLimbSwing;
+		float bb = MathHelper.cos(limbSwing + 1.0F * 1.0F) * 2.25F * prevLimbSwing;
+		float bc = MathHelper.cos(limbSwing + 2.0F * 1.0F) * 3.F * prevLimbSwing;
+		float bd = MathHelper.cos(limbSwing + 3.0F * 1.0F) * 2.5F * prevLimbSwing;
+		float be = MathHelper.cos(limbSwing + 4.0F * 1.0F) * 1.5F * prevLimbSwing;
+		float bf = MathHelper.cos(limbSwing + 5.0F * 1.0F) * 0.75F * prevLimbSwing;
 
 		Head1.rotationPointX = bf;
 		Head3.rotationPointX = bf;
@@ -576,106 +576,106 @@ public class ModelCentipede extends ModelBase {
 		LLE2.rotationPointX = be + 3.0F;
 		LLE3.rotationPointX = be + 3.0F;
 
-		RLA1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		RLA2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		RLA3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		LLA1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
-		LLA2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
-		LLA3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
+		RLA1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing + 3.141593F;
+		RLA2.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing + 3.141593F;
+		RLA3.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing + 3.141593F;
+		LLA1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing;
+		LLA2.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing;
+		LLA3.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing;
 
-		RLA1.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3;
-		RLA2.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3 - 0.2617994F;
-		RLA3.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3 - 0.5235988F;
-		LLA1.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3;
-		LLA2.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3 + 0.2617994F;
-		LLA3.rotateAngleZ = MathHelper.cos(par2 * 1.0F) * 0.5F * par3 + 0.5235988F;
+		RLA1.rotateAngleZ = MathHelper.cos(limbSwing * 1.0F) * 0.5F * prevLimbSwing;
+		RLA2.rotateAngleZ = MathHelper.cos(limbSwing * 1.0F) * 0.5F * prevLimbSwing - 0.2617994F;
+		RLA3.rotateAngleZ = MathHelper.cos(limbSwing * 1.0F) * 0.5F * prevLimbSwing - 0.5235988F;
+		LLA1.rotateAngleZ = MathHelper.cos(limbSwing * 1.0F) * 0.5F * prevLimbSwing;
+		LLA2.rotateAngleZ = MathHelper.cos(limbSwing * 1.0F) * 0.5F * prevLimbSwing + 0.2617994F;
+		LLA3.rotateAngleZ = MathHelper.cos(limbSwing * 1.0F) * 0.5F * prevLimbSwing + 0.5235988F;
 
-		RLB1.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
-		RLB2.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
-		RLB3.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
-		LLB1.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
-		LLB2.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
-		LLB3.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
+		RLB1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.3F * prevLimbSwing + 3.141593F;
+		RLB2.rotateAngleY = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.3F * prevLimbSwing + 3.141593F;
+		RLB3.rotateAngleY = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.3F * prevLimbSwing + 3.141593F;
+		LLB1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.3F * prevLimbSwing;
+		LLB2.rotateAngleY = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.3F * prevLimbSwing;
+		LLB3.rotateAngleY = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.3F * prevLimbSwing;
 
-		RLB1.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3;
-		RLB2.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3 - 0.2617994F;
-		RLB3.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3 - 0.5235988F;
-		LLB1.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3;
-		LLB2.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3 + 0.2617994F;
-		LLB3.rotateAngleZ = MathHelper.cos(par2 + 0.5F * 1.0F + (float) Math.PI) * 0.5F * par3 + 0.5235988F;
+		RLB1.rotateAngleZ = MathHelper.cos(limbSwing + 0.5F * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing;
+		RLB2.rotateAngleZ = MathHelper.cos(limbSwing + 0.5F * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing - 0.2617994F;
+		RLB3.rotateAngleZ = MathHelper.cos(limbSwing + 0.5F * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing - 0.5235988F;
+		LLB1.rotateAngleZ = MathHelper.cos(limbSwing + 0.5F * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing;
+		LLB2.rotateAngleZ = MathHelper.cos(limbSwing + 0.5F * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing + 0.2617994F;
+		LLB3.rotateAngleZ = MathHelper.cos(limbSwing + 0.5F * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing + 0.5235988F;
 
-		RLC1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		RLC2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		RLC3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		LLC1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
-		LLC2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
-		LLC3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
+		RLC1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing + 3.141593F;
+		RLC2.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing + 3.141593F;
+		RLC3.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing + 3.141593F;
+		LLC1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing;
+		LLC2.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing;
+		LLC3.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing;
 
-		RLC1.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3;
-		RLC2.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3 - 0.2617994F;
-		RLC3.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3 - 0.5235988F;
-		LLC1.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3;
-		LLC2.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3 + 0.2617994F;
-		LLC3.rotateAngleZ = MathHelper.cos(par2 + 1.0F * 1.0F) * 0.5F * par3 + 0.5235988F;
+		RLC1.rotateAngleZ = MathHelper.cos(limbSwing + 1.0F * 1.0F) * 0.5F * prevLimbSwing;
+		RLC2.rotateAngleZ = MathHelper.cos(limbSwing + 1.0F * 1.0F) * 0.5F * prevLimbSwing - 0.2617994F;
+		RLC3.rotateAngleZ = MathHelper.cos(limbSwing + 1.0F * 1.0F) * 0.5F * prevLimbSwing - 0.5235988F;
+		LLC1.rotateAngleZ = MathHelper.cos(limbSwing + 1.0F * 1.0F) * 0.5F * prevLimbSwing;
+		LLC2.rotateAngleZ = MathHelper.cos(limbSwing + 1.0F * 1.0F) * 0.5F * prevLimbSwing + 0.2617994F;
+		LLC3.rotateAngleZ = MathHelper.cos(limbSwing + 1.0F * 1.0F) * 0.5F * prevLimbSwing + 0.5235988F;
 
-		RLD1.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
-		RLD2.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
-		RLD3.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3 + 3.141593F;
-		LLD1.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
-		LLD2.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
-		LLD3.rotateAngleY = MathHelper.cos(par2 * 1.0F + (float) Math.PI) * 0.3F * par3;
+		RLD1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.3F * prevLimbSwing + 3.141593F;
+		RLD2.rotateAngleY = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.3F * prevLimbSwing + 3.141593F;
+		RLD3.rotateAngleY = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.3F * prevLimbSwing + 3.141593F;
+		LLD1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.3F * prevLimbSwing;
+		LLD2.rotateAngleY = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.3F * prevLimbSwing;
+		LLD3.rotateAngleY = MathHelper.cos(limbSwing * 1.0F + (float) Math.PI) * 0.3F * prevLimbSwing;
 
-		RLD1.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3;
-		RLD2.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3 - 0.2617994F;
-		RLD3.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3 - 0.5235988F;
-		LLD1.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3;
-		LLD2.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3 + 0.2617994F;
-		LLD3.rotateAngleZ = MathHelper.cos(par2 + 2.0F * 1.0F + (float) Math.PI) * 0.5F * par3 + 0.5235988F;
+		RLD1.rotateAngleZ = MathHelper.cos(limbSwing + 2.0F * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing;
+		RLD2.rotateAngleZ = MathHelper.cos(limbSwing + 2.0F * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing - 0.2617994F;
+		RLD3.rotateAngleZ = MathHelper.cos(limbSwing + 2.0F * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing - 0.5235988F;
+		LLD1.rotateAngleZ = MathHelper.cos(limbSwing + 2.0F * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing;
+		LLD2.rotateAngleZ = MathHelper.cos(limbSwing + 2.0F * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing + 0.2617994F;
+		LLD3.rotateAngleZ = MathHelper.cos(limbSwing + 2.0F * 1.0F + (float) Math.PI) * 0.5F * prevLimbSwing + 0.5235988F;
 
-		RLE1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		RLE2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		RLE3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3 + 3.141593F;
-		LLE1.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
-		LLE2.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
-		LLE3.rotateAngleY = MathHelper.cos(par2 * 1.0F) * 0.3F * par3;
+		RLE1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing + 3.141593F;
+		RLE2.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing + 3.141593F;
+		RLE3.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing + 3.141593F;
+		LLE1.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing;
+		LLE2.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing;
+		LLE3.rotateAngleY = MathHelper.cos(limbSwing * 1.0F) * 0.3F * prevLimbSwing;
 
-		RLE1.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3;
-		RLE2.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3 - 0.2617994F;
-		RLE3.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3 - 0.5235988F;
-		LLE1.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3;
-		LLE2.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3 + 0.2617994F;
-		LLE3.rotateAngleZ = MathHelper.cos(par2 + 3.0F * 1.0F) * 0.5F * par3 + 0.5235988F;
+		RLE1.rotateAngleZ = MathHelper.cos(limbSwing + 3.0F * 1.0F) * 0.5F * prevLimbSwing;
+		RLE2.rotateAngleZ = MathHelper.cos(limbSwing + 3.0F * 1.0F) * 0.5F * prevLimbSwing - 0.2617994F;
+		RLE3.rotateAngleZ = MathHelper.cos(limbSwing + 3.0F * 1.0F) * 0.5F * prevLimbSwing - 0.5235988F;
+		LLE1.rotateAngleZ = MathHelper.cos(limbSwing + 3.0F * 1.0F) * 0.5F * prevLimbSwing;
+		LLE2.rotateAngleZ = MathHelper.cos(limbSwing + 3.0F * 1.0F) * 0.5F * prevLimbSwing + 0.2617994F;
+		LLE3.rotateAngleZ = MathHelper.cos(limbSwing + 3.0F * 1.0F) * 0.5F * prevLimbSwing + 0.5235988F;
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-		Head1.rotateAngleY = par4 / (180F / (float) Math.PI);
-		Head3.rotateAngleY = par4 / (180F / (float) Math.PI);
-		RAnt.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.175F;
-		LAnt.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.175F;
-		RMand1.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.175F;
-		RMand2.rotateAngleY = par4 / (180F / (float) Math.PI);
-		RMand3.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.175F;
-		LMand1.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.175F;
-		LMand2.rotateAngleY = par4 / (180F / (float) Math.PI);
-		LMand3.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.175F;
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
+		Head1.rotateAngleY = rotationYaw / (180F / (float) Math.PI);
+		Head3.rotateAngleY = rotationYaw / (180F / (float) Math.PI);
+		RAnt.rotateAngleY = rotationYaw / (180F / (float) Math.PI) + 0.175F;
+		LAnt.rotateAngleY = rotationYaw / (180F / (float) Math.PI) - 0.175F;
+		RMand1.rotateAngleY = rotationYaw / (180F / (float) Math.PI) - 0.175F;
+		RMand2.rotateAngleY = rotationYaw / (180F / (float) Math.PI);
+		RMand3.rotateAngleY = rotationYaw / (180F / (float) Math.PI) + 0.175F;
+		LMand1.rotateAngleY = rotationYaw / (180F / (float) Math.PI) + 0.175F;
+		LMand2.rotateAngleY = rotationYaw / (180F / (float) Math.PI);
+		LMand3.rotateAngleY = rotationYaw / (180F / (float) Math.PI) - 0.175F;
 
-		Head1.rotateAngleX = par5 / (180F / (float) Math.PI);
-		Head3.rotateAngleX = par5 / (180F / (float) Math.PI);
-		RAnt.rotateAngleX = par5 / (180F / (float) Math.PI);
-		LAnt.rotateAngleX = par5 / (180F / (float) Math.PI);
-		RMand1.rotateAngleX = par5 / (180F / (float) Math.PI);
-		RMand2.rotateAngleX = par5 / (180F / (float) Math.PI);
-		RMand3.rotateAngleX = par5 / (180F / (float) Math.PI);
-		LMand1.rotateAngleX = par5 / (180F / (float) Math.PI);
-		LMand2.rotateAngleX = par5 / (180F / (float) Math.PI);
-		LMand3.rotateAngleX = par5 / (180F / (float) Math.PI);
+		Head1.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		Head3.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		RAnt.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		LAnt.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		RMand1.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		RMand2.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		RMand3.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		LMand1.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		LMand2.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		LMand3.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
 
-		RLF1.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.919862F;
-		RLF2.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.919862F;
-		RLF3.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.919862F;
-		LLF1.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.22173F;
-		LLF2.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.22173F;
-		LLF3.rotateAngleY = par4 / (180F / (float) Math.PI) - 1.22173F;
+		RLF1.rotateAngleY = rotationYaw / (180F / (float) Math.PI) - 1.919862F;
+		RLF2.rotateAngleY = rotationYaw / (180F / (float) Math.PI) - 1.919862F;
+		RLF3.rotateAngleY = rotationYaw / (180F / (float) Math.PI) - 1.919862F;
+		LLF1.rotateAngleY = rotationYaw / (180F / (float) Math.PI) - 1.22173F;
+		LLF2.rotateAngleY = rotationYaw / (180F / (float) Math.PI) - 1.22173F;
+		LLF3.rotateAngleY = rotationYaw / (180F / (float) Math.PI) - 1.22173F;
 	}
 }

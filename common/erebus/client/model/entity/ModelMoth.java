@@ -61,15 +61,15 @@ public class ModelMoth extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		body.render(par7);
-		head.render(par7);
-		rearend.render(par7);
-		head2.render(par7);
-		rightwing.render(par7);
-		leftwing.render(par7);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		body.render(unitPixel);
+		head.render(unitPixel);
+		rearend.render(unitPixel);
+		head2.render(unitPixel);
+		rightwing.render(unitPixel);
+		leftwing.render(unitPixel);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -79,8 +79,8 @@ public class ModelMoth extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
+		super.setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
 		EntityMoth var8 = (EntityMoth) entity;
 		rightwing.rotateAngleZ = var8.wingFloat;
 		leftwing.rotateAngleZ = -var8.wingFloat;

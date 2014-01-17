@@ -9,10 +9,10 @@ public class GenLayerBiomeErebus extends GenLayer {
 
 	private final BiomeGenBase[] allowedBiomes;
 
-	public GenLayerBiomeErebus(long par1, GenLayer par3GenLayer) {
-		super(par1);
+	public GenLayerBiomeErebus(long seed, GenLayer parentGenLayer) {
+		super(seed);
 		allowedBiomes = new BiomeGenBase[] { ModBiomes.underjungle, ModBiomes.underdesert, ModBiomes.undersavannah };
-		parent = par3GenLayer;
+		parent = parentGenLayer;
 	}
 
 	@Override

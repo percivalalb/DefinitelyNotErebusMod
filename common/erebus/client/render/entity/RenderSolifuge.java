@@ -21,18 +21,18 @@ public class RenderSolifuge extends RenderLiving {
 
 	}
 
-	public void renderSolifuge(EntitySolifuge entitySolifuge, double par2, double par4, double par6, float par8, float par9) {
-		super.doRenderLiving(entitySolifuge, par2, par4, par6, par8, par9);
+	public void renderSolifuge(EntitySolifuge entitySolifuge, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		super.doRenderLiving(entitySolifuge, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRenderLiving(EntityLiving entityLiving, double par2, double par4, double par6, float par8, float par9) {
-		renderSolifuge((EntitySolifuge) entityLiving, par2, par4, par6, par8, par9);
+	public void doRenderLiving(EntityLiving entityLiving, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderSolifuge((EntitySolifuge) entityLiving, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-		renderSolifuge((EntitySolifuge) entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		renderSolifuge((EntitySolifuge) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
 	@Override

@@ -507,32 +507,32 @@ public class ModelBlackWidow extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		Rant1.render(par7);
-		Rant2.render(par7);
-		Lant1.render(par7);
-		Lant2.render(par7);
-		MandibleR.render(par7);
-		MandibleL.render(par7);
-		Head.render(par7);
-		Thorax1.render(par7);
-		Thorax2.render(par7);
-		Ab1.render(par7);
-		Ab2.render(par7);
-		Ab3.render(par7);
-		Ab4.render(par7);
-		Ab5.render(par7);
-		Ab6.render(par7);
-		LegFR1.render(par7);
-		LegFL1.render(par7);
-		LegMFR1.render(par7);
-		LegMFL1.render(par7);
-		LegMBR1.render(par7);
-		LegMBL1.render(par7);
-		LegBR1.render(par7);
-		LegBL1.render(par7);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		Rant1.render(unitPixel);
+		Rant2.render(unitPixel);
+		Lant1.render(unitPixel);
+		Lant2.render(unitPixel);
+		MandibleR.render(unitPixel);
+		MandibleL.render(unitPixel);
+		Head.render(unitPixel);
+		Thorax1.render(unitPixel);
+		Thorax2.render(unitPixel);
+		Ab1.render(unitPixel);
+		Ab2.render(unitPixel);
+		Ab3.render(unitPixel);
+		Ab4.render(unitPixel);
+		Ab5.render(unitPixel);
+		Ab6.render(unitPixel);
+		LegFR1.render(unitPixel);
+		LegFL1.render(unitPixel);
+		LegMFR1.render(unitPixel);
+		LegMFL1.render(unitPixel);
+		LegMBR1.render(unitPixel);
+		LegMBL1.render(unitPixel);
+		LegBR1.render(unitPixel);
+		LegBL1.render(unitPixel);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -542,34 +542,34 @@ public class ModelBlackWidow extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
+		super.setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
 
-		Head.rotateAngleY = par4 / (180F / (float) Math.PI);
-		MandibleR.rotateAngleY = par4 / (180F / (float) Math.PI);
-		MandibleL.rotateAngleY = par4 / (180F / (float) Math.PI);
-		Rant1.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.349F;
-		Rant2.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.349F;
-		Lant1.rotateAngleY = par4 / (180F / (float) Math.PI) + 0.349F;
-		Lant2.rotateAngleY = par4 / (180F / (float) Math.PI) - 0.349F;
+		Head.rotateAngleY = rotationYaw / (180F / (float) Math.PI);
+		MandibleR.rotateAngleY = rotationYaw / (180F / (float) Math.PI);
+		MandibleL.rotateAngleY = rotationYaw / (180F / (float) Math.PI);
+		Rant1.rotateAngleY = rotationYaw / (180F / (float) Math.PI) - 0.349F;
+		Rant2.rotateAngleY = rotationYaw / (180F / (float) Math.PI) + 0.349F;
+		Lant1.rotateAngleY = rotationYaw / (180F / (float) Math.PI) + 0.349F;
+		Lant2.rotateAngleY = rotationYaw / (180F / (float) Math.PI) - 0.349F;
 
-		Head.rotateAngleX = par5 / (180F / (float) Math.PI);
-		MandibleR.rotateAngleX = par5 / (180F / (float) Math.PI) + 0.698F;
-		MandibleL.rotateAngleX = par5 / (180F / (float) Math.PI) + 0.698F;
-		Rant1.rotateAngleX = par5 / (180F / (float) Math.PI);
-		Rant2.rotateAngleX = par5 / (180F / (float) Math.PI);
-		Lant1.rotateAngleX = par5 / (180F / (float) Math.PI);
-		Lant2.rotateAngleX = par5 / (180F / (float) Math.PI);
+		Head.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		MandibleR.rotateAngleX = rotationPitch / (180F / (float) Math.PI) + 0.698F;
+		MandibleL.rotateAngleX = rotationPitch / (180F / (float) Math.PI) + 0.698F;
+		Rant1.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		Rant2.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		Lant1.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
+		Lant2.rotateAngleX = rotationPitch / (180F / (float) Math.PI);
 
 		float x = 0.7853982F;
 		float b = 1.2F;
 		float x2 = -2.3561946F;
 		// float b2= -1.9853982F; << unnecessary
 
-		float movcos1 = MathHelper.cos(par1 * 0.7F) * 0.4F * par2;
-		float movsin1 = MathHelper.sin(par1 * 0.7F) * 0.4F * par2;
-		float movcos2 = MathHelper.cos(par1 * 0.7F) * 0.5F * par2;
-		float movcos3 = MathHelper.cos(par1 * 0.0F) * 0.0F * par2;
+		float movcos1 = MathHelper.cos(limbSwing * 0.7F) * 0.4F * prevLimbSwing;
+		float movsin1 = MathHelper.sin(limbSwing * 0.7F) * 0.4F * prevLimbSwing;
+		float movcos2 = MathHelper.cos(limbSwing * 0.7F) * 0.5F * prevLimbSwing;
+		float movcos3 = MathHelper.cos(limbSwing * 0.0F) * 0.0F * prevLimbSwing;
 
 		LegFL1.rotateAngleY = -0.698F + movcos1;
 		LegFL1.rotateAngleX = -0.698F - movsin1;

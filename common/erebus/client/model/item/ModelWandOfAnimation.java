@@ -2,9 +2,7 @@ package erebus.client.model.item;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -82,16 +80,16 @@ public class ModelWandOfAnimation extends ModelBase {
 		TopR3.addChild(TopR5);
 	}
 
-	public void render(float par7) {
-		Shaft.render(par7);
-		TopR3.render(par7);
+	public void render(float unitPixel) {
+		Shaft.render(unitPixel);
+		TopR3.render(unitPixel);
 		GL11.glPushMatrix();
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
-		TopR3.render(par7);
+		TopR3.render(unitPixel);
 		GL11.glRotatef(180.0F, 0.0F, 1.0F, 0.0F);
-		TopR3.render(par7);
+		TopR3.render(unitPixel);
 		GL11.glRotatef(270.0F, 0.0F, 1.0F, 0.0F);
-		TopR3.render(par7);
+		TopR3.render(unitPixel);
 		GL11.glPopMatrix();
 	}
 

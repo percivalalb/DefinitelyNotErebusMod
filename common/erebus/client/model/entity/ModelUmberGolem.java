@@ -409,59 +409,58 @@ public class ModelUmberGolem extends ModelBase
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7)
-	{
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		HeadTop.render(par7);
-		HeadMain.render(par7);
-		HeadFront.render(par7);
-		HeadBottom.render(par7);
-		EyeR.render(par7);
-		EyeL.render(par7);
-		MandibleR1.render(par7);
-		MandibleR2.render(par7);
-		MandibleL1.render(par7);
-		MandibleL2.render(par7);
-		Neck.render(par7);
-		BodyTop.render(par7);
-		BodyMid.render(par7);
-		BodyMain.render(par7);
-		BodyBack.render(par7);
-		ArmR1.render(par7);
-		//    ArmR2.render(par7);
-		//    ArmR3.render(par7);
-		//    PincerR1.render(par7);
-		//    PincerROuter.render(par7);
-		//    PincerRInner.render(par7);
-		ArmL1.render(par7);
-		//    ArmL2.render(par7);
-		//    ArmL3.render(par7);
-		//    PincerL1.render(par7);
-		//    PincerLOuter.render(par7);
-		//    PincerLInner.render(par7);
-		LegR1.render(par7);
-		// LegR2.render(par7);
-		FootR.render(par7);
-		/*   FootRFront.render(par7);
-		    ToeROuter1.render(par7);
-		    ToeROuter2.render(par7);
-		    ToeRInner1.render(par7);
-		    ToeRInner2.render(par7);
-		    FootRBack.render(par7);
-		    ToeRBack1.render(par7);
-		    ToeRBack2.render(par7);
-		 */    LegL1.render(par7);
-		 //   LegL2.render(par7);
-		 FootL.render(par7);
-		 /*   FootLFront.render(par7);
-		    ToeLOuter1.render(par7);
-		    ToeLOuter2.render(par7);
-		    ToeLInner1.render(par7);
-		    ToeLInner2.render(par7);
-		    FootLBack.render(par7);
-		    ToeLBack1.render(par7);
-		    ToeLBack2.render(par7);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		HeadTop.render(unitPixel);
+		HeadMain.render(unitPixel);
+		HeadFront.render(unitPixel);
+		HeadBottom.render(unitPixel);
+		EyeR.render(unitPixel);
+		EyeL.render(unitPixel);
+		MandibleR1.render(unitPixel);
+		MandibleR2.render(unitPixel);
+		MandibleL1.render(unitPixel);
+		MandibleL2.render(unitPixel);
+		Neck.render(unitPixel);
+		BodyTop.render(unitPixel);
+		BodyMid.render(unitPixel);
+		BodyMain.render(unitPixel);
+		BodyBack.render(unitPixel);
+		ArmR1.render(unitPixel);
+		//    ArmR2.render(unitPixel);
+		//    ArmR3.render(unitPixel);
+		//    PincerR1.render(unitPixel);
+		//    PincerROuter.render(unitPixel);
+		//    PincerRInner.render(unitPixel);
+		ArmL1.render(unitPixel);
+		//    ArmL2.render(unitPixel);
+		//    ArmL3.render(unitPixel);
+		//    PincerL1.render(unitPixel);
+		//    PincerLOuter.render(unitPixel);
+		//    PincerLInner.render(unitPixel);
+		LegR1.render(unitPixel);
+		// LegR2.render(unitPixel);
+		FootR.render(unitPixel);
+		/*   FootRFront.render(unitPixel);
+		    ToeROuter1.render(unitPixel);
+		    ToeROuter2.render(unitPixel);
+		    ToeRInner1.render(unitPixel);
+		    ToeRInner2.render(unitPixel);
+		    FootRBack.render(unitPixel);
+		    ToeRBack1.render(unitPixel);
+		    ToeRBack2.render(unitPixel);
+		 */    LegL1.render(unitPixel);
+		 //   LegL2.render(unitPixel);
+		 FootL.render(unitPixel);
+		 /*   FootLFront.render(unitPixel);
+		    ToeLOuter1.render(unitPixel);
+		    ToeLOuter2.render(unitPixel);
+		    ToeLInner1.render(unitPixel);
+		    ToeLInner2.render(unitPixel);
+		    FootLBack.render(unitPixel);
+		    ToeLBack1.render(unitPixel);
+		    ToeLBack2.render(unitPixel);
 		  */
 	}
 
@@ -473,38 +472,38 @@ public class ModelUmberGolem extends ModelBase
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity)
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity)
 	{
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
+		super.setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
 
-		float movcos1= MathHelper.cos(par1 * 0.7F) * 0.3F * par2;
-		float movsin1= MathHelper.sin(par1 * 0.7F) * 1.2F * par2;
-		float movsin2= MathHelper.sin(par1 * 0.0F) * 0.0F * par2;
+		float movcos1= MathHelper.cos(limbSwing * 0.7F) * 0.3F * prevLimbSwing;
+		float movsin1= MathHelper.sin(limbSwing * 0.7F) * 1.2F * prevLimbSwing;
+		float movsin2= MathHelper.sin(limbSwing * 0.0F) * 0.0F * prevLimbSwing;
 		float x=0.2617994F;
 		float lx=1.047198F;
 		float ex=0.6981317F;
 
-		HeadMain.rotateAngleY = par4 / (180F / (float)Math.PI);
-		HeadTop.rotateAngleY = par4 / (180F / (float)Math.PI);
-		HeadFront.rotateAngleY = par4 / (180F / (float)Math.PI);
-		HeadBottom.rotateAngleY = par4 / (180F / (float)Math.PI);
-		EyeR.rotateAngleY = par4 / (180F / (float)Math.PI);
-		EyeL.rotateAngleY = par4 / (180F / (float)Math.PI);
-		MandibleR1.rotateAngleY = par4 / (180F / (float)Math.PI);
-		MandibleR2.rotateAngleY = par4 / (180F / (float)Math.PI);
-		MandibleL1.rotateAngleY = par4 / (180F / (float)Math.PI);
-		MandibleL2.rotateAngleY = par4 / (180F / (float)Math.PI);
+		HeadMain.rotateAngleY = rotationYaw / (180F / (float)Math.PI);
+		HeadTop.rotateAngleY = rotationYaw / (180F / (float)Math.PI);
+		HeadFront.rotateAngleY = rotationYaw / (180F / (float)Math.PI);
+		HeadBottom.rotateAngleY = rotationYaw / (180F / (float)Math.PI);
+		EyeR.rotateAngleY = rotationYaw / (180F / (float)Math.PI);
+		EyeL.rotateAngleY = rotationYaw / (180F / (float)Math.PI);
+		MandibleR1.rotateAngleY = rotationYaw / (180F / (float)Math.PI);
+		MandibleR2.rotateAngleY = rotationYaw / (180F / (float)Math.PI);
+		MandibleL1.rotateAngleY = rotationYaw / (180F / (float)Math.PI);
+		MandibleL2.rotateAngleY = rotationYaw / (180F / (float)Math.PI);
 
-		HeadMain.rotateAngleX =  par5 / (180F / (float)Math.PI);
-		HeadTop.rotateAngleX = par5 / (180F / (float)Math.PI);
-		HeadFront.rotateAngleX = par5 / (180F / (float)Math.PI);
-		HeadBottom.rotateAngleX = par5 / (180F / (float)Math.PI);
-		EyeR.rotateAngleX = par5 / (180F / (float)Math.PI) +ex;
-		EyeL.rotateAngleX = par5 / (180F / (float)Math.PI)+ex;
-		MandibleR1.rotateAngleX = par5 / (180F / (float)Math.PI)+x;
-		MandibleR2.rotateAngleX = par5 / (180F / (float)Math.PI)+x;
-		MandibleL1.rotateAngleX = par5 / (180F / (float)Math.PI)+x;
-		MandibleL2.rotateAngleX = par5 / (180F / (float)Math.PI)+x;
+		HeadMain.rotateAngleX =  rotationPitch / (180F / (float)Math.PI);
+		HeadTop.rotateAngleX = rotationPitch / (180F / (float)Math.PI);
+		HeadFront.rotateAngleX = rotationPitch / (180F / (float)Math.PI);
+		HeadBottom.rotateAngleX = rotationPitch / (180F / (float)Math.PI);
+		EyeR.rotateAngleX = rotationPitch / (180F / (float)Math.PI) +ex;
+		EyeL.rotateAngleX = rotationPitch / (180F / (float)Math.PI)+ex;
+		MandibleR1.rotateAngleX = rotationPitch / (180F / (float)Math.PI)+x;
+		MandibleR2.rotateAngleX = rotationPitch / (180F / (float)Math.PI)+x;
+		MandibleL1.rotateAngleX = rotationPitch / (180F / (float)Math.PI)+x;
+		MandibleL2.rotateAngleX = rotationPitch / (180F / (float)Math.PI)+x;
 
 		ArmR1.rotateAngleZ =   -movcos1;
 		ArmL1.rotateAngleZ =  -movcos1;

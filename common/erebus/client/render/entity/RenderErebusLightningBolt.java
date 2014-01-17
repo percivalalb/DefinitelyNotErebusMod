@@ -1,21 +1,18 @@
 package erebus.client.render.entity;
 
 import java.util.Random;
-
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.entity.effect.EntityErebusLightningBolt;
 
 @SideOnly(Side.CLIENT)
 public class RenderErebusLightningBolt extends Render {
-	public void doRenderErebusLightningBolt(EntityErebusLightningBolt entityErebusLightningBolt, double par2, double par4, double par6, float par8, float par9) {
+	public void doRenderErebusLightningBolt(EntityErebusLightningBolt entityErebusLightningBolt, double x, double y, double z, float rotationYaw, float partialTickTime) {
 		Tessellator tessellator = Tessellator.instance;
 		GL11.glDisable(GL11.GL_TEXTURE_2D);
 		GL11.glDisable(GL11.GL_LIGHTING);
@@ -77,8 +74,8 @@ public class RenderErebusLightningBolt extends Render {
 						d10 *= (j1 - 1) * 0.1D + 1.0D;
 
 					for (int k1 = 0; k1 < 5; ++k1) {
-						double d11 = par2 + 0.5D - d9;
-						double d12 = par6 + 0.5D - d9;
+						double d11 = x + 0.5D - d9;
+						double d12 = z + 0.5D - d9;
 
 						if (k1 == 1 || k1 == 2)
 							d11 += d9 * 2.0D;
@@ -86,8 +83,8 @@ public class RenderErebusLightningBolt extends Render {
 						if (k1 == 2 || k1 == 3)
 							d12 += d9 * 2.0D;
 
-						double d13 = par2 + 0.5D - d10;
-						double d14 = par6 + 0.5D - d10;
+						double d13 = x + 0.5D - d10;
+						double d14 = z + 0.5D - d10;
 
 						if (k1 == 1 || k1 == 2)
 							d13 += d10 * 2.0D;
@@ -95,8 +92,8 @@ public class RenderErebusLightningBolt extends Render {
 						if (k1 == 2 || k1 == 3)
 							d14 += d10 * 2.0D;
 
-						tessellator.addVertex(d13 + d5, par4 + j1 * 16, d14 + d6);
-						tessellator.addVertex(d11 + d7, par4 + (j1 + 1) * 16, d12 + d8);
+						tessellator.addVertex(d13 + d5, y + j1 * 16, d14 + d6);
+						tessellator.addVertex(d11 + d7, y + (j1 + 1) * 16, d12 + d8);
 					}
 
 					tessellator.draw();
@@ -119,7 +116,7 @@ public class RenderErebusLightningBolt extends Render {
 	}
 
 	@Override
-	public void doRender(Entity entity, double par2, double par4, double par6, float par8, float par9) {
-		doRenderErebusLightningBolt((EntityErebusLightningBolt) entity, par2, par4, par6, par8, par9);
+	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
+		doRenderErebusLightningBolt((EntityErebusLightningBolt) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 }

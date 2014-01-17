@@ -8,10 +8,10 @@ public class GenLayerErebusBiome extends GenLayerErebus {
 
 	private final BiomeGenBase[] allowedBiomes;
 
-	public GenLayerErebusBiome(long par1, GenLayerErebus par3GenLayerErebus, WorldType par4WorldType) {
-		super(par1);
-		allowedBiomes = par4WorldType.getBiomesForWorldType();
-		parent = par3GenLayerErebus;
+	public GenLayerErebusBiome(long seed, GenLayerErebus parentGenLayer, WorldType worldType) {
+		super(seed);
+		allowedBiomes = worldType.getBiomesForWorldType();
+		parent = parentGenLayer;
 	}
 
 	@Override

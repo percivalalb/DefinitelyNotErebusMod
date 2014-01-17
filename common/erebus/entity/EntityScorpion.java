@@ -85,13 +85,13 @@ public class EntityScorpion extends EntityMob {
 	}
 
 	@Override
-	protected void playStepSound(int par1, int par2, int par3, int par4) {
+	protected void playStepSound(int x, int y, int z, int blockID) {
 		playSound("mob.spider.step", 0.15F, 1.0F);
 	}
 
 	@Override
-	protected void dropFewItems(boolean par1, int par2) {
-		int var3 = rand.nextInt(4) + rand.nextInt(1 + par2);
+	protected void dropFewItems(boolean recentlyHit, int looting) {
+		int var3 = rand.nextInt(4) + rand.nextInt(1 + looting);
 		int var4;
 		for (var4 = 0; var4 < var3; ++var4)
 			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate), 0.0F);

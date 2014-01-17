@@ -5,9 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelBotFly;
@@ -17,8 +15,8 @@ import erebus.entity.EntityBotFly;
 public class RenderBotFly extends RenderLiving {
 	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelBotFly.png");
 
-	public RenderBotFly(ModelBotFly model, float par2) {
-		super(model, par2);
+	public RenderBotFly(ModelBotFly model, float shadowSize) {
+		super(model, shadowSize);
 	}
 
 	public void renderBotFly(EntityBotFly entityBotFly, double x, double y, double z, float rotationYaw, float partialTickTime) {

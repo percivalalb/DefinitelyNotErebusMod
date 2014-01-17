@@ -109,22 +109,22 @@ public class ModelFly extends ModelBase {
 	}
 
 	@Override
-	public void render(Entity entity, float par2, float par3, float par4, float par5, float par6, float par7) {
-		super.render(entity, par2, par3, par4, par5, par6, par7);
-		setRotationAngles(par2, par3, par4, par5, par6, par7, entity);
-		Shape1.render(par7);
-		Shape2.render(par7);
-		Shape3.render(par7);
-		Shape4.render(par7);
-		Shape5.render(par7);
-		Shape6.render(par7);
-		Shape7.render(par7);
-		Shape8.render(par7);
-		Shape9.render(par7);
-		Shape10.render(par7);
-		Shape11.render(par7);
-		Shape12.render(par7);
-		Shape13.render(par7);
+	public void render(Entity entity, float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel) {
+		super.render(entity, limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel);
+		setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
+		Shape1.render(unitPixel);
+		Shape2.render(unitPixel);
+		Shape3.render(unitPixel);
+		Shape4.render(unitPixel);
+		Shape5.render(unitPixel);
+		Shape6.render(unitPixel);
+		Shape7.render(unitPixel);
+		Shape8.render(unitPixel);
+		Shape9.render(unitPixel);
+		Shape10.render(unitPixel);
+		Shape11.render(unitPixel);
+		Shape12.render(unitPixel);
+		Shape13.render(unitPixel);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z) {
@@ -134,8 +134,8 @@ public class ModelFly extends ModelBase {
 	}
 
 	@Override
-	public void setRotationAngles(float par1, float par2, float par3, float par4, float par5, float par6, Entity entity) {
-		super.setRotationAngles(par1, par2, par3, par4, par5, par6, entity);
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
+		super.setRotationAngles(limbSwing, prevLimbSwing, entityTickTime, rotationYaw, rotationPitch, unitPixel, entity);
 		EntityFly var8 = (EntityFly) entity;
 		Shape12.rotateAngleX = var8.wingFloat;
 		Shape13.rotateAngleX = var8.wingFloat;

@@ -224,7 +224,6 @@ public class BlockBambooBridge extends BlockContainer {
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.875F, 1.0F);
 	}
 
-
 	public boolean canConnectBridgeTo(IBlockAccess IblockAccess, int x, int y, int z) {
 		int l = IblockAccess.getBlockId(x, y, z);
 		if (l != blockID) {

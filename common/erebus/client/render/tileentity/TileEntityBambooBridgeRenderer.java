@@ -25,7 +25,7 @@ public class TileEntityBambooBridgeRenderer extends TileEntitySpecialRenderer {
 				GL11.glTranslated(x + 0.5D, y + 1.5F, z + 0.5D);
 				GL11.glScalef(1F, -1F, -1F);
 				GL11.glRotatef(180F, 0.0F, 1F, 0F);
-				ModelBambooBridge.render();
+				ModelBambooBridge.render(tile);
 				GL11.glPopMatrix();
 				break;
 			case 3:
@@ -33,23 +33,23 @@ public class TileEntityBambooBridgeRenderer extends TileEntitySpecialRenderer {
 				GL11.glTranslated(x + 0.5D, y + 1.5F, z + 0.5D);
 				GL11.glScalef(1F, -1F, -1F);
 				GL11.glRotatef(0F, 0.0F, 1F, 0F);
-				ModelBambooBridge.render();
+				ModelBambooBridge.render(tile);
 				GL11.glPopMatrix();
 				break;
 			case 4:
 				GL11.glPushMatrix();
 				GL11.glTranslated(x + 0.5D, y + 1.5F, z + 0.5D);
 				GL11.glScalef(1F, -1F, -1F);
-				GL11.glRotatef(90F, 0.0F, 1F, 0F);
-				ModelBambooBridge.render();
+				GL11.glRotatef(-90F, 0.0F, 1F, 0F);
+				ModelBambooBridge.render(tile);
 				GL11.glPopMatrix();
 				break;
 			case 5:
 				GL11.glPushMatrix();
 				GL11.glTranslated(x + 0.5D, y + 1.5F, z + 0.5D);
 				GL11.glScalef(1F, -1F, -1F);
-				GL11.glRotatef(-90F, 0.0F, 1F, 0F);
-				ModelBambooBridge.render();
+				GL11.glRotatef(90F, 0.0F, 1F, 0F);
+				ModelBambooBridge.render(tile);
 				GL11.glPopMatrix();
 				break;
 		}

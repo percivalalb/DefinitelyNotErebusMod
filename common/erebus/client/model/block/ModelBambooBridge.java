@@ -2,6 +2,7 @@ package erebus.client.model.block;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+import erebus.tileentity.TileEntityBambooBridge;
 
 public class ModelBambooBridge extends ModelBase
 {
@@ -125,24 +126,29 @@ public class ModelBambooBridge extends ModelBase
 		setRotation(StringL2, 0F, 0F, 0.122173F);
 	}
 
-	public void render()
-	{
+	public void render(TileEntityBambooBridge tile) {
+
+		if (tile.getRenderSide1() == 1) {
+			SupportR1.render(0.0625F);
+			SupportR2.render(0.0625F);
+			StringR1.render(0.0625F);
+			StringR2.render(0.0625F);
+			String4.render(0.0625F);
+		}
+		if (tile.getRenderSide2() == 1) {
+			SupportL1.render(0.0625F);
+			SupportL2.render(0.0625F);
+			StringL1.render(0.0625F);
+			StringL2.render(0.0625F);
+			String3.render(0.0625F);
+		}
+
 		BambooStep1.render(0.0625F);
 		BambooStep3.render(0.0625F);
 		BambooStep2.render(0.0625F);
 		BambooStep4.render(0.0625F);
-		SupportR1.render(0.0625F);
-		SupportR2.render(0.0625F);
-		SupportL1.render(0.0625F);
-		SupportL2.render(0.0625F);
 		String1.render(0.0625F);
 		String2.render(0.0625F);
-		String3.render(0.0625F);
-		String4.render(0.0625F);
-		StringR1.render(0.0625F);
-		StringR2.render(0.0625F);
-		StringL1.render(0.0625F);
-		StringL2.render(0.0625F);
 	}
 
 	private void setRotation(ModelRenderer model, float x, float y, float z)

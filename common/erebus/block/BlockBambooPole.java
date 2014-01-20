@@ -50,22 +50,6 @@ public class BlockBambooPole extends Block {
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, int neighborID) {
-		dropPoleIfCantStay(world, x, y, z);
-	}
-
-	protected boolean dropPoleIfCantStay(World world, int x, int y, int z) {
-		if (!canPlaceBlockAt(world, x, y, z)) {
-			if (world.getBlockId(x, y - 1, z) == 0) {
-				dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-				world.setBlockToAir(x, y, z);
-			}
-			return false;
-		} else
-			return true;
-	}
-
-	@Override
 	public int idDropped(int meta, Random rand, int fortune) {
 		return blockID;
 	}

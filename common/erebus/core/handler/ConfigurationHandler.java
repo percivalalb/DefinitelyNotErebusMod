@@ -89,6 +89,7 @@ public class ConfigurationHandler {
 			ModBlocks.petrifiedWoodChestID = config.getBlock("Block ID of Petrified Wood Chest", 2574).getInt(2574);
 			ModBlocks.blockBonesID = config.getBlock("Block ID of Block o' Bones", 2575).getInt(2575);
 			ModBlocks.blockWitherWebID = config.getBlock("Block ID of Wither Web", 2576).getInt(2576);
+			ModBlocks.extenderThingyID = config.getBlock("Block ID of Extender Thingy", 2578).getInt(2578);
 
 			int id = 2527;
 			ModBlocks.umbercobbleStairsID = new int[BlockUmberstone.iconPaths.length];
@@ -116,7 +117,7 @@ public class ConfigurationHandler {
 			ModBlocks.jumpingSpiderSpawnerID = config.getBlock("Block ID of Jumping Spider Spawners", 2553).getInt(2553);
 			ModBlocks.waspSpawnerID = config.getBlock("Block ID of Wasp Spawners", 2572).getInt(2572);
 
-			// latest ID used (please update after adding new blocks!) >>> 2577
+			// latest ID used (please update after adding new blocks!) >>> 2579
 
 			/*
 			 * Items

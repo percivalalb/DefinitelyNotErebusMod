@@ -144,6 +144,7 @@ tile.waspNestBlock.name=Wasp Nest Block
 tile.petrifiedWoodChest.name=Petrified Wood Chest
 tile.blockBones.name=Block o' Bones
 tile.witherWeb.name=Wither Web
+tile.extenderThingy.name=Extender Thingy
 
 #Items
 item.helmetExo.name=Exoskeleton Helmet

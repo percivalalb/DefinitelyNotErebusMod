@@ -67,11 +67,6 @@ public class BlockBambooBridge extends BlockContainer {
 
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entityLivingBase, ItemStack is) {
-		TileEntityBambooBridge te = (TileEntityBambooBridge) world.getBlockTileEntity(x, y, z);
-		front = canConnectBridgeTo(world, x, y, z - 1);
-		back = canConnectBridgeTo(world, x, y, z + 1);
-		left = canConnectBridgeTo(world, x - 1, y, z);
-		right = canConnectBridgeTo(world, x + 1, y, z);
 		byte meta = 0;
 		int rotation = MathHelper.floor_double(entityLivingBase.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
 		if (rotation == 0)
@@ -82,55 +77,12 @@ public class BlockBambooBridge extends BlockContainer {
 			meta = 3;
 		if (rotation == 3)
 			meta = 4;
-
-		if (meta == 2) {
-			if (!right)
-				te.setRenderSide1((byte) 1);
-			if (!left)
-				te.setRenderSide2((byte) 1);
-			if (right)
-				te.setRenderSide1((byte) 0);
-			if (left)
-				te.setRenderSide2((byte) 0);
-		}
-
-		if (meta == 3) {
-			if (!right)
-				te.setRenderSide2((byte) 1);
-			if (!left)
-				te.setRenderSide1((byte) 1);
-			if (right)
-				te.setRenderSide2((byte) 0);
-			if (left)
-				te.setRenderSide1((byte) 0);
-		}
-
-		if (meta == 4) {
-			if (!back)
-				te.setRenderSide1((byte) 1);
-			if (!front)
-				te.setRenderSide2((byte) 1);
-			if (back)
-				te.setRenderSide1((byte) 0);
-			if (front)
-				te.setRenderSide2((byte) 0);
-		}
-
-		if (meta == 5) {
-			if (!back)
-				te.setRenderSide2((byte) 1);
-			if (!front)
-				te.setRenderSide1((byte) 1);
-			if (back)
-				te.setRenderSide2((byte) 0);
-			if (front)
-				te.setRenderSide1((byte) 0);
-		}
 		world.setBlockMetadataWithNotify(x, y, z, meta, 3);
+		onBlockAdded(world, x, y, z);
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, int id) {
+	public void onBlockAdded(World world, int x, int y, int z) {
 		TileEntityBambooBridge te = (TileEntityBambooBridge) world.getBlockTileEntity(x, y, z);
 		int meta = world.getBlockMetadata(x, y, z);
 		front = canConnectBridgeTo(world, x, y, z - 1);
@@ -186,10 +138,14 @@ public class BlockBambooBridge extends BlockContainer {
 	}
 
 	@Override
+	public void onNeighborBlockChange(World world, int x, int y, int z, int id) {
+		onBlockAdded(world, x, y, z);
+	}
+
+	@Override
 	public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB box, List list, Entity entity) {
 		float pixel = 0.0625F; // 1 pixel
 		int meta = world.getBlockMetadata(x, y, z);
-		TileEntityBambooBridge te = (TileEntityBambooBridge) world.getBlockTileEntity(x, y, z);
 		front = canConnectBridgeTo(world, x, y, z - 1);
 		back = canConnectBridgeTo(world, x, y, z + 1);
 		left = canConnectBridgeTo(world, x - 1, y, z);

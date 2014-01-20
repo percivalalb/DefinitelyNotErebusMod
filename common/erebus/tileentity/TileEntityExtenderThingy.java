@@ -25,7 +25,7 @@ public class TileEntityExtenderThingy extends TileEntity {
 		if (extending) {
 			stop = index > 16;
 			increment = 1;
-			blockID = ModBlocks.bambooBridge.blockID;
+			blockID = dir == ForgeDirection.UP || dir == ForgeDirection.DOWN ? ModBlocks.bambooLadder.blockID : ModBlocks.bambooBridge.blockID;
 		} else {
 			stop = index <= 0;
 			increment = -1;
@@ -38,13 +38,30 @@ public class TileEntityExtenderThingy extends TileEntity {
 			int z = zCoord + index * dir.offsetZ;
 
 			if (!extending || worldObj.isAirBlock(x, y, z)) {
-				worldObj.setBlock(x, y, z, blockID);
+				worldObj.setBlock(x, y, z, blockID, getMetaFromDirection(dir), 3);
 				if (extending)
 					worldObj.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, ModBlocks.bambooBridge.stepSound.getPlaceSound(), (ModBlocks.bambooBridge.stepSound.getVolume() + 1.0F) / 2.0F, ModBlocks.bambooBridge.stepSound.getPitch() * 0.8F);
 				else
 					worldObj.playAuxSFXAtEntity(null, 2001, x, y, z, ModBlocks.bambooBridge.blockID + (worldObj.getBlockMetadata(x, y, z) << 12));
 			}
 			index += increment;
+		}
+	}
+
+	private int getMetaFromDirection(ForgeDirection dir) {
+		switch(dir) {
+			case UP:
+				return 1;
+			case DOWN:
+				return 1;
+			case EAST:
+			case WEST:
+				return 4;
+			case NORTH:
+			case SOUTH:
+				return 3;
+			default:
+				return 0;
 		}
 	}
 

@@ -21,7 +21,7 @@ public class GuiExtenderThingy extends GuiContainer {
 	public GuiExtenderThingy(InventoryPlayer inventory, TileEntityExtenderThingy tile) {
 		super(new ContainerExtenderThingy(inventory, tile));
 		xSize = 176;
-		ySize = 138;
+		ySize = 136;
 	}
 
 	@Override

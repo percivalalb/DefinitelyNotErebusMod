@@ -98,9 +98,6 @@ public class EntityBeetleLarva extends EntityCreature {
 		}
 	}
 
-	/**
-	 * Returns the sound this mob makes while it's alive.
-	 */
 	@Override
 	protected String getLivingSound() {
 		String actionSound = "erebus:beetlelarvasound";
@@ -148,8 +145,11 @@ public class EntityBeetleLarva extends EntityCreature {
 
 			worldObj.playSoundEffect(posX, posY, posZ, getJumpedOnSound(), 1.0F, 0.5F);
 			worldObj.playSoundEffect(posX, posY, posZ, getDeathSound(), 1.0F, 0.7F);
-			if (rand.nextInt(200) == 0)
-				entityDropItem(new ItemStack(Item.diamond, 1, 1), 0.0F);
+			if (!worldObj.isRemote) {
+				if (rand.nextInt(200) == 0)
+					entityDropItem(new ItemStack(Item.diamond), 0.0F);
+				entityDropItem(new ItemStack(Item.slimeBall), 0.0F);
+			}
 		}
 	}
 

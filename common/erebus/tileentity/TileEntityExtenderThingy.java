@@ -1,5 +1,6 @@
 package erebus.tileentity;
 
+import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
 import erebus.ModBlocks;
@@ -21,11 +22,12 @@ public class TileEntityExtenderThingy extends TileEntity {
 		boolean stop;
 		int increment;
 		int blockID;
+		Block extension = getExtension(dir);
 
 		if (extending) {
 			stop = index > 16;
 			increment = 1;
-			blockID = dir == ForgeDirection.UP || dir == ForgeDirection.DOWN ? ModBlocks.bambooLadder.blockID : ModBlocks.bambooBridge.blockID;
+			blockID = extension.blockID;
 		} else {
 			stop = index <= 0;
 			increment = -1;
@@ -40,12 +42,16 @@ public class TileEntityExtenderThingy extends TileEntity {
 			if (!extending || worldObj.isAirBlock(x, y, z)) {
 				worldObj.setBlock(x, y, z, blockID, getMetaFromDirection(dir), 3);
 				if (extending)
-					worldObj.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, ModBlocks.bambooBridge.stepSound.getPlaceSound(), (ModBlocks.bambooBridge.stepSound.getVolume() + 1.0F) / 2.0F, ModBlocks.bambooBridge.stepSound.getPitch() * 0.8F);
+					worldObj.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, extension.stepSound.getPlaceSound(), (extension.stepSound.getVolume() + 1.0F) / 2.0F, extension.stepSound.getPitch() * 0.8F);
 				else
-					worldObj.playAuxSFXAtEntity(null, 2001, x, y, z, ModBlocks.bambooBridge.blockID + (worldObj.getBlockMetadata(x, y, z) << 12));
+					worldObj.playAuxSFXAtEntity(null, 2001, x, y, z, extension.blockID + (worldObj.getBlockMetadata(x, y, z) << 12));
 			}
 			index += increment;
 		}
+	}
+
+	private Block getExtension(ForgeDirection dir) {
+		return dir == ForgeDirection.UP || dir == ForgeDirection.DOWN ? ModBlocks.bambooPole : ModBlocks.bambooBridge;
 	}
 
 	private int getMetaFromDirection(ForgeDirection dir) {

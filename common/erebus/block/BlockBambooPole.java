@@ -3,15 +3,18 @@ package erebus.block;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.tileentity.TileEntityBambooPole;
 
-public class BlockBambooPole extends Block {
+public class BlockBambooPole extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	private Icon poleIconTop, poleIconBottom;
@@ -22,6 +25,11 @@ public class BlockBambooPole extends Block {
 	}
 
 	@Override
+	public int getRenderType() {
+		return -1;
+	}
+
+	@Override
 	public boolean isOpaqueCube() {
 		return false;
 	}
@@ -29,6 +37,11 @@ public class BlockBambooPole extends Block {
 	@Override
 	public boolean renderAsNormalBlock() {
 		return false;
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world) {
+		return new TileEntityBambooPole();
 	}
 
 	@Override

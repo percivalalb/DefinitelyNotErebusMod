@@ -53,6 +53,7 @@ public class CommonProxy implements IGuiHandler {
 	public static final int GUI_ID_UMBER_FURNACE = 4;
 	public static final int GUI_ID_PETRIFIED_CHEST = 5;
 	public static final int GUI_ID_ANIMATED_BAMBOO_CRATE = 6;
+	public static final int GUI_ID_EXTENDER_THINGY = 7;
 	public final int bambooCropRenderID = RenderingRegistry.getNextAvailableRenderId();
 	public final int hollowLogRenderID = RenderingRegistry.getNextAvailableRenderId();
 

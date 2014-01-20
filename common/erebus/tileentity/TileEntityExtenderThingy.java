@@ -1,15 +1,19 @@
 package erebus.tileentity;
 
 import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
 import erebus.ModBlocks;
 
-public class TileEntityExtenderThingy extends TileEntity {
+public class TileEntityExtenderThingy extends TileEntity implements IInventory {
 
 	private boolean extending;
 	private int index = 0;
 	private ForgeDirection dir = null;
+	private final ItemStack[] inventory = new ItemStack[6];
 
 	@Override
 	public void updateEntity() {
@@ -91,5 +95,91 @@ public class TileEntityExtenderThingy extends TileEntity {
 
 	public void setExtending(boolean extending) {
 		this.extending = extending;
+	}
+
+	@Override
+	public int getSizeInventory() {
+		return inventory.length;
+	}
+
+	@Override
+	public ItemStack getStackInSlot(int slot) {
+		return inventory[slot];
+	}
+
+	@Override
+	public ItemStack decrStackSize(int slot, int amount) {
+		if (inventory[slot] != null) {
+			ItemStack is;
+
+			if (inventory[slot].stackSize <= amount) {
+				is = inventory[slot];
+				inventory[slot] = null;
+				onInventoryChanged();
+				return is;
+			} else {
+				is = inventory[slot].splitStack(amount);
+
+				if (inventory[slot].stackSize == 0)
+					inventory[slot] = null;
+
+				onInventoryChanged();
+				return is;
+			}
+		} else
+			return null;
+	}
+
+	@Override
+	public ItemStack getStackInSlotOnClosing(int slot) {
+		if (inventory[slot] != null) {
+			ItemStack is = inventory[slot];
+			inventory[slot] = null;
+			return is;
+		} else
+			return null;
+	}
+
+	@Override
+	public void setInventorySlotContents(int slot, ItemStack is) {
+		inventory[slot] = is;
+
+		if (is != null && is.stackSize > getInventoryStackLimit())
+			is.stackSize = getInventoryStackLimit();
+
+		onInventoryChanged();
+	}
+
+	@Override
+	public String getInvName() {
+		return "container.extenderThingy";
+	}
+
+	@Override
+	public boolean isInvNameLocalized() {
+		return false;
+	}
+
+	@Override
+	public int getInventoryStackLimit() {
+		return 64;
+	}
+
+	@Override
+	public boolean isUseableByPlayer(EntityPlayer player) {
+		return true;
+	}
+
+	@Override
+	public void openChest() {
+	}
+
+	@Override
+	public void closeChest() {
+	}
+
+	@Override
+	public boolean isItemValidForSlot(int slot, ItemStack stack) {
+		return stack != null && (stack.itemID == ModBlocks.bambooPole.blockID || stack.itemID == ModBlocks.bambooBridge.blockID);
 	}
 }

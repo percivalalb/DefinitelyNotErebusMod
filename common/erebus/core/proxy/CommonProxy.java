@@ -19,12 +19,14 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import erebus.block.BlockPetrifiedChest;
 import erebus.client.gui.GuiBambooCrate;
 import erebus.client.gui.GuiColossalCrate;
+import erebus.client.gui.GuiExtenderThingy;
 import erebus.client.gui.GuiPetrifiedChest;
 import erebus.client.gui.GuiPetrifiedWorkbench;
 import erebus.client.gui.GuiUmberFurnace;
 import erebus.entity.EntityAnimatedBambooCrate;
 import erebus.inventory.ContainerBambooCrate;
 import erebus.inventory.ContainerColossalCrate;
+import erebus.inventory.ContainerExtenderThingy;
 import erebus.inventory.ContainerPetrifiedCraftingTable;
 import erebus.inventory.ContainerPetrifiedWoodChest;
 import erebus.inventory.ContainerUmberFurnace;
@@ -139,6 +141,9 @@ public class CommonProxy implements IGuiHandler {
 				return new ContainerBambooCrate(player.inventory, ((EntityAnimatedBambooCrate) entity).getTile());
 		}
 
+		else if (ID == GUI_ID_EXTENDER_THINGY)
+			return new ContainerExtenderThingy(player.inventory, (TileEntityExtenderThingy) world.getBlockTileEntity(x, y, z));
+
 		return null;
 	}
 
@@ -180,6 +185,10 @@ public class CommonProxy implements IGuiHandler {
 			if (entity != null && entity instanceof EntityAnimatedBambooCrate)
 				return new GuiBambooCrate(player.inventory, ((EntityAnimatedBambooCrate) entity).getTile());
 		}
+
+		else if (ID == GUI_ID_EXTENDER_THINGY)
+			return new GuiExtenderThingy(player.inventory, (TileEntityExtenderThingy) world.getBlockTileEntity(x, y, z));
+
 
 		return null;
 	}

@@ -85,7 +85,7 @@ public class BlockBambooPole extends Block {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
 		blockIcon = iconRegister.registerIcon("erebus:blockBambooPole");// Side
-		poleIconTop = iconRegister.registerIcon("erebus:blockBambooPole_top");// Top
-		poleIconBottom = iconRegister.registerIcon("erebus:blockBambooPole_bottom");
+		poleIconTop = iconRegister.registerIcon("erebus:blockBambooPole_end");// Top
+		poleIconBottom = iconRegister.registerIcon("erebus:blockBambooPole_end");
 	}
 }

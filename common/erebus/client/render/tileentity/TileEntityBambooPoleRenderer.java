@@ -18,11 +18,9 @@ public class TileEntityBambooPoleRenderer extends TileEntitySpecialRenderer {
 	public static ResourceLocation bambooCrateResource = new ResourceLocation("erebus:textures/item/bambooCrate.png");
 
 	public void renderPole(TileEntityBambooPole pole, float x, float y, float z) {
-
 		bindTexture(bambooCrateResource);
 		GL11.glPushMatrix();
-		GL11.glTranslatef(x + 0.5F, y + 1.5F, z + 0.5F);
-		GL11.glScalef(1.0F, -1F, -1F);
+		GL11.glTranslatef(x + 0.5F, y + 0.5F, z + 0.5F);
 		ModelBambooPole.renderModel();
 		GL11.glPopMatrix();
 	}

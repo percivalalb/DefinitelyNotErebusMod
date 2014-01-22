@@ -23,7 +23,7 @@ public class EntityFireAnt extends EntityMob {
 		super(world);
 		stepHeight = 0.0F;
 		isImmuneToFire = true;
-		setSize(0.5F, 0.25F);
+		setSize(0.75F, 0.25F);
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(1, new EntityAIAttackOnCollide(this, EntityPlayer.class, 0.8D, false));
 		tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));

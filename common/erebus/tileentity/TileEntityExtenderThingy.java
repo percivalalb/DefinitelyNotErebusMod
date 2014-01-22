@@ -37,21 +37,58 @@ public class TileEntityExtenderThingy extends TileEntity implements IInventory {
 			increment = -1;
 			blockID = 0;
 		}
-
+		System.out.println(index);
 		if (!stop) {
 			int x = xCoord + index * dir.offsetX;
 			int y = yCoord + index * dir.offsetY;
 			int z = zCoord + index * dir.offsetZ;
-
-			if (!extending || worldObj.isAirBlock(x, y, z)) {
-				worldObj.setBlock(x, y, z, blockID, getMetaFromDirection(dir), 3);
-				if (extending)
-					worldObj.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, extension.stepSound.getPlaceSound(), (extension.stepSound.getVolume() + 1.0F) / 2.0F, extension.stepSound.getPitch() * 0.8F);
-				else
-					worldObj.playAuxSFXAtEntity(null, 2001, x, y, z, extension.blockID + (worldObj.getBlockMetadata(x, y, z) << 12));
+			if (x == xCoord && y == yCoord && z == zCoord) {
+				index += increment;
+				return;
 			}
-			index += increment;
+
+			if (blockID == 0 ? worldObj.getBlockId(x, y, z) == extension.blockID : worldObj.isAirBlock(x, y, z)) {
+				if(decreaseInventory(blockID))
+					if (addToInventory(x, y, z)) {
+						worldObj.setBlock(x, y, z, blockID, getMetaFromDirection(dir), 3);
+						if (extending)
+							worldObj.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, extension.stepSound.getPlaceSound(), (extension.stepSound.getVolume() + 1.0F) / 2.0F, extension.stepSound.getPitch() * 0.8F);
+						else
+							worldObj.playAuxSFXAtEntity(null, 2001, x, y, z, extension.blockID + (worldObj.getBlockMetadata(x, y, z) << 12));
+					}
+				index += increment;
+			}
 		}
+	}
+
+	private boolean addToInventory(int x, int y, int z) {
+		int blockID = worldObj.getBlockId(x, y, z);
+		int meta = worldObj.getBlockMetadata(x, y, z);
+
+		if (worldObj.isAirBlock(x, y, z))
+			return true;
+		for (int i = 0; i < inventory.length; i++)
+			if (inventory[i] == null) {
+				inventory[i] = new ItemStack(blockID, 1, meta);
+				return true;
+			} else if (inventory[i].itemID == blockID && inventory[i].getItemDamage() == meta && inventory[i].stackSize < inventory[i].getMaxStackSize() && inventory[i].stackSize < getInventoryStackLimit()) {
+				inventory[i].stackSize++;
+				return true;
+			}
+		return false;
+	}
+
+	private boolean decreaseInventory(int blockID) {
+		if (blockID == 0)
+			return true;
+		for (int i = 0; i < inventory.length; i++)
+			if (inventory[i] != null && inventory[i].itemID == blockID) {
+				inventory[i].stackSize--;
+				if (inventory[i].stackSize <= 0)
+					inventory[i] = null;
+				return true;
+			}
+		return false;
 	}
 
 	private Block getExtension(ForgeDirection dir) {

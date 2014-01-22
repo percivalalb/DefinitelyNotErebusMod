@@ -1,4 +1,4 @@
-#Erebus Localization File
+#Erebus Localisation File
 
 #Blocks
 tile.portalErebus.name=Erebus Portal
@@ -245,6 +245,7 @@ entity.Erebus.Scytodes.name=Scytodes
 entity.Erebus.MoneySpider.name=Money Spider
 entity.Erebus.PrayingMantis.name=Praying Mantis
 entity.Erebus.JumpingSpider.name=Jumping Spider
+entity.Erebus.FireAnt.name=Fire Ant
 
 #Other
 itemGroup.erebus.block=Erebus Blocks

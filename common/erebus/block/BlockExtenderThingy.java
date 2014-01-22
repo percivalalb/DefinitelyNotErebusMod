@@ -6,6 +6,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
@@ -15,6 +16,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ErebusMod;
 import erebus.core.proxy.CommonProxy;
 import erebus.tileentity.TileEntityExtenderThingy;
+import erebus.utils.Utils;
 
 public class BlockExtenderThingy extends BlockContainer {
 	@SideOnly(Side.CLIENT)
@@ -49,6 +51,20 @@ public class BlockExtenderThingy extends BlockContainer {
 	@Override
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityExtenderThingy();
+	}
+
+	@Override
+	public void breakBlock(World world, int x, int y, int z, int par5, int par6) {
+		IInventory tile = (IInventory) world.getBlockTileEntity(x, y, z);
+		if (tile != null) {
+			for (int i = 0; i < tile.getSizeInventory(); i++) {
+				ItemStack stack = tile.getStackInSlot(i);
+				if (stack != null)
+					Utils.dropStack(world, x, y, z, stack);
+			}
+			world.func_96440_m(x, y, z, par5);
+		}
+		super.breakBlock(world, x, y, z, par5, par6);
 	}
 
 	@Override

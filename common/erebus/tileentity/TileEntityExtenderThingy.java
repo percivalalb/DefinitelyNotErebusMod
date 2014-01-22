@@ -252,6 +252,8 @@ public class TileEntityExtenderThingy extends TileEntity implements IInventory {
 	public void readFromNBT(NBTTagCompound data) {
 		super.readFromNBT(data);
 
+		extending = data.getBoolean("extending");
+
 		NBTTagList nbttaglist = data.getTagList("Items");
 		inventory = new ItemStack[getSizeInventory()];
 

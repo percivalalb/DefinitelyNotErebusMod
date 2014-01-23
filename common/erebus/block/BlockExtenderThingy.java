@@ -27,6 +27,21 @@ public class BlockExtenderThingy extends BlockContainer {
 	}
 
 	@Override
+	public int getRenderType() {
+		return -1;
+	}
+
+	@Override
+	public boolean isOpaqueCube() {
+		return false;
+	}
+
+	@Override
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+
+	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		if (world.isRemote)
 			return true;
@@ -76,8 +91,8 @@ public class BlockExtenderThingy extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
-		blockIcon = iconRegister.registerIcon("erebus:extenderThingySide");// Side
-		iconTop = iconRegister.registerIcon("erebus:extenderThingyTop");// Top
-		iconBottom = iconRegister.registerIcon("erebus:extenderThingyBot");
+		blockIcon = iconRegister.registerIcon("erebus:extenderThingy");// Side
+		iconTop = iconRegister.registerIcon("erebus:extenderThingy");// Top
+		iconBottom = iconRegister.registerIcon("erebus:extenderThingy");
 	}
 }

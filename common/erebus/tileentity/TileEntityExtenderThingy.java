@@ -41,14 +41,16 @@ public class TileEntityExtenderThingy extends TileEntity implements IInventory {
 		if (x == xCoord && y == yCoord && z == zCoord)
 			return;
 
-		if (decreaseInventory(blockID))
-			if (addToInventory(x, y, z)) {
-				worldObj.setBlock(x, y, z, blockID, getMetaFromDirection(dir), 3);
-				if (extending)
-					worldObj.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, extension.stepSound.getPlaceSound(), (extension.stepSound.getVolume() + 1.0F) / 2.0F, extension.stepSound.getPitch() * 0.8F);
-				else
-					worldObj.playAuxSFXAtEntity(null, 2001, x, y, z, extension.blockID + (worldObj.getBlockMetadata(x, y, z) << 12));
-			}
+		Block block = Block.blocksList[worldObj.getBlockId(x, y, z)];
+		if (block == null || block.isBlockReplaceable(worldObj, x, y, z) || !extending)
+			if (decreaseInventory(blockID))
+				if (addToInventory(x, y, z)) {
+					worldObj.setBlock(x, y, z, blockID, getMetaFromDirection(dir), 3);
+					if (extending)
+						worldObj.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, extension.stepSound.getPlaceSound(), (extension.stepSound.getVolume() + 1.0F) / 2.0F, extension.stepSound.getPitch() * 0.8F);
+					else
+						worldObj.playAuxSFXAtEntity(null, 2001, x, y, z, extension.blockID + (worldObj.getBlockMetadata(x, y, z) << 12));
+				}
 	}
 
 	private int getIndex(Block extension) {
@@ -74,8 +76,9 @@ public class TileEntityExtenderThingy extends TileEntity implements IInventory {
 
 	private boolean addToInventory(int x, int y, int z) {
 		int blockID = worldObj.getBlockId(x, y, z);
+		Block block = Block.blocksList[blockID];
 
-		if (worldObj.isAirBlock(x, y, z))
+		if (worldObj.isAirBlock(x, y, z) || block.isBlockReplaceable(worldObj, x, y, z))
 			return true;
 		for (int i = 0; i < inventory.length; i++)
 			if (inventory[i] == null) {

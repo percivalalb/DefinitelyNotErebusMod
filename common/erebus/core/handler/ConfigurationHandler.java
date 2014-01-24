@@ -89,7 +89,7 @@ public class ConfigurationHandler {
 			ModBlocks.petrifiedWoodChestID = config.getBlock("Block ID of Petrified Wood Chest", 2574).getInt(2574);
 			ModBlocks.blockBonesID = config.getBlock("Block ID of Block o' Bones", 2575).getInt(2575);
 			ModBlocks.blockWitherWebID = config.getBlock("Block ID of Wither Web", 2576).getInt(2576);
-			ModBlocks.extenderThingyID = config.getBlock("Block ID of Extender Thingy", 2578).getInt(2578);
+			ModBlocks.extenderThingyID = config.getBlock("Block ID of Bamboo Extender", 2578).getInt(2578);
 			ModBlocks.bambooPoleID = config.getBlock("Block ID of Bamboo Nerd Pole", 2579).getInt(2579);
 
 			int id = 2527;

@@ -120,6 +120,11 @@ public class EntityBlackWidow extends EntityMob {
 	}
 
 	@Override
+	public boolean isPotionApplicable(PotionEffect potionEffect) {
+		return potionEffect.getPotionID() == Potion.poison.id ? false : super.isPotionApplicable(potionEffect);
+	}
+
+	@Override
 	protected String getLivingSound() {
 		return "erebus:blackwidowsound";
 	}

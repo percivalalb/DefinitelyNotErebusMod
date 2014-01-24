@@ -1,6 +1,7 @@
 package erebus.entity;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
@@ -27,13 +28,14 @@ public class EntityWaspDagger extends EntityThrowable {
 			byte byte0 = 4;
 			if (MovingObjectPosition.entityHit instanceof EntityWasp)
 				byte0 = 0;
-			if (!MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), byte0))
-				;
+			if (!MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), byte0));
+			if (isBurning() && !(MovingObjectPosition.entityHit instanceof EntityEnderman))
+				MovingObjectPosition.entityHit.setFire(5);
+			for (int i = 0; i < 8; i++)
+				worldObj.spawnParticle("reddust", posX, posY, posZ, 0.0D, 0.0D, 0.0D);
+			if (!worldObj.isRemote)
+				setDead();
 		}
-		for (int i = 0; i < 8; i++)
-			worldObj.spawnParticle("reddust", posX, posY, posZ, 0.0D, 0.0D, 0.0D);
-		if (!worldObj.isRemote)
-			setDead();
 	}
 
 	@Override

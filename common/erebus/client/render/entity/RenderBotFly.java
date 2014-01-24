@@ -13,10 +13,10 @@ import erebus.entity.EntityBotFly;
 
 @SideOnly(Side.CLIENT)
 public class RenderBotFly extends RenderLiving {
-	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelBotFly.png");
+	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/mob/ModelBotFly.png");
 
-	public RenderBotFly(ModelBotFly model, float shadowSize) {
-		super(model, shadowSize);
+	public RenderBotFly() {
+		super(new ModelBotFly(), 0.3F);
 	}
 
 	public void renderBotFly(EntityBotFly entityBotFly, double x, double y, double z, float rotationYaw, float partialTickTime) {
@@ -35,20 +35,12 @@ public class RenderBotFly extends RenderLiving {
 
 	@Override
 	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
-		scaleBotFly((EntityBotFly) entityliving, f);
-		EntityBotFly entityBotFly = (EntityBotFly) entityliving;
-		if (entityBotFly.getIsFlyHanging())
+		if (((EntityBotFly) entityliving).getIsFlyHanging())
 			GL11.glRotatef(180.0F, -1.0F, 0.0F, 0.0F);
-	}
-
-	protected void scaleBotFly(EntityBotFly entityBotFly, float f) {
-		float f1 = 1.0F;
-		shadowSize = 0.3F;
-		GL11.glScalef(f1, f1, f1);
 	}
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return Texture;
+		return texture;
 	}
 }

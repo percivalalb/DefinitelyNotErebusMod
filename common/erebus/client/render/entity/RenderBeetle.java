@@ -1,12 +1,12 @@
 package erebus.client.render.entity;
 
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import erebus.client.model.entity.ModelBeetle;
 import erebus.entity.EntityBeetle;
 
 @SideOnly(Side.CLIENT)
@@ -20,8 +20,8 @@ public class RenderBeetle extends RenderLiving {
 		new ResourceLocation("erebus:textures/mob/Beetletan.png")
 	};
 
-	public RenderBeetle(ModelBase model, float shadowSize) {
-		super(model, shadowSize);
+	public RenderBeetle() {
+		super(new ModelBeetle(), 0.5F);
 	}
 
 	public void renderBeetle(EntityBeetle entityBeetle, double x, double y, double z, float rotationYaw, float partialTickTime) {

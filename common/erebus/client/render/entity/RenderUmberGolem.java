@@ -12,7 +12,7 @@ import erebus.entity.EntityUmberGolem;
 
 public class RenderUmberGolem extends RenderLiving
 {
-	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/UmberGolem.png");
+	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/mob/UmberGolem.png");
 
 	public RenderUmberGolem(ModelUmberGolem model, float shadowSize)
 	{
@@ -49,7 +49,7 @@ public class RenderUmberGolem extends RenderLiving
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return Texture;
+		return texture;
 	}
 
 }

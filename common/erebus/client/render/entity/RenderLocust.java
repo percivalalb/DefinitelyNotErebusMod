@@ -13,10 +13,10 @@ import erebus.entity.EntityLocust;
 
 @SideOnly(Side.CLIENT)
 public class RenderLocust extends RenderLiving {
-	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelLocust.png");
+	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/mob/ModelLocust.png");
 
-	public RenderLocust(ModelLocust model, float shadowSize) {
-		super(model, shadowSize);
+	public RenderLocust() {
+		super(new ModelLocust(), 0.5F);
 	}
 
 	public void renderLocust(EntityLocust entityLocust, double x, double y, double z, float rotationYaw, float partialTickTime) {
@@ -35,17 +35,11 @@ public class RenderLocust extends RenderLiving {
 
 	@Override
 	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
-		scaleLocust((EntityLocust) entityliving, f);
-	}
-
-	protected void scaleLocust(EntityLocust entityLocust, float f) {
-		float f1 = 1.5F;
-		shadowSize = 0.5F;
-		GL11.glScalef(f1, f1, f1);
+		GL11.glScalef(1.5F,1.5F,1.5F);
 	}
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return Texture;
+		return texture;
 	}
 }

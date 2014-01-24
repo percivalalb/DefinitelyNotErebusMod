@@ -14,7 +14,7 @@ import erebus.entity.EntityAntlion;
 @SideOnly(Side.CLIENT)
 public class RenderAntlion extends RenderLiving {
 
-	private static ResourceLocation Texture;
+	private static ResourceLocation texture;
 	public RenderAntlion(ModelAntlion model, float shadowSize) {
 		super(model, shadowSize);
 
@@ -53,9 +53,9 @@ public class RenderAntlion extends RenderLiving {
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		EntityAntlion antlion = (EntityAntlion) entity;
 		if (!antlion.isBoss())
-			Texture = new ResourceLocation("erebus:textures/mob/ModelAntlion.png");
+		 texture = new ResourceLocation("erebus:textures/mob/ModelAntlion.png");
 		if (antlion.isBoss())
-			Texture = new ResourceLocation("erebus:textures/mob/ModelAntlionSandstone.png");
-		return Texture;
+		 texture = new ResourceLocation("erebus:textures/mob/ModelAntlionSandstone.png");
+		return texture;
 	}
 }

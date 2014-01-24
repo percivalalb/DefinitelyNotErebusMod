@@ -55,7 +55,6 @@ public class TileEntityExtenderThingy extends TileEntity implements IInventory {
 
 	private int getIndex(Block extension) {
 		int index = 1;
-		int increment;
 
 		int x = xCoord + index * dir.offsetX;
 		int y = yCoord + index * dir.offsetY;

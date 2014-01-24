@@ -13,12 +13,12 @@ import erebus.entity.EntityMoth;
 
 @SideOnly(Side.CLIENT)
 public class RenderMoth extends RenderLiving {
-	private final ResourceLocation resource1 = new ResourceLocation("erebus:textures/mob/Moth.png");
-	private final ResourceLocation resource2 = new ResourceLocation("erebus:textures/mob/Moth2.png");
-	private final ResourceLocation resource3 = new ResourceLocation("erebus:textures/mob/Moth3.png");
+	private static final ResourceLocation resource1 = new ResourceLocation("erebus:textures/mob/Moth.png");
+	private static final ResourceLocation resource2 = new ResourceLocation("erebus:textures/mob/Moth2.png");
+	private static final ResourceLocation resource3 = new ResourceLocation("erebus:textures/mob/Moth3.png");
 
-	public RenderMoth(ModelMoth model, float shadowSize) {
-		super(model, shadowSize);
+	public RenderMoth() {
+		super(new ModelMoth(), 0.3F);
 	}
 
 	public void renderMoth(EntityMoth entityMoth, double x, double y, double z, float rotationYaw, float partialTickTime) {
@@ -37,16 +37,10 @@ public class RenderMoth extends RenderLiving {
 
 	@Override
 	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
-		scaleMoth((EntityMoth) entityliving, f);
+		GL11.glScalef(0.5F, 0.5F, 0.5F);
 		EntityMoth entityMoth = (EntityMoth) entityliving;
 		if (entityMoth.getIsMothHanging())
 			GL11.glRotatef(180.0F, -1.0F, 0.0F, 0.0F);
-	}
-
-	protected void scaleMoth(EntityMoth entityMoth, float f) {
-		float f1 = 0.5F;
-		shadowSize = 0.3F;
-		GL11.glScalef(f1, f1, f1);
 	}
 
 	@Override

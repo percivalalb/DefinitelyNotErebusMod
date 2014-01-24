@@ -13,7 +13,7 @@ import erebus.entity.EntityFireAnt;
 
 public class RenderFireAnt extends RenderLiving {
 	protected ModelFireAnt model;
-	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelFireAnt.png");
+	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/mob/ModelFireAnt.png");
 
 	public RenderFireAnt(ModelFireAnt modelBase, float shadowSize) {
 		super(modelBase, shadowSize);
@@ -54,7 +54,7 @@ public class RenderFireAnt extends RenderLiving {
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return Texture;
+		return texture;
 	}
 }
 

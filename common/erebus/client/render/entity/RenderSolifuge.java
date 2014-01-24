@@ -3,9 +3,7 @@ package erebus.client.render.entity;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.opengl.GL11;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelSolifuge;
@@ -14,10 +12,10 @@ import erebus.entity.EntitySolifuge;
 @SideOnly(Side.CLIENT)
 public class RenderSolifuge extends RenderLiving {
 
-	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelSolifuge.png");
+	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/mob/ModelSolifuge.png");
 
-	public RenderSolifuge(ModelSolifuge model, float shadowSize) {
-		super(model, shadowSize);
+	public RenderSolifuge() {
+		super(new ModelSolifuge(), 0.5F);
 
 	}
 
@@ -36,18 +34,7 @@ public class RenderSolifuge extends RenderLiving {
 	}
 
 	@Override
-	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
-		scaleSolifuge((EntitySolifuge) entityliving, f);
-	}
-
-	protected void scaleSolifuge(EntitySolifuge entitySolifuge, float f) {
-		float f1 = 1.0F;
-		shadowSize = 0.5F;
-		GL11.glScalef(f1, f1, f1);
-	}
-
-	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return Texture;
+		return texture;
 	}
 }

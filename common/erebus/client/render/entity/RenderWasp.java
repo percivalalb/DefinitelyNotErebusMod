@@ -3,9 +3,7 @@ package erebus.client.render.entity;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.opengl.GL11;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelWasp;
@@ -13,11 +11,10 @@ import erebus.entity.EntityWasp;
 
 @SideOnly(Side.CLIENT)
 public class RenderWasp extends RenderLiving {
-	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelWasp.png");
+	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/mob/ModelWasp.png");
 	
-	public RenderWasp(ModelWasp model, float shadowSize) {
-		super(model, shadowSize);
-
+	public RenderWasp() {
+		super(new ModelWasp(), 0.5F);
 	}
 
 	public void renderWasp(EntityWasp entityWasp, double x, double y, double z, float rotationYaw, float partialTickTime) {
@@ -35,18 +32,7 @@ public class RenderWasp extends RenderLiving {
 	}
 
 	@Override
-	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
-		scaleWasp((EntityWasp) entityliving, f);
-	}
-
-	protected void scaleWasp(EntityWasp entityWasp, float f) {
-		float f1 = 1.0F;
-		shadowSize = 0.5F;
-		GL11.glScalef(f1, f1, f1);
-	}
-
-	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return Texture;
+		return texture;
 	}
 }

@@ -16,11 +16,10 @@ public class RenderVelvetWorm extends RenderLiving {
 	private final ResourceLocation resource1 = new ResourceLocation("erebus:textures/mob/Velvet worm.png");
 	private final ResourceLocation resource2 = new ResourceLocation("erebus:textures/mob/Velvet worm2.png");
 
-	private float scale = 1.0F;
+	private float scale = 1F;
 
-	public RenderVelvetWorm(ModelVelvetWorm model, float shadowSize, float scale) {
-		super(model, shadowSize * scale);
-		this.scale = scale;
+	public RenderVelvetWorm() {
+		super(new ModelVelvetWorm(), 0.6F);
 	}
 
 	public void renderEntityVelvetWorm(EntityVelvetWorm entityEntityVelvetWorm, double x, double y, double z, float rotationYaw, float partialTickTime) {

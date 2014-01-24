@@ -3,9 +3,7 @@ package erebus.client.render.entity;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.opengl.GL11;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelCentipede;
@@ -17,9 +15,8 @@ public class RenderCentipede extends RenderLiving {
 	private static final ResourceLocation resource2 = new ResourceLocation("erebus:textures/mob/ModelCentipede.png");
 	private static final ResourceLocation resource3 = new ResourceLocation("erebus:textures/mob/CentipedeBlack.png");
 
-	public RenderCentipede(ModelCentipede model, float shadowSize) {
-		super(model, shadowSize);
-
+	public RenderCentipede() {
+		super(new ModelCentipede(), 0.5F);
 	}
 
 	public void renderCentipede(EntityCentipede entityCentipede, double x, double y, double z, float rotationYaw, float partialTickTime) {
@@ -34,15 +31,6 @@ public class RenderCentipede extends RenderLiving {
 	@Override
 	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
 		renderCentipede((EntityCentipede) entity, x, y, z, rotationYaw, partialTickTime);
-	}
-
-	@Override
-	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
-		shadowSize = 0.5F;
-	}
-
-	protected void rotateCentipede() { // TODO unused
-		GL11.glRotatef(90.0F, -1.0F, 0.0F, 0.0F);
 	}
 
 	@Override

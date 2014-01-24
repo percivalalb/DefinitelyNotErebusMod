@@ -9,7 +9,7 @@ import erebus.entity.EntityAnimatedChest;
 
 public class RenderAnimatedChest extends RenderLiving
 {
-	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelAnimatedChest.png");
+	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/mob/ModelAnimatedChest.png");
 
 	public RenderAnimatedChest(ModelAnimatedChest model, float shadowSize)
 	{
@@ -35,7 +35,7 @@ public class RenderAnimatedChest extends RenderLiving
 	
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return Texture;
+		return texture;
 	}
 
 }

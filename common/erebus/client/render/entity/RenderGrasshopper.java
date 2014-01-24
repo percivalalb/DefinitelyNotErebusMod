@@ -3,7 +3,6 @@ package erebus.client.render.entity;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -12,10 +11,10 @@ import erebus.entity.EntityGrasshopper;
 
 @SideOnly(Side.CLIENT)
 public class RenderGrasshopper extends RenderLiving {
-	private static final ResourceLocation Texture = new ResourceLocation("erebus:textures/mob/ModelGrasshopper.png");
+	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/mob/ModelGrasshopper.png");
 
-	public RenderGrasshopper(ModelGrasshopper model, float shadowSize) {
-		super(model, shadowSize);
+	public RenderGrasshopper() {
+		super(new ModelGrasshopper(), 0.5F);
 
 	}
 
@@ -34,12 +33,7 @@ public class RenderGrasshopper extends RenderLiving {
 	}
 
 	@Override
-	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
-		shadowSize = 0.5F;
-	}
-
-	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return Texture;
+		return texture;
 	}
 }

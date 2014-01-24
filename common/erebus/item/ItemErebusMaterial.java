@@ -47,7 +47,7 @@ public class ItemErebusMaterial extends Item {
 		if (side == 1 && is.getItemDamage() == dataBambooShoot && player.canPlayerEdit(x, y, z, side, is) && player.canPlayerEdit(x, y+1, z, side, is)){
 			Block soil = Block.blocksList[world.getBlockId(x, y, z)];
 
-			if (soil != null && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, (BlockBambooShoot) ModBlocks.bambooShoot) && world.isAirBlock(x, y+1, z)){ // TODO change to bamboo shoot block
+			if (soil != null && soil.canSustainPlant(world, x, y, z, ForgeDirection.UP, (BlockBambooShoot) ModBlocks.bambooShoot) && world.isAirBlock(x, y+1, z)){
 				world.setBlock(x, y+1, z, ModBlocks.bambooShoot.blockID);
 
 				if (!player.capabilities.isCreativeMode) --is.stackSize;

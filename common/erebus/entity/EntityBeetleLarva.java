@@ -24,19 +24,15 @@ import erebus.network.PacketHandler;
 import erebus.network.packet.PacketParticle;
 
 public class EntityBeetleLarva extends EntityCreature {
-
 	private final EntityAIWander aiWander = new EntityAIWander(this, 0.48D);
 	private final EntityAIWatchClosest aiWatchClosest = new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F);
 	public EntityAIEatWoodenItem aiEatWoodItem = new EntityAIEatWoodenItem(this, 0.48D);
-
 	public boolean isEating;
-	private final double moveSpeed;
 	public boolean isSquashed;
 
 	public EntityBeetleLarva(World world) {
 		super(world);
 		setSize(0.9F, 0.5F);
-		moveSpeed = 0.35D;
 		getNavigator().setAvoidsWater(true);
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(1, aiEatWoodItem);
@@ -50,11 +46,11 @@ public class EntityBeetleLarva extends EntityCreature {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		dataWatcher.addObject(16, new Byte((byte) 1));
+		dataWatcher.addObject(16, new Float(1.0F));
 	}
 
-	protected void setLarvaSize(int byteSize) {
-		dataWatcher.updateObject(16, new Byte((byte) byteSize));
+	public void setLarvaSize(float byteSize) {
+		dataWatcher.updateObject(16, new Float(byteSize));
 		setSize(0.9F * byteSize, 0.5F * byteSize);
 	}
 
@@ -66,9 +62,8 @@ public class EntityBeetleLarva extends EntityCreature {
 	@Override
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(8.0F); // Max
-		// Health
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(moveSpeed); // Movespeed
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(8.0F);
+		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.35D);
 	}
 
 	@Override
@@ -139,22 +134,28 @@ public class EntityBeetleLarva extends EntityCreature {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
-		int i;
+		float i;
 		if (worldObj.isRemote) {
 			i = getLarvaSize();
-			setSize(0.9F * i, 0.4F * i);
+			setSize(0.9F * i, 0.5F * i);
 		}
-		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(moveSpeed); // Movespeed
+		if (getLarvaSize() > 1.8F) {
+			setDead();
+			spawnBeetle();
+		}
+	}
+
+	private void spawnBeetle() {
+		EntityBeetle entityBeetle = new EntityBeetle(worldObj);
+		entityBeetle.setPosition(posX, posY, posZ);
+		worldObj.spawnEntityInWorld(entityBeetle);
 	}
 
 	@Override
 	public void onDeathUpdate() {
-
 		super.onDeathUpdate();
-
 		if (isSquashed) {
 			PacketDispatcher.sendPacketToAllAround(posX, posY, posZ, 64D, dimension, PacketHandler.buildPacket(2, PacketParticle.BEETLE_LARVA_SQUISH, entityId));
-
 			worldObj.playSoundEffect(posX, posY, posZ, getJumpedOnSound(), 1.0F, 0.5F);
 			worldObj.playSoundEffect(posX, posY, posZ, getDeathSound(), 1.0F, 0.7F);
 			if (!worldObj.isRemote) {
@@ -176,9 +177,9 @@ public class EntityBeetleLarva extends EntityCreature {
 	@Override
 	public boolean interact(EntityPlayer player) {
 		ItemStack is = player.inventory.getCurrentItem();
-		if (!worldObj.isRemote && is != null && is.itemID == Item.stick.itemID)
-		{
-			setLarvaSize(getLarvaSize() + 1);
+		if (!worldObj.isRemote && is != null && is.itemID == Item.stick.itemID) {
+			setLarvaSize(getLarvaSize() + 0.2F);
+			--is.stackSize;
 			return true;
 		}
 		return super.interact(player);
@@ -189,7 +190,6 @@ public class EntityBeetleLarva extends EntityCreature {
 			tasks.removeTask(aiWander);
 			tasks.removeTask(aiWatchClosest);
 		}
-
 		if (par1 == true) {
 			tasks.addTask(2, aiWander);
 			tasks.addTask(4, aiWatchClosest);
@@ -224,7 +224,7 @@ public class EntityBeetleLarva extends EntityCreature {
 	@Override
 	public void writeEntityToNBT(NBTTagCompound nbt) {
 		super.writeEntityToNBT(nbt);
-		nbt.setInteger("Size", getLarvaSize() - 1);
+		nbt.setFloat("Size", getLarvaSize());
 
 	}
 
@@ -232,10 +232,10 @@ public class EntityBeetleLarva extends EntityCreature {
 	public void readEntityFromNBT(NBTTagCompound nbt) {
 		super.readEntityFromNBT(nbt);
 		super.readEntityFromNBT(nbt);
-		setLarvaSize(nbt.getInteger("Size") + 1);
+		setLarvaSize(nbt.getFloat("Size"));
 	}
 
-	public int getLarvaSize() {
-		return dataWatcher.getWatchableObjectByte(16);
+	public float getLarvaSize() {
+		return dataWatcher.getWatchableObjectFloat(16);
 	}
 }

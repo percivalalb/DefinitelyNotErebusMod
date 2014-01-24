@@ -21,7 +21,7 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 	public int WoodX, WoodY, WoodZ = -1;
 	private final double moveSpeed;
 	private int ticksSpent = 0;
-	private int reproCap = 0;
+	private final int reproCap = 0;
 
 	public EntityAIEatWoodenItem(EntityLiving entityLiving, double d) {
 		theEntity = entityLiving;
@@ -69,19 +69,10 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 		if (ticksSpent >= maxTicks && theEntity.worldObj.difficultySetting >= diffEaten && theEntity.boundingBox.maxY >= blockbounds.minY && theEntity.boundingBox.minY <= blockbounds.maxY && theEntity.boundingBox.maxX >= blockbounds.minX && theEntity.boundingBox.minX <= blockbounds.maxX &&
 		theEntity.boundingBox.maxZ >= blockbounds.minZ && theEntity.boundingBox.minZ <= blockbounds.maxZ) {
 			theEntity.worldObj.destroyBlock(WoodX, WoodY, WoodZ, false);
+			float size = ((EntityBeetleLarva) theEntity).getLarvaSize();
+			((EntityBeetleLarva) theEntity).setLarvaSize(size + 0.2F);
 			((EntityBeetleLarva) theEntity).setMoveTasks(true);
 			ticksSpent = 0;
-			if (reproCap < 3)
-				reproCap++;
-			if (reproCap == 3) {
-				// this bit of code is just here for future improvement
-				// (spawning a full grown beetle)
-				// this.theEntity.setDead();
-				// EntityBeetleLarva entityBeetleLarva = new
-				// EntityBeetleLarva(theEntity.worldObj);
-				// entityBeetleLarva.setPosition(WoodX, WoodY+1, WoodZ);
-				// this.theEntity.worldObj.spawnEntityInWorld(entityBeetleLarva);
-			}
 		}
 		super.updateTask();
 	}

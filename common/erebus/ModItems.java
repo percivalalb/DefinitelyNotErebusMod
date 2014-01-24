@@ -152,15 +152,15 @@ public class ModItems {
 		spawnEggs = new ItemSpawnEggs(spawnEggsID).setUnlocalizedName("monsterPlacer").setTextureName("spawn_egg");
 
 		// Creative tabs
-		ErebusMod.tabErebusItem.add(portalActivator, erebusMaterials, erebusFood, bucketOfBeetleJuice, turnip, wandOfAnimation);
+		ErebusMod.tabErebusItem.add(portalActivator, erebusMaterials, erebusFood, bucketOfBeetleJuice, turnip);
 		if (ConfigurationHandler.lead || ConfigurationHandler.silver || ConfigurationHandler.copper || ConfigurationHandler.tin || ConfigurationHandler.aluminium)
 			ErebusMod.tabErebusItem.add(metalIngot);
 		ErebusMod.tabErebusItem.add(spawnEggs);
 
-		ErebusMod.tabErebusGear.add(bamBucket, sprayCan, hornOfSummoning);
+		ErebusMod.tabErebusGear.add(bamBucket, sprayCan);
 		ErebusMod.tabErebusGear.add(jadeHelmet, jadeBody, jadeLegs, jadeBoots, jadeSword, jadePickaxe, jadeAxe, jadeShovel, jadePaxel, jadeHoe);
 		ErebusMod.tabErebusGear.add(exoskeletonHelmet, exoskeletonBody, exoskeletonLegs, exoskeletonBoots, reinExoskeletonHelmet, reinExoskeletonBody, reinExoskeletonLegs, reinExoskeletonBoots);
-		ErebusMod.tabErebusGear.add(fossilClub, waspSword, waspDagger, maxSpeedBow, scorpionPincer, webSlinger);
+		ErebusMod.tabErebusGear.add(fossilClub, waspSword, waspDagger, maxSpeedBow, wandOfAnimation, hornOfSummoning, scorpionPincer, webSlinger);
 		ErebusMod.tabErebusGear.add(compoundGoggles, reinCompoundGoggles, armorGlider, sprintLeggings, jumpBoots);
 
 		// Tool classes

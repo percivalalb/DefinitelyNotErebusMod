@@ -81,8 +81,11 @@ import erebus.client.render.entity.RenderUmberGolem;
 import erebus.client.render.entity.RenderVelvetWorm;
 import erebus.client.render.entity.RenderWasp;
 import erebus.client.render.entity.RenderWebSling;
+import erebus.client.render.item.BambooBridgeItemRenderer;
 import erebus.client.render.item.BambooCrateItemRenderer;
+import erebus.client.render.item.BambooPoleItemRenderer;
 import erebus.client.render.item.BambooTorchItemRenderer;
+import erebus.client.render.item.ExtenderThingyItemRenderer;
 import erebus.client.render.item.ItemBoneBlockRenderer;
 import erebus.client.render.item.ItemErebusAltarRenderer;
 import erebus.client.render.item.ItemGlowingJarRenderer;
@@ -240,6 +243,9 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.petrifiedWoodChest.blockID, new ItemPetrifiedWoodChestRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.blockBones.blockID, new ItemBoneBlockRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.webSlinger.itemID, new WebSlingerItemRenderer());
+		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooBridge.blockID, new BambooBridgeItemRenderer());
+		MinecraftForgeClient.registerItemRenderer(ModBlocks.extenderThingy.blockID, new ExtenderThingyItemRenderer());
+		MinecraftForgeClient.registerItemRenderer(ModBlocks.bambooPole.blockID, new BambooPoleItemRenderer());
 
 	}
 

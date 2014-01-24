@@ -3,7 +3,11 @@ package erebus.client.render.entity;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+
+import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelBeetleLarva;
@@ -31,6 +35,12 @@ public class RenderBeetleLarva extends RenderLiving {
 	@Override
 	public void doRender(Entity entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
 		renderBeetleLarva((EntityBeetleLarva) entity, x, y, z, rotationYaw, partialTickTime);
+	}
+
+	@Override
+	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
+		float larvaSize = ((EntityBeetleLarva) entityliving).getLarvaSize();
+		GL11.glScalef(larvaSize, larvaSize, larvaSize);
 	}
 
 	@Override

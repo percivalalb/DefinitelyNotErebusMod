@@ -12,6 +12,7 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
@@ -49,6 +50,12 @@ public class EntityBeetleLarva extends EntityCreature {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
+		dataWatcher.addObject(16, new Byte((byte) 1));
+	}
+
+	protected void setLarvaSize(int byteSize) {
+		dataWatcher.updateObject(16, new Byte((byte) byteSize));
+		setSize(0.9F * byteSize, 0.5F * byteSize);
 	}
 
 	@Override
@@ -132,6 +139,11 @@ public class EntityBeetleLarva extends EntityCreature {
 	@Override
 	public void onUpdate() {
 		super.onUpdate();
+		int i;
+		if (worldObj.isRemote) {
+			i = getLarvaSize();
+			setSize(0.9F * i, 0.4F * i);
+		}
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(moveSpeed); // Movespeed
 	}
 
@@ -164,9 +176,11 @@ public class EntityBeetleLarva extends EntityCreature {
 	@Override
 	public boolean interact(EntityPlayer player) {
 		ItemStack is = player.inventory.getCurrentItem();
-		if (!worldObj.isRemote && is != null && is.itemID == Item.wheat.itemID)
+		if (!worldObj.isRemote && is != null && is.itemID == Item.stick.itemID)
+		{
+			setLarvaSize(getLarvaSize() + 1);
 			return true;
-
+		}
 		return super.interact(player);
 	}
 
@@ -205,5 +219,23 @@ public class EntityBeetleLarva extends EntityCreature {
 	@Override
 	public AxisAlignedBB getBoundingBox() {
 		return boundingBox;
+	}
+
+	@Override
+	public void writeEntityToNBT(NBTTagCompound nbt) {
+		super.writeEntityToNBT(nbt);
+		nbt.setInteger("Size", getLarvaSize() - 1);
+
+	}
+
+	@Override
+	public void readEntityFromNBT(NBTTagCompound nbt) {
+		super.readEntityFromNBT(nbt);
+		super.readEntityFromNBT(nbt);
+		setLarvaSize(nbt.getInteger("Size") + 1);
+	}
+
+	public int getLarvaSize() {
+		return dataWatcher.getWatchableObjectByte(16);
 	}
 }

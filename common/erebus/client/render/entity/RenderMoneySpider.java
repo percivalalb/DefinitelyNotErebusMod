@@ -5,9 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelScytodes;
@@ -15,13 +13,14 @@ import erebus.entity.EntityMoneySpider;
 
 @SideOnly(Side.CLIENT)
 public class RenderMoneySpider extends RenderLiving {
-	protected ModelScytodes model;
-	private static ResourceLocation Texture;
+	private static final ResourceLocation[] textures = new ResourceLocation[]{
+		new ResourceLocation("erebus:textures/mob/ModelMoneySpider.png"),
+		new ResourceLocation("erebus:textures/mob/ModelMoneySpider_euro.png"),
+		new ResourceLocation("erebus:textures/mob/ModelMoneySpider_pound.png")
+	};
 
 	public RenderMoneySpider(ModelScytodes model, float shadowSize) {
-		super(model, shadowSize);
-		model = (ModelScytodes) mainModel;
-		shadowSize *= 0.3F;
+		super(model, shadowSize * 0.3F);
 	}
 
 	public void renderMoneySpider(EntityMoneySpider entityMoneySpider, double x, double y, double z, float rotationYaw, float partialTickTime) {
@@ -45,13 +44,6 @@ public class RenderMoneySpider extends RenderLiving {
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		EntityMoneySpider spider = (EntityMoneySpider) entity;
-		if (spider.skin == 0)
-			Texture = new ResourceLocation("erebus:textures/mob/ModelMoneySpider.png");
-		if (spider.skin == 1)
-			Texture = new ResourceLocation("erebus:textures/mob/ModelMoneySpider_euro.png");
-		if (spider.skin == 2)
-			Texture = new ResourceLocation("erebus:textures/mob/ModelMoneySpider_pound.png");
-		return Texture;
+		return textures[Math.min(textures.length-1,((EntityMoneySpider)entity).skin)];
 	}
 }

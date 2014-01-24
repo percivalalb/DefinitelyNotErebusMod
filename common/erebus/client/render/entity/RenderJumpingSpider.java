@@ -5,20 +5,20 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import erebus.client.model.entity.ModelJumpingSpider;
 import erebus.entity.EntityJumpingSpider;
 
 public class RenderJumpingSpider extends RenderLiving
 {
-	protected ModelJumpingSpider model;
-	private static ResourceLocation Texture;
+	private static final ResourceLocation[] textures = new ResourceLocation[]{
+		new ResourceLocation("erebus:textures/mob/ModelJumpingSpider.png"),
+		new ResourceLocation("erebus:textures/mob/ModelJumpingSpider_green.png"),
+		new ResourceLocation("erebus:textures/mob/ModelJumpingSpider_red.png")
+	};
 
 	public RenderJumpingSpider(ModelJumpingSpider model, float shadowSize) {
 		super(model, shadowSize);
-		model = (ModelJumpingSpider) mainModel;
 	}
 
 	public void renderJumpingSpider(EntityJumpingSpider entityJumpingSpider, double x, double y, double z, float rotationYaw, float partialTickTime) {
@@ -48,14 +48,7 @@ public class RenderJumpingSpider extends RenderLiving
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		EntityJumpingSpider spider = (EntityJumpingSpider) entity;
-		if (spider.skin == 0)
-			Texture = new ResourceLocation("erebus:textures/mob/ModelJumpingSpider.png");
-		if (spider.skin == 1)
-			Texture = new ResourceLocation("erebus:textures/mob/ModelJumpingSpider_green.png");
-		if (spider.skin == 2)
-			Texture = new ResourceLocation("erebus:textures/mob/ModelJumpingSpider_red.png");
-		return Texture;
+		return textures[Math.min(textures.length-1,((EntityJumpingSpider)entity).skin)];
 	}
 }
 

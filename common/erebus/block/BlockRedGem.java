@@ -112,7 +112,7 @@ public class BlockRedGem extends Block {
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand) {
 		int meta = world.getBlockMetadata(x, y, z);
-		if (!world.isRemote && (meta == 1 || meta == 2) && meta == 2 && !world.isBlockIndirectlyGettingPowered(x, y, z)) // TODO what should it do? lol
+		if (!world.isRemote && meta == 2 && !world.isBlockIndirectlyGettingPowered(x, y, z))
 			world.setBlock(x, y, z, blockID, 1, 2);
 	}
 

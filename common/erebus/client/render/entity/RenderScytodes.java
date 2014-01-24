@@ -5,20 +5,21 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
 import erebus.client.model.entity.ModelScytodes;
 import erebus.entity.EntityScytodes;
 
 public class RenderScytodes extends RenderLiving
 {
-	protected ModelScytodes model;
-	private static ResourceLocation Texture;
+	private static final ResourceLocation[] textures = new ResourceLocation[]{
+		new ResourceLocation("erebus:textures/mob/ModelScytodes_1.png"),
+		new ResourceLocation("erebus:textures/mob/ModelScytodes_2.png"),
+		new ResourceLocation("erebus:textures/mob/ModelScytodes_3.png"),
+		new ResourceLocation("erebus:textures/mob/ModelScytodes_4.png")
+	};
 
 	public RenderScytodes(ModelScytodes model, float shadowSize) {
 		super(model, shadowSize);
-		model =(ModelScytodes)mainModel;
 	}
 
 	public void renderScytodes(EntityScytodes entityScytodes, double x, double y, double z, float rotationYaw, float partialTickTime) {
@@ -48,16 +49,7 @@ public class RenderScytodes extends RenderLiving
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		EntityScytodes spider = (EntityScytodes) entity;
-		if (spider.skin == 0)
-			Texture = new ResourceLocation("erebus:textures/mob/ModelScytodes_1.png");
-		if (spider.skin == 1)
-			Texture = new ResourceLocation("erebus:textures/mob/ModelScytodes_2.png");
-		if (spider.skin == 2)
-			Texture = new ResourceLocation("erebus:textures/mob/ModelScytodes_3.png");
-		if (spider.skin == 3)
-			Texture = new ResourceLocation("erebus:textures/mob/ModelScytodes_4.png");
-		return Texture;
+		return textures[Math.min(textures.length-1,((EntityScytodes)entity).skin)];
 	}
 }
 

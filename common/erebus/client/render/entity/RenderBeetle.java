@@ -11,8 +11,14 @@ import erebus.entity.EntityBeetle;
 
 @SideOnly(Side.CLIENT)
 public class RenderBeetle extends RenderLiving {
-
-	private static ResourceLocation Texture;
+	private static final ResourceLocation[] textures = new ResourceLocation[]{
+		new ResourceLocation("erebus:textures/mob/Beetlerarespawn.png"),
+		new ResourceLocation("erebus:textures/mob/Beetleblue.png"),
+		new ResourceLocation("erebus:textures/mob/Beetlebrown.png"),
+		new ResourceLocation("erebus:textures/mob/Beetlegreen.png"),
+		new ResourceLocation("erebus:textures/mob/Beetlered.png"),
+		new ResourceLocation("erebus:textures/mob/Beetletan.png")
+	};
 
 	public RenderBeetle(ModelBase model, float shadowSize) {
 		super(model, shadowSize);
@@ -36,17 +42,18 @@ public class RenderBeetle extends RenderLiving {
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		EntityBeetle beetle = (EntityBeetle) entity;
 		if (beetle.skin > 0 && beetle.skin <= 10)
-			Texture = new ResourceLocation("erebus:textures/mob/Beetleblue.png");
-		if (beetle.skin > 10 && beetle.skin <= 20)
-			Texture = new ResourceLocation("erebus:textures/mob/Beetlebrown.png");
-		if (beetle.skin > 20 && beetle.skin <= 30)
-			Texture = new ResourceLocation("erebus:textures/mob/Beetlegreen.png");
-		if (beetle.skin > 30 && beetle.skin <= 40)
-			Texture = new ResourceLocation("erebus:textures/mob/Beetlered.png");
-		if (beetle.skin > 40 && beetle.skin <= 50)
-			Texture = new ResourceLocation("erebus:textures/mob/Beetletan.png");
-		if (beetle.skin == 0)
-			Texture = new ResourceLocation("erebus:textures/mob/Beetlerarespawn.png");
-		return Texture;
+			return textures[1];
+		else if (beetle.skin > 10 && beetle.skin <= 20)
+			return textures[2];
+		else if (beetle.skin > 20 && beetle.skin <= 30)
+			return textures[3];
+		else if (beetle.skin > 30 && beetle.skin <= 40)
+			return textures[4];
+		else if (beetle.skin > 40 && beetle.skin <= 50)
+			return textures[5];
+		else if (beetle.skin == 0)
+			return textures[0];
+		else
+			return null;
 	}
 }

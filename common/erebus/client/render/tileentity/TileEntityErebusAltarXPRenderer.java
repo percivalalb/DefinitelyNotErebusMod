@@ -1,42 +1,44 @@
 package erebus.client.render.tileentity;
 
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.opengl.GL11;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.block.ModelAltarXP;
+import erebus.tileentity.TileEntityErebusAltar;
 import erebus.tileentity.TileEntityErebusAltarXP;
 
 @SideOnly(Side.CLIENT)
-public class TileEntityErebusAltarXPRenderer extends TileEntitySpecialRenderer {
-
-	private final ModelAltarXP ModelAltarBlock = new ModelAltarXP();
-
-	public void renderAModelAt(TileEntityErebusAltarXP tile, double d, double d1, double d2, float f) {
-		TileEntityErebusAltarXP te = tile;
-		if (te.animationTicks <= 5)
-			bindTexture(new ResourceLocation("erebus:textures/blocks/XPAltar1.png"));
-		else if (te.animationTicks > 5 && te.animationTicks <= 10)
-			bindTexture(new ResourceLocation("erebus:textures/blocks/XPAltar2.png"));
-		else if (te.animationTicks > 10 && te.animationTicks <= 15)
-			bindTexture(new ResourceLocation("erebus:textures/blocks/XPAltar3.png"));
-		else if (te.animationTicks > 15 && te.animationTicks <= 20)
-			bindTexture(new ResourceLocation("erebus:textures/blocks/XPAltar4.png"));
-		else if (te.animationTicks > 20 && te.animationTicks <= 25)
-			bindTexture(new ResourceLocation("erebus:textures/blocks/XPAltar5.png"));
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float) d + 0.5F, (float) d1 + 0.75F, (float) d2 + 0.5F);
-		GL11.glScalef(0.5F, -0.5F, -0.5F);
-		GL11.glRotatef(0 * 90, 0.0F, 1.0F, 0.0F);
-		ModelAltarBlock.render(tile);
-		GL11.glPopMatrix();
-	}
+public class TileEntityErebusAltarXPRenderer extends TileEntityErebusAltarRenderer {
+	private static final ResourceLocation[] tex = new ResourceLocation[]{
+		new ResourceLocation("erebus:textures/blocks/XPAltar1.png"),
+		new ResourceLocation("erebus:textures/blocks/XPAltar2.png"),
+		new ResourceLocation("erebus:textures/blocks/XPAltar3.png"),
+		new ResourceLocation("erebus:textures/blocks/XPAltar4.png"),
+		new ResourceLocation("erebus:textures/blocks/XPAltar5.png")
+	};
+	
+	private final ModelAltarXP model = new ModelAltarXP();
 
 	@Override
-	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float partialTickTime) {
-		renderAModelAt((TileEntityErebusAltarXP) tile, x, y, z, partialTickTime);
+	protected void renderModel(TileEntityErebusAltar altar){
+		model.render((TileEntityErebusAltarXP)altar);
 	}
-
+	
+	@Override
+	protected ResourceLocation getAltarTexture(TileEntityErebusAltar altar){
+		TileEntityErebusAltarXP tile = (TileEntityErebusAltarXP)altar;
+		
+		if (tile.animationTicks <= 5)
+			return tex[0];
+		else if (tile.animationTicks > 5 && tile.animationTicks <= 10)
+			return tex[1];
+		else if (tile.animationTicks > 10 && tile.animationTicks <= 15)
+			return tex[2];
+		else if (tile.animationTicks > 15 && tile.animationTicks <= 20)
+			return tex[3];
+		else if (tile.animationTicks > 20 && tile.animationTicks <= 25)
+			return tex[4];
+		else
+			return null;
+	}
 }

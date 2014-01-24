@@ -6,6 +6,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.item.EnumAction;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
@@ -28,7 +29,7 @@ public class ItemMaxSpeedBow extends Item {
 		super(id);
 		maxStackSize = 1;
 		setMaxDamage(301);
-		weaponEnchantibility = 5;
+		weaponEnchantibility = 0;
 	}
 
 	@Override
@@ -100,44 +101,25 @@ public class ItemMaxSpeedBow extends Item {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
-		boolean sneak = player.isSneaking();
-		boolean var5 = player.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, is) > 0;
-
-		if (sneak == false) {
-			if (var5 || player.inventory.hasItem(Item.arrow.itemID)) {
-				EntityArrow var8 = new EntityArrow(world, player, 1.0F * 2.0F);
+		if (!player.isSneaking()) {
+			if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.arrow.itemID)) {
+				EntityArrow arrow = new EntityArrow(world, player, 2.0F);
 
 				if (world.rand.nextInt(4) == 0)
-					var8.setIsCritical(true);
-
-				int var9 = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, is);
-
-				if (var9 > 0)
-					var8.setDamage(var8.getDamage() + var9 * 0.5D + 0.5D);
-
-				int var10 = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, is);
-
-				if (var10 > 0)
-					var8.setKnockbackStrength(var10);
-
-				if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, is) > 0)
-					var8.setFire(100);
+					arrow.setIsCritical(true);
+				
+				arrow.setDamage(arrow.getDamage() * 0.75D);
 
 				is.damageItem(1, player);
 				world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 1.0F * 0.5F);
 
-				if (var5)
-					var8.canBePickedUp = 2;
-				else
-					player.inventory.consumeInventoryItem(Item.arrow.itemID);
+				if (!player.capabilities.isCreativeMode) player.inventory.consumeInventoryItem(Item.arrow.itemID);
 
 				if (!world.isRemote)
-					world.spawnEntityInWorld(var8);
+					world.spawnEntityInWorld(arrow);
 			}
 		}
-
-		else if (sneak == true)
-			player.setItemInUse(is, getMaxItemUseDuration(is));
+		else player.setItemInUse(is, getMaxItemUseDuration(is));
 
 		return is;
 	}
@@ -145,6 +127,11 @@ public class ItemMaxSpeedBow extends Item {
 	@Override
 	public int getItemEnchantability() {
 		return weaponEnchantibility;
+	}
+	
+	@Override
+	public boolean isBookEnchantable(ItemStack is, ItemStack book){
+		return false;
 	}
 
 	@Override
@@ -179,5 +166,11 @@ public class ItemMaxSpeedBow extends Item {
 	@Override
 	public boolean hasEffect(ItemStack is) {
 		return true;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack is){
+		return EnumRarity.rare;
 	}
 }

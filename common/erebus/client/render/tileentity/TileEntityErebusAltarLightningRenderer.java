@@ -1,48 +1,52 @@
 package erebus.client.render.tileentity;
 
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.opengl.GL11;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.block.ModelAltarLightning;
+import erebus.tileentity.TileEntityErebusAltar;
 import erebus.tileentity.TileEntityErebusAltarLightning;
 
 @SideOnly(Side.CLIENT)
-public class TileEntityErebusAltarLightningRenderer extends TileEntitySpecialRenderer {
-
-	private final ModelAltarLightning ModelAltarBlock = new ModelAltarLightning();
-
-	public void renderAModelAt(TileEntityErebusAltarLightning tile, double d, double d1, double d2, float f) {
-		TileEntityErebusAltarLightning te = tile;
-		if (te.animationTicks <= 5)
-			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa1.png"));
-		else if (te.animationTicks > 5 && te.animationTicks <= 10)
-			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa2.png"));
-		else if (te.animationTicks > 10 && te.animationTicks <= 15)
-			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa3.png"));
-		else if (te.animationTicks > 15 && te.animationTicks <= 20)
-			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa4.png"));
-		else if (te.animationTicks > 20 && te.animationTicks < 25)
-			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa5.png"));
-		else if (te.animationTicks == 25 && te.fuzz <= 5)
-			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa5.png"));
-		else if (te.animationTicks == 25 && te.fuzz > 5 && te.fuzz <= 10 || te.animationTicks == 25 && te.fuzz > 15 && te.fuzz <= 20)
-			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa6.png"));
-		else if (te.animationTicks == 25 && te.fuzz > 10 && te.fuzz <= 15)
-			bindTexture(new ResourceLocation("erebus:textures/blocks/EngineOfIllapa7.png"));
-		GL11.glPushMatrix();
-		GL11.glTranslatef((float) d + 0.5F, (float) d1 + 0.75F, (float) d2 + 0.5F);
-		GL11.glScalef(0.5F, -0.5F, -0.5F);
-		GL11.glRotatef(0 * 90, 0.0F, 1.0F, 0.0F);
-		ModelAltarBlock.render(tile);
-		GL11.glPopMatrix();
-	}
-
+public class TileEntityErebusAltarLightningRenderer extends TileEntityErebusAltarRenderer {
+	private static final ResourceLocation[] tex = new ResourceLocation[]{
+		new ResourceLocation("erebus:textures/blocks/EngineOfIllapa1.png"),
+		new ResourceLocation("erebus:textures/blocks/EngineOfIllapa2.png"),
+		new ResourceLocation("erebus:textures/blocks/EngineOfIllapa3.png"),
+		new ResourceLocation("erebus:textures/blocks/EngineOfIllapa4.png"),
+		new ResourceLocation("erebus:textures/blocks/EngineOfIllapa5.png"),
+		new ResourceLocation("erebus:textures/blocks/EngineOfIllapa6.png"),
+		new ResourceLocation("erebus:textures/blocks/EngineOfIllapa7.png")
+	};
+	
+	private final ModelAltarLightning model = new ModelAltarLightning();
+	
 	@Override
-	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float partialTickTime) {
-		renderAModelAt((TileEntityErebusAltarLightning) tile, x, y, z, partialTickTime);
+	protected void renderModel(TileEntityErebusAltar altar){
+		model.render((TileEntityErebusAltarLightning)altar);
 	}
-
+	
+	@Override
+	protected ResourceLocation getAltarTexture(TileEntityErebusAltar altar){
+		TileEntityErebusAltarLightning tile = (TileEntityErebusAltarLightning)altar;
+		
+		if (tile.animationTicks <= 5)
+			return tex[0];
+		else if (tile.animationTicks > 5 && tile.animationTicks <= 10)
+			return tex[1];
+		else if (tile.animationTicks > 10 && tile.animationTicks <= 15)
+			return tex[2];
+		else if (tile.animationTicks > 15 && tile.animationTicks <= 20)
+			return tex[3];
+		else if (tile.animationTicks > 20 && tile.animationTicks < 25)
+			return tex[4];
+		else if (tile.animationTicks == 25 && tile.fuzz <= 5)
+			return tex[4];
+		else if (tile.animationTicks == 25 && tile.fuzz > 5 && tile.fuzz <= 10 || tile.animationTicks == 25 && tile.fuzz > 15 && tile.fuzz <= 20)
+			return tex[5];
+		else if (tile.animationTicks == 25 && tile.fuzz > 10 && tile.fuzz <= 15)
+			return tex[6];
+		else
+			return null;
+	}
 }

@@ -1,13 +1,12 @@
 package erebus.tileentity;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
 
-public class TileEntityErebusAltarXP extends TileEntity {
+public class TileEntityErebusAltarXP extends TileEntityErebusAltar {
 
 	public int animationTicks;
 	public boolean active;
@@ -71,20 +70,18 @@ public class TileEntityErebusAltarXP extends TileEntity {
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound state) {
-		super.writeToNBT(state);
-		state.setInteger("animationTicks", animationTicks);
-		state.setInteger("spawnTicks", spawnTicks);
-		state.setInteger("uses", uses);
-		state.setBoolean("active", active);
+	protected void writeTileToNBT(NBTTagCompound nbt){
+		nbt.setInteger("animationTicks", animationTicks);
+		nbt.setInteger("spawnTicks", spawnTicks);
+		nbt.setInteger("uses", uses);
+		nbt.setBoolean("active", active);
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound state) {
-		super.readFromNBT(state);
-		animationTicks = state.getInteger("animationTicks");
-		spawnTicks = state.getInteger("spawnTicks");
-		uses = state.getInteger("uses");
-		active = state.getBoolean("active");
+	protected void readTileFromNBT(NBTTagCompound nbt){
+		animationTicks = nbt.getInteger("animationTicks");
+		spawnTicks = nbt.getInteger("spawnTicks");
+		uses = nbt.getInteger("uses");
+		active = nbt.getBoolean("active");
 	}
 }

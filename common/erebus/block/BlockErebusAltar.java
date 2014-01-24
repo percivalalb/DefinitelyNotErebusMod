@@ -4,9 +4,9 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -26,9 +26,8 @@ public class BlockErebusAltar extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	private Icon a, b;
-	private int item;
-	private int meta;
 	String message;
+	
 	public BlockErebusAltar(int id) {
 		super(id, Material.rock);
 	}
@@ -94,11 +93,10 @@ public class BlockErebusAltar extends BlockContainer {
 		if (entity instanceof EntityItem)
 			if (entity.boundingBox.minY >= y + offsetY) {
 				ItemStack is = ((EntityItem) entity).getEntityItem();
-				int metadata = is.getItemDamage();
-				setItemOffering(is.itemID, metadata);
-				if (item == ModItems.erebusMaterials.itemID && isValidOffering())
-					if (world.getWorldTime() % 80 == 0) {
-						chooseAltar(world, x, y, z);
+				
+				if (is.itemID == ModItems.erebusMaterials.itemID && isValidOffering(is.getItemDamage()))
+					if (((EntityItem)entity).age>20) {
+						chooseAltar(world, x, y, z, is.getItemDamage());
 						entity.setDead();
 						world.playSoundEffect(entity.posX, entity.posY, entity.posZ, "erebus:altaroffering", 0.2F, 1.0F);
 						world.spawnParticle("flame", entity.posX, entity.posY + 0.5D, entity.posZ, 0.0D, 0.0D, 0.0D);
@@ -109,66 +107,45 @@ public class BlockErebusAltar extends BlockContainer {
 			}
 	}
 
-	private boolean isValidOffering() {
-		switch (meta) {
-			case 8:
-				return true;
-			case 9:
-				return true;
-			case 12:
-				return true;
-			case 13:
-				return true;
-			default:
-				return false;
-		}
+	private boolean isValidOffering(int damage) {
+		return damage==8||damage==9||damage==12||damage==13;
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
+		int rot = MathHelper.floor_double(entity.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
+		world.setBlockMetadataWithNotify(x,y,z,rot==0?2:rot==1?5:rot==2?3:4,2);
 	}
 
-	private void chooseAltar(World world, int x, int y, int z) {
-		EntityClientPlayerMP player = Minecraft.getMinecraft().thePlayer;
-		byte rotation = 0;
-		int playerRotation = MathHelper.floor_double(player.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
-		if (playerRotation == 0)
-			rotation = 2;
-		if (playerRotation == 1)
-			rotation = 5;
-		if (playerRotation == 2)
-			rotation = 3;
-		if (playerRotation == 3)
-			rotation = 4;
-		switch (meta) {
+	private void chooseAltar(World world, int x, int y, int z, int damage) {
+		switch (damage) {
 			case 8:
 				if (!world.isRemote)
-					world.setBlock(x, y, z, ModBlocks.erebusAltarXP.blockID, rotation, 3);
+					world.setBlock(x, y, z, ModBlocks.erebusAltarXP.blockID, world.getBlockMetadata(x,y,z), 3);
 				if (world.isRemote)
 					message = "Altar of Experience Summoned.";
 				break;
 
 			case 9:
 				if (!world.isRemote)
-					world.setBlock(x, y, z, ModBlocks.erebusAltarRepair.blockID, rotation, 3);
+					world.setBlock(x, y, z, ModBlocks.erebusAltarRepair.blockID, world.getBlockMetadata(x,y,z), 3);
 				if (world.isRemote)
 					message = "Altar of Repair Summoned.";
 				break;
 
 			case 12:
 				if (!world.isRemote)
-					world.setBlock(x, y, z, ModBlocks.erebusAltarLightning.blockID, rotation, 3);
+					world.setBlock(x, y, z, ModBlocks.erebusAltarLightning.blockID, world.getBlockMetadata(x,y,z), 3);
 				if (world.isRemote)
 					message = "Altar of Lightning Summoned.";
 				break;
 
 			case 13:
 				if (!world.isRemote)
-					world.setBlock(x, y, z, ModBlocks.erebusAltarHealing.blockID, rotation, 3);
+					world.setBlock(x, y, z, ModBlocks.erebusAltarHealing.blockID, world.getBlockMetadata(x,y,z), 3);
 				if (world.isRemote)
 					message = "Altar of Healing Summoned.";
 				break;
 		}
-	}
-
-	private void setItemOffering(int itemID, int metadata) {
-		item = itemID;
-		meta = metadata;
 	}
 }

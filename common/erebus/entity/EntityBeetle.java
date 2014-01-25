@@ -137,7 +137,6 @@ public class EntityBeetle extends EntityAnimal {
 	public void writeEntityToNBT(NBTTagCompound nbt) {
 		super.writeEntityToNBT(nbt);
 		nbt.setInteger("Skin", getSkin());
-
 	}
 
 	@Override
@@ -149,5 +148,4 @@ public class EntityBeetle extends EntityAnimal {
 	public int getSkin() {
 		return dataWatcher.getWatchableObjectInt(28);
 	}
-
 }

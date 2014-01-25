@@ -231,12 +231,10 @@ public class EntityBeetleLarva extends EntityAnimal {
 	public void writeEntityToNBT(NBTTagCompound nbt) {
 		super.writeEntityToNBT(nbt);
 		nbt.setFloat("Size", getLarvaSize());
-
 	}
 
 	@Override
 	public void readEntityFromNBT(NBTTagCompound nbt) {
-		super.readEntityFromNBT(nbt);
 		super.readEntityFromNBT(nbt);
 		setLarvaSize(nbt.getFloat("Size"));
 	}

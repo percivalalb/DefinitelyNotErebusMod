@@ -227,16 +227,13 @@ public class EntityBlackWidow extends EntityMob {
 	public void writeEntityToNBT(NBTTagCompound nbt) {
 		super.writeEntityToNBT(nbt);
 		nbt.setInteger("Size", getWidowSize() - 1);
-
 	}
 
 	@Override
 	public void readEntityFromNBT(NBTTagCompound nbt) {
 		super.readEntityFromNBT(nbt);
-		super.readEntityFromNBT(nbt);
 		setWidowSize(nbt.getInteger("Size") + 1);
 	}
-
 
 	public int getWidowSize() {
 		return dataWatcher.getWatchableObjectByte(16);

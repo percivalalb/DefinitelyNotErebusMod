@@ -1,35 +1,43 @@
 package erebus.entity;
 
-import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
 import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import erebus.ModItems;
 import erebus.item.ItemErebusMaterial;
 
-public class EntityBeetle extends EntityCreature {
-
-	public int skin = rand.nextInt(51);
-
+public class EntityBeetle extends EntityAnimal {
 	public EntityBeetle(World world) {
 		super(world);
 		setSize(0.9F, 0.9F);
 		getNavigator().setAvoidsWater(true);
 		tasks.addTask(0, new EntityAISwimming(this));
 		tasks.addTask(1, new EntityAIPanic(this, 0.6D));
-		tasks.addTask(3, new EntityAITempt(this, 0.5D, Item.wheat.itemID, false));
+		tasks.addTask(2, new EntityAIMate(this, 0.5D));
+		tasks.addTask(3, new EntityAITempt(this, 0.5D, ModItems.turnip.itemID, false));
 		tasks.addTask(5, new EntityAIWander(this, 0.5D));
 		tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		tasks.addTask(7, new EntityAILookIdle(this));
+
+	}
+
+	@Override
+	protected void entityInit() {
+		super.entityInit();
+		dataWatcher.addObject(28, new Integer(rand.nextInt(51)));
 	}
 
 	@Override
@@ -78,18 +86,18 @@ public class EntityBeetle extends EntityCreature {
 	public boolean interact(EntityPlayer player) {
 		ItemStack is = player.inventory.getCurrentItem();
 
-		if (is != null) {
-			if (is.itemID == Item.bucketEmpty.itemID && !player.capabilities.isCreativeMode)
-				if (is.stackSize-- == 1)
-					player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(ModItems.bucketOfBeetleJuice));
-				else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.bucketOfBeetleJuice)))
-					player.dropPlayerItem(new ItemStack(ModItems.bucketOfBeetleJuice.itemID, 1, 0));
-
-			if (is.itemID == ModItems.bamBucket.itemID && is.getItemDamage() == 0 && !player.capabilities.isCreativeMode)
-				if (is.stackSize-- == 1)
-					player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(ModItems.bamBucket, 1, 2));
-				else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.bamBucket, 1, 2)))
-					player.dropPlayerItem(new ItemStack(ModItems.bamBucket.itemID, 1, 2));
+		if (is != null && is.itemID == Item.bucketEmpty.itemID && !player.capabilities.isCreativeMode){
+			if (is.stackSize-- == 1)
+				player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(ModItems.bucketOfBeetleJuice));
+			else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.bucketOfBeetleJuice)))
+				player.dropPlayerItem(new ItemStack(ModItems.bucketOfBeetleJuice.itemID, 1, 0));
+			return true;
+		}
+		if (is != null && is.itemID == ModItems.bamBucket.itemID && is.getItemDamage() == 0 && !player.capabilities.isCreativeMode) {
+			if (is.stackSize-- == 1)
+				player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(ModItems.bamBucket, 1, 2));
+			else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.bamBucket, 1, 2)))
+				player.dropPlayerItem(new ItemStack(ModItems.bamBucket.itemID, 1, 2));
 
 			return true;
 		} else
@@ -102,4 +110,40 @@ public class EntityBeetle extends EntityCreature {
 		for (int a = 0; a < var3; ++a)
 			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataExoPlate), 0.0F);
 	}
+
+	@Override
+	public boolean isBreedingItem(ItemStack is) {
+		return is != null && is.itemID == ModItems.turnip.itemID;
+	}
+
+	public EntityBeetleLarva spawnBabyAnimal(EntityAgeable par1EntityAgeable) {
+		return new EntityBeetleLarva(worldObj);
+	}
+
+	@Override
+	public EntityAgeable createChild(EntityAgeable entityageable) {
+		return spawnBabyAnimal(entityageable);
+	}
+
+	public void setSkin(int skinType) {
+		dataWatcher.updateObject(28, new Integer(skinType));
+	}
+
+	@Override
+	public void writeEntityToNBT(NBTTagCompound nbt) {
+		super.writeEntityToNBT(nbt);
+		nbt.setInteger("Skin", getSkin());
+
+	}
+
+	@Override
+	public void readEntityFromNBT(NBTTagCompound nbt) {
+		super.readEntityFromNBT(nbt);
+		setSkin(nbt.getInteger("Skin"));
+	}
+
+	public int getSkin() {
+		return dataWatcher.getWatchableObjectInt(28);
+	}
+
 }

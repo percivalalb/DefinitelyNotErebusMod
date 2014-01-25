@@ -1,6 +1,6 @@
 package erebus.entity;
 
-import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
@@ -9,6 +9,7 @@ import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -23,7 +24,7 @@ import erebus.entity.ai.EntityAIEatWoodenItem;
 import erebus.network.PacketHandler;
 import erebus.network.packet.PacketParticle;
 
-public class EntityBeetleLarva extends EntityCreature {
+public class EntityBeetleLarva extends EntityAnimal {
 	private final EntityAIWander aiWander = new EntityAIWander(this, 0.48D);
 	private final EntityAIWatchClosest aiWatchClosest = new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F);
 	public EntityAIEatWoodenItem aiEatWoodItem = new EntityAIEatWoodenItem(this, 0.48D);
@@ -57,6 +58,11 @@ public class EntityBeetleLarva extends EntityCreature {
 	@Override
 	public boolean isAIEnabled() {
 		return true;
+	}
+
+	@Override
+	public boolean isChild() {
+		return false;
 	}
 
 	@Override
@@ -237,5 +243,10 @@ public class EntityBeetleLarva extends EntityCreature {
 
 	public float getLarvaSize() {
 		return dataWatcher.getWatchableObjectFloat(16);
+	}
+
+	@Override
+	public EntityAgeable createChild(EntityAgeable entityageable) {
+		return null;
 	}
 }

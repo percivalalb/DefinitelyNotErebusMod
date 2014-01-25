@@ -41,17 +41,17 @@ public class RenderBeetle extends RenderLiving {
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		EntityBeetle beetle = (EntityBeetle) entity;
-		if (beetle.skin > 0 && beetle.skin <= 10)
+		if (beetle.getSkin() > 0 && beetle.getSkin() <= 10)
 			return textures[1];
-		else if (beetle.skin > 10 && beetle.skin <= 20)
+		else if (beetle.getSkin() > 10 && beetle.getSkin() <= 20)
 			return textures[2];
-		else if (beetle.skin > 20 && beetle.skin <= 30)
+		else if (beetle.getSkin() > 20 && beetle.getSkin() <= 30)
 			return textures[3];
-		else if (beetle.skin > 30 && beetle.skin <= 40)
+		else if (beetle.getSkin() > 30 && beetle.getSkin() <= 40)
 			return textures[4];
-		else if (beetle.skin > 40 && beetle.skin <= 50)
+		else if (beetle.getSkin() > 40 && beetle.getSkin() <= 50)
 			return textures[5];
-		else if (beetle.skin == 0)
+		else if (beetle.getSkin() == 0)
 			return textures[0];
 		else
 			return null;

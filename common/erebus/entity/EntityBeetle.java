@@ -121,7 +121,9 @@ public class EntityBeetle extends EntityAnimal {
 	}
 
 	public EntityBeetleLarva spawnBabyAnimal(EntityAgeable par1EntityAgeable) {
-		return new EntityBeetleLarva(worldObj);
+		EntityBeetleLarva entityBeetleLarva = new EntityBeetleLarva(worldObj);
+		entityBeetleLarva.setTame((byte) 1);
+		return entityBeetleLarva;
 	}
 
 	@Override
@@ -136,13 +138,13 @@ public class EntityBeetle extends EntityAnimal {
 	@Override
 	public void writeEntityToNBT(NBTTagCompound nbt) {
 		super.writeEntityToNBT(nbt);
-		nbt.setInteger("Skin", getSkin());
+		nbt.setInteger("beetleSkin", getSkin());
 	}
 
 	@Override
 	public void readEntityFromNBT(NBTTagCompound nbt) {
 		super.readEntityFromNBT(nbt);
-		setSkin(nbt.getInteger("Skin"));
+		setSkin(nbt.getInteger("beetleSkin"));
 	}
 
 	public int getSkin() {

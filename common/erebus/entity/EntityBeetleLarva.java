@@ -48,11 +48,16 @@ public class EntityBeetleLarva extends EntityAnimal {
 	protected void entityInit() {
 		super.entityInit();
 		dataWatcher.addObject(16, new Float(1.0F));
+		dataWatcher.addObject(29, new Byte((byte) 0));
 	}
 
 	public void setLarvaSize(float byteSize) {
 		dataWatcher.updateObject(16, new Float(byteSize));
 		setSize(0.9F * byteSize, 0.5F * byteSize);
+	}
+
+	public void setTame(byte isBred) {
+		dataWatcher.updateObject(29, Byte.valueOf(isBred));
 	}
 
 	@Override
@@ -63,6 +68,14 @@ public class EntityBeetleLarva extends EntityAnimal {
 	@Override
 	public boolean isChild() {
 		return false;
+	}
+
+	@Override
+	protected boolean canDespawn() {
+		if (getTame() == 1)
+			return false;
+		else
+			return true;
 	}
 
 	@Override
@@ -184,7 +197,7 @@ public class EntityBeetleLarva extends EntityAnimal {
 	public boolean interact(EntityPlayer player) {
 		ItemStack is = player.inventory.getCurrentItem();
 		if (!worldObj.isRemote && is != null && is.itemID == Item.stick.itemID) {
-			setLarvaSize(getLarvaSize() + 0.2F);
+			setLarvaSize(getLarvaSize() + 0.1F);
 			--is.stackSize;
 			return true;
 		}
@@ -230,17 +243,23 @@ public class EntityBeetleLarva extends EntityAnimal {
 	@Override
 	public void writeEntityToNBT(NBTTagCompound nbt) {
 		super.writeEntityToNBT(nbt);
-		nbt.setFloat("Size", getLarvaSize());
+		nbt.setFloat("size", getLarvaSize());
+		nbt.setByte("tame", getTame());
 	}
 
 	@Override
 	public void readEntityFromNBT(NBTTagCompound nbt) {
 		super.readEntityFromNBT(nbt);
-		setLarvaSize(nbt.getFloat("Size"));
+		setLarvaSize(nbt.getFloat("size"));
+		setTame(nbt.getByte("tame"));
 	}
 
 	public float getLarvaSize() {
 		return dataWatcher.getWatchableObjectFloat(16);
+	}
+
+	public byte getTame() {
+		return dataWatcher.getWatchableObjectByte(29);
 	}
 
 	@Override

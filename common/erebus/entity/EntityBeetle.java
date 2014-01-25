@@ -31,7 +31,6 @@ public class EntityBeetle extends EntityAnimal {
 		tasks.addTask(5, new EntityAIWander(this, 0.5D));
 		tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0F));
 		tasks.addTask(7, new EntityAILookIdle(this));
-
 	}
 
 	@Override
@@ -69,17 +68,22 @@ public class EntityBeetle extends EntityAnimal {
 
 	@Override
 	protected String getLivingSound() {
-		return null;
+		return "erebus:beetleSound";
 	}
 
 	@Override
 	protected String getHurtSound() {
-		return null;
+		return "erebus:beetleHurt";
 	}
 
 	@Override
 	protected String getDeathSound() {
 		return "erebus:squish";
+	}
+
+	@Override
+	protected void playStepSound(int x, int y, int z, int blockID) {
+		playSound("mob.spider.step", 0.15F, 1.0F);
 	}
 
 	@Override

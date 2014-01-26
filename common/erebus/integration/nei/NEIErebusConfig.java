@@ -1,4 +1,4 @@
-package erebus.nei;
+package erebus.integration.nei;
 
 import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;

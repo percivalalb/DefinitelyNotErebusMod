@@ -54,7 +54,7 @@ public class EntityBeetle extends EntityAnimal {
 	@Override
 	public boolean getCanSpawnHere() {
 		float f1 = getBrightness(1.0F);
-		if (f1 >= 0F)
+		if (f1 >= 0.1F)
 			return true;
 		return super.getCanSpawnHere();
 	}

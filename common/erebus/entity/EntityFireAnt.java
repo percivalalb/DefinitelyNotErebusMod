@@ -42,7 +42,7 @@ public class EntityFireAnt extends EntityMob {
 	protected void applyEntityAttributes() {
 		super.applyEntityAttributes();
 		getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.8D); // Movespeed
-		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D); // MaxHealth
+		getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(15.0D); // MaxHealth
 		getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(2.0D); // atkDmg
 		getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(16.0D); // followRange
 

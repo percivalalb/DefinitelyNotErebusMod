@@ -84,11 +84,6 @@ public class ErebusMod {
 
 		ConfigurationHandler.loadConfig(new File(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + Reference.MOD_ID + ".cfg"));
 
-		if (ConfigurationHandler.shouldDoVersionCheck) {
-			//VersionHelper.execute();
-			//TickRegistry.registerTickHandler(new VersionCheckTickHandler(), Side.CLIENT);
-		}
-
 		ModBlocks.init();
 		ModItems.init();
 		ModEntities.init();

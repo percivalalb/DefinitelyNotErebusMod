@@ -1,6 +1,5 @@
 package erebus.item;
 
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,21 +8,15 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import erebus.ModItems;
 
 public class ItemMaxSpeedBow extends Item {
 
 	private final int weaponEnchantibility;
-
-	public static final String[] bowPullIconNameArray = new String[] { "maxSpeedBow_pull_0", "maxSpeedBow_pull_1", "maxSpeedBow_pull_2" };
-	@SideOnly(Side.CLIENT)
-	private Icon[] iconArray;
 
 	public ItemMaxSpeedBow(int id) {
 		super(id);
@@ -133,35 +126,6 @@ public class ItemMaxSpeedBow extends Item {
 	@Override
 	public boolean isBookEnchantable(ItemStack is, ItemStack book) {
 		return false;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconRegister) {
-		super.registerIcons(iconRegister);
-		iconArray = new Icon[bowPullIconNameArray.length];
-
-		for (int i = 0; i < iconArray.length; ++i)
-			iconArray[i] = iconRegister.registerIcon("erebus:" + bowPullIconNameArray[i]);
-	}
-
-	@SideOnly(Side.CLIENT)
-	public Icon func_94599_c(int par1) {
-		return iconArray[par1];
-	}
-
-	@Override
-	public Icon getIcon(ItemStack is, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {
-		if (usingItem != null && usingItem.getItem().itemID == ModItems.maxSpeedBow.itemID) {
-			int k = usingItem.getMaxItemUseDuration() - useRemaining;
-			if (k >= 6)
-				return iconArray[2];
-			if (k > 4)
-				return iconArray[1];
-			if (k > 0)
-				return iconArray[0];
-		}
-		return itemIcon;
 	}
 
 	@Override

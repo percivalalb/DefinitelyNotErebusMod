@@ -47,12 +47,12 @@ public class EntityBeetleLarva extends EntityAnimal {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		dataWatcher.addObject(16, new Float(1.0F));
+		dataWatcher.addObject(28, new Float(1.0F));
 		dataWatcher.addObject(29, new Byte((byte) 0));
 	}
 
 	public void setLarvaSize(float byteSize) {
-		dataWatcher.updateObject(16, new Float(byteSize));
+		dataWatcher.updateObject(28, new Float(byteSize));
 		setSize(0.9F * byteSize, 0.5F * byteSize);
 	}
 
@@ -93,8 +93,7 @@ public class EntityBeetleLarva extends EntityAnimal {
 	@Override
 	public boolean getCanSpawnHere() {
 		float f1 = getBrightness(1.0F);
-
-		if (f1 >= 0.0F)
+		if (f1 >= 0F)
 			return true;
 		return super.getCanSpawnHere();
 	}
@@ -255,7 +254,7 @@ public class EntityBeetleLarva extends EntityAnimal {
 	}
 
 	public float getLarvaSize() {
-		return dataWatcher.getWatchableObjectFloat(16);
+		return dataWatcher.getWatchableObjectFloat(28);
 	}
 
 	public byte getTame() {

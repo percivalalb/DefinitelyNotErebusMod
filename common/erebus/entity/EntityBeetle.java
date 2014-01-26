@@ -36,7 +36,7 @@ public class EntityBeetle extends EntityAnimal {
 	@Override
 	protected void entityInit() {
 		super.entityInit();
-		dataWatcher.addObject(28, new Integer(rand.nextInt(51)));
+		dataWatcher.addObject(30, new Integer(rand.nextInt(51)));
 	}
 
 	@Override
@@ -53,6 +53,9 @@ public class EntityBeetle extends EntityAnimal {
 
 	@Override
 	public boolean getCanSpawnHere() {
+		float f1 = getBrightness(1.0F);
+		if (f1 >= 0F)
+			return true;
 		return super.getCanSpawnHere();
 	}
 
@@ -102,7 +105,6 @@ public class EntityBeetle extends EntityAnimal {
 				player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(ModItems.bamBucket, 1, 2));
 			else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.bamBucket, 1, 2)))
 				player.dropPlayerItem(new ItemStack(ModItems.bamBucket.itemID, 1, 2));
-
 			return true;
 		} else
 			return super.interact(player);
@@ -120,7 +122,7 @@ public class EntityBeetle extends EntityAnimal {
 		return is != null && is.itemID == ModItems.turnip.itemID;
 	}
 
-	public EntityBeetleLarva spawnBabyAnimal(EntityAgeable par1EntityAgeable) {
+	public EntityBeetleLarva spawnBabyAnimal(EntityAgeable entityageable) {
 		EntityBeetleLarva entityBeetleLarva = new EntityBeetleLarva(worldObj);
 		entityBeetleLarva.setTame((byte) 1);
 		return entityBeetleLarva;
@@ -132,8 +134,9 @@ public class EntityBeetle extends EntityAnimal {
 	}
 
 	public void setSkin(int skinType) {
-		dataWatcher.updateObject(28, new Integer(skinType));
+		dataWatcher.updateObject(30, new Integer(skinType));
 	}
+
 
 	@Override
 	public void writeEntityToNBT(NBTTagCompound nbt) {
@@ -148,6 +151,7 @@ public class EntityBeetle extends EntityAnimal {
 	}
 
 	public int getSkin() {
-		return dataWatcher.getWatchableObjectInt(28);
+		return dataWatcher.getWatchableObjectInt(30);
 	}
+
 }

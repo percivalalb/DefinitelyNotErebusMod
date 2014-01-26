@@ -1,6 +1,7 @@
 package erebus.world.biomes;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.SpawnListEntry;
@@ -46,8 +47,8 @@ public class BiomeGenUndergroundSavannah extends BiomeGenBaseErebus {
 		spawnableMonsterList.add(new SpawnListEntry(EntityScytodes.class, 35, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityJumpingSpider.class, 10, 1, 4));
 		spawnableMonsterList.add(new SpawnListEntry(EntityTarantula.class, 18, 4, 8));
-		spawnableCreatureList.add(new SpawnListEntry(EntityBeetle.class, 50, 4, 8));
-		spawnableCreatureList.add(new SpawnListEntry(EntityBeetleLarva.class, 150, 1, 4));
+		spawnableCaveCreatureList.add(new SpawnListEntry(EntityBeetle.class, 8, 1, 2));
+		spawnableCaveCreatureList.add(new SpawnListEntry(EntityBeetleLarva.class, 8, 2, 4));
 		spawnableCreatureList.add(new SpawnListEntry(EntityGrasshopper.class, 14, 4, 8));
 		spawnableCreatureList.add(new SpawnListEntry(EntityGlowWorm.class, 14, 4, 8));
 		spawnableMonsterList.add(new SpawnListEntry(EntityBombardierBeetle.class, 4, 1, 1));

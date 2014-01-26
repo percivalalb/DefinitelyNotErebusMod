@@ -16,6 +16,11 @@ public class TileEntityAnimatedChest extends TileEntity implements IInventory {
 		chestContents = chest.inventory;
 		chester = chest;
 	}
+	
+	@Override
+	public boolean canUpdate(){
+		return false;
+	}
 
 	@Override
 	public Block getBlockType() {

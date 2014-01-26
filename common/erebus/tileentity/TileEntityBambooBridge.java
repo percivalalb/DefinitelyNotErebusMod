@@ -25,6 +25,11 @@ public class TileEntityBambooBridge extends TileEntity {
 	public byte getRenderSide2() {
 		return renderSide2;
 	}
+	
+	@Override
+	public boolean canUpdate(){
+		return false;
+	}
 
 	protected void writeTileToNBT(NBTTagCompound nbt) {
 		nbt.setByte("renderSide1", renderSide1);

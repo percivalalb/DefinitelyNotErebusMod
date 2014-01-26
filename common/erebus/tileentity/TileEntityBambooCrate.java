@@ -13,6 +13,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TileEntityBambooCrate extends TileEntity implements IInventory {
 
 	private ItemStack[] crateContents = new ItemStack[27];
+	
+	@Override
+	public boolean canUpdate(){
+		return false;
+	}
 
 	@Override
 	public int getSizeInventory() {

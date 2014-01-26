@@ -17,6 +17,11 @@ public class TileEntityAnimatedBambooCrate extends TileEntity implements IInvent
 		chestContents = crate.inventory;
 		bamber = crate;
 	}
+	
+	@Override
+	public boolean canUpdate(){
+		return false;
+	}
 
 	@Override
 	public Block getBlockType() {

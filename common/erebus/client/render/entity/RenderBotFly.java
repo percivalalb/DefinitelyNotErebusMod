@@ -13,7 +13,7 @@ import erebus.entity.EntityBotFly;
 
 @SideOnly(Side.CLIENT)
 public class RenderBotFly extends RenderLiving {
-	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/mob/ModelBotFly.png");
+	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/entity/ModelBotFly.png");
 
 	public RenderBotFly() {
 		super(new ModelBotFly(), 0.3F);

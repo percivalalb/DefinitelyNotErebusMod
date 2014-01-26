@@ -67,7 +67,7 @@ public class RenderFly extends RenderLiving {
 		func_82443_a((EntityFly) entity, x, y, z, rotationYaw, partialTickTime);
 	}
 
-	private final ResourceLocation resource = new ResourceLocation("erebus:textures/mob/Fly.png");
+	private final ResourceLocation resource = new ResourceLocation("erebus:textures/entity/Fly.png");
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {

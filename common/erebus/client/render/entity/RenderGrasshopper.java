@@ -11,7 +11,7 @@ import erebus.entity.EntityGrasshopper;
 
 @SideOnly(Side.CLIENT)
 public class RenderGrasshopper extends RenderLiving {
-	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/mob/ModelGrasshopper.png");
+	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/entity/ModelGrasshopper.png");
 
 	public RenderGrasshopper() {
 		super(new ModelGrasshopper(), 0.5F);

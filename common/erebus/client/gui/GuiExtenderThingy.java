@@ -16,7 +16,7 @@ import erebus.utils.Utils;
 @SideOnly(Side.CLIENT)
 public class GuiExtenderThingy extends GuiContainer {
 
-	private static final ResourceLocation GUI_UMBER_FURNACE = new ResourceLocation("erebus:textures/gui/extenderThingy.png");
+	private static final ResourceLocation GUI_UMBER_FURNACE = new ResourceLocation("erebus:textures/gui/container/extenderThingy.png");
 
 	public GuiExtenderThingy(InventoryPlayer inventory, TileEntityExtenderThingy tile) {
 		super(new ContainerExtenderThingy(inventory, tile));

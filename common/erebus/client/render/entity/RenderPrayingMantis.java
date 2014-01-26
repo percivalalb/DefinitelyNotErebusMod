@@ -13,7 +13,7 @@ import erebus.entity.EntityPrayingMantis;
 
 @SideOnly(Side.CLIENT)
 public class RenderPrayingMantis extends RenderLiving {
-	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/mob/ModelPrayingMantis.png");
+	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/entity/ModelPrayingMantis.png");
 
 	public RenderPrayingMantis(ModelPrayingMantis model, float shadowSize) {
 		super(model, shadowSize);

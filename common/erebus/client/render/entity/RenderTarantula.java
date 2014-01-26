@@ -12,8 +12,8 @@ import erebus.entity.EntityTarantula;
 @SideOnly(Side.CLIENT)
 public class RenderTarantula extends RenderLiving {
 
-	private final ResourceLocation resource1 = new ResourceLocation("erebus:textures/mob/Tarantula.png");
-	private final ResourceLocation resource2 = new ResourceLocation("erebus:textures/mob/Exaturqoise.png");
+	private final ResourceLocation resource1 = new ResourceLocation("erebus:textures/entity/Tarantula.png");
+	private final ResourceLocation resource2 = new ResourceLocation("erebus:textures/entity/Exaturqoise.png");
 
 	public RenderTarantula() {
 		super(new ModelTarantula(), 0.5F);

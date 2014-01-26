@@ -13,7 +13,7 @@ import erebus.entity.EntityLocust;
 
 @SideOnly(Side.CLIENT)
 public class RenderLocust extends RenderLiving {
-	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/mob/ModelLocust.png");
+	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/entity/ModelLocust.png");
 
 	public RenderLocust() {
 		super(new ModelLocust(), 0.5F);

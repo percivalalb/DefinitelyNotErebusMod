@@ -15,7 +15,7 @@ import erebus.tileentity.TileEntityBambooPole;
 public class TileEntityBambooPoleRenderer extends TileEntitySpecialRenderer {
 
 	private final ModelBambooPole ModelBambooPole = new ModelBambooPole();
-	public static ResourceLocation bambooCrateResource = new ResourceLocation("erebus:textures/item/bambooCrate.png");
+	public static ResourceLocation bambooCrateResource = new ResourceLocation("erebus:textures/special/tiles/bambooCrate.png");
 
 	public void renderPole(TileEntityBambooPole pole, float x, float y, float z) {
 		bindTexture(bambooCrateResource);

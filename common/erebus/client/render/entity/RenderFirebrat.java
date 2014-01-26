@@ -13,7 +13,7 @@ import erebus.entity.EntityFirebrat;
 @SideOnly(Side.CLIENT)
 public class RenderFirebrat extends RenderLiving {
 
-	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/mob/ModelFirebrat.png");
+	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/entity/ModelFirebrat.png");
 
 	public RenderFirebrat(ModelBase model, float shadowSize) {
 		super(model, shadowSize);

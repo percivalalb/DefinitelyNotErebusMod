@@ -11,9 +11,9 @@ import erebus.entity.EntityCentipede;
 
 @SideOnly(Side.CLIENT)
 public class RenderCentipede extends RenderLiving {
-	private static final ResourceLocation resource1 = new ResourceLocation("erebus:textures/mob/Centipede.png");
-	private static final ResourceLocation resource2 = new ResourceLocation("erebus:textures/mob/ModelCentipede.png");
-	private static final ResourceLocation resource3 = new ResourceLocation("erebus:textures/mob/CentipedeBlack.png");
+	private static final ResourceLocation resource1 = new ResourceLocation("erebus:textures/entity/Centipede.png");
+	private static final ResourceLocation resource2 = new ResourceLocation("erebus:textures/entity/ModelCentipede.png");
+	private static final ResourceLocation resource3 = new ResourceLocation("erebus:textures/entity/CentipedeBlack.png");
 
 	public RenderCentipede() {
 		super(new ModelCentipede(), 0.5F);

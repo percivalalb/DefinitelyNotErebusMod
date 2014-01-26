@@ -16,7 +16,7 @@ import erebus.utils.Utils;
 @SideOnly(Side.CLIENT)
 public class GuiUmberFurnace extends GuiContainer {
 
-	private static final ResourceLocation GUI_UMBER_FURNACE = new ResourceLocation("erebus:textures/gui/umberfurnace.png");
+	private static final ResourceLocation GUI_UMBER_FURNACE = new ResourceLocation("erebus:textures/gui/container/umberfurnace.png");
 	TileEntityUmberFurnace furnace;
 	private int tankXMin, tankYMin, tankXMax, tankYMax;
 

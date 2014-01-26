@@ -13,7 +13,7 @@ import erebus.utils.Utils;
 @SideOnly(Side.CLIENT)
 public class GuiPetrifiedChest extends GuiContainer {
 
-	private static final ResourceLocation field_110421_t = new ResourceLocation("erebus:textures/gui/petrifiedContainerBig.png");
+	private static final ResourceLocation field_110421_t = new ResourceLocation("erebus:textures/gui/container/petrifiedContainerBig.png");
 	private final IInventory upperChestInventory, lowerChestInventory;
 
 	private final int inventoryRows;

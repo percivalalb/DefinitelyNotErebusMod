@@ -13,8 +13,8 @@ import erebus.entity.EntityVelvetWorm;
 
 @SideOnly(Side.CLIENT)
 public class RenderVelvetWorm extends RenderLiving {
-	private final ResourceLocation resource1 = new ResourceLocation("erebus:textures/mob/Velvet worm.png");
-	private final ResourceLocation resource2 = new ResourceLocation("erebus:textures/mob/Velvet worm2.png");
+	private final ResourceLocation resource1 = new ResourceLocation("erebus:textures/entity/Velvet worm.png");
+	private final ResourceLocation resource2 = new ResourceLocation("erebus:textures/entity/Velvet worm2.png");
 
 	private float scale = 1F;
 

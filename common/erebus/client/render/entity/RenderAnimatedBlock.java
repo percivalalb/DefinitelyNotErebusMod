@@ -7,7 +7,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
@@ -25,7 +27,7 @@ public class RenderAnimatedBlock extends RenderLiving {
 
 	public void renderAnimatedBlock(EntityAnimatedBlock entity, double x, double y, double z, float rotationYaw, float partialTickTime) {
 		if (entity.blockID == ModBlocks.bambooCrate.blockID) {
-			bindTexture(new ResourceLocation("erebus:textures/item/bambooCrate.png"));
+			bindTexture(new ResourceLocation("erebus:textures/special/tiles/bambooCrate.png"));
 			GL11.glPushMatrix();
 			GL11.glTranslated(x, y + 1.75F, z);
 			GL11.glScalef(1.0F, -1F, -1F);

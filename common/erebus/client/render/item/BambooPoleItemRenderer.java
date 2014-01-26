@@ -48,7 +48,7 @@ public class BambooPoleItemRenderer implements IItemRenderer {
 	}
 
 	private void renderBlock(float x, float y, float z, double size) {
-		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(new ResourceLocation("erebus:textures/item/bambooCrate.png"));
+		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(new ResourceLocation("erebus:textures/special/tiles/bambooCrate.png"));
 
 		if (RenderItem.renderInFrame) {
 			GL11.glPushMatrix();

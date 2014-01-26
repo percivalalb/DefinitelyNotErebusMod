@@ -19,7 +19,7 @@ import erebus.tileentity.TileEntityBambooCrate;
 public class GuiColossalCrate extends GuiContainer {
 
 	public static final boolean hasInventoryTweaks = Loader.isModLoaded("inventorytweaks");
-	private static final ResourceLocation GUI_BAMBOO_CRATE = new ResourceLocation("erebus:textures/gui/collosalcrate.png");
+	private static final ResourceLocation GUI_BAMBOO_CRATE = new ResourceLocation("erebus:textures/gui/container/collosalcrate.png");
 	/*public TileEntityBambooCrate crate1;
 	public TileEntityBambooCrate crate2;
 	public TileEntityBambooCrate crate3;

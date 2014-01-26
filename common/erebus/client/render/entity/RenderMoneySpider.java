@@ -14,9 +14,9 @@ import erebus.entity.EntityMoneySpider;
 @SideOnly(Side.CLIENT)
 public class RenderMoneySpider extends RenderLiving {
 	private static final ResourceLocation[] textures = new ResourceLocation[]{
-		new ResourceLocation("erebus:textures/mob/ModelMoneySpider.png"),
-		new ResourceLocation("erebus:textures/mob/ModelMoneySpider_euro.png"),
-		new ResourceLocation("erebus:textures/mob/ModelMoneySpider_pound.png")
+		new ResourceLocation("erebus:textures/entity/ModelMoneySpider.png"),
+		new ResourceLocation("erebus:textures/entity/ModelMoneySpider_euro.png"),
+		new ResourceLocation("erebus:textures/entity/ModelMoneySpider_pound.png")
 	};
 
 	public RenderMoneySpider(ModelScytodes model, float shadowSize) {

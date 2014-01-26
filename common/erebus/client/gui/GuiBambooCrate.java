@@ -13,7 +13,7 @@ import erebus.tileentity.TileEntityBambooCrate;
 @SideOnly(Side.CLIENT)
 public class GuiBambooCrate extends GuiContainer {
 
-	private static final ResourceLocation GUI_BAMBOO_CRATE = new ResourceLocation("erebus:textures/gui/bambooCrate.png");
+	private static final ResourceLocation GUI_BAMBOO_CRATE = new ResourceLocation("erebus:textures/gui/container/bambooCrate.png");
 	private TileEntityBambooCrate bambooCrateInventory;
 
 	public GuiBambooCrate(InventoryPlayer playerInventory, TileEntityBambooCrate tile) {

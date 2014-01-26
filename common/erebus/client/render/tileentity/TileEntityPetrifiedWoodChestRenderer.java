@@ -6,8 +6,10 @@ import net.minecraft.client.model.ModelLargeChest;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -17,8 +19,8 @@ import erebus.tileentity.TileEntityPetrifiedWoodChest;
 @SideOnly(Side.CLIENT)
 public class TileEntityPetrifiedWoodChestRenderer extends TileEntitySpecialRenderer {
 
-	private static final ResourceLocation RES_NORMAL_DOUBLE = new ResourceLocation("erebus:textures/item/petrifiedLargechest.png");
-	private static final ResourceLocation RES_NORMAL_SINGLE = new ResourceLocation("erebus:textures/item/petrifiedChest.png");
+	private static final ResourceLocation RES_NORMAL_DOUBLE = new ResourceLocation("erebus:textures/special/tiles/petrifiedLargechest.png");
+	private static final ResourceLocation RES_NORMAL_SINGLE = new ResourceLocation("erebus:textures/special/tiles/petrifiedChest.png");
 
 	private final ModelChest chestModel = new ModelChest();
 	private final ModelChest largeChestModel = new ModelLargeChest();

@@ -15,7 +15,7 @@ import erebus.client.model.item.ModelScorpionPincer;
 @SideOnly(Side.CLIENT)
 public class ScorpionPincerItemRenderer implements IItemRenderer {
 	private final ModelScorpionPincer model;
-	public static ResourceLocation texture = new ResourceLocation("erebus:textures/item/ModelScorpionPincer.png");
+	public static ResourceLocation texture = new ResourceLocation("erebus:textures/special/items/ModelScorpionPincer.png");
 
 	public ScorpionPincerItemRenderer() {
 		model = new ModelScorpionPincer();

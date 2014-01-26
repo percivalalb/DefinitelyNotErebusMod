@@ -51,7 +51,7 @@ public class ItemPetrifiedWoodChestRenderer implements IItemRenderer {
 	}
 
 	private void renderChest(float x, float y, float z) {
-		FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation("erebus:textures/item/petrifiedChest.png"));
+		FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation("erebus:textures/special/tiles/petrifiedChest.png"));
 		GL11.glPushMatrix();
 		GL11.glTranslatef(x, y, z);
 		GL11.glRotatef(180, 1, 0, 0);

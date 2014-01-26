@@ -12,10 +12,10 @@ import erebus.entity.EntityScytodes;
 public class RenderScytodes extends RenderLiving
 {
 	private static final ResourceLocation[] textures = new ResourceLocation[]{
-		new ResourceLocation("erebus:textures/mob/ModelScytodes_1.png"),
-		new ResourceLocation("erebus:textures/mob/ModelScytodes_2.png"),
-		new ResourceLocation("erebus:textures/mob/ModelScytodes_3.png"),
-		new ResourceLocation("erebus:textures/mob/ModelScytodes_4.png")
+		new ResourceLocation("erebus:textures/entity/ModelScytodes_1.png"),
+		new ResourceLocation("erebus:textures/entity/ModelScytodes_2.png"),
+		new ResourceLocation("erebus:textures/entity/ModelScytodes_3.png"),
+		new ResourceLocation("erebus:textures/entity/ModelScytodes_4.png")
 	};
 
 	public RenderScytodes(ModelScytodes model, float shadowSize) {

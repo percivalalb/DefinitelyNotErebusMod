@@ -14,8 +14,8 @@ import erebus.entity.EntityGlowWorm;
 @SideOnly(Side.CLIENT)
 public class RenderGlowWorm extends RenderLiving
 {
-	private static final ResourceLocation texGlowing = new ResourceLocation("erebus:textures/mob/ModelGlowWormGlow.png"),
-										  texNormal = new ResourceLocation("erebus:textures/mob/ModelGlowWorm.png");
+	private static final ResourceLocation texGlowing = new ResourceLocation("erebus:textures/entity/ModelGlowWormGlow.png"),
+										  texNormal = new ResourceLocation("erebus:textures/entity/ModelGlowWorm.png");
 	
 	public RenderGlowWorm(ModelGlowWorm model, float shadowSize)
 	{

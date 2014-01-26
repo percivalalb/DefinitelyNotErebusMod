@@ -17,7 +17,7 @@ public class TileEntityBambooBridgeRenderer extends TileEntitySpecialRenderer {
 	private final ModelBambooBridge ModelBambooBridge = new ModelBambooBridge();
 
 	public void renderAModelAt(TileEntityBambooBridge tile, double x, double y, double z, float f) {
-		bindTexture(new ResourceLocation("erebus:textures/blocks/bambooLadder.png"));
+		bindTexture(new ResourceLocation("erebus:textures/special/tiles/bambooLadder.png"));
 		int meta = tile.getBlockMetadata();
 		switch (meta) {
 			case 2:

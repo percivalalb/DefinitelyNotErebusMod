@@ -49,7 +49,7 @@ public class BambooBridgeItemRenderer implements IItemRenderer {
 	}
 
 	private void renderBlock(float x, float y, float z, double size) {
-		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(new ResourceLocation("erebus:textures/blocks/bambooLadder.png"));
+		FMLClientHandler.instance().getClient().getTextureManager().bindTexture(new ResourceLocation("erebus:textures/special/tiles/bambooLadder.png"));
 		TileEntityBambooBridge te = new TileEntityBambooBridge();
 		te.setRenderSide1((byte) 1);
 		te.setRenderSide2((byte) 1);

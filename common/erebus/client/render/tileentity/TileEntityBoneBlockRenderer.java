@@ -3,7 +3,9 @@ package erebus.client.render.tileentity;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.block.ModelBoneBlock;
@@ -15,7 +17,7 @@ public class TileEntityBoneBlockRenderer extends TileEntitySpecialRenderer {
 	private final ModelBoneBlock ModelBoneBlock = new ModelBoneBlock();
 
 	public void renderAModelAt(TileEntityBones tile, double x, double y, double z, float f) {
-		bindTexture(new ResourceLocation("erebus:textures/blocks/ModelBoneBlock.png"));
+		bindTexture(new ResourceLocation("erebus:textures/special/tiles/ModelBoneBlock.png"));
 		int meta = tile.getBlockMetadata();
 		switch (meta) {
 			case 2:

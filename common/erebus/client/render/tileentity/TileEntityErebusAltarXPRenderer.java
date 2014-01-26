@@ -10,24 +10,21 @@ import erebus.tileentity.TileEntityErebusAltarXP;
 @SideOnly(Side.CLIENT)
 public class TileEntityErebusAltarXPRenderer extends TileEntityErebusAltarRenderer {
 	private static final ResourceLocation[] tex = new ResourceLocation[]{
-		new ResourceLocation("erebus:textures/blocks/XPAltar1.png"),
-		new ResourceLocation("erebus:textures/blocks/XPAltar2.png"),
-		new ResourceLocation("erebus:textures/blocks/XPAltar3.png"),
-		new ResourceLocation("erebus:textures/blocks/XPAltar4.png"),
-		new ResourceLocation("erebus:textures/blocks/XPAltar5.png")
+ new ResourceLocation("erebus:textures/special/tiles/XPAltar1.png"), new ResourceLocation("erebus:textures/special/tiles/XPAltar2.png"), new ResourceLocation("erebus:textures/special/tiles/XPAltar3.png"),
+	new ResourceLocation("erebus:textures/special/tiles/XPAltar4.png"), new ResourceLocation("erebus:textures/special/tiles/XPAltar5.png")
 	};
-	
+
 	private final ModelAltarXP model = new ModelAltarXP();
 
 	@Override
 	protected void renderModel(TileEntityErebusAltar altar){
 		model.render((TileEntityErebusAltarXP)altar);
 	}
-	
+
 	@Override
 	protected ResourceLocation getAltarTexture(TileEntityErebusAltar altar){
 		TileEntityErebusAltarXP tile = (TileEntityErebusAltarXP)altar;
-		
+
 		if (tile.animationTicks <= 5)
 			return tex[0];
 		else if (tile.animationTicks > 5 && tile.animationTicks <= 10)

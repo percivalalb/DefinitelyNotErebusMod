@@ -10,11 +10,8 @@ import erebus.tileentity.TileEntityErebusAltarHealing;
 @SideOnly(Side.CLIENT)
 public class TileEntityErebusAltarHealingRenderer extends TileEntityErebusAltarRenderer {
 	private static final ResourceLocation[] tex = new ResourceLocation[]{
-		new ResourceLocation("erebus:textures/blocks/HealingAltar1.png"),
-		new ResourceLocation("erebus:textures/blocks/HealingAltar2.png"),
-		new ResourceLocation("erebus:textures/blocks/HealingAltar3.png"),
-		new ResourceLocation("erebus:textures/blocks/HealingAltar4.png"),
-		new ResourceLocation("erebus:textures/blocks/HealingAltar5.png")
+ new ResourceLocation("erebus:textures/special/tiles/HealingAltar1.png"), new ResourceLocation("erebus:textures/special/tiles/HealingAltar2.png"), new ResourceLocation("erebus:textures/special/tiles/HealingAltar3.png"),
+	new ResourceLocation("erebus:textures/special/tiles/HealingAltar4.png"), new ResourceLocation("erebus:textures/special/tiles/HealingAltar5.png")
 	};
 
 	private final ModelAltarHealing model = new ModelAltarHealing();
@@ -23,11 +20,11 @@ public class TileEntityErebusAltarHealingRenderer extends TileEntityErebusAltarR
 	protected void renderModel(TileEntityErebusAltar altar){
 		model.render((TileEntityErebusAltarHealing)altar);
 	}
-	
+
 	@Override
 	protected ResourceLocation getAltarTexture(TileEntityErebusAltar altar){
 		TileEntityErebusAltarHealing tile = (TileEntityErebusAltarHealing)altar;
-		
+
 		if (tile.animationTicks <= 5)
 			return tex[0];
 		else if (tile.animationTicks > 5 && tile.animationTicks <= 10)

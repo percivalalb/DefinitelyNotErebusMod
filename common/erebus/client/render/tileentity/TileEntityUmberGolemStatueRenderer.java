@@ -3,7 +3,9 @@ package erebus.client.render.tileentity;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.block.ModelUmberGolemStatue;
@@ -15,7 +17,7 @@ public class TileEntityUmberGolemStatueRenderer extends TileEntitySpecialRendere
 	private final ModelUmberGolemStatue ModelUmberGolemStatue = new ModelUmberGolemStatue();
 
 	public void renderAModelAt(TileEntityUmberGolemStatue tile, double x, double y, double z, float f) {
-		bindTexture(new ResourceLocation("erebus:textures/blocks/ModelUmberGolemStatue.png"));
+		bindTexture(new ResourceLocation("erebus:textures/special/tiles/ModelUmberGolemStatue.png"));
 		int meta = tile.getBlockMetadata();
 		switch (meta) {
 			case 2:

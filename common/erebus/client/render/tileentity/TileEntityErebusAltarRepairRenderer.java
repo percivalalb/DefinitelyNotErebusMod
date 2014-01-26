@@ -10,24 +10,21 @@ import erebus.tileentity.TileEntityErebusAltarRepair;
 @SideOnly(Side.CLIENT)
 public class TileEntityErebusAltarRepairRenderer extends TileEntityErebusAltarRenderer {
 	private static final ResourceLocation[] tex = new ResourceLocation[]{
-		new ResourceLocation("erebus:textures/blocks/RepairAltar1.png"),
-		new ResourceLocation("erebus:textures/blocks/RepairAltar2.png"),
-		new ResourceLocation("erebus:textures/blocks/RepairAltar3.png"),
-		new ResourceLocation("erebus:textures/blocks/RepairAltar4.png"),
-		new ResourceLocation("erebus:textures/blocks/RepairAltar5.png")
+ new ResourceLocation("erebus:textures/special/tiles/RepairAltar1.png"), new ResourceLocation("erebus:textures/special/tiles/RepairAltar2.png"), new ResourceLocation("erebus:textures/special/tiles/RepairAltar3.png"),
+	new ResourceLocation("erebus:textures/special/tiles/RepairAltar4.png"), new ResourceLocation("erebus:textures/special/tiles/RepairAltar5.png")
 	};
-	
+
 	private final ModelAltarRepair model = new ModelAltarRepair();
 
 	@Override
 	protected void renderModel(TileEntityErebusAltar altar){
 		model.render((TileEntityErebusAltarRepair)altar);
 	}
-	
+
 	@Override
 	protected ResourceLocation getAltarTexture(TileEntityErebusAltar altar){
 		TileEntityErebusAltarRepair tile = (TileEntityErebusAltarRepair)altar;
-		
+
 		if (tile.animationTicks <= 5)
 			return tex[0];
 		else if (tile.animationTicks > 5 && tile.animationTicks <= 10)

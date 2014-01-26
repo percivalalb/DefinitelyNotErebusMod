@@ -6,6 +6,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityBambooCrate extends TileEntity implements IInventory {
 
@@ -119,5 +122,11 @@ public class TileEntityBambooCrate extends TileEntity implements IInventory {
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack is) {
 		return true;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public AxisAlignedBB getRenderBoundingBox(){
+		return AxisAlignedBB.getAABBPool().getAABB(xCoord-1,yCoord,zCoord-1,xCoord+2,yCoord+2,zCoord+2);
 	}
 }

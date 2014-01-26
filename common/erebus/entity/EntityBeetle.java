@@ -37,6 +37,7 @@ public class EntityBeetle extends EntityAnimal {
 	protected void entityInit() {
 		super.entityInit();
 		dataWatcher.addObject(30, new Integer(rand.nextInt(51)));
+		dataWatcher.addObject(31, new Byte((byte) 0));
 	}
 
 	@Override
@@ -106,6 +107,12 @@ public class EntityBeetle extends EntityAnimal {
 			else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.bamBucket, 1, 2)))
 				player.dropPlayerItem(new ItemStack(ModItems.bamBucket.itemID, 1, 2));
 			return true;
+		}
+		if (is != null && is.itemID == ModItems.turnip.itemID && !isInLove()) {
+			is.stackSize--;
+			setTame((byte) 1);
+			inLove = 600;
+			return true;
 		} else
 			return super.interact(player);
 	}
@@ -129,6 +136,14 @@ public class EntityBeetle extends EntityAnimal {
 	}
 
 	@Override
+	protected boolean canDespawn() {
+		if (getHasMated() == 1)
+			return false;
+		else
+			return true;
+	}
+
+	@Override
 	public EntityAgeable createChild(EntityAgeable entityageable) {
 		return spawnBabyAnimal(entityageable);
 	}
@@ -137,21 +152,30 @@ public class EntityBeetle extends EntityAnimal {
 		dataWatcher.updateObject(30, new Integer(skinType));
 	}
 
+	public void setTame(byte hasMated) {
+		dataWatcher.updateObject(31, Byte.valueOf(hasMated));
+	}
 
 	@Override
 	public void writeEntityToNBT(NBTTagCompound nbt) {
 		super.writeEntityToNBT(nbt);
 		nbt.setInteger("beetleSkin", getSkin());
+		nbt.setByte("hasMated", getHasMated());
 	}
 
 	@Override
 	public void readEntityFromNBT(NBTTagCompound nbt) {
 		super.readEntityFromNBT(nbt);
 		setSkin(nbt.getInteger("beetleSkin"));
+		setTame(nbt.getByte("hasMated"));
 	}
 
 	public int getSkin() {
 		return dataWatcher.getWatchableObjectInt(30);
+	}
+
+	public byte getHasMated() {
+		return dataWatcher.getWatchableObjectByte(31);
 	}
 
 }

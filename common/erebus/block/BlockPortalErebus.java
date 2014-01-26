@@ -1,6 +1,7 @@
 package erebus.block;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
@@ -30,21 +31,21 @@ public class BlockPortalErebus extends BlockBreakable {
 		super(id, "erebus:portalErebus", Material.portal, false);
 		setTickRandomly(true);
 	}
-	
-	@Override
-	public void updateTick(World world, int x, int y, int z, Random rand){
-		if (ConfigurationHandler.spawnPortalMobs&&world.difficultySetting>0&&world.provider.isSurfaceWorld()&&rand.nextInt(100)<3D+world.difficultySetting*0.5D){
-			int yy;
-			for(yy=y; !world.doesBlockHaveSolidTopSurface(x,yy,z)&&yy>0; --yy);
 
-			if (yy>0&&!world.isBlockNormalCube(x,yy+1,z)){
-				EntityLiving entity=rand.nextInt(2)==0?new EntityBeetle(world):new EntityBeetleLarva(world);		
-				entity.setLocationAndAngles(x+0.5D, yy+1.1D, z+0.5D, MathHelper.wrapAngleTo180_float(world.rand.nextFloat() * 360.0F), 0.0F);
-				entity.rotationYawHead=entity.renderYawOffset = entity.rotationYaw;
+	@Override
+	public void updateTick(World world, int x, int y, int z, Random rand) {
+		if (ConfigurationHandler.spawnPortalMobs && world.difficultySetting > 0 && world.provider.isSurfaceWorld() && rand.nextInt(100) < 3D + world.difficultySetting * 0.5D) {
+			int yy;
+			for (yy = y; !world.doesBlockHaveSolidTopSurface(x, yy, z) && yy > 0; --yy);
+
+			if (yy > 0 && !world.isBlockNormalCube(x, yy + 1, z)) {
+				EntityLiving entity = rand.nextInt(2) == 0 ? new EntityBeetle(world) : new EntityBeetleLarva(world);
+				entity.setLocationAndAngles(x + 0.5D, yy + 1.1D, z + 0.5D, MathHelper.wrapAngleTo180_float(world.rand.nextFloat() * 360.0F), 0.0F);
+				entity.rotationYawHead = entity.renderYawOffset = entity.rotationYaw;
 				entity.onSpawnWithEgg(null);
 				world.spawnEntityInWorld(entity);
-                entity.playLivingSound();
-				entity.timeUntilPortal=entity.getPortalCooldown();
+				entity.playLivingSound();
+				entity.timeUntilPortal = entity.getPortalCooldown();
 			}
 		}
 	}
@@ -120,8 +121,7 @@ public class BlockPortalErebus extends BlockBreakable {
 
 				if (flag && flag1)
 					world.setBlockToAir(x, y, z);
-				else if ((world.getBlockId(x + b0, y, z + b1) != Block.stoneBrick.blockID || world.getBlockId(x - b0, y, z - b1) != blockID) &&
-				(world.getBlockId(x - b0, y, z - b1) != Block.stoneBrick.blockID || world.getBlockId(x + b0, y, z + b1) != blockID))
+				else if ((world.getBlockId(x + b0, y, z + b1) != Block.stoneBrick.blockID || world.getBlockId(x - b0, y, z - b1) != blockID) && (world.getBlockId(x - b0, y, z - b1) != Block.stoneBrick.blockID || world.getBlockId(x + b0, y, z + b1) != blockID))
 					world.setBlockToAir(x, y, z);
 			} else
 				world.setBlockToAir(x, y, z);

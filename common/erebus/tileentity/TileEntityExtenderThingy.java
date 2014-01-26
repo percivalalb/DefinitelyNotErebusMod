@@ -108,7 +108,7 @@ public class TileEntityExtenderThingy extends TileEntity implements IInventory {
 	}
 
 	private int getMetaFromDirection(ForgeDirection dir) {
-		switch(dir) {
+		switch (dir) {
 			case UP:
 				return 1;
 			case DOWN:

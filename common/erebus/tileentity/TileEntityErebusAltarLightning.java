@@ -31,7 +31,7 @@ public class TileEntityErebusAltarLightning extends TileEntityErebusAltar {
 				worldObj.playSoundEffect(xCoord, yCoord, zCoord, "erebus:altarchangestate", 1.0F, 1.3F);
 			if (animationTicks <= 24)
 				animationTicks++;
-			if(animationTicks==25)
+			if (animationTicks == 25)
 				if (fuzz < 20) {
 					fuzz++;
 					if (fuzz >= 20)
@@ -101,14 +101,14 @@ public class TileEntityErebusAltarLightning extends TileEntityErebusAltar {
 	}
 
 	@Override
-	protected void writeTileToNBT(NBTTagCompound nbt){
+	protected void writeTileToNBT(NBTTagCompound nbt) {
 		nbt.setInteger("animationTicks", animationTicks);
 		nbt.setInteger("spawnTicks", spawnTicks);
 		nbt.setBoolean("active", active);
 	}
 
 	@Override
-	protected void readTileFromNBT(NBTTagCompound nbt){
+	protected void readTileFromNBT(NBTTagCompound nbt) {
 		animationTicks = nbt.getInteger("animationTicks");
 		spawnTicks = nbt.getInteger("spawnTicks");
 		active = nbt.getBoolean("active");

@@ -5,7 +5,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelAntlion;
@@ -15,6 +17,7 @@ import erebus.entity.EntityAntlion;
 public class RenderAntlion extends RenderLiving {
 
 	private static ResourceLocation texture;
+
 	public RenderAntlion(ModelAntlion model, float shadowSize) {
 		super(model, shadowSize);
 
@@ -53,9 +56,9 @@ public class RenderAntlion extends RenderLiving {
 	protected ResourceLocation getEntityTexture(Entity entity) {
 		EntityAntlion antlion = (EntityAntlion) entity;
 		if (!antlion.isBoss())
-		 texture = new ResourceLocation("erebus:textures/entity/ModelAntlion.png");
+			texture = new ResourceLocation("erebus:textures/entity/ModelAntlion.png");
 		if (antlion.isBoss())
-		 texture = new ResourceLocation("erebus:textures/entity/ModelAntlionSandstone.png");
+			texture = new ResourceLocation("erebus:textures/entity/ModelAntlionSandstone.png");
 		return texture;
 	}
 }

@@ -13,7 +13,7 @@ public class TileEntityErebusAltarRepair extends TileEntityErebusAltar {
 	private int spawnTicks;
 	public boolean notUsed = true;
 	private int collisions;
-	
+
 	@Override
 	public void updateEntity() {
 		if (active) {
@@ -90,14 +90,14 @@ public class TileEntityErebusAltarRepair extends TileEntityErebusAltar {
 	}
 
 	@Override
-	protected void writeTileToNBT(NBTTagCompound nbt){
+	protected void writeTileToNBT(NBTTagCompound nbt) {
 		nbt.setInteger("animationTicks", animationTicks);
 		nbt.setInteger("spawnTicks", spawnTicks);
 		nbt.setBoolean("active", active);
 	}
 
 	@Override
-	protected void readTileFromNBT(NBTTagCompound nbt){
+	protected void readTileFromNBT(NBTTagCompound nbt) {
 		animationTicks = nbt.getInteger("animationTicks");
 		spawnTicks = nbt.getInteger("spawnTicks");
 		active = nbt.getBoolean("active");

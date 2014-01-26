@@ -102,8 +102,8 @@ public class EntityBeetleLarva extends EntityAnimal {
 	public void onCollideWithPlayer(EntityPlayer player) {
 		super.onCollideWithPlayer(player);
 		byte var2 = 0;
-		if (!worldObj.isRemote && player.boundingBox.maxY >= boundingBox.minY && player.boundingBox.minY <= boundingBox.maxY && player.boundingBox.maxX >= boundingBox.minX && player.boundingBox.minX <= boundingBox.maxX &&
-		player.boundingBox.maxZ >= boundingBox.minZ && player.boundingBox.minZ <= boundingBox.maxZ && player.lastTickPosY > player.posY) {
+		if (!worldObj.isRemote && player.boundingBox.maxY >= boundingBox.minY && player.boundingBox.minY <= boundingBox.maxY && player.boundingBox.maxX >= boundingBox.minX && player.boundingBox.minX <= boundingBox.maxX && player.boundingBox.maxZ >= boundingBox.minZ &&
+		player.boundingBox.minZ <= boundingBox.maxZ && player.lastTickPosY > player.posY) {
 			if (worldObj.difficultySetting > 1)
 				if (worldObj.difficultySetting == 2)
 					var2 = 7;

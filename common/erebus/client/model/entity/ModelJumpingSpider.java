@@ -4,7 +4,9 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -316,7 +318,6 @@ public class ModelJumpingSpider extends ModelBase {
 		RBEye.setRotationPoint(0F, 18F, -7F);
 		setRotation(RBEye, -0.1745329F, 0F, 0F);
 
-
 		LFL1.addChild(LFL2);
 		LFL1.addChild(LFL3);
 		LFL1.addChild(LFL4);
@@ -440,9 +441,7 @@ public class ModelJumpingSpider extends ModelBase {
 		GL11.glPopMatrix();
 	}
 
-
-	private void setRotation(ModelRenderer model, float  x, float y, float z)
-	{
+	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
@@ -476,4 +475,3 @@ public class ModelJumpingSpider extends ModelBase {
 		RFL1.rotateAngleY = cosY + PI;
 	}
 }
-

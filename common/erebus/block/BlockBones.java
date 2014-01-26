@@ -23,6 +23,7 @@ public class BlockBones extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	private Icon a, b;
+
 	public BlockBones(int id) {
 		super(id, Material.rock);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.6875F, 1.0F);

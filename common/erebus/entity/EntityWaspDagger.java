@@ -28,7 +28,8 @@ public class EntityWaspDagger extends EntityThrowable {
 			byte byte0 = 4;
 			if (MovingObjectPosition.entityHit instanceof EntityWasp)
 				byte0 = 0;
-			if (!MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), byte0));
+			if (!MovingObjectPosition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), byte0))
+				;
 			if (isBurning() && !(MovingObjectPosition.entityHit instanceof EntityEnderman))
 				MovingObjectPosition.entityHit.setFire(5);
 			for (int i = 0; i < 8; i++)

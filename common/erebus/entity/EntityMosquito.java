@@ -64,7 +64,8 @@ public class EntityMosquito extends EntityMob {
 			firstTickCheck = true;
 		}
 		if (consumptionTimer > 0)
-			if (--consumptionTimer == 0) setBloodConsumed(0);
+			if (--consumptionTimer == 0)
+				setBloodConsumed(0);
 		if (ridingEntity != null) {
 			suckFloat = 1.0F + mathSucking.swing(1.0F, 0.15F);
 			if (rand.nextInt(10) == 0)
@@ -277,7 +278,7 @@ public class EntityMosquito extends EntityMob {
 	}
 
 	public void setBloodConsumed(int amount) {
-		consumptionTimer=2400;
+		consumptionTimer = 2400;
 		dataWatcher.updateObject(15, Byte.valueOf((byte) amount));
 	}
 

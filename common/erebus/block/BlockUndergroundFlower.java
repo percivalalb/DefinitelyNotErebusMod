@@ -1,7 +1,9 @@
 package erebus.block;
 
 import static net.minecraftforge.common.EnumPlantType.Plains;
+
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.AxisAlignedBB;

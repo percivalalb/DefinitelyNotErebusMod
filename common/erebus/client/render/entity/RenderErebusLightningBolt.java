@@ -1,11 +1,14 @@
 package erebus.client.render.entity;
 
 import java.util.Random;
+
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.entity.effect.EntityErebusLightningBolt;
@@ -54,8 +57,7 @@ public class RenderErebusLightningBolt extends Render {
 					if (k == 0) {
 						d5 += random1.nextInt(11) - 5;
 						d6 += random1.nextInt(11) - 5;
-					}
- else {
+					} else {
 						d5 += random1.nextInt(31) - 15;
 						d6 += random1.nextInt(31) - 15;
 					}

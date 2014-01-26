@@ -5,11 +5,13 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.MathHelper;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.client.FMLClientHandler;
 
 public class ModelArmorGlider extends ModelBiped {
-	//fields
+	// fields
 	ModelRenderer Body;
 	ModelRenderer RArm;
 	ModelRenderer LArm;
@@ -20,8 +22,7 @@ public class ModelArmorGlider extends ModelBiped {
 
 	public boolean isGliding;
 
-	public ModelArmorGlider()
-	{
+	public ModelArmorGlider() {
 		textureWidth = 64;
 		textureHeight = 64;
 
@@ -94,8 +95,7 @@ public class ModelArmorGlider extends ModelBiped {
 		LWing.render(unitPixel);
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
@@ -107,14 +107,13 @@ public class ModelArmorGlider extends ModelBiped {
 		EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
 		RArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 2.0F * prevLimbSwing * 0.5F;
 		LArm.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 2.0F * prevLimbSwing * 0.5F;
-		if (!isGliding){
+		if (!isGliding) {
 			RWing.rotateAngleZ = 0F;
 			LWing.rotateAngleZ = 0F;
 			if (player.prevPosX != player.posX || player.prevPosZ != player.posZ) {
 				RWing.rotateAngleX = 0.7F;
 				LWing.rotateAngleX = 0.7F;
-			}
-			else{
+			} else {
 				RWing.rotateAngleX = 0.0F;
 				LWing.rotateAngleX = 0.0F;
 			}

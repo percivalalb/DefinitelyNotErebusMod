@@ -55,8 +55,8 @@ public class ItemErebusAltarRenderer implements IItemRenderer {
 			GL11.glRotatef(180F, 1F, 0, 0);
 			GL11.glScaled(0.5F, 0.5F, 0.5F);
 			ModelAltarBlock.render();
-			GL11.glPopMatrix();}
-		else{
+			GL11.glPopMatrix();
+		} else {
 			GL11.glPushMatrix();
 			GL11.glTranslatef(x, y, z);
 			GL11.glRotatef(180F, 1F, 0, 0);

@@ -56,8 +56,9 @@ public class TileEntityBambooBridgeRenderer extends TileEntitySpecialRenderer {
 	}
 
 	@Override
-	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float rotation) {{
-		renderAModelAt((TileEntityBambooBridge) tile, x, y, z, rotation);
-	}
+	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float rotation) {
+		{
+			renderAModelAt((TileEntityBambooBridge) tile, x, y, z, rotation);
+		}
 	}
 }

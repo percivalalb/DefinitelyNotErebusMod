@@ -1,4 +1,5 @@
 package erebus.client.model.entity;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -7,8 +8,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ModelBombardierBeetle extends ModelBase
-{
+public class ModelBombardierBeetle extends ModelBase {
 	ModelRenderer torso1;
 	ModelRenderer torso2;
 	ModelRenderer torso3;
@@ -44,8 +44,7 @@ public class ModelBombardierBeetle extends ModelBase
 	ModelRenderer hindleftclaw;
 	ModelRenderer hindrightclaw;
 
-	public ModelBombardierBeetle()
-	{
+	public ModelBombardierBeetle() {
 		textureWidth = 128;
 		textureHeight = 64;
 		torso1 = new ModelRenderer(this, 0, 0);
@@ -294,16 +293,14 @@ public class ModelBombardierBeetle extends ModelBase
 		hindrightclaw.render(unitPixel);
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
 	}
 
 	@Override
-	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity)
-	{
+	public void setRotationAngles(float limbSwing, float prevLimbSwing, float entityTickTime, float rotationYaw, float rotationPitch, float unitPixel, Entity entity) {
 		float heady = rotationYaw / (180F / (float) Math.PI);
 		float cosy1 = MathHelper.cos(limbSwing * 0.7F) * 0.4F * prevLimbSwing;
 		float cosy2 = MathHelper.cos(limbSwing * 0.7F) * 0.7F * prevLimbSwing;

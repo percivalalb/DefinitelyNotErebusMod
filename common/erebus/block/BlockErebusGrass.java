@@ -1,6 +1,7 @@
 package erebus.block;
 
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTallGrass;
 import net.minecraft.creativetab.CreativeTabs;
@@ -24,7 +25,8 @@ public class BlockErebusGrass extends BlockTallGrass {
 	}
 
 	@Override
-	public void getSubBlocks(int id, CreativeTabs tab, List list) {}
+	public void getSubBlocks(int id, CreativeTabs tab, List list) {
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)

@@ -21,7 +21,6 @@ import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.core.handler.ConfigurationHandler;
-import erebus.core.helper.LogHelper;
 import erebus.lib.Reference;
 
 @SideOnly(Side.CLIENT)
@@ -53,7 +52,6 @@ public class AmbientMusicManager implements IScheduledTickHandler {
 
 		instance.sndMan = event.manager;
 
-		int loaded = 0;
 		URL track;
 
 		for (String ambient : ambientMusicList) {
@@ -62,10 +60,7 @@ public class AmbientMusicManager implements IScheduledTickHandler {
 				continue;
 
 			poolAmbient.put("erebus:" + ambient, track);
-			++loaded;
 		}
-
-		LogHelper.logInfo("Loaded " + loaded + " music track(s).");
 	}
 
 	@Override

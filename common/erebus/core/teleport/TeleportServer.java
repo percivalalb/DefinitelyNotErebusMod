@@ -1,6 +1,7 @@
 package erebus.core.teleport;
 
 import java.util.Random;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.packet.Packet;
 import cpw.mods.fml.common.network.PacketDispatcher;

@@ -22,6 +22,7 @@ public class BlockUmberGolemStatue extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	private Icon a, b;
+
 	public BlockUmberGolemStatue(int id) {
 		super(id, Material.rock);
 	}
@@ -103,6 +104,5 @@ public class BlockUmberGolemStatue extends BlockContainer {
 
 		return AxisAlignedBB.getBoundingBox(i, j, k, i + 1, j + 1, k + 1);
 	}
-
 
 }

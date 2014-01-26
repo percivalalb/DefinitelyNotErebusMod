@@ -1,11 +1,14 @@
 package erebus.core.handler;
 
 import java.util.EnumSet;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+
 import org.lwjgl.input.Keyboard;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
@@ -53,12 +56,12 @@ public class ClientTickHandler implements ITickHandler {
 
 			float time = TeleportClient.prevTimeInPortal + (TeleportClient.timeInPortal - TeleportClient.prevTimeInPortal) * ticks;
 
-			if (!(time > 0F && TeleportClient.mc.currentScreen == null) && TeleportClient.mc.thePlayer != null){
-				 PotionEffect eff=TeleportClient.mc.thePlayer.getActivePotionEffect(Potion.confusion);
-				 if (eff!=null&&eff.getAmplifier()==69)TeleportClient.mc.thePlayer.removePotionEffect(Potion.confusion.id);
+			if (!(time > 0F && TeleportClient.mc.currentScreen == null) && TeleportClient.mc.thePlayer != null) {
+				PotionEffect eff = TeleportClient.mc.thePlayer.getActivePotionEffect(Potion.confusion);
+				if (eff != null && eff.getAmplifier() == 69)
+					TeleportClient.mc.thePlayer.removePotionEffect(Potion.confusion.id);
 			}
-		}
-		else if (type.equals(EnumSet.of(TickType.PLAYER)))
+		} else if (type.equals(EnumSet.of(TickType.PLAYER)))
 			TeleportClient.onTick((EntityPlayer) tickData[0]);
 	}
 

@@ -9,8 +9,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class ModelGlowingJar extends ModelBase
-{
+public class ModelGlowingJar extends ModelBase {
 	ModelRenderer Jar;
 	ModelRenderer Lid;
 	ModelRenderer Neck;

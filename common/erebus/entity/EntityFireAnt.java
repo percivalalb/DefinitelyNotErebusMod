@@ -97,8 +97,7 @@ public class EntityFireAnt extends EntityMob {
 		if (attackTime <= 0 && distance < 1.0F && entity.boundingBox.maxY > boundingBox.minY && entity.boundingBox.minY < boundingBox.maxY) {
 			attackTime = 20;
 			attackEntityAsMob(entity);
-		}
-		else if (distance > 5.0F & distance < 8.0F) {
+		} else if (distance > 5.0F & distance < 8.0F) {
 			double var3 = entity.posX - posX;
 			double var5 = entity.boundingBox.minY + entity.height / 2.0F - (posY + height / 2.0F);
 			double var7 = entity.posZ - posZ;
@@ -114,10 +113,10 @@ public class EntityFireAnt extends EntityMob {
 				}
 				if (shouldDo > 1) {
 					float var9 = MathHelper.sqrt_float(distance) * 0.5F;
-					worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1009, (int)posX, (int)posY, (int)posZ, 0);
+					worldObj.playAuxSFXAtEntity((EntityPlayer) null, 1009, (int) posX, (int) posY, (int) posZ, 0);
 					for (int var10 = 0; var10 < 1; ++var10) {
 						EntitySmallFireball var11 = new EntitySmallFireball(worldObj, this, var3 + rand.nextGaussian() * var9, var5, var7 + rand.nextGaussian() * var9);
-						var11.posY = posY + height / 2.0F+0.5D;
+						var11.posY = posY + height / 2.0F + 0.5D;
 						worldObj.spawnEntityInWorld(var11);
 					}
 				}
@@ -125,4 +124,3 @@ public class EntityFireAnt extends EntityMob {
 		}
 	}
 }
-

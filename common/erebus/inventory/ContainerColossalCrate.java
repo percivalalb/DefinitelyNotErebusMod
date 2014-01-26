@@ -1,7 +1,9 @@
 package erebus.inventory;
 
 import invtweaks.api.container.ChestContainer;
+
 import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;

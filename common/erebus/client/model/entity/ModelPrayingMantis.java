@@ -9,8 +9,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.entity.EntityPrayingMantis;
 
 @SideOnly(Side.CLIENT)
-public class ModelPrayingMantis extends ModelBase
-{
+public class ModelPrayingMantis extends ModelBase {
 	ModelRenderer Head1;
 	ModelRenderer Head2;
 	ModelRenderer Head3;

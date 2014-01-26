@@ -1,6 +1,7 @@
 package erebus.item;
 
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -150,9 +151,9 @@ public class ItemBambucket extends Item {
 	public EnumAction getItemUseAction(ItemStack is) {
 		EnumAction x;
 		if (is.getItemDamage() == 2)
-			x= EnumAction.drink;
+			x = EnumAction.drink;
 		else
-			x= EnumAction.block;
+			x = EnumAction.block;
 		return x;
 	}
 

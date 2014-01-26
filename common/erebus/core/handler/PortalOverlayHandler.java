@@ -7,7 +7,9 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.Icon;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.ForgeSubscribe;
+
 import org.lwjgl.opengl.GL11;
+
 import erebus.ModBlocks;
 import erebus.core.teleport.TeleportClient;
 

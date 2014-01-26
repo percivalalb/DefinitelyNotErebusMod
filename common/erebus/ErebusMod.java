@@ -24,13 +24,11 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.sound.AmbientMusicManager;
 import erebus.client.sound.EntitySoundEvent;
 import erebus.core.handler.CommonTickHandler;
 import erebus.core.handler.ConfigurationHandler;
 import erebus.core.handler.PlayerTeleportHandler;
-import erebus.core.helper.LogHelper;
 import erebus.core.proxy.CommonProxy;
 import erebus.creativetab.CreativeTabErebus;
 import erebus.creativetab.CreativeTabErebusBlock;
@@ -72,15 +70,11 @@ public class ErebusMod {
 	public static PlayerTeleportHandler teleportHandler = new PlayerTeleportHandler();
 
 	@EventHandler
-	@SideOnly(Side.CLIENT)
-	public void preInitClient(FMLPreInitializationEvent event) {
-		MinecraftForge.EVENT_BUS.register(new EntitySoundEvent());
-		AmbientMusicManager.register();
-	}
-
-	@EventHandler
-	public void preInitServer(FMLPreInitializationEvent event) {
-		LogHelper.init();
+	public void preInit(FMLPreInitializationEvent event) {
+		if (event.getSide() == Side.CLIENT) {
+			MinecraftForge.EVENT_BUS.register(new EntitySoundEvent());
+			AmbientMusicManager.register();
+		}
 
 		ConfigurationHandler.loadConfig(new File(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + Reference.MOD_ID + ".cfg"));
 
@@ -96,7 +90,7 @@ public class ErebusMod {
 	}
 
 	@EventHandler
-	public void load(FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event) {
 		proxy.registerKeyHandlers();
 		proxy.registerTileEntities();
 		proxy.registerRenderInformation();
@@ -111,31 +105,29 @@ public class ErebusMod {
 		MinecraftForge.EVENT_BUS.register(ModItems.armorGlider);
 		MinecraftForge.EVENT_BUS.register(ModItems.jumpBoots);
 
-		if (ConfigurationHandler.randomNames) MinecraftForge.EVENT_BUS.register(RandomMobNames.instance);
+		if (ConfigurationHandler.randomNames)
+			MinecraftForge.EVENT_BUS.register(RandomMobNames.instance);
 
 		TickRegistry.registerTickHandler(new CommonTickHandler(), Side.SERVER);
 		BCFacadeManager.registerFacades();
 	}
 
 	@EventHandler
-	public void postLoad(FMLPostInitializationEvent event) {
-		try{
-			for(ClassInfo clsInfo:ClassPath.from(getClass().getClassLoader()).getTopLevelClasses("erebus.integration")) {
-				Class cls=clsInfo.load();
+	public void postInit(FMLPostInitializationEvent event) {
+		try {
+			for (ClassInfo clsInfo : ClassPath.from(getClass().getClassLoader()).getTopLevelClasses("erebus.integration")) {
+				Class cls = clsInfo.load();
 
 				if (IModIntegration.class.isAssignableFrom(cls) && !cls.isInterface())
-					try{
-						IModIntegration obj=(IModIntegration)cls.newInstance();
-						if (Loader.isModLoaded(obj.getModId()))obj.integrate();
-						LogHelper.logInfo("Succesfully integrated into mod: "+obj.getModId());
-					}catch(Exception e) {
+					try {
+						IModIntegration obj = (IModIntegration) cls.newInstance();
+						if (Loader.isModLoaded(obj.getModId()))
+							obj.integrate();
+					} catch (Exception e) {
 						e.printStackTrace();
-						LogHelper.logSevere("Error integrating into mod: "+clsInfo.getName());
 					}
 			}
-		}catch(Exception e) {
-			e.printStackTrace();
-			LogHelper.logSevere("Error loading mod integration");
+		} catch (Exception e) {
 		}
 	}
 }

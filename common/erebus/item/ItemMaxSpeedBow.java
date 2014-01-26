@@ -107,19 +107,20 @@ public class ItemMaxSpeedBow extends Item {
 
 				if (world.rand.nextInt(4) == 0)
 					arrow.setIsCritical(true);
-				
+
 				arrow.setDamage(arrow.getDamage() * 0.75D);
 
 				is.damageItem(1, player);
 				world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + 1.0F * 0.5F);
 
-				if (!player.capabilities.isCreativeMode) player.inventory.consumeInventoryItem(Item.arrow.itemID);
+				if (!player.capabilities.isCreativeMode)
+					player.inventory.consumeInventoryItem(Item.arrow.itemID);
 
 				if (!world.isRemote)
 					world.spawnEntityInWorld(arrow);
 			}
-		}
-		else player.setItemInUse(is, getMaxItemUseDuration(is));
+		} else
+			player.setItemInUse(is, getMaxItemUseDuration(is));
 
 		return is;
 	}
@@ -128,9 +129,9 @@ public class ItemMaxSpeedBow extends Item {
 	public int getItemEnchantability() {
 		return weaponEnchantibility;
 	}
-	
+
 	@Override
-	public boolean isBookEnchantable(ItemStack is, ItemStack book){
+	public boolean isBookEnchantable(ItemStack is, ItemStack book) {
 		return false;
 	}
 
@@ -167,10 +168,10 @@ public class ItemMaxSpeedBow extends Item {
 	public boolean hasEffect(ItemStack is) {
 		return true;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
-	public EnumRarity getRarity(ItemStack is){
+	public EnumRarity getRarity(ItemStack is) {
 		return EnumRarity.rare;
 	}
 }

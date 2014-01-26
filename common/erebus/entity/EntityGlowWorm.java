@@ -18,14 +18,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 import erebus.item.ItemErebusMaterial;
 
-public class EntityGlowWorm extends EntityCreature
-{
+public class EntityGlowWorm extends EntityCreature {
 	public int lastX;
 	public int lastY;
 	public int lastZ;
 
-	public EntityGlowWorm(World world)
-	{
+	public EntityGlowWorm(World world) {
 		super(world);
 		stepHeight = 0.0F;
 		isImmuneToFire = true;

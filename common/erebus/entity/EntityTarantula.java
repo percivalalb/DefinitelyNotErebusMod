@@ -17,6 +17,7 @@ import erebus.ModItems;
 
 public class EntityTarantula extends EntityMob {
 	public int skin = rand.nextInt(99);
+
 	public EntityTarantula(World world) {
 		super(world);
 		setSize(1.3F, 0.6F);

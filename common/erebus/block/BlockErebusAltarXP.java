@@ -19,7 +19,6 @@ import erebus.ModItems;
 import erebus.tileentity.TileEntityErebusAltarXP;
 import erebus.utils.Utils;
 
-
 public class BlockErebusAltarXP extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
@@ -97,11 +96,12 @@ public class BlockErebusAltarXP extends BlockContainer {
 					world.spawnEntityInWorld(new EntityXPOrb(world, x + 0.5D, y + 1.8D, z + 0.5D, is.stackSize * 5));
 				if (te.getUses() > 165)
 					te.setSpawnTicks(0);
-				if(te.getExcess()>0)
+				if (te.getExcess() > 0)
 					Utils.dropStack(world, (int) (x + 0.5D), (int) (y + 1.0D), (int) (z + 0.5D), new ItemStack(item, te.getExcess(), meta));
 			}
 		}
 	}
+
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		TileEntityErebusAltarXP te = (TileEntityErebusAltarXP) world.getBlockTileEntity(x, y, z);

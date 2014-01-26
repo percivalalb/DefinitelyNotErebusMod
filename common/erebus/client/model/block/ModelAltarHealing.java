@@ -8,9 +8,8 @@ import org.lwjgl.opengl.GL11;
 
 import erebus.tileentity.TileEntityErebusAltarHealing;
 
-public class ModelAltarHealing extends ModelBase
-{
-	//fields
+public class ModelAltarHealing extends ModelBase {
+	// fields
 	ModelRenderer ROutPetal1;
 	ModelRenderer ROutPetal2;
 	ModelRenderer ROutPetal3;
@@ -50,8 +49,7 @@ public class ModelAltarHealing extends ModelBase
 	ModelRenderer Mid;
 	ModelRenderer Bot;
 
-	public ModelAltarHealing()
-	{
+	public ModelAltarHealing() {
 		textureWidth = 256;
 		textureHeight = 64;
 
@@ -285,7 +283,6 @@ public class ModelAltarHealing extends ModelBase
 		setRotation(Bot, 0F, 0F, 0F);
 	}
 
-
 	public void render(TileEntityErebusAltarHealing tile) {
 
 		float x = tile.animationTicks;
@@ -340,8 +337,7 @@ public class ModelAltarHealing extends ModelBase
 		GL11.glPopMatrix();
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;

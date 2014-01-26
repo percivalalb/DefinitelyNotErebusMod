@@ -17,7 +17,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 import erebus.tileentity.TileEntityErebusAltarRepair;
 
-
 public class BlockErebusAltarRepair extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)

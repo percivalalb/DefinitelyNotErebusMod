@@ -21,6 +21,7 @@ import erebus.entity.EntityAnimatedBlock;
 public class RenderAnimatedBlock extends RenderLiving {
 
 	private final ModelBambooCrate bambooCrateModel = new ModelBambooCrate();
+
 	public RenderAnimatedBlock(ModelAnimatedBlock model, float scale) {
 		super(model, scale);
 	}
@@ -34,8 +35,7 @@ public class RenderAnimatedBlock extends RenderLiving {
 			GL11.glRotatef(entity.renderYawOffset, 0.0F, 1.0F, 0.0F);
 			bambooCrateModel.renderModel();
 			GL11.glPopMatrix();
-		}
-		else {
+		} else {
 			GL11.glPushMatrix();
 			GL11.glDisable(GL11.GL_LIGHTING);
 			GL11.glDisable(GL11.GL_CULL_FACE);

@@ -1,6 +1,7 @@
 package erebus.world.biomes;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -52,19 +53,19 @@ public abstract class BiomeGenBaseErebus extends BiomeGenBase {
 			for (int a = 0; a < 1 + rand.nextInt(3); ++a)
 				generateOreCluster(ModBlocks.oreFossil, 3, 8 + rand.nextInt(4), worldObj, rand, x, z, 36, 112, 3);
 
-		if(ConfigurationHandler.aluminium)
+		if (ConfigurationHandler.aluminium)
 			for (int a = 0; a < 2 + rand.nextInt(2); ++a)
 				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataAluminium, 3 + rand.nextInt(2), worldObj, rand, x, z, 6, 112, 2);
-		if(ConfigurationHandler.copper)
+		if (ConfigurationHandler.copper)
 			for (int a = 0; a < 8 + rand.nextInt(3); ++a)
 				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataCopper, 5 + rand.nextInt(3), worldObj, rand, x, z, 6, 112, 3);
-		if(ConfigurationHandler.lead)
+		if (ConfigurationHandler.lead)
 			for (int a = 0; a < 4; ++a)
 				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataLead, 3, worldObj, rand, x, z, 6, 112, 2);
-		if(ConfigurationHandler.silver)
+		if (ConfigurationHandler.silver)
 			for (int a = 0; a < 6; ++a)
 				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataSilver, 6 + rand.nextInt(3), worldObj, rand, x, z, 6, 112, 3);
-		if(ConfigurationHandler.tin)
+		if (ConfigurationHandler.tin)
 			for (int a = 0; a < 2 + rand.nextInt(3); ++a)
 				generateOreCluster(ModBlocks.erebusOreExtra, BlockErebusOreExtras.dataTin, 3 + rand.nextInt(2), worldObj, rand, x, z, 6, 112, 2);
 	}

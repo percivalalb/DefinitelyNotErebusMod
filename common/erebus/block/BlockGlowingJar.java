@@ -1,5 +1,7 @@
 package erebus.block;
+
 import java.util.Random;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
@@ -12,8 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModBlocks;
 import erebus.tileentity.TileEntityGlowingJar;
 
-public class BlockGlowingJar extends BlockContainer
-{
+public class BlockGlowingJar extends BlockContainer {
 	public BlockGlowingJar(int id) {
 		super(id, Material.glass);
 		setCreativeTab(CreativeTabs.tabBlock);
@@ -22,8 +23,7 @@ public class BlockGlowingJar extends BlockContainer
 	}
 
 	@Override
-	public int idDropped(int meta, Random rand, int fortune)
-	{
+	public int idDropped(int meta, Random rand, int fortune) {
 		return ModBlocks.glowingJarID;
 	}
 
@@ -43,19 +43,16 @@ public class BlockGlowingJar extends BlockContainer
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world)
-	{
+	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityGlowingJar();
 	}
 
 	@Override
-	public boolean canPlaceBlockAt(World world, int x, int y, int z)
-	{
+	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
 		return world.doesBlockHaveSolidTopSurface(x, y - 1, z) || BlockFence.isIdAFence(world.getBlockId(x, y - 1, z)) || isIdAJar(world.getBlockId(x, y - 1, z));
 	}
 
-	public static boolean isIdAJar(int id)
-	{
+	public static boolean isIdAJar(int id) {
 		return id == ModBlocks.glowingJarID;
 	}
 
@@ -65,5 +62,3 @@ public class BlockGlowingJar extends BlockContainer
 		blockIcon = reg.registerIcon("erebus:blockBioJarBreak");
 	}
 }
-
-

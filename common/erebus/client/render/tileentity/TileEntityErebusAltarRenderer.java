@@ -19,7 +19,7 @@ public class TileEntityErebusAltarRenderer extends TileEntitySpecialRenderer {
 
 	@Override
 	public final void renderTileEntityAt(TileEntity tile, double x, double y, double z, float partialTickTime) {
-		TileEntityErebusAltar altar=(TileEntityErebusAltar)tile;
+		TileEntityErebusAltar altar = (TileEntityErebusAltar) tile;
 		int meta = tile.getBlockMetadata();
 
 		bindTexture(getAltarTexture(altar));
@@ -46,11 +46,11 @@ public class TileEntityErebusAltarRenderer extends TileEntitySpecialRenderer {
 		GL11.glPopMatrix();
 	}
 
-	protected void renderModel(TileEntityErebusAltar altar){
+	protected void renderModel(TileEntityErebusAltar altar) {
 		model.render();
 	}
 
-	protected ResourceLocation getAltarTexture(TileEntityErebusAltar altar){
+	protected ResourceLocation getAltarTexture(TileEntityErebusAltar altar) {
 		return tex;
 	}
 }

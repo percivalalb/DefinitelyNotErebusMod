@@ -18,6 +18,7 @@ import erebus.entity.EntityWebSling;
 public class RenderWebSling extends Render {
 	private final RenderBlocks blockRenderer = new RenderBlocks();
 	private static ResourceLocation texture;
+
 	@Override
 	public void doRender(Entity entity, double x, double y, double z, float yaw, float tick) {
 		renderWebSling((EntityWebSling) entity, x, y, z, yaw, tick);

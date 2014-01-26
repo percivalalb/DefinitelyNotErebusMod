@@ -94,7 +94,7 @@ public class EntityBeetle extends EntityAnimal {
 	public boolean interact(EntityPlayer player) {
 		ItemStack is = player.inventory.getCurrentItem();
 
-		if (is != null && is.itemID == Item.bucketEmpty.itemID && !player.capabilities.isCreativeMode){
+		if (is != null && is.itemID == Item.bucketEmpty.itemID && !player.capabilities.isCreativeMode) {
 			if (is.stackSize-- == 1)
 				player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(ModItems.bucketOfBeetleJuice));
 			else if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.bucketOfBeetleJuice)))

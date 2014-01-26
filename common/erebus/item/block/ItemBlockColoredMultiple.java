@@ -4,7 +4,7 @@ import net.minecraft.item.ItemColored;
 
 public class ItemBlockColoredMultiple extends ItemColored {
 
-	public ItemBlockColoredMultiple(int id){
+	public ItemBlockColoredMultiple(int id) {
 		super(id, true);
 	}
 }

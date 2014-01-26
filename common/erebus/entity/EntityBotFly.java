@@ -1,6 +1,7 @@
 package erebus.entity;
 
 import java.util.Calendar;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;

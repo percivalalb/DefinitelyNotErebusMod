@@ -21,7 +21,7 @@ public class ItemScorpionPincer extends ItemSword {
 	@Override
 	public boolean hitEntity(ItemStack is, EntityLivingBase entity, EntityLivingBase player) {
 		is.damageItem(1, player);
-		if (!(entity instanceof EntityScorpion)){
+		if (!(entity instanceof EntityScorpion)) {
 			double knockback = 0.5D;
 			double direction = Math.toRadians(player.renderYawOffset);
 			entity.addVelocity(-Math.sin(direction) * knockback, 0.25D, Math.cos(direction) * knockback);
@@ -33,8 +33,7 @@ public class ItemScorpionPincer extends ItemSword {
 	public ItemStack onItemRightClick(ItemStack is, World world, EntityPlayer player) {
 		if (!player.capabilities.isCreativeMode && player.inventory.hasItem(Item.fireballCharge.itemID))
 			is.damageItem(10, player);
-		if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.fireballCharge.itemID))
-		{
+		if (player.capabilities.isCreativeMode || player.inventory.hasItem(Item.fireballCharge.itemID)) {
 			world.playSoundAtEntity(player, "mob.ghast.fireball", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 			if (!world.isRemote) {
 				Vec3 look = player.getLookVec();

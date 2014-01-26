@@ -44,7 +44,8 @@ public class BlockHollowLogRender implements ISimpleBlockRenderingHandler {
 		renderer.renderStandardBlock(ModBlocks.hollowLogAcacia, x, y, z);
 		renderer.setRenderBounds(0D, 0D, 1D - (meta == 1 ? pixel : 0D), 1D, 1D, 1D);
 		renderer.renderStandardBlock(ModBlocks.hollowLogAcacia, x, y, z);
-		if (meta == 0) renderer.uvRotateEast = renderer.uvRotateWest = renderer.uvRotateTop = renderer.uvRotateBottom = 1;
+		if (meta == 0)
+			renderer.uvRotateEast = renderer.uvRotateWest = renderer.uvRotateTop = renderer.uvRotateBottom = 1;
 		renderer.setRenderBounds(0D, 0D, 0D, 1D, pixel, 1D);
 		renderer.renderStandardBlock(ModBlocks.hollowLogAcacia, x, y, z);
 		renderer.setRenderBounds(0D, 1D - pixel, 0D, 1D, 1D, 1D);

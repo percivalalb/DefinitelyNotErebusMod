@@ -57,4 +57,3 @@ public class RenderFireAnt extends RenderLiving {
 		return texture;
 	}
 }
-

@@ -4,7 +4,7 @@ import net.minecraft.item.ItemColored;
 
 public class ItemBlockColoredSingle extends ItemColored {
 
-	public ItemBlockColoredSingle(int id){
+	public ItemBlockColoredSingle(int id) {
 		super(id, false);
 	}
 }

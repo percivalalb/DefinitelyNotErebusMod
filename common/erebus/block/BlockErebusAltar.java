@@ -27,7 +27,7 @@ public class BlockErebusAltar extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	private Icon a, b;
 	String message;
-	
+
 	public BlockErebusAltar(int id) {
 		super(id, Material.rock);
 	}
@@ -74,7 +74,7 @@ public class BlockErebusAltar extends BlockContainer {
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		message = "Place Erebus item offerings on this altar. Then activate with The Wand of Animation.";
-		if (world.isRemote){
+		if (world.isRemote) {
 			Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText(message.toString()));
 			return true;
 		}
@@ -93,9 +93,9 @@ public class BlockErebusAltar extends BlockContainer {
 		if (entity instanceof EntityItem)
 			if (entity.boundingBox.minY >= y + offsetY) {
 				ItemStack is = ((EntityItem) entity).getEntityItem();
-				
+
 				if (is.itemID == ModItems.erebusMaterials.itemID && isValidOffering(is.getItemDamage()))
-					if (((EntityItem)entity).age>20) {
+					if (((EntityItem) entity).age > 20) {
 						chooseAltar(world, x, y, z, is.getItemDamage());
 						entity.setDead();
 						world.playSoundEffect(entity.posX, entity.posY, entity.posZ, "erebus:altaroffering", 0.2F, 1.0F);
@@ -108,41 +108,41 @@ public class BlockErebusAltar extends BlockContainer {
 	}
 
 	private boolean isValidOffering(int damage) {
-		return damage==8||damage==9||damage==12||damage==13;
+		return damage == 8 || damage == 9 || damage == 12 || damage == 13;
 	}
-	
+
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack is) {
 		int rot = MathHelper.floor_double(entity.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
-		world.setBlockMetadataWithNotify(x,y,z,rot==0?2:rot==1?5:rot==2?3:4,2);
+		world.setBlockMetadataWithNotify(x, y, z, rot == 0 ? 2 : rot == 1 ? 5 : rot == 2 ? 3 : 4, 2);
 	}
 
 	private void chooseAltar(World world, int x, int y, int z, int damage) {
 		switch (damage) {
 			case 8:
 				if (!world.isRemote)
-					world.setBlock(x, y, z, ModBlocks.erebusAltarXP.blockID, world.getBlockMetadata(x,y,z), 3);
+					world.setBlock(x, y, z, ModBlocks.erebusAltarXP.blockID, world.getBlockMetadata(x, y, z), 3);
 				if (world.isRemote)
 					message = "Altar of Experience Summoned.";
 				break;
 
 			case 9:
 				if (!world.isRemote)
-					world.setBlock(x, y, z, ModBlocks.erebusAltarRepair.blockID, world.getBlockMetadata(x,y,z), 3);
+					world.setBlock(x, y, z, ModBlocks.erebusAltarRepair.blockID, world.getBlockMetadata(x, y, z), 3);
 				if (world.isRemote)
 					message = "Altar of Repair Summoned.";
 				break;
 
 			case 12:
 				if (!world.isRemote)
-					world.setBlock(x, y, z, ModBlocks.erebusAltarLightning.blockID, world.getBlockMetadata(x,y,z), 3);
+					world.setBlock(x, y, z, ModBlocks.erebusAltarLightning.blockID, world.getBlockMetadata(x, y, z), 3);
 				if (world.isRemote)
 					message = "Altar of Lightning Summoned.";
 				break;
 
 			case 13:
 				if (!world.isRemote)
-					world.setBlock(x, y, z, ModBlocks.erebusAltarHealing.blockID, world.getBlockMetadata(x,y,z), 3);
+					world.setBlock(x, y, z, ModBlocks.erebusAltarHealing.blockID, world.getBlockMetadata(x, y, z), 3);
 				if (world.isRemote)
 					message = "Altar of Healing Summoned.";
 				break;

@@ -20,7 +20,7 @@ public class BlockLogErebus extends BlockLog {
 	@SideOnly(Side.CLIENT)
 	private Icon[] iconSide, iconTop;
 
-	private byte logGroup;
+	private final byte logGroup;
 
 	public BlockLogErebus(int id, int logGroup) {
 		super(id);

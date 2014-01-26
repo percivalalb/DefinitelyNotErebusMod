@@ -26,8 +26,7 @@ import erebus.ModItems;
 
 public class EntityUmberGolem extends EntityCreature implements IMob {
 
-	public EntityUmberGolem(World world)
-	{
+	public EntityUmberGolem(World world) {
 		super(world);
 		isImmuneToFire = true;
 		setSize(1.0F, 1.0F);
@@ -75,8 +74,7 @@ public class EntityUmberGolem extends EntityCreature implements IMob {
 	 */
 
 	@Override
-	protected String getDeathSound()
-	{
+	protected String getDeathSound() {
 		return "erebus:squish";
 	}
 
@@ -110,10 +108,8 @@ public class EntityUmberGolem extends EntityCreature implements IMob {
 	}
 
 	protected boolean Attack(Entity entity) {
-		if (!worldObj.isRemote)
-		{
-			if (onGround)
-			{
+		if (!worldObj.isRemote) {
+			if (onGround) {
 				double d0 = entity.posX - posX;
 				double d1 = entity.posZ - posZ;
 				float f2 = MathHelper.sqrt_double(d0 * d0 + d1 * d1);
@@ -156,4 +152,3 @@ public class EntityUmberGolem extends EntityCreature implements IMob {
 			return false;
 	}
 }
-

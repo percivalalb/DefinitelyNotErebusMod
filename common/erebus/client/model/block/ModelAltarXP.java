@@ -8,9 +8,8 @@ import org.lwjgl.opengl.GL11;
 
 import erebus.tileentity.TileEntityErebusAltarXP;
 
-public class ModelAltarXP extends ModelBase
-{
-	//fields
+public class ModelAltarXP extends ModelBase {
+	// fields
 	ModelRenderer GlassTop;
 	ModelRenderer GlassBot;
 	ModelRenderer GlassMid;
@@ -24,8 +23,7 @@ public class ModelAltarXP extends ModelBase
 	ModelRenderer Mid;
 	ModelRenderer Bot;
 
-	public ModelAltarXP()
-	{
+	public ModelAltarXP() {
 		textureWidth = 256;
 		textureHeight = 64;
 
@@ -131,8 +129,7 @@ public class ModelAltarXP extends ModelBase
 		GL11.glPopMatrix();
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;

@@ -62,7 +62,7 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 	public void onLivingUpdate() {
 		super.onLivingUpdate();
 		if (isOpen)
-			if (openticks >= -1.570F){
+			if (openticks >= -1.570F) {
 				openticks = openticks - 0.19625F;
 				dataWatcher.updateObject(21, openticks);
 			}
@@ -76,7 +76,6 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 		}
 	}
 
-
 	@Override
 	public boolean interact(EntityPlayer player) {
 		if (worldObj.isRemote)
@@ -87,7 +86,7 @@ public class EntityAnimatedChest extends EntityAnimatedBlock {
 			worldObj.playSoundEffect(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), "erebus:altaroffering", 0.2F, 1.0F);
 			worldObj.setBlock(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ), blockID, blockMeta, 3);
 			TileEntityChest chest = (TileEntityChest) worldObj.getBlockTileEntity(MathHelper.floor_double(posX), MathHelper.floor_double(posY), MathHelper.floor_double(posZ));
-			for(int i = 0; i < chest.getSizeInventory(); i++)
+			for (int i = 0; i < chest.getSizeInventory(); i++)
 				chest.setInventorySlotContents(i, inventory[i]);
 			return true;
 		} else if (is == null) {

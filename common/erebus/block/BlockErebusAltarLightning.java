@@ -13,7 +13,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.ModItems;
 import erebus.tileentity.TileEntityErebusAltarLightning;
 
-
 public class BlockErebusAltarLightning extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)

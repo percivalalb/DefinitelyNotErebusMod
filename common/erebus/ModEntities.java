@@ -74,16 +74,16 @@ public class ModEntities {
 		EntityList.stringToClassMapping.put("FireAnt - Erebus", EntityFireAnt.class);
 
 		// Entity registrations
-		registerEntity( 0, EntityBeetleLarva.class, "BeetleLarva", -1251634, -13032944);
-		registerEntity( 1, EntityWasp.class, "Wasp", -256, -16382458);
-		registerEntity( 2, EntityCentipede.class, "Centipede", -13565952, -92160);
-		registerEntity( 3, EntityBeetle.class, "Beetle", -12116973, -5938366);
-		registerEntity( 4, EntityFly.class, "Fly", -13165534, -6750208);
-		registerEntity( 5, EntityMosquito.class, "Mosquito", -13816034, -14803180);
-		registerEntity( 6, EntityTarantula.class, "Tarantula", 0x000000, 0xE82066);
-		registerEntity( 7, EntityBotFly.class, "BotFly", -6750208, -13165534);
-		registerEntity( 8, EntityScorpion.class, "Scorpion", 0xFFA200, 0xFFDB9C);
-		registerEntity( 9, EntitySolifuge.class, "Solifuge", 0xFFDB9C, 0xFFA200);
+		registerEntity(0, EntityBeetleLarva.class, "BeetleLarva", -1251634, -13032944);
+		registerEntity(1, EntityWasp.class, "Wasp", -256, -16382458);
+		registerEntity(2, EntityCentipede.class, "Centipede", -13565952, -92160);
+		registerEntity(3, EntityBeetle.class, "Beetle", -12116973, -5938366);
+		registerEntity(4, EntityFly.class, "Fly", -13165534, -6750208);
+		registerEntity(5, EntityMosquito.class, "Mosquito", -13816034, -14803180);
+		registerEntity(6, EntityTarantula.class, "Tarantula", 0x000000, 0xE82066);
+		registerEntity(7, EntityBotFly.class, "BotFly", -6750208, -13165534);
+		registerEntity(8, EntityScorpion.class, "Scorpion", 0xFFA200, 0xFFDB9C);
+		registerEntity(9, EntitySolifuge.class, "Solifuge", 0xFFDB9C, 0xFFA200);
 		registerEntity(10, EntityGrasshopper.class, "Grasshopper", 0x06B900, 0x5FFF5F);
 		registerEntity(11, EntityLocust.class, "Locust", 0x5FFF5F, 0x06B900);
 		registerEntity(12, EntityMoth.class, "Moth", 0x00FFDD, 0xFBFFA8);
@@ -97,7 +97,8 @@ public class ModEntities {
 		registerEntity(20, EntityPrayingMantis.class, "PrayingMantis", 0x06B900, 0x06B900);
 		registerEntity(21, EntityJumpingSpider.class, "JumpingSpider", 0xE82066, 0x06B900);
 		registerEntity(22, EntityFireAnt.class, "FireAnt", 0xFF0000, 0xFFEE00);
-		// registerEntity(EntityVelvetWorm.class, "VelvetWorm", EntityRegistry.findGlobalUniqueEntityId(), 894731, 000000);
+		// registerEntity(EntityVelvetWorm.class, "VelvetWorm",
+		// EntityRegistry.findGlobalUniqueEntityId(), 894731, 000000);
 
 		registerEntity(50, EntityAnimatedBlock.class, "AnimatedBlock");
 		registerEntity(51, EntityAnimatedChest.class, "AnimatedChest");
@@ -111,12 +112,12 @@ public class ModEntities {
 		EntityRegistry.addSpawn(EntityBlackWidow.class, 100, 5, 10, EnumCreatureType.monster, BiomeGenBase.hell);
 	}
 
-	private static final void registerEntity(int id, Class<? extends Entity> entityClass, String name){
-		EntityRegistry.registerModEntity(entityClass,name,id,ErebusMod.instance,256,1,true);
+	private static final void registerEntity(int id, Class<? extends Entity> entityClass, String name) {
+		EntityRegistry.registerModEntity(entityClass, name, id, ErebusMod.instance, 256, 1, true);
 	}
 
-	private static final void registerEntity(int id, Class<? extends EntityLiving> entityClass, String name, int eggBackgroundColor, int eggForegroundColor){
-		registerEntity(id,entityClass,name);
-		ItemSpawnEggs.registerSpawnEgg(entityClass,name,id,eggBackgroundColor,eggForegroundColor);
+	private static final void registerEntity(int id, Class<? extends EntityLiving> entityClass, String name, int eggBackgroundColor, int eggForegroundColor) {
+		registerEntity(id, entityClass, name);
+		ItemSpawnEggs.registerSpawnEgg(entityClass, name, id, eggBackgroundColor, eggForegroundColor);
 	}
 }

@@ -1,6 +1,7 @@
 package erebus.item;
 
 import java.util.List;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
@@ -23,11 +24,11 @@ public class ItemSprintLeggings extends ItemArmor {
 		super(i, enumarmormaterial, 2, k);
 		setCreativeTab(ErebusMod.tabErebusGear);
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack is, EntityPlayer player, List textLines, boolean showAdvancedInfo){
-		textLines.add(EnumChatFormatting.GRAY+"Tier "+(1+(is.stackTagCompound==null?0:is.stackTagCompound.getByte("upgradeTier"))));
+	public void addInformation(ItemStack is, EntityPlayer player, List textLines, boolean showAdvancedInfo) {
+		textLines.add(EnumChatFormatting.GRAY + "Tier " + (1 + (is.stackTagCompound == null ? 0 : is.stackTagCompound.getByte("upgradeTier"))));
 	}
 
 	@Override
@@ -46,9 +47,9 @@ public class ItemSprintLeggings extends ItemArmor {
 	@Override
 	public void onArmorTickUpdate(World world, EntityPlayer player, ItemStack is) {
 		if (player.isSprinting() && player.onGround) {
-			byte tier=(byte)(3+(is.stackTagCompound==null?0:is.stackTagCompound.getByte("upgradeTier")));
-			player.motionX *= 1D+tier*.0425D;
-			player.motionZ *= 1D+tier*.0425D;
+			byte tier = (byte) (3 + (is.stackTagCompound == null ? 0 : is.stackTagCompound.getByte("upgradeTier")));
+			player.motionX *= 1D + tier * .0425D;
+			player.motionZ *= 1D + tier * .0425D;
 		}
 		armtick++;
 		if (armtick > 60 || player.isSprinting())

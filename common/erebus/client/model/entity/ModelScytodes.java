@@ -4,7 +4,9 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -429,9 +431,7 @@ public class ModelScytodes extends ModelBase {
 		GL11.glPopMatrix();
 	}
 
-
-	private void setRotation(ModelRenderer model, float  x, float y, float z)
-	{
+	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;
@@ -465,4 +465,3 @@ public class ModelScytodes extends ModelBase {
 		RFL1.rotateAngleY = cosY + PI;
 	}
 }
-

@@ -2,6 +2,7 @@ package erebus.block;
 
 import java.util.ArrayList;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -17,7 +18,7 @@ import erebus.ModItems;
 import erebus.item.ItemErebusMaterial;
 
 public class BlockBambooCrop extends Block {
-	
+
 	@SideOnly(Side.CLIENT)
 	private Icon iconTop;
 
@@ -29,7 +30,7 @@ public class BlockBambooCrop extends Block {
 
 	@Override
 	public int idDropped(int meta, Random rand, int fortune) {
-		return meta>=8 && rand.nextInt(17)<=3? 0 : ModItems.erebusMaterials.itemID;
+		return meta >= 8 && rand.nextInt(17) <= 3 ? 0 : ModItems.erebusMaterials.itemID;
 	}
 
 	@Override
@@ -74,16 +75,14 @@ public class BlockBambooCrop extends Block {
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-	
+
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand) {
-		int meta = world.getBlockMetadata(x,y,z);
-		
-		if ((meta & 7) != 0) {
-			if (BlockBambooShoot.calculateBambooHappiness(world, x, y, z, blockID) > rand.nextInt(110 - meta * 2) && world.isAirBlock(x,y+1,z)) {
+		int meta = world.getBlockMetadata(x, y, z);
+
+		if ((meta & 7) != 0)
+			if (BlockBambooShoot.calculateBambooHappiness(world, x, y, z, blockID) > rand.nextInt(110 - meta * 2) && world.isAirBlock(x, y + 1, z))
 				world.setBlock(x, y + 1, z, blockID, meta - 1, 3);
-			}
-		}
 	}
 
 	@Override

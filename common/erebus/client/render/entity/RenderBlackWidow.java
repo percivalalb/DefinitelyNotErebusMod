@@ -5,7 +5,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelBlackWidow;
@@ -36,7 +38,7 @@ public class RenderBlackWidow extends RenderLiving {
 
 	@Override
 	protected void preRenderCallback(EntityLivingBase entityliving, float f) {
-		shadowSize = ((EntityBlackWidow)entityliving).getWidowSize() * 0.3F;
+		shadowSize = ((EntityBlackWidow) entityliving).getWidowSize() * 0.3F;
 		GL11.glScalef(shadowSize, shadowSize, shadowSize);
 	}
 

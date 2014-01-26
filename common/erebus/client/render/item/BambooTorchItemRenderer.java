@@ -72,6 +72,7 @@ public class BambooTorchItemRenderer implements IItemRenderer {
 			GL11.glPopMatrix();
 		}
 	}
+
 	private void renderTorchFirstPerson(float x, float y, float z, double size) {
 		GL11.glPushMatrix();
 		GL11.glTranslatef(x, y, z);

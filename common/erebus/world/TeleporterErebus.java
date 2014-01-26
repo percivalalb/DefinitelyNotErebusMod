@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.Direction;
@@ -16,7 +17,6 @@ import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.DimensionManager;
 import erebus.ModBlocks;
 import erebus.core.handler.ConfigurationHandler;
-import erebus.core.helper.LogHelper;
 
 public class TeleporterErebus extends Teleporter {
 
@@ -366,7 +366,6 @@ public class TeleporterErebus extends Teleporter {
 				PortalPosition portalposition = (PortalPosition) destinationCoordinateCache.getValueByKey(olong.longValue());
 
 				if (portalposition == null || portalposition.lastUpdateTime < j) {
-					LogHelper.logInfo("Removed portal");
 					iterator.remove();
 					destinationCoordinateCache.remove(olong.longValue());
 				}

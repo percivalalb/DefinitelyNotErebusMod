@@ -7,8 +7,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.tileentity.TileEntityExtenderThingy;
 
 @SideOnly(Side.CLIENT)
-public class ModelExtenderThingy extends ModelBase
-{
+public class ModelExtenderThingy extends ModelBase {
 	ModelRenderer BambooStep1;
 	ModelRenderer BambooStep2;
 	ModelRenderer SupportR1;
@@ -22,8 +21,7 @@ public class ModelExtenderThingy extends ModelBase
 	ModelRenderer Polebit;
 	ModelRenderer Main;
 
-	public ModelExtenderThingy()
-	{
+	public ModelExtenderThingy() {
 		textureWidth = 64;
 		textureHeight = 64;
 

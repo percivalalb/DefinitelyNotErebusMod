@@ -1,19 +1,16 @@
-
 package erebus.client.model.block;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
-public class ModelBambooLadder extends ModelBase
-{
+public class ModelBambooLadder extends ModelBase {
 	ModelRenderer BambooStep1;
 	ModelRenderer BambooStep2;
 	ModelRenderer BambooStep3;
 	ModelRenderer String1;
 	ModelRenderer String2;
 
-	public ModelBambooLadder()
-	{
+	public ModelBambooLadder() {
 		textureWidth = 64;
 		textureHeight = 32;
 
@@ -57,8 +54,7 @@ public class ModelBambooLadder extends ModelBase
 		String2.render(0.0625F);;
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;

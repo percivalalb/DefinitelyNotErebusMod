@@ -5,18 +5,15 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
+
 import erebus.client.model.entity.ModelScytodes;
 import erebus.entity.EntityScytodes;
 
-public class RenderScytodes extends RenderLiving
-{
-	private static final ResourceLocation[] textures = new ResourceLocation[]{
-		new ResourceLocation("erebus:textures/entity/ModelScytodes_1.png"),
-		new ResourceLocation("erebus:textures/entity/ModelScytodes_2.png"),
-		new ResourceLocation("erebus:textures/entity/ModelScytodes_3.png"),
-		new ResourceLocation("erebus:textures/entity/ModelScytodes_4.png")
-	};
+public class RenderScytodes extends RenderLiving {
+	private static final ResourceLocation[] textures = new ResourceLocation[] { new ResourceLocation("erebus:textures/entity/ModelScytodes_1.png"), new ResourceLocation("erebus:textures/entity/ModelScytodes_2.png"), new ResourceLocation("erebus:textures/entity/ModelScytodes_3.png"),
+	new ResourceLocation("erebus:textures/entity/ModelScytodes_4.png") };
 
 	public RenderScytodes(ModelScytodes model, float shadowSize) {
 		super(model, shadowSize);
@@ -49,7 +46,6 @@ public class RenderScytodes extends RenderLiving
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		return textures[Math.min(textures.length-1,((EntityScytodes)entity).skin)];
+		return textures[Math.min(textures.length - 1, ((EntityScytodes) entity).skin)];
 	}
 }
-

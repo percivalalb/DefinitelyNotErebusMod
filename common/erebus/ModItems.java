@@ -216,9 +216,9 @@ public class ModItems {
 		GameRegistry.registerItem(armorGlider, "erebus.armorGlider");
 
 		// Furnace fuel
-		GameRegistry.registerFuelHandler(new IFuelHandler(){
+		GameRegistry.registerFuelHandler(new IFuelHandler() {
 			@Override
-			public int getBurnTime(ItemStack fuel){
+			public int getBurnTime(ItemStack fuel) {
 				return fuel.itemID == erebusMaterials.itemID && fuel.getItemDamage() == ItemErebusMaterial.dataBamboo ? 300 : 0;
 			}
 		});

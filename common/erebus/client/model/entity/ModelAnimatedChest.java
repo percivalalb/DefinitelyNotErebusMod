@@ -1,4 +1,3 @@
-
 package erebus.client.model.entity;
 
 import net.minecraft.client.model.ModelBase;
@@ -7,9 +6,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 import erebus.entity.EntityAnimatedChest;
 
-public class ModelAnimatedChest extends ModelBase
-{
-	//fields
+public class ModelAnimatedChest extends ModelBase {
+	// fields
 	ModelRenderer LBL1;
 	ModelRenderer LBL2;
 	ModelRenderer LBL3;
@@ -38,8 +36,7 @@ public class ModelAnimatedChest extends ModelBase
 	ModelRenderer Body;
 	ModelRenderer Lock;
 
-	public ModelAnimatedChest()
-	{
+	public ModelAnimatedChest() {
 		textureWidth = 64;
 		textureHeight = 64;
 

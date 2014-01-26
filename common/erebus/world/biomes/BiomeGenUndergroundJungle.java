@@ -105,8 +105,9 @@ public class BiomeGenUndergroundJungle extends BiomeGenBaseErebus {
 		}
 
 		if (rand.nextInt(37) == 0)
-			for(int attempt=0; attempt<5; attempt++)
-				if (new WorldGenWaspDungeon().generate(worldObj, rand, x + rand.nextInt(16) + 8, 127, z + rand.nextInt(16) + 8)) break;
+			for (int attempt = 0; attempt < 5; attempt++)
+				if (new WorldGenWaspDungeon().generate(worldObj, rand, x + rand.nextInt(16) + 8, 127, z + rand.nextInt(16) + 8))
+					break;
 
 		if (rand.nextInt(5) == 0)
 			for (int attempt = 0; attempt < 4; attempt++)

@@ -3,8 +3,7 @@ package erebus.client.model.block;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 
-public class ModelUmberGolemStatue extends ModelBase
-{
+public class ModelUmberGolemStatue extends ModelBase {
 
 	ModelRenderer HeadTop;
 	ModelRenderer HeadMain;
@@ -56,8 +55,7 @@ public class ModelUmberGolemStatue extends ModelBase
 	ModelRenderer ToeLBack1;
 	ModelRenderer ToeLBack2;
 
-	public ModelUmberGolemStatue()
-	{
+	public ModelUmberGolemStatue() {
 		textureWidth = 64;
 		textureHeight = 128;
 
@@ -357,8 +355,7 @@ public class ModelUmberGolemStatue extends ModelBase
 		setRotation(ToeLBack2, -0.3490659F, 3.141593F, 0F);
 	}
 
-	public void render()
-	{
+	public void render() {
 		HeadTop.render(0.0625F);
 		HeadMain.render(0.0625F);
 		HeadFront.render(0.0625F);
@@ -410,8 +407,7 @@ public class ModelUmberGolemStatue extends ModelBase
 		ToeLBack2.render(0.0625F);
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;

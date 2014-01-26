@@ -103,12 +103,13 @@ public class EntityCentipede extends EntityMob {
 
 	@Override
 	protected void dropFewItems(boolean recentlyHit, int looting) {
-		if (rand.nextInt(9)<=2+(looting>>1))entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBioVelocity), 0.0F);
+		if (rand.nextInt(9) <= 2 + (looting >> 1))
+			entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataBioVelocity), 0.0F);
 		entityDropItem(new ItemStack(ModItems.erebusMaterials, rand.nextInt(3) + 1, ItemErebusMaterial.dataExoPlate), 0.0F);
 	}
 
 	@Override
-	protected void dropRareDrop(int looting){
+	protected void dropRareDrop(int looting) {
 		entityDropItem(new ItemStack(ModItems.erebusMaterials, 1, ItemErebusMaterial.dataSupernaturalVelocity), 0.0F);
 	}
 

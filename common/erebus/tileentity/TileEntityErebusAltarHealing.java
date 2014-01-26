@@ -1,6 +1,7 @@
 package erebus.tileentity;
 
 import java.util.List;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,7 +19,7 @@ public class TileEntityErebusAltarHealing extends TileEntityErebusAltar {
 	public int animationTicks;
 	public boolean active;
 	private int spawnTicks;
-	
+
 	@Override
 	public void updateEntity() {
 		findEnemyToAttack();
@@ -78,14 +79,14 @@ public class TileEntityErebusAltarHealing extends TileEntityErebusAltar {
 	}
 
 	@Override
-	protected void writeTileToNBT(NBTTagCompound nbt){
+	protected void writeTileToNBT(NBTTagCompound nbt) {
 		nbt.setInteger("animationTicks", animationTicks);
 		nbt.setInteger("spawnTicks", spawnTicks);
 		nbt.setBoolean("active", active);
 	}
 
 	@Override
-	protected void readTileFromNBT(NBTTagCompound nbt){
+	protected void readTileFromNBT(NBTTagCompound nbt) {
 		animationTicks = nbt.getInteger("animationTicks");
 		spawnTicks = nbt.getInteger("spawnTicks");
 		active = nbt.getBoolean("active");

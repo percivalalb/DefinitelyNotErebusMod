@@ -21,7 +21,6 @@ public class EntityAIEatWoodenItem extends EntityAIBase {
 	public int WoodX, WoodY, WoodZ = -1;
 	private final double moveSpeed;
 	private int ticksSpent = 0;
-	private final int reproCap = 0;
 
 	public EntityAIEatWoodenItem(EntityLiving entityLiving, double d) {
 		theEntity = entityLiving;

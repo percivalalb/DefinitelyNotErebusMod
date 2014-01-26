@@ -132,7 +132,7 @@ public class CommonProxy implements IGuiHandler {
 				return new ContainerUmberFurnace(player.inventory, (TileEntityUmberFurnace) tileentity);
 		}
 
-		else if(ID == GUI_ID_PETRIFIED_CHEST) {
+		else if (ID == GUI_ID_PETRIFIED_CHEST) {
 			IInventory inventory = BlockPetrifiedChest.getInventory(world, x, y, z);
 			return new ContainerPetrifiedWoodChest(player.inventory, inventory);
 		}
@@ -190,7 +190,6 @@ public class CommonProxy implements IGuiHandler {
 
 		else if (ID == GUI_ID_EXTENDER_THINGY)
 			return new GuiExtenderThingy(player.inventory, (TileEntityExtenderThingy) world.getBlockTileEntity(x, y, z));
-
 
 		return null;
 	}

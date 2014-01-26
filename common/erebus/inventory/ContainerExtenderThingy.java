@@ -56,8 +56,9 @@ public class ContainerExtenderThingy extends Container {
 			else
 				slot.onSlotChanged();
 
-			if (slotItemStack.stackSize==itemStack.stackSize)return null;
-			slot.onPickupFromSlot(player,slotItemStack);
+			if (slotItemStack.stackSize == itemStack.stackSize)
+				return null;
+			slot.onPickupFromSlot(player, slotItemStack);
 		}
 
 		return itemStack;

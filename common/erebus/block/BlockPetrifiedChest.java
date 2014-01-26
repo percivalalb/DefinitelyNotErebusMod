@@ -1,7 +1,9 @@
 package erebus.block;
 
 import static net.minecraftforge.common.ForgeDirection.DOWN;
+
 import java.util.Iterator;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -217,8 +219,7 @@ public class BlockPetrifiedChest extends BlockContainer {
 	}
 
 	private boolean isThereANeighborChest(World world, int x, int y, int z) {
-		return world.getBlockId(x, y, z) != blockID ? false : world.getBlockId(x - 1, y, z) == blockID ? true : world.getBlockId(x + 1, y, z) == blockID ? true : world.getBlockId(x, y, z - 1) == blockID ? true : world.getBlockId(x, y,
-		z + 1) == blockID;
+		return world.getBlockId(x, y, z) != blockID ? false : world.getBlockId(x - 1, y, z) == blockID ? true : world.getBlockId(x + 1, y, z) == blockID ? true : world.getBlockId(x, y, z - 1) == blockID ? true : world.getBlockId(x, y, z + 1) == blockID;
 	}
 
 	@Override

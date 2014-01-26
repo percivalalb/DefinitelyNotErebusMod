@@ -16,6 +16,7 @@ import net.minecraft.world.World;
 public class EntityScytodes extends EntityMob {
 	private int shouldDo;
 	public int skin = rand.nextInt(4);
+
 	public EntityScytodes(World world) {
 		super(world);
 		setSize(2F, 1F);
@@ -77,7 +78,7 @@ public class EntityScytodes extends EntityMob {
 
 	@Override
 	protected void attackEntity(Entity entity, float distance) {
-		if (distance <2.0F){
+		if (distance < 2.0F) {
 			super.attackEntity(entity, distance);
 			attackEntityAsMob(entity);
 		}
@@ -147,7 +148,6 @@ public class EntityScytodes extends EntityMob {
 	public boolean isBesideClimbableBlock() {
 		return (dataWatcher.getWatchableObjectByte(16) & 1) != 0;
 	}
-
 
 	public void setBesideClimbableBlock(boolean par1) {
 		byte b0 = dataWatcher.getWatchableObjectByte(16);

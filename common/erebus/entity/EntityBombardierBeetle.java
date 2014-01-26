@@ -19,7 +19,7 @@ import erebus.core.handler.ConfigurationHandler;
 import erebus.entity.ai.EntityAIExplodeAttackOnCollide;
 import erebus.item.ItemErebusMaterial;
 
-public class EntityBombardierBeetle extends EntityMob{
+public class EntityBombardierBeetle extends EntityMob {
 	private final float explosionRadius = 1;
 	private int collideTick;
 
@@ -113,4 +113,3 @@ public class EntityBombardierBeetle extends EntityMob{
 			}
 	}
 }
-

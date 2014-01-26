@@ -5,7 +5,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.client.model.entity.ModelVelvetWorm;
@@ -16,7 +18,7 @@ public class RenderVelvetWorm extends RenderLiving {
 	private final ResourceLocation resource1 = new ResourceLocation("erebus:textures/entity/Velvet worm.png");
 	private final ResourceLocation resource2 = new ResourceLocation("erebus:textures/entity/Velvet worm2.png");
 
-	private float scale = 1F;
+	private final float scale = 1F;
 
 	public RenderVelvetWorm() {
 		super(new ModelVelvetWorm(), 0.6F);
@@ -43,7 +45,7 @@ public class RenderVelvetWorm extends RenderLiving {
 
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		if (((EntityVelvetWorm)entity).skin <= 10)
+		if (((EntityVelvetWorm) entity).skin <= 10)
 			return resource2;
 		else
 			return resource1;

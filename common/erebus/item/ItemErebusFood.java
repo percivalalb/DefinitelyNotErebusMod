@@ -1,6 +1,7 @@
 package erebus.item;
 
 import java.util.List;
+
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,14 +18,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemErebusFood extends ItemFood {
 
-	public static final String[] iconPaths = new String[] {
-		"larvaRaw", "beetleLarvaCooked", "grasshopperLegRaw", "grasshopperLegCooked", "legTarantula", "legTarantulaCooked",
-		"bambooSoup", "melonade", "melonadeSparkly", "larvaeOnStick"
-	};
+	public static final String[] iconPaths = new String[] { "larvaRaw", "beetleLarvaCooked", "grasshopperLegRaw", "grasshopperLegCooked", "legTarantula", "legTarantulaCooked", "bambooSoup", "melonade", "melonadeSparkly", "larvaeOnStick" };
 
-	public static final short
-	dataLarvaRaw = 0, dataLarvaCooked = 1, dataGrasshopperLegRaw = 2, dataGrasshopperLegCooked = 3, dataLegTarantula = 4, dataLegTarantulaCooked = 5,
-	dataBambooSoup = 6, dataMelonade = 7, dataMelonadeSparkly = 8, dataLarvaeOnStick = 9;
+	public static final short dataLarvaRaw = 0, dataLarvaCooked = 1, dataGrasshopperLegRaw = 2, dataGrasshopperLegCooked = 3, dataLegTarantula = 4, dataLegTarantulaCooked = 5, dataBambooSoup = 6, dataMelonade = 7, dataMelonadeSparkly = 8, dataLarvaeOnStick = 9;
 
 	@SideOnly(Side.CLIENT)
 	public static Icon[] icons;
@@ -118,18 +114,19 @@ public class ItemErebusFood extends ItemFood {
 		world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 		onFoodEaten(is, world, player);
 
-		int damage=is.getItemDamage();
-		Item item=null;
-		
+		int damage = is.getItemDamage();
+		Item item = null;
+
 		if (damage == dataBambooSoup)
-			item=Item.bowlEmpty;
+			item = Item.bowlEmpty;
 		else if (damage == dataMelonade || damage == dataMelonadeSparkly)
-			item=Item.glassBottle;
-		else return is;
-		
+			item = Item.glassBottle;
+		else
+			return is;
+
 		if (is.stackSize != 0)
 			player.inventory.addItemStackToInventory(new ItemStack(item));
-		
+
 		return is.stackSize == 0 ? new ItemStack(item) : is;
 	}
 

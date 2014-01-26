@@ -27,6 +27,7 @@ public class BlockBambooBridge extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	private Icon a, b;
+
 	public BlockBambooBridge(int id) {
 		super(id, Material.wood);
 	}

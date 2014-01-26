@@ -4,7 +4,9 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import erebus.inventory.ContainerBambooCrate;
@@ -14,7 +16,7 @@ import erebus.tileentity.TileEntityBambooCrate;
 public class GuiBambooCrate extends GuiContainer {
 
 	private static final ResourceLocation GUI_BAMBOO_CRATE = new ResourceLocation("erebus:textures/gui/container/bambooCrate.png");
-	private TileEntityBambooCrate bambooCrateInventory;
+	private final TileEntityBambooCrate bambooCrateInventory;
 
 	public GuiBambooCrate(InventoryPlayer playerInventory, TileEntityBambooCrate tile) {
 		super(new ContainerBambooCrate(playerInventory, tile));

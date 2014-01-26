@@ -11,9 +11,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 import erebus.tileentity.TileEntityErebusAltarRepair;
 
 @SideOnly(Side.CLIENT)
-public class ModelAltarRepair extends ModelBase
-{
-	//fields
+public class ModelAltarRepair extends ModelBase {
+	// fields
 	ModelRenderer AnvilFrontFoot;
 	ModelRenderer AnvilRearFoot;
 	ModelRenderer AnvilBase;
@@ -26,8 +25,7 @@ public class ModelAltarRepair extends ModelBase
 	ModelRenderer Mid;
 	ModelRenderer Bot;
 
-	public ModelAltarRepair()
-	{
+	public ModelAltarRepair() {
 		textureWidth = 256;
 		textureHeight = 64;
 
@@ -126,8 +124,7 @@ public class ModelAltarRepair extends ModelBase
 		GL11.glPopMatrix();
 	}
 
-	private void setRotation(ModelRenderer model, float x, float y, float z)
-	{
+	private void setRotation(ModelRenderer model, float x, float y, float z) {
 		model.rotateAngleX = x;
 		model.rotateAngleY = y;
 		model.rotateAngleZ = z;

@@ -8,8 +8,9 @@ import net.minecraft.tileentity.TileEntity;
 
 public abstract class TileEntityErebusAltar extends TileEntity {
 	protected abstract void writeTileToNBT(NBTTagCompound nbt);
+
 	protected abstract void readTileFromNBT(NBTTagCompound nbt);
-	
+
 	@Override
 	public final void writeToNBT(NBTTagCompound nbt) {
 		super.writeToNBT(nbt);
@@ -21,17 +22,17 @@ public abstract class TileEntityErebusAltar extends TileEntity {
 		super.readFromNBT(nbt);
 		readTileFromNBT(nbt);
 	}
-	
+
 	@Override
-	public Packet getDescriptionPacket(){
-		NBTTagCompound data=new NBTTagCompound();
+	public Packet getDescriptionPacket() {
+		NBTTagCompound data = new NBTTagCompound();
 		writeTileToNBT(data);
-		return new Packet132TileEntityData(xCoord,yCoord,zCoord,0,data);
+		return new Packet132TileEntityData(xCoord, yCoord, zCoord, 0, data);
 	}
-	
+
 	@Override
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData packet){
+	public void onDataPacket(INetworkManager net, Packet132TileEntityData packet) {
 		readTileFromNBT(packet.data);
-		worldObj.markBlockForRenderUpdate(xCoord,yCoord,zCoord);
-    }
+		worldObj.markBlockForRenderUpdate(xCoord, yCoord, zCoord);
+	}
 }

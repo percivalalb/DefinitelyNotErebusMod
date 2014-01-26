@@ -271,16 +271,19 @@ public class ModelTarantula extends ModelBase {
 		float varY = MathHelper.sin(limbSwing * legSpeed) * 1.4F * prevLimbSwing;
 		float varZ = Math.abs(MathHelper.cos(limbSwing * legSpeed)) * 0.8F * prevLimbSwing;
 
-		// float varEY = MathHelper.sin(limbSwing * legSpeed) * 1.4F * prevLimbSwing;
+		// float varEY = MathHelper.sin(limbSwing * legSpeed) * 1.4F *
+		// prevLimbSwing;
 		// float varEZ = Math.abs(MathHelper.cos(limbSwing * legSpeed)) * 0.8F *
 		// prevLimbSwing;
 		float varEY = 0;
 		float varEZ = 0;
 		/*
-		 * float varEY = MathHelper.sin(limbSwing * legSpeed) * 1.4F * prevLimbSwing; float
-		 * varEZ = Math.abs(MathHelper.cos(limbSwing * legSpeed)) * 0.8F * prevLimbSwing;
-		 * float varY = Math.abs(MathHelper.sin(limbSwing * legSpeed)) * 1.4F * prevLimbSwing;
-		 * float varZ = MathHelper.sin(limbSwing * legSpeed) * 1.4F * prevLimbSwing;
+		 * float varEY = MathHelper.sin(limbSwing * legSpeed) * 1.4F *
+		 * prevLimbSwing; float varEZ = Math.abs(MathHelper.cos(limbSwing *
+		 * legSpeed)) * 0.8F * prevLimbSwing; float varY =
+		 * Math.abs(MathHelper.sin(limbSwing * legSpeed)) * 1.4F *
+		 * prevLimbSwing; float varZ = MathHelper.sin(limbSwing * legSpeed) *
+		 * 1.4F * prevLimbSwing;
 		 */
 
 		// Normal Legs

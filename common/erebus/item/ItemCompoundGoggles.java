@@ -15,9 +15,9 @@ public class ItemCompoundGoggles extends ItemArmor {
 	@Override
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, int layer) {
 		if (is.itemID == ModItems.compoundGoggles.itemID)
-			return "erebus:textures/model/armor/goggles_1.png";
+			return "erebus:textures/models/armor/goggles_1.png";
 		if (is.itemID == ModItems.reinCompoundGoggles.itemID)
-			return "erebus:textures/model/armor/reingoggles_1.png";
+			return "erebus:textures/models/armor/reingoggles_1.png";
 		else
 			return null;
 	}

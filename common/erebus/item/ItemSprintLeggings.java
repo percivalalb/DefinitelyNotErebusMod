@@ -35,11 +35,11 @@ public class ItemSprintLeggings extends ItemArmor {
 	public String getArmorTexture(ItemStack is, Entity entity, int slot, int layer) {
 		if (is.itemID == ModItems.sprintLeggings.itemID) {
 			if (armtick >= 0 && armtick <= 20)
-				texture = "erebus:textures/model/armor/centipede_0.png";
+				texture = "erebus:textures/models/armor/centipede_0.png";
 			if (armtick > 20 && armtick <= 40)
-				texture = "erebus:textures/model/armor/centipede_1.png";
+				texture = "erebus:textures/models/armor/centipede_1.png";
 			if (armtick > 40 && armtick <= 60)
-				texture = "erebus:textures/model/armor/centipede_2.png";
+				texture = "erebus:textures/models/armor/centipede_2.png";
 		}
 		return texture;
 	}

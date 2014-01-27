@@ -16,7 +16,7 @@ import erebus.entity.EntityBeetleLarva;
 @SideOnly(Side.CLIENT)
 public class RenderBeetleLarva extends RenderLiving {
 
-	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/entity/larva.png");
+	private static final ResourceLocation texture = new ResourceLocation("erebus:textures/entity/Larva.png");
 
 	public RenderBeetleLarva() {
 		super(new ModelBeetleLarva(), 0.3F);
